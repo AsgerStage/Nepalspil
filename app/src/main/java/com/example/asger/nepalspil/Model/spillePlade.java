@@ -1,4 +1,4 @@
-package com.example.asger.nepalspil.Model;
+package com.example.asger.nepalspil.model;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -16,7 +16,8 @@ public class spillePlade extends AppCompatActivity {
     Spiller s = new Spiller("Adam", 50);        //Dummy spiller
     ImageView im = (ImageView) findViewById(R.id.felt1);
 
-    protected void onCreate(Bundle savedInstanceState) {
+
+        protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.spilplade);
 
