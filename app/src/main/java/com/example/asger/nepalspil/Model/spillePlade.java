@@ -17,11 +17,11 @@ public class spillePlade extends AppCompatActivity {
     ImageView im = (ImageView) findViewById(R.id.felt1);
 
 
-        protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.spilplade);
 
-
+/*
         im.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -32,6 +32,8 @@ public class spillePlade extends AppCompatActivity {
                 
             }
         });
+        */
     }
+
 }
 

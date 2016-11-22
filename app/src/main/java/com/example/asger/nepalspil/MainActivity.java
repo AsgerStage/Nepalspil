@@ -34,10 +34,4 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-
-        public void goToSpilPlade (View view){
-            Intent intent = new Intent(this, Gameboard.class);
-            startActivity(intent);
-        }
-
-    }
+}
