@@ -11,7 +11,7 @@ import com.example.asger.nepalspil.Felter.Gameboard;
 import com.example.asger.nepalspil.model.spillePlade;
 
 /**
- * Created by Asger on 07-11-2016.
+ * Created by Peter on 22-11-2016.
  */
 
 public class MainActivity extends AppCompatActivity {
@@ -22,10 +22,20 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.splash);
 
         ImageButton asha = (ImageButton) findViewById(R.id.imageButton4);
+        ImageButton kaka = (ImageButton) findViewById(R.id.imageButton5);
         asha.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(MainActivity.this,"Du har valgt Asha!", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(MainActivity.this, spillePlade.class);
+                startActivity(intent);
+
+            }
+        });
+        kaka.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(MainActivity.this,"Du har valgt Kaka!", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(MainActivity.this, spillePlade.class);
                 startActivity(intent);
 

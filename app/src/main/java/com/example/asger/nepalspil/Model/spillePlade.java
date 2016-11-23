@@ -14,7 +14,7 @@ import com.example.asger.nepalspil.R;
 public class spillePlade extends AppCompatActivity {
 
     Spiller s = new Spiller("Adam", 50);        //Dummy spiller
-    ImageView im = (ImageView) findViewById(R.id.felt1);
+   // ImageView im = (ImageView) findViewById(R.id.felt1);
 
 
     protected void onCreate(Bundle savedInstanceState) {
