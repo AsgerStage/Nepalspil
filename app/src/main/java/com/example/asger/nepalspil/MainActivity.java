@@ -7,7 +7,6 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
-import com.example.asger.nepalspil.Felter.Gameboard;
 import com.example.asger.nepalspil.model.spillePlade;
 
 /**

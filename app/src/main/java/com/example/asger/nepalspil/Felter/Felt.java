@@ -1,4 +1,4 @@
-package com.example.asger.nepalspil.Felter;
+package com.example.asger.nepalspil.felter;
 
 /**
  * Created by Asger on 21-11-2016.

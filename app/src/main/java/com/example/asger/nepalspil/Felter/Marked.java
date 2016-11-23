@@ -1,4 +1,4 @@
-package com.example.asger.nepalspil.Felter;
+package com.example.asger.nepalspil.felter;
 
 import android.util.Log;
 

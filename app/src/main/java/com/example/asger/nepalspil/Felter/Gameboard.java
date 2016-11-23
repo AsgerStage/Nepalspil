@@ -1,7 +1,4 @@
-package com.example.asger.nepalspil.Felter;
-
-import com.example.asger.nepalspil.Felter.Felt;
-import com.example.asger.nepalspil.Felter.Skole;
+package com.example.asger.nepalspil.felter;
 
 import java.util.ArrayList;
 
