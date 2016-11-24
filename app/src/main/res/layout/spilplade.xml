@@ -28,9 +28,16 @@
                 android:src="@drawable/square"
                 android:layout_gravity="center"
                 android:clickable="true"
-                android:focusable="true"></FrameLayout>
+                android:focusable="true">
 
-            <ImageView
+                <TextView
+                    android:text="TextView"
+                    android:layout_width="207dp"
+                    android:layout_height="116dp"
+                    android:id="@+id/infobox" />
+            </FrameLayout>
+
+            <ImageButton
                 android:layout_width="180dip"
                 android:layout_height="90dip"
                 android:src="@drawable/square"
@@ -38,7 +45,7 @@
                 android:layout_gravity="left|bottom"
                 android:onClick="true" />
 
-            <ImageView
+            <ImageButton
                 android:layout_width="180dip"
                 android:layout_height="90dip"
                 android:src="@drawable/square"
@@ -46,7 +53,7 @@
                 android:onClick="true"
                 android:layout_gravity="right|bottom" />
 
-            <ImageView
+            <ImageButton
                 android:layout_width="180dip"
                 android:layout_height="90dip"
                 android:src="@drawable/square"
@@ -54,7 +61,7 @@
                 android:onClick="true"
                 android:layout_gravity="right|center_vertical" />
 
-            <ImageView
+            <ImageButton
                 android:layout_width="180dip"
                 android:layout_height="90dip"
                 android:src="@drawable/square"
@@ -62,7 +69,7 @@
                 android:onClick="true"
                 android:layout_gravity="center_horizontal|top" />
 
-            <ImageView
+            <ImageButton
                 android:layout_width="180dip"
                 android:layout_height="90dip"
                 android:src="@drawable/square"
@@ -70,7 +77,7 @@
                 android:onClick="true"
                 android:layout_gravity="center_horizontal|bottom" />
 
-            <ImageView
+            <ImageButton
                 android:layout_width="180dip"
                 android:layout_height="90dip"
                 android:src="@drawable/square"
@@ -78,7 +85,7 @@
                 android:layout_gravity="left|center_vertical"
                 android:onClick="true" />
 
-            <ImageView
+            <ImageButton
                 android:layout_width="180dip"
                 android:layout_height="90dip"
                 android:src="@drawable/square"
@@ -86,13 +93,15 @@
                 android:layout_gravity="left|top"
                 android:onClick="true" />
 
-            <ImageView
+            <ImageButton
                 android:layout_width="180dip"
                 android:layout_height="90dip"
                 android:src="@drawable/square"
                 android:id="@+id/felt1"
                 android:onClick="true"
                 android:layout_gravity="right|top" />
+
+
         </FrameLayout>
     </GridLayout>
 </RelativeLayout>
