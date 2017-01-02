@@ -7,8 +7,10 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import com.crashlytics.android.Crashlytics;
 import com.example.asger.nepalspil.model.Spiller;
 import com.example.asger.nepalspil.model.spillePlade;
+import io.fabric.sdk.android.Fabric;
 
 /**
  * Created by Peter on 22-11-2016.
@@ -19,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Fabric.with(this, new Crashlytics());
         setContentView(R.layout.splash);
 
         ImageButton asha = (ImageButton) findViewById(R.id.imageButton4);
