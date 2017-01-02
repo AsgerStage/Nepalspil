@@ -37,8 +37,8 @@ public class spillePlade extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
+                spiller.move(0);
 
-              //  moveTo(felt1);
                 Intent intent = new Intent(spillePlade.this, Farm.class);
                 startActivity(intent);
             }
@@ -50,7 +50,7 @@ public class spillePlade extends AppCompatActivity {
 
            @Override
            public void onClick(View v) {
-
+               spiller.move(1);
 
                Intent intent = new Intent(spillePlade.this, Farm.class);
                startActivity(intent);
@@ -61,7 +61,7 @@ public class spillePlade extends AppCompatActivity {
 
            @Override
            public void onClick(View v) {
-
+               spiller.move(2);
 
                Intent intent = new Intent(spillePlade.this, Farm.class);
                startActivity(intent);
@@ -72,7 +72,7 @@ public class spillePlade extends AppCompatActivity {
 
            @Override
            public void onClick(View v) {
-
+               spiller.move(3);
 
                Intent intent = new Intent(spillePlade.this, Farm.class);
                startActivity(intent);
@@ -83,7 +83,7 @@ public class spillePlade extends AppCompatActivity {
 
            @Override
            public void onClick(View v) {
-
+               spiller.move(4);
 
                Intent intent = new Intent(spillePlade.this, Farm.class);
                startActivity(intent);
@@ -94,7 +94,7 @@ public class spillePlade extends AppCompatActivity {
 
            @Override
            public void onClick(View v) {
-
+               spiller.move(5);
 
                Intent intent = new Intent(spillePlade.this, Farm.class);
                startActivity(intent);
@@ -105,7 +105,7 @@ public class spillePlade extends AppCompatActivity {
 
            @Override
            public void onClick(View v) {
-
+               spiller.move(6);
 
                Intent intent = new Intent(spillePlade.this, Farm.class);
                startActivity(intent);
@@ -116,7 +116,7 @@ public class spillePlade extends AppCompatActivity {
 
            @Override
            public void onClick(View v) {
-
+        spiller.move(7);
                Intent intent = new Intent(spillePlade.this, Farm.class);
                startActivity(intent);
            }
