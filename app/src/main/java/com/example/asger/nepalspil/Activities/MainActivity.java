@@ -1,4 +1,4 @@
-package com.example.asger.nepalspil;
+package com.example.asger.nepalspil.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,8 +8,9 @@ import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.crashlytics.android.Crashlytics;
-import com.example.asger.nepalspil.model.Spiller;
-import com.example.asger.nepalspil.model.spillePlade;
+import com.example.asger.nepalspil.R;
+import com.example.asger.nepalspil.data.Spiller;
+import com.example.asger.nepalspil.data.spillePlade;
 import io.fabric.sdk.android.Fabric;
 
 /**

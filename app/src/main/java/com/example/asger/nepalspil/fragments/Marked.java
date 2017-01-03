@@ -1,4 +1,4 @@
-package com.example.asger.nepalspil.felter;
+package com.example.asger.nepalspil.fragments;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -6,13 +6,13 @@ import android.support.v7.app.AppCompatActivity;
 import com.example.asger.nepalspil.R;
 
 /**
- * Created by Bruger on 03-01-2017.
+ * Created by Asger on 21-11-2016.
  */
 
-public class Lektiehjaelp extends AppCompatActivity {
+public class Marked extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.lektiehjaelp);
+        setContentView(R.layout.lektiehjaelp);  //Har ikke lavet Marked layout endnu
 
 
     }

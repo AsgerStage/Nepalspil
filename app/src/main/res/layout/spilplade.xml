@@ -7,7 +7,7 @@
     android:paddingLeft="64dp"
     android:paddingRight="64dp"
     android:paddingTop="16dp"
-    tools:context="com.example.asger.nepalspil.model.spillePlade">
+    tools:context="com.example.asger.nepalspil.data.spillePlade">
 
 
     <GridLayout

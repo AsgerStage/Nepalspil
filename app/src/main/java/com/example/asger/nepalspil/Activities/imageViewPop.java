@@ -1,8 +1,10 @@
-package com.example.asger.nepalspil;
+package com.example.asger.nepalspil.activities;
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
+
+import com.example.asger.nepalspil.R;
 
 /**
  * Created by Nicki on 22-11-2016.

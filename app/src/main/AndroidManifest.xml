@@ -9,7 +9,7 @@
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
 
         <activity
-            android:name=".MainActivity"
+            android:name=".activities.MainActivity"
             android:label="@string/app_name"
             android:screenOrientation="landscape">
             <intent-filter>
@@ -19,7 +19,7 @@
         </activity>
 
         <activity
-            android:name=".model.spillePlade"
+            android:name=".data.spillePlade"
             android:label="@string/app_name"
             android:screenOrientation="landscape">
             <intent-filter>
@@ -29,7 +29,7 @@
         </activity>
 
         <activity
-            android:name=".model.Farm"
+            android:name=".fragments.Farm"
             android:label="Farm"
             android:screenOrientation="landscape">
             <intent-filter>
