@@ -1,4 +1,4 @@
-package com.example.asger.nepalspil.data;
+package com.example.asger.nepalspil.models;
 
 import android.util.Log;
 

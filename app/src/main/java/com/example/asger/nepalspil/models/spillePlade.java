@@ -1,4 +1,4 @@
-package com.example.asger.nepalspil.data;
+package com.example.asger.nepalspil.models;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -17,7 +17,7 @@ import static com.example.asger.nepalspil.activities.MainActivity.spiller;
  * Created by Nicki on 22-11-2016.
  */
 
-public class spillePlade extends AppCompatActivity {
+public class SpillePlade extends AppCompatActivity {
 
    protected void onCreate(Bundle savedInstanceState) {
 
@@ -40,10 +40,10 @@ public class spillePlade extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(spiller.move(0)){
-                    Toast.makeText(spillePlade.this,"Dagen er gået", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SpillePlade.this,"Dagen er gået", Toast.LENGTH_SHORT).show();
 
                 };
-                Intent intent = new Intent(spillePlade.this, Farm.class);
+                Intent intent = new Intent(SpillePlade.this, Farm.class);
                 startActivity(intent);
             }
         });
@@ -55,11 +55,11 @@ public class spillePlade extends AppCompatActivity {
            @Override
            public void onClick(View v) {
                if(spiller.move(1)){
-                   Toast.makeText(spillePlade.this,"Dagen er gået", Toast.LENGTH_SHORT).show();
+                   Toast.makeText(SpillePlade.this,"Dagen er gået", Toast.LENGTH_SHORT).show();
 
                };
 
-               Intent intent = new Intent(spillePlade.this, Farm.class);
+               Intent intent = new Intent(SpillePlade.this, Farm.class);
                startActivity(intent);
            }
        });
@@ -69,10 +69,10 @@ public class spillePlade extends AppCompatActivity {
            @Override
            public void onClick(View v) {
                if(spiller.move(2)){
-                   Toast.makeText(spillePlade.this,"Dagen er gået", Toast.LENGTH_SHORT).show();
+                   Toast.makeText(SpillePlade.this,"Dagen er gået", Toast.LENGTH_SHORT).show();
 
                };
-               Intent intent = new Intent(spillePlade.this, Farm.class);
+               Intent intent = new Intent(SpillePlade.this, Farm.class);
                startActivity(intent);
            }
        });
@@ -82,10 +82,10 @@ public class spillePlade extends AppCompatActivity {
            @Override
            public void onClick(View v) {
                if(spiller.move(3)){
-                   Toast.makeText(spillePlade.this,"Dagen er gået", Toast.LENGTH_SHORT).show();
+                   Toast.makeText(SpillePlade.this,"Dagen er gået", Toast.LENGTH_SHORT).show();
 
                };
-               Intent intent = new Intent(spillePlade.this, Farm.class);
+               Intent intent = new Intent(SpillePlade.this, Farm.class);
                startActivity(intent);
            }
        });
@@ -95,10 +95,10 @@ public class spillePlade extends AppCompatActivity {
            @Override
            public void onClick(View v) {
                if(spiller.move(4)){
-                   Toast.makeText(spillePlade.this,"Dagen er gået", Toast.LENGTH_SHORT).show();
+                   Toast.makeText(SpillePlade.this,"Dagen er gået", Toast.LENGTH_SHORT).show();
 
                };
-               Intent intent = new Intent(spillePlade.this, Farm.class);
+               Intent intent = new Intent(SpillePlade.this, Farm.class);
                startActivity(intent);
            }
        });
@@ -108,10 +108,10 @@ public class spillePlade extends AppCompatActivity {
            @Override
            public void onClick(View v) {
                if(spiller.move(5)){
-                   Toast.makeText(spillePlade.this,"Dagen er gået", Toast.LENGTH_SHORT).show();
+                   Toast.makeText(SpillePlade.this,"Dagen er gået", Toast.LENGTH_SHORT).show();
 
                };
-               Intent intent = new Intent(spillePlade.this, Farm.class);
+               Intent intent = new Intent(SpillePlade.this, Farm.class);
                startActivity(intent);
            }
        });
@@ -121,10 +121,10 @@ public class spillePlade extends AppCompatActivity {
            @Override
            public void onClick(View v) {
                if(spiller.move(6)){
-                   Toast.makeText(spillePlade.this,"Dagen er gået", Toast.LENGTH_SHORT).show();
+                   Toast.makeText(SpillePlade.this,"Dagen er gået", Toast.LENGTH_SHORT).show();
 
                };
-               Intent intent = new Intent(spillePlade.this, Farm.class);
+               Intent intent = new Intent(SpillePlade.this, Farm.class);
                startActivity(intent);
            }
        });
@@ -134,10 +134,10 @@ public class spillePlade extends AppCompatActivity {
            @Override
            public void onClick(View v) {
                if(spiller.move(7)){
-                   Toast.makeText(spillePlade.this,"Dagen er gået", Toast.LENGTH_SHORT).show();
+                   Toast.makeText(SpillePlade.this,"Dagen er gået", Toast.LENGTH_SHORT).show();
 
                };
-               Intent intent = new Intent(spillePlade.this, Farm.class);
+               Intent intent = new Intent(SpillePlade.this, Farm.class);
                startActivity(intent);
            }
        });
