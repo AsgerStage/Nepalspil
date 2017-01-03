@@ -41,7 +41,7 @@
             <ImageButton
                 android:layout_width="180dip"
                 android:layout_height="90dip"
-                android:src="@drawable/square"
+                android:src="@drawable/barn"
                 android:id="@+id/felt5"
                 android:layout_gravity="left|bottom"
                 android:onClick="true" />
@@ -65,7 +65,7 @@
             <ImageButton
                 android:layout_width="180dip"
                 android:layout_height="90dip"
-                android:src="@drawable/square"
+                android:src="@drawable/home"
                 android:id="@+id/felt0"
                 android:onClick="true"
                 android:layout_gravity="center_horizontal|top" />
@@ -73,7 +73,7 @@
             <ImageButton
                 android:layout_width="180dip"
                 android:layout_height="90dip"
-                android:src="@drawable/square"
+                android:src="@drawable/school"
                 android:id="@+id/felt4"
                 android:onClick="true"
                 android:layout_gravity="center_horizontal|bottom" />
@@ -81,7 +81,7 @@
             <ImageButton
                 android:layout_width="180dip"
                 android:layout_height="90dip"
-                android:src="@drawable/square"
+                android:src="@drawable/marketplace"
                 android:id="@+id/felt6"
                 android:layout_gravity="left|center_vertical"
                 android:onClick="true" />
