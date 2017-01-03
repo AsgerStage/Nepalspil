@@ -18,6 +18,7 @@ import static com.example.asger.nepalspil.activities.MainActivity.spiller;
  */
 
 public class SpillePlade extends AppCompatActivity {
+    TextView infobox;
 
    protected void onCreate(Bundle savedInstanceState) {
 
@@ -32,9 +33,9 @@ public class SpillePlade extends AppCompatActivity {
         ImageButton felt5 = (ImageButton) findViewById(R.id.felt5);
         ImageButton felt6 = (ImageButton) findViewById(R.id.felt6);
         ImageButton felt7 = (ImageButton) findViewById(R.id.felt7);
-       TextView infobox = (TextView) findViewById(R.id.infobox);
-       infobox.setText("        Navn:"+spiller.getNavn()+"\n        Mad:"+spiller.getHp()+"\n        Penge: "+spiller.getPenge()+"\n        Viden: "+spiller.getViden()+"\n        Klassetrin: "+spiller.getKlassetrin()+"\n        Tid: "+spiller.getTid());
-
+       infobox = (TextView) findViewById(R.id.infobox);
+       //infobox.setText("Navn: "+spiller.getNavn()+"\n Mad: "+spiller.getHp()+"\n Penge: "+spiller.getPenge()+"\n Viden: "+spiller.getViden()+"\n Klassetrin: "+spiller.getKlassetrin()+"\n Tid: "+spiller.getTid());
+        updateInfobox();
         felt0.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -43,6 +44,7 @@ public class SpillePlade extends AppCompatActivity {
                     Toast.makeText(SpillePlade.this,"Dagen er gået", Toast.LENGTH_SHORT).show();
 
                 };
+                updateInfobox();
                 Intent intent = new Intent(SpillePlade.this, Farm.class);
                 startActivity(intent);
             }
@@ -58,7 +60,7 @@ public class SpillePlade extends AppCompatActivity {
                    Toast.makeText(SpillePlade.this,"Dagen er gået", Toast.LENGTH_SHORT).show();
 
                };
-
+               updateInfobox();
                Intent intent = new Intent(SpillePlade.this, Farm.class);
                startActivity(intent);
            }
@@ -72,6 +74,7 @@ public class SpillePlade extends AppCompatActivity {
                    Toast.makeText(SpillePlade.this,"Dagen er gået", Toast.LENGTH_SHORT).show();
 
                };
+               updateInfobox();
                Intent intent = new Intent(SpillePlade.this, Farm.class);
                startActivity(intent);
            }
@@ -85,6 +88,7 @@ public class SpillePlade extends AppCompatActivity {
                    Toast.makeText(SpillePlade.this,"Dagen er gået", Toast.LENGTH_SHORT).show();
 
                };
+               updateInfobox();
                Intent intent = new Intent(SpillePlade.this, Farm.class);
                startActivity(intent);
            }
@@ -98,6 +102,7 @@ public class SpillePlade extends AppCompatActivity {
                    Toast.makeText(SpillePlade.this,"Dagen er gået", Toast.LENGTH_SHORT).show();
 
                };
+               updateInfobox();
                Intent intent = new Intent(SpillePlade.this, Farm.class);
                startActivity(intent);
            }
@@ -111,6 +116,7 @@ public class SpillePlade extends AppCompatActivity {
                    Toast.makeText(SpillePlade.this,"Dagen er gået", Toast.LENGTH_SHORT).show();
 
                };
+               updateInfobox();
                Intent intent = new Intent(SpillePlade.this, Farm.class);
                startActivity(intent);
            }
@@ -124,6 +130,7 @@ public class SpillePlade extends AppCompatActivity {
                    Toast.makeText(SpillePlade.this,"Dagen er gået", Toast.LENGTH_SHORT).show();
 
                };
+               updateInfobox();
                Intent intent = new Intent(SpillePlade.this, Farm.class);
                startActivity(intent);
            }
@@ -137,12 +144,14 @@ public class SpillePlade extends AppCompatActivity {
                    Toast.makeText(SpillePlade.this,"Dagen er gået", Toast.LENGTH_SHORT).show();
 
                };
+               updateInfobox();
                Intent intent = new Intent(SpillePlade.this, Farm.class);
                startActivity(intent);
            }
        });
 
    }
+
     /*protected void moveTo(ImageButton v){
         felt0.setColorFilter(null);
         felt1.setColorFilter(null);
@@ -155,6 +164,10 @@ public class SpillePlade extends AppCompatActivity {
         v.setColorFilter(android.R.color.holo_green_dark);
     }*/
 
+    public void updateInfobox()
+    {
+        infobox.setText("Navn: "+spiller.getNavn()+"\n Mad: "+spiller.getHp()+"\n Penge: "+spiller.getPenge()+"\n Viden: "+spiller.getViden()+"\n Klassetrin: "+spiller.getKlassetrin()+"\n Tid: "+spiller.getTid());
 
+    }
 }
 
