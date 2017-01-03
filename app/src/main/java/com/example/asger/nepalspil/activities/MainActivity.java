@@ -1,4 +1,4 @@
-package com.example.asger.nepalspil.activitiess;
+package com.example.asger.nepalspil.activities;
 
 import android.content.Intent;
 import android.os.Bundle;

@@ -11,7 +11,7 @@ import android.widget.Toast;
 import com.example.asger.nepalspil.R;
 import com.example.asger.nepalspil.fragments.Farm;
 
-import static com.example.asger.nepalspil.activitiess.MainActivity.spiller;
+import static com.example.asger.nepalspil.activities.MainActivity.spiller;
 
 /**
  * Created by Nicki on 22-11-2016.
