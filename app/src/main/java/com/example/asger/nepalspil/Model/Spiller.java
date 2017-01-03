@@ -41,6 +41,7 @@ public class Spiller {
     public void move(int newPosition) { //Metode til at rykke spilleren og trække den korrekte mængde tid fra spilleren.
         //Løsningen virker lidt bøvlet, men da Javas modulo (%) kan blive negativ gav det nogle problemer.
         //Math.floorMod metoden kunne være benyttet, men det ville samtidigt gøre at applikationen kun vil virke til android API 24 og frem.
+        int boardsize=8;//Kan ændres hvis spillepladen skulle udvides
         int count1 = 0;
         int count2 = 0;
         int j=this.position;
@@ -54,14 +55,14 @@ public class Spiller {
                 Log.d("Spiller","1count1:"+count1); //Til debugging
                 i++;
                 Log.d("Spiller","i:"+i+" Newposition= "+newPosition);
-                if(((i%8+8)%8)==newPosition){flag2=false;}              //Laver en ikke-negativ modulo, som Mat.floorMod ville gøre.
+                if(((i%boardsize+boardsize)%boardsize)==newPosition){flag2=false;}              //Laver en ikke-negativ modulo, som Mat.floorMod ville gøre.
         }
             while(flag){
                 count2++;
                 Log.d("Spiller","1count2:"+count2);
                 j--;
                 Log.d("Spiller","j:"+j+" Newposition= "+newPosition);
-                if(((j%8+8)%8)==newPosition){flag=false;}                       //Vi går begge veje rundt om spillebrættet for at finde ud af hvilken vej der er kortest
+                if(((j%boardsize+boardsize)%boardsize)==newPosition){flag=false;}                       //Vi går begge veje rundt om spillebrættet for at finde ud af hvilken vej der er kortest
           }
         }
         else if (this.position<newPosition){
@@ -71,14 +72,14 @@ public class Spiller {
                 Log.d("Spiller","2count1:"+count1);
                 i++;
                 Log.d("Spiller","i:"+i+" Newposition= "+newPosition);
-                if(((i%8+8)%8)==newPosition){flag2=false;}
+                if(((i%boardsize+boardsize)%boardsize)==newPosition){flag2=false;}
             }
             while(flag){
                 count2++;
                 Log.d("Spiller","2count2:"+count2);
                 j--;
                 Log.d("Spiller","j:"+j+" Newposition= "+newPosition);
-                if(((j%8+8)%8)==newPosition){flag=false;}
+                if(((j%boardsize+boardsize)%boardsize)==newPosition){flag=false;}
             }
 
 
