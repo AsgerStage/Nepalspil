@@ -10,7 +10,7 @@ import android.widget.Toast;
 import com.crashlytics.android.Crashlytics;
 import com.example.asger.nepalspil.R;
 import com.example.asger.nepalspil.models.Spiller;
-import com.example.asger.nepalspil.models.SpillePladetest;
+import com.example.asger.nepalspil.models.SpillePlade;
 import io.fabric.sdk.android.Fabric;
 
 /**
@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
 
                 Toast.makeText(MainActivity.this,"Du har valgt Asha!", Toast.LENGTH_SHORT).show();
                spiller = new Spiller("Asha", 10, 16, 0, 100,1,false,1);
-                Intent intent = new Intent(MainActivity.this, SpillePladetest.class);
+                Intent intent = new Intent(MainActivity.this, SpillePlade.class);
                 startActivity(intent);
 
             }
@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this,"Du har valgt Kaka!", Toast.LENGTH_SHORT).show();
                spiller = new Spiller("Kaka", 10, 16, 0,100,1,true,1);
 
-                Intent intent = new Intent(MainActivity.this, SpillePladetest.class);
+                Intent intent = new Intent(MainActivity.this, SpillePlade.class);
                 startActivity(intent);
 
             }
