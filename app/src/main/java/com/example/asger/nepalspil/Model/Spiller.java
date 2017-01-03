@@ -49,7 +49,7 @@ public class Spiller {
 
         boolean flag=true;
         boolean flag2=true;
-        if(this.position>newPosition){
+
             while(flag2){                   //Flags som denne bliver brugt da både while og for loops checkede i eller j's værdi på forkerte tidspunkter og skabte uendelige løkker.
                 count1++;
                 Log.d("Spiller","1count1:"+count1); //Til debugging
@@ -64,29 +64,6 @@ public class Spiller {
                 Log.d("Spiller","j:"+j+" Newposition= "+newPosition);
                 if(((j%boardsize+boardsize)%boardsize)==newPosition){flag=false;}                       //Vi går begge veje rundt om spillebrættet for at finde ud af hvilken vej der er kortest
           }
-        }
-        else if (this.position<newPosition){
-
-            while(flag2){
-                count1++;
-                Log.d("Spiller","2count1:"+count1);
-                i++;
-                Log.d("Spiller","i:"+i+" Newposition= "+newPosition);
-                if(((i%boardsize+boardsize)%boardsize)==newPosition){flag2=false;}
-            }
-            while(flag){
-                count2++;
-                Log.d("Spiller","2count2:"+count2);
-                j--;
-                Log.d("Spiller","j:"+j+" Newposition= "+newPosition);
-                if(((j%boardsize+boardsize)%boardsize)==newPosition){flag=false;}
-            }
-
-
-            }
-        else if(this.position==newPosition){
-            Log.d("Spiller","Spiller trykker på felt han/hun allerede står på");
-        }
 
 
         if(count2>count1){
