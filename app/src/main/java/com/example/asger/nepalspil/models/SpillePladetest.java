@@ -17,7 +17,7 @@ import static com.example.asger.nepalspil.activities.MainActivity.spiller;
  * Created by Nicki on 22-11-2016.
  */
 
-public class SpillePlade extends AppCompatActivity {
+public class SpillePladetest extends AppCompatActivity {
     TextView infobox;
 
    protected void onCreate(Bundle savedInstanceState) {
@@ -127,11 +127,11 @@ public class SpillePlade extends AppCompatActivity {
 
     public void moveTo(int pos,java.lang.Class<?> cls) {
         if (spiller.move(pos)) {
-            Toast.makeText(SpillePlade.this, "Dagen er gået", Toast.LENGTH_SHORT).show();
+            Toast.makeText(SpillePladetest.this, "Dagen er gået", Toast.LENGTH_SHORT).show();
             updateInfobox();
         }
         else {
-            Intent intent = new Intent(SpillePlade.this, cls);
+            Intent intent = new Intent(SpillePladetest.this, cls);
             updateInfobox();
             startActivity(intent);
         }
