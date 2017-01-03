@@ -50,16 +50,16 @@ public class Spiller {
         boolean flag=true;
         boolean flag2=true;
 
-            while(flag2){                   //Flags som denne bliver brugt da både while og for loops checkede i eller j's værdi på forkerte tidspunkter og skabte uendelige løkker.
+            while(flag2){//Flags som denne bliver brugt da både while og for loops checkede i eller j's værdi på forkerte tidspunkter og skabte uendelige løkker.
                 count1++;
-                Log.d("Spiller","1count1:"+count1); //Til debugging
+               // Log.d("Spiller","1count1:"+count1); //Til debugging
                 i++;
                 Log.d("Spiller","i:"+i+" Newposition= "+newPosition);
-                if(((i%boardsize+boardsize)%boardsize)==newPosition){flag2=false;}              //Laver en ikke-negativ modulo, som Mat.floorMod ville gøre.
+                if(((i%boardsize+boardsize)%boardsize)==newPosition){flag2=false;}              //Laver en ikke-negativ modulo, som Math.floorMod ville gøre.
         }
             while(flag){
                 count2++;
-                Log.d("Spiller","1count2:"+count2);
+              //  Log.d("Spiller","1count2:"+count2); //Til debugging
                 j--;
                 Log.d("Spiller","j:"+j+" Newposition= "+newPosition);
                 if(((j%boardsize+boardsize)%boardsize)==newPosition){flag=false;}                       //Vi går begge veje rundt om spillebrættet for at finde ud af hvilken vej der er kortest
