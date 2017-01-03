@@ -49,18 +49,10 @@
             <ImageButton
                 android:layout_width="180dip"
                 android:layout_height="90dip"
-                android:src="@drawable/square"
+                android:src="@drawable/bookstore"
                 android:id="@+id/felt3"
                 android:onClick="true"
                 android:layout_gravity="right|bottom" />
-
-            <ImageButton
-                android:layout_width="180dip"
-                android:layout_height="90dip"
-                android:src="@drawable/square"
-                android:id="@+id/felt2"
-                android:onClick="true"
-                android:layout_gravity="right|center_vertical" />
 
             <ImageButton
                 android:layout_width="180dip"
@@ -89,7 +81,7 @@
             <ImageButton
                 android:layout_width="180dip"
                 android:layout_height="90dip"
-                android:src="@drawable/square"
+                android:src="@drawable/clothingstore"
                 android:id="@+id/felt7"
                 android:layout_gravity="left|top"
                 android:onClick="true" />
@@ -97,10 +89,18 @@
             <ImageButton
                 android:layout_width="180dip"
                 android:layout_height="90dip"
-                android:src="@drawable/square"
+                android:src="@drawable/homework"
                 android:id="@+id/felt1"
                 android:onClick="true"
                 android:layout_gravity="right|top" />
+
+            <ImageButton
+                android:layout_width="180dip"
+                android:layout_height="90dip"
+                android:src="@drawable/workshop"
+                android:id="@+id/felt2"
+                android:onClick="true"
+                android:layout_gravity="right|center_vertical" />
 
 
         </FrameLayout>
