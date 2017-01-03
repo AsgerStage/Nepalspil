@@ -38,10 +38,95 @@ public class Spiller {
         Log.d("Spiller","Spiller oprettet med balance");
     }
 
-    public void move(int position){
-        this.position=position;
-        Log.d("Spiller","Spiller position ændret");
+    public void move(int newPosition) { //Metode til at rykke spilleren og trække den korrekte mængde tid fra spilleren.
+        //Løsningen virker lidt bøvlet, men da Javas modulo (%) kan blive negativ gav det nogle problemer.
+        //Math.floorMod metoden kunne være benyttet, men det ville samtidigt gøre at applikationen kun vil virke til android API 24 og frem.
+        int count1 = 0;
+        int count2 = 0;
+        int j=this.position;
+        int i=this.position;
+
+        boolean flag=true;
+        boolean flag2=true;
+        if(this.position>newPosition){
+            while(flag2){                   //Flags som denne bliver brugt da både while og for loops checkede i eller j's værdi på forkerte tidspunkter og skabte uendelige løkker.
+                count1++;
+                Log.d("Spiller","1count1:"+count1); //Til debugging
+                i++;
+                Log.d("Spiller","i:"+i+" Newposition= "+newPosition);
+                if(((i%8+8)%8)==newPosition){flag2=false;}              //Laver en ikke-negativ modulo, som Mat.floorMod ville gøre.
+        }
+            while(flag){
+                count2++;
+                Log.d("Spiller","1count2:"+count2);
+                j--;
+                Log.d("Spiller","j:"+j+" Newposition= "+newPosition);
+                if(((j%8+8)%8)==newPosition){flag=false;}                       //Vi går begge veje rundt om spillebrættet for at finde ud af hvilken vej der er kortest
+          }
+        }
+        else if (this.position<newPosition){
+
+            while(flag2){
+                count1++;
+                Log.d("Spiller","2count1:"+count1);
+                i++;
+                Log.d("Spiller","i:"+i+" Newposition= "+newPosition);
+                if(((i%8+8)%8)==newPosition){flag2=false;}
+            }
+            while(flag){
+                count2++;
+                Log.d("Spiller","2count2:"+count2);
+                j--;
+                Log.d("Spiller","j:"+j+" Newposition= "+newPosition);
+                if(((j%8+8)%8)==newPosition){flag=false;}
+            }
+
+
+            }
+        else if(this.position==newPosition){
+            Log.d("Spiller","Spiller trykker på felt han/hun allerede står på");
+        }
+
+
+        if(count2>count1){
+            this.tid=this.tid-count1;
+            Log.d("Spiller","Spiller rykket fra "+this.position+" til "+newPosition+" og mistet tid: "+count1+" og har nu "+this.tid+" tid");
+            this.position=newPosition;
+        }
+        else if (count1>=count2){
+            this.tid=this.tid-count2;
+            Log.d("Spiller","Spiller rykket fra "+this.position+" til "+newPosition+" og mistet tid: "+count2+" og har nu "+this.tid+" tid");
+            this.position=newPosition;
+            //Den korteste vej trækkes fra spillerens tid
+        }
+
+
+
+
+
     }
+
+/*
+        if (newPosition > this.position)  { //Ryk fra en lavere position til en højere, men max 4 højere
+           if(this.position+4>newPosition)
+               this.position%8
+
+            this.setTid(tid - (newPosition - this.position));
+            this.position = newPosition;
+            Log.d("Spiller", "Spiller rykket til ny position på felt nr: " + this.position + ", tid tilbage er nu:" + this.tid);
+        } else if (newPosition < this.position && ((this.position - 4) >= newPosition)) { //Ryk fra en Højere position til en lavere, men max 4 lavere
+            this.setTid(tid - (this.position - newPosition));
+            this.position = newPosition;
+            Log.d("Spiller", "Spiller rykket til ny position på felt nr: " + this.position + ", tid tilbage er nu:" + this.tid);
+        }
+        //else if (newPosition)
+
+        else {
+            this.position = newPosition;
+            Log.d("Spiller", "Spiller position ændret til " + this.position + " tid tilbage:" + this.tid);
+        }
+
+    }*/
 
     public String getNavn() {
         return navn;
