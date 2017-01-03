@@ -15,6 +15,7 @@ public class Spiller {
     private int klassetrin;
     private boolean sex;
     private int tid;
+    private int runde;
 
     public Spiller(String navn) {
         this.navn = navn;
@@ -23,10 +24,12 @@ public class Spiller {
         this.tid=16;
         this.viden=0;
         this.klassetrin=1;
+        this.runde=1;
+
         Log.d("Spiller","Spiller oprettet");
     }
 
-    public Spiller(String navn,int penge, int tid, int viden, int hp,int klassetrin, boolean sex) {
+    public Spiller(String navn,int penge, int tid, int viden, int hp,int klassetrin, boolean sex, int runde) {
         position = 0;			//starter på felt 1
         this.navn = navn;
         this.penge = penge;
@@ -35,10 +38,11 @@ public class Spiller {
         this.viden= viden;
         this.klassetrin= klassetrin;
         this.sex = sex;
+        this.runde=runde;
         Log.d("Spiller","Spiller oprettet med balance");
     }
 
-    public void move(int newPosition) { //Metode til at rykke spilleren og trække den korrekte mængde tid fra spilleren.
+    public boolean move(int newPosition) { //Metode til at rykke spilleren og trække den korrekte mængde tid fra spilleren.
         //Løsningen virker lidt bøvlet, men da Javas modulo (%) kan blive negativ gav det nogle problemer.
         //Math.floorMod metoden kunne være benyttet, men det ville samtidigt gøre at applikationen kun vil virke til android API 24 og frem.
         int boardsize=8;//Kan ændres hvis spillepladen skulle udvides
@@ -80,8 +84,20 @@ public class Spiller {
 
 
 
+return checkTur();
+
+    }
+
+    public boolean checkTur(){
+        if(this.tid<=0){
+            this.runde++;
+            this.tid=16;
+            this.position=0;
+            return true;
 
 
+        }
+        return false;
     }
 
 /*

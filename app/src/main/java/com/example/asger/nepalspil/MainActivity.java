@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 Toast.makeText(MainActivity.this,"Du har valgt Asha!", Toast.LENGTH_SHORT).show();
-               spiller = new Spiller("Asha", 10, 16, 0, 100,1,false);
+               spiller = new Spiller("Asha", 10, 16, 0, 100,1,false,1);
                 Intent intent = new Intent(MainActivity.this, spillePlade.class);
                 startActivity(intent);
 
@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Toast.makeText(MainActivity.this,"Du har valgt Kaka!", Toast.LENGTH_SHORT).show();
-               spiller = new Spiller("Kaka", 10, 16, 0,100,1,true);
+               spiller = new Spiller("Kaka", 10, 16, 0,100,1,true,1);
 
                 Intent intent = new Intent(MainActivity.this, spillePlade.class);
                 startActivity(intent);
