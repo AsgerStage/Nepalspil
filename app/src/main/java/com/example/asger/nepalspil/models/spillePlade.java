@@ -36,17 +36,12 @@ public class SpillePlade extends AppCompatActivity {
        infobox = (TextView) findViewById(R.id.infobox);
        //infobox.setText("Navn: "+spiller.getNavn()+"\n Mad: "+spiller.getHp()+"\n Penge: "+spiller.getPenge()+"\n Viden: "+spiller.getViden()+"\n Klassetrin: "+spiller.getKlassetrin()+"\n Tid: "+spiller.getTid());
         updateInfobox();
+
         felt0.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                if(spiller.move(0)){
-                    Toast.makeText(SpillePlade.this,"Dagen er gået", Toast.LENGTH_SHORT).show();
-
-                };
-                updateInfobox();
-                Intent intent = new Intent(SpillePlade.this, Farm.class);
-                startActivity(intent);
+                moveTo(0,Farm.class);
             }
         });
 
@@ -56,13 +51,7 @@ public class SpillePlade extends AppCompatActivity {
 
            @Override
            public void onClick(View v) {
-               if(spiller.move(1)){
-                   Toast.makeText(SpillePlade.this,"Dagen er gået", Toast.LENGTH_SHORT).show();
-
-               };
-               updateInfobox();
-               Intent intent = new Intent(SpillePlade.this, Farm.class);
-               startActivity(intent);
+               moveTo(1,Farm.class);
            }
        });
 
@@ -70,13 +59,7 @@ public class SpillePlade extends AppCompatActivity {
 
            @Override
            public void onClick(View v) {
-               if(spiller.move(2)){
-                   Toast.makeText(SpillePlade.this,"Dagen er gået", Toast.LENGTH_SHORT).show();
-
-               };
-               updateInfobox();
-               Intent intent = new Intent(SpillePlade.this, Farm.class);
-               startActivity(intent);
+               moveTo(2,Farm.class);
            }
        });
 
@@ -84,13 +67,7 @@ public class SpillePlade extends AppCompatActivity {
 
            @Override
            public void onClick(View v) {
-               if(spiller.move(3)){
-                   Toast.makeText(SpillePlade.this,"Dagen er gået", Toast.LENGTH_SHORT).show();
-
-               };
-               updateInfobox();
-               Intent intent = new Intent(SpillePlade.this, Farm.class);
-               startActivity(intent);
+               moveTo(3,Farm.class);
            }
        });
 
@@ -98,13 +75,7 @@ public class SpillePlade extends AppCompatActivity {
 
            @Override
            public void onClick(View v) {
-               if(spiller.move(4)){
-                   Toast.makeText(SpillePlade.this,"Dagen er gået", Toast.LENGTH_SHORT).show();
-
-               };
-               updateInfobox();
-               Intent intent = new Intent(SpillePlade.this, Farm.class);
-               startActivity(intent);
+               moveTo(4,Farm.class);
            }
        });
 
@@ -112,13 +83,7 @@ public class SpillePlade extends AppCompatActivity {
 
            @Override
            public void onClick(View v) {
-               if(spiller.move(5)){
-                   Toast.makeText(SpillePlade.this,"Dagen er gået", Toast.LENGTH_SHORT).show();
-
-               };
-               updateInfobox();
-               Intent intent = new Intent(SpillePlade.this, Farm.class);
-               startActivity(intent);
+               moveTo(5,Farm.class);
            }
        });
 
@@ -126,13 +91,7 @@ public class SpillePlade extends AppCompatActivity {
 
            @Override
            public void onClick(View v) {
-               if(spiller.move(6)){
-                   Toast.makeText(SpillePlade.this,"Dagen er gået", Toast.LENGTH_SHORT).show();
-
-               };
-               updateInfobox();
-               Intent intent = new Intent(SpillePlade.this, Farm.class);
-               startActivity(intent);
+               moveTo(6,Farm.class);
            }
        });
 
@@ -140,13 +99,9 @@ public class SpillePlade extends AppCompatActivity {
 
            @Override
            public void onClick(View v) {
-               if(spiller.move(7)){
-                   Toast.makeText(SpillePlade.this,"Dagen er gået", Toast.LENGTH_SHORT).show();
+              moveTo(7,Farm.class);
 
-               };
-               updateInfobox();
-               Intent intent = new Intent(SpillePlade.this, Farm.class);
-               startActivity(intent);
+
            }
        });
 
@@ -169,5 +124,18 @@ public class SpillePlade extends AppCompatActivity {
         infobox.setText("Navn: "+spiller.getNavn()+"\n Mad: "+spiller.getHp()+"\n Penge: "+spiller.getPenge()+"\n Viden: "+spiller.getViden()+"\n Klassetrin: "+spiller.getKlassetrin()+"\n Tid: "+spiller.getTid());
 
     }
+
+    public void moveTo(int pos,java.lang.Class<?> cls) {
+        if (spiller.move(pos)) {
+            Toast.makeText(SpillePlade.this, "Dagen er gået", Toast.LENGTH_SHORT).show();
+            updateInfobox();
+        }
+        else {
+            Intent intent = new Intent(SpillePlade.this, cls);
+            updateInfobox();
+            startActivity(intent);
+        }
+    }
+
 }
 
