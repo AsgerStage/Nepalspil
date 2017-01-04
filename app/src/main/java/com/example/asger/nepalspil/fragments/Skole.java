@@ -76,6 +76,7 @@ public class Skole extends AppCompatActivity {
     public void spis(Spiller s){
         s.setTid(s.getTid()-1);
         s.setHp(s.getHp()+1);
+
     }
 
     public void startEksamen(Spiller s){

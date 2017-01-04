@@ -25,7 +25,7 @@ import static com.example.asger.nepalspil.activities.MainActivity.spiller;
  */
 
 public class SpillePlade extends AppCompatActivity {
-    TextView infobox;
+    static TextView infobox;
     ImageView star;
 
 
@@ -129,7 +129,7 @@ star.setLayoutParams(felt0.getLayoutParams());
         v.setColorFilter(android.R.color.holo_green_dark);
     }*/
 
-    public void updateInfobox()
+    public static void updateInfobox()
     {
         infobox.setText("Navn: "+spiller.getNavn()+"\n Mad: "+spiller.getHp()+"\n Penge: "+spiller.getPenge()+"\n Viden: "+spiller.getViden()+"\n Klassetrin: "+spiller.getKlassetrin()+"\n Tid: "+spiller.getTid());
     }

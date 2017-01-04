@@ -9,6 +9,7 @@ import android.widget.TextView;
 import static com.example.asger.nepalspil.activities.MainActivity.spiller;
 
 import com.example.asger.nepalspil.R;
+import com.example.asger.nepalspil.models.SpillePlade;
 
 
 /**
@@ -49,6 +50,7 @@ public class Marked extends AppCompatActivity {
                 if(spiller.getPenge()>=5){
                     eat();
                     playerinfo.setText(updateInfo());
+
                 }
                 else{
 
@@ -60,6 +62,7 @@ public class Marked extends AppCompatActivity {
 
             public void onClick(View v){
                 finish();
+
             }
         });
     }
@@ -75,7 +78,9 @@ public class Marked extends AppCompatActivity {
     }
 
     public String updateInfo(){
+        SpillePlade.updateInfobox();
         return "Navn: "+spiller.getNavn()+"\n Mad: "+spiller.getHp()+"\n Penge: "+spiller.getPenge()+"\n Viden: "+spiller.getViden()+"\n Klassetrin: "+spiller.getKlassetrin()+"\n Tid: "+spiller.getTid();
+
     }
 
 }
