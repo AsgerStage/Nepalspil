@@ -19,13 +19,14 @@ public class Marked extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.marked);
 
-        TextView fieldinfo = (TextView) findViewById(R.id.fieldinfo);
+        final TextView fieldinfo = (TextView) findViewById(R.id.fieldinfo);
         final TextView playerinfo = (TextView) findViewById(R.id.playerinfo);
 
         Button work = (Button) findViewById(R.id.workButton);
         Button eat = (Button) findViewById(R.id.eatButton);
         Button back = (Button) findViewById(R.id.backButton);
 
+        fieldinfo.setText("Dette er market. Her kan man arbejde og og tjene penge, eller man kan købe mad.");
         playerinfo.setText("Navn: "+spiller.getNavn()+"\n Mad: "+spiller.getHp()+"\n Penge: "+spiller.getPenge()+"\n Viden: "+spiller.getViden()+"\n Klassetrin: "+spiller.getKlassetrin()+"\n Tid: "+spiller.getTid());
 
         work.setOnClickListener(new View.OnClickListener() {
