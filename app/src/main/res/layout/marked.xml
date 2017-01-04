@@ -18,10 +18,17 @@
         android:layout_height="79dp">
 
         <Button
-            android:text="Work/Eat"
+            android:text="Work"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/workButton"
+            android:layout_weight="1" />
+
+        <Button
+            android:text="Eat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/eatButton"
             android:layout_weight="1" />
 
         <Button
@@ -30,11 +37,6 @@
             android:id="@+id/backButton"
             android:layout_weight="1"
             android:layout_width="wrap_content" />
-
-        <Space
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_width="200dp" />
 
     </LinearLayout>
 

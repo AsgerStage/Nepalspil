@@ -18,6 +18,8 @@ public class Marked extends AppCompatActivity {
         setContentView(R.layout.marked);
 
         Button work = (Button) findViewById(R.id.workButton);
+        Button eat = (Button) findViewById(R.id.eatButton);
+        Button back = (Button) findViewById(R.id.backButton);
         work.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
@@ -29,12 +31,35 @@ public class Marked extends AppCompatActivity {
                 }
             }
         });
+
+        eat.setOnClickListener(new View.OnClickListener(){
+
+            public void onClick(View v){
+                if(spiller.getPenge()>=5){
+                    eat();
+                }
+                else{
+
+                }
+            }
+        });
+
+        back.setOnClickListener(new View.OnClickListener(){
+
+            public void onClick(View v){
+                finish();
+            }
+        });
     }
 
-
-        public void work(){
+    public void work(){
         spiller.setTid(spiller.getTid()-2);
         spiller.setPenge(spiller.getPenge()+10);
+    }
+
+    public void eat(){
+        spiller.setPenge(spiller.getPenge()-5);
+        spiller.setHp(spiller.getHp()+10);
     }
 
 }
