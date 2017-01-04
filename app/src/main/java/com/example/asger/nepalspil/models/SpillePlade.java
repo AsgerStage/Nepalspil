@@ -3,10 +3,12 @@ package com.example.asger.nepalspil.models;
 import android.content.Intent;
 import android.media.Image;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.TranslateAnimation;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -18,6 +20,8 @@ import com.example.asger.nepalspil.fragments.Farm;
 import com.example.asger.nepalspil.fragments.Marked;
 import com.example.asger.nepalspil.fragments.Skole;
 
+//import static com.example.asger.nepalspil.R.id.player;
+import static com.example.asger.nepalspil.R.id.start;
 import static com.example.asger.nepalspil.activities.MainActivity.spiller;
 
 /**
@@ -62,6 +66,15 @@ star.setLayoutParams(felt0.getLayoutParams());
            @Override
            public void onClick(View v) {
                moveTo(1,Farm.class,felt1.getLayoutParams(),felt0.getLayoutParams());
+
+
+/*
+               TranslateAnimation animation = new TranslateAnimation(0.0f, 400.0f,
+                       0.0f, 0.0f);          //  new TranslateAnimation(xFrom,xTo, yFrom,yTo)
+               animation.setDuration(2000);  // animation duration
+               animation.setFillAfter(true);
+
+               star.startAnimation(animation);  // start animation*/
            }
        });
 
@@ -141,11 +154,20 @@ star.setLayoutParams(felt0.getLayoutParams());
             star.setLayoutParams(param0);
         }
         else {
-            Intent intent = new Intent(SpillePlade.this, cls);
+            final Intent intent = new Intent(SpillePlade.this, cls);
             updateInfobox();
             Log.d("Spilleplade","Height:"+params.height+" Width: "+params.width);
             star.setLayoutParams(params);
-            startActivity(intent);
+
+            final Handler handler = new Handler();
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    startActivity(intent);
+                    //Do something after 100ms
+                }
+            }, 1500);
+            //
         }
     }
 
