@@ -1,6 +1,7 @@
 package com.example.asger.nepalspil.fragments;
 
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import com.example.asger.nepalspil.models.Spiller;
 import com.example.asger.nepalspil.R;
@@ -15,9 +16,13 @@ import android.widget.TextView;
  */
 
 public class Skole extends AppCompatActivity {
+
+    AlertDialog.Builder dialog = new AlertDialog.Builder(this);
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.skole);
+        setText("Velkommen til Skolen, her kan du spise, studere og tage din eksamen når tiden er.");
 
         Button bSpis = (Button) findViewById(R.id.spis);
         Button bStuder = (Button) findViewById(R.id.Studer);
@@ -73,10 +78,13 @@ public class Skole extends AppCompatActivity {
     }
 
     public void startEksamen(Spiller s){
-        if ((s.getViden() !=  vidensKrav ) || (s.getViden() > vidensKrav))
-            setText("Du har desværre ikke nok viden til at kunne gå til eksamen. Få viden af at gå i skole, og tag eksamen næste år!");
-        else
-            setText("");
+        if ((s.getViden() !=  vidensKrav ) || (s.getViden() > vidensKrav)) {
+            dialog.setTitle("Desværre");
+            dialog.setMessage("Du har desværre ikke nok viden til at kunne gå til eksamen.\n Få viden af at gå i skole, og tag eksamen næste år!");
+            dialog.show();
+        } else
+            setText("Held og lykke!");
+            setContentView(R.layout.eksamen);
     }
 
     public void setText(String yourText){
