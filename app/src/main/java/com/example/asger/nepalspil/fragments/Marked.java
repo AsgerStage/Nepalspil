@@ -12,7 +12,7 @@ import com.example.asger.nepalspil.R;
 public class Marked extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.lektiehjaelp);  //Har ikke lavet Marked layout endnu
+        setContentView(R.layout.text1);  //Har ikke lavet Marked layout endnu
 
 
     }

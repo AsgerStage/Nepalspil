@@ -73,14 +73,6 @@
             <ImageButton
                 android:layout_width="180dip"
                 android:layout_height="90dip"
-                android:src="@drawable/marketplace"
-                android:id="@+id/felt6"
-                android:layout_gravity="left|center_vertical"
-                android:onClick="true" />
-
-            <ImageButton
-                android:layout_width="180dip"
-                android:layout_height="90dip"
                 android:src="@drawable/clothingstore"
                 android:id="@+id/felt7"
                 android:layout_gravity="left|top"
@@ -101,6 +93,14 @@
                 android:id="@+id/felt2"
                 android:onClick="true"
                 android:layout_gravity="right|center_vertical" />
+
+            <ImageButton
+                android:layout_width="180dip"
+                android:layout_height="90dip"
+                android:src="@drawable/marketplace"
+                android:id="@+id/felt6"
+                android:layout_gravity="left|center_vertical"
+                android:onClick="true" />
 
 
         </FrameLayout>

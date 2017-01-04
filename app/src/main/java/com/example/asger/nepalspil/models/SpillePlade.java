@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import com.example.asger.nepalspil.R;
 import com.example.asger.nepalspil.fragments.Farm;
+import com.example.asger.nepalspil.fragments.Marked;
 
 import static com.example.asger.nepalspil.activities.MainActivity.spiller;
 
@@ -91,7 +92,7 @@ public class SpillePlade extends AppCompatActivity {
 
            @Override
            public void onClick(View v) {
-               moveTo(6,Farm.class);
+               moveTo(6,Marked.class);
            }
        });
 
