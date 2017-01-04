@@ -26,14 +26,22 @@ public class Skole extends AppCompatActivity {
         bSpis.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                spis();
+                if(spiller.getTid()>0) {
+                    spis();
+                }else{
+
+                }
             }
         });
 
         bStuder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                studer();
+                if(spiller.getTid()>0){
+                    studer();
+                }else{
+
+                }
             }
         });
 
@@ -48,24 +56,19 @@ public class Skole extends AppCompatActivity {
     }
 
 
-    private int vidensKrav = 10*spiller.getKlassetrin();
+    //private int vidensKrav = 10*spiller.getKlassetrin();
 
     public void studer(){
-        if (this.harlaert()) {
-            spiller.setViden(spiller.getViden() + 1);
-            spiller.setTid(spiller.getTid() - 1);
-        }
-        else
-
-            textView.setText("Du kunne ikke forstå undervisningen, så din viden kan opnås hos lektiehjælpen.");
-
+        spiller.setViden(spiller.getViden()+1);
+        spiller.setTid(spiller.getTid()-1);
+        //textView.setText("Du kunne ikke forstå undervisningen, så din viden kan opnås hos lektiehjælpen.");
     }
 
-    public boolean harlaert(){
+    /*public boolean harlaert(){
         if (Math.random()>0.1)
             return true;
         else return false;
-    }
+    }*/
 
     public void spis(){
         spiller.setTid(spiller.getTid()-1);
