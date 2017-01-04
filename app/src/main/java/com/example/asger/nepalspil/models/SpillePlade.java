@@ -46,7 +46,7 @@ public class SpillePlade extends AppCompatActivity {
        infobox = (TextView) findViewById(R.id.infobox);
        //infobox.setText("Navn: "+spiller.getNavn()+"\n Mad: "+spiller.getHp()+"\n Penge: "+spiller.getPenge()+"\n Viden: "+spiller.getViden()+"\n Klassetrin: "+spiller.getKlassetrin()+"\n Tid: "+spiller.getTid());
         updateInfobox();
-
+star.setLayoutParams(felt0.getLayoutParams());
         felt0.setOnClickListener(new View.OnClickListener() {
 
             @Override
