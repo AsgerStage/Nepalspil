@@ -138,7 +138,7 @@ public class Spiller {
         return viden;
     }
 
-    public void setViden(int penge) {
+    public void setViden(int viden) {
         this.viden = viden;
     }
 
