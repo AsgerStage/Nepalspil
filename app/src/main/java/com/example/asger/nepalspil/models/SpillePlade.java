@@ -4,9 +4,12 @@ import android.content.Intent;
 import android.media.Image;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,31 +26,32 @@ import static com.example.asger.nepalspil.activities.MainActivity.spiller;
 
 public class SpillePlade extends AppCompatActivity {
     TextView infobox;
-    ImageView imgUr;
+    ImageView star;
+
 
    protected void onCreate(Bundle savedInstanceState) {
 
-       super.onCreate(savedInstanceState);
-       setContentView(R.layout.spilplade);
 
-       //ImageView imgUr = (ImageView) findViewById(R.id.imgUr);
-       ImageButton felt0 = (ImageButton) findViewById(R.id.felt0);
-       ImageButton felt1 = (ImageButton) findViewById(R.id.felt1);
-       ImageButton felt2 = (ImageButton) findViewById(R.id.felt2);
-       ImageButton felt3 = (ImageButton) findViewById(R.id.felt3);
-       ImageButton felt4 = (ImageButton) findViewById(R.id.felt4);
-       ImageButton felt5 = (ImageButton) findViewById(R.id.felt5);
-       ImageButton felt6 = (ImageButton) findViewById(R.id.felt6);
-       ImageButton felt7 = (ImageButton) findViewById(R.id.felt7);
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.spilplade);
+       final ImageButton felt0 = (ImageButton) findViewById(R.id.felt0);
+       final ImageButton felt1 = (ImageButton) findViewById(R.id.felt1);
+       final ImageButton felt2 = (ImageButton) findViewById(R.id.felt2);
+       final ImageButton felt3 = (ImageButton) findViewById(R.id.felt3);
+       final ImageButton felt4 = (ImageButton) findViewById(R.id.felt4);
+       final ImageButton felt5 = (ImageButton) findViewById(R.id.felt5);
+       final ImageButton felt6 = (ImageButton) findViewById(R.id.felt6);
+       final ImageButton felt7 = (ImageButton) findViewById(R.id.felt7);
+       star= (ImageView) findViewById(R.id.imageView);
        infobox = (TextView) findViewById(R.id.infobox);
        //infobox.setText("Navn: "+spiller.getNavn()+"\n Mad: "+spiller.getHp()+"\n Penge: "+spiller.getPenge()+"\n Viden: "+spiller.getViden()+"\n Klassetrin: "+spiller.getKlassetrin()+"\n Tid: "+spiller.getTid());
-       updateInfobox();
-
-       felt0.setOnClickListener(new View.OnClickListener() {
+        updateInfobox();
+star.setLayoutParams(felt0.getLayoutParams());
+        felt0.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                moveTo(0,Farm.class);
+                moveTo(0,Farm.class,felt0.getLayoutParams(),felt0.getLayoutParams());
             }
         });
 
@@ -57,7 +61,7 @@ public class SpillePlade extends AppCompatActivity {
 
            @Override
            public void onClick(View v) {
-               moveTo(1,Farm.class);
+               moveTo(1,Farm.class,felt1.getLayoutParams(),felt0.getLayoutParams());
            }
        });
 
@@ -65,7 +69,7 @@ public class SpillePlade extends AppCompatActivity {
 
            @Override
            public void onClick(View v) {
-               moveTo(2,Farm.class);
+               moveTo(2,Farm.class, felt2.getLayoutParams(),felt0.getLayoutParams());
            }
        });
 
@@ -73,7 +77,7 @@ public class SpillePlade extends AppCompatActivity {
 
            @Override
            public void onClick(View v) {
-               moveTo(3,Farm.class);
+               moveTo(3,Farm.class, felt3.getLayoutParams(),felt0.getLayoutParams());
            }
        });
 
@@ -81,7 +85,7 @@ public class SpillePlade extends AppCompatActivity {
 
            @Override
            public void onClick(View v) {
-               moveTo(4,Skole.class);
+               moveTo(4,Farm.class, felt4.getLayoutParams(),felt0.getLayoutParams());
            }
        });
 
@@ -89,7 +93,7 @@ public class SpillePlade extends AppCompatActivity {
 
            @Override
            public void onClick(View v) {
-               moveTo(5,Farm.class);
+               moveTo(5,Farm.class,felt5.getLayoutParams(),felt0.getLayoutParams());
            }
        });
 
@@ -97,7 +101,7 @@ public class SpillePlade extends AppCompatActivity {
 
            @Override
            public void onClick(View v) {
-               moveTo(6,Marked.class);
+               moveTo(6,Marked.class,felt6.getLayoutParams(),felt0.getLayoutParams());
            }
        });
 
@@ -105,7 +109,7 @@ public class SpillePlade extends AppCompatActivity {
 
            @Override
            public void onClick(View v) {
-              moveTo(7,Farm.class);
+              moveTo(7,Farm.class,felt7.getLayoutParams(),felt0.getLayoutParams());
 
 
            }
@@ -130,19 +134,22 @@ public class SpillePlade extends AppCompatActivity {
         infobox.setText("Navn: "+spiller.getNavn()+"\n Mad: "+spiller.getHp()+"\n Penge: "+spiller.getPenge()+"\n Viden: "+spiller.getViden()+"\n Klassetrin: "+spiller.getKlassetrin()+"\n Tid: "+spiller.getTid());
     }
 
-    public void moveTo(int pos,java.lang.Class<?> cls) {
+    public void moveTo(int pos,java.lang.Class<?> cls, ViewGroup.LayoutParams params,ViewGroup.LayoutParams param0) {
         if (spiller.move(pos)) {
             Toast.makeText(SpillePlade.this, "Dagen er gået", Toast.LENGTH_SHORT).show();
             updateInfobox();
+            star.setLayoutParams(param0);
         }
         else {
             Intent intent = new Intent(SpillePlade.this, cls);
             updateInfobox();
+            Log.d("Spilleplade","Height:"+params.height+" Width: "+params.width);
+            star.setLayoutParams(params);
             startActivity(intent);
         }
     }
 
-    public void updateTimer()
+    /*public void updateTimer()
     {
         if(spiller.getTid()>12) {//tid mellem 16 og 13
             imgUr.setImageResource(R.drawable.ur1);
@@ -159,7 +166,7 @@ public class SpillePlade extends AppCompatActivity {
         else
             imgUr.setImageResource(R.drawable.ur1);
 
-    }
+    }*/
 
 }
 

@@ -1,5 +1,7 @@
 package com.example.asger.nepalspil.activities;
 
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -23,6 +25,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Fabric.with(this, new Crashlytics());
+
+
         setContentView(R.layout.splash);
 
         ImageButton asha = (ImageButton) findViewById(R.id.imageButton4);
