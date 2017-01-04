@@ -85,7 +85,7 @@ star.setLayoutParams(felt0.getLayoutParams());
 
            @Override
            public void onClick(View v) {
-               moveTo(4,Farm.class, felt4.getLayoutParams(),felt0.getLayoutParams());
+               moveTo(4,Skole.class, felt4.getLayoutParams(),felt0.getLayoutParams());
            }
        });
 
