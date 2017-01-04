@@ -8,7 +8,9 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+
         >
+
 
         <ImageButton
             android:layout_width="wrap_content"
@@ -18,13 +20,8 @@
             android:layout_centerHorizontal="true"
             android:id="@+id/felt4" />
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:srcCompat="@android:drawable/btn_star_big_on"
-            android:layout_above="@+id/felt2"
-            android:layout_centerHorizontal="true"
-            android:id="@+id/imageView" />
+
+
 
         <ImageButton
             android:layout_width="wrap_content"
@@ -39,8 +36,11 @@
             android:layout_height="wrap_content"
             app:srcCompat="@drawable/homework"
             android:id="@+id/felt1"
+            android:layout_alignStart="@+id/felt2"
+            android:layout_above="@+id/infobox"
             android:layout_alignParentTop="true"
-            android:layout_alignStart="@+id/felt2" />
+            android:layout_alignParentEnd="true"
+            android:layout_alignRight="@id/felt2"/>
 
         <ImageButton
             android:layout_width="wrap_content"
@@ -56,7 +56,7 @@
             app:srcCompat="@drawable/barn"
             android:id="@+id/felt5"
             android:layout_alignParentBottom="true"
-            android:layout_alignEnd="@+id/felt6" />
+             />
 
         <ImageButton
             android:layout_width="wrap_content"
@@ -73,9 +73,9 @@
             android:layout_height="116dp"
             android:gravity="center"
             android:id="@+id/infobox"
-            android:layout_below="@+id/imageView"
             android:layout_centerHorizontal="true"
-            android:layout_alignBottom="@+id/felt6" />
+            android:layout_alignBottom="@+id/felt6"
+            android:layout_below="@+id/felt0" />
 
         <ImageButton
             android:layout_width="wrap_content"
@@ -93,5 +93,12 @@
             android:layout_alignTop="@+id/felt6"
             android:layout_alignParentEnd="true"
             android:layout_alignBottom="@+id/felt6" />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@android:drawable/btn_star_big_on"
+
+
+            android:id="@+id/imageView" />
     </RelativeLayout>
 </LinearLayout>

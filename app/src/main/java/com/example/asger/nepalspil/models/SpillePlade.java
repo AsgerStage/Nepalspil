@@ -3,10 +3,15 @@ package com.example.asger.nepalspil.models;
 import android.content.Intent;
 import android.media.Image;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.animation.TranslateAnimation;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -15,6 +20,11 @@ import com.example.asger.nepalspil.fragments.Farm;
 import com.example.asger.nepalspil.fragments.Marked;
 import com.example.asger.nepalspil.fragments.Skole;
 
+//import static com.example.asger.nepalspil.R.id.player;
+import java.util.HashMap;
+
+import static com.example.asger.nepalspil.R.id.felt1;
+import static com.example.asger.nepalspil.R.id.start;
 import static com.example.asger.nepalspil.activities.MainActivity.spiller;
 
 /**
@@ -23,41 +33,56 @@ import static com.example.asger.nepalspil.activities.MainActivity.spiller;
 
 public class SpillePlade extends AppCompatActivity {
     TextView infobox;
-    ImageView imgUr;
+    ImageView star;
 
-   protected void onCreate(Bundle savedInstanceState) {
+    ImageButton felt0;
 
-       super.onCreate(savedInstanceState);
-       setContentView(R.layout.spilplade);
+    protected void onCreate(Bundle savedInstanceState) {
 
-       ImageView imgUr = (ImageView) findViewById(R.id.imgUr);
-       ImageButton felt0 = (ImageButton) findViewById(R.id.felt0);
-       ImageButton felt1 = (ImageButton) findViewById(R.id.felt1);
-       ImageButton felt2 = (ImageButton) findViewById(R.id.felt2);
-       ImageButton felt3 = (ImageButton) findViewById(R.id.felt3);
-       ImageButton felt4 = (ImageButton) findViewById(R.id.felt4);
-       ImageButton felt5 = (ImageButton) findViewById(R.id.felt5);
-       ImageButton felt6 = (ImageButton) findViewById(R.id.felt6);
-       ImageButton felt7 = (ImageButton) findViewById(R.id.felt7);
+
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.spilplade);
+       star= (ImageView) findViewById(R.id.imageView);
        infobox = (TextView) findViewById(R.id.infobox);
        //infobox.setText("Navn: "+spiller.getNavn()+"\n Mad: "+spiller.getHp()+"\n Penge: "+spiller.getPenge()+"\n Viden: "+spiller.getViden()+"\n Klassetrin: "+spiller.getKlassetrin()+"\n Tid: "+spiller.getTid());
-       updateInfobox();
+        updateInfobox();
+       felt0 = (ImageButton) findViewById(R.id.felt0);
+       final ImageButton felt1 = (ImageButton) findViewById(R.id.felt1);
+       final ImageButton felt2 = (ImageButton) findViewById(R.id.felt2);
+       final ImageButton felt3 = (ImageButton) findViewById(R.id.felt3);
+       final ImageButton felt4 = (ImageButton) findViewById(R.id.felt4);
+       final ImageButton felt5 = (ImageButton) findViewById(R.id.felt5);
+       final ImageButton felt6 = (ImageButton) findViewById(R.id.felt6);
+       final ImageButton felt7 = (ImageButton) findViewById(R.id.felt7);
+       star.setLayoutParams(felt0.getLayoutParams());
+
+
+
 
        felt0.setOnClickListener(new View.OnClickListener() {
 
-            @Override
-            public void onClick(View v) {
-                moveTo(0,Farm.class);
-            }
-        });
-
+           @Override
+           public void onClick(View v) {
+               moveTo(0,Farm.class,felt0.getLayoutParams());
+           }
+       });
 
 
        felt1.setOnClickListener(new View.OnClickListener() {
 
            @Override
            public void onClick(View v) {
-               moveTo(1,Farm.class);
+               moveTo(1,Farm.class,felt1.getLayoutParams());
+
+
+
+/*
+               TranslateAnimation animation = new TranslateAnimation(0.0f, 400.0f,
+                       0.0f, 0.0f);          //  new TranslateAnimation(xFrom,xTo, yFrom,yTo)
+               animation.setDuration(2000);  // animation duration
+               animation.setFillAfter(true);
+
+               star.startAnimation(animation);  // start animation*/
            }
        });
 
@@ -65,7 +90,7 @@ public class SpillePlade extends AppCompatActivity {
 
            @Override
            public void onClick(View v) {
-               moveTo(2,Farm.class);
+               moveTo(2,Farm.class, felt2.getLayoutParams());
            }
        });
 
@@ -73,7 +98,7 @@ public class SpillePlade extends AppCompatActivity {
 
            @Override
            public void onClick(View v) {
-               moveTo(3,Farm.class);
+               moveTo(3,Farm.class, felt3.getLayoutParams());
            }
        });
 
@@ -81,7 +106,7 @@ public class SpillePlade extends AppCompatActivity {
 
            @Override
            public void onClick(View v) {
-               moveTo(4,Skole.class);
+               moveTo(4,Skole.class, felt4.getLayoutParams());
            }
        });
 
@@ -89,7 +114,7 @@ public class SpillePlade extends AppCompatActivity {
 
            @Override
            public void onClick(View v) {
-               moveTo(5,Farm.class);
+               moveTo(5,Farm.class,felt5.getLayoutParams());
            }
        });
 
@@ -97,7 +122,7 @@ public class SpillePlade extends AppCompatActivity {
 
            @Override
            public void onClick(View v) {
-               moveTo(6,Marked.class);
+               moveTo(6,Marked.class,felt6.getLayoutParams());
            }
        });
 
@@ -105,7 +130,7 @@ public class SpillePlade extends AppCompatActivity {
 
            @Override
            public void onClick(View v) {
-              moveTo(7,Farm.class);
+              moveTo(7,Farm.class,felt7.getLayoutParams());
 
 
            }
@@ -128,22 +153,35 @@ public class SpillePlade extends AppCompatActivity {
     public void updateInfobox()
     {
         infobox.setText("Navn: "+spiller.getNavn()+"\n Mad: "+spiller.getHp()+"\n Penge: "+spiller.getPenge()+"\n Viden: "+spiller.getViden()+"\n Klassetrin: "+spiller.getKlassetrin()+"\n Tid: "+spiller.getTid());
-
     }
 
-    public void moveTo(int pos,java.lang.Class<?> cls) {
+    public void moveTo(int pos,java.lang.Class<?> cls, ViewGroup.LayoutParams params) {
         if (spiller.move(pos)) {
             Toast.makeText(SpillePlade.this, "Dagen er gået", Toast.LENGTH_SHORT).show();
             updateInfobox();
+            star.setLayoutParams(felt0.getLayoutParams());
         }
         else {
-            Intent intent = new Intent(SpillePlade.this, cls);
+            final Intent intent = new Intent(SpillePlade.this, cls);
             updateInfobox();
+            Log.d("Spilleplade","Height:"+params.height+" Width: "+params.width);
+            star.setLayoutParams(params);
+
+
             startActivity(intent);
+            final Handler handler = new Handler();
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+
+                    //Do something after 1500ms
+                }
+            }, 1500);
+            //
         }
     }
 
-    public void updateTimer()
+    /*public void updateTimer()
     {
         if(spiller.getTid()>12) {//tid mellem 16 og 13
             imgUr.setImageResource(R.drawable.ur1);
@@ -157,8 +195,10 @@ public class SpillePlade extends AppCompatActivity {
         else if(spiller.getTid()>=0 && spiller.getTid()<5) {//tid mellem 4 og 0
             imgUr.setImageResource(R.drawable.ur4);
         }
+        else
+            imgUr.setImageResource(R.drawable.ur1);
 
-    }
+    }*/
 
 }
 

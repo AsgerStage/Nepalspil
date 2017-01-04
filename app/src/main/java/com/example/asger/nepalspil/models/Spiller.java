@@ -88,7 +88,7 @@ public class Spiller {
 
 
 
-return checkTur();
+        return checkTur();
 
     }
 
@@ -138,7 +138,7 @@ return checkTur();
         return viden;
     }
 
-    public void setViden(int penge) {
+    public void setViden(int viden) {
         this.viden = viden;
     }
 
