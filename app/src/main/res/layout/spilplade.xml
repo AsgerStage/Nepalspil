@@ -37,26 +37,10 @@
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:srcCompat="@drawable/bookstore"
-            android:id="@+id/felt3"
-            android:layout_alignParentBottom="true"
-            android:layout_alignStart="@+id/felt2" />
-
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             app:srcCompat="@drawable/homework"
             android:id="@+id/felt1"
             android:layout_alignParentTop="true"
             android:layout_alignStart="@+id/felt2" />
-
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:srcCompat="@drawable/marketplace"
-            android:id="@+id/felt6"
-            android:layout_centerVertical="true"
-            android:layout_alignParentStart="true" />
 
         <ImageButton
             android:layout_width="wrap_content"
@@ -77,10 +61,11 @@
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:srcCompat="@drawable/workshop"
-            android:id="@+id/felt2"
-            android:layout_alignTop="@+id/felt6"
-            android:layout_alignParentEnd="true" />
+            app:srcCompat="@drawable/bookstore"
+            android:id="@+id/felt3"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignTop="@+id/felt4" />
 
         <TextView
             android:text="TextView"
@@ -88,7 +73,25 @@
             android:layout_height="116dp"
             android:gravity="center"
             android:id="@+id/infobox"
-            android:layout_above="@+id/felt4"
-            android:layout_alignEnd="@+id/felt4" />
+            android:layout_below="@+id/imageView"
+            android:layout_centerHorizontal="true"
+            android:layout_alignBottom="@+id/felt6" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/marketplace"
+            android:id="@+id/felt6"
+            android:layout_centerVertical="true"
+            android:layout_alignParentStart="true" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/workshop"
+            android:id="@+id/felt2"
+            android:layout_alignTop="@+id/felt6"
+            android:layout_alignParentEnd="true"
+            android:layout_alignBottom="@+id/felt6" />
     </RelativeLayout>
 </LinearLayout>
