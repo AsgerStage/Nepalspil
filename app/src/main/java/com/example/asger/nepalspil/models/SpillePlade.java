@@ -21,6 +21,9 @@ import com.example.asger.nepalspil.fragments.Marked;
 import com.example.asger.nepalspil.fragments.Skole;
 
 //import static com.example.asger.nepalspil.R.id.player;
+import java.util.HashMap;
+
+import static com.example.asger.nepalspil.R.id.felt1;
 import static com.example.asger.nepalspil.R.id.start;
 import static com.example.asger.nepalspil.activities.MainActivity.spiller;
 
@@ -32,13 +35,18 @@ public class SpillePlade extends AppCompatActivity {
     TextView infobox;
     ImageView star;
 
+    ImageButton felt0;
 
-   protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
 
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.spilplade);
-       final ImageButton felt0 = (ImageButton) findViewById(R.id.felt0);
+       star= (ImageView) findViewById(R.id.imageView);
+       infobox = (TextView) findViewById(R.id.infobox);
+       //infobox.setText("Navn: "+spiller.getNavn()+"\n Mad: "+spiller.getHp()+"\n Penge: "+spiller.getPenge()+"\n Viden: "+spiller.getViden()+"\n Klassetrin: "+spiller.getKlassetrin()+"\n Tid: "+spiller.getTid());
+        updateInfobox();
+       felt0 = (ImageButton) findViewById(R.id.felt0);
        final ImageButton felt1 = (ImageButton) findViewById(R.id.felt1);
        final ImageButton felt2 = (ImageButton) findViewById(R.id.felt2);
        final ImageButton felt3 = (ImageButton) findViewById(R.id.felt3);
@@ -46,26 +54,26 @@ public class SpillePlade extends AppCompatActivity {
        final ImageButton felt5 = (ImageButton) findViewById(R.id.felt5);
        final ImageButton felt6 = (ImageButton) findViewById(R.id.felt6);
        final ImageButton felt7 = (ImageButton) findViewById(R.id.felt7);
-       star= (ImageView) findViewById(R.id.imageView);
-       infobox = (TextView) findViewById(R.id.infobox);
-       //infobox.setText("Navn: "+spiller.getNavn()+"\n Mad: "+spiller.getHp()+"\n Penge: "+spiller.getPenge()+"\n Viden: "+spiller.getViden()+"\n Klassetrin: "+spiller.getKlassetrin()+"\n Tid: "+spiller.getTid());
-        updateInfobox();
-star.setLayoutParams(felt0.getLayoutParams());
-        felt0.setOnClickListener(new View.OnClickListener() {
+       star.setLayoutParams(felt0.getLayoutParams());
 
-            @Override
-            public void onClick(View v) {
-                moveTo(0,Farm.class,felt0.getLayoutParams(),felt0.getLayoutParams());
-            }
-        });
 
+
+
+       felt0.setOnClickListener(new View.OnClickListener() {
+
+           @Override
+           public void onClick(View v) {
+               moveTo(0,Farm.class,felt0.getLayoutParams());
+           }
+       });
 
 
        felt1.setOnClickListener(new View.OnClickListener() {
 
            @Override
            public void onClick(View v) {
-               moveTo(1,Farm.class,felt1.getLayoutParams(),felt0.getLayoutParams());
+               moveTo(1,Farm.class,felt1.getLayoutParams());
+
 
 
 /*
@@ -82,7 +90,7 @@ star.setLayoutParams(felt0.getLayoutParams());
 
            @Override
            public void onClick(View v) {
-               moveTo(2,Farm.class, felt2.getLayoutParams(),felt0.getLayoutParams());
+               moveTo(2,Farm.class, felt2.getLayoutParams());
            }
        });
 
@@ -90,7 +98,7 @@ star.setLayoutParams(felt0.getLayoutParams());
 
            @Override
            public void onClick(View v) {
-               moveTo(3,Farm.class, felt3.getLayoutParams(),felt0.getLayoutParams());
+               moveTo(3,Farm.class, felt3.getLayoutParams());
            }
        });
 
@@ -98,7 +106,7 @@ star.setLayoutParams(felt0.getLayoutParams());
 
            @Override
            public void onClick(View v) {
-               moveTo(4,Skole.class, felt4.getLayoutParams(),felt0.getLayoutParams());
+               moveTo(4,Skole.class, felt4.getLayoutParams());
            }
        });
 
@@ -106,7 +114,7 @@ star.setLayoutParams(felt0.getLayoutParams());
 
            @Override
            public void onClick(View v) {
-               moveTo(5,Farm.class,felt5.getLayoutParams(),felt0.getLayoutParams());
+               moveTo(5,Farm.class,felt5.getLayoutParams());
            }
        });
 
@@ -114,7 +122,7 @@ star.setLayoutParams(felt0.getLayoutParams());
 
            @Override
            public void onClick(View v) {
-               moveTo(6,Marked.class,felt6.getLayoutParams(),felt0.getLayoutParams());
+               moveTo(6,Marked.class,felt6.getLayoutParams());
            }
        });
 
@@ -122,7 +130,7 @@ star.setLayoutParams(felt0.getLayoutParams());
 
            @Override
            public void onClick(View v) {
-              moveTo(7,Farm.class,felt7.getLayoutParams(),felt0.getLayoutParams());
+              moveTo(7,Farm.class,felt7.getLayoutParams());
 
 
            }
@@ -147,11 +155,11 @@ star.setLayoutParams(felt0.getLayoutParams());
         infobox.setText("Navn: "+spiller.getNavn()+"\n Mad: "+spiller.getHp()+"\n Penge: "+spiller.getPenge()+"\n Viden: "+spiller.getViden()+"\n Klassetrin: "+spiller.getKlassetrin()+"\n Tid: "+spiller.getTid());
     }
 
-    public void moveTo(int pos,java.lang.Class<?> cls, ViewGroup.LayoutParams params,ViewGroup.LayoutParams param0) {
+    public void moveTo(int pos,java.lang.Class<?> cls, ViewGroup.LayoutParams params) {
         if (spiller.move(pos)) {
             Toast.makeText(SpillePlade.this, "Dagen er gået", Toast.LENGTH_SHORT).show();
             updateInfobox();
-            star.setLayoutParams(param0);
+            star.setLayoutParams(felt0.getLayoutParams());
         }
         else {
             final Intent intent = new Intent(SpillePlade.this, cls);
@@ -159,12 +167,14 @@ star.setLayoutParams(felt0.getLayoutParams());
             Log.d("Spilleplade","Height:"+params.height+" Width: "+params.width);
             star.setLayoutParams(params);
 
+
+            startActivity(intent);
             final Handler handler = new Handler();
             handler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    startActivity(intent);
-                    //Do something after 100ms
+
+                    //Do something after 1500ms
                 }
             }, 1500);
             //
