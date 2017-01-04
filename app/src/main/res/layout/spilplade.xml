@@ -7,7 +7,7 @@
     android:paddingLeft="64dp"
     android:paddingRight="64dp"
     android:paddingTop="16dp"
-    tools:context="com.example.asger.nepalspil.data.spillePlade">
+    tools:context="com.example.asger.nepalspil.models.SpillePlade">
 
 
     <GridLayout
@@ -22,7 +22,7 @@
             android:layout_row="5"
             android:layout_column="7">
 
-            <FrameLayout
+            <RelativeLayout
                 android:layout_width="250dip"
                 android:layout_height="120dip"
                 android:src="@drawable/square"
@@ -32,11 +32,24 @@
 
                 <TextView
                     android:text="TextView"
-                    android:layout_width="207dp"
-                    android:layout_height="116dp"
-                    android:gravity="center"
-                    android:id="@+id/infobox" />
-            </FrameLayout>
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_horizontal"
+                    android:id="@+id/infobox"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignEnd="@+id/imgUr" />
+
+                <ImageView
+                    android:layout_width="@android:dimen/app_icon_size"
+                    android:layout_height="50dp"
+                    android:src="@drawable/ur1"
+                    android:gravity="left"
+                    android:id="@+id/imgUr"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="48dp" />
+            </RelativeLayout>
 
             <ImageButton
                 android:layout_width="180dip"
