@@ -40,7 +40,7 @@ public class Skole extends AppCompatActivity {
         bEksamen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                spis(s);
+                startEksamen(s);
             }
         });
 

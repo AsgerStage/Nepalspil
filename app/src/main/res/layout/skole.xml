@@ -1,6 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:text="Velkommen til skolen, du kan få noget mad her eller studere for at få viden"
+        android:layout_width="match_parent"
+        android:layout_height="266dp"
+        android:id="@+id/textView3" />
+
+    <LinearLayout
+       android:orientation="horizontal"
+       android:layout_width="match_parent"
+       android:layout_height="match_parent">
+
+       <Button
+           android:text="studer"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:id="@+id/Studer"
+           android:layout_weight="1" />
+
+       <Button
+           android:text="spis"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:id="@+id/spis"
+           android:layout_weight="1" />
+
+       <Button
+           android:text="eksamen"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:id="@+id/eksamen"
+           android:layout_weight="1" />
+
+   </LinearLayout>
+
 
 </LinearLayout>
