@@ -8,7 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import static com.example.asger.nepalspil.R.id.textView;
+//import static com.example.asger.nepalspil.R.id.textView;
 
 /**
  * Created by Asger on 21-11-2016.

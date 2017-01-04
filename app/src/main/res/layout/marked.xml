@@ -8,9 +8,15 @@
     <TextView
         android:text="Info about market"
         android:layout_width="match_parent"
+        android:layout_height="211dp"
+        android:id="@+id/fieldinfo" />
+
+    <TextView
+        android:text="Stats"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/textView"
-        android:layout_weight="1.00" />
+        android:id="@+id/playerinfo"
+        android:layout_weight="0.97" />
 
     <LinearLayout
         android:orientation="horizontal"
