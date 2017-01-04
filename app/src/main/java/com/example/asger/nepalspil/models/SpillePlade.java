@@ -149,7 +149,7 @@ public class SpillePlade extends AppCompatActivity {
         }
     }
 
-    public void updateTimer()
+    /*public void updateTimer()
     {
         if(spiller.getTid()>12) {//tid mellem 16 og 13
             imgUr.setImageResource(R.drawable.ur1);
@@ -166,7 +166,7 @@ public class SpillePlade extends AppCompatActivity {
         else
             imgUr.setImageResource(R.drawable.ur1);
 
-    }
+    }*/
 
 }
 
