@@ -29,7 +29,7 @@ public class SpillePlade extends AppCompatActivity {
        super.onCreate(savedInstanceState);
        setContentView(R.layout.spilplade);
 
-       ImageView imgUr = (ImageView) findViewById(R.id.imgUr);
+       //ImageView imgUr = (ImageView) findViewById(R.id.imgUr);
        ImageButton felt0 = (ImageButton) findViewById(R.id.felt0);
        ImageButton felt1 = (ImageButton) findViewById(R.id.felt1);
        ImageButton felt2 = (ImageButton) findViewById(R.id.felt2);
@@ -127,7 +127,6 @@ public class SpillePlade extends AppCompatActivity {
     public void updateInfobox()
     {
         infobox.setText("Navn: "+spiller.getNavn()+"\n Mad: "+spiller.getHp()+"\n Penge: "+spiller.getPenge()+"\n Viden: "+spiller.getViden()+"\n Klassetrin: "+spiller.getKlassetrin()+"\n Tid: "+spiller.getTid());
-
     }
 
     public void moveTo(int pos,java.lang.Class<?> cls) {
@@ -156,6 +155,8 @@ public class SpillePlade extends AppCompatActivity {
         else if(spiller.getTid()>=0 && spiller.getTid()<5) {//tid mellem 4 og 0
             imgUr.setImageResource(R.drawable.ur4);
         }
+        else
+            imgUr.setImageResource(R.drawable.ur1);
 
     }
 
