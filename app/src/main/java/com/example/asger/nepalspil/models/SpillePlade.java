@@ -1,6 +1,7 @@
 package com.example.asger.nepalspil.models;
 
 import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -131,7 +132,6 @@ public class SpillePlade extends AppCompatActivity {
     public void updateInfobox()
     {
         infobox.setText("Navn: "+spiller.getNavn()+"\n Mad: "+spiller.getHp()+"\n Penge: "+spiller.getPenge()+"\n Viden: "+spiller.getViden()+"\n Klassetrin: "+spiller.getKlassetrin()+"\n Tid: "+spiller.getTid());
-
     }
 
     public void moveTo(int pos,java.lang.Class<?> cls, ViewGroup.LayoutParams params,ViewGroup.LayoutParams param0) {
@@ -147,6 +147,25 @@ public class SpillePlade extends AppCompatActivity {
             star.setLayoutParams(params);
             startActivity(intent);
         }
+    }
+
+    public void updateTimer()
+    {
+        if(spiller.getTid()>12) {//tid mellem 16 og 13
+            imgUr.setImageResource(R.drawable.ur1);
+        }
+        else if (spiller.getTid()>8 && spiller.getTid()<13) { //tid mellem 12 og 9
+            imgUr.setImageResource(R.drawable.ur2);
+        }
+        else if(spiller.getTid()>4 && spiller.getTid()<9){//tid mellem 8 og 5
+            imgUr.setImageResource(R.drawable.ur3);
+        }
+        else if(spiller.getTid()>=0 && spiller.getTid()<5) {//tid mellem 4 og 0
+            imgUr.setImageResource(R.drawable.ur4);
+        }
+        else
+            imgUr.setImageResource(R.drawable.ur1);
+
     }
 
 }
