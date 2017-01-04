@@ -1,10 +1,12 @@
 package com.example.asger.nepalspil.models;
 
 import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,25 +22,27 @@ import static com.example.asger.nepalspil.activities.MainActivity.spiller;
 
 public class SpillePlade extends AppCompatActivity {
     TextView infobox;
+    ImageView imgUr;
 
    protected void onCreate(Bundle savedInstanceState) {
 
+       super.onCreate(savedInstanceState);
+       setContentView(R.layout.spilplade);
 
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.spilplade);
-        ImageButton felt0 = (ImageButton) findViewById(R.id.felt0);
-        ImageButton felt1 = (ImageButton) findViewById(R.id.felt1);
-        ImageButton felt2 = (ImageButton) findViewById(R.id.felt2);
-        ImageButton felt3 = (ImageButton) findViewById(R.id.felt3);
-        ImageButton felt4 = (ImageButton) findViewById(R.id.felt4);
-        ImageButton felt5 = (ImageButton) findViewById(R.id.felt5);
-        ImageButton felt6 = (ImageButton) findViewById(R.id.felt6);
-        ImageButton felt7 = (ImageButton) findViewById(R.id.felt7);
+       ImageView imgUr = (ImageView) findViewById(R.id.imgUr);
+       ImageButton felt0 = (ImageButton) findViewById(R.id.felt0);
+       ImageButton felt1 = (ImageButton) findViewById(R.id.felt1);
+       ImageButton felt2 = (ImageButton) findViewById(R.id.felt2);
+       ImageButton felt3 = (ImageButton) findViewById(R.id.felt3);
+       ImageButton felt4 = (ImageButton) findViewById(R.id.felt4);
+       ImageButton felt5 = (ImageButton) findViewById(R.id.felt5);
+       ImageButton felt6 = (ImageButton) findViewById(R.id.felt6);
+       ImageButton felt7 = (ImageButton) findViewById(R.id.felt7);
        infobox = (TextView) findViewById(R.id.infobox);
        //infobox.setText("Navn: "+spiller.getNavn()+"\n Mad: "+spiller.getHp()+"\n Penge: "+spiller.getPenge()+"\n Viden: "+spiller.getViden()+"\n Klassetrin: "+spiller.getKlassetrin()+"\n Tid: "+spiller.getTid());
-        updateInfobox();
+       updateInfobox();
 
-        felt0.setOnClickListener(new View.OnClickListener() {
+       felt0.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
@@ -136,6 +140,23 @@ public class SpillePlade extends AppCompatActivity {
             updateInfobox();
             startActivity(intent);
         }
+    }
+
+    public void updateTimer()
+    {
+        if(spiller.getTid()>12) {//tid mellem 16 og 13
+            imgUr.setImageResource(R.drawable.ur1);
+        }
+        else if (spiller.getTid()>8 && spiller.getTid()<13) { //tid mellem 12 og 9
+            imgUr.setImageResource(R.drawable.ur2);
+        }
+        else if(spiller.getTid()>4 && spiller.getTid()<9){//tid mellem 8 og 5
+            imgUr.setImageResource(R.drawable.ur3);
+        }
+        else if(spiller.getTid()>=0 && spiller.getTid()<5) {//tid mellem 4 og 0
+            imgUr.setImageResource(R.drawable.ur4);
+        }
+
     }
 
 }
