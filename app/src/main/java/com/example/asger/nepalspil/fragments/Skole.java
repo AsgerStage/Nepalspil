@@ -62,6 +62,7 @@ public class Skole extends AppCompatActivity {
             s.setTid(s.getTid() - 1);
         }
         else
+
             setText("Du kunne ikke forstå undervisningen, så din viden kan opnås hos lektiehjælpen.");
 
     }

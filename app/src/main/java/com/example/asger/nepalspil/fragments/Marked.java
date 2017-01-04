@@ -10,6 +10,7 @@ import static com.example.asger.nepalspil.activities.MainActivity.spiller;
 
 import com.example.asger.nepalspil.R;
 
+
 /**
  * Created by Asger on 21-11-2016.
  */
