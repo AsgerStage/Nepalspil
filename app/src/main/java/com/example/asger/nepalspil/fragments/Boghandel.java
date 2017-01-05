@@ -2,6 +2,7 @@ package com.example.asger.nepalspil.fragments;
 
 import android.app.Fragment;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,13 +21,29 @@ public class Boghandel extends Fragment {
     Button work, buyBook;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View rod = inflater.inflate(R.layout.boghandel, container, false);
+        View v = inflater.inflate(R.layout.boghandel, container, false);
 
-      //  work = (Button) rod.findViewById(R.id.bookstoreWork);
-      //  buyBook = (Button) rod.findViewById(R.id.buyBook);
+        Button work = (Button) v.findViewById(R.id.workButton);
+        Button buyBook = (Button) v.findViewById(R.id.buyBookButton);
+        Button back = (Button) v.findViewById(R.id.backButton);
+
+        work.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View v) {
+                if (spiller.getTid() >= 2) {
+                    work();
+                    System.out.println("Penge:" + spiller.getPenge());
+                    System.out.println("Tid: " + spiller.getTid());
+                    //playerinfo.setText(updateInfo());
+                }
+                else{
+
+                }
+            }
+        });
 
 
-        return rod;
+        return v;
     }
 
     private static void work(){
