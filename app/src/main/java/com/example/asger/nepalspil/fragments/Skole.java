@@ -64,11 +64,11 @@ public class Skole extends AppCompatActivity {
         //textView.setText("Du kunne ikke forstå undervisningen, så din viden kan opnås hos lektiehjælpen.");
     }
 
-    /*public boolean harlaert(){
+    public boolean harlaert(){
         if (Math.random()>0.1)
             return true;
         else return false;
-    }*/
+    }
 
     public void spis(){
         spiller.setTid(spiller.getTid()-1);
