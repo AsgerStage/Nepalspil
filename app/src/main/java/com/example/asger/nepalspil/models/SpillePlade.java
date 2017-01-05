@@ -1,35 +1,27 @@
 package com.example.asger.nepalspil.models;
 
 import android.content.Intent;
-import android.media.Image;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.TranslateAnimation;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.asger.nepalspil.R;
-import com.example.asger.nepalspil.fragments.Boghandel;
-import com.example.asger.nepalspil.fragments.Farm;
-import com.example.asger.nepalspil.fragments.Hjem;
-import com.example.asger.nepalspil.fragments.Lektiehjaelp;
-import com.example.asger.nepalspil.fragments.Marked;
-import com.example.asger.nepalspil.fragments.Skole;
-import com.example.asger.nepalspil.fragments.Toejbutik;
-import com.example.asger.nepalspil.fragments.Vaerksted;
+import com.example.asger.nepalspil.felter.Farm;
+import com.example.asger.nepalspil.felter.Hjem;
+import com.example.asger.nepalspil.felter.Marked;
+import com.example.asger.nepalspil.felter.Skole;
+import com.example.asger.nepalspil.felter.Toejbutik;
+import com.example.asger.nepalspil.felter.Vaerksted;
 
 //import static com.example.asger.nepalspil.R.id.player;
-import java.util.HashMap;
 
-import static com.example.asger.nepalspil.R.id.felt1;
-import static com.example.asger.nepalspil.R.id.start;
 import static com.example.asger.nepalspil.activities.MainActivity.spiller;
 
 /**
