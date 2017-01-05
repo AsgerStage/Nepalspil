@@ -16,9 +16,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.asger.nepalspil.R;
+import com.example.asger.nepalspil.fragments.Boghandel;
 import com.example.asger.nepalspil.fragments.Farm;
+import com.example.asger.nepalspil.fragments.Hjem;
+import com.example.asger.nepalspil.fragments.Lektiehjaelp;
 import com.example.asger.nepalspil.fragments.Marked;
 import com.example.asger.nepalspil.fragments.Skole;
+import com.example.asger.nepalspil.fragments.Toejbutik;
+import com.example.asger.nepalspil.fragments.Vaerksted;
 
 //import static com.example.asger.nepalspil.R.id.player;
 import java.util.HashMap;
@@ -63,7 +68,7 @@ public class SpillePlade extends AppCompatActivity {
 
            @Override
            public void onClick(View v) {
-               moveTo(0,Farm.class,felt0.getLayoutParams());
+               moveTo(0,Hjem.class,felt0.getLayoutParams());
            }
        });
 
@@ -72,7 +77,7 @@ public class SpillePlade extends AppCompatActivity {
 
            @Override
            public void onClick(View v) {
-               moveTo(1,Farm.class,felt1.getLayoutParams());
+               moveTo(1,Lektiehjaelp.class,felt1.getLayoutParams());
 
 
 
@@ -90,7 +95,7 @@ public class SpillePlade extends AppCompatActivity {
 
            @Override
            public void onClick(View v) {
-               moveTo(2,Farm.class, felt2.getLayoutParams());
+               moveTo(2,Vaerksted.class, felt2.getLayoutParams());
            }
        });
 
@@ -98,7 +103,7 @@ public class SpillePlade extends AppCompatActivity {
 
            @Override
            public void onClick(View v) {
-               moveTo(3,Farm.class, felt3.getLayoutParams());
+               moveTo(3,Boghandel.class, felt3.getLayoutParams());
            }
        });
 
@@ -130,7 +135,7 @@ public class SpillePlade extends AppCompatActivity {
 
            @Override
            public void onClick(View v) {
-              moveTo(7,Farm.class,felt7.getLayoutParams());
+              moveTo(7,Toejbutik.class,felt7.getLayoutParams());
 
 
            }
