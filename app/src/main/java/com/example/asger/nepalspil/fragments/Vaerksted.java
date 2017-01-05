@@ -23,7 +23,7 @@ public class Vaerksted extends AppCompatActivity {
         final TextView playerinfo = (TextView) findViewById(R.id.playerinfo);
 
         Button work = (Button) findViewById(R.id.workButton);
-        Button buy = (Button) findViewById(R.id.eatButton);
+        Button buy = (Button) findViewById(R.id.buyBikeButton);
         Button back = (Button) findViewById(R.id.backButton);
 
         fieldinfo.setText("Dette er værkstedet. Her kan man arbejde og tjene penge, eller købe en cykel.");
