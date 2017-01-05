@@ -78,7 +78,7 @@ public class Skole extends AppCompatActivity {
             return true;
         } else {
             spiller.setTid(spiller.getTid() - 1);
-            Lektiehjaelp.
+           //Lektiehjaelp.
             return false;
             }
        }
