@@ -16,6 +16,7 @@ public class Spiller {
     private boolean sex;
     private int tid;
     private int runde;
+    private boolean bike;
 
     public Spiller(String navn) {
         this.navn = navn;
@@ -25,11 +26,12 @@ public class Spiller {
         this.viden=0;
         this.klassetrin=1;
         this.runde=1;
+        this.bike=false;
 
         Log.d("Spiller","Spiller oprettet");
     }
 
-    public Spiller(String navn,int penge, int tid, int viden, int hp,int klassetrin, boolean sex, int runde) {
+    public Spiller(String navn,int penge, int tid, int viden, int hp,int klassetrin, boolean sex, int runde, boolean bike) {
         position = 0;			//starter på felt 1
         this.navn = navn;
         this.penge = penge;
@@ -39,6 +41,7 @@ public class Spiller {
         this.klassetrin= klassetrin;
         this.sex = sex;
         this.runde=runde;
+        this.bike = bike;
         Log.d("Spiller","Spiller oprettet med balance");
     }
 
@@ -172,6 +175,14 @@ public class Spiller {
 
     public void setTid(int tid) {
         this.tid = tid;
+    }
+
+    public void setBike(boolean bike) {
+        this.bike = bike;
+    }
+
+    public boolean hasBike(){
+        return bike;
     }
 
 }

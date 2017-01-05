@@ -6,28 +6,27 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import static com.example.asger.nepalspil.activities.MainActivity.spiller;
-
 import com.example.asger.nepalspil.R;
 
+import static com.example.asger.nepalspil.activities.MainActivity.spiller;
 
 /**
- * Created by Asger on 21-11-2016.
+ * Created by Bruger on 03-01-2017.
  */
 
-public class Marked extends AppCompatActivity {
+public class Vaerksted extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.marked);
+        setContentView(R.layout.vaerksted);
 
         final TextView fieldinfo = (TextView) findViewById(R.id.fieldinfo);
         final TextView playerinfo = (TextView) findViewById(R.id.playerinfo);
 
         Button work = (Button) findViewById(R.id.workButton);
-        Button eat = (Button) findViewById(R.id.eatButton);
+        Button buy = (Button) findViewById(R.id.eatButton);
         Button back = (Button) findViewById(R.id.backButton);
 
-        fieldinfo.setText("Dette er market. Her kan man arbejde og tjene penge, eller man kan købe mad.");
+        fieldinfo.setText("Dette er værkstedet. Her kan man arbejde og tjene penge, eller købe en cykel.");
         playerinfo.setText("Navn: "+spiller.getNavn()+"\n Mad: "+spiller.getHp()+"\n Penge: "+spiller.getPenge()+"\n Viden: "+spiller.getViden()+"\n Klassetrin: "+spiller.getKlassetrin()+"\n Tid: "+spiller.getTid());
 
         work.setOnClickListener(new View.OnClickListener() {
@@ -43,11 +42,11 @@ public class Marked extends AppCompatActivity {
             }
         });
 
-        eat.setOnClickListener(new View.OnClickListener(){
+        buy.setOnClickListener(new View.OnClickListener(){
 
             public void onClick(View v){
-                if(spiller.getPenge()>=5){
-                    eat();
+                if(spiller.getPenge()>=50){
+                    buy();
                     playerinfo.setText(updateInfo());
                 }
                 else{
@@ -69,9 +68,9 @@ public class Marked extends AppCompatActivity {
         spiller.setPenge(spiller.getPenge()+10);
     }
 
-    public void eat(){
-        spiller.setPenge(spiller.getPenge()-5);
-        spiller.setHp(spiller.getHp()+10);
+    public void buy(){
+        spiller.setPenge(spiller.getPenge()-500);
+        spiller.setBike(true);
     }
 
     public String updateInfo(){
@@ -79,3 +78,4 @@ public class Marked extends AppCompatActivity {
     }
 
 }
+
