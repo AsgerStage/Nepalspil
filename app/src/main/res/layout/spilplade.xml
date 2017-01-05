@@ -18,7 +18,8 @@
             app:srcCompat="@drawable/school"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
-            android:id="@+id/felt4" />
+            android:id="@+id/felt4"
+            style="?android:borderlessButtonStyle"/>
 
 
 
@@ -29,7 +30,8 @@
             app:srcCompat="@drawable/home"
             android:id="@+id/felt0"
             android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true" />
+            android:layout_centerHorizontal="true"
+            style="?android:borderlessButtonStyle"/>
 
         <ImageButton
             android:layout_width="wrap_content"
@@ -40,7 +42,8 @@
             android:layout_above="@+id/infobox"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
-            android:layout_alignRight="@id/felt2"/>
+            android:layout_alignRight="@id/felt2"
+            style="?android:borderlessButtonStyle"/>
 
         <ImageButton
             android:layout_width="wrap_content"
@@ -48,7 +51,8 @@
             app:srcCompat="@drawable/clothingstore"
             android:id="@+id/felt7"
             android:layout_alignParentTop="true"
-            android:layout_alignParentStart="true" />
+            android:layout_alignParentStart="true"
+            style="?android:borderlessButtonStyle"/>
 
         <ImageButton
             android:layout_width="wrap_content"
@@ -56,6 +60,7 @@
             app:srcCompat="@drawable/barn"
             android:id="@+id/felt5"
             android:layout_alignParentBottom="true"
+            style="?android:borderlessButtonStyle"
              />
 
         <ImageButton
@@ -65,7 +70,8 @@
             android:id="@+id/felt3"
             android:layout_alignParentBottom="true"
             android:layout_alignParentEnd="true"
-            android:layout_alignTop="@+id/felt4" />
+            android:layout_alignTop="@+id/felt4"
+            style="?android:borderlessButtonStyle"/>
 
         <TextView
             android:text="TextView"
@@ -75,7 +81,9 @@
             android:id="@+id/infobox"
             android:layout_centerHorizontal="true"
             android:layout_alignBottom="@+id/felt6"
-            android:layout_below="@+id/felt0" />
+            android:layout_below="@+id/felt0"
+
+            />
 
         <ImageButton
             android:layout_width="wrap_content"
@@ -83,7 +91,8 @@
             app:srcCompat="@drawable/marketplace"
             android:id="@+id/felt6"
             android:layout_centerVertical="true"
-            android:layout_alignParentStart="true" />
+            android:layout_alignParentStart="true"
+            style="?android:borderlessButtonStyle"/>
 
         <ImageButton
             android:layout_width="wrap_content"
@@ -92,7 +101,8 @@
             android:id="@+id/felt2"
             android:layout_alignTop="@+id/felt6"
             android:layout_alignParentEnd="true"
-            android:layout_alignBottom="@+id/felt6" />
+            android:layout_alignBottom="@+id/felt6"
+            style="?android:borderlessButtonStyle"/>
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

@@ -26,7 +26,7 @@ public class Vaerksted extends AppCompatActivity {
         Button buy = (Button) findViewById(R.id.buyBikeButton);
         Button back = (Button) findViewById(R.id.backButton);
 
-        fieldinfo.setText("Dette er værkstedet. Her kan man arbejde og tjene penge, eller købe en cykel.");
+        fieldinfo.setText("Velkommen til værkstedet! Her kan man arbejde eller købe en cykel.");
         playerinfo.setText("Navn: "+spiller.getNavn()+"\n Mad: "+spiller.getHp()+"\n Penge: "+spiller.getPenge()+"\n Viden: "+spiller.getViden()+"\n Klassetrin: "+spiller.getKlassetrin()+"\n Tid: "+spiller.getTid());
 
         work.setOnClickListener(new View.OnClickListener() {
