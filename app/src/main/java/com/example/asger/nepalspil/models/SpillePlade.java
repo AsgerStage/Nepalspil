@@ -39,6 +39,7 @@ import static com.example.asger.nepalspil.activities.MainActivity.spiller;
 public class SpillePlade extends AppCompatActivity {
     static TextView infobox;
     ImageView star;
+    ImageView ur;
 
     ImageButton felt0;
 
@@ -47,29 +48,31 @@ public class SpillePlade extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.spilplade);
-       star= (ImageView) findViewById(R.id.imageView);
-       infobox = (TextView) findViewById(R.id.infobox);
+        star= (ImageView) findViewById(R.id.imageView);
+        infobox = (TextView) findViewById(R.id.infobox);
+        ur = (ImageView) findViewById(R.id.imgUr);
+        ur.setImageResource(R.drawable.ur1);
        //infobox.setText("Navn: "+spiller.getNavn()+"\n Mad: "+spiller.getHp()+"\n Penge: "+spiller.getPenge()+"\n Viden: "+spiller.getViden()+"\n Klassetrin: "+spiller.getKlassetrin()+"\n Tid: "+spiller.getTid());
         updateInfobox();
-       felt0 = (ImageButton) findViewById(R.id.felt0);
-       final ImageButton felt1 = (ImageButton) findViewById(R.id.felt1);
-       final ImageButton felt2 = (ImageButton) findViewById(R.id.felt2);
-       final ImageButton felt3 = (ImageButton) findViewById(R.id.felt3);
-       final ImageButton felt4 = (ImageButton) findViewById(R.id.felt4);
-       final ImageButton felt5 = (ImageButton) findViewById(R.id.felt5);
-       final ImageButton felt6 = (ImageButton) findViewById(R.id.felt6);
-       final ImageButton felt7 = (ImageButton) findViewById(R.id.felt7);
-       star.setLayoutParams(felt0.getLayoutParams());
+        felt0 = (ImageButton) findViewById(R.id.felt0);
+        final ImageButton felt1 = (ImageButton) findViewById(R.id.felt1);
+        final ImageButton felt2 = (ImageButton) findViewById(R.id.felt2);
+        final ImageButton felt3 = (ImageButton) findViewById(R.id.felt3);
+        final ImageButton felt4 = (ImageButton) findViewById(R.id.felt4);
+        final ImageButton felt5 = (ImageButton) findViewById(R.id.felt5);
+        final ImageButton felt6 = (ImageButton) findViewById(R.id.felt6);
+        final ImageButton felt7 = (ImageButton) findViewById(R.id.felt7);
+        star.setLayoutParams(felt0.getLayoutParams());
 
 
 
 
-       felt0.setOnClickListener(new View.OnClickListener() {
+        felt0.setOnClickListener(new View.OnClickListener() {
 
            @Override
            public void onClick(View v) {
                moveTo(0,Hjem.class,felt0.getLayoutParams());
-           }
+            }
        });
 
 
@@ -163,11 +166,13 @@ public class SpillePlade extends AppCompatActivity {
     public void moveTo(int pos,java.lang.Class<?> cls, ViewGroup.LayoutParams params) {
         if (spiller.move(pos)) {
             Toast.makeText(SpillePlade.this, "Dagen er gået", Toast.LENGTH_SHORT).show();
+            updateTimer();
             updateInfobox();
             star.setLayoutParams(felt0.getLayoutParams());
         }
         else {
             final Intent intent = new Intent(SpillePlade.this, cls);
+            updateTimer();
             updateInfobox();
             Log.d("Spilleplade","Height:"+params.height+" Width: "+params.width);
             star.setLayoutParams(params);
@@ -186,24 +191,24 @@ public class SpillePlade extends AppCompatActivity {
         }
     }
 
-    /*public void updateTimer()
+    public void updateTimer()
     {
         if(spiller.getTid()>12) {//tid mellem 16 og 13
-            imgUr.setImageResource(R.drawable.ur1);
+            ur.setImageResource(R.drawable.ur1);
         }
         else if (spiller.getTid()>8 && spiller.getTid()<13) { //tid mellem 12 og 9
-            imgUr.setImageResource(R.drawable.ur2);
+            ur.setImageResource(R.drawable.ur2);
         }
         else if(spiller.getTid()>4 && spiller.getTid()<9){//tid mellem 8 og 5
-            imgUr.setImageResource(R.drawable.ur3);
+            ur.setImageResource(R.drawable.ur3);
         }
         else if(spiller.getTid()>=0 && spiller.getTid()<5) {//tid mellem 4 og 0
-            imgUr.setImageResource(R.drawable.ur4);
+            ur.setImageResource(R.drawable.ur4);
         }
         else
-            imgUr.setImageResource(R.drawable.ur1);
+            ur.setImageResource(R.drawable.ur1);
 
-    }*/
+    }
 
 }
 

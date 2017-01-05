@@ -5,10 +5,15 @@
     android:orientation="vertical">
 
     <TextView
-        android:text="Velkommen til skolen, du kan få noget mad her eller studere for at få viden"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView" />
+
+    <TextView
+        android:text="."
         android:layout_width="match_parent"
         android:layout_height="266dp"
-        android:id="@+id/textView3" />
+        android:id="@+id/schoolText" />
 
     <LinearLayout
        android:orientation="horizontal"
