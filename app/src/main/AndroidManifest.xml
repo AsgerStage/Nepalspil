@@ -39,6 +39,16 @@
         </activity>
 
         <activity
+            android:name=".fragments.Toejbutik"
+            android:label="Toejbutik"
+            android:screenOrientation="landscape">
+            <intent-filter>
+                <action android:name="android.intent.action.TOEJBUTIK"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+
+        <activity
             android:name=".fragments.Marked"
             android:label="Marked"
             android:screenOrientation="landscape">
@@ -54,6 +64,26 @@
             android:screenOrientation="landscape">
             <intent-filter>
                 <action android:name="android.intent.action.SKOLE"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".fragments.Vaerksted"
+            android:label="Vaerksted"
+            android:screenOrientation="landscape">
+            <intent-filter>
+                <action android:name="android.intent.action.VAERKSTED"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".fragments.Hjem"
+            android:label="Hjem"
+            android:screenOrientation="landscape">
+            <intent-filter>
+                <action android:name="android.intent.action.HJEM"/>
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
         </activity>
