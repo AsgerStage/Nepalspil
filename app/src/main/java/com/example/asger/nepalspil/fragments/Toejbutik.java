@@ -1,6 +1,7 @@
-package com.example.asger.nepalspil.felter;
+package com.example.asger.nepalspil.fragments;
 
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 
 import com.example.asger.nepalspil.R;
 
@@ -8,10 +9,10 @@ import com.example.asger.nepalspil.R;
  * Created by Bruger on 03-01-2017.
  */
 
-public class Lektiehjaelp extends Felt {
+public class Toejbutik extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.lektiehjaelp);
+        setContentView(R.layout.toejbutik);
 
 
     }

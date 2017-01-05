@@ -1,4 +1,4 @@
-package com.example.asger.nepalspil.model;
+package com.example.asger.nepalspil.models;
 
 import android.util.Log;
 
@@ -53,7 +53,7 @@ public class Spiller {
 
         boolean flag=true;
         boolean flag2=true;
-
+        if(newPosition!=this.position){
             while(flag2){//Flags som denne bliver brugt da både while og for loops checkede i eller j's værdi på forkerte tidspunkter og skabte uendelige løkker.
                 count1++;
                // Log.d("Spiller","1count1:"+count1); //Til debugging
@@ -75,16 +75,20 @@ public class Spiller {
             Log.d("Spiller","Spiller rykket fra "+this.position+" til "+newPosition+" og mistet tid: "+count1+" og har nu "+this.tid+" tid");
             this.position=newPosition;
         }
-        else if (count1>=count2){
-            this.tid=this.tid-count2;
-            Log.d("Spiller","Spiller rykket fra "+this.position+" til "+newPosition+" og mistet tid: "+count2+" og har nu "+this.tid+" tid");
-            this.position=newPosition;
+        else if (count1>=count2) {
+            this.tid = this.tid - count2;
+            Log.d("Spiller", "Spiller rykket fra " + this.position + " til " + newPosition + " og mistet tid: " + count2 + " og har nu " + this.tid + " tid");
+            this.position = newPosition;
             //Den korteste vej trækkes fra spillerens tid
-        }
+        }}
+            else if (count1+count2==0){
+                Log.d("Spiller","Spiller trykkede på felt han/hun allerede stod på");
+            }
 
 
 
-return checkTur();
+
+        return checkTur();
 
     }
 
@@ -134,7 +138,7 @@ return checkTur();
         return viden;
     }
 
-    public void setViden(int penge) {
+    public void setViden(int viden) {
         this.viden = viden;
     }
 

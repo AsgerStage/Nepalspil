@@ -1,8 +1,7 @@
-package com.example.asger.nepalspil.model;
+package com.example.asger.nepalspil.fragments;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 
 import com.example.asger.nepalspil.R;
 
