@@ -2,5 +2,48 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
+    android:weightSum="1">
+
+
+    <TextView
+        android:text="Info om værksted"
+        android:layout_width="match_parent"
+        android:layout_height="211dp"
+        android:id="@+id/fieldinfo" />
+
+    <TextView
+        android:text="Stats"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/playerinfo"
+        android:layout_weight="0.97" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="79dp">
+
+        <Button
+            android:text="Work"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/workButton"
+            android:layout_weight="1" />
+
+        <Button
+            android:text="Køb cykel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/eatButton"
+            android:layout_weight="1" />
+
+        <Button
+            android:text="Back"
+            android:layout_height="wrap_content"
+            android:id="@+id/backButton"
+            android:layout_weight="1"
+            android:layout_width="wrap_content" />
+
+    </LinearLayout>
 
 </LinearLayout>
