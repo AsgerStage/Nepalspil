@@ -13,22 +13,24 @@ import static com.example.asger.nepalspil.activities.MainActivity.spiller;
 public class Skole extends AppCompatActivity {
 
     //AlertDialog.Builder dialog = new AlertDialog.Builder(this);
-    TextView textView;
+    TextView schoolText;
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.skole);
 
-        TextView textView = (TextView) findViewById(R.id.textView3);
+        final TextView schoolText = (TextView) findViewById(R.id.schoolText);
         Button bSpis = (Button) findViewById(R.id.spis);
         Button bStuder = (Button) findViewById(R.id.Studer);
-        //Button bEksamen = (Button) findViewById(R.id.eksamen);
-        textView.setText("Velkommen til Skolen, her kan du spise, studere og tage din eksamen når tiden er.");
+        Button bEksamen = (Button) findViewById(R.id.eksamen);
+        schoolText.setText("Velkommen til Skolen, her kan du spise, studere og tage din eksamen når tiden er.");
         bSpis.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(spiller.getTid()>0) {
+                if (spiller.getTid() > 0) {
                     spis();
-                }else{
+                    schoolText.setText("Du har spist :) Vil du gerne studere videre?");
+                } else {
 
                 }
             }
@@ -37,53 +39,72 @@ public class Skole extends AppCompatActivity {
         bStuder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(spiller.getTid()>0){
-                    studer();
-                }else{
-
+                if (spiller.getTid()>0) {
+                    if (spiller.getTid() > 0 && studer()) {
+                        schoolText.setText("Du har modtaget 1 viden!");
+                        System.out.println(spiller.getViden());
+                    } else {
+                        schoolText.setText("Du kunne ikke forstå undervisningen, så din viden kan opnås hos lektiehjælpen.");
+                        System.out.println(spiller.getViden());
+                    }
                 }
             }
         });
 
-       /* bEksamen.setOnClickListener(new View.OnClickListener() {
+        bEksamen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startEksamen();
+                if (!kanStartEksamen()) {
+                    schoolText.setText("Du har desværre ikke nok viden til at kunne gå til eksamen." +
+                            "\n Få viden af at gå i skole, og tag eksamen næste år!");
+                } else {
+                    schoolText.setText("Held og Lykke!");
+                    setContentView(R.layout.eksamen);
+                }
+
             }
-        });*/
+        });
 
 
     }
 
 
-    //private int vidensKrav = 10*spiller.getKlassetrin();
+    private int vidensKrav = 10 * spiller.getKlassetrin();
 
-    public void studer(){
-        spiller.setViden(spiller.getViden()+1);
-        spiller.setTid(spiller.getTid()-1);
-        //textView.setText("Du kunne ikke forstå undervisningen, så din viden kan opnås hos lektiehjælpen.");
-    }
+    public boolean studer() {
+        if (hasLearned()) {
+            spiller.setViden(spiller.getViden() + 1);
+            spiller.setTid(spiller.getTid() - 1);
+            return true;
+        } else {
+            spiller.setTid(spiller.getTid() - 1);
+            Lektiehjaelp.
+            return false;
+            }
+       }
 
-    public boolean harlaert(){
-        if (Math.random()>0.1)
+    public boolean hasLearned(){
+        if (Math.random()>0.5)
             return true;
         else return false;
     }
 
     public void spis(){
-        spiller.setTid(spiller.getTid()-1);
-        spiller.setHp(spiller.getHp()+1);
+        if (spiller.getTid()>0) {
+            spiller.setTid(spiller.getTid() - 1);
+            spiller.setHp(spiller.getHp() + 1);
+        }else{
+            schoolText.setText("");
+        }
+
     }
 
-    /*public void startEksamen(){
+    public boolean kanStartEksamen(){
         if ((spiller.getViden() !=  vidensKrav ) || (spiller.getViden() > vidensKrav)) {
-            dialog.setTitle("Desværre");
-            dialog.setMessage("Du har desværre ikke nok viden til at kunne gå til eksamen.\n Få viden af at gå i skole, og tag eksamen næste år!");
-            dialog.show();
+            return false;
         } else
-            setText("Held og lykke!");
-            setContentView(R.layout.eksamen);
-    }*/
+           return true;
+    }
 
 
 }

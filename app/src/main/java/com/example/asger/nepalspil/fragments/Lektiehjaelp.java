@@ -48,6 +48,14 @@ public class Lektiehjaelp extends Fragment {
 
     public int gemtViden = 0;
 
+    public int getGemtViden(){
+        this.gemtViden = gemtViden;
+    }
+
+    public int set gemtViden(){
+        this.
+    }
+
     private void learn(){
         if (gemtViden > 0){
             s.setViden(s.getViden()+1);
