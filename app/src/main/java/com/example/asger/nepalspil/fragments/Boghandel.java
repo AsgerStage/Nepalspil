@@ -17,15 +17,16 @@ import static com.example.asger.nepalspil.activities.MainActivity.spiller;
  * Created by Bruger on 03-01-2017.
  */
 
-public class Boghandel extends Fragment {
+public class Boghandel extends AppCompatActivity {
     Button work, buyBook;
 
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.boghandel, container, false);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.boghandel);
 
-        Button work = (Button) v.findViewById(R.id.workButton);
-        Button buyBook = (Button) v.findViewById(R.id.buyBookButton);
-        Button back = (Button) v.findViewById(R.id.backButton);
+        Button work = (Button) findViewById(R.id.workButton);
+        Button buyBook = (Button) findViewById(R.id.buyBookButton);
+        Button back = (Button) findViewById(R.id.backButton);
 
         work.setOnClickListener(new View.OnClickListener() {
 
@@ -42,8 +43,12 @@ public class Boghandel extends Fragment {
             }
         });
 
+        back.setOnClickListener(new View.OnClickListener(){
 
-        return v;
+            public void onClick(View v){
+                finish();
+            }
+        });
     }
 
     private static void work(){

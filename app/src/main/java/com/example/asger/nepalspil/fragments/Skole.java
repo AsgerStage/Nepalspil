@@ -29,7 +29,7 @@ public class Skole extends AppCompatActivity {
             public void onClick(View view) {
                 if (spiller.getTid() > 0) {
                     spis();
-                    schoolText.setText("Du har spist :) Vil du gerne studere videre?");
+                    schoolText.setText("Mmm! Du har spist skolemad.");
                 } else {
 
                 }
