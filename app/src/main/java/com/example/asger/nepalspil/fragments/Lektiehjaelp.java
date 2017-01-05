@@ -36,7 +36,7 @@ public class Lektiehjaelp extends Fragment {
                 if(spiller.getTid()>0) {
                     learn();
                 }else{
-                    //
+                    ////
                 }
             }
         });
