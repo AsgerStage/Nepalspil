@@ -46,15 +46,16 @@ public class Lektiehjaelp extends Fragment {
     }
 
 
-    public int gemtViden = 0;
-
-    public int getGemtViden(){
-        this.gemtViden = gemtViden;
+      public int gemtViden = 0;
+/*
+      public int getGemtViden(){
+      this.gemtViden = gemtViden;
     }
 
     public int set gemtViden(){
         this.
     }
+ */
 
     private void learn(){
         if (gemtViden > 0){
@@ -62,8 +63,9 @@ public class Lektiehjaelp extends Fragment {
             s.setTid(s.getTid()-1);
         }
         else
-            dialog.setTitle("");
-            dialog.setMessage("Du har ikke brug for lektiehjælp.");
-            dialog.show();
+              learn.setText("Du har ikke brug for lektiehjælp.");
+      //      dialog.setTitle("");
+        //    dialog.setMessage("Du har ikke brug for lektiehjælp.");
+          //  dialog.show();
     }
 }
