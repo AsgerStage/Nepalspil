@@ -89,7 +89,7 @@
         </activity>
 
         <activity
-            android:name=".fragments.Boghandel"
+            android:name=".felter.Boghandel"
             android:label="Boghandel"
             android:screenOrientation="landscape">
             <intent-filter>

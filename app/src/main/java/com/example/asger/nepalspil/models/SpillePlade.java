@@ -13,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.asger.nepalspil.R;
+import com.example.asger.nepalspil.felter.Boghandel;
 import com.example.asger.nepalspil.felter.Farm;
 import com.example.asger.nepalspil.felter.Hjem;
 import com.example.asger.nepalspil.felter.Marked;
