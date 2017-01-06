@@ -31,8 +31,9 @@ import static com.example.asger.nepalspil.activities.MainActivity.spiller;
 
 public class SpillePlade extends AppCompatActivity {
     TextView infobox;
-    ImageView star;
+    ImageView Player;
     ImageView ur;
+    ImageView unusedPlayer;
 
     ImageButton felt0;
 
@@ -41,7 +42,13 @@ public class SpillePlade extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.spilplade);
-        star= (ImageView) findViewById(R.id.imageView);
+        if(spiller.sex==true){Player=(ImageView) findViewById(R.id.kaka);
+        unusedPlayer= (ImageView) findViewById(R.id.asha);
+        }
+        else if(spiller.sex==false){Player=(ImageView) findViewById(R.id.asha);
+            unusedPlayer= (ImageView) findViewById(R.id.kaka);
+        }
+        unusedPlayer.setVisibility(View.INVISIBLE);
         infobox = (TextView) findViewById(R.id.infobox);
         ur = (ImageView) findViewById(R.id.imgUr);
         ur.setImageResource(R.drawable.ur1);
@@ -55,7 +62,7 @@ public class SpillePlade extends AppCompatActivity {
         final ImageButton felt5 = (ImageButton) findViewById(R.id.felt5);
         final ImageButton felt6 = (ImageButton) findViewById(R.id.felt6);
         final ImageButton felt7 = (ImageButton) findViewById(R.id.felt7);
-        star.setLayoutParams(felt0.getLayoutParams());
+        Player.setLayoutParams(felt0.getLayoutParams());
 
 
 
@@ -161,14 +168,14 @@ public class SpillePlade extends AppCompatActivity {
             Toast.makeText(SpillePlade.this, "Dagen er gået", Toast.LENGTH_SHORT).show();
             updateTimer();
             updateInfobox();
-            star.setLayoutParams(felt0.getLayoutParams());
+            Player.setLayoutParams(felt0.getLayoutParams());
         }
         else {
             final Intent intent = new Intent(SpillePlade.this, cls);
             updateTimer();
             updateInfobox();
             Log.d("Spilleplade","Height:"+params.height+" Width: "+params.width);
-            star.setLayoutParams(params);
+            Player.setLayoutParams(params);
 
 
             startActivity(intent);

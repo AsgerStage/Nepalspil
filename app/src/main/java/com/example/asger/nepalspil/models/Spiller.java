@@ -13,7 +13,7 @@ public class Spiller {
     private int hp;
     private int viden;
     private int klassetrin;
-    private boolean sex;
+    public boolean sex;
     private int tid;
     private int runde;
     private boolean bike;
