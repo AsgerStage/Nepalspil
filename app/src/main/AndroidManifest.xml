@@ -88,6 +88,16 @@
             </intent-filter>
         </activity>
 
+        <activity
+            android:name=".fragments.Boghandel"
+            android:label="Boghandel"
+            android:screenOrientation="landscape">
+            <intent-filter>
+                <action android:name="android.intent.action.BOGHANDEL"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+
         <meta-data
             android:name="io.fabric.ApiKey"
             android:value="cf32e528d379f529c08f31d76eb14ff4c57fec4c" />

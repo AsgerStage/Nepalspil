@@ -106,7 +106,7 @@ public class SpillePlade extends AppCompatActivity {
 
            @Override
            public void onClick(View v) {
-               moveTo(3,Farm.class, felt3.getLayoutParams());
+               moveTo(3,Boghandel.class, felt3.getLayoutParams());
            }
        });
 

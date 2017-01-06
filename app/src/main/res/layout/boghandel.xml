@@ -5,7 +5,7 @@
     android:weightSum="1">
 
     <TextView
-        android:text="Info om værksted"
+        android:text="Info om boghandel"
         android:layout_width="match_parent"
         android:layout_height="211dp"
         android:id="@+id/fieldinfo" />
