@@ -1,6 +1,9 @@
 package com.example.asger.nepalspil.models;
 
 import android.util.Log;
+import android.widget.Toast;
+
+import com.example.asger.nepalspil.activities.MainActivity;
 
 /**
  * Created by Asger on 21-11-2016.
