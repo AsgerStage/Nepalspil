@@ -29,7 +29,7 @@
         </activity>
 
         <activity
-            android:name=".felter.Farm"
+            android:name=".felter2.Farm"
             android:label="Farm"
             android:screenOrientation="landscape">
             <intent-filter>
@@ -39,7 +39,7 @@
         </activity>
 
         <activity
-            android:name=".felter.Toejbutik"
+            android:name=".felter2.Toejbutik"
             android:label="Toejbutik"
             android:screenOrientation="landscape">
             <intent-filter>
@@ -49,7 +49,7 @@
         </activity>
 
         <activity
-            android:name=".felter.Marked"
+            android:name=".felter2.Marked"
             android:label="Marked"
             android:screenOrientation="landscape">
             <intent-filter>
@@ -59,7 +59,7 @@
         </activity>
 
         <activity
-            android:name=".felter.Skole"
+            android:name=".felter2.Skole"
             android:label="Skole"
             android:screenOrientation="landscape">
             <intent-filter>
@@ -69,7 +69,7 @@
         </activity>
 
         <activity
-            android:name=".felter.Vaerksted"
+            android:name=".felter2.Vaerksted"
             android:label="Vaerksted"
             android:screenOrientation="landscape">
             <intent-filter>
@@ -79,7 +79,7 @@
         </activity>
 
         <activity
-            android:name=".felter.Hjem"
+            android:name=".felter2.Hjem"
             android:label="Hjem"
             android:screenOrientation="landscape">
             <intent-filter>
@@ -89,7 +89,7 @@
         </activity>
 
         <activity
-            android:name=".felter.Boghandel"
+            android:name=".felter2.Boghandel"
             android:label="Boghandel"
             android:screenOrientation="landscape">
             <intent-filter>

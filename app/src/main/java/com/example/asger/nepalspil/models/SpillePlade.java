@@ -13,13 +13,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.asger.nepalspil.R;
-import com.example.asger.nepalspil.felter.Boghandel;
-import com.example.asger.nepalspil.felter.Farm;
-import com.example.asger.nepalspil.felter.Hjem;
-import com.example.asger.nepalspil.felter.Marked;
-import com.example.asger.nepalspil.felter.Skole;
-import com.example.asger.nepalspil.felter.Toejbutik;
-import com.example.asger.nepalspil.felter.Vaerksted;
+import com.example.asger.nepalspil.felter2.Boghandel;
+import com.example.asger.nepalspil.felter2.Farm;
+import com.example.asger.nepalspil.felter2.Hjem;
+import com.example.asger.nepalspil.felter2.Marked;
+import com.example.asger.nepalspil.felter2.Skole;
+import com.example.asger.nepalspil.felter2.Toejbutik;
+import com.example.asger.nepalspil.felter2.Vaerksted;
 
 //import static com.example.asger.nepalspil.R.id.player;
 

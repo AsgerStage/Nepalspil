@@ -1,4 +1,4 @@
-package com.example.asger.nepalspil.felter;
+package com.example.asger.nepalspil.felter2;
 
 import android.content.res.AssetFileDescriptor;
 import android.media.MediaPlayer;
@@ -8,30 +8,31 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import static com.example.asger.nepalspil.activities.MainActivity.spiller;
+
 import com.example.asger.nepalspil.R;
 
 import java.io.IOException;
 
-import static com.example.asger.nepalspil.activities.MainActivity.spiller;
 
 /**
- * Created by Bruger on 03-01-2017.
+ * Created by Asger on 21-11-2016.
  */
 
-public class Vaerksted extends AppCompatActivity {
+public class Marked extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.vaerksted);
+        setContentView(R.layout.marked);
 
         final TextView fieldinfo = (TextView) findViewById(R.id.fieldinfo);
         final TextView playerinfo = (TextView) findViewById(R.id.playerinfo);
         final MediaPlayer mp = MediaPlayer.create(this, R.raw.cash);
 
         Button work = (Button) findViewById(R.id.workButton);
-        Button buy = (Button) findViewById(R.id.buyBikeButton);
+        Button eat = (Button) findViewById(R.id.eatButton);
         Button back = (Button) findViewById(R.id.backButton);
 
-        fieldinfo.setText("Velkommen til værkstedet! Her kan man arbejde eller købe en cykel.");
+        fieldinfo.setText("Dette er market. Her kan man arbejde og tjene penge, eller man kan købe mad.");
         playerinfo.setText("Navn: "+spiller.getNavn()+"\n Mad: "+spiller.getHp()+"\n Penge: "+spiller.getPenge()+"\n Viden: "+spiller.getViden()+"\n Klassetrin: "+spiller.getKlassetrin()+"\n Tid: "+spiller.getTid());
 
         work.setOnClickListener(new View.OnClickListener() {
@@ -65,12 +66,13 @@ public class Vaerksted extends AppCompatActivity {
             }
         });
 
-        buy.setOnClickListener(new View.OnClickListener(){
+        eat.setOnClickListener(new View.OnClickListener(){
 
             public void onClick(View v){
-                if(spiller.getPenge()>=50){
-                    buy();
+                if(spiller.getPenge()>=5){
+                    eat();
                     playerinfo.setText(updateInfo());
+
                 }
                 else{
 
@@ -82,6 +84,7 @@ public class Vaerksted extends AppCompatActivity {
 
             public void onClick(View v){
                 finish();
+
             }
         });
     }
@@ -91,14 +94,14 @@ public class Vaerksted extends AppCompatActivity {
         spiller.setPenge(spiller.getPenge()+10);
     }
 
-    public void buy(){
-        spiller.setPenge(spiller.getPenge()-500);
-        spiller.setBike(true);
+    public void eat(){
+        spiller.setPenge(spiller.getPenge()-5);
+        spiller.setHp(spiller.getHp()+10);
     }
 
     public String updateInfo(){
         return "Navn: "+spiller.getNavn()+"\n Mad: "+spiller.getHp()+"\n Penge: "+spiller.getPenge()+"\n Viden: "+spiller.getViden()+"\n Klassetrin: "+spiller.getKlassetrin()+"\n Tid: "+spiller.getTid();
+
     }
 
 }
-
