@@ -36,8 +36,8 @@ public class Marked extends AppCompatActivity {
         final Button eat = (Button) findViewById(R.id.eatButton);
         Button back = (Button) findViewById(R.id.backButton);
 
-        fieldinfo.setText("Dette er market. Her kan man arbejde og tjene penge, eller man kan købe mad.");
-        playerinfo.setText("Navn: "+spiller.getNavn()+"\n mad: "+spiller.getHp()+"\n Penge: "+spiller.getPenge()+"\n Viden: "+spiller.getViden()+"\n Klassetrin: "+spiller.getKlassetrin()+"\n Tid: "+spiller.getTid());
+        fieldinfo.setText("Dette er market. Her kan man arbejde og tjene penge, eller man kan købe hej.");
+        playerinfo.setText("Navn: "+spiller.getNavn()+"\n hej: "+spiller.getHp()+"\n Penge: "+spiller.getPenge()+"\n Viden: "+spiller.getViden()+"\n Klassetrin: "+spiller.getKlassetrin()+"\n Tid: "+spiller.getTid());
 
         work.setOnClickListener(new View.OnClickListener() {
 
@@ -93,7 +93,7 @@ public class Marked extends AppCompatActivity {
                     }
                     Toast t = new Toast(Marked.this);
                     ImageView im = new ImageView(Marked.this);
-                    im.setImageResource(R.drawable.mad);
+                    im.setImageResource(R.drawable.hej);
                     t.setView(im);
                     t.setGravity(Gravity.CENTER, 0, 0);
                     t.show();
@@ -128,7 +128,7 @@ public class Marked extends AppCompatActivity {
 
     public String updateInfo(){
         SpillePlade.updateInfobox();
-        return "Navn: "+spiller.getNavn()+"\n mad: "+spiller.getHp()+"\n Penge: "+spiller.getPenge()+"\n Viden: "+spiller.getViden()+"\n Klassetrin: "+spiller.getKlassetrin()+"\n Tid: "+spiller.getTid();
+        return "Navn: "+spiller.getNavn()+"\n hej: "+spiller.getHp()+"\n Penge: "+spiller.getPenge()+"\n Viden: "+spiller.getViden()+"\n Klassetrin: "+spiller.getKlassetrin()+"\n Tid: "+spiller.getTid();
 
     }
 
