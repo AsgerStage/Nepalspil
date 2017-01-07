@@ -16,6 +16,7 @@ import com.example.asger.nepalspil.R;
 import com.example.asger.nepalspil.felter.Boghandel;
 import com.example.asger.nepalspil.felter.Farm;
 import com.example.asger.nepalspil.felter.Hjem;
+import com.example.asger.nepalspil.felter.Lektiehjaelp;
 import com.example.asger.nepalspil.felter.Marked;
 import com.example.asger.nepalspil.felter.Skole;
 import com.example.asger.nepalspil.felter.Toejbutik;
@@ -80,7 +81,7 @@ public class SpillePlade extends AppCompatActivity {
 
            @Override
            public void onClick(View v) {
-               moveTo(1,Farm.class,felt1.getLayoutParams());
+               moveTo(1,Lektiehjaelp.class,felt1.getLayoutParams());
 
 
 
