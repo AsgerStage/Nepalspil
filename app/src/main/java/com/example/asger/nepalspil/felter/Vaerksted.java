@@ -33,7 +33,7 @@ public class Vaerksted extends AppCompatActivity {
         Button back = (Button) findViewById(R.id.backButton);
 
         fieldinfo.setText("Velkommen til værkstedet! Her kan man arbejde eller købe en cykel.");
-        playerinfo.setText("Navn: "+spiller.getNavn()+"\n hej: "+spiller.getHp()+"\n Penge: "+spiller.getPenge()+"\n Viden: "+spiller.getViden()+"\n Klassetrin: "+spiller.getKlassetrin()+"\n Tid: "+spiller.getTid());
+        playerinfo.setText("Navn: "+spiller.getNavn()+"\n mad: "+spiller.getHp()+"\n Penge: "+spiller.getPenge()+"\n Viden: "+spiller.getViden()+"\n Klassetrin: "+spiller.getKlassetrin()+"\n Tid: "+spiller.getTid());
 
         work.setOnClickListener(new View.OnClickListener() {
 
@@ -99,7 +99,7 @@ public class Vaerksted extends AppCompatActivity {
 
     public String updateInfo(){
         SpillePlade.updateInfobox();
-        return "Navn: "+spiller.getNavn()+"\n hej: "+spiller.getHp()+"\n Penge: "+spiller.getPenge()+"\n Viden: "+spiller.getViden()+"\n Klassetrin: "+spiller.getKlassetrin()+"\n Tid: "+spiller.getTid();
+        return "Navn: "+spiller.getNavn()+"\n mad: "+spiller.getHp()+"\n Penge: "+spiller.getPenge()+"\n Viden: "+spiller.getViden()+"\n Klassetrin: "+spiller.getKlassetrin()+"\n Tid: "+spiller.getTid();
     }
 
 }
