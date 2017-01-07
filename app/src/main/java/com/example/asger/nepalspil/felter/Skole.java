@@ -3,6 +3,8 @@ package com.example.asger.nepalspil.felter;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import com.example.asger.nepalspil.R;
+import com.example.asger.nepalspil.models.SpillePlade;
+
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -75,6 +77,7 @@ public class Skole extends AppCompatActivity {
         if (hasLearned()) {
             spiller.setViden(spiller.getViden() + 1);
             spiller.setTid(spiller.getTid() - 1);
+            SpillePlade.updateInfobox();
             return true;
         } else {
             spiller.setTid(spiller.getTid() - 1);
@@ -93,6 +96,7 @@ public class Skole extends AppCompatActivity {
         if (spiller.getTid()>0) {
             spiller.setTid(spiller.getTid() - 1);
             spiller.setHp(spiller.getHp() + 1);
+            SpillePlade.updateInfobox();
         }else{
             schoolText.setText("");
         }

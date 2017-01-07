@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.example.asger.nepalspil.R;
+import com.example.asger.nepalspil.models.SpillePlade;
 import com.example.asger.nepalspil.models.Spiller;
 
 import static com.example.asger.nepalspil.activities.MainActivity.spiller;
@@ -60,6 +61,7 @@ public class Lektiehjaelp extends Fragment {
         if (gemtViden > 0){
             s.setViden(s.getViden()+1);
             s.setTid(s.getTid()-1);
+            SpillePlade.updateInfobox();
         }
         else
               learn.setText("Du har ikke brug for lektiehjælp.");

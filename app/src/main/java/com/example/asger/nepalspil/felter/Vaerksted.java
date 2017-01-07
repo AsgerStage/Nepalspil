@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.asger.nepalspil.R;
+import com.example.asger.nepalspil.models.SpillePlade;
 
 import java.io.IOException;
 
@@ -97,6 +98,7 @@ public class Vaerksted extends AppCompatActivity {
     }
 
     public String updateInfo(){
+        SpillePlade.updateInfobox();
         return "Navn: "+spiller.getNavn()+"\n Mad: "+spiller.getHp()+"\n Penge: "+spiller.getPenge()+"\n Viden: "+spiller.getViden()+"\n Klassetrin: "+spiller.getKlassetrin()+"\n Tid: "+spiller.getTid();
     }
 

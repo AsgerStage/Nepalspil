@@ -11,6 +11,7 @@ import android.widget.TextView;
 import static com.example.asger.nepalspil.activities.MainActivity.spiller;
 
 import com.example.asger.nepalspil.R;
+import com.example.asger.nepalspil.models.SpillePlade;
 
 import java.io.IOException;
 
@@ -100,6 +101,7 @@ public class Marked extends AppCompatActivity {
     }
 
     public String updateInfo(){
+        SpillePlade.updateInfobox();
         return "Navn: "+spiller.getNavn()+"\n Mad: "+spiller.getHp()+"\n Penge: "+spiller.getPenge()+"\n Viden: "+spiller.getViden()+"\n Klassetrin: "+spiller.getKlassetrin()+"\n Tid: "+spiller.getTid();
 
     }
