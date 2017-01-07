@@ -24,21 +24,21 @@
         android:layout_height="79dp">
 
         <Button
-            android:text="Work"
+            android:text="Arbejd"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/workButton"
             android:layout_weight="1" />
 
         <Button
-            android:text="Eat"
+            android:text="Spis"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/eatButton"
             android:layout_weight="1" />
 
         <Button
-            android:text="Back"
+            android:text="Tilbage"
             android:layout_height="wrap_content"
             android:id="@+id/backButton"
             android:layout_weight="1"

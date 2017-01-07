@@ -1,6 +1,9 @@
 package com.example.asger.nepalspil.models;
 
 import android.util.Log;
+import android.widget.Toast;
+
+import com.example.asger.nepalspil.activities.MainActivity;
 
 /**
  * Created by Asger on 21-11-2016.
@@ -13,7 +16,7 @@ public class Spiller {
     private int hp;
     private int viden;
     private int klassetrin;
-    private boolean sex;
+    public boolean sex;
     private int tid;
     private int runde;
     private boolean bike;

@@ -1,4 +1,4 @@
-package com.example.asger.nepalspil.fragments;
+package com.example.asger.nepalspil.felter;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -6,29 +6,28 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import static com.example.asger.nepalspil.activities.MainActivity.spiller;
-
 import com.example.asger.nepalspil.R;
-import com.example.asger.nepalspil.models.SpillePlade;
+
+import static com.example.asger.nepalspil.activities.MainActivity.spiller;
 
 
 /**
  * Created by Asger on 21-11-2016.
  */
 
-public class Marked extends AppCompatActivity {
+public class Farm extends AppCompatActivity {
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.marked);
+        setContentView(R.layout.farm);
 
         final TextView fieldinfo = (TextView) findViewById(R.id.fieldinfo);
         final TextView playerinfo = (TextView) findViewById(R.id.playerinfo);
 
         Button work = (Button) findViewById(R.id.workButton);
-        Button eat = (Button) findViewById(R.id.eatButton);
         Button back = (Button) findViewById(R.id.backButton);
 
-        fieldinfo.setText("Dette er market. Her kan man arbejde og tjene penge, eller man kan købe mad.");
+        fieldinfo.setText("Dette er farmen. Her kan man kun arbejde.");
         playerinfo.setText("Navn: "+spiller.getNavn()+"\n Mad: "+spiller.getHp()+"\n Penge: "+spiller.getPenge()+"\n Viden: "+spiller.getViden()+"\n Klassetrin: "+spiller.getKlassetrin()+"\n Tid: "+spiller.getTid());
 
         work.setOnClickListener(new View.OnClickListener() {
@@ -44,43 +43,21 @@ public class Marked extends AppCompatActivity {
             }
         });
 
-        eat.setOnClickListener(new View.OnClickListener(){
-
-            public void onClick(View v){
-                if(spiller.getPenge()>=5){
-                    eat();
-                    playerinfo.setText(updateInfo());
-
-                }
-                else{
-
-                }
-            }
-        });
-
         back.setOnClickListener(new View.OnClickListener(){
 
             public void onClick(View v){
                 finish();
-
             }
         });
     }
 
     public void work(){
         spiller.setTid(spiller.getTid()-2);
-        spiller.setPenge(spiller.getPenge()+10);
-    }
-
-    public void eat(){
-        spiller.setPenge(spiller.getPenge()-5);
-        spiller.setHp(spiller.getHp()+10);
+        spiller.setPenge(spiller.getPenge()+5);
     }
 
     public String updateInfo(){
-        SpillePlade.updateInfobox();
         return "Navn: "+spiller.getNavn()+"\n Mad: "+spiller.getHp()+"\n Penge: "+spiller.getPenge()+"\n Viden: "+spiller.getViden()+"\n Klassetrin: "+spiller.getKlassetrin()+"\n Tid: "+spiller.getTid();
-
     }
 
 }

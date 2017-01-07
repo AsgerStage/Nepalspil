@@ -29,7 +29,7 @@
         </activity>
 
         <activity
-            android:name=".fragments.Farm"
+            android:name=".felter.Farm"
             android:label="Farm"
             android:screenOrientation="landscape">
             <intent-filter>
@@ -39,7 +39,7 @@
         </activity>
 
         <activity
-            android:name=".fragments.Toejbutik"
+            android:name=".felter.Toejbutik"
             android:label="Toejbutik"
             android:screenOrientation="landscape">
             <intent-filter>
@@ -49,7 +49,7 @@
         </activity>
 
         <activity
-            android:name=".fragments.Marked"
+            android:name=".felter.Marked"
             android:label="Marked"
             android:screenOrientation="landscape">
             <intent-filter>
@@ -59,7 +59,7 @@
         </activity>
 
         <activity
-            android:name=".fragments.Skole"
+            android:name=".felter.Skole"
             android:label="Skole"
             android:screenOrientation="landscape">
             <intent-filter>
@@ -69,7 +69,7 @@
         </activity>
 
         <activity
-            android:name=".fragments.Vaerksted"
+            android:name=".felter.Vaerksted"
             android:label="Vaerksted"
             android:screenOrientation="landscape">
             <intent-filter>
@@ -79,11 +79,21 @@
         </activity>
 
         <activity
-            android:name=".fragments.Hjem"
+            android:name=".felter.Hjem"
             android:label="Hjem"
             android:screenOrientation="landscape">
             <intent-filter>
                 <action android:name="android.intent.action.HJEM"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".felter.Boghandel"
+            android:label="Boghandel"
+            android:screenOrientation="landscape">
+            <intent-filter>
+                <action android:name="android.intent.action.BOGHANDEL"/>
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
         </activity>

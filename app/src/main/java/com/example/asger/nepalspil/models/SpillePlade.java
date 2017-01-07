@@ -1,35 +1,28 @@
 package com.example.asger.nepalspil.models;
 
 import android.content.Intent;
-import android.media.Image;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.TranslateAnimation;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.asger.nepalspil.R;
-import com.example.asger.nepalspil.fragments.Boghandel;
-import com.example.asger.nepalspil.fragments.Farm;
-import com.example.asger.nepalspil.fragments.Hjem;
-import com.example.asger.nepalspil.fragments.Lektiehjaelp;
-import com.example.asger.nepalspil.fragments.Marked;
-import com.example.asger.nepalspil.fragments.Skole;
-import com.example.asger.nepalspil.fragments.Toejbutik;
-import com.example.asger.nepalspil.fragments.Vaerksted;
+import com.example.asger.nepalspil.felter.Boghandel;
+import com.example.asger.nepalspil.felter.Farm;
+import com.example.asger.nepalspil.felter.Hjem;
+import com.example.asger.nepalspil.felter.Marked;
+import com.example.asger.nepalspil.felter.Skole;
+import com.example.asger.nepalspil.felter.Toejbutik;
+import com.example.asger.nepalspil.felter.Vaerksted;
 
 //import static com.example.asger.nepalspil.R.id.player;
-import java.util.HashMap;
 
-import static com.example.asger.nepalspil.R.id.felt1;
-import static com.example.asger.nepalspil.R.id.start;
 import static com.example.asger.nepalspil.activities.MainActivity.spiller;
 
 /**
@@ -37,9 +30,10 @@ import static com.example.asger.nepalspil.activities.MainActivity.spiller;
  */
 
 public class SpillePlade extends AppCompatActivity {
-    static TextView infobox;
-    ImageView star;
+    TextView infobox;
+    ImageView Player;
     ImageView ur;
+    ImageView unusedPlayer;
 
     ImageButton felt0;
 
@@ -48,7 +42,13 @@ public class SpillePlade extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.spilplade);
-        star= (ImageView) findViewById(R.id.imageView);
+        if(spiller.sex==true){Player=(ImageView) findViewById(R.id.kaka);
+        unusedPlayer= (ImageView) findViewById(R.id.asha);
+        }
+        else if(spiller.sex==false){Player=(ImageView) findViewById(R.id.asha);
+            unusedPlayer= (ImageView) findViewById(R.id.kaka);
+        }
+        unusedPlayer.setVisibility(View.INVISIBLE);
         infobox = (TextView) findViewById(R.id.infobox);
         ur = (ImageView) findViewById(R.id.imgUr);
         ur.setImageResource(R.drawable.ur1);
@@ -62,7 +62,7 @@ public class SpillePlade extends AppCompatActivity {
         final ImageButton felt5 = (ImageButton) findViewById(R.id.felt5);
         final ImageButton felt6 = (ImageButton) findViewById(R.id.felt6);
         final ImageButton felt7 = (ImageButton) findViewById(R.id.felt7);
-        star.setLayoutParams(felt0.getLayoutParams());
+        Player.setLayoutParams(felt0.getLayoutParams());
 
 
 
@@ -106,7 +106,7 @@ public class SpillePlade extends AppCompatActivity {
 
            @Override
            public void onClick(View v) {
-               moveTo(3,Farm.class, felt3.getLayoutParams());
+               moveTo(3,Boghandel.class, felt3.getLayoutParams());
            }
        });
 
@@ -158,7 +158,7 @@ public class SpillePlade extends AppCompatActivity {
         v.setColorFilter(android.R.color.holo_green_dark);
     }*/
 
-    public static void updateInfobox()
+    public void updateInfobox()
     {
         infobox.setText("Navn: "+spiller.getNavn()+"\n Mad: "+spiller.getHp()+"\n Penge: "+spiller.getPenge()+"\n Viden: "+spiller.getViden()+"\n Klassetrin: "+spiller.getKlassetrin()+"\n Tid: "+spiller.getTid());
     }
@@ -168,14 +168,14 @@ public class SpillePlade extends AppCompatActivity {
             Toast.makeText(SpillePlade.this, "Dagen er gået", Toast.LENGTH_SHORT).show();
             updateTimer();
             updateInfobox();
-            star.setLayoutParams(felt0.getLayoutParams());
+            Player.setLayoutParams(felt0.getLayoutParams());
         }
         else {
             final Intent intent = new Intent(SpillePlade.this, cls);
             updateTimer();
             updateInfobox();
             Log.d("Spilleplade","Height:"+params.height+" Width: "+params.width);
-            star.setLayoutParams(params);
+            Player.setLayoutParams(params);
 
 
             startActivity(intent);
