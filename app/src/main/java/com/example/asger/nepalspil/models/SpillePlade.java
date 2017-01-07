@@ -53,7 +53,7 @@ public class SpillePlade extends AppCompatActivity {
         infobox = (TextView) findViewById(R.id.infobox);
         ur = (ImageView) findViewById(R.id.imgUr);
         ur.setImageResource(R.drawable.ur1);
-       //infobox.setText("Navn: "+spiller.getNavn()+"\n Mad: "+spiller.getHp()+"\n Penge: "+spiller.getPenge()+"\n Viden: "+spiller.getViden()+"\n Klassetrin: "+spiller.getKlassetrin()+"\n Tid: "+spiller.getTid());
+       //infobox.setText("Navn: "+spiller.getNavn()+"\n mad: "+spiller.getHp()+"\n Penge: "+spiller.getPenge()+"\n Viden: "+spiller.getViden()+"\n Klassetrin: "+spiller.getKlassetrin()+"\n Tid: "+spiller.getTid());
         updateInfobox();
         felt0 = (ImageButton) findViewById(R.id.felt0);
         final ImageButton felt1 = (ImageButton) findViewById(R.id.felt1);
@@ -161,7 +161,7 @@ public class SpillePlade extends AppCompatActivity {
 
     public static void updateInfobox()
     {
-        infobox.setText("Navn: "+spiller.getNavn()+"\n Mad: "+spiller.getHp()+"\n Penge: "+spiller.getPenge()+"\n Viden: "+spiller.getViden()+"\n Klassetrin: "+spiller.getKlassetrin()+"\n Tid: "+spiller.getTid());
+        infobox.setText("Navn: "+spiller.getNavn()+"\n mad: "+spiller.getHp()+"\n Penge: "+spiller.getPenge()+"\n Viden: "+spiller.getViden()+"\n Klassetrin: "+spiller.getKlassetrin()+"\n Tid: "+spiller.getTid());
     }
 
     public void moveTo(int pos,java.lang.Class<?> cls, ViewGroup.LayoutParams params) {

@@ -4,9 +4,12 @@ import android.content.res.AssetFileDescriptor;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import static com.example.asger.nepalspil.activities.MainActivity.spiller;
 
@@ -30,11 +33,11 @@ public class Marked extends AppCompatActivity {
         final MediaPlayer mp = MediaPlayer.create(this, R.raw.cash);
 
         Button work = (Button) findViewById(R.id.workButton);
-        Button eat = (Button) findViewById(R.id.eatButton);
+        final Button eat = (Button) findViewById(R.id.eatButton);
         Button back = (Button) findViewById(R.id.backButton);
 
         fieldinfo.setText("Dette er market. Her kan man arbejde og tjene penge, eller man kan købe mad.");
-        playerinfo.setText("Navn: "+spiller.getNavn()+"\n Mad: "+spiller.getHp()+"\n Penge: "+spiller.getPenge()+"\n Viden: "+spiller.getViden()+"\n Klassetrin: "+spiller.getKlassetrin()+"\n Tid: "+spiller.getTid());
+        playerinfo.setText("Navn: "+spiller.getNavn()+"\n mad: "+spiller.getHp()+"\n Penge: "+spiller.getPenge()+"\n Viden: "+spiller.getViden()+"\n Klassetrin: "+spiller.getKlassetrin()+"\n Tid: "+spiller.getTid());
 
         work.setOnClickListener(new View.OnClickListener() {
 
@@ -72,6 +75,29 @@ public class Marked extends AppCompatActivity {
             public void onClick(View v){
                 if(spiller.getPenge()>=5){
                     eat();
+                    if(mp.isPlaying())
+                    {
+                        mp.stop();
+                    }
+                    try {
+                        mp.reset();
+                        AssetFileDescriptor afd;
+                        afd = getAssets().openFd("eat.mp3");
+                        mp.setDataSource(afd.getFileDescriptor(),afd.getStartOffset(),afd.getLength());
+                        mp.prepare();
+                        mp.start();
+                    }catch (IllegalStateException e) {
+                        e.printStackTrace();
+                    }catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    Toast t = new Toast(Marked.this);
+                    ImageView im = new ImageView(Marked.this);
+                    im.setImageResource(R.drawable.mad);
+                    t.setView(im);
+                    t.setGravity(Gravity.CENTER, 0, 0);
+                    t.show();
+                    //Toast.makeText(Marked.this, "Du har spist! +10 HP -5 Penge", Toast.LENGTH_LONG).show();
                     playerinfo.setText(updateInfo());
 
                 }
@@ -102,7 +128,7 @@ public class Marked extends AppCompatActivity {
 
     public String updateInfo(){
         SpillePlade.updateInfobox();
-        return "Navn: "+spiller.getNavn()+"\n Mad: "+spiller.getHp()+"\n Penge: "+spiller.getPenge()+"\n Viden: "+spiller.getViden()+"\n Klassetrin: "+spiller.getKlassetrin()+"\n Tid: "+spiller.getTid();
+        return "Navn: "+spiller.getNavn()+"\n mad: "+spiller.getHp()+"\n Penge: "+spiller.getPenge()+"\n Viden: "+spiller.getViden()+"\n Klassetrin: "+spiller.getKlassetrin()+"\n Tid: "+spiller.getTid();
 
     }
 
