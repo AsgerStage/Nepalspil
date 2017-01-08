@@ -14,15 +14,9 @@ import android.widget.Toast;
 import static com.example.asger.nepalspil.activities.MainActivity.spiller;
 
 import com.example.asger.nepalspil.R;
-import com.example.asger.nepalspil.activities.MainActivity;
 import com.example.asger.nepalspil.models.SpillePlade;
 
 import java.io.IOException;
-
-
-/**
- * Created by Asger on 21-11-2016.
- */
 
 public class Marked extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {

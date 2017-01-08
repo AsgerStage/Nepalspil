@@ -28,8 +28,10 @@ public class Skole extends AppCompatActivity {
         final TextView schoolText = (TextView) findViewById(R.id.schoolText);
         Button bSpis = (Button) findViewById(R.id.spis);
         Button bStuder = (Button) findViewById(R.id.Studer);
-        final Button bEksamen = (Button) findViewById(R.id.eksamen);
+        Button bEksamen = (Button) findViewById(R.id.eksamen);
+
         schoolText.setText("Velkommen til Skolen, her kan du spise, studere og tage din eksamen når tiden er.");
+
         bSpis.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
