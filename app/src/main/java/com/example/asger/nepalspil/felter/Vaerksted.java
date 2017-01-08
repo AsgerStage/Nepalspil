@@ -1,11 +1,16 @@
 package com.example.asger.nepalspil.felter;
 
+import android.content.Context;
 import android.content.res.AssetFileDescriptor;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.support.v4.view.PagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,6 +30,11 @@ public class Vaerksted extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.vaerksted);
 
+
+        ViewPager viewPager = (ViewPager) findViewById(R.id.view_pager);
+        ImagePagerAdapter adapter = new ImagePagerAdapter();
+        viewPager.setAdapter(adapter);
+
         final TextView fieldinfo = (TextView) findViewById(R.id.fieldinfo);
         final TextView playerinfo = (TextView) findViewById(R.id.playerinfo);
         final MediaPlayer mp = MediaPlayer.create(this, R.raw.cash);
@@ -32,6 +42,9 @@ public class Vaerksted extends AppCompatActivity {
         Button work = (Button) findViewById(R.id.workButton);
         Button buy = (Button) findViewById(R.id.buyBikeButton);
         Button back = (Button) findViewById(R.id.backButton);
+
+
+
 
         fieldinfo.setText("Velkommen til værkstedet! Her kan man arbejde eller købe en cykel.");
         playerinfo.setText("Navn: "+spiller.getNavn()+"\n mad: "+spiller.getHp()+"\n Penge: "+spiller.getPenge()+"\n Viden: "+spiller.getViden()+"\n Klassetrin: "+spiller.getKlassetrin()+"\n Tid: "+spiller.getTid());
@@ -89,12 +102,51 @@ public class Vaerksted extends AppCompatActivity {
         });
     }
 
+
+    private class ImagePagerAdapter extends PagerAdapter {
+        private int[] mImages = new int[] {
+                R.drawable.bike,
+                R.drawable.books,
+                R.drawable.books,
+        };
+
+        @Override
+        public int getCount() {
+            return mImages.length;
+        }
+
+        @Override
+        public boolean isViewFromObject(View view, Object object) {
+            return view == ((ImageView) object);
+        }
+
+        @Override
+        public Object instantiateItem(ViewGroup container, int position) {
+            Context context = Vaerksted.this;
+            ImageView imageView = new ImageView(context);
+            int padding = context.getResources().getDimensionPixelSize(
+                    R.dimen.padding_medium);
+            imageView.setPadding(padding, padding, padding, padding);
+            imageView.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
+            imageView.setImageResource(mImages[position]);
+            ((ViewPager) container).addView(imageView, 0);
+            return imageView;
+        }
+
+        @Override
+        public void destroyItem(ViewGroup container, int position, Object object) {
+            ((ViewPager) container).removeView((ImageView) object);
+
+        }
+    }
+
     public void work(){
         spiller.setTid(spiller.getTid()-2);
         spiller.setPenge(spiller.getPenge()+10);
     }
 
     public void buy() {
+
         if (spiller.getPenge() >= 50) {
             spiller.setPenge(spiller.getPenge() - 50);
             spiller.setBike(true);
@@ -105,5 +157,8 @@ public class Vaerksted extends AppCompatActivity {
         return "Navn: "+spiller.getNavn()+"\n mad: "+spiller.getHp()+"\n Penge: "+spiller.getPenge()+"\n Viden: "+spiller.getViden()+"\n Klassetrin: "+spiller.getKlassetrin()+"\n Tid: "+spiller.getTid();
     }
 
-}
+
+
+
+    }
 
