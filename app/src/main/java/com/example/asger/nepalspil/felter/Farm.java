@@ -1,5 +1,7 @@
 package com.example.asger.nepalspil.felter;
 
+import android.content.res.AssetFileDescriptor;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -8,6 +10,8 @@ import android.widget.TextView;
 
 import com.example.asger.nepalspil.R;
 import com.example.asger.nepalspil.models.SpillePlade;
+
+import java.io.IOException;
 
 import static com.example.asger.nepalspil.activities.MainActivity.spiller;
 
@@ -24,6 +28,7 @@ public class Farm extends AppCompatActivity {
 
         final TextView fieldinfo = (TextView) findViewById(R.id.fieldinfo);
         final TextView playerinfo = (TextView) findViewById(R.id.playerinfo);
+        final MediaPlayer mp = MediaPlayer.create(this, R.raw.cash);
 
         Button work = (Button) findViewById(R.id.workButton);
         Button back = (Button) findViewById(R.id.backButton);
@@ -37,6 +42,24 @@ public class Farm extends AppCompatActivity {
                 if (spiller.getTid() >= 2) {
                     work();
                     playerinfo.setText(updateInfo());
+
+                    if(mp.isPlaying())
+                    {
+                        mp.stop();
+                    }
+                    try {
+                        mp.reset();
+                        AssetFileDescriptor afd;
+                        afd = getAssets().openFd("cash.mp3");
+                        mp.setDataSource(afd.getFileDescriptor(),afd.getStartOffset(),afd.getLength());
+                        mp.prepare();
+                        mp.start();
+                    }catch (IllegalStateException e) {
+                        e.printStackTrace();
+                    }catch (IOException e) {
+                        e.printStackTrace();
+                    }
+
                 }
                 else{
 

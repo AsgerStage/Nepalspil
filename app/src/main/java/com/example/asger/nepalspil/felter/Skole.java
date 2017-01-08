@@ -1,11 +1,15 @@
 package com.example.asger.nepalspil.felter;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import com.example.asger.nepalspil.R;
+import com.example.asger.nepalspil.activities.MainActivity;
 import com.example.asger.nepalspil.models.SpillePlade;
+import com.github.jinatonic.confetti.CommonConfetti;
 
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 import static com.example.asger.nepalspil.activities.MainActivity.spiller;
@@ -24,7 +28,7 @@ public class Skole extends AppCompatActivity {
         final TextView schoolText = (TextView) findViewById(R.id.schoolText);
         Button bSpis = (Button) findViewById(R.id.spis);
         Button bStuder = (Button) findViewById(R.id.Studer);
-        Button bEksamen = (Button) findViewById(R.id.eksamen);
+        final Button bEksamen = (Button) findViewById(R.id.eksamen);
         schoolText.setText("Velkommen til Skolen, her kan du spise, studere og tage din eksamen når tiden er.");
         bSpis.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,6 +66,7 @@ public class Skole extends AppCompatActivity {
                 } else {
                     schoolText.setText("Held og Lykke!");
                     setContentView(R.layout.eksamen);
+
                 }
 
             }

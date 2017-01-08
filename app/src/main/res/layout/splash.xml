@@ -4,6 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:fab="http://schemas.android.com/apk/res-auto"
 
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -17,7 +18,7 @@
 
 
         <LinearLayout
-            android:orientation="vertical"
+            android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@+id/multiple_actions"
@@ -53,6 +54,7 @@
             fab:fab_addButtonColorPressed="@color/white_pressed"
             fab:fab_addButtonPlusIconColor="@color/half_black"
             fab:fab_labelStyle="@style/menu_labels_style"
+            fab:fab_menuIcon="@drawable/ur1"
             android:layout_marginRight="5dp"
             android:layout_width="match_parent"
             android:layout_alignParentBottom="true"
@@ -62,6 +64,7 @@
                 android:id="@+id/action_about"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                fab:fab_menuIcon="@drawable/ur1"
                 fab:fab_colorNormal="@color/white"
                 fab:fab_title="About"
                 fab:fab_colorPressed="@color/white_pressed"/>
@@ -72,7 +75,8 @@
                 android:layout_height="wrap_content"
                 fab:fab_colorNormal="@color/white"
                 fab:fab_title="Help"
-                fab:fab_colorPressed="@color/white_pressed"/>
+                fab:fab_colorPressed="@color/white_pressed"
+                />
 
             <com.getbase.floatingactionbutton.FloatingActionButton
                 android:id="@+id/action_settings"
@@ -80,7 +84,8 @@
                 android:layout_height="wrap_content"
                 fab:fab_colorNormal="@color/white"
                 fab:fab_title="Settings"
-                fab:fab_colorPressed="@color/white_pressed"/>
+                fab:fab_colorPressed="@color/white_pressed"
+                app:srcCompat="@android:drawable/ic_menu_preferences" />
 
         </com.getbase.floatingactionbutton.FloatingActionsMenu>
 

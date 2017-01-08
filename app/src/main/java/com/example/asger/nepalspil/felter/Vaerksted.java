@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.asger.nepalspil.R;
 import com.example.asger.nepalspil.models.SpillePlade;
@@ -73,7 +74,8 @@ public class Vaerksted extends AppCompatActivity {
                     buy();
                     playerinfo.setText(updateInfo());
                 }
-                else{
+                else if(spiller.getPenge() <50){
+                    Toast.makeText(Vaerksted.this,"Du har ikke råd til denne genstand", Toast.LENGTH_SHORT).show();
 
                 }
             }
@@ -92,11 +94,12 @@ public class Vaerksted extends AppCompatActivity {
         spiller.setPenge(spiller.getPenge()+10);
     }
 
-    public void buy(){
-        spiller.setPenge(spiller.getPenge()-500);
-        spiller.setBike(true);
+    public void buy() {
+        if (spiller.getPenge() >= 50) {
+            spiller.setPenge(spiller.getPenge() - 50);
+            spiller.setBike(true);
+        }
     }
-
     public String updateInfo(){
         SpillePlade.updateInfobox();
         return "Navn: "+spiller.getNavn()+"\n mad: "+spiller.getHp()+"\n Penge: "+spiller.getPenge()+"\n Viden: "+spiller.getViden()+"\n Klassetrin: "+spiller.getKlassetrin()+"\n Tid: "+spiller.getTid();

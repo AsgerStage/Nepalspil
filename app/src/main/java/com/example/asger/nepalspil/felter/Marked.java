@@ -14,6 +14,7 @@ import android.widget.Toast;
 import static com.example.asger.nepalspil.activities.MainActivity.spiller;
 
 import com.example.asger.nepalspil.R;
+import com.example.asger.nepalspil.activities.MainActivity;
 import com.example.asger.nepalspil.models.SpillePlade;
 
 import java.io.IOException;
@@ -42,7 +43,7 @@ public class Marked extends AppCompatActivity {
         work.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
-                if (spiller.getTid() >= 2) {
+                if (spiller.getTid() >= 2 && spiller.getKlassetrin() >=4) {
                     work();
 
                     if(mp.isPlaying())
@@ -64,8 +65,11 @@ public class Marked extends AppCompatActivity {
 
                     playerinfo.setText(updateInfo());
                 }
-                else{
+                else if (spiller.getTid() <2){
+                    Toast.makeText(Marked.this,"Du har ikke mere tid til at arbejde", Toast.LENGTH_SHORT).show();
 
+                }else{
+                    Toast.makeText(Marked.this,"Du har ikke uddannelse nok til at arbejde her", Toast.LENGTH_SHORT).show();
                 }
             }
         });
