@@ -3,6 +3,7 @@ package com.example.asger.nepalspil.felter;
 import android.content.res.AssetFileDescriptor;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
 import android.view.View;
@@ -60,10 +61,16 @@ public class Marked extends AppCompatActivity {
                     playerinfo.setText(updateInfo());
                 }
                 else if (spiller.getTid() <2){
-                    Toast.makeText(Marked.this,"Du har ikke mere tid til at arbejde", Toast.LENGTH_SHORT).show();
+                    AlertDialog.Builder dialog = new AlertDialog.Builder(Marked.this);
+                    dialog.setTitle("Intet tid!");
+                    dialog.setMessage("Du har ikke nok tid til at arbejde");
+                    dialog.show();
 
                 }else{
-                    Toast.makeText(Marked.this,"Du har ikke uddannelse nok til at arbejde her", Toast.LENGTH_SHORT).show();
+                    AlertDialog.Builder dialog = new AlertDialog.Builder(Marked.this);
+                    dialog.setTitle("Ikke nok viden!");
+                    dialog.setMessage("Du har ikke uddannelse nok til at arbejde her");
+                    dialog.show();
                 }
             }
         });
@@ -100,7 +107,10 @@ public class Marked extends AppCompatActivity {
 
                 }
                 else{
-
+                    AlertDialog.Builder dialog = new AlertDialog.Builder(Marked.this);
+                    dialog.setTitle("Ingen penge!");
+                    dialog.setMessage("Du har ikke nok penge til at spise");
+                    dialog.show();
                 }
             }
         });
