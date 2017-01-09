@@ -4,6 +4,7 @@ import android.content.res.AssetFileDescriptor;
 import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import com.example.asger.nepalspil.R;
 import com.example.asger.nepalspil.activities.MainActivity;
@@ -61,7 +62,10 @@ public class Skole extends AppCompatActivity {
                         e.printStackTrace();
                     }
                 } else {
-
+                    AlertDialog.Builder dialog = new AlertDialog.Builder(Skole.this);
+                    dialog.setTitle("Ikke nok tid!");
+                    dialog.setMessage("Du har ikke nok tid til at spise");
+                    dialog.show();
                 }
             }
         });
@@ -74,9 +78,18 @@ public class Skole extends AppCompatActivity {
                         schoolText.setText("Du har modtaget 1 viden!");
                         System.out.println(spiller.getViden());
                     } else {
-                        schoolText.setText("Du kunne ikke forstå undervisningen, så din viden kan opnås hos lektiehjælpen.");
-                        System.out.println(spiller.getViden());
+                        AlertDialog.Builder dialog = new AlertDialog.Builder(Skole.this);
+                        dialog.setTitle("Lektiehjælp!");
+                        dialog.setMessage("Du kunne ikke forstå undervisningen, så din viden kan opnås hos lektiehjælpen.");
+                        dialog.show();
+                        //schoolText.setText("Du kunne ikke forstå undervisningen, så din viden kan opnås hos lektiehjælpen.");
                     }
+                }
+                else{
+                    AlertDialog.Builder dialog = new AlertDialog.Builder(Skole.this);
+                    dialog.setTitle("Ikke nok tid!");
+                    dialog.setMessage("Du har ikke nok tid til at studere.");
+                    dialog.show();
                 }
             }
         });
@@ -84,12 +97,17 @@ public class Skole extends AppCompatActivity {
         bEksamen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (!kanStartEksamen()) {
-                    schoolText.setText("Du har desværre ikke nok viden til at kunne gå til eksamen." +
-                            "\n Få viden af at gå i skole, og tag eksamen næste år!");
-                } else {
+                if (kanStartEksamen()) {
                     schoolText.setText("Held og Lykke!");
                     setContentView(R.layout.eksamen);
+                } else {
+                    AlertDialog.Builder dialog = new AlertDialog.Builder(Skole.this);
+                    dialog.setTitle("Ikke nok viden!");
+                    dialog.setMessage("Du har ikke nok viden til at starte eksamenen! Du skal have mindst " + vidensKrav + " for at starte eksamenen.");
+                    dialog.show();
+                    //schoolText.setText("Du har desværre ikke nok viden til at kunne gå til eksamen." +
+                            //"\n Få viden af at gå i skole, og tag eksamen næste år!");
+
 
                 }
 
@@ -133,10 +151,10 @@ public class Skole extends AppCompatActivity {
     }
 
     public boolean kanStartEksamen(){
-        if ((spiller.getViden() !=  vidensKrav ) || (spiller.getViden() > vidensKrav)) {
-            return false;
+        if ((spiller.getViden() >= vidensKrav)) {
+            return true;
         } else
-           return true;
+           return false;
     }
 
 
