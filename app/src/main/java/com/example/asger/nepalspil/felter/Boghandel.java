@@ -32,24 +32,23 @@ public class Boghandel extends AppCompatActivity {
                     System.out.println("Penge:" + spiller.getPenge());
                     System.out.println("Tid: " + spiller.getTid());
                     //playerinfo.setText(updateInfo());
-                }
-                else{
+                } else {
 
                 }
             }
         });
 
-        back.setOnClickListener(new View.OnClickListener(){
+        back.setOnClickListener(new View.OnClickListener() {
 
-            public void onClick(View v){
+            public void onClick(View v) {
                 finish();
             }
         });
     }
 
-    private static void work(){
-        spiller.setTid(spiller.getTid()-2);
-        spiller.setPenge(spiller.getPenge()+10);
+    private static void work() {
+        spiller.setTid(spiller.getTid() - 2);
+        spiller.setPenge(spiller.getPenge() + 10);
     }
 
     private void buyBook() {

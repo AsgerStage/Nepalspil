@@ -34,7 +34,7 @@ public class Farm extends AppCompatActivity {
         Button back = (Button) findViewById(R.id.backButton);
 
         fieldinfo.setText("Dette er farmen. Her kan man kun arbejde.");
-        playerinfo.setText("Navn: "+spiller.getNavn()+"\n mad: "+spiller.getHp()+"\n Penge: "+spiller.getPenge()+"\n Viden: "+spiller.getViden()+"\n Klassetrin: "+spiller.getKlassetrin()+"\n Tid: "+spiller.getTid());
+        playerinfo.setText("Navn: " + spiller.getNavn() + "\n mad: " + spiller.getHp() + "\n Penge: " + spiller.getPenge() + "\n Viden: " + spiller.getViden() + "\n Klassetrin: " + spiller.getKlassetrin() + "\n Tid: " + spiller.getTid());
 
         work.setOnClickListener(new View.OnClickListener() {
 
@@ -43,46 +43,44 @@ public class Farm extends AppCompatActivity {
                     work();
                     playerinfo.setText(updateInfo());
 
-                    if(mp.isPlaying())
-                    {
+                    if (mp.isPlaying()) {
                         mp.stop();
                     }
                     try {
                         mp.reset();
                         AssetFileDescriptor afd;
                         afd = getAssets().openFd("cash.mp3");
-                        mp.setDataSource(afd.getFileDescriptor(),afd.getStartOffset(),afd.getLength());
+                        mp.setDataSource(afd.getFileDescriptor(), afd.getStartOffset(), afd.getLength());
                         mp.prepare();
                         mp.start();
-                    }catch (IllegalStateException e) {
+                    } catch (IllegalStateException e) {
                         e.printStackTrace();
-                    }catch (IOException e) {
+                    } catch (IOException e) {
                         e.printStackTrace();
                     }
 
-                }
-                else{
+                } else {
 
                 }
             }
         });
 
-        back.setOnClickListener(new View.OnClickListener(){
+        back.setOnClickListener(new View.OnClickListener() {
 
-            public void onClick(View v){
+            public void onClick(View v) {
                 finish();
             }
         });
     }
 
-    public void work(){
-        spiller.setTid(spiller.getTid()-2);
-        spiller.setPenge(spiller.getPenge()+5);
+    public void work() {
+        spiller.setTid(spiller.getTid() - 2);
+        spiller.setPenge(spiller.getPenge() + 5);
     }
 
-    public String updateInfo(){
+    public String updateInfo() {
         SpillePlade.updateInfobox();
-        return "Navn: "+spiller.getNavn()+"\n mad: "+spiller.getHp()+"\n Penge: "+spiller.getPenge()+"\n Viden: "+spiller.getViden()+"\n Klassetrin: "+spiller.getKlassetrin()+"\n Tid: "+spiller.getTid();
+        return "Navn: " + spiller.getNavn() + "\n mad: " + spiller.getHp() + "\n Penge: " + spiller.getPenge() + "\n Viden: " + spiller.getViden() + "\n Klassetrin: " + spiller.getKlassetrin() + "\n Tid: " + spiller.getTid();
     }
 
 }

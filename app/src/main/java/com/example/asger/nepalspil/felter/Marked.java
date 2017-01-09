@@ -33,40 +33,38 @@ public class Marked extends AppCompatActivity {
         Button back = (Button) findViewById(R.id.backButton);
 
         fieldinfo.setText("Dette er market. Her kan man arbejde og tjene penge, eller man kan købe mad.");
-        playerinfo.setText("Navn: "+spiller.getNavn()+"\n mad: "+spiller.getHp()+"\n Penge: "+spiller.getPenge()+"\n Viden: "+spiller.getViden()+"\n Klassetrin: "+spiller.getKlassetrin()+"\n Tid: "+spiller.getTid());
+        playerinfo.setText("Navn: " + spiller.getNavn() + "\n mad: " + spiller.getHp() + "\n Penge: " + spiller.getPenge() + "\n Viden: " + spiller.getViden() + "\n Klassetrin: " + spiller.getKlassetrin() + "\n Tid: " + spiller.getTid());
 
         work.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
-                if (spiller.getTid() >= 2 && spiller.getKlassetrin() >=4) {
+                if (spiller.getTid() >= 2 && spiller.getKlassetrin() >= 4) {
                     work();
 
-                    if(mp.isPlaying())
-                    {
+                    if (mp.isPlaying()) {
                         mp.stop();
                     }
                     try {
                         mp.reset();
                         AssetFileDescriptor afd;
                         afd = getAssets().openFd("cash.mp3");
-                        mp.setDataSource(afd.getFileDescriptor(),afd.getStartOffset(),afd.getLength());
+                        mp.setDataSource(afd.getFileDescriptor(), afd.getStartOffset(), afd.getLength());
                         mp.prepare();
                         mp.start();
-                    }catch (IllegalStateException e) {
+                    } catch (IllegalStateException e) {
                         e.printStackTrace();
-                    }catch (IOException e) {
+                    } catch (IOException e) {
                         e.printStackTrace();
                     }
 
                     playerinfo.setText(updateInfo());
-                }
-                else if (spiller.getTid() <2){
+                } else if (spiller.getTid() < 2) {
                     AlertDialog.Builder dialog = new AlertDialog.Builder(Marked.this);
                     dialog.setTitle("Intet tid!");
                     dialog.setMessage("Du har ikke nok tid til at arbejde");
                     dialog.show();
 
-                }else{
+                } else {
                     AlertDialog.Builder dialog = new AlertDialog.Builder(Marked.this);
                     dialog.setTitle("Ikke nok viden!");
                     dialog.setMessage("Du har ikke uddannelse nok til at arbejde her");
@@ -75,25 +73,24 @@ public class Marked extends AppCompatActivity {
             }
         });
 
-        eat.setOnClickListener(new View.OnClickListener(){
+        eat.setOnClickListener(new View.OnClickListener() {
 
-            public void onClick(View v){
-                if(spiller.getPenge()>=5){
+            public void onClick(View v) {
+                if (spiller.getPenge() >= 5) {
                     eat();
-                    if(mp.isPlaying())
-                    {
+                    if (mp.isPlaying()) {
                         mp.stop();
                     }
                     try {
                         mp.reset();
                         AssetFileDescriptor afd;
                         afd = getAssets().openFd("eat.mp3");
-                        mp.setDataSource(afd.getFileDescriptor(),afd.getStartOffset(),afd.getLength());
+                        mp.setDataSource(afd.getFileDescriptor(), afd.getStartOffset(), afd.getLength());
                         mp.prepare();
                         mp.start();
-                    }catch (IllegalStateException e) {
+                    } catch (IllegalStateException e) {
                         e.printStackTrace();
-                    }catch (IOException e) {
+                    } catch (IOException e) {
                         e.printStackTrace();
                     }
                     Toast t = new Toast(Marked.this);
@@ -105,8 +102,7 @@ public class Marked extends AppCompatActivity {
                     //Toast.makeText(Marked.this, "Du har spist! +10 HP -5 Penge", Toast.LENGTH_LONG).show();
                     playerinfo.setText(updateInfo());
 
-                }
-                else{
+                } else {
                     AlertDialog.Builder dialog = new AlertDialog.Builder(Marked.this);
                     dialog.setTitle("Ingen penge!");
                     dialog.setMessage("Du har ikke nok penge til at spise");
@@ -115,28 +111,28 @@ public class Marked extends AppCompatActivity {
             }
         });
 
-        back.setOnClickListener(new View.OnClickListener(){
+        back.setOnClickListener(new View.OnClickListener() {
 
-            public void onClick(View v){
+            public void onClick(View v) {
                 finish();
 
             }
         });
     }
 
-    public void work(){
-        spiller.setTid(spiller.getTid()-2);
-        spiller.setPenge(spiller.getPenge()+10);
+    public void work() {
+        spiller.setTid(spiller.getTid() - 2);
+        spiller.setPenge(spiller.getPenge() + 10);
     }
 
-    public void eat(){
-        spiller.setPenge(spiller.getPenge()-5);
-        spiller.setHp(spiller.getHp()+10);
+    public void eat() {
+        spiller.setPenge(spiller.getPenge() - 5);
+        spiller.setHp(spiller.getHp() + 10);
     }
 
-    public String updateInfo(){
+    public String updateInfo() {
         SpillePlade.updateInfobox();
-        return "Navn: "+spiller.getNavn()+"\n mad: "+spiller.getHp()+"\n Penge: "+spiller.getPenge()+"\n Viden: "+spiller.getViden()+"\n Klassetrin: "+spiller.getKlassetrin()+"\n Tid: "+spiller.getTid();
+        return "Navn: " + spiller.getNavn() + "\n mad: " + spiller.getHp() + "\n Penge: " + spiller.getPenge() + "\n Viden: " + spiller.getViden() + "\n Klassetrin: " + spiller.getKlassetrin() + "\n Tid: " + spiller.getTid();
 
     }
 

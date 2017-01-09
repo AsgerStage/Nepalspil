@@ -43,17 +43,18 @@ public class SpillePlade extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.spilplade);
-        if(spiller.sex==true){Player=(ImageView) findViewById(R.id.kaka);
-        unusedPlayer= (ImageView) findViewById(R.id.asha);
-        }
-        else if(spiller.sex==false){Player=(ImageView) findViewById(R.id.asha);
-            unusedPlayer= (ImageView) findViewById(R.id.kaka);
+        if (spiller.sex == true) {
+            Player = (ImageView) findViewById(R.id.kaka);
+            unusedPlayer = (ImageView) findViewById(R.id.asha);
+        } else if (spiller.sex == false) {
+            Player = (ImageView) findViewById(R.id.asha);
+            unusedPlayer = (ImageView) findViewById(R.id.kaka);
         }
         unusedPlayer.setVisibility(View.INVISIBLE);
         infobox = (TextView) findViewById(R.id.infobox);
         ur = (ImageView) findViewById(R.id.imgUr);
         ur.setImageResource(R.drawable.ur1);
-       //infobox.setText("Navn: "+spiller.getNavn()+"\n mad: "+spiller.getHp()+"\n Penge: "+spiller.getPenge()+"\n Viden: "+spiller.getViden()+"\n Klassetrin: "+spiller.getKlassetrin()+"\n Tid: "+spiller.getTid());
+        //infobox.setText("Navn: "+spiller.getNavn()+"\n mad: "+spiller.getHp()+"\n Penge: "+spiller.getPenge()+"\n Viden: "+spiller.getViden()+"\n Klassetrin: "+spiller.getKlassetrin()+"\n Tid: "+spiller.getTid());
         updateInfobox();
         felt0 = (ImageButton) findViewById(R.id.felt0);
         final ImageButton felt1 = (ImageButton) findViewById(R.id.felt1);
@@ -66,22 +67,20 @@ public class SpillePlade extends AppCompatActivity {
         Player.setLayoutParams(felt0.getLayoutParams());
 
 
-
-
         felt0.setOnClickListener(new View.OnClickListener() {
 
-           @Override
-           public void onClick(View v) {
-               moveTo(0,Hjem.class,felt0.getLayoutParams());
+            @Override
+            public void onClick(View v) {
+                moveTo(0, Hjem.class, felt0.getLayoutParams());
             }
-       });
+        });
 
 
-       felt1.setOnClickListener(new View.OnClickListener() {
+        felt1.setOnClickListener(new View.OnClickListener() {
 
-           @Override
-           public void onClick(View v) {
-               moveTo(1,Lektiehjaelp.class,felt1.getLayoutParams());
+            @Override
+            public void onClick(View v) {
+                moveTo(1, Lektiehjaelp.class, felt1.getLayoutParams());
 
 
 
@@ -92,60 +91,60 @@ public class SpillePlade extends AppCompatActivity {
                animation.setFillAfter(true);
 
                star.startAnimation(animation);  // start animation*/
-           }
-       });
+            }
+        });
 
-       felt2.setOnClickListener(new View.OnClickListener() {
+        felt2.setOnClickListener(new View.OnClickListener() {
 
-           @Override
-           public void onClick(View v) {
-               moveTo(2,Vaerksted.class, felt2.getLayoutParams());
-           }
-       });
+            @Override
+            public void onClick(View v) {
+                moveTo(2, Vaerksted.class, felt2.getLayoutParams());
+            }
+        });
 
-       felt3.setOnClickListener(new View.OnClickListener() {
+        felt3.setOnClickListener(new View.OnClickListener() {
 
-           @Override
-           public void onClick(View v) {
-               moveTo(3,Boghandel.class, felt3.getLayoutParams());
-           }
-       });
+            @Override
+            public void onClick(View v) {
+                moveTo(3, Boghandel.class, felt3.getLayoutParams());
+            }
+        });
 
-       felt4.setOnClickListener(new View.OnClickListener() {
+        felt4.setOnClickListener(new View.OnClickListener() {
 
-           @Override
-           public void onClick(View v) {
-               moveTo(4,Skole.class, felt4.getLayoutParams());
-           }
-       });
+            @Override
+            public void onClick(View v) {
+                moveTo(4, Skole.class, felt4.getLayoutParams());
+            }
+        });
 
-       felt5.setOnClickListener(new View.OnClickListener() {
+        felt5.setOnClickListener(new View.OnClickListener() {
 
-           @Override
-           public void onClick(View v) {
-               moveTo(5,Farm.class,felt5.getLayoutParams());
-           }
-       });
+            @Override
+            public void onClick(View v) {
+                moveTo(5, Farm.class, felt5.getLayoutParams());
+            }
+        });
 
-       felt6.setOnClickListener(new View.OnClickListener() {
+        felt6.setOnClickListener(new View.OnClickListener() {
 
-           @Override
-           public void onClick(View v) {
-               moveTo(6,Marked.class,felt6.getLayoutParams());
-           }
-       });
+            @Override
+            public void onClick(View v) {
+                moveTo(6, Marked.class, felt6.getLayoutParams());
+            }
+        });
 
-       felt7.setOnClickListener(new View.OnClickListener() {
+        felt7.setOnClickListener(new View.OnClickListener() {
 
-           @Override
-           public void onClick(View v) {
-              moveTo(7,Toejbutik.class,felt7.getLayoutParams());
+            @Override
+            public void onClick(View v) {
+                moveTo(7, Toejbutik.class, felt7.getLayoutParams());
 
 
-           }
-       });
+            }
+        });
 
-   }
+    }
 
     /*protected void moveTo(ImageButton v){
         felt0.setColorFilter(null);
@@ -159,23 +158,21 @@ public class SpillePlade extends AppCompatActivity {
         v.setColorFilter(android.R.color.holo_green_dark);
     }*/
 
-    public static void updateInfobox()
-    {
-        infobox.setText("Navn: "+spiller.getNavn()+"\n mad: "+spiller.getHp()+"\n Penge: "+spiller.getPenge()+"\n Viden: "+spiller.getViden()+"\n Klassetrin: "+spiller.getKlassetrin()+"\n Tid: "+spiller.getTid());
+    public static void updateInfobox() {
+        infobox.setText("Navn: " + spiller.getNavn() + "\n mad: " + spiller.getHp() + "\n Penge: " + spiller.getPenge() + "\n Viden: " + spiller.getViden() + "\n Klassetrin: " + spiller.getKlassetrin() + "\n Tid: " + spiller.getTid());
     }
 
-    public void moveTo(int pos,java.lang.Class<?> cls, ViewGroup.LayoutParams params) {
+    public void moveTo(int pos, java.lang.Class<?> cls, ViewGroup.LayoutParams params) {
         if (spiller.move(pos)) {
             Toast.makeText(SpillePlade.this, "Dagen er gået", Toast.LENGTH_SHORT).show();
             updateTimer();
             updateInfobox();
             Player.setLayoutParams(felt0.getLayoutParams());
-        }
-        else {
+        } else {
             final Intent intent = new Intent(SpillePlade.this, cls);
             updateTimer();
             updateInfobox();
-            Log.d("Spilleplade","Height:"+params.height+" Width: "+params.width);
+            Log.d("Spilleplade", "Height:" + params.height + " Width: " + params.width);
             Player.setLayoutParams(params);
 
 
@@ -192,21 +189,16 @@ public class SpillePlade extends AppCompatActivity {
         }
     }
 
-    public void updateTimer()
-    {
-        if(spiller.getTid()>12) {//tid mellem 16 og 13
+    public void updateTimer() {
+        if (spiller.getTid() > 12) {//tid mellem 16 og 13
             ur.setImageResource(R.drawable.ur1);
-        }
-        else if (spiller.getTid()>8 && spiller.getTid()<13) { //tid mellem 12 og 9
+        } else if (spiller.getTid() > 8 && spiller.getTid() < 13) { //tid mellem 12 og 9
             ur.setImageResource(R.drawable.ur2);
-        }
-        else if(spiller.getTid()>4 && spiller.getTid()<9){//tid mellem 8 og 5
+        } else if (spiller.getTid() > 4 && spiller.getTid() < 9) {//tid mellem 8 og 5
             ur.setImageResource(R.drawable.ur3);
-        }
-        else if(spiller.getTid()>=0 && spiller.getTid()<5) {//tid mellem 4 og 0
+        } else if (spiller.getTid() >= 0 && spiller.getTid() < 5) {//tid mellem 4 og 0
             ur.setImageResource(R.drawable.ur4);
-        }
-        else
+        } else
             ur.setImageResource(R.drawable.ur1);
 
     }

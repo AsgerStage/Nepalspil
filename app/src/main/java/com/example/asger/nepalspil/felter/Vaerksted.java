@@ -26,14 +26,18 @@ import static com.example.asger.nepalspil.activities.MainActivity.spiller;
  */
 
 public class Vaerksted extends AppCompatActivity {
+
+    ViewPager viewPager;
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.vaerksted);
 
 
-        ViewPager viewPager = (ViewPager) findViewById(R.id.view_pager);
+        viewPager = (ViewPager) findViewById(R.id.view_pager);
         ImagePagerAdapter adapter = new ImagePagerAdapter();
         viewPager.setAdapter(adapter);
+
 
         final TextView fieldinfo = (TextView) findViewById(R.id.fieldinfo);
         final TextView playerinfo = (TextView) findViewById(R.id.playerinfo);
@@ -44,10 +48,8 @@ public class Vaerksted extends AppCompatActivity {
         Button back = (Button) findViewById(R.id.backButton);
 
 
-
-
         fieldinfo.setText("Velkommen til værkstedet! Her kan man arbejde eller købe en cykel.");
-        playerinfo.setText("Navn: "+spiller.getNavn()+"\n mad: "+spiller.getHp()+"\n Penge: "+spiller.getPenge()+"\n Viden: "+spiller.getViden()+"\n Klassetrin: "+spiller.getKlassetrin()+"\n Tid: "+spiller.getTid());
+        playerinfo.setText("Navn: " + spiller.getNavn() + "\n mad: " + spiller.getHp() + "\n Penge: " + spiller.getPenge() + "\n Viden: " + spiller.getViden() + "\n Klassetrin: " + spiller.getKlassetrin() + "\n Tid: " + spiller.getTid());
 
         work.setOnClickListener(new View.OnClickListener() {
 
@@ -55,48 +57,40 @@ public class Vaerksted extends AppCompatActivity {
                 if (spiller.getTid() >= 2) {
                     work();
 
-                    if(mp.isPlaying())
-                    {
+                    if (mp.isPlaying()) {
                         mp.stop();
                     }
                     try {
                         mp.reset();
                         AssetFileDescriptor afd;
                         afd = getAssets().openFd("cash.mp3");
-                        mp.setDataSource(afd.getFileDescriptor(),afd.getStartOffset(),afd.getLength());
+                        mp.setDataSource(afd.getFileDescriptor(), afd.getStartOffset(), afd.getLength());
                         mp.prepare();
                         mp.start();
-                    }catch (IllegalStateException e) {
+                    } catch (IllegalStateException e) {
                         e.printStackTrace();
-                    }catch (IOException e) {
+                    } catch (IOException e) {
                         e.printStackTrace();
                     }
 
                     playerinfo.setText(updateInfo());
-                }
-                else{
+                } else {
 
                 }
             }
         });
 
-        buy.setOnClickListener(new View.OnClickListener(){
+        buy.setOnClickListener(new View.OnClickListener() {
 
-            public void onClick(View v){
-                if(spiller.getPenge()>=50){
-                    buy();
-                    playerinfo.setText(updateInfo());
-                }
-                else if(spiller.getPenge() <50){
-                    Toast.makeText(Vaerksted.this,"Du har ikke råd til denne genstand", Toast.LENGTH_SHORT).show();
-
-                }
+            public void onClick(View v) {
+                buy();
+                playerinfo.setText(updateInfo());
             }
         });
 
-        back.setOnClickListener(new View.OnClickListener(){
+        back.setOnClickListener(new View.OnClickListener() {
 
-            public void onClick(View v){
+            public void onClick(View v) {
                 finish();
             }
         });
@@ -104,7 +98,7 @@ public class Vaerksted extends AppCompatActivity {
 
 
     private class ImagePagerAdapter extends PagerAdapter {
-        private int[] mImages = new int[] {
+        private int[] mImages = new int[]{
                 R.drawable.bike,
                 R.drawable.books,
                 R.drawable.books,
@@ -140,25 +134,31 @@ public class Vaerksted extends AppCompatActivity {
         }
     }
 
-    public void work(){
-        spiller.setTid(spiller.getTid()-2);
-        spiller.setPenge(spiller.getPenge()+10);
+    public void work() {
+        spiller.setTid(spiller.getTid() - 2);
+        spiller.setPenge(spiller.getPenge() + 10);
     }
 
     public void buy() {
+        if (viewPager.getCurrentItem() == R.drawable.books && spiller.getPenge() >= 100) {
+            spiller.setPenge(spiller.getPenge() - 100);
 
-        if (spiller.getPenge() >= 50) {
-            spiller.setPenge(spiller.getPenge() - 50);
+        } else if (spiller.getPenge() < 100) {
+            Toast.makeText(Vaerksted.this, "Du har ikke råd til studiebøger", Toast.LENGTH_SHORT).show();
+        }
+        if (viewPager.getCurrentItem() == R.drawable.bike && spiller.getPenge() >= 200) {
+            spiller.setPenge(spiller.getPenge() - 200);
             spiller.setBike(true);
+        } else if (spiller.getPenge() < 200) {
+            Toast.makeText(Vaerksted.this, "Du har ikke råd til en cykel", Toast.LENGTH_SHORT).show();
         }
     }
-    public String updateInfo(){
+
+    public String updateInfo() {
         SpillePlade.updateInfobox();
-        return "Navn: "+spiller.getNavn()+"\n mad: "+spiller.getHp()+"\n Penge: "+spiller.getPenge()+"\n Viden: "+spiller.getViden()+"\n Klassetrin: "+spiller.getKlassetrin()+"\n Tid: "+spiller.getTid();
+        return "Navn: " + spiller.getNavn() + "\n mad: " + spiller.getHp() + "\n Penge: " + spiller.getPenge() + "\n Viden: " + spiller.getViden() + "\n Klassetrin: " + spiller.getKlassetrin() + "\n Tid: " + spiller.getTid();
     }
 
 
-
-
-    }
+}
 

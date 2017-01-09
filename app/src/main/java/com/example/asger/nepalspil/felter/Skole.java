@@ -6,6 +6,7 @@ import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+
 import com.example.asger.nepalspil.R;
 import com.example.asger.nepalspil.activities.MainActivity;
 import com.example.asger.nepalspil.models.SpillePlade;
@@ -19,7 +20,6 @@ import android.widget.TextView;
 import java.io.IOException;
 
 import static com.example.asger.nepalspil.activities.MainActivity.spiller;
-
 
 
 public class Skole extends AppCompatActivity {
@@ -45,20 +45,19 @@ public class Skole extends AppCompatActivity {
                 if (spiller.getTid() > 0) {
                     spis();
                     schoolText.setText("Mmm! Du har spist skolemad.");
-                    if(mp.isPlaying())
-                    {
+                    if (mp.isPlaying()) {
                         mp.stop();
                     }
                     try {
                         mp.reset();
                         AssetFileDescriptor afd;
                         afd = getAssets().openFd("eat.mp3");
-                        mp.setDataSource(afd.getFileDescriptor(),afd.getStartOffset(),afd.getLength());
+                        mp.setDataSource(afd.getFileDescriptor(), afd.getStartOffset(), afd.getLength());
                         mp.prepare();
                         mp.start();
-                    }catch (IllegalStateException e) {
+                    } catch (IllegalStateException e) {
                         e.printStackTrace();
-                    }catch (IOException e) {
+                    } catch (IOException e) {
                         e.printStackTrace();
                     }
                 } else {
@@ -73,7 +72,7 @@ public class Skole extends AppCompatActivity {
         bStuder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (spiller.getTid()>0) {
+                if (spiller.getTid() > 0) {
                     if (spiller.getTid() > 0 && studer()) {
                         schoolText.setText("Du har modtaget 1 viden!");
                         System.out.println(spiller.getViden());
@@ -84,8 +83,7 @@ public class Skole extends AppCompatActivity {
                         dialog.show();
                         //schoolText.setText("Du kunne ikke forstå undervisningen, så din viden kan opnås hos lektiehjælpen.");
                     }
-                }
-                else{
+                } else {
                     AlertDialog.Builder dialog = new AlertDialog.Builder(Skole.this);
                     dialog.setTitle("Ikke nok tid!");
                     dialog.setMessage("Du har ikke nok tid til at studere.");
@@ -106,7 +104,7 @@ public class Skole extends AppCompatActivity {
                     dialog.setMessage("Du har ikke nok viden til at starte eksamenen! Du skal have mindst " + vidensKrav + " for at starte eksamenen.");
                     dialog.show();
                     //schoolText.setText("Du har desværre ikke nok viden til at kunne gå til eksamen." +
-                            //"\n Få viden af at gå i skole, og tag eksamen næste år!");
+                    //"\n Få viden af at gå i skole, og tag eksamen næste år!");
 
 
                 }
@@ -128,33 +126,33 @@ public class Skole extends AppCompatActivity {
             return true;
         } else {
             spiller.setTid(spiller.getTid() - 1);
-           //Lektiehjaelp.
+            //Lektiehjaelp.
             return false;
-            }
-       }
+        }
+    }
 
-    public boolean hasLearned(){
-        if (Math.random()>0.5)
+    public boolean hasLearned() {
+        if (Math.random() > 0.5)
             return true;
         else return false;
     }
 
-    public void spis(){
-        if (spiller.getTid()>0) {
+    public void spis() {
+        if (spiller.getTid() > 0) {
             spiller.setTid(spiller.getTid() - 1);
             spiller.setHp(spiller.getHp() + 1);
             SpillePlade.updateInfobox();
-        }else{
+        } else {
             schoolText.setText("");
         }
 
     }
 
-    public boolean kanStartEksamen(){
+    public boolean kanStartEksamen() {
         if ((spiller.getViden() >= vidensKrav)) {
             return true;
         } else
-           return false;
+            return false;
     }
 
 
