@@ -17,78 +17,6 @@
         android:layout_height="wrap_content">
 
 
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@+id/multiple_actions"
-            android:layout_toStartOf="@+id/multiple_actions"
-            android:layout_marginEnd="29dp"
-            android:layout_marginTop="243dp"></LinearLayout>
-
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:srcCompat="@drawable/skoleliv"
-            android:id="@+id/imageView3"
-            android:layout_marginTop="24dp"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentStart="true" />
-
-
-
-
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="219dp"
-        android:weightSum="1">
-
-
-    </LinearLayout>
-
-        <com.getbase.floatingactionbutton.FloatingActionsMenu
-            android:id="@+id/multiple_actions"
-            android:layout_height="match_parent"
-            fab:fab_addButtonColorNormal="@color/white"
-            fab:fab_addButtonColorPressed="@color/white_pressed"
-            fab:fab_addButtonPlusIconColor="@color/half_black"
-            fab:fab_labelStyle="@style/menu_labels_style"
-            fab:fab_menuIcon="@drawable/ur1"
-            android:layout_marginRight="5dp"
-            android:layout_width="match_parent"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentEnd="true">
-
-            <com.getbase.floatingactionbutton.FloatingActionButton
-                android:id="@+id/action_about"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                fab:fab_menuIcon="@drawable/ur1"
-                fab:fab_colorNormal="@color/white"
-                fab:fab_title="About"
-                fab:fab_colorPressed="@color/white_pressed"/>
-
-            <com.getbase.floatingactionbutton.FloatingActionButton
-                android:id="@+id/action_help"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                fab:fab_colorNormal="@color/white"
-                fab:fab_title="Help"
-                fab:fab_colorPressed="@color/white_pressed"
-                />
-
-            <com.getbase.floatingactionbutton.FloatingActionButton
-                android:id="@+id/action_settings"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                fab:fab_colorNormal="@color/white"
-                fab:fab_title="Settings"
-                fab:fab_colorPressed="@color/white_pressed"
-                app:srcCompat="@android:drawable/ic_menu_preferences" />
-
-        </com.getbase.floatingactionbutton.FloatingActionsMenu>
-
         <ImageButton
             android:layout_height="219dp"
             app:srcCompat="@drawable/klippetasha"
@@ -96,23 +24,74 @@
             android:layout_weight="0.48"
             android:scaleType="fitCenter"
             android:elevation="0dp"
-            android:background="?attr/selectableItemBackgroundBorderless"
+            android:background="?android:selectableItemBackground"
             android:visibility="visible"
             android:layout_width="199dp"
+            android:layout_marginStart="24dp"
             android:layout_alignParentBottom="true"
-            android:layout_toStartOf="@+id/imageButton5" />
+            android:layout_alignParentStart="true"
+            android:state_checked="false"
+            android:state_pressed="true"
+
+            />
+
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/skoleliv"
+            android:id="@+id/imageView3"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true" />
 
         <ImageButton
             app:srcCompat="@drawable/klippetdreng"
             android:id="@+id/imageButton5"
             android:layout_weight="0.51"
             android:scaleType="fitCenter"
-            android:background="?attr/selectableItemBackgroundBorderless"
+            android:background="?android:selectableItemBackground"
             android:layout_height="219dp"
             android:visibility="visible"
-            android:layout_marginEnd="98dp"
             android:layout_width="199dp"
             android:layout_alignParentBottom="true"
-            android:layout_alignEnd="@+id/multiple_actions" />
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="11dp" />
+
+        <Button
+            android:text="Start spil"
+            android:layout_height="wrap_content"
+            android:id="@+id/buttonstart"
+            android:layout_width="wrap_content"
+            android:layout_marginTop="64dp"
+            android:layout_alignTop="@+id/imageButton4"
+            android:layout_centerHorizontal="true" />
+
+        <Button
+            android:text="Indstillinger"
+            android:layout_height="wrap_content"
+            android:id="@+id/buttonoptions"
+            android:layout_width="125dp"
+            android:layout_marginTop="23dp"
+            android:layout_below="@+id/buttonstart"
+            android:layout_centerHorizontal="true" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            fab:srcCompat="@drawable/checkmark"
+            android:id="@+id/imageView1"
+            android:layout_alignTop="@+id/imageButton4"
+            android:layout_toStartOf="@+id/buttonoptions"
+            android:visibility="invisible"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            fab:srcCompat="@drawable/checkmark"
+            android:id="@+id/imageView2"
+            android:layout_alignTop="@+id/imageButton5"
+            android:layout_alignParentEnd="true"
+            android:visibility="invisible"/>
+
     </RelativeLayout>
 </LinearLayout>

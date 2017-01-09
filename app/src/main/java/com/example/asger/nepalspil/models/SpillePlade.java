@@ -43,10 +43,10 @@ public class SpillePlade extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.spilplade);
-        if (spiller.sex == true) {
+        if (spiller.sex) {
             Player = (ImageView) findViewById(R.id.kaka);
             unusedPlayer = (ImageView) findViewById(R.id.asha);
-        } else if (spiller.sex == false) {
+        } else if (!spiller.sex) {
             Player = (ImageView) findViewById(R.id.asha);
             unusedPlayer = (ImageView) findViewById(R.id.kaka);
         }

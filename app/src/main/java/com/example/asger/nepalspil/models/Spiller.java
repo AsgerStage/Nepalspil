@@ -188,4 +188,6 @@ public class Spiller {
         return bike;
     }
 
+    public boolean getSex() { return sex; }
+
 }
