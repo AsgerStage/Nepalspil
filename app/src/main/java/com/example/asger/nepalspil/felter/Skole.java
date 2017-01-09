@@ -1,6 +1,8 @@
 package com.example.asger.nepalspil.felter;
 
+import android.content.res.AssetFileDescriptor;
 import android.graphics.Color;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import com.example.asger.nepalspil.R;
@@ -12,6 +14,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+
+import java.io.IOException;
+
 import static com.example.asger.nepalspil.activities.MainActivity.spiller;
 
 
@@ -25,6 +30,7 @@ public class Skole extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.skole);
 
+        final MediaPlayer mp = MediaPlayer.create(this, R.raw.cash);
         final TextView schoolText = (TextView) findViewById(R.id.schoolText);
         Button bSpis = (Button) findViewById(R.id.spis);
         Button bStuder = (Button) findViewById(R.id.Studer);
@@ -38,6 +44,22 @@ public class Skole extends AppCompatActivity {
                 if (spiller.getTid() > 0) {
                     spis();
                     schoolText.setText("Mmm! Du har spist skolemad.");
+                    if(mp.isPlaying())
+                    {
+                        mp.stop();
+                    }
+                    try {
+                        mp.reset();
+                        AssetFileDescriptor afd;
+                        afd = getAssets().openFd("eat.mp3");
+                        mp.setDataSource(afd.getFileDescriptor(),afd.getStartOffset(),afd.getLength());
+                        mp.prepare();
+                        mp.start();
+                    }catch (IllegalStateException e) {
+                        e.printStackTrace();
+                    }catch (IOException e) {
+                        e.printStackTrace();
+                    }
                 } else {
 
                 }
