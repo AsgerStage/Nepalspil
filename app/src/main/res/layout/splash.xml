@@ -57,33 +57,6 @@
             android:layout_alignParentEnd="true"
             android:layout_marginEnd="11dp" />
 
-        <Button
-            android:text="Start spil"
-            android:layout_height="wrap_content"
-            android:id="@+id/buttonstart"
-            android:layout_width="wrap_content"
-            android:layout_marginTop="64dp"
-            android:layout_alignTop="@+id/imageButton4"
-            android:layout_centerHorizontal="true" />
-
-        <Button
-            android:text="Indstillinger"
-            android:layout_height="wrap_content"
-            android:id="@+id/buttonoptions"
-            android:layout_width="125dp"
-            android:layout_marginTop="23dp"
-            android:layout_below="@+id/buttonstart"
-            android:layout_centerHorizontal="true" />
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            fab:srcCompat="@drawable/checkmark"
-            android:id="@+id/imageView1"
-            android:layout_alignTop="@+id/imageButton4"
-            android:layout_toStartOf="@+id/buttonoptions"
-            android:visibility="invisible"/>
-
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -92,6 +65,34 @@
             android:layout_alignTop="@+id/imageButton5"
             android:layout_alignParentEnd="true"
             android:visibility="invisible"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            fab:srcCompat="@drawable/startknap"
+            android:id="@+id/startknap"
+            android:layout_alignTop="@+id/imageButton4"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="21dp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            fab:srcCompat="@drawable/checkmark"
+            android:id="@+id/imageView1"
+            android:visibility="invisible"
+            android:layout_alignParentBottom="true"
+            android:layout_alignStart="@+id/imageButton4"
+            android:layout_marginStart="15dp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            fab:srcCompat="@drawable/optionsknap"
+            android:id="@+id/optionsknap"
+            android:layout_marginBottom="23dp"
+            android:layout_alignBottom="@+id/imageView2"
+            android:layout_alignStart="@+id/startknap" />
 
     </RelativeLayout>
 </LinearLayout>

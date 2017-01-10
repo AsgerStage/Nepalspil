@@ -55,7 +55,7 @@ public class Skole extends AppCompatActivity {
                     try {
                         mp.reset();
                         AssetFileDescriptor afd;
-                        afd = getAssets().openFd("eat.mp3");
+                        afd = getAssets().openFd("bitesound.mp3");
                         mp.setDataSource(afd.getFileDescriptor(), afd.getStartOffset(), afd.getLength());
                         mp.prepare();
                         mp.start();

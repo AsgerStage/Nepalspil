@@ -13,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.asger.nepalspil.R;
+import com.example.asger.nepalspil.activities.MusicManager;
 import com.example.asger.nepalspil.felter.Boghandel;
 import com.example.asger.nepalspil.felter.Farm;
 import com.example.asger.nepalspil.felter.Hjem;
@@ -35,6 +36,7 @@ public class SpillePlade extends AppCompatActivity {
     ImageView Player;
     ImageView ur;
     ImageView unusedPlayer;
+    boolean continueBGMusic;
 
     ImageButton felt0;
 
@@ -43,6 +45,7 @@ public class SpillePlade extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.spilplade);
+        continueBGMusic=true;
         if (spiller.sex) {
             Player = (ImageView) findViewById(R.id.kaka);
             unusedPlayer = (ImageView) findViewById(R.id.asha);
@@ -202,6 +205,20 @@ public class SpillePlade extends AppCompatActivity {
             ur.setImageResource(R.drawable.ur1);
 
     }
+    public void onPause()
+    {
+        super.onPause();
+        if(!continueBGMusic)
+            MusicManager.pause();
+    }
+    public void onResume()
+    {
+        super.onResume();
+
+        continueBGMusic=false;
+        MusicManager.start(this,R.raw.backgroundloop);
+    }
+
 
 }
 
