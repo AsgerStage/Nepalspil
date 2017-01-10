@@ -3,6 +3,7 @@ package com.example.asger.nepalspil.models;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -37,6 +38,7 @@ public class SpillePlade extends AppCompatActivity {
     ImageView ur;
     ImageView unusedPlayer;
     boolean continueBGMusic;
+    AlertDialog.Builder dialog;
 
     ImageButton felt0;
 
@@ -46,6 +48,7 @@ public class SpillePlade extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.spilplade);
         continueBGMusic=true;
+        dialog = new AlertDialog.Builder(SpillePlade.this);
         if (spiller.sex) {
             Player = (ImageView) findViewById(R.id.kaka);
             unusedPlayer = (ImageView) findViewById(R.id.asha);
@@ -167,7 +170,17 @@ public class SpillePlade extends AppCompatActivity {
 
     public void moveTo(int pos, java.lang.Class<?> cls, ViewGroup.LayoutParams params) {
         if (spiller.move(pos)) {
+            if (spiller.getHp()-30>0){
             Toast.makeText(SpillePlade.this, "Dagen er gået", Toast.LENGTH_SHORT).show();
+
+            }
+            else if (spiller.getHp()-30<=0){
+                dialog.setTitle("Du har ikke spist nok!");
+                dialog.setMessage("Dagen er gået, og du har ikke spist nok, du får derfor mindre tid denne dag");
+                dialog.show();
+                spiller.setTid(8);
+            }
+            spiller.setHp(spiller.getHp()-30);
             updateTimer();
             updateInfobox();
             Player.setLayoutParams(felt0.getLayoutParams());
