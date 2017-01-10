@@ -175,7 +175,7 @@ public class SpillePlade extends AppCompatActivity {
 
             }
             else if (spiller.getHp()-30<=0){
-                dialog.setTitle("Du har ikke spist nok!");
+                dialog.setTitle("Husk at spise!");
                 dialog.setMessage("Dagen er gået, og du har ikke spist nok, du får derfor mindre tid denne dag");
                 dialog.show();
                 spiller.setTid(8);
