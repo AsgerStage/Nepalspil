@@ -45,6 +45,13 @@ public class SpillePlade extends AppCompatActivity {
     SharedPreferences prefs;
 
     ImageButton felt0;
+    ImageButton felt1;
+    ImageButton felt2;
+    ImageButton felt3;
+    ImageButton felt4;
+    ImageButton felt5;
+    ImageButton felt6;
+    ImageButton felt7;
 
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -70,14 +77,14 @@ public class SpillePlade extends AppCompatActivity {
         //infobox.setText("Navn: "+spiller.getNavn()+"\n mad: "+spiller.getHp()+"\n Penge: "+spiller.getPenge()+"\n Viden: "+spiller.getViden()+"\n Klassetrin: "+spiller.getKlassetrin()+"\n Tid: "+spiller.getTid());
         updateInfobox();
         felt0 = (ImageButton) findViewById(R.id.felt0);
-        final ImageButton felt1 = (ImageButton) findViewById(R.id.felt1);
-        final ImageButton felt2 = (ImageButton) findViewById(R.id.felt2);
-        final ImageButton felt3 = (ImageButton) findViewById(R.id.felt3);
-        final ImageButton felt4 = (ImageButton) findViewById(R.id.felt4);
-        final ImageButton felt5 = (ImageButton) findViewById(R.id.felt5);
-        final ImageButton felt6 = (ImageButton) findViewById(R.id.felt6);
-        final ImageButton felt7 = (ImageButton) findViewById(R.id.felt7);
-        Player.setLayoutParams(felt0.getLayoutParams());
+        felt1 = (ImageButton) findViewById(R.id.felt1);
+        felt2 = (ImageButton) findViewById(R.id.felt2);
+        felt3 = (ImageButton) findViewById(R.id.felt3);
+        felt4 = (ImageButton) findViewById(R.id.felt4);
+        felt5 = (ImageButton) findViewById(R.id.felt5);
+        felt6 = (ImageButton) findViewById(R.id.felt6);
+        felt7 = (ImageButton) findViewById(R.id.felt7);
+        MoveIcon();
 
 
 
@@ -262,5 +269,26 @@ public class SpillePlade extends AppCompatActivity {
         prefs.edit().putInt("Runde",spiller.getRunde()).apply();
     }
 
-}
+    public void MoveIcon() {
+        if (spiller.getPosition() == 1) {
+            Player.setLayoutParams(felt1.getLayoutParams());
+        } else if (spiller.getPosition() == 2) {
+            Player.setLayoutParams(felt2.getLayoutParams());
+        } else if (spiller.getPosition() == 3) {
+            Player.setLayoutParams(felt3.getLayoutParams());
+        } else if (spiller.getPosition() == 4) {
+            Player.setLayoutParams(felt4.getLayoutParams());
+        } else if (spiller.getPosition() == 5) {
+            Player.setLayoutParams(felt5.getLayoutParams());
+        } else if (spiller.getPosition() == 6) {
+            Player.setLayoutParams(felt6.getLayoutParams());
+        } else if (spiller.getPosition() == 7) {
+            Player.setLayoutParams(felt7.getLayoutParams());
+        } else {
+            Player.setLayoutParams(felt0.getLayoutParams());
+        }
+    }
+
+    }
+
 
