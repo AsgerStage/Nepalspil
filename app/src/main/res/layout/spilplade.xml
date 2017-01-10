@@ -126,9 +126,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:srcCompat="@android:drawable/ic_menu_preferences"
-            android:layout_alignBottom="@+id/kaka"
-            android:layout_alignStart="@+id/felt4"
             android:id="@+id/ingameoptions"
-            style="?android:borderlessButtonStyle"/>
+            style="?android:borderlessButtonStyle"
+            android:layout_alignBottom="@+id/infobox"
+            android:layout_alignStart="@+id/felt4" />
     </RelativeLayout>
 </LinearLayout>

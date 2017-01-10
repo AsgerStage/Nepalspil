@@ -3,6 +3,7 @@ package com.example.asger.nepalspil.activities;
 /**
  * Created by PeterPc on 10-01-2017.
  */
+
 import android.content.Context;
 import android.media.MediaPlayer;
 import android.util.Log;
@@ -100,5 +101,14 @@ public class MusicManager {
         }
         currentMusic = -1;
         Log.d(TAG, "Current music is now [" + currentMusic + "]");
+    }
+
+    public static void stop() {
+        if (mp != null) {
+            if (mp.isPlaying()) {
+                mp.stop();
+            }
+        }
+
     }
 }

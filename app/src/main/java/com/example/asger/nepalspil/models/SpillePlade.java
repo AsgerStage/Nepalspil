@@ -194,29 +194,32 @@ public class SpillePlade extends AppCompatActivity {
                 builder.setItems(options, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        switch (which) {
-                            case 0:
-                                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.skoleliv-i-nepal.dk/"));
-                                startActivity(browserIntent);
-                                break;
-                            case 1:
-                                MusicManager.pause();
-                                break;
-                            case 2:
-                                int d;
-                                break;
-                            case 3:
-                                Intent myIntent = new Intent(SpillePlade.this, MainActivity.class);
-                                startActivity(myIntent);
-                                break;
+                        if (which == 1) {
+                            MusicManager.stop();
+
+                            switch (which) {
+                                case 0:
+
+                                    break;
+                                case 1:
+                                    MusicManager.stop();
+                                    break;
+                                case 2:
+                                    int d;
+                                    break;
+                                case 3:
+                                    Intent myIntent = new Intent(SpillePlade.this, MainActivity.class);
+                                    startActivity(myIntent);
+                                    break;
 
 
+                            }
                         }
-
 
 
                         // the user clicked on options[which]
                     }
+
                 });
                 builder.show();
 
@@ -303,6 +306,13 @@ public class SpillePlade extends AppCompatActivity {
 
         continueBGMusic = false;
         MusicManager.start(this, R.raw.backgroundloop);
+    }
+
+    public void onStop() {
+        super.onStop();
+
+        continueBGMusic = false;
+        MusicManager.stop();
     }
 
     public void saveToPrefs() {
