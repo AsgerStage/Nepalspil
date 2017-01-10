@@ -15,7 +15,6 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.animation.AnimationUtils;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -56,12 +55,13 @@ String checkIfPlayedBefore = prefs.getString("Navn",null);
             checkmarkkaka = (ImageView) findViewById(R.id.imageView2);
             ImageView start = (ImageView) findViewById(R.id.startknap);
             ImageView options = (ImageView) findViewById(R.id.optionsknap);
-            Button button2 = (Button) findViewById(R.id.button2);
+            ImageView genoptag = (ImageView) findViewById(R.id.genoptag);
 
-button2.setOnClickListener(new View.OnClickListener() {
+genoptag.setOnClickListener(new View.OnClickListener() {
 
     @Override
-    public void onClick(View view) {
+    public void onClick(View v) {
+        v.startAnimation(AnimationUtils.loadAnimation(MainActivity.this, R.anim.image_click));
         spiller = new Spiller(prefs.getBoolean("Sex",true),prefs.getInt("Books",0),prefs.getInt("Position",0),prefs.getString("Navn",null),prefs.getInt("Penge",0),prefs.getInt("Hp",0),prefs.getInt("Viden",0),prefs.getInt("Klassetrin",0),prefs.getInt("Tid",0),prefs.getInt("Runde",0),prefs.getBoolean("Bike",false));
         if(spiller.getSex()==true){
             checkmarkasha.setVisibility(View.INVISIBLE);
