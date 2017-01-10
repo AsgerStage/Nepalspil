@@ -10,13 +10,14 @@ import com.example.asger.nepalspil.activities.MainActivity;
  */
 
 public class Spiller {
+    public boolean sex;
+    private int books;
     private int position;
     private String navn;
     private int penge;
     private int hp;
     private int viden;
     private int klassetrin;
-    public boolean sex;
     private int tid;
     private int runde;
     private boolean bike;
@@ -179,6 +180,10 @@ public class Spiller {
     public void setTid(int tid) {
         this.tid = tid;
     }
+
+    public int getBooks() { return books; }
+
+    public void setBooks(int books) { this.books = books;}
 
     public void setBike(boolean bike) {
         this.bike = bike;
