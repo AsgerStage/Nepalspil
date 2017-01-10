@@ -121,5 +121,14 @@
             android:layout_alignTop="@+id/felt2"
             android:layout_toStartOf="@+id/felt2"
             android:id="@+id/imgUr" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@android:drawable/ic_menu_preferences"
+            android:layout_alignBottom="@+id/kaka"
+            android:layout_alignStart="@+id/felt4"
+            android:id="@+id/ingameoptions"
+            style="?android:borderlessButtonStyle"/>
     </RelativeLayout>
 </LinearLayout>

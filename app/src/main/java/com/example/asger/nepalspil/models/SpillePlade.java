@@ -1,22 +1,31 @@
 package com.example.asger.nepalspil.models;
 
+import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.asger.nepalspil.R;
+import com.example.asger.nepalspil.activities.MainActivity;
 import com.example.asger.nepalspil.activities.MusicManager;
 import com.example.asger.nepalspil.felter.Boghandel;
 import com.example.asger.nepalspil.felter.Farm;
@@ -52,13 +61,15 @@ public class SpillePlade extends AppCompatActivity {
     ImageButton felt5;
     ImageButton felt6;
     ImageButton felt7;
+    ImageButton ingameopt;
+
 
     protected void onCreate(Bundle savedInstanceState) {
 
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.spilplade);
-        continueBGMusic=true;
+        continueBGMusic = true;
         prefs = PreferenceManager.getDefaultSharedPreferences(this);
 
 
@@ -84,8 +95,8 @@ public class SpillePlade extends AppCompatActivity {
         felt5 = (ImageButton) findViewById(R.id.felt5);
         felt6 = (ImageButton) findViewById(R.id.felt6);
         felt7 = (ImageButton) findViewById(R.id.felt7);
+        ingameopt = (ImageButton) findViewById(R.id.ingameoptions);
         MoveIcon();
-
 
 
         felt0.setOnClickListener(new View.OnClickListener() {
@@ -172,8 +183,49 @@ public class SpillePlade extends AppCompatActivity {
             }
         });
 
-    }
+        ingameopt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                v.startAnimation(AnimationUtils.loadAnimation(SpillePlade.this, R.anim.image_click));
 
+                CharSequence options[] = new CharSequence[]{"Hjælp", "Sluk musik", "Sluk lyde", "Nyt spil"};
+                AlertDialog.Builder builder = new AlertDialog.Builder(SpillePlade.this);
+                builder.setTitle("Indstillinger");
+                builder.setItems(options, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        switch (which) {
+                            case 0:
+                                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.skoleliv-i-nepal.dk/"));
+                                startActivity(browserIntent);
+                                break;
+                            case 1:
+                                MusicManager.pause();
+                                break;
+                            case 2:
+                                int d;
+                                break;
+                            case 3:
+                                Intent myIntent = new Intent(SpillePlade.this, MainActivity.class);
+                                startActivity(myIntent);
+                                break;
+
+
+                        }
+
+
+
+                        // the user clicked on options[which]
+                    }
+                });
+                builder.show();
+
+
+            }
+        });
+
+
+    }
     /*protected void moveTo(ImageButton v){
         felt0.setColorFilter(null);
         felt1.setColorFilter(null);
@@ -192,17 +244,16 @@ public class SpillePlade extends AppCompatActivity {
 
     public void moveTo(int pos, java.lang.Class<?> cls, ViewGroup.LayoutParams params) {
         if (spiller.move(pos)) {
-            if (spiller.getHp()-30>0){
-            Toast.makeText(SpillePlade.this, "Dagen er gået", Toast.LENGTH_SHORT).show();
+            if (spiller.getHp() - 30 > 0) {
+                Toast.makeText(SpillePlade.this, "Dagen er gået", Toast.LENGTH_SHORT).show();
 
-            }
-            else if (spiller.getHp()-30<=0){
+            } else if (spiller.getHp() - 30 <= 0) {
                 dialog.setTitle("Husk at spise!");
                 dialog.setMessage("Dagen er gået,og du har glemt at spise, og derfor har du mindre tid idag");
                 dialog.show();
                 spiller.setTid(8);
             }
-            spiller.setHp(spiller.getHp()-30);
+            spiller.setHp(spiller.getHp() - 30);
             updateTimer();
             updateInfobox();
             Player.setLayoutParams(felt0.getLayoutParams());
@@ -240,33 +291,33 @@ public class SpillePlade extends AppCompatActivity {
             ur.setImageResource(R.drawable.ur1);
 
     }
-    public void onPause()
-    {
+
+    public void onPause() {
         super.onPause();
-        if(!continueBGMusic)
+        if (!continueBGMusic)
             MusicManager.pause();
     }
-    public void onResume()
-    {
+
+    public void onResume() {
         super.onResume();
 
-        continueBGMusic=false;
-        MusicManager.start(this,R.raw.backgroundloop);
+        continueBGMusic = false;
+        MusicManager.start(this, R.raw.backgroundloop);
     }
 
-    public void saveToPrefs(){
-        prefs.edit().putBoolean("Sex",spiller.getSex()).apply();
-        prefs.edit().putInt("GlemtViden",spiller.getGlemtViden()).apply();
-        prefs.edit().putInt("Books",spiller.getBooks()).apply();
-        prefs.edit().putInt("Position",spiller.getPosition()).apply();
-        prefs.edit().putString("Navn",spiller.getNavn()).apply();
-        prefs.edit().putInt("Penge",spiller.getPenge()).apply();
-        prefs.edit().putInt("Hp",spiller.getHp()).apply();
-        prefs.edit().putInt("Viden",spiller.getViden()).apply();
-        prefs.edit().putInt("Klassetrin",spiller.getKlassetrin()).apply();
-        prefs.edit().putInt("Tid",spiller.getTid()).apply();
-        prefs.edit().putBoolean("Bike",spiller.isBike()).apply();
-        prefs.edit().putInt("Runde",spiller.getRunde()).apply();
+    public void saveToPrefs() {
+        prefs.edit().putBoolean("Sex", spiller.getSex()).apply();
+        prefs.edit().putInt("GlemtViden", spiller.getGlemtViden()).apply();
+        prefs.edit().putInt("Books", spiller.getBooks()).apply();
+        prefs.edit().putInt("Position", spiller.getPosition()).apply();
+        prefs.edit().putString("Navn", spiller.getNavn()).apply();
+        prefs.edit().putInt("Penge", spiller.getPenge()).apply();
+        prefs.edit().putInt("Hp", spiller.getHp()).apply();
+        prefs.edit().putInt("Viden", spiller.getViden()).apply();
+        prefs.edit().putInt("Klassetrin", spiller.getKlassetrin()).apply();
+        prefs.edit().putInt("Tid", spiller.getTid()).apply();
+        prefs.edit().putBoolean("Bike", spiller.isBike()).apply();
+        prefs.edit().putInt("Runde", spiller.getRunde()).apply();
     }
 
     public void MoveIcon() {
@@ -289,6 +340,6 @@ public class SpillePlade extends AppCompatActivity {
         }
     }
 
-    }
+}
 
 
