@@ -19,6 +19,7 @@ import android.widget.TextView;
 
 import java.io.IOException;
 
+import static com.example.asger.nepalspil.R.layout.lektiehjaelp;
 import static com.example.asger.nepalspil.activities.MainActivity.spiller;
 
 
@@ -84,7 +85,6 @@ public class Skole extends AppCompatActivity {
                         dialog.setTitle("Lektiehjælp!");
                         dialog.setMessage("Du kunne ikke forstå undervisningen, så din viden kan opnås hos lektiehjælpen.");
                         dialog.show();
-                        //schoolText.setText("Du kunne ikke forstå undervisningen, så din viden kan opnås hos lektiehjælpen.");
                     }
                 } else {
                     AlertDialog.Builder dialog = new AlertDialog.Builder(Skole.this);
@@ -127,7 +127,7 @@ public class Skole extends AppCompatActivity {
 
     }
 
-
+    Lektiehjaelp lh = new Lektiehjaelp();
     private int vidensKrav = 10 * spiller.getKlassetrin();
 
     public boolean studer() {
@@ -138,7 +138,7 @@ public class Skole extends AppCompatActivity {
             return true;
         } else {
             spiller.setTid(spiller.getTid() - 1);
-            //Lektiehjaelp.
+            lh.setGlemtViden(lh.getGlemtViden()+1);
             return false;
         }
     }

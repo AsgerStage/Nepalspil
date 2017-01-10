@@ -1,17 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:weightSum="1">
 
     <TextView
         android:text="TextView"
         android:layout_width="match_parent"
-        android:layout_height="294dp"
+        android:layout_height="75dp"
         android:id="@+id/lektiehjaelpTextField" />
 
-    <Button
-        android:text="Få lektiehjælp"
+    <TextView
+        android:text="TextView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/learn" />
+        android:layout_height="176dp"
+        android:id="@+id/lektiePlayerInfo" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Button
+            android:text="Få lektiehjælp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/learn"
+            android:layout_weight="1"
+            android:elevation="0dp"
+            android:textAlignment="center" />
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.61" />
+
+        <Button
+            android:text="Back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/lektieBack"
+            android:layout_weight="1" />
+    </LinearLayout>
+
 </LinearLayout>
