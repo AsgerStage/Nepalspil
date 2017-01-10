@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, "Du har valgt Asha!", Toast.LENGTH_SHORT).show();
                 checkmarkkaka.setVisibility(View.INVISIBLE);
                 checkmarkasha.setVisibility(View.VISIBLE);
-                spiller = new Spiller("Asha", 10, 16, 0, 100, 1, false, 1, false);
+                spiller = new Spiller("Asha", 10, 16, 0, 100, 1, false, 1, false,0);
             }
 
 
@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, "Du har valgt Kaka!", Toast.LENGTH_SHORT).show();
                 checkmarkasha.setVisibility(View.INVISIBLE);
                 checkmarkkaka.setVisibility(View.VISIBLE);
-                spiller = new Spiller("Kaka", 10, 16, 0, 100, 1, true, 1, false);
+                spiller = new Spiller("Kaka", 10, 16, 0, 100, 1, true, 1, false,0);
 
             }
         });

@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.asger.nepalspil.R;
 import com.example.asger.nepalspil.models.SpillePlade;
@@ -24,7 +25,6 @@ import static com.example.asger.nepalspil.activities.MainActivity.spiller;
 
 public class Lektiehjaelp extends AppCompatActivity {
     Button homeworkHelp, back;
-    public int glemtViden = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,14 +37,16 @@ public class Lektiehjaelp extends AppCompatActivity {
         homeworkHelp = (Button) findViewById(R.id.learn);
 
         lektiehjaelpInfo.setText("Her kan du få lektiehjælp, til at indhente det du ikke forstod fra undervisningen.");
-        playerInfo.setText("Navn: " + spiller.getNavn() + "\n mad: " + spiller.getHp() + "\n Penge: " + spiller.getPenge() + "\n Viden: " + spiller.getViden() + "\n Klassetrin: " + spiller.getKlassetrin() + "\n Tid: " + spiller.getTid());
+        playerInfo.setText("Navn: " + spiller.getNavn() + "\n mad: " + spiller.getHp() + "\n Penge: " + spiller.getPenge() + "\n Viden: " + spiller.getViden() + "\n Klassetrin: " + spiller.getKlassetrin() + "\n Tid: " + spiller.getTid() + "\n Viden at hente: " + spiller.getGlemtViden());
 
         homeworkHelp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (spiller.getTid() > 0 && glemtViden > 0) {
+                if (spiller.getTid() > 0 && spiller.getGlemtViden() > 0) {
                     learn();
-                } else if (glemtViden <= 0) {
+                    playerInfo.setText(updateInfo());
+                    Toast.makeText(Lektiehjaelp.this, "Du har opnået 1 viden.", Toast.LENGTH_SHORT).show();
+                } else if (spiller.getGlemtViden() <= 0) {
                     AlertDialog.Builder dialog = new AlertDialog.Builder(Lektiehjaelp.this);
                     dialog.setTitle("Ingen glemt viden.");
                     dialog.setMessage("Du har ikke behov for lektiehjælp, da du forstået al undervisning.");
@@ -71,12 +73,14 @@ public class Lektiehjaelp extends AppCompatActivity {
     private void learn(){
             spiller.setViden(spiller.getViden()+1);
             spiller.setTid(spiller.getTid()-1);
-            glemtViden--;
+            spiller.setGlemtViden(spiller.getGlemtViden()-1);
     }
 
-    public int getGlemtViden() {return glemtViden;};
 
-    public void setGlemtViden(int glemtViden){
-        this.glemtViden = glemtViden;
+
+    public String updateInfo() {
+        SpillePlade.updateInfobox();
+        return "Navn: " + spiller.getNavn() + "\n mad: " + spiller.getHp() + "\n Penge: " + spiller.getPenge() + "\n Viden: " + spiller.getViden() + "\n Klassetrin: " + spiller.getKlassetrin() + "\n Tid: " + spiller.getTid() + "\n Viden at hente: " + spiller.getGlemtViden();
+
     }
 }

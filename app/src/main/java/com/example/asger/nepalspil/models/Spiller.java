@@ -11,6 +11,7 @@ import com.example.asger.nepalspil.activities.MainActivity;
 
 public class Spiller {
     public boolean sex;
+    private int glemtViden;
     private int books;
     private int position;
     private String navn;
@@ -24,6 +25,7 @@ public class Spiller {
 
     public Spiller(String navn) {
         this.navn = navn;
+        this.glemtViden=0;
         this.position = 0;			//starter på felt 1
         this.penge=50;
         this.tid=16;
@@ -35,7 +37,7 @@ public class Spiller {
         Log.d("Spiller","Spiller oprettet");
     }
 
-    public Spiller(String navn,int penge, int tid, int viden, int hp,int klassetrin, boolean sex, int runde, boolean bike) {
+    public Spiller(String navn,int penge, int tid, int viden, int hp,int klassetrin, boolean sex, int runde, boolean bike, int glemtViden) {
         position = 0;			//starter på felt 1
         this.navn = navn;
         this.penge = penge;
@@ -46,6 +48,7 @@ public class Spiller {
         this.sex = sex;
         this.runde=runde;
         this.bike = bike;
+        this.glemtViden = glemtViden;
         Log.d("Spiller","Spiller oprettet med balance");
     }
 
@@ -194,5 +197,11 @@ public class Spiller {
     }
 
     public boolean getSex() { return sex; }
+
+    public int getGlemtViden() {return glemtViden;};
+
+    public void setGlemtViden(int glemtViden){
+        this.glemtViden = glemtViden;
+    }
 
 }

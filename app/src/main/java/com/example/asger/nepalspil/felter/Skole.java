@@ -107,9 +107,6 @@ public class Skole extends AppCompatActivity {
                     dialog.setTitle("Ikke nok viden!");
                     dialog.setMessage("Du har ikke nok viden til at starte eksamenen! Du skal have mindst " + vidensKrav + " for at starte eksamenen.");
                     dialog.show();
-                    //schoolText.setText("Du har desværre ikke nok viden til at kunne gå til eksamen." +
-                    //"\n Få viden af at gå i skole, og tag eksamen næste år!");
-
 
                 }
 
@@ -127,7 +124,6 @@ public class Skole extends AppCompatActivity {
 
     }
 
-    Lektiehjaelp lh = new Lektiehjaelp();
     private int vidensKrav = 10 * spiller.getKlassetrin();
 
     public boolean studer() {
@@ -138,7 +134,7 @@ public class Skole extends AppCompatActivity {
             return true;
         } else {
             spiller.setTid(spiller.getTid() - 1);
-            lh.setGlemtViden(lh.getGlemtViden()+1);
+            spiller.setGlemtViden(spiller.getGlemtViden()+1);
             return false;
         }
     }
