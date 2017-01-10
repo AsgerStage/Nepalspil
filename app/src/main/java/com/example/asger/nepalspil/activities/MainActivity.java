@@ -2,8 +2,11 @@ package com.example.asger.nepalspil.activities;
 
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -41,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
         final ImageView checkmarkasha = (ImageView) findViewById(R.id.imageView1);
         final ImageView checkmarkkaka = (ImageView) findViewById(R.id.imageView2);
         Button start = (Button) findViewById(R.id.buttonstart);
+        Button options = (Button) findViewById(R.id.buttonoptions);
 
 
         asha.setOnClickListener(new View.OnClickListener() {
@@ -82,7 +86,39 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        options.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                CharSequence options[] = new CharSequence[] {"Skoleliv i Nepal", "Om spillet", "option 3"};
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+               // builder.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+                builder.setTitle("Indstillinger");
+                builder.setItems(options, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        switch (which){
+                            case 0:
+                                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.skoleliv-i-nepal.dk/"));
+                                startActivity(browserIntent);;
+                            case 1:
+
+                        }
+
+
+
+                        // the user clicked on options[which]
+                    }
+                });
+                builder.show();
+
+
+
+            }
+        });
+
 
     }
+
 
 }
