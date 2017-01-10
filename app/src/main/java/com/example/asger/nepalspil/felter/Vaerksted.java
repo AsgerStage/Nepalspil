@@ -6,6 +6,7 @@ import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -74,7 +75,11 @@ public class Vaerksted extends AppCompatActivity {
                     }
 
                     playerinfo.setText(updateInfo());
-                } else {
+                } else if (spiller.getTid() < 2) {
+                    AlertDialog.Builder dialog = new AlertDialog.Builder(Vaerksted.this);
+                    dialog.setTitle("Intet tid!");
+                    dialog.setMessage("Du har ikke nok tid til at arbejde");
+                    dialog.show();
 
                 }
             }

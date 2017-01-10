@@ -7,13 +7,13 @@
     <TextView
         android:text="."
         android:layout_width="match_parent"
-        android:layout_height="103dp"
+        android:layout_height="102dp"
         android:id="@+id/schoolText" />
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="201dp"
-        android:id="@+id/playerInfo" />
+        android:layout_height="140dp"
+        android:id="@+id/schoolPlayerInfo" />
 
     <LinearLayout
        android:orientation="horizontal"

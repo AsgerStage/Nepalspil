@@ -32,14 +32,14 @@ public class Skole extends AppCompatActivity {
 
         final MediaPlayer mp = MediaPlayer.create(this, R.raw.cash);
         final TextView schoolText = (TextView) findViewById(R.id.schoolText);
-        final TextView schoolInfo = (TextView) findViewById(R.id.playerinfo);
+        final TextView playerInfo = (TextView) findViewById(R.id.schoolPlayerInfo);
         Button bSpis = (Button) findViewById(R.id.spis);
         Button bStuder = (Button) findViewById(R.id.Studer);
         Button bEksamen = (Button) findViewById(R.id.eksamen);
         Button back = (Button) findViewById(R.id.skoleBack);
 
         schoolText.setText("Velkommen til Skolen, her kan du spise, studere og tage din eksamen når tiden er.");
-        schoolInfo.setText("Navn: " + spiller.getNavn() + "\n mad: " + spiller.getHp() + "\n Penge: " + spiller.getPenge() + "\n Viden: " + spiller.getViden() + "\n Klassetrin: " + spiller.getKlassetrin() + "\n Tid: " + spiller.getTid());
+        playerInfo.setText("Navn: " + spiller.getNavn() + "\n mad: " + spiller.getHp() + "\n Penge: " + spiller.getPenge() + "\n Viden: " + spiller.getViden() + "\n Klassetrin: " + spiller.getKlassetrin() + "\n Tid: " + spiller.getTid());
 
         bSpis.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -47,7 +47,7 @@ public class Skole extends AppCompatActivity {
                 if (spiller.getTid() > 0) {
                     spis();
                     schoolText.setText("Mmm! Du har spist skolemad.");
-                    schoolInfo.setText(updateInfo());
+                    playerInfo.setText(updateInfo());
                     if (mp.isPlaying()) {
                         mp.stop();
                     }
@@ -92,7 +92,7 @@ public class Skole extends AppCompatActivity {
                     dialog.setMessage("Du har ikke nok tid til at studere.");
                     dialog.show();
                 }
-                schoolInfo.setText(updateInfo());
+                playerInfo.setText(updateInfo());
             }
         });
 

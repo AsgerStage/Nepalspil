@@ -14,7 +14,7 @@
         android:text="Egenskaber"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/playerinfo"
+        android:id="@+id/bookstorePlayerInfo"
         android:layout_weight="0.97" />
 
     <LinearLayout
