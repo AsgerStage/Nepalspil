@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 if (spiller == null) {
-                    Toast.makeText(MainActivity.this, "idiot", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, "Du mangler at vælge en figur.", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
