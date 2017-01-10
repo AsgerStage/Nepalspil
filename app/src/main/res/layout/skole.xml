@@ -5,22 +5,22 @@
     android:orientation="vertical">
 
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView" />
-
-    <TextView
         android:text="."
         android:layout_width="match_parent"
-        android:layout_height="266dp"
+        android:layout_height="103dp"
         android:id="@+id/schoolText" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="201dp"
+        android:id="@+id/playerInfo" />
 
     <LinearLayout
        android:orientation="horizontal"
        android:layout_width="match_parent"
        android:layout_height="match_parent">
 
-       <Button
+        <Button
            android:text="studer"
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
@@ -41,7 +41,14 @@
            android:id="@+id/eksamen"
            android:layout_weight="1" />
 
-   </LinearLayout>
+        <Button
+            android:text="Back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/skoleBack"
+            android:layout_weight="1" />
+
+    </LinearLayout>
 
 
 </LinearLayout>

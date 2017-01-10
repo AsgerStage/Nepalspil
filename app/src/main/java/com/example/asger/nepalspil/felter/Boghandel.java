@@ -4,8 +4,10 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.example.asger.nepalspil.R;
+import com.example.asger.nepalspil.models.SpillePlade;
 
 import static com.example.asger.nepalspil.activities.MainActivity.spiller;
 
@@ -20,6 +22,9 @@ public class Boghandel extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.boghandel);
 
+        final TextView playerInfo = (TextView) findViewById(R.id.playerinfo);
+        final TextView bookstoreInfo = (TextView) findViewById(R.id.fieldinfo);
+
         Button work = (Button) findViewById(R.id.workButton);
         Button buyBook = (Button) findViewById(R.id.buyBookButton);
         Button back = (Button) findViewById(R.id.backButton);
@@ -31,7 +36,7 @@ public class Boghandel extends AppCompatActivity {
                     work();
                     System.out.println("Penge:" + spiller.getPenge());
                     System.out.println("Tid: " + spiller.getTid());
-                    //playerinfo.setText(updateInfo());
+                    playerinfo.setText(updateInfo());
                 } else {
 
                 }
@@ -52,8 +57,14 @@ public class Boghandel extends AppCompatActivity {
     }
 
     private void buyBook() {
-        //spiller.setBook(spiller.getBooks()+1)
-        //spiller.setPenge(spiller.getPenge()-10);
+        spiller.setBooks(spiller.getBooks()+1)
+        spiller.setPenge(spiller.getPenge()-10);
+    }
+
+    public String updateInfo() {
+        SpillePlade.updateInfobox();
+        return "Navn: " + spiller.getNavn() + "\n mad: " + spiller.getHp() + "\n Penge: " + spiller.getPenge() + "\n Viden: " + spiller.getViden() + "\n Klassetrin: " + spiller.getKlassetrin() + "\n Tid: " + spiller.getTid();
+
     }
 
 }
