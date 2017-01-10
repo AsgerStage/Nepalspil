@@ -1,8 +1,11 @@
 package com.example.asger.nepalspil.models;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -39,6 +42,7 @@ public class SpillePlade extends AppCompatActivity {
     ImageView unusedPlayer;
     boolean continueBGMusic;
     AlertDialog.Builder dialog;
+    SharedPreferences prefs;
 
     ImageButton felt0;
 
@@ -48,6 +52,9 @@ public class SpillePlade extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.spilplade);
         continueBGMusic=true;
+        prefs = PreferenceManager.getDefaultSharedPreferences(this);
+
+
         dialog = new AlertDialog.Builder(SpillePlade.this);
         if (spiller.sex) {
             Player = (ImageView) findViewById(R.id.kaka);
@@ -73,11 +80,13 @@ public class SpillePlade extends AppCompatActivity {
         Player.setLayoutParams(felt0.getLayoutParams());
 
 
+
         felt0.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
                 moveTo(0, Hjem.class, felt0.getLayoutParams());
+                saveToPrefs();
             }
         });
 
@@ -87,7 +96,7 @@ public class SpillePlade extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 moveTo(1, Lektiehjaelp.class, felt1.getLayoutParams());
-
+                saveToPrefs();
 
 
 /*
@@ -105,6 +114,7 @@ public class SpillePlade extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 moveTo(2, Vaerksted.class, felt2.getLayoutParams());
+                saveToPrefs();
             }
         });
 
@@ -113,6 +123,7 @@ public class SpillePlade extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 moveTo(3, Boghandel.class, felt3.getLayoutParams());
+                saveToPrefs();
             }
         });
 
@@ -121,6 +132,7 @@ public class SpillePlade extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 moveTo(4, Skole.class, felt4.getLayoutParams());
+                saveToPrefs();
             }
         });
 
@@ -129,6 +141,7 @@ public class SpillePlade extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 moveTo(5, Farm.class, felt5.getLayoutParams());
+                saveToPrefs();
             }
         });
 
@@ -137,6 +150,7 @@ public class SpillePlade extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 moveTo(6, Marked.class, felt6.getLayoutParams());
+                saveToPrefs();
             }
         });
 
@@ -145,6 +159,7 @@ public class SpillePlade extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 moveTo(7, Toejbutik.class, felt7.getLayoutParams());
+                saveToPrefs();
 
 
             }
@@ -176,7 +191,7 @@ public class SpillePlade extends AppCompatActivity {
             }
             else if (spiller.getHp()-30<=0){
                 dialog.setTitle("Husk at spise!");
-                dialog.setMessage("Dagen er gået, og du har ikke spist nok, du får derfor mindre tid denne dag");
+                dialog.setMessage("Dagen er gået,og du har glemt at spise, og derfor har du mindre tid idag");
                 dialog.show();
                 spiller.setTid(8);
             }
@@ -232,6 +247,20 @@ public class SpillePlade extends AppCompatActivity {
         MusicManager.start(this,R.raw.backgroundloop);
     }
 
+    public void saveToPrefs(){
+        prefs.edit().putBoolean("Sex",spiller.getSex()).apply();
+        prefs.edit().putInt("GlemtViden",spiller.getGlemtViden()).apply();
+        prefs.edit().putInt("Books",spiller.getBooks()).apply();
+        prefs.edit().putInt("Position",spiller.getPosition()).apply();
+        prefs.edit().putString("Navn",spiller.getNavn()).apply();
+        prefs.edit().putInt("Penge",spiller.getPenge()).apply();
+        prefs.edit().putInt("Hp",spiller.getHp()).apply();
+        prefs.edit().putInt("Viden",spiller.getViden()).apply();
+        prefs.edit().putInt("Klassetrin",spiller.getKlassetrin()).apply();
+        prefs.edit().putInt("Tid",spiller.getTid()).apply();
+        prefs.edit().putBoolean("Bike",spiller.isBike()).apply();
+        prefs.edit().putInt("Runde",spiller.getRunde()).apply();
+    }
 
 }
 

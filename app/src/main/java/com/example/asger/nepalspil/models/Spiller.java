@@ -51,6 +51,20 @@ public class Spiller {
         this.glemtViden = glemtViden;
         Log.d("Spiller","Spiller oprettet med balance");
     }
+    public Spiller(Boolean sex, int books,int position, String navn,int penge,int hp, int viden, int klassetrin, int tid, int runde, boolean bike){
+        this.sex=sex;
+        this.books=books;
+        this.position=position;
+        this.navn=navn;
+        this.penge=penge;
+        this.hp=hp;
+        this.viden=viden;
+        this.klassetrin=klassetrin;
+        this.tid=tid;
+        this.runde=runde;
+        this.bike=bike;
+
+    }
 
     public boolean move(int newPosition) { //Metode til at rykke spilleren og trække den korrekte mængde tid fra spilleren.
         //Løsningen virker lidt bøvlet, men da Javas modulo (%) kan blive negativ gav det nogle problemer.
@@ -204,4 +218,31 @@ public class Spiller {
         this.glemtViden = glemtViden;
     }
 
+    public int getPosition() {
+        return position;
+    }
+
+    public void setPosition(int position) {
+        this.position = position;
+    }
+
+    public boolean isSex() {
+        return sex;
+    }
+
+    public void setSex(boolean sex) {
+        this.sex = sex;
+    }
+
+    public int getRunde() {
+        return runde;
+    }
+
+    public void setRunde(int runde) {
+        this.runde = runde;
+    }
+
+    public boolean isBike() {
+        return bike;
+    }
 }
