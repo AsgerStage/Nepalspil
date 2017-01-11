@@ -41,12 +41,20 @@ public class MainActivity extends AppCompatActivity {
     SharedPreferences prefs;
 
     @Override
+    public void onBackPressed()
+    {
+        Toast.makeText(MainActivity.this, "Not an action", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         continueBGMusic = true;
         Fabric.with(this, new Crashlytics());
         prefs = PreferenceManager.getDefaultSharedPreferences(this);
         String checkIfPlayedBefore = prefs.getString("Navn", null);
+
+
 
 
         setContentView(R.layout.splash);

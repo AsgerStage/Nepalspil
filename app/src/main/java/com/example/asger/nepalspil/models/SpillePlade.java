@@ -63,6 +63,22 @@ public class SpillePlade extends AppCompatActivity {
     ImageButton felt7;
     ImageButton ingameopt;
 
+    @Override
+    public void onBackPressed() {
+        new AlertDialog.Builder(this)
+                .setMessage("Er du sikker på du vil afslutte spillet?")
+                .setCancelable(false)
+                .setPositiveButton("Ja", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        SpillePlade.this.finish();
+                    }
+                })
+                .setNegativeButton("Nej", null)
+                .show();
+    }
+
+
+
 
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -188,33 +204,33 @@ public class SpillePlade extends AppCompatActivity {
             public void onClick(View v) {
                 v.startAnimation(AnimationUtils.loadAnimation(SpillePlade.this, R.anim.image_click));
 
-                CharSequence options[] = new CharSequence[]{"Hjælp", "Sluk musik", "Sluk lyde", "Nyt spil"};
+                CharSequence options[] = new CharSequence[]{"Hjælp", "Sluk musik", "Sluk lyde", "Afslut spil"};
                 AlertDialog.Builder builder = new AlertDialog.Builder(SpillePlade.this);
                 builder.setTitle("Indstillinger");
                 builder.setItems(options, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        if (which == 1) {
-                            MusicManager.stop();
+                        // if (which == 1) {
+                        //   MusicManager.stop();
 
-                            switch (which) {
-                                case 0:
+                        switch (which) {
+                            case 0:
 
-                                    break;
-                                case 1:
-                                    MusicManager.stop();
-                                    break;
-                                case 2:
-                                    int d;
-                                    break;
-                                case 3:
-                                    Intent myIntent = new Intent(SpillePlade.this, MainActivity.class);
-                                    startActivity(myIntent);
-                                    break;
+                                break;
+                            case 1:
+                                MusicManager.stop();
+                                break;
+                            case 2:
+                                int d;
+                                break;
+                            case 3:
+                                Intent myIntent = new Intent(SpillePlade.this, MainActivity.class);
+                                startActivity(myIntent);
+                                break;
 
 
-                            }
                         }
+                        // }
 
 
                         // the user clicked on options[which]
