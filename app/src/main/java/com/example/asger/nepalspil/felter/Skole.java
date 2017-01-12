@@ -85,7 +85,7 @@ public class Skole extends AppCompatActivity {
                         schoolText.setText("Du har modtaget 1 viden!");
                         System.out.println(spiller.getViden());
                     } else {
-                        Toast.makeText(Skole.this, "Du forstod ikke alt undervisningen, tag i lektiehjælpen for at forstå det", Toast.LENGTH_LONG).show();
+                        Toast.makeText(Skole.this, "Du forstod ikke alt undervisningen, tag i lektiehjælpen for at forstå det", Toast.LENGTH_SHORT).show();
                         /*AlertDialog.Builder dialog = new AlertDialog.Builder(Skole.this);
                        dialog.setTitle("Lektiehjælp!");
                         dialog.setMessage("Du kunne ikke forstå undervisningen, så din viden kan opnås hos lektiehjælpen.");
