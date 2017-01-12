@@ -30,10 +30,20 @@ import static com.example.asger.nepalspil.activities.MainActivity.spiller;
 public class Skole extends AppCompatActivity {
 
     TextView schoolText;
+    TextView playerInfo;
+
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        updateInfo();
+
+    }
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.skole);
+
 
         final MediaPlayer mp = MediaPlayer.create(this, R.raw.cash);
         final TextView schoolText = (TextView) findViewById(R.id.schoolText);
@@ -45,6 +55,11 @@ public class Skole extends AppCompatActivity {
 
         schoolText.setText("Velkommen til Skolen, her kan du spise, studere og tage din eksamen når tiden er.");
         playerInfo.setText("Navn: " + spiller.getNavn() + "\n mad: " + spiller.getHp() + "\n Penge: " + spiller.getPenge() + "\n Viden: " + spiller.getViden() + "\n Klassetrin: " + spiller.getKlassetrin() + "\n Tid: " + spiller.getTid());
+
+        onResume();
+        {
+
+        }
 
 
         bSpis.setOnClickListener(new View.OnClickListener() {
@@ -107,8 +122,10 @@ public class Skole extends AppCompatActivity {
             public void onClick(View view) {
                 if (kanStartEksamen()) {
                     schoolText.setText("Held og Lykke!");
+                    finish();
                     Intent myIntent = new Intent(Skole.this, Eksamen.class);
                     startActivity(myIntent);
+
                 } else {
                     AlertDialog.Builder dialog = new AlertDialog.Builder(Skole.this);
                     dialog.setTitle("Ikke nok viden!");
@@ -133,9 +150,9 @@ public class Skole extends AppCompatActivity {
 
     public static int vidensKrav = 10 * spiller.getKlassetrin();
 
-    public int getvidensKrav() { return vidensKrav; }
-
-
+    public int getvidensKrav() {
+        return vidensKrav;
+    }
 
 
     public boolean studer() {
@@ -183,6 +200,7 @@ public class Skole extends AppCompatActivity {
 
 
     public static int vidensKrav() {
-        return 10*spiller.getKlassetrin();
+        return 10 * spiller.getKlassetrin();
     }
+
 }

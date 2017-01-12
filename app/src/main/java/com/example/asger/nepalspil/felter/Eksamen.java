@@ -2,6 +2,9 @@ package com.example.asger.nepalspil.felter;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.AssetFileDescriptor;
+import android.graphics.Color;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -10,10 +13,16 @@ import com.example.asger.nepalspil.R;
 import com.example.asger.nepalspil.activities.MainActivity;
 import com.example.asger.nepalspil.models.SpillePlade;
 import com.example.asger.nepalspil.models.Spiller;
+import com.github.jinatonic.confetti.CommonConfetti;
 
+import android.text.Layout;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.TextView;
+
+import java.io.IOException;
 
 /**
  * Created by Senad on 1/12/2017.
@@ -24,6 +33,9 @@ public class Eksamen extends AppCompatActivity {
     Button answer1;
     Button answer2;
     Button answer3;
+    FrameLayout container;
+
+
 
     @Override
     public void onBackPressed() {
@@ -33,6 +45,7 @@ public class Eksamen extends AppCompatActivity {
                 .setPositiveButton("Ja", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         Eksamen.this.finish();
+                        spiller.setViden(spiller.getViden()-10*spiller.getKlassetrin());
                     }
                 })
                 .setNegativeButton("Nej", null)
@@ -47,6 +60,9 @@ public class Eksamen extends AppCompatActivity {
         answer1 = (Button) findViewById(R.id.answer1Button);
         answer2 = (Button) findViewById(R.id.answer2Button);
         answer3 = (Button) findViewById(R.id.answer3Button);
+        container = (FrameLayout) findViewById(R.id.container);
+
+
 
         spiller.getViden();
         switch(spiller.getKlassetrin()-1){
@@ -110,8 +126,6 @@ public class Eksamen extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int id) {
                         SpillePlade.updateInfobox();
                         finish();
-
-
                     }
                 });
         AlertDialog alert = dialog.create();
@@ -128,9 +142,22 @@ public class Eksamen extends AppCompatActivity {
     public void setFirstCorrect(){
         answer1.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v) {
+                final MediaPlayer mp = MediaPlayer.create(Eksamen.this, R.raw.tada);
+                mp.start();
+                CommonConfetti.rainingConfetti(container, new int[] { Color.BLACK })
+                        .infinite();
                 spiller.setKlassetrin(spiller.getKlassetrin()+1);
-                SpillePlade.updateInfobox();
-                finish();
+                AlertDialog.Builder dialog = new AlertDialog.Builder(Eksamen.this);
+                dialog.setMessage("TILLYKKE!! Du bestod og går nu i "+spiller.getKlassetrin()+". klasse." )
+                        .setCancelable(false)
+                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                SpillePlade.updateInfobox();
+                                finish();
+                            }
+                        });
+                AlertDialog alert = dialog.create();
+                alert.show();
 
             }
         });
@@ -155,8 +182,23 @@ public class Eksamen extends AppCompatActivity {
         });
         answer2.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
+                final MediaPlayer mp = MediaPlayer.create(Eksamen.this, R.raw.tada);
+                mp.start();
+                CommonConfetti.rainingConfetti(container, new int[] { Color.BLACK })
+                        .infinite();
                 spiller.setKlassetrin(spiller.getKlassetrin()+1);
-                finish();
+                AlertDialog.Builder dialog = new AlertDialog.Builder(Eksamen.this);
+                dialog.setMessage("TILLYKKE!! Du bestod og går nu i "+spiller.getKlassetrin()+". klasse." )
+                        .setCancelable(false)
+                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                SpillePlade.updateInfobox();
+                                finish();
+                            }
+                        });
+                AlertDialog alert = dialog.create();
+                alert.show();
+
             }
         });
         answer3.setOnClickListener(new View.OnClickListener(){
@@ -181,8 +223,22 @@ public class Eksamen extends AppCompatActivity {
         });
         answer3.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
+                final MediaPlayer mp = MediaPlayer.create(Eksamen.this, R.raw.tada);
+                mp.start();
+                CommonConfetti.rainingConfetti(container, new int[] { Color.BLACK })
+                        .infinite();
                 spiller.setKlassetrin(spiller.getKlassetrin()+1);
-                finish();
+                AlertDialog.Builder dialog = new AlertDialog.Builder(Eksamen.this);
+                dialog.setMessage("TILLYKKE!! Du bestod og går nu i "+spiller.getKlassetrin()+". klasse." )
+                        .setCancelable(false)
+                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                SpillePlade.updateInfobox();
+                                finish();
+                            }
+                        });
+                AlertDialog alert = dialog.create();
+                alert.show();
             }
         });
     }
