@@ -20,7 +20,7 @@ public class Spiller {
     private int viden;
     private int klassetrin;
     private int tid;
-    private int runde;
+    public int runde;
     private boolean bike;
 
     public Spiller(String navn) {
