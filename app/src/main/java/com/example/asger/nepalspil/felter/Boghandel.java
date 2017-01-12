@@ -21,7 +21,7 @@ import static com.example.asger.nepalspil.activities.MainActivity.spiller;
  */
 
 public class Boghandel extends AppCompatActivity {
-    Button work, buyBook;
+
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
