@@ -1,11 +1,15 @@
 package com.example.asger.nepalspil.felter;
 
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import static com.example.asger.nepalspil.activities.MainActivity.spiller;
 import com.example.asger.nepalspil.R;
+import com.example.asger.nepalspil.activities.MainActivity;
 import com.example.asger.nepalspil.models.SpillePlade;
+import com.example.asger.nepalspil.models.Spiller;
 
 import android.view.View;
 import android.widget.Button;
@@ -20,6 +24,21 @@ public class Eksamen extends AppCompatActivity {
     Button answer1;
     Button answer2;
     Button answer3;
+
+    @Override
+    public void onBackPressed() {
+        new AlertDialog.Builder(this)
+                .setMessage("Er du sikker på du vil forlade eksamen? Det koster dig " + Skole.vidensKrav() +  " viden.")
+                .setCancelable(false)
+                .setPositiveButton("Ja", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        Eksamen.this.finish();
+                    }
+                })
+                .setNegativeButton("Nej", null)
+                .show();
+    }
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.eksamen);
@@ -79,11 +98,24 @@ public class Eksamen extends AppCompatActivity {
         }
     }
 
+
     public void wrong(){
+
+        spiller.setViden(spiller.getViden()-10*spiller.getKlassetrin());
+        Skole.updateInfo();
         AlertDialog.Builder dialog = new AlertDialog.Builder(Eksamen.this);
-        dialog.setTitle("Forkert!");
-        dialog.setMessage("Du svaret desværre forkert på eksamen, og derfor bestod du ikke");
-        dialog.show();
+        dialog.setMessage("Du har desværre svaret forkert på eksamen og er derfor dumpet. -"+ Skole.vidensKrav() +" viden" )
+                .setCancelable(false)
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        SpillePlade.updateInfobox();
+                        finish();
+
+
+                    }
+                });
+        AlertDialog alert = dialog.create();
+        alert.show();
     }
 
     public void setQuestion(String titel,String answerbox1, String answerbox2,String answerbox3)
@@ -99,6 +131,7 @@ public class Eksamen extends AppCompatActivity {
                 spiller.setKlassetrin(spiller.getKlassetrin()+1);
                 SpillePlade.updateInfobox();
                 finish();
+
             }
         });
         answer2.setOnClickListener(new View.OnClickListener(){
