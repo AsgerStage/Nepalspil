@@ -1,5 +1,6 @@
 package com.example.asger.nepalspil.felter;
 
+import android.content.Intent;
 import android.content.res.AssetFileDescriptor;
 import android.graphics.Color;
 import android.media.MediaPlayer;
@@ -18,6 +19,8 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 import static com.example.asger.nepalspil.R.layout.lektiehjaelp;
 import static com.example.asger.nepalspil.activities.MainActivity.spiller;
@@ -101,7 +104,8 @@ public class Skole extends AppCompatActivity {
             public void onClick(View view) {
                 if (kanStartEksamen()) {
                     schoolText.setText("Held og Lykke!");
-                    setContentView(R.layout.eksamen);
+                    Intent myIntent = new Intent(Skole.this, Eksamen.class);
+                    startActivity(myIntent);
                 } else {
                     AlertDialog.Builder dialog = new AlertDialog.Builder(Skole.this);
                     dialog.setTitle("Ikke nok viden!");
