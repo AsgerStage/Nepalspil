@@ -85,13 +85,11 @@ public class SpillePlade extends AppCompatActivity {
 
 
     protected void onCreate(Bundle savedInstanceState) {
-
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.spilplade);
+
         continueBGMusic = true;
         prefs = PreferenceManager.getDefaultSharedPreferences(this);
-
 
         dialog = new AlertDialog.Builder(SpillePlade.this);
         if (spiller.sex) {
@@ -102,6 +100,7 @@ public class SpillePlade extends AppCompatActivity {
             unusedPlayer = (ImageView) findViewById(R.id.kaka);
         }
         unusedPlayer.setVisibility(View.INVISIBLE);
+
         infobox = (TextView) findViewById(R.id.infobox);
         ur = (ImageView) findViewById(R.id.imgUr);
         ur.setImageResource(R.drawable.ur1);
@@ -117,6 +116,7 @@ public class SpillePlade extends AppCompatActivity {
         felt7 = (ImageButton) findViewById(R.id.felt7);
         ingameopt = (ImageButton) findViewById(R.id.ingameoptions);
         MoveIcon();
+
 
 
         felt0.setOnClickListener(new View.OnClickListener() {
@@ -247,7 +247,7 @@ public class SpillePlade extends AppCompatActivity {
             }
         });
 
-
+        MoveIcon();
     }
     /*protected void moveTo(ImageButton v){
         felt0.setColorFilter(null);
@@ -286,13 +286,13 @@ public class SpillePlade extends AppCompatActivity {
 
             updateTimer();
             updateInfobox();
-            Player.setLayoutParams(felt0.getLayoutParams());
+            MoveIcon();
         } else {
             final Intent intent = new Intent(SpillePlade.this, cls);
             updateTimer();
             updateInfobox();
             Log.d("Spilleplade", "Height:" + params.height + " Width: " + params.width);
-            Player.setLayoutParams(params);
+            MoveIcon();
 
 
             startActivity(intent);
@@ -359,22 +359,29 @@ public class SpillePlade extends AppCompatActivity {
 
     public void MoveIcon() {
         if (spiller.getPosition() == 1) {
-            Player.setLayoutParams(felt1.getLayoutParams());
+            setPlayerIconParams(felt1);
         } else if (spiller.getPosition() == 2) {
-            Player.setLayoutParams(felt2.getLayoutParams());
+            setPlayerIconParams(felt2);
         } else if (spiller.getPosition() == 3) {
-            Player.setLayoutParams(felt3.getLayoutParams());
+            setPlayerIconParams(felt3);
         } else if (spiller.getPosition() == 4) {
-            Player.setLayoutParams(felt4.getLayoutParams());
+            setPlayerIconParams(felt4);
         } else if (spiller.getPosition() == 5) {
-            Player.setLayoutParams(felt5.getLayoutParams());
+            setPlayerIconParams(felt5);
         } else if (spiller.getPosition() == 6) {
-            Player.setLayoutParams(felt6.getLayoutParams());
+            setPlayerIconParams(felt6);
         } else if (spiller.getPosition() == 7) {
-            Player.setLayoutParams(felt7.getLayoutParams());
+            setPlayerIconParams(felt7);
         } else {
-            Player.setLayoutParams(felt0.getLayoutParams());
+            setPlayerIconParams(felt0);
         }
+        Log.d("Spilleplade","MoveIcon called to "+spiller.getPosition());
+    }
+    public void setPlayerIconParams(ImageButton felt){
+        Player.setX(felt.getX());
+        Player.setY(felt.getY());
+
+
     }
 
     public void randomEvent(){
