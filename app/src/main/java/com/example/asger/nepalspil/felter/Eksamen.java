@@ -118,6 +118,9 @@ public class Eksamen extends AppCompatActivity {
     public void wrong(){
 
         spiller.setViden(spiller.getViden()-10*spiller.getKlassetrin());
+        if(spiller.getViden()<0){
+           spiller.setViden(0);
+        }
         Skole.updateInfo();
         AlertDialog.Builder dialog = new AlertDialog.Builder(Eksamen.this);
         dialog.setMessage("Du har desværre svaret forkert på eksamen og er derfor dumpet. -"+ Skole.vidensKrav() +" viden" )

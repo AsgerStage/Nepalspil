@@ -150,9 +150,7 @@ public class Skole extends AppCompatActivity {
 
     public static int vidensKrav = 10 * spiller.getKlassetrin();
 
-    public int getvidensKrav() {
-        return vidensKrav;
-    }
+
 
 
     public boolean studer() {
