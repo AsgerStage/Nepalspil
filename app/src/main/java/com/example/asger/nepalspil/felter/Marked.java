@@ -24,13 +24,14 @@ public class Marked extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.marked);
 
+        final Toast t = new Toast(Marked.this);
         final TextView fieldinfo = (TextView) findViewById(R.id.fieldinfo);
         final TextView playerinfo = (TextView) findViewById(R.id.playerinfo);
         final MediaPlayer mp = MediaPlayer.create(this, R.raw.cash);
 
         Button work = (Button) findViewById(R.id.workButton);
         final Button eat = (Button) findViewById(R.id.eatButton);
-        Button back = (Button) findViewById(R.id.backButton);
+        final Button back = (Button) findViewById(R.id.backButton);
 
         fieldinfo.setText("Dette er market. Her kan man arbejde og tjene penge, eller man kan købe mad.");
         playerinfo.setText("Navn: " + spiller.getNavn() + "\n mad: " + spiller.getHp() + "\n Penge: " + spiller.getPenge() + "\n Viden: " + spiller.getViden() + "\n Klassetrin: " + spiller.getKlassetrin() + "\n Tid: " + spiller.getTid());
@@ -93,12 +94,14 @@ public class Marked extends AppCompatActivity {
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
-                    Toast t = new Toast(Marked.this);
                     ImageView im = new ImageView(Marked.this);
                     im.setImageResource(R.drawable.mad);
                     t.setView(im);
                     t.setGravity(Gravity.CENTER, 0, 0);
                     t.show();
+                    if(back.isPressed())
+                        t.cancel();
+
                     //Toast.makeText(Marked.this, "Du har spist! +10 HP -5 Penge", Toast.LENGTH_LONG).show();
                     playerinfo.setText(updateInfo());
 
@@ -114,6 +117,7 @@ public class Marked extends AppCompatActivity {
         back.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
+                t.cancel();
                 finish();
 
             }

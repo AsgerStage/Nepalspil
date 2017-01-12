@@ -46,6 +46,7 @@ public class Skole extends AppCompatActivity {
         schoolText.setText("Velkommen til Skolen, her kan du spise, studere og tage din eksamen når tiden er.");
         playerInfo.setText("Navn: " + spiller.getNavn() + "\n mad: " + spiller.getHp() + "\n Penge: " + spiller.getPenge() + "\n Viden: " + spiller.getViden() + "\n Klassetrin: " + spiller.getKlassetrin() + "\n Tid: " + spiller.getTid());
 
+
         bSpis.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -130,7 +131,12 @@ public class Skole extends AppCompatActivity {
 
     }
 
-    private int vidensKrav = 10 * spiller.getKlassetrin();
+    public static int vidensKrav = 10 * spiller.getKlassetrin();
+
+    public int getvidensKrav() { return vidensKrav; }
+
+
+
 
     public boolean studer() {
         if (hasLearned()) {
@@ -140,13 +146,13 @@ public class Skole extends AppCompatActivity {
             return true;
         } else {
             spiller.setTid(spiller.getTid() - 1);
-            spiller.setGlemtViden(spiller.getGlemtViden()+1);
+            spiller.setGlemtViden(spiller.getGlemtViden() + 1);
             return false;
         }
     }
 
     public boolean hasLearned() {
-        if (Math.random() > 0.5)
+        if (Math.random() > 0.1)
             return true;
         else return false;
     }
@@ -169,11 +175,14 @@ public class Skole extends AppCompatActivity {
             return false;
     }
 
-    public String updateInfo() {
+    public static String updateInfo() {
         SpillePlade.updateInfobox();
         return "Navn: " + spiller.getNavn() + "\n mad: " + spiller.getHp() + "\n Penge: " + spiller.getPenge() + "\n Viden: " + spiller.getViden() + "\n Klassetrin: " + spiller.getKlassetrin() + "\n Tid: " + spiller.getTid();
 
     }
 
 
+    public static int vidensKrav() {
+        return 10*spiller.getKlassetrin();
+    }
 }
