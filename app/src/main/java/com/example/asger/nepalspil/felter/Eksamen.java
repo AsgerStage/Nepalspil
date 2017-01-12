@@ -46,6 +46,9 @@ public class Eksamen extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int id) {
                         Eksamen.this.finish();
                         spiller.setViden(spiller.getViden()-10*spiller.getKlassetrin());
+                        if(spiller.getViden()<0){
+                            spiller.setViden(0);
+                        }
                     }
                 })
                 .setNegativeButton("Nej", null)
