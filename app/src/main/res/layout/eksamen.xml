@@ -1,11 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:weightSum="1">
 
-    <Button
-        android:text="Button"
+    <TextView
+        android:text="TextView"
+        android:layout_width="370dp"
+        android:layout_height="150dp"
+        android:id="@+id/examQuestion"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="82dp" />
+
+    <LinearLayout
+        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/eksamenButton" />
+        android:layout_height="68dp">
+
+        <Button
+            android:text="Button"
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/answer1Button"
+            android:layout_weight="1" />
+
+        <Button
+            android:text="Button"
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/answer2Button"
+            android:layout_weight="1" />
+
+        <Button
+            android:text="Button"
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/answer3Button"
+            android:layout_weight="1" />
+
+    </LinearLayout>
+
 </LinearLayout>
