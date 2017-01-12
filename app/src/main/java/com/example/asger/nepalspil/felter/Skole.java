@@ -129,7 +129,7 @@ public class Skole extends AppCompatActivity {
                 } else {
                     AlertDialog.Builder dialog = new AlertDialog.Builder(Skole.this);
                     dialog.setTitle("Ikke nok viden!");
-                    dialog.setMessage("Du har ikke nok viden til at starte eksamenen! Du skal have mindst " + vidensKrav + " for at starte eksamenen.");
+                    dialog.setMessage("Du har ikke nok viden til at starte eksamenen! Du skal have mindst " + vidensKrav() + " for at starte eksamenen.");
                     dialog.show();
 
                 }
@@ -184,7 +184,7 @@ public class Skole extends AppCompatActivity {
     }
 
     public boolean kanStartEksamen() {
-        if ((spiller.getViden() >= vidensKrav)) {
+        if ((spiller.getViden() >= vidensKrav())) {
             return true;
         } else
             return false;

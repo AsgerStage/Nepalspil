@@ -148,6 +148,7 @@ public class Eksamen extends AppCompatActivity {
     public void setFirstCorrect(){
         answer1.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v) {
+
                 final MediaPlayer mp = MediaPlayer.create(Eksamen.this, R.raw.tada);
                 mp.start();
                 CommonConfetti.rainingConfetti(container, new int[] { Color.BLACK })
