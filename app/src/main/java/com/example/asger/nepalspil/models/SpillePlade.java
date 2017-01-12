@@ -407,8 +407,8 @@ public class SpillePlade extends AppCompatActivity {
             dialog.setTitle("På vejen hjem faldt du og slog hovedet");
             dialog.setMessage("Du har mistet viden");
             dialog.show();
-            if (spiller.getViden()>=40) {
-                spiller.setViden(spiller.getViden() - 40);
+            if (spiller.getViden()>=10) {
+                spiller.setViden(spiller.getViden() - 10);
             }
             else spiller.setViden(0);
             Log.d("SpillePlade","Random event 3 triggered");
@@ -418,8 +418,8 @@ public class SpillePlade extends AppCompatActivity {
             dialog.setTitle("Maden du har spiste var dårlig");
             dialog.setMessage("Du er nu mere sulten");
             dialog.show();
-            if (spiller.getHp()>=40) {
-                spiller.setHp(spiller.getHp() - 40);
+            if (spiller.getHp()>=30) {
+                spiller.setHp(spiller.getHp() - 30);
             }
             else spiller.setHp(0);
             Log.d("SpillePlade","Random event 4 triggered");
