@@ -9,6 +9,7 @@ import android.content.SharedPreferences;
 import android.graphics.drawable.ColorDrawable;
 import android.media.MediaPlayer;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AlertDialog;
@@ -44,7 +45,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         continueBGMusic = true;
-        Fabric.with(this, new Crashlytics());
+        boolean EMULATOR = Build.PRODUCT.contains("sdk")|| Build.MODEL.contains("Emulator");
+        if(!EMULATOR){
+        Fabric.with(this, new Crashlytics());}
         prefs = PreferenceManager.getDefaultSharedPreferences(this);
         String checkIfPlayedBefore = prefs.getString("Navn", null);
 

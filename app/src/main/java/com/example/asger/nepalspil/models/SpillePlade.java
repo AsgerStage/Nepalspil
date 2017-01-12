@@ -95,9 +95,11 @@ public class SpillePlade extends AppCompatActivity {
         if (spiller.sex) {
             Player = (ImageView) findViewById(R.id.kaka);
             unusedPlayer = (ImageView) findViewById(R.id.asha);
+
         } else if (!spiller.sex) {
             Player = (ImageView) findViewById(R.id.asha);
             unusedPlayer = (ImageView) findViewById(R.id.kaka);
+
         }
         unusedPlayer.setVisibility(View.INVISIBLE);
 
@@ -247,7 +249,7 @@ public class SpillePlade extends AppCompatActivity {
             }
         });
 
-        MoveIcon();
+
     }
     /*protected void moveTo(ImageButton v){
         felt0.setColorFilter(null);
