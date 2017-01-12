@@ -34,26 +34,48 @@ public class Eksamen extends AppCompatActivity {
             case 0:
                 setQuestion("Hvad spiser nepalesiske børn til morgenmad?","Ris og grøntsager","Havregryn med mælk","Grød");
                 setSecondCorrect();
-       /*         question.setText("Hvad spiser nepalesiske børn til morgenmad?");
-                answer1.setText("Ris og grøntsager");
-                answer2.setText("Havregryn med mælk");
-                answer3.setText("Grød");
-                answer1.setOnClickListener(new View.OnClickListener(){
-                    public void onClick(View v) {
-                        wrong();
-                    }
-                });
-                answer2.setOnClickListener(new View.OnClickListener(){
-                    public void onClick(View v){
-                        spiller.setKlassetrin(spiller.getKlassetrin()+1);
-                        finish();
-                    }
-                });
-                answer3.setOnClickListener(new View.OnClickListener(){
-                    public void onClick(View v) {
-                        wrong();
-                    }
-                });*/
+                break;
+            case 1:
+                setQuestion("Hvorfor er det godt, at børnene får skolemad?","Så kan de bedre koncentrere sig i timerne.","Så behøver de ikke selv tage mad med.","Så føles dagen længere.");
+                setFirstCorrect();
+                break;
+            case 2:
+                setQuestion("Hvilke ingredienser bruges blandt andet i nepalesisk skolemad?","Ris, løg, hvidløg og chili.","Brød og kød.","Nudler og chips.");
+                setFirstCorrect();//?
+                break;
+            case 3:
+                setQuestion("Hvad tid starter den offentlige skole i Nepal?","Kl. 10","Kl. 9","Kl. 8");
+                setThirdCorrect(); //?
+                break;
+            case 4:
+                setQuestion("Er der privatskoler i Nepal?","Ja, mange.","Nej, det har de ikke råd til.","Nogle få, men privatskoler er ikke almindeligt.");
+                setThirdCorrect(); //?
+                break;
+            case 5:
+                setQuestion("Hvem går i folkeskolen i Nepal?","De allerfattigste","De fleste","Alle er fattige og går i folkskolen.");
+                setThirdCorrect(); //?
+                break;
+            case 6:
+                setQuestion("Hvordan kan man bruge skolehaver i undervisningen?","Det er sjovere og lettere at lære noget, når man er udenfor.","Der er ikke lokaler nok til alle klasser.","Eleverne får mere mad, hvis de bliver undervist i haven.");
+                setThirdCorrect(); //?
+                break;
+            case 7:
+                setQuestion("Hvorfor er det vigtigt, at børn i Nepal lærer noget?","Fordi de skal have en uddannelse og et bedre liv.","Fordi de kommer til at kede sig derhjemme.","Fordi de ikke kan lide at være alene hjemme.");
+                setThirdCorrect(); //?
+                break;
+            case 8:
+                setQuestion("Hvorfor er der mange fattige børn i Nepal, som ikke laver lektier?","Deres forældre sætter dem ikke i gang","De behøver ikke lave lektier","Hindureligionen forbyder lektier");
+                setThirdCorrect(); //?
+                break;
+            case 9:
+                setQuestion("Hvor tit går børn i Nepal til eksamen?","Hvert år","Efter 9. klasse","Aldrig");
+                setThirdCorrect(); //?
+                break;
+            case 10:
+                setQuestion("Hvad skal børn i Nepal kunne til eksamen?","De skal kunne deres bøger udenad","De skal kunne tænke selvstændigt","De skal kunne forstå, hvad der står i bøgerne.");
+                setThirdCorrect(); //?
+                break;
+
         }
     }
 
