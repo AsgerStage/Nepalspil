@@ -38,6 +38,8 @@ import com.example.asger.nepalspil.felter.Vaerksted;
 
 //import static com.example.asger.nepalspil.R.id.player;
 
+import java.util.concurrent.ThreadLocalRandom;
+
 import static com.example.asger.nepalspil.activities.MainActivity.spiller;
 
 /**
@@ -62,6 +64,8 @@ public class SpillePlade extends AppCompatActivity {
     ImageButton felt6;
     ImageButton felt7;
     ImageButton ingameopt;
+    int lastEvent=0;
+    int randomNum=0;
 
     @Override
     public void onBackPressed() {
@@ -258,21 +262,28 @@ public class SpillePlade extends AppCompatActivity {
     }*/
 
     public static void updateInfobox() {
-        infobox.setText("Navn: " + spiller.getNavn() + "\n mad: " + spiller.getHp() + "\n Penge: " + spiller.getPenge() + "\n Viden: " + spiller.getViden() + "\n Klassetrin: " + spiller.getKlassetrin() + "\n Tid: " + spiller.getTid());
+        infobox.setText("Navn: " + spiller.getNavn() + "\n mad: " + spiller.getHp() + "\n Penge: " + spiller.getPenge() + "\n Viden: " + spiller.getViden() + "\n Klassetrin: " + spiller.getKlassetrin() + "\n Tid: " + spiller.getTid()+"\n Dag: "+spiller.getRunde());
     }
 
     public void moveTo(int pos, java.lang.Class<?> cls, ViewGroup.LayoutParams params) {
         if (spiller.move(pos)) {
             if (spiller.getHp() - 30 > 0) {
+
                 Toast.makeText(SpillePlade.this, "Dagen er gået", Toast.LENGTH_SHORT).show();
 
             } else if (spiller.getHp() - 30 <= 0) {
                 dialog.setTitle("Husk at spise!");
-                dialog.setMessage("Dagen er gået,og du har glemt at spise, og derfor har du mindre tid idag");
+                dialog.setMessage("Dagen er gået og du har glemt at spise, du har derfor har du mindre tid i dag");
                 dialog.show();
+
                 spiller.setTid(8);
             }
-            spiller.setHp(spiller.getHp() - 30);
+            if (spiller.getHp()>=30) {
+                spiller.setHp(spiller.getHp() - 30);
+            }
+            else spiller.setHp(0);
+            if (spiller.runde%5==0)randomEvent();
+
             updateTimer();
             updateInfobox();
             Player.setLayoutParams(felt0.getLayoutParams());
@@ -364,6 +375,98 @@ public class SpillePlade extends AppCompatActivity {
         } else {
             Player.setLayoutParams(felt0.getLayoutParams());
         }
+    }
+
+    public void randomEvent(){
+        while(lastEvent==randomNum){
+        randomNum = ThreadLocalRandom.current().nextInt(1, 11);}
+
+        lastEvent=randomNum;
+
+        if (randomNum==1){
+            dialog.setTitle("Du er blevet syg!");
+            dialog.setMessage("Du er blevet syg og har derfor halvt så meget tid idag");
+            dialog.show();
+            spiller.setTid(spiller.getTid()/2);
+            Log.d("SpillePlade","Random event 1 triggered");
+        }
+
+        else if (randomNum==2){
+            dialog.setTitle("Dine forældre har brug for penge");
+            dialog.setMessage("Dine forældre har brugt nogle af dine penge");
+            dialog.show();
+            if(spiller.getPenge()>=20)
+            {
+            spiller.setPenge(spiller.getPenge()-20);
+            }
+            else spiller.setPenge(0);
+            Log.d("SpillePlade","Random event 2 triggered");
+        }
+
+        else if (randomNum==3){
+            dialog.setTitle("På vejen hjem faldt du og slog hovedet");
+            dialog.setMessage("Du har mistet viden");
+            dialog.show();
+            if (spiller.getViden()>=10) {
+                spiller.setViden(spiller.getViden() - 10);
+            }
+            else spiller.setViden(0);
+            Log.d("SpillePlade","Random event 3 triggered");
+        }
+
+        else if (randomNum==4){
+            dialog.setTitle("Maden du har spiste var dårlig");
+            dialog.setMessage("Du er nu mere sulten");
+            dialog.show();
+            if (spiller.getHp()>=30) {
+                spiller.setHp(spiller.getHp() - 30);
+            }
+            else spiller.setHp(0);
+            Log.d("SpillePlade","Random event 4 triggered");
+        }
+
+       else if (randomNum==5){
+            dialog.setTitle("Vejret er dårligt");
+            dialog.setMessage("Det tordner og lyner og du bliver hjemme idag");
+            dialog.show();
+            spiller.setTid(0);
+            Log.d("SpillePlade","Random event 5 triggered");
+        }
+
+       else if (randomNum==6){
+            dialog.setTitle("Du er blevet røvet");
+            dialog.setMessage("En tyv har taget alle dine penge");
+            dialog.show();
+            spiller.setPenge(0);
+            Log.d("SpillePlade","Random event 6 triggered");
+        }
+
+       else if (randomNum==7){
+            dialog.setTitle("Du vågner op super frisk!");
+            dialog.setMessage("Du er frisk og springfyldt med energi, og har ekstra tid idag");
+            dialog.show();
+            spiller.setTid(spiller.getTid()+3);
+            Log.d("SpillePlade","Random event 7 triggered");
+        }
+        else if (randomNum==8){
+            dialog.setTitle("Der skete ingenting");
+            dialog.setMessage("Der er absolut ingenting sket");
+            dialog.show();
+            Log.d("SpillePlade","Random event 8 triggered");
+        }
+        else if (randomNum==9){
+            dialog.setTitle("Der skete ingenting");
+            dialog.setMessage("Der er absolut ingenting sket");
+            dialog.show();
+            Log.d("SpillePlade","Random event 9 triggered");
+        }
+        else {
+            dialog.setTitle("Der skete ingenting");
+            dialog.setMessage("Der er absolut ingenting sket");
+            dialog.show();
+            Log.d("SpillePlade","Random event 10 triggered");
+        }
+
     }
 
 }

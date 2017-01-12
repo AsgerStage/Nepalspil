@@ -17,6 +17,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -84,10 +85,11 @@ public class Skole extends AppCompatActivity {
                         schoolText.setText("Du har modtaget 1 viden!");
                         System.out.println(spiller.getViden());
                     } else {
-                        AlertDialog.Builder dialog = new AlertDialog.Builder(Skole.this);
-                        dialog.setTitle("Lektiehjælp!");
+                        Toast.makeText(Skole.this, "Du forstod ikke alt undervisningen, tag i lektiehjælpen for at forstå det", Toast.LENGTH_LONG).show();
+                        /*AlertDialog.Builder dialog = new AlertDialog.Builder(Skole.this);
+                       dialog.setTitle("Lektiehjælp!");
                         dialog.setMessage("Du kunne ikke forstå undervisningen, så din viden kan opnås hos lektiehjælpen.");
-                        dialog.show();
+                        dialog.show();*/
                     }
                 } else {
                     AlertDialog.Builder dialog = new AlertDialog.Builder(Skole.this);
