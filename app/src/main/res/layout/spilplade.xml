@@ -57,38 +57,37 @@
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            app:srcCompat="@drawable/home"
+            android:id="@+id/felt0"
+            style="?android:borderlessButtonStyle"
+            android:scaleX="0.75"
+            android:scaleY="0.75"
+            android:layout_marginEnd="25dp"
+            android:layout_alignTop="@+id/felt1"
+            android:layout_alignEnd="@+id/felt4" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             app:srcCompat="@drawable/workshop"
             android:id="@+id/felt2"
             style="?android:borderlessButtonStyle"
             android:scaleX="0.8"
             android:scaleY="0.8"
-            android:layout_marginEnd="49dp"
+            android:layout_marginEnd="32dp"
             android:layout_above="@+id/felt4"
             android:layout_alignParentEnd="true" />
 
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:srcCompat="@drawable/clothingstore"
-            android:id="@+id/felt7"
+            app:srcCompat="@drawable/bookstore"
+            android:id="@+id/felt3"
             style="?android:borderlessButtonStyle"
             android:scaleX="0.8"
             android:scaleY="0.8"
-            android:layout_above="@+id/imgUr"
-            android:layout_alignStart="@+id/felt6"
-            android:layout_marginBottom="9dp" />
-
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:srcCompat="@drawable/home"
-            android:id="@+id/felt0"
-            style="?android:borderlessButtonStyle"
-            android:scaleX="0.8"
-            android:scaleY="0.8"
-            android:layout_marginEnd="9dp"
-            android:layout_alignTop="@+id/felt7"
-            android:layout_toStartOf="@+id/felt2" />
+            android:layout_below="@+id/infobox"
+            android:layout_alignEnd="@+id/felt2" />
 
         <ImageButton
             android:layout_width="wrap_content"
@@ -102,29 +101,6 @@
             android:layout_alignStart="@+id/felt6" />
 
         <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:srcCompat="@drawable/marketplace"
-            android:id="@+id/felt6"
-            style="?android:borderlessButtonStyle"
-            android:scaleX="0.8"
-            android:scaleY="0.8"
-            android:layout_marginStart="44dp"
-            android:layout_above="@+id/felt4"
-            android:layout_alignParentStart="true" />
-
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:srcCompat="@drawable/bookstore"
-            android:id="@+id/felt3"
-            style="?android:borderlessButtonStyle"
-            android:scaleX="0.8"
-            android:scaleY="0.8"
-            android:layout_below="@+id/infobox"
-            android:layout_toEndOf="@+id/felt0" />
-
-        <ImageButton
             android:layout_height="wrap_content"
             app:srcCompat="@drawable/homework"
             android:id="@+id/felt1"
@@ -133,9 +109,31 @@
             android:layout_width="wrap_content"
             android:scaleX="0.7"
             android:scaleY="0.7"
-            android:layout_marginEnd="40dp"
-            android:layout_alignBottom="@+id/kaka"
-            android:layout_alignEnd="@+id/felt2" />
+            android:layout_above="@+id/infobox"
+            android:layout_toEndOf="@+id/asha"
+            android:layout_marginStart="51dp" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/marketplace"
+            android:id="@+id/felt6"
+            style="?android:borderlessButtonStyle"
+            android:scaleX="0.8"
+            android:scaleY="0.8"
+            android:layout_above="@+id/felt4"
+            android:layout_toStartOf="@+id/ingameoptions" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/clothingstore"
+            android:id="@+id/felt7"
+            style="?android:borderlessButtonStyle"
+            android:scaleX="0.75"
+            android:scaleY="0.75"
+            android:layout_alignTop="@+id/felt0"
+            android:layout_toStartOf="@+id/infobox" />
 
         <ImageView
             android:layout_width="wrap_content"
@@ -143,7 +141,7 @@
             android:id="@+id/kaka"
             android:adjustViewBounds="false"
             android:layout_height="85dp"
-            android:layout_alignTop="@+id/felt7"
+            android:layout_alignTop="@+id/felt0"
             android:layout_alignEnd="@+id/asha" />
 
         <ImageView
@@ -151,7 +149,7 @@
             app:srcCompat="@drawable/pige2"
             android:id="@+id/asha"
             android:layout_height="85dp"
-            android:layout_alignTop="@+id/felt7"
+            android:layout_alignTop="@+id/felt0"
             android:layout_alignStart="@+id/felt0" />
     </RelativeLayout>
 </LinearLayout>
