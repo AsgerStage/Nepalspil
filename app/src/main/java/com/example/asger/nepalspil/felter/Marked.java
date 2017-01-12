@@ -20,11 +20,12 @@ import com.example.asger.nepalspil.models.SpillePlade;
 import java.io.IOException;
 
 public class Marked extends AppCompatActivity {
+     Toast t;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.marked);
 
-        final Toast t = new Toast(Marked.this);
+        t = new Toast(Marked.this);
         final TextView fieldinfo = (TextView) findViewById(R.id.fieldinfo);
         final TextView playerinfo = (TextView) findViewById(R.id.playerinfo);
         final MediaPlayer mp = MediaPlayer.create(this, R.raw.cash);
@@ -140,4 +141,9 @@ public class Marked extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onBackPressed() {
+        t.cancel();
+        finish();
+    }
 }
