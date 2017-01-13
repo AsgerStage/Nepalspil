@@ -19,6 +19,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.animation.AnimationUtils;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -49,20 +50,20 @@ import static com.example.asger.nepalspil.activities.MainActivity.spiller;
 public class SpillePlade extends AppCompatActivity {
     static TextView infobox;
     ImageView Player;
-    ImageView ur;
+   // ImageView ur;
     ImageView unusedPlayer;
     boolean continueBGMusic;
     AlertDialog.Builder dialog;
     SharedPreferences prefs;
 
-    ImageButton felt0;
-    ImageButton felt1;
-    ImageButton felt2;
-    ImageButton felt3;
-    ImageButton felt4;
-    ImageButton felt5;
-    ImageButton felt6;
-    ImageButton felt7;
+    Button felt0;
+    Button felt1;
+    Button felt2;
+    Button felt3;
+    Button felt4;
+    Button felt5;
+    Button felt6;
+    Button felt7;
     ImageButton ingameopt;
     int lastEvent=0;
     int randomNum=0;
@@ -104,18 +105,18 @@ public class SpillePlade extends AppCompatActivity {
         unusedPlayer.setVisibility(View.INVISIBLE);
 
         infobox = (TextView) findViewById(R.id.infobox);
-        ur = (ImageView) findViewById(R.id.imgUr);
-        ur.setImageResource(R.drawable.ur1);
+        //ur = (ImageView) findViewById(R.id.imgUr);
+       // ur.setImageResource(R.drawable.ur1);
         //infobox.setText("Navn: "+spiller.getNavn()+"\n mad: "+spiller.getHp()+"\n Penge: "+spiller.getPenge()+"\n Viden: "+spiller.getViden()+"\n Klassetrin: "+spiller.getKlassetrin()+"\n Tid: "+spiller.getTid());
         updateInfobox();
-        felt0 = (ImageButton) findViewById(R.id.felt0);
-        felt1 = (ImageButton) findViewById(R.id.felt1);
-        felt2 = (ImageButton) findViewById(R.id.felt2);
-        felt3 = (ImageButton) findViewById(R.id.felt3);
-        felt4 = (ImageButton) findViewById(R.id.felt4);
-        felt5 = (ImageButton) findViewById(R.id.felt5);
-        felt6 = (ImageButton) findViewById(R.id.felt6);
-        felt7 = (ImageButton) findViewById(R.id.felt7);
+        felt0 = (Button) findViewById(R.id.felt0);
+        felt1 = (Button) findViewById(R.id.felt1);
+        felt2 = (Button) findViewById(R.id.felt2);
+        felt3 = (Button) findViewById(R.id.felt3);
+        felt4 = (Button) findViewById(R.id.felt4);
+        felt5 = (Button) findViewById(R.id.felt5);
+        felt6 = (Button) findViewById(R.id.felt6);
+        felt7 = (Button) findViewById(R.id.felt7);
         ingameopt = (ImageButton) findViewById(R.id.ingameoptions);
         MoveIcon();
 
@@ -286,12 +287,12 @@ public class SpillePlade extends AppCompatActivity {
             else spiller.setHp(0);
             if (spiller.runde%5==0)randomEvent();
 
-            updateTimer();
+           //updateTimer();
             updateInfobox();
             MoveIcon();
         } else {
             final Intent intent = new Intent(SpillePlade.this, cls);
-            updateTimer();
+            //updateTimer();
             updateInfobox();
             Log.d("Spilleplade", "Height:" + params.height + " Width: " + params.width);
             MoveIcon();
@@ -309,7 +310,7 @@ public class SpillePlade extends AppCompatActivity {
             //
         }
     }
-
+/*
     public void updateTimer() {
         if (spiller.getTid() > 12) {//tid mellem 16 og 13
             ur.setImageResource(R.drawable.ur1);
@@ -322,7 +323,7 @@ public class SpillePlade extends AppCompatActivity {
         } else
             ur.setImageResource(R.drawable.ur1);
 
-    }
+    }*/
 
     public void onPause() {
         super.onPause();
@@ -379,7 +380,7 @@ public class SpillePlade extends AppCompatActivity {
         }
         Log.d("Spilleplade","MoveIcon called to "+spiller.getPosition());
     }
-    public void setPlayerIconParams(ImageButton felt){
+    public void setPlayerIconParams(Button felt){
         Player.setX(felt.getX());
         Player.setY(felt.getY());
 
