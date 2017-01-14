@@ -30,16 +30,6 @@
 
         <!-- Bookstore felt -->
 
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:srcCompat="@android:drawable/ic_menu_preferences"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentStart="true"
-            android:id="@+id/ingameoptions"
-            style="?android:borderlessButtonStyle"
-            android:layout_toStartOf="@+id/felt6" />
-
         <!-- Shop felt -->
         <Button
             android:layout_width="wrap_content"
@@ -49,14 +39,6 @@
             android:background="@android:color/transparent"
             android:layout_below="@+id/ingameoptions"
             android:layout_alignParentStart="true" />
-
-        <ImageView
-            android:layout_width="wrap_content"
-            app:srcCompat="@drawable/pige2"
-            android:id="@+id/asha"
-            android:layout_height="85dp"
-            android:layout_alignBottom="@+id/felt0"
-            android:layout_centerHorizontal="true" />
 
         <!-- Workshop felt -->
 
@@ -120,8 +102,86 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/infobox"
-            android:layout_alignTop="@+id/felt6"
-            android:layout_alignStart="@+id/felt0" />
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="9dp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            app:srcCompat="@drawable/pige2"
+            android:id="@+id/asha"
+            android:layout_height="85dp"
+            android:layout_below="@+id/textmad"
+            android:layout_alignStart="@+id/felt4"
+            android:layout_marginStart="14dp" />
+
+        <ImageView
+            app:srcCompat="@drawable/ikonpenge"
+            android:id="@+id/imageView8"
+            android:layout_alignBottom="@+id/textpenge"
+            android:layout_toEndOf="@+id/textpenge"
+            android:layout_width="30dp"
+            android:layout_height="30dp" />
+
+        <TextView
+            android:text="penge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textpenge"
+            android:fontFamily="sans-serif"
+            android:textColor="@color/money"
+            android:textSize="24sp"
+            android:layout_alignParentTop="true"
+            android:layout_toEndOf="@+id/felt4" />
+
+        <TextView
+            android:text="mad"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textmad"
+            android:fontFamily="sans-serif"
+            android:textColor="@color/food"
+            android:textSize="24sp"
+            android:layout_alignParentTop="true"
+            android:layout_toStartOf="@+id/imageView11" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/knaphjem"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true"
+            android:id="@+id/ingameopt"
+            android:layout_alignBottom="@+id/felt7"
+            android:layout_toStartOf="@+id/felt6" />
+
+        <TextView
+            android:text="viden"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textviden"
+            android:fontFamily="sans-serif"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            android:layout_alignParentTop="true"
+            android:layout_toStartOf="@+id/imageView9" />
+
+        <ImageView
+            app:srcCompat="@drawable/ikonviden"
+            android:id="@+id/imageView9"
+            android:layout_height="34dp"
+            android:layout_alignBottom="@+id/textviden"
+            android:layout_toStartOf="@+id/asha"
+            android:layout_width="30dp" />
+
+        <ImageView
+            android:layout_width="34dp"
+            app:srcCompat="@drawable/ikonmad"
+            android:id="@+id/imageView11"
+            android:layout_height="34dp"
+            android:layout_alignBottom="@+id/textmad"
+            android:layout_toStartOf="@+id/felt0" />
+
     </RelativeLayout>
 
     <ImageView

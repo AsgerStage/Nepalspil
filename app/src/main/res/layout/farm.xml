@@ -65,11 +65,20 @@
 
         <ImageView
             android:layout_width="44dp"
-            app:srcCompat="@drawable/back"
+            app:srcCompat="@drawable/newback"
             android:id="@+id/backButton"
             android:layout_weight="0.05"
             android:layout_alignParentTop="true"
             android:layout_height="38dp" />
+
+        <ImageView
+            android:layout_width="44dp"
+            android:layout_height="38dp"
+            app:srcCompat="@drawable/fieldhelp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:id="@+id/imageView" />
+
     </RelativeLayout>
 
 </LinearLayout>

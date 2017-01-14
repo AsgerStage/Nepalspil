@@ -131,7 +131,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 v.startAnimation(AnimationUtils.loadAnimation(MainActivity.this, R.anim.image_click));
 
-                CharSequence options[] = new CharSequence[]{"Skoleliv i Nepal", "Credits", "Rapporter fejl", "Sluk musik"};
+                CharSequence options[] = new CharSequence[]{"Skoleliv i Nepal", "Credits", "Sluk musik", "Rapporter fejl"};
                 AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
                 builder.setTitle("Indstillinger");
                 builder.setItems(options, new DialogInterface.OnClickListener() {
@@ -145,9 +145,10 @@ public class MainActivity extends AppCompatActivity {
                             case 1:
                                 break;
                             case 2:
+                                MusicManager.stop();
                                 break;
                             case 3:
-                                MusicManager.pause();
+
                                 break;
 
 

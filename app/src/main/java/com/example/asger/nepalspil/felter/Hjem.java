@@ -29,7 +29,7 @@ public class Hjem extends AppCompatActivity {
         Button bBack = (Button) findViewById(R.id.hjemback);
 
         if (spiller.getNavn() == "Asha"){
-            im.setImageResource(R.drawable.pige1);
+            im.setImageResource(R.drawable.pige2);
         } else {
             im.setImageResource(R.drawable.dreng1);
         }

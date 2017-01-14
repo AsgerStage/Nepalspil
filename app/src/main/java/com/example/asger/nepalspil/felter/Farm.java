@@ -84,8 +84,10 @@ public class Farm extends AppCompatActivity {
         back.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
+                SpillePlade.updateTextpenge();
                 v.startAnimation(AnimationUtils.loadAnimation(Farm.this, R.anim.image_click));
                 finish();
+
             }
         });
     }

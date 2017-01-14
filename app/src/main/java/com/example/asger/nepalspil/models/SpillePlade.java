@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
@@ -49,8 +50,12 @@ import static com.example.asger.nepalspil.activities.MainActivity.spiller;
 
 public class SpillePlade extends AppCompatActivity {
     static TextView infobox;
+    static TextView textpenge;
+    static TextView textviden;
+    static TextView textmad;
+
     ImageView Player;
-   // ImageView ur;
+    // ImageView ur;
     ImageView unusedPlayer;
     boolean continueBGMusic;
     AlertDialog.Builder dialog;
@@ -64,9 +69,9 @@ public class SpillePlade extends AppCompatActivity {
     Button felt5;
     Button felt6;
     Button felt7;
-    ImageButton ingameopt;
-    int lastEvent=0;
-    int randomNum=0;
+    ImageView ingameopt;
+    int lastEvent = 0;
+    int randomNum = 0;
 
     @Override
     public void onBackPressed() {
@@ -81,8 +86,6 @@ public class SpillePlade extends AppCompatActivity {
                 .setNegativeButton("Nej", null)
                 .show();
     }
-
-
 
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -105,10 +108,18 @@ public class SpillePlade extends AppCompatActivity {
         unusedPlayer.setVisibility(View.INVISIBLE);
 
         infobox = (TextView) findViewById(R.id.infobox);
+        textpenge = (TextView) findViewById(R.id.textpenge);
+        textviden = (TextView) findViewById(R.id.textviden);
+        textmad = (TextView) findViewById(R.id.textmad);
+
         //ur = (ImageView) findViewById(R.id.imgUr);
-       // ur.setImageResource(R.drawable.ur1);
+        // ur.setImageResource(R.drawable.ur1);
         //infobox.setText("Navn: "+spiller.getNavn()+"\n mad: "+spiller.getHp()+"\n Penge: "+spiller.getPenge()+"\n Viden: "+spiller.getViden()+"\n Klassetrin: "+spiller.getKlassetrin()+"\n Tid: "+spiller.getTid());
         updateInfobox();
+        updateTextpenge();
+        updateTextviden();
+        updateTextmad();
+
         felt0 = (Button) findViewById(R.id.felt0);
         felt1 = (Button) findViewById(R.id.felt1);
         felt2 = (Button) findViewById(R.id.felt2);
@@ -117,9 +128,8 @@ public class SpillePlade extends AppCompatActivity {
         felt5 = (Button) findViewById(R.id.felt5);
         felt6 = (Button) findViewById(R.id.felt6);
         felt7 = (Button) findViewById(R.id.felt7);
-        ingameopt = (ImageButton) findViewById(R.id.ingameoptions);
+        ingameopt = (ImageView) findViewById(R.id.ingameopt);
         MoveIcon();
-
 
 
         felt0.setOnClickListener(new View.OnClickListener() {
@@ -231,8 +241,7 @@ public class SpillePlade extends AppCompatActivity {
                                 int d;
                                 break;
                             case 3:
-                                Intent myIntent = new Intent(SpillePlade.this, MainActivity.class);
-                                startActivity(myIntent);
+                                finish();
                                 break;
 
 
@@ -265,7 +274,17 @@ public class SpillePlade extends AppCompatActivity {
     }*/
 
     public static void updateInfobox() {
-        infobox.setText("Navn: " + spiller.getNavn() + "\n mad: " + spiller.getHp() + "\n Penge: " + spiller.getPenge() + "\n Viden: " + spiller.getViden() + "\n Klassetrin: " + spiller.getKlassetrin() + "\n Tid: " + spiller.getTid()+"\n Dag: "+spiller.getRunde());
+        infobox.setText("Navn: " + spiller.getNavn() + "\n mad: " + spiller.getHp() + "\n Penge: " + spiller.getPenge() + "\n Viden: " + spiller.getViden() + "\n Klassetrin: " + spiller.getKlassetrin() + "\n Tid: " + spiller.getTid() + "\n Dag: " + spiller.getRunde());
+    }
+
+    public static void updateTextpenge() {
+        textpenge.setText(String.valueOf(spiller.getPenge()));
+    }
+    public static void updateTextviden() {
+        textviden.setText(String.valueOf(spiller.getViden()));
+    }
+    public static void updateTextmad() {
+        textmad.setText(String.valueOf(spiller.getHp()));
     }
 
     public void moveTo(int pos, java.lang.Class<?> cls, ViewGroup.LayoutParams params) {
@@ -281,19 +300,26 @@ public class SpillePlade extends AppCompatActivity {
 
                 spiller.setTid(8);
             }
-            if (spiller.getHp()>=30) {
+            if (spiller.getHp() >= 30) {
                 spiller.setHp(spiller.getHp() - 30);
-            }
-            else spiller.setHp(0);
-            if (spiller.runde%5==0)randomEvent();
+            } else spiller.setHp(0);
+            if (spiller.runde % 5 == 0) randomEvent();
 
-           //updateTimer();
+            //updateTimer();
             updateInfobox();
+            updateTextpenge();
+            updateTextviden();
+            updateTextmad();
+
             MoveIcon();
         } else {
             final Intent intent = new Intent(SpillePlade.this, cls);
             //updateTimer();
             updateInfobox();
+            updateTextpenge();
+            updateTextviden();
+            updateTextmad();
+
             Log.d("Spilleplade", "Height:" + params.height + " Width: " + params.width);
             MoveIcon();
 
@@ -378,103 +404,86 @@ public class SpillePlade extends AppCompatActivity {
         } else {
             setPlayerIconParams(felt0);
         }
-        Log.d("Spilleplade","MoveIcon called to "+spiller.getPosition());
+        Log.d("Spilleplade", "MoveIcon called to " + spiller.getPosition());
     }
-    public void setPlayerIconParams(Button felt){
+
+    public void setPlayerIconParams(Button felt) {
         Player.setX(felt.getX());
         Player.setY(felt.getY());
 
 
     }
 
-    public void randomEvent(){
-        while(lastEvent==randomNum){
-        randomNum = ThreadLocalRandom.current().nextInt(1, 11);}
+    public void randomEvent() {
+        while (lastEvent == randomNum) {
+            randomNum = ThreadLocalRandom.current().nextInt(1, 11);
+        }
 
-        lastEvent=randomNum;
+        lastEvent = randomNum;
 
-        if (randomNum==1){
+        if (randomNum == 1) {
             dialog.setTitle("Du er blevet syg!");
             dialog.setMessage("Du er blevet syg og har derfor halvt så meget tid idag");
             dialog.show();
-            spiller.setTid(spiller.getTid()/2);
-            Log.d("SpillePlade","Random event 1 triggered");
-        }
-
-        else if (randomNum==2){
+            spiller.setTid(spiller.getTid() / 2);
+            Log.d("SpillePlade", "Random event 1 triggered");
+        } else if (randomNum == 2) {
             dialog.setTitle("Dine forældre har brug for penge");
             dialog.setMessage("Dine forældre har brugt nogle af dine penge");
             dialog.show();
-            if(spiller.getPenge()>=20)
-            {
-            spiller.setPenge(spiller.getPenge()-20);
-            }
-            else spiller.setPenge(0);
-            Log.d("SpillePlade","Random event 2 triggered");
-        }
-
-        else if (randomNum==3){
+            if (spiller.getPenge() >= 20) {
+                spiller.setPenge(spiller.getPenge() - 20);
+            } else spiller.setPenge(0);
+            Log.d("SpillePlade", "Random event 2 triggered");
+        } else if (randomNum == 3) {
             dialog.setTitle("På vejen hjem faldt du og slog hovedet");
             dialog.setMessage("Du har mistet viden");
             dialog.show();
-            if (spiller.getViden()>=10) {
+            if (spiller.getViden() >= 10) {
                 spiller.setViden(spiller.getViden() - 10);
-            }
-            else spiller.setViden(0);
-            Log.d("SpillePlade","Random event 3 triggered");
-        }
-
-        else if (randomNum==4){
+            } else spiller.setViden(0);
+            Log.d("SpillePlade", "Random event 3 triggered");
+        } else if (randomNum == 4) {
             dialog.setTitle("Maden du har spiste var dårlig");
             dialog.setMessage("Du er nu mere sulten");
             dialog.show();
-            if (spiller.getHp()>=30) {
+            if (spiller.getHp() >= 30) {
                 spiller.setHp(spiller.getHp() - 30);
-            }
-            else spiller.setHp(0);
-            Log.d("SpillePlade","Random event 4 triggered");
-        }
-
-       else if (randomNum==5){
+            } else spiller.setHp(0);
+            Log.d("SpillePlade", "Random event 4 triggered");
+        } else if (randomNum == 5) {
             dialog.setTitle("Vejret er dårligt");
             dialog.setMessage("Det tordner og lyner og du bliver hjemme idag");
             dialog.show();
             spiller.setTid(0);
-            Log.d("SpillePlade","Random event 5 triggered");
-        }
-
-       else if (randomNum==6){
+            Log.d("SpillePlade", "Random event 5 triggered");
+        } else if (randomNum == 6) {
             dialog.setTitle("Du er blevet røvet");
             dialog.setMessage("En tyv har taget alle dine penge");
             dialog.show();
             spiller.setPenge(0);
-            Log.d("SpillePlade","Random event 6 triggered");
-        }
-
-       else if (randomNum==7){
+            Log.d("SpillePlade", "Random event 6 triggered");
+        } else if (randomNum == 7) {
             dialog.setTitle("Du vågner op super frisk!");
             dialog.setMessage("Du er frisk og springfyldt med energi, og har ekstra tid idag");
             dialog.show();
-            spiller.setTid(spiller.getTid()+3);
-            Log.d("SpillePlade","Random event 7 triggered");
-        }
-        else if (randomNum==8){
+            spiller.setTid(spiller.getTid() + 3);
+            Log.d("SpillePlade", "Random event 7 triggered");
+        } else if (randomNum == 8) {
             dialog.setTitle("Der skete ingenting");
             dialog.setMessage("Der er absolut ingenting sket");
             dialog.show();
-            Log.d("SpillePlade","Random event 8 triggered");
-        }
-        else if (randomNum==9){
+            Log.d("SpillePlade", "Random event 8 triggered");
+        } else if (randomNum == 9) {
             dialog.setTitle("Der skete ingenting");
             dialog.setMessage("Der er absolut ingenting sket");
             dialog.show();
-            Log.d("SpillePlade","Random event 9 triggered");
-        }
-        else {
+            Log.d("SpillePlade", "Random event 9 triggered");
+        } else {
             dialog.setTitle("Der skete ingenting");
             dialog.setMessage("Der er absolut ingenting sket");
             dialog.show();
-            Log.d("SpillePlade","Random event 10 triggered");
+            Log.d("SpillePlade", "Random event 10 triggered");
         }
 
     }
