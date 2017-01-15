@@ -233,7 +233,7 @@ public class SpillePlade extends AppCompatActivity {
             public void onClick(View v) {
                 v.startAnimation(AnimationUtils.loadAnimation(SpillePlade.this, R.anim.image_click));
 
-                CharSequence options[] = new CharSequence[]{"Hjælp", "Sluk musik", "Afslut spil"};
+                CharSequence options[] = new CharSequence[]{"Sluk musik", "Afslut spil"};
                 AlertDialog.Builder builder = new AlertDialog.Builder(SpillePlade.this);
                 builder.setTitle("Indstillinger");
                 builder.setItems(options, new DialogInterface.OnClickListener() {
@@ -244,12 +244,9 @@ public class SpillePlade extends AppCompatActivity {
 
                         switch (which) {
                             case 0:
-
-                                break;
-                            case 1:
                                 MusicManager.stop();
                                 break;
-                            case 2:
+                            case 1:
                                 finish();
                                 break;
 
@@ -271,8 +268,11 @@ public class SpillePlade extends AppCompatActivity {
 
 
 
-    public static void updateInfobox() {
+   /* public static void updateInfobox() {
         infobox.setText("Navn: " + spiller.getNavn() + "\n mad: " + spiller.getHp() + "\n Penge: " + spiller.getPenge() + "\n Viden: " + spiller.getViden() + "\n Klassetrin: " + spiller.getKlassetrin() + "\n Tid: " + spiller.getTid() + "\n Dag: " + spiller.getRunde());
+    }*/
+    public static void updateInfobox() {
+        infobox.setText("Dag: " + spiller.getRunde());
     }
 
     public static void updateTextpenge() {

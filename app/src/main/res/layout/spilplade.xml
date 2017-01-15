@@ -165,15 +165,6 @@
 
         <Button
             android:background="@android:color/transparent"
-            android:id="@+id/felt2"
-            android:layout_height="100dp"
-            android:layout_width="120dp"
-            android:layout_below="@+id/felt7"
-            android:layout_alignStart="@+id/felt3"
-            android:layout_alignEnd="@+id/infobox" />
-
-        <Button
-            android:background="@android:color/transparent"
             android:id="@+id/felt6"
             android:layout_centerVertical="true"
             android:layout_alignEnd="@+id/felt7"
@@ -191,14 +182,6 @@
             android:layout_alignTop="@+id/felt4"
             android:layout_alignStart="@+id/felt6" />
 
-        <TextView
-            android:text="TextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/infobox"
-            android:layout_alignTop="@+id/felt0"
-            android:layout_alignParentEnd="true" />
-
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -206,8 +189,7 @@
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
             android:id="@+id/spilpladeHelp"
-            android:layout_above="@+id/infobox"
-            android:layout_alignStart="@+id/infobox" />
+            android:layout_above="@+id/felt0" />
 
         <ImageView
             android:layout_width="100dp"
@@ -217,6 +199,24 @@
             android:layout_centerHorizontal="true"
             android:id="@+id/ur"
             android:scaleType="centerCrop" />
+
+        <TextView
+            android:text="TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/infobox"
+            android:layout_alignBaseline="@+id/felt6"
+            android:layout_alignBottom="@+id/felt6"
+            android:layout_toEndOf="@+id/ur" />
+
+        <Button
+            android:background="@android:color/transparent"
+            android:id="@+id/felt2"
+            android:layout_height="100dp"
+            android:layout_width="200dp"
+            android:layout_below="@+id/felt7"
+            android:layout_toEndOf="@+id/imageView8"
+            android:layout_alignStart="@+id/felt3" />
 
 
     </RelativeLayout>

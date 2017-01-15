@@ -7,7 +7,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="41dp">
+        android:layout_height="31dp">
 
         <ImageView
             android:layout_width="wrap_content"
@@ -35,9 +35,15 @@
         android:id="@+id/schoolText" />
 
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="140dp"
-        android:id="@+id/schoolPlayerInfo" />
+        android:layout_width="427dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/plusknowledge" />
+
+    <TextView
+        android:layout_width="578dp"
+        android:layout_height="128dp"
+        android:id="@+id/schoolPlayerInfo"
+        android:gravity="right" />
 
     <LinearLayout
        android:orientation="horizontal"

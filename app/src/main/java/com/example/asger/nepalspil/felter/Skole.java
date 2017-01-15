@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.res.AssetFileDescriptor;
 import android.graphics.Color;
 import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -12,9 +13,14 @@ import com.example.asger.nepalspil.R;
 import com.example.asger.nepalspil.activities.MainActivity;
 import com.example.asger.nepalspil.models.SpillePlade;
 import com.github.jinatonic.confetti.CommonConfetti;
+import com.google.android.gms.appindexing.Action;
+import com.google.android.gms.appindexing.AppIndex;
+import com.google.android.gms.appindexing.Thing;
+import com.google.android.gms.common.api.GoogleApiClient;
 
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -30,6 +36,14 @@ import static com.example.asger.nepalspil.activities.MainActivity.spiller;
 
 
 public class Skole extends AppCompatActivity {
+
+    private Animation animation;
+    /**
+     * ATTENTION: This was auto-generated to implement the App Indexing API.
+     * See https://g.co/AppIndexing/AndroidStudio for more information.
+     */
+    private GoogleApiClient client;
+
     @Override
     public void onBackPressed() {
         SpillePlade.updateTextpenge();
@@ -62,6 +76,9 @@ public class Skole extends AppCompatActivity {
         Button bEksamen = (Button) findViewById(R.id.eksamen);
         ImageView back = (ImageView) findViewById(R.id.skoleBack);
         ImageView helpField = (ImageView) findViewById(R.id.skoleHelp);
+        animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.plusknowledge);
+        final TextView scroll = (TextView) findViewById(R.id.plusknowledge);
+
         dialog = new AlertDialog.Builder(Skole.this);
         schoolText.setText("Velkommen til Skolen, her kan du spise, studere og tage din eksamen når tiden er.");
         playerInfo.setText("Navn: " + spiller.getNavn() + "\n mad: " + spiller.getHp() + "\n Penge: " + spiller.getPenge() + "\n Viden: " + spiller.getViden() + "\n Klassetrin: " + spiller.getKlassetrin() + "\n Tid: " + spiller.getTid());
@@ -115,8 +132,9 @@ public class Skole extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (spiller.getTid() > 0) {
-                    if (spiller.getTid() > 0 && studer()) {
-                        schoolText.setText("Du har modtaget 1 viden!");
+                    if (spiller.getTid() > 0 && studer()) {;
+                        scroll.setText("+1 viden");
+                        scroll.startAnimation(animation);
                         System.out.println(spiller.getViden());
                     } else {
                         Toast.makeText(Skole.this, "Du forstod ikke alt undervisningen, tag i lektiehjælpen for at forstå det", Toast.LENGTH_SHORT).show();
@@ -169,6 +187,9 @@ public class Skole extends AppCompatActivity {
         });
 
 
+        // ATTENTION: This was auto-generated to implement the App Indexing API.
+        // See https://g.co/AppIndexing/AndroidStudio for more information.
+        client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
     }
 
     public static int vidensKrav = 10 * spiller.getKlassetrin();
@@ -176,6 +197,7 @@ public class Skole extends AppCompatActivity {
 
     public boolean studer() {
         if (hasLearned()) {
+
             spiller.setViden(spiller.getViden() + 1);
             spiller.setTid(spiller.getTid() - 1);
             SpillePlade.updateInfobox();
@@ -222,4 +244,39 @@ public class Skole extends AppCompatActivity {
         return 10 * spiller.getKlassetrin();
     }
 
+    /**
+     * ATTENTION: This was auto-generated to implement the App Indexing API.
+     * See https://g.co/AppIndexing/AndroidStudio for more information.
+     */
+    public Action getIndexApiAction() {
+        Thing object = new Thing.Builder()
+                .setName("Skole Page") // TODO: Define a title for the content shown.
+                // TODO: Make sure this auto-generated URL is correct.
+                .setUrl(Uri.parse("http://[ENTER-YOUR-URL-HERE]"))
+                .build();
+        return new Action.Builder(Action.TYPE_VIEW)
+                .setObject(object)
+                .setActionStatus(Action.STATUS_TYPE_COMPLETED)
+                .build();
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+
+        // ATTENTION: This was auto-generated to implement the App Indexing API.
+        // See https://g.co/AppIndexing/AndroidStudio for more information.
+        client.connect();
+        AppIndex.AppIndexApi.start(client, getIndexApiAction());
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+
+        // ATTENTION: This was auto-generated to implement the App Indexing API.
+        // See https://g.co/AppIndexing/AndroidStudio for more information.
+        AppIndex.AppIndexApi.end(client, getIndexApiAction());
+        client.disconnect();
+    }
 }
