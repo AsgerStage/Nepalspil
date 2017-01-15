@@ -360,52 +360,7 @@ public class SpillePlade extends AppCompatActivity {
             case 18: ur.setImageResource(R.drawable.ur18); break;
             case 19: ur.setImageResource(R.drawable.ur19); break;
 
-
-
         }
-/*
-        if (spiller.getTid() == 19) {
-            ur.setImageResource(R.drawable.ur19);
-        } else if (spiller.getTid() == 18) {
-            ur.setImageResource(R.drawable.ur18);
-        } else if (spiller.getTid() == 17) {
-            ur.setImageResource(R.drawable.ur18);
-        } else if (spiller.getTid() == 16) {
-            ur.setImageResource(R.drawable.ur18);
-        } else if (spiller.getTid() == 15) {
-            ur.setImageResource(R.drawable.ur18);
-        } else if (spiller.getTid() == 14) {
-            ur.setImageResource(R.drawable.ur18);
-        } else if (spiller.getTid() == 13) {
-            ur.setImageResource(R.drawable.ur18);
-        } else if (spiller.getTid() == 12) {
-            ur.setImageResource(R.drawable.ur18);
-        } else if (spiller.getTid() == 11) {
-            ur.setImageResource(R.drawable.ur18);
-        } else if (spiller.getTid() == 10) {
-            ur.setImageResource(R.drawable.ur18);
-        } else if (spiller.getTid() == 9) {
-            ur.setImageResource(R.drawable.ur18);
-        } else if (spiller.getTid() == 8) {
-            ur.setImageResource(R.drawable.ur18);
-        } else if (spiller.getTid() == 7) {
-            ur.setImageResource(R.drawable.ur18);
-        } else if (spiller.getTid() == 6) {
-            ur.setImageResource(R.drawable.ur18);
-        } else if (spiller.getTid() == 5) {
-            ur.setImageResource(R.drawable.ur18);
-        } else if (spiller.getTid() == 4) {
-            ur.setImageResource(R.drawable.ur18);
-        } else if (spiller.getTid() == 3) {
-            ur.setImageResource(R.drawable.ur18);
-        } else if (spiller.getTid() == 2) {
-            ur.setImageResource(R.drawable.ur18);
-        } else if (spiller.getTid() == 1) {
-            ur.setImageResource(R.drawable.ur18);
-        } else if (spiller.getTid() == 0) {
-            ur.setImageResource(R.drawable.ur18);
-        }
-*/
 
     }
 
