@@ -255,17 +255,7 @@ public class SpillePlade extends AppCompatActivity {
 
 
     }
-    /*protected void moveTo(ImageButton v){
-        felt0.setColorFilter(null);
-        felt1.setColorFilter(null);
-        felt2.setColorFilter(null);
-        felt3.setColorFilter(null);
-        felt4.setColorFilter(null);
-        felt5.setColorFilter(null);
-        felt6.setColorFilter(null);
-        felt7.setColorFilter(null);
-        v.setColorFilter(android.R.color.holo_green_dark);
-    }*/
+
 
     public static void updateInfobox() {
         infobox.setText("Navn: " + spiller.getNavn() + "\n mad: " + spiller.getHp() + "\n Penge: " + spiller.getPenge() + "\n Viden: " + spiller.getViden() + "\n Klassetrin: " + spiller.getKlassetrin() + "\n Tid: " + spiller.getTid() + "\n Dag: " + spiller.getRunde());
@@ -274,9 +264,11 @@ public class SpillePlade extends AppCompatActivity {
     public static void updateTextpenge() {
         textpenge.setText(String.valueOf(spiller.getPenge()));
     }
+
     public static void updateTextviden() {
         textviden.setText(String.valueOf(spiller.getViden()));
     }
+
     public static void updateTextmad() {
         textmad.setText(String.valueOf(spiller.getHp()));
     }

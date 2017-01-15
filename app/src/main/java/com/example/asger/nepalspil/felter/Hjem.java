@@ -19,22 +19,30 @@ import static com.example.asger.nepalspil.activities.MainActivity.spiller;
  */
 
 public class Hjem extends AppCompatActivity {
+    @Override
+    public void onBackPressed() {
+        SpillePlade.updateTextpenge();
+        SpillePlade.updateTextmad();
+        SpillePlade.updateTextviden();
+        finish();
+    }
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.hjem);          //Har ikke lavet hjem layout endnu
 
-        ImageView im  = (ImageView) findViewById(R.id.hjemprofile);
+        ImageView im = (ImageView) findViewById(R.id.hjemprofile);
         TextView tv = (TextView) findViewById(R.id.hjemtext);
         Button bSov = (Button) findViewById(R.id.sleep);
         Button bBack = (Button) findViewById(R.id.hjemback);
 
-        if (spiller.getNavn() == "Asha"){
+        if (spiller.getNavn() == "Asha") {
             im.setImageResource(R.drawable.pige2);
         } else {
             im.setImageResource(R.drawable.dreng1);
         }
 
-        tv.setText(("Navn: "+spiller.getNavn()+"\n mad: "+spiller.getHp()+"\n Penge: "+spiller.getPenge()+"\n Viden: "+spiller.getViden()+"\n Klassetrin: "+spiller.getKlassetrin()+"\n Tid: "+spiller.getTid()));
+        tv.setText(("Navn: " + spiller.getNavn() + "\n mad: " + spiller.getHp() + "\n Penge: " + spiller.getPenge() + "\n Viden: " + spiller.getViden() + "\n Klassetrin: " + spiller.getKlassetrin() + "\n Tid: " + spiller.getTid()));
 
         bBack.setOnClickListener(new View.OnClickListener() {
 
@@ -61,7 +69,7 @@ public class Hjem extends AppCompatActivity {
                     }
                 });
 
-                dialog.setNegativeButton("Nej",new DialogInterface.OnClickListener() {
+                dialog.setNegativeButton("Nej", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         finish();
                     }

@@ -45,13 +45,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         continueBGMusic = true;
-        boolean EMULATOR = Build.PRODUCT.contains("sdk")|| Build.MODEL.contains("Emulator");
-        if(!EMULATOR){
-        Fabric.with(this, new Crashlytics());}
+        boolean EMULATOR = Build.PRODUCT.contains("sdk") || Build.MODEL.contains("Emulator");
+        if (!EMULATOR) {
+            Fabric.with(this, new Crashlytics());
+        }
         prefs = PreferenceManager.getDefaultSharedPreferences(this);
         String checkIfPlayedBefore = prefs.getString("Navn", null);
-
-
 
 
         setContentView(R.layout.splash);
@@ -149,7 +148,6 @@ public class MainActivity extends AppCompatActivity {
                             case 2:
                                 MusicManager.stop();
                                 break;
-
 
 
                         }

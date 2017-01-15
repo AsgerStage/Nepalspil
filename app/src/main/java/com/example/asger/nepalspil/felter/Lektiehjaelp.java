@@ -27,6 +27,14 @@ import static com.example.asger.nepalspil.activities.MainActivity.spiller;
  */
 
 public class Lektiehjaelp extends AppCompatActivity {
+    @Override
+    public void onBackPressed() {
+        SpillePlade.updateTextpenge();
+        SpillePlade.updateTextmad();
+        SpillePlade.updateTextviden();
+        finish();
+    }
+
     Button homeworkHelp;
     AlertDialog.Builder dialog;
 
@@ -35,7 +43,7 @@ public class Lektiehjaelp extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.lektiehjaelp);
 
-        dialog= new AlertDialog.Builder(Lektiehjaelp.this);
+        dialog = new AlertDialog.Builder(Lektiehjaelp.this);
 
         final TextView lektiehjaelpInfo = (TextView) findViewById(R.id.lektiehjaelpTextField);
         final TextView playerInfo = (TextView) findViewById(R.id.lektiePlayerInfo);
@@ -88,12 +96,11 @@ public class Lektiehjaelp extends AppCompatActivity {
 
     }
 
-    private void learn(){
-            spiller.setViden(spiller.getViden()+1);
-            spiller.setTid(spiller.getTid()-1);
-            spiller.setGlemtViden(spiller.getGlemtViden()-1);
+    private void learn() {
+        spiller.setViden(spiller.getViden() + 1);
+        spiller.setTid(spiller.getTid() - 1);
+        spiller.setGlemtViden(spiller.getGlemtViden() - 1);
     }
-
 
 
     public String updateInfo() {

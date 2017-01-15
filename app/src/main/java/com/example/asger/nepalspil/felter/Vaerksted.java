@@ -28,6 +28,14 @@ import static com.example.asger.nepalspil.activities.MainActivity.spiller;
  */
 
 public class Vaerksted extends AppCompatActivity {
+    @Override
+    public void onBackPressed() {
+        SpillePlade.updateTextpenge();
+        SpillePlade.updateTextmad();
+        SpillePlade.updateTextviden();
+        finish();
+    }
+
     AlertDialog.Builder dialog;
     ViewPager viewPager;
 
@@ -35,7 +43,7 @@ public class Vaerksted extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.vaerksted);
 
-        dialog= new AlertDialog.Builder(Vaerksted.this);
+        dialog = new AlertDialog.Builder(Vaerksted.this);
         viewPager = (ViewPager) findViewById(R.id.view_pager);
         ImagePagerAdapter adapter = new ImagePagerAdapter();
         viewPager.setAdapter(adapter);

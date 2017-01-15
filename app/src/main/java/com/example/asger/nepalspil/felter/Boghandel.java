@@ -1,5 +1,6 @@
 package com.example.asger.nepalspil.felter;
 
+import android.content.DialogInterface;
 import android.content.res.AssetFileDescriptor;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -23,6 +24,14 @@ import static com.example.asger.nepalspil.activities.MainActivity.spiller;
  */
 
 public class Boghandel extends AppCompatActivity {
+
+    @Override
+    public void onBackPressed() {
+        SpillePlade.updateTextpenge();
+        SpillePlade.updateTextmad();
+        SpillePlade.updateTextviden();
+        finish();
+    }
 
     AlertDialog.Builder dialog;
     protected void onCreate(Bundle savedInstanceState) {

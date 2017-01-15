@@ -29,7 +29,7 @@ public class Marked extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.marked);
 
-        dialog= new AlertDialog.Builder(Marked.this);
+        dialog = new AlertDialog.Builder(Marked.this);
         t = new Toast(Marked.this);
         final TextView fieldinfo = (TextView) findViewById(R.id.fieldinfo);
         final TextView playerinfo = (TextView) findViewById(R.id.playerinfo);
@@ -114,7 +114,7 @@ public class Marked extends AppCompatActivity {
                     t.setView(im);
                     t.setGravity(Gravity.CENTER, 0, 0);
                     t.show();
-                    if(back.isPressed())
+                    if (back.isPressed())
                         t.cancel();
 
                     //Toast.makeText(Marked.this, "Du har spist! +10 HP -5 Penge", Toast.LENGTH_LONG).show();

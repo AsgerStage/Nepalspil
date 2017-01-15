@@ -24,7 +24,7 @@ public class Credit extends AppCompatActivity {
         setContentView(R.layout.credit);
 
 
-        animation = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.credit);
+        animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.credit);
         TextView scroll = (TextView) findViewById(R.id.textView);
         ImageView danida = (ImageView) findViewById(R.id.danida);
         ImageView dtu = (ImageView) findViewById(R.id.dtu);
@@ -32,12 +32,11 @@ public class Credit extends AppCompatActivity {
         face = Typeface.createFromAsset(getAssets(), "fonts/SF Movie Poster.ttf");
         scroll.setTypeface(face);
 
-        scroll.setText("CREDITS \n \n"+"Udvikler - Asger Stage \n \n"+"Udvikler - Rasmus Olsen \n \n"+"Udvikler - Peter Jensen \n \n"+"Udvikler - Nicki Pedersen \n \n"+"Udvikler - Senad Begovic \n \n \n"+"PROJEKTLEDER & IDÉ \n \n"+"Anne Mette Nordfalk & Skoleliv i Nepal \n \n \n"+"GRAFIK AF \n \n"+"Brian Johannsen \n \n \n"+"I SAMARBEJDE MED \n \n");
+        scroll.setText("CREDITS \n \n" + "Udvikler - Asger Stage \n \n" + "Udvikler - Rasmus Olsen \n \n" + "Udvikler - Peter Jensen \n \n" + "Udvikler - Nicki Pedersen \n \n" + "Udvikler - Senad Begovic \n \n \n" + "PROJEKTLEDER & IDÉ \n \n" + "Anne Mette Nordfalk & Skoleliv i Nepal \n \n \n" + "GRAFIK AF \n \n" + "Brian Johannsen \n \n \n" + "I SAMARBEJDE MED \n \n");
 
         scroll.startAnimation(animation);
         danida.startAnimation(animation);
         dtu.startAnimation(animation);
-
 
 
     }
