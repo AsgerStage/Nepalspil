@@ -376,7 +376,7 @@ public class SpillePlade extends AppCompatActivity {
         prefs.edit().putInt("Viden", spiller.getViden()).apply();
         prefs.edit().putInt("Klassetrin", spiller.getKlassetrin()).apply();
         prefs.edit().putInt("Tid", spiller.getTid()).apply();
-        prefs.edit().putBoolean("Bike", spiller.isBike()).apply();
+        prefs.edit().putInt("moveSpeed", spiller.getmoveSpeed()).apply();
         prefs.edit().putInt("Runde", spiller.getRunde()).apply();
     }
 

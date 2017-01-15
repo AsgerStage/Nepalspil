@@ -1,9 +1,6 @@
 package com.example.asger.nepalspil.models;
 
 import android.util.Log;
-import android.widget.Toast;
-
-import com.example.asger.nepalspil.activities.MainActivity;
 
 /**
  * Created by Asger on 21-11-2016.
@@ -21,7 +18,7 @@ public class Spiller {
     private int klassetrin;
     private int tid;
     public int runde;
-    private boolean bike;
+    private int moveSpeed;
 
     public Spiller(String navn) {
         this.navn = navn;
@@ -32,12 +29,12 @@ public class Spiller {
         this.viden=0;
         this.klassetrin=1;
         this.runde=1;
-        this.bike=false;
+        this.moveSpeed=1;
 
         Log.d("Spiller","Spiller oprettet");
     }
 
-    public Spiller(String navn,int penge, int tid, int viden, int hp,int klassetrin, boolean sex, int runde, boolean bike, int glemtViden) {
+    public Spiller(String navn, int penge, int tid, int viden, int hp, int klassetrin, boolean sex, int runde, int moveSpeed, int glemtViden) {
         position = 0;			//starter på felt 1
         this.navn = navn;
         this.penge = penge;
@@ -47,11 +44,11 @@ public class Spiller {
         this.klassetrin= klassetrin;
         this.sex = sex;
         this.runde=runde;
-        this.bike = bike;
+        this.moveSpeed = moveSpeed;
         this.glemtViden = glemtViden;
         Log.d("Spiller","Spiller oprettet med balance");
     }
-    public Spiller(Boolean sex, int books,int position, String navn,int penge,int hp, int viden, int klassetrin, int tid, int runde, boolean bike){
+    public Spiller(Boolean sex, int books, int position, String navn, int penge, int hp, int viden, int klassetrin, int tid, int runde, int moveSpeed){
         this.sex=sex;
         this.books=books;
         this.position=position;
@@ -62,7 +59,7 @@ public class Spiller {
         this.klassetrin=klassetrin;
         this.tid=tid;
         this.runde=runde;
-        this.bike=bike;
+        this.moveSpeed=moveSpeed;
 
     }
 
@@ -95,12 +92,12 @@ public class Spiller {
 
 
         if(count2>count1){
-            this.tid=this.tid-count1;
+            this.tid=(int)((this.tid)-Math.round(count1/moveSpeed));
             Log.d("Spiller","Spiller rykket fra "+this.position+" til "+newPosition+" og mistet tid: "+count1+" og har nu "+this.tid+" tid");
             this.position=newPosition;
         }
         else if (count1>=count2) {
-            this.tid = this.tid - count2;
+            this.tid = (int)((this.tid) - Math.round(count2/moveSpeed));
             Log.d("Spiller", "Spiller rykket fra " + this.position + " til " + newPosition + " og mistet tid: " + count2 + " og har nu " + this.tid + " tid");
             this.position = newPosition;
             //Den korteste vej trækkes fra spillerens tid
@@ -202,12 +199,12 @@ public class Spiller {
 
     public void setBooks(int books) { this.books = books;}
 
-    public void setBike(boolean bike) {
-        this.bike = bike;
+    public void setmoveSpeed(int moveSpeed) {
+        this.moveSpeed = moveSpeed;
     }
 
-    public boolean hasBike(){
-        return bike;
+    public int getmoveSpeed(){
+        return moveSpeed;
     }
 
     public boolean getSex() { return sex; }
@@ -242,7 +239,5 @@ public class Spiller {
         this.runde = runde;
     }
 
-    public boolean isBike() {
-        return bike;
-    }
+
 }

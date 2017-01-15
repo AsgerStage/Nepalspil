@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, "Du har valgt Asha!", Toast.LENGTH_SHORT).show();
                 checkmarkkaka.setVisibility(View.INVISIBLE);
                 checkmarkasha.setVisibility(View.VISIBLE);
-                spiller = new Spiller("Asha", 10, 16, 0, 100, 1, false, 1, false, 0);
+                spiller = new Spiller("Asha", 10, 16, 0, 100, 1, false, 1, 1, 0);
             }
 
 
@@ -83,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, "Du har valgt Kaka!", Toast.LENGTH_SHORT).show();
                 checkmarkasha.setVisibility(View.INVISIBLE);
                 checkmarkkaka.setVisibility(View.VISIBLE);
-                spiller = new Spiller("Kaka", 10, 16, 0, 100, 1, true, 1, false, 0);
+                spiller = new Spiller("Kaka", 10, 16, 0, 100, 1, true, 1, 1, 0);
 
             }
         });
@@ -111,7 +111,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 v.startAnimation(AnimationUtils.loadAnimation(MainActivity.this, R.anim.image_click));
 
-                spiller = new Spiller(prefs.getBoolean("Sex", true), prefs.getInt("Books", 0), prefs.getInt("Position", 0), prefs.getString("Navn", null), prefs.getInt("Penge", 0), prefs.getInt("Hp", 0), prefs.getInt("Viden", 0), prefs.getInt("Klassetrin", 0), prefs.getInt("Tid", 0), prefs.getInt("Runde", 0), prefs.getBoolean("Bike", false));
+                spiller = new Spiller(prefs.getBoolean("Sex", true), prefs.getInt("Books", 0), prefs.getInt("Position", 0), prefs.getString("Navn", null), prefs.getInt("Penge", 0), prefs.getInt("Hp", 0), prefs.getInt("Viden", 0), prefs.getInt("Klassetrin", 0), prefs.getInt("Tid", 0), prefs.getInt("Runde", 0), prefs.getInt("Movespeed", 1));
                 if (spiller.getSex() == true) {
                     checkmarkasha.setVisibility(View.INVISIBLE);
                     checkmarkkaka.setVisibility(View.VISIBLE);
