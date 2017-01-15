@@ -28,15 +28,6 @@
 
         <!-- Farm felt -->
 
-        <TextView
-            android:text="TextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/infobox"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginEnd="9dp" />
-
         <ImageView
             android:layout_width="wrap_content"
             app:srcCompat="@drawable/pige2"
@@ -199,6 +190,24 @@
             android:layout_alignEnd="@+id/felt6"
             android:layout_alignTop="@+id/felt4"
             android:layout_alignStart="@+id/felt6" />
+
+        <TextView
+            android:text="TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/infobox"
+            android:layout_alignTop="@+id/felt0"
+            android:layout_alignParentEnd="true" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/fieldhelp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:id="@+id/spilpladeHelp"
+            android:layout_above="@+id/infobox"
+            android:layout_alignStart="@+id/infobox" />
 
     </RelativeLayout>
 
