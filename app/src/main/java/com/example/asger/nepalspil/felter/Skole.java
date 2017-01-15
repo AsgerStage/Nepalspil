@@ -33,7 +33,7 @@ public class Skole extends AppCompatActivity {
 
     TextView schoolText;
     TextView playerInfo;
-
+    AlertDialog.Builder dialog;
 
     @Override
     public void onResume() {
@@ -54,7 +54,8 @@ public class Skole extends AppCompatActivity {
         Button bStuder = (Button) findViewById(R.id.Studer);
         Button bEksamen = (Button) findViewById(R.id.eksamen);
         ImageView back = (ImageView) findViewById(R.id.skoleBack);
-
+        ImageView helpField = (ImageView) findViewById(R.id.skoleHelp);
+        dialog= new AlertDialog.Builder(Skole.this);
         schoolText.setText("Velkommen til Skolen, her kan du spise, studere og tage din eksamen når tiden er.");
         playerInfo.setText("Navn: " + spiller.getNavn() + "\n mad: " + spiller.getHp() + "\n Penge: " + spiller.getPenge() + "\n Viden: " + spiller.getViden() + "\n Klassetrin: " + spiller.getKlassetrin() + "\n Tid: " + spiller.getTid());
 
@@ -64,6 +65,14 @@ public class Skole extends AppCompatActivity {
         }
 
 
+        helpField.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.setTitle("Skolen");
+                dialog.setMessage("I skolen kan du studere og få en smule mad. Tryk på knapperne for at studere eller spise. Når du har gået nok i skole kan du tage din eksamen for at komme op i næste klasse. En gang imellem når man studerer forstår man ikke alt undervisningen, og derfor kan man tage i lektiehjælpen for at forstå det.");
+                dialog.show();
+            }
+        });
         bSpis.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -110,7 +119,7 @@ public class Skole extends AppCompatActivity {
                         dialog.show();*/
                     }
                 } else {
-                    AlertDialog.Builder dialog = new AlertDialog.Builder(Skole.this);
+
                     dialog.setTitle("Ikke nok tid!");
                     dialog.setMessage("Du har ikke nok tid til at studere.");
                     dialog.show();

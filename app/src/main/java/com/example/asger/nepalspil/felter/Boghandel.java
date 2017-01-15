@@ -24,15 +24,15 @@ import static com.example.asger.nepalspil.activities.MainActivity.spiller;
 
 public class Boghandel extends AppCompatActivity {
 
-
+    AlertDialog.Builder dialog;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.boghandel);
-
+        dialog = new AlertDialog.Builder(Boghandel.this);
         final TextView playerInfo = (TextView) findViewById(R.id.bookstorePlayerInfo);
         final TextView bookstoreInfo = (TextView) findViewById(R.id.fieldinfo);
         final MediaPlayer mp = MediaPlayer.create(this, R.raw.cash);
-
+        ImageView helpField = (ImageView) findViewById(R.id.boghandelHelp);
         Button work = (Button) findViewById(R.id.workButton);
         final Button buyBook = (Button) findViewById(R.id.buyBookButton);
         ImageView back = (ImageView) findViewById(R.id.backButton);
@@ -64,7 +64,7 @@ public class Boghandel extends AppCompatActivity {
 
                     playerInfo.setText(updateInfo());
                 } else if (spiller.getTid() < 2) {
-                    AlertDialog.Builder dialog = new AlertDialog.Builder(Boghandel.this);
+
                     dialog.setTitle("Intet tid!");
                     dialog.setMessage("Du har ikke nok tid til at arbejde");
                     dialog.show();
@@ -77,6 +77,15 @@ public class Boghandel extends AppCompatActivity {
                 }
             }
         });
+
+        helpField.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.setTitle("Boghandlen");
+                dialog.setMessage("I boghandlen kan man købe skolebøger som hjælper en med at studere, og så kan man arbejde her når man går i 6. klasse eller derover.");
+                dialog.show();
+            }
+            });
 
         buyBook.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -112,7 +121,7 @@ public class Boghandel extends AppCompatActivity {
 
     private static void work() {
         spiller.setTid(spiller.getTid() - 2);
-        spiller.setPenge(spiller.getPenge() + 10);
+        spiller.setPenge(spiller.getPenge() + 20);
     }
 
     private void buyBook() {
