@@ -30,9 +30,7 @@ import static com.example.asger.nepalspil.activities.MainActivity.spiller;
 public class Vaerksted extends AppCompatActivity {
     @Override
     public void onBackPressed() {
-        SpillePlade.updateTextpenge();
-        SpillePlade.updateTextmad();
-        SpillePlade.updateTextviden();
+        SpillePlade.updateEntireBoard();
         finish();
     }
 
@@ -113,9 +111,7 @@ public class Vaerksted extends AppCompatActivity {
         back.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
-                SpillePlade.updateTextpenge();
-                SpillePlade.updateTextmad();
-                SpillePlade.updateTextviden();
+                SpillePlade.updateEntireBoard();
                 v.startAnimation(AnimationUtils.loadAnimation(Vaerksted.this, R.anim.image_click));
                 finish();
             }

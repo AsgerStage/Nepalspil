@@ -21,9 +21,7 @@ import static com.example.asger.nepalspil.activities.MainActivity.spiller;
 public class Hjem extends AppCompatActivity {
     @Override
     public void onBackPressed() {
-        SpillePlade.updateTextpenge();
-        SpillePlade.updateTextmad();
-        SpillePlade.updateTextviden();
+        SpillePlade.updateEntireBoard();
         finish();
     }
 

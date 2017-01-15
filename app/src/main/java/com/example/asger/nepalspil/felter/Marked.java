@@ -114,8 +114,10 @@ public class Marked extends AppCompatActivity {
                     t.setView(im);
                     t.setGravity(Gravity.CENTER, 0, 0);
                     t.show();
-                    if (back.isPressed())
-                        t.cancel();
+                    if (back.isPressed()){
+                        SpillePlade.updateEntireBoard();
+                        t.cancel();}
+
 
                     //Toast.makeText(Marked.this, "Du har spist! +10 HP -5 Penge", Toast.LENGTH_LONG).show();
                     playerinfo.setText(updateInfo());
@@ -161,6 +163,7 @@ public class Marked extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
+        SpillePlade.updateEntireBoard();
         t.cancel();
         finish();
     }

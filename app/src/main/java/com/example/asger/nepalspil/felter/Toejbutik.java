@@ -24,9 +24,7 @@ import static com.example.asger.nepalspil.activities.MainActivity.spiller;
 public class Toejbutik extends AppCompatActivity {
     @Override
     public void onBackPressed() {
-        SpillePlade.updateTextpenge();
-        SpillePlade.updateTextmad();
-        SpillePlade.updateTextviden();
+        SpillePlade.updateEntireBoard();
         finish();
     }
 
@@ -78,9 +76,7 @@ public class Toejbutik extends AppCompatActivity {
         back.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
-                SpillePlade.updateTextpenge();
-                SpillePlade.updateTextmad();
-                SpillePlade.updateTextviden();
+                SpillePlade.updateEntireBoard();
                 v.startAnimation(AnimationUtils.loadAnimation(Toejbutik.this, R.anim.image_click));
                 finish();
             }

@@ -29,9 +29,7 @@ import static com.example.asger.nepalspil.activities.MainActivity.spiller;
 public class Lektiehjaelp extends AppCompatActivity {
     @Override
     public void onBackPressed() {
-        SpillePlade.updateTextpenge();
-        SpillePlade.updateTextmad();
-        SpillePlade.updateTextviden();
+        SpillePlade.updateEntireBoard();
         finish();
     }
 
@@ -86,9 +84,7 @@ public class Lektiehjaelp extends AppCompatActivity {
         back.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
-                SpillePlade.updateTextpenge();
-                SpillePlade.updateTextmad();
-                SpillePlade.updateTextviden();
+                SpillePlade.updateEntireBoard();
                 v.startAnimation(AnimationUtils.loadAnimation(Lektiehjaelp.this, R.anim.image_click));
                 finish();
             }

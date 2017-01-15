@@ -27,9 +27,7 @@ public class Boghandel extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        SpillePlade.updateTextpenge();
-        SpillePlade.updateTextmad();
-        SpillePlade.updateTextviden();
+        SpillePlade.updateEntireBoard();
         finish();
     }
 
@@ -147,9 +145,7 @@ public class Boghandel extends AppCompatActivity {
         back.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
-                SpillePlade.updateTextpenge();
-                SpillePlade.updateTextmad();
-                SpillePlade.updateTextviden();
+                SpillePlade.updateEntireBoard();
                 v.startAnimation(AnimationUtils.loadAnimation(Boghandel.this, R.anim.image_click));
                 finish();
             }

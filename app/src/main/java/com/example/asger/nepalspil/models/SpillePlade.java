@@ -55,7 +55,7 @@ public class SpillePlade extends AppCompatActivity {
     static TextView textmad;
 
     ImageView Player;
-    ImageView ur;
+    static ImageView ur;
     ImageView unusedPlayer;
     boolean continueBGMusic;
     AlertDialog.Builder dialog;
@@ -337,7 +337,7 @@ public class SpillePlade extends AppCompatActivity {
         }
     }
 
-    public void updateTimer() {
+    static public void updateTimer() {
         switch (spiller.getTid()) {
             case 0: ur.setImageResource(R.drawable.ur0); break;
             case 1: ur.setImageResource(R.drawable.ur1); break;
@@ -500,8 +500,14 @@ public class SpillePlade extends AppCompatActivity {
             Log.d("SpillePlade", "Random event 10 triggered");
         }
 
-    }
 
+    }
+    static public void updateEntireBoard(){
+        SpillePlade.updateTextpenge();
+        SpillePlade.updateTextmad();
+        SpillePlade.updateTextviden();
+        SpillePlade.updateTimer();
+    }
 }
 
 
