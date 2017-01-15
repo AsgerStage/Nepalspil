@@ -55,7 +55,7 @@ public class SpillePlade extends AppCompatActivity {
     static TextView textmad;
 
     ImageView Player;
-    // ImageView ur;
+    ImageView ur;
     ImageView unusedPlayer;
     boolean continueBGMusic;
     AlertDialog.Builder dialog;
@@ -112,9 +112,9 @@ public class SpillePlade extends AppCompatActivity {
         textviden = (TextView) findViewById(R.id.textviden);
         textmad = (TextView) findViewById(R.id.textmad);
 
-        //ur = (ImageView) findViewById(R.id.imgUr);
-        // ur.setImageResource(R.drawable.ur1);
-        //infobox.setText("Navn: "+spiller.getNavn()+"\n mad: "+spiller.getHp()+"\n Penge: "+spiller.getPenge()+"\n Viden: "+spiller.getViden()+"\n Klassetrin: "+spiller.getKlassetrin()+"\n Tid: "+spiller.getTid());
+        ur = (ImageView) findViewById(R.id.ur);
+        ur.setImageResource(R.drawable.ur16);
+        infobox.setText("Navn: "+spiller.getNavn()+"\n mad: "+spiller.getHp()+"\n Penge: "+spiller.getPenge()+"\n Viden: "+spiller.getViden()+"\n Klassetrin: "+spiller.getKlassetrin()+"\n Tid: "+spiller.getTid());
         updateInfobox();
         updateTextpenge();
         updateTextviden();
@@ -299,7 +299,7 @@ public class SpillePlade extends AppCompatActivity {
             } else spiller.setHp(0);
             if (spiller.runde % 5 == 0) randomEvent();
 
-            //updateTimer();
+            updateTimer();
             updateInfobox();
             updateTextpenge();
             updateTextviden();
@@ -308,7 +308,7 @@ public class SpillePlade extends AppCompatActivity {
             MoveIcon();
         } else {
             final Intent intent = new Intent(SpillePlade.this, cls);
-            //updateTimer();
+            updateTimer();
             updateInfobox();
             updateTextpenge();
             updateTextviden();
@@ -330,20 +330,78 @@ public class SpillePlade extends AppCompatActivity {
             //
         }
     }
-/*
-    public void updateTimer() {
-        if (spiller.getTid() > 12) {//tid mellem 16 og 13
-            ur.setImageResource(R.drawable.ur1);
-        } else if (spiller.getTid() > 8 && spiller.getTid() < 13) { //tid mellem 12 og 9
-            ur.setImageResource(R.drawable.ur2);
-        } else if (spiller.getTid() > 4 && spiller.getTid() < 9) {//tid mellem 8 og 5
-            ur.setImageResource(R.drawable.ur3);
-        } else if (spiller.getTid() >= 0 && spiller.getTid() < 5) {//tid mellem 4 og 0
-            ur.setImageResource(R.drawable.ur4);
-        } else
-            ur.setImageResource(R.drawable.ur1);
 
-    }*/
+    public void updateTimer() {
+        switch (spiller.getTid()) {
+            case 0: ur.setImageResource(R.drawable.ur0); break;
+            case 1: ur.setImageResource(R.drawable.ur1); break;
+            case 2: ur.setImageResource(R.drawable.ur2); break;
+            case 3: ur.setImageResource(R.drawable.ur3); break;
+            case 4: ur.setImageResource(R.drawable.ur4); break;
+            case 5: ur.setImageResource(R.drawable.ur5); break;
+            case 6: ur.setImageResource(R.drawable.ur6); break;
+            case 7: ur.setImageResource(R.drawable.ur7); break;
+            case 8: ur.setImageResource(R.drawable.ur8); break;
+            case 9: ur.setImageResource(R.drawable.ur9); break;
+            case 10: ur.setImageResource(R.drawable.ur10); break;
+            case 11: ur.setImageResource(R.drawable.ur11); break;
+            case 12: ur.setImageResource(R.drawable.ur12); break;
+            case 13: ur.setImageResource(R.drawable.ur13); break;
+            case 14: ur.setImageResource(R.drawable.ur14); break;
+            case 15: ur.setImageResource(R.drawable.ur15); break;
+            case 16: ur.setImageResource(R.drawable.ur16); break;
+            case 17: ur.setImageResource(R.drawable.ur17); break;
+            case 18: ur.setImageResource(R.drawable.ur18); break;
+            case 19: ur.setImageResource(R.drawable.ur19); break;
+
+
+
+        }
+/*
+        if (spiller.getTid() == 19) {
+            ur.setImageResource(R.drawable.ur19);
+        } else if (spiller.getTid() == 18) {
+            ur.setImageResource(R.drawable.ur18);
+        } else if (spiller.getTid() == 17) {
+            ur.setImageResource(R.drawable.ur18);
+        } else if (spiller.getTid() == 16) {
+            ur.setImageResource(R.drawable.ur18);
+        } else if (spiller.getTid() == 15) {
+            ur.setImageResource(R.drawable.ur18);
+        } else if (spiller.getTid() == 14) {
+            ur.setImageResource(R.drawable.ur18);
+        } else if (spiller.getTid() == 13) {
+            ur.setImageResource(R.drawable.ur18);
+        } else if (spiller.getTid() == 12) {
+            ur.setImageResource(R.drawable.ur18);
+        } else if (spiller.getTid() == 11) {
+            ur.setImageResource(R.drawable.ur18);
+        } else if (spiller.getTid() == 10) {
+            ur.setImageResource(R.drawable.ur18);
+        } else if (spiller.getTid() == 9) {
+            ur.setImageResource(R.drawable.ur18);
+        } else if (spiller.getTid() == 8) {
+            ur.setImageResource(R.drawable.ur18);
+        } else if (spiller.getTid() == 7) {
+            ur.setImageResource(R.drawable.ur18);
+        } else if (spiller.getTid() == 6) {
+            ur.setImageResource(R.drawable.ur18);
+        } else if (spiller.getTid() == 5) {
+            ur.setImageResource(R.drawable.ur18);
+        } else if (spiller.getTid() == 4) {
+            ur.setImageResource(R.drawable.ur18);
+        } else if (spiller.getTid() == 3) {
+            ur.setImageResource(R.drawable.ur18);
+        } else if (spiller.getTid() == 2) {
+            ur.setImageResource(R.drawable.ur18);
+        } else if (spiller.getTid() == 1) {
+            ur.setImageResource(R.drawable.ur18);
+        } else if (spiller.getTid() == 0) {
+            ur.setImageResource(R.drawable.ur18);
+        }
+*/
+
+    }
 
     public void onPause() {
         super.onPause();
