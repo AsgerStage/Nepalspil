@@ -52,7 +52,6 @@ public class Farm extends AppCompatActivity {
         helpfield.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                dialog.setTitle("Rismarken");
                 dialog.setMessage("Velkommen til rismarken. Her kan du arbejde fra 1 klassetrin af og tjene en smule penge");
                 dialog.show();
             }

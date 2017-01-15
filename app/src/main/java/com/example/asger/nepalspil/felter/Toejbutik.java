@@ -22,24 +22,31 @@ import static com.example.asger.nepalspil.activities.MainActivity.spiller;
  */
 
 public class Toejbutik extends AppCompatActivity {
-
+    AlertDialog.Builder dialog;
     ViewPager viewPager;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.toejbutik);
 
-
+        dialog= new AlertDialog.Builder(Toejbutik.this);
         final TextView fieldinfo = (TextView) findViewById(R.id.tbInfo);
         final TextView playerinfo = (TextView) findViewById(R.id.tbStats);
         final MediaPlayer mp = MediaPlayer.create(this, R.raw.cash);
-
+        ImageView helpField = (ImageView) findViewById(R.id.tbHelp);
         Button buy = (Button) findViewById(R.id.tbBuy);
         ImageView back = (ImageView) findViewById(R.id.tbBack);
 
         fieldinfo.setText("Velkommen til Tøjbutikken! Her kan man købe nyt skoletøj");
         playerinfo.setText("Navn: " + spiller.getNavn() + "\n mad: " + spiller.getHp() + "\n Penge: " + spiller.getPenge() + "\n Viden: " + spiller.getViden() + "\n Klassetrin: " + spiller.getKlassetrin() + "\n Tid: " + spiller.getTid());
 
+        helpField.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.setMessage("Velkommen til tøjbutikken. Her kan du købe tøj og diverse skoleting til at gøre dit live bedre.");
+                dialog.show();
+            }
+        });
 
         buy.setOnClickListener(new View.OnClickListener() {
             @Override

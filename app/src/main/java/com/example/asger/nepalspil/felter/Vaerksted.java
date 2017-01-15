@@ -28,14 +28,14 @@ import static com.example.asger.nepalspil.activities.MainActivity.spiller;
  */
 
 public class Vaerksted extends AppCompatActivity {
-
+    AlertDialog.Builder dialog;
     ViewPager viewPager;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.vaerksted);
 
-
+        dialog= new AlertDialog.Builder(Vaerksted.this);
         viewPager = (ViewPager) findViewById(R.id.view_pager);
         ImagePagerAdapter adapter = new ImagePagerAdapter();
         viewPager.setAdapter(adapter);
@@ -44,7 +44,7 @@ public class Vaerksted extends AppCompatActivity {
         final TextView fieldinfo = (TextView) findViewById(R.id.fieldinfo);
         final TextView playerinfo = (TextView) findViewById(R.id.playerinfo);
         final MediaPlayer mp = MediaPlayer.create(this, R.raw.cash);
-
+        ImageView helpField = (ImageView) findViewById(R.id.vaerkstedHelp);
         Button work = (Button) findViewById(R.id.workButton);
         Button buy = (Button) findViewById(R.id.buyBikeButton);
         ImageView back = (ImageView) findViewById(R.id.backButton);
@@ -52,6 +52,14 @@ public class Vaerksted extends AppCompatActivity {
 
         fieldinfo.setText("Velkommen til værkstedet! Her kan man arbejde eller købe en cykel.");
         playerinfo.setText("Navn: " + spiller.getNavn() + "\n mad: " + spiller.getHp() + "\n Penge: " + spiller.getPenge() + "\n Viden: " + spiller.getViden() + "\n Klassetrin: " + spiller.getKlassetrin() + "\n Tid: " + spiller.getTid());
+
+        helpField.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.setMessage("Velkommen til værkstedet. Her kan du købe forskellige ting, som gøre det liv bedre.");
+                dialog.show();
+            }
+        });
 
         work.setOnClickListener(new View.OnClickListener() {
 

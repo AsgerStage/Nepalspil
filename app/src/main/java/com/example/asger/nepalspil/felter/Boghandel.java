@@ -81,7 +81,6 @@ public class Boghandel extends AppCompatActivity {
         helpField.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                dialog.setTitle("Boghandlen");
                 dialog.setMessage("I boghandlen kan man købe skolebøger som hjælper en med at studere, og så kan man arbejde her når man går i 6. klasse eller derover.");
                 dialog.show();
             }
