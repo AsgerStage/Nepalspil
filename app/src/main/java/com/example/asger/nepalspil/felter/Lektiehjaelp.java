@@ -7,7 +7,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,7 +26,8 @@ import static com.example.asger.nepalspil.activities.MainActivity.spiller;
  */
 
 public class Lektiehjaelp extends AppCompatActivity {
-    Button homeworkHelp, back;
+    Button homeworkHelp;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +36,7 @@ public class Lektiehjaelp extends AppCompatActivity {
 
         final TextView lektiehjaelpInfo = (TextView) findViewById(R.id.lektiehjaelpTextField);
         final TextView playerInfo = (TextView) findViewById(R.id.lektiePlayerInfo);
-        back = (Button) findViewById(R.id.lektieBack);
+        ImageView back = (ImageView) findViewById(R.id.lektieBack);
         homeworkHelp = (Button) findViewById(R.id.learn);
 
         lektiehjaelpInfo.setText("Her kan du få lektiehjælp, til at indhente det du ikke forstod fra undervisningen.");
@@ -64,6 +67,10 @@ public class Lektiehjaelp extends AppCompatActivity {
         back.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
+                SpillePlade.updateTextpenge();
+                SpillePlade.updateTextmad();
+                SpillePlade.updateTextviden();
+                v.startAnimation(AnimationUtils.loadAnimation(Lektiehjaelp.this, R.anim.image_click));
                 finish();
             }
         });

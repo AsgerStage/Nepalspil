@@ -10,6 +10,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -46,7 +47,7 @@ public class Vaerksted extends AppCompatActivity {
 
         Button work = (Button) findViewById(R.id.workButton);
         Button buy = (Button) findViewById(R.id.buyBikeButton);
-        Button back = (Button) findViewById(R.id.backButton);
+        ImageView back = (ImageView) findViewById(R.id.backButton);
 
 
         fieldinfo.setText("Velkommen til værkstedet! Her kan man arbejde eller købe en cykel.");
@@ -96,9 +97,14 @@ public class Vaerksted extends AppCompatActivity {
         back.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
+                SpillePlade.updateTextpenge();
+                SpillePlade.updateTextmad();
+                SpillePlade.updateTextviden();
+                v.startAnimation(AnimationUtils.loadAnimation(Vaerksted.this, R.anim.image_click));
                 finish();
             }
         });
+
     }
 
 

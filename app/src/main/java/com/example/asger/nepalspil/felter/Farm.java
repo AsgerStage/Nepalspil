@@ -85,6 +85,8 @@ public class Farm extends AppCompatActivity {
 
             public void onClick(View v) {
                 SpillePlade.updateTextpenge();
+                SpillePlade.updateTextmad();
+                SpillePlade.updateTextviden();
                 v.startAnimation(AnimationUtils.loadAnimation(Farm.this, R.anim.image_click));
                 finish();
 

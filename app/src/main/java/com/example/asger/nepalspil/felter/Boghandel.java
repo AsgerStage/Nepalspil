@@ -6,7 +6,9 @@ import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.asger.nepalspil.R;
@@ -33,7 +35,7 @@ public class Boghandel extends AppCompatActivity {
 
         Button work = (Button) findViewById(R.id.workButton);
         final Button buyBook = (Button) findViewById(R.id.buyBookButton);
-        Button back = (Button) findViewById(R.id.backButton);
+        ImageView back = (ImageView) findViewById(R.id.backButton);
 
         bookstoreInfo.setText("Velkommen til boghandlen. Her kan du få et arbejde hvis du er nået langt nok i din uddannelse. \n Du kan også købe skole bøger her.");
         playerInfo.setText("Navn: " + spiller.getNavn() + "\n mad: " + spiller.getHp() + "\n Penge: " + spiller.getPenge() + "\n Viden: " + spiller.getViden() + "\n Klassetrin: " + spiller.getKlassetrin() + "\n Tid: " + spiller.getTid());
@@ -98,9 +100,14 @@ public class Boghandel extends AppCompatActivity {
         back.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
+                SpillePlade.updateTextpenge();
+                SpillePlade.updateTextmad();
+                SpillePlade.updateTextviden();
+                v.startAnimation(AnimationUtils.loadAnimation(Boghandel.this, R.anim.image_click));
                 finish();
             }
         });
+
     }
 
     private static void work() {

@@ -7,6 +7,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
 import android.view.View;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -32,7 +33,7 @@ public class Marked extends AppCompatActivity {
 
         Button work = (Button) findViewById(R.id.workButton);
         final Button eat = (Button) findViewById(R.id.eatButton);
-        final Button back = (Button) findViewById(R.id.backButton);
+        final ImageView back = (ImageView) findViewById(R.id.backButton);
 
         fieldinfo.setText("Dette er market. Her kan man arbejde og tjene penge, eller man kan købe mad.");
         playerinfo.setText("Navn: " + spiller.getNavn() + "\n mad: " + spiller.getHp() + "\n Penge: " + spiller.getPenge() + "\n Viden: " + spiller.getViden() + "\n Klassetrin: " + spiller.getKlassetrin() + "\n Tid: " + spiller.getTid());
@@ -119,6 +120,10 @@ public class Marked extends AppCompatActivity {
 
             public void onClick(View v) {
                 t.cancel();
+                SpillePlade.updateTextpenge();
+                SpillePlade.updateTextmad();
+                SpillePlade.updateTextviden();
+                v.startAnimation(AnimationUtils.loadAnimation(Marked.this, R.anim.image_click));
                 finish();
 
             }

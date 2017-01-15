@@ -103,5 +103,15 @@
             android:layout_alignStart="@+id/genoptag"
             android:layout_marginBottom="14dp" />
 
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            fab:srcCompat="@drawable/danida"
+            android:id="@+id/imageView7"
+            android:layout_marginStart="123dp"
+            android:layout_alignBottom="@+id/imageView3"
+            android:layout_alignStart="@+id/imageView2"
+            android:layout_marginBottom="11dp" />
+
     </RelativeLayout>
 </LinearLayout>

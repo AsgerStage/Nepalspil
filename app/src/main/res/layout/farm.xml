@@ -10,17 +10,31 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="135dp"
-        android:layout_weight="1.25">
+        android:layout_height="36dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true">
+
+        <ImageView
+            android:layout_width="44dp"
+            android:layout_height="38dp"
+            app:srcCompat="@drawable/fieldhelp"
+            android:id="@+id/farmHelp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true" />
 
         <ImageView
             android:layout_width="wrap_content"
+            app:srcCompat="@drawable/newback"
+            android:id="@+id/backButton"
             android:layout_height="wrap_content"
-            app:srcCompat="@drawable/pige1"
-            android:id="@+id/imageView5"
-            android:layout_marginEnd="16dp"
-            android:layout_below="@+id/fieldinfo"
-            android:layout_alignParentEnd="true" />
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="135dp"
+        android:layout_weight="1.25">
 
         <TextView
             android:background="#8888"
@@ -33,51 +47,43 @@
             android:fontFamily="sans-serif" />
 
         <ImageView
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:srcCompat="@drawable/bubble"
             android:id="@+id/imageView6"
-            android:layout_marginStart="11dp"
-            android:layout_above="@+id/playerinfo"
-            android:layout_alignStart="@+id/workButton" />
-
-        <Button
-            android:text="Arbejd"
-            android:layout_width="189dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/workButton"
-            android:layout_alignBottom="@+id/playerinfo"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="24dp" />
+            android:layout_width="250dp"
+            android:layout_alignParentTop="true"
+            android:layout_toStartOf="@+id/imageView5" />
 
         <TextView
             android:text="Info om farm"
             android:layout_width="match_parent"
             android:layout_height="85dp"
             android:id="@+id/fieldinfo"
-            android:layout_marginTop="13dp"
+            android:layout_marginTop="62dp"
             android:textSize="20sp"
             android:textStyle="normal|bold"
-            android:layout_marginStart="108dp"
+            android:layout_marginStart="49dp"
             android:layout_alignParentTop="true"
             android:layout_alignStart="@+id/imageView6"
-            android:layout_toStartOf="@+id/imageView5" />
+            android:layout_alignEnd="@+id/workButton" />
 
         <ImageView
-            android:layout_width="44dp"
-            app:srcCompat="@drawable/newback"
-            android:id="@+id/backButton"
-            android:layout_weight="0.05"
-            android:layout_alignParentTop="true"
-            android:layout_height="38dp" />
-
-        <ImageView
-            android:layout_width="44dp"
-            android:layout_height="38dp"
-            app:srcCompat="@drawable/fieldhelp"
-            android:layout_alignParentTop="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/pige1"
+            android:id="@+id/imageView5"
+            android:layout_marginEnd="12dp"
+            android:layout_alignParentBottom="true"
             android:layout_alignParentEnd="true"
-            android:id="@+id/imageView" />
+            android:layout_marginBottom="52dp" />
+
+        <Button
+            android:text="Arbejd"
+            android:layout_width="189dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/workButton"
+            android:layout_alignBottom="@+id/imageView6"
+            android:layout_centerHorizontal="true" />
 
     </RelativeLayout>
 

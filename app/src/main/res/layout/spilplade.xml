@@ -13,14 +13,6 @@
         android:layout_weight="0.08">
 
         <!-- home felt-->
-        <Button
-            android:background="@android:color/transparent"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/felt7"
-            android:layout_toEndOf="@+id/felt7"
-            android:layout_marginStart="105dp"
-            android:id="@+id/felt0" />
 
         <!-- homework felt -->
 
@@ -31,62 +23,10 @@
         <!-- Bookstore felt -->
 
         <!-- Shop felt -->
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="71dp"
-            android:id="@+id/felt7"
-            android:background="@android:color/transparent"
-            android:layout_below="@+id/ingameoptions"
-            android:layout_alignParentStart="true" />
 
         <!-- Workshop felt -->
 
         <!-- Farm felt -->
-
-        <Button
-            android:background="@android:color/transparent"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/felt5"
-            android:layout_marginBottom="24dp"
-            android:layout_alignParentBottom="true"
-            android:layout_alignStart="@+id/felt6" />
-
-        <Button
-            android:background="@android:color/transparent"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/felt4"
-            android:layout_alignBaseline="@+id/felt5"
-            android:layout_alignBottom="@+id/felt5"
-            android:layout_centerHorizontal="true" />
-
-        <Button
-            android:background="@android:color/transparent"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/felt6"
-            android:layout_centerVertical="true"
-            android:layout_alignStart="@+id/felt7" />
-
-        <Button
-            android:background="@android:color/transparent"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="50dp"
-            android:id="@+id/felt1"
-            android:layout_alignBottom="@+id/asha"
-            android:layout_toEndOf="@+id/asha" />
-
-        <Button
-            android:background="@android:color/transparent"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/felt2"
-            android:layout_marginTop="26dp"
-            android:layout_alignTop="@+id/felt6"
-            android:layout_alignStart="@+id/felt1" />
 
         <Button
             android:background="@android:color/transparent"
@@ -115,14 +55,6 @@
             android:layout_alignStart="@+id/felt4"
             android:layout_marginStart="14dp" />
 
-        <ImageView
-            app:srcCompat="@drawable/ikonpenge"
-            android:id="@+id/imageView8"
-            android:layout_alignBottom="@+id/textpenge"
-            android:layout_toEndOf="@+id/textpenge"
-            android:layout_width="30dp"
-            android:layout_height="30dp" />
-
         <TextView
             android:text="penge"
             android:layout_width="wrap_content"
@@ -133,6 +65,61 @@
             android:textSize="24sp"
             android:layout_alignParentTop="true"
             android:layout_toEndOf="@+id/felt4" />
+
+        <ImageView
+            app:srcCompat="@drawable/ikonpenge"
+            android:id="@+id/imageView8"
+            android:layout_width="30dp"
+            android:layout_height="25dp"
+            android:layout_alignParentTop="true"
+            android:layout_toEndOf="@+id/textpenge" />
+
+        <Button
+            android:background="@android:color/transparent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/felt2"
+            android:layout_marginTop="24dp"
+            android:layout_alignTop="@+id/felt6"
+            android:layout_toEndOf="@+id/imageView8" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/knaphjem"
+            android:id="@+id/ingameopt"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true"
+            android:layout_toStartOf="@+id/textmad"
+            android:layout_alignBottom="@+id/imageView11" />
+
+        <TextView
+            android:text="viden"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textviden"
+            android:fontFamily="sans-serif"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            android:layout_alignParentTop="true"
+            android:layout_toEndOf="@+id/imageView9" />
+
+        <ImageView
+            app:srcCompat="@drawable/ikonviden"
+            android:id="@+id/imageView9"
+            android:layout_height="34dp"
+            android:layout_width="30dp"
+            android:layout_alignParentTop="true"
+            android:layout_toStartOf="@+id/asha"
+            android:layout_alignBottom="@+id/imageView11" />
+
+        <ImageView
+            android:layout_width="34dp"
+            app:srcCompat="@drawable/ikonmad"
+            android:id="@+id/imageView11"
+            android:layout_height="34dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignEnd="@+id/felt7" />
 
         <TextView
             android:text="mad"
@@ -145,42 +132,57 @@
             android:layout_alignParentTop="true"
             android:layout_toStartOf="@+id/imageView11" />
 
-        <ImageView
+        <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:srcCompat="@drawable/knaphjem"
-            android:layout_alignParentTop="true"
+            android:id="@+id/felt7"
+            android:background="@android:color/transparent"
+            android:layout_marginStart="83dp"
+            android:layout_alignTop="@+id/felt1"
             android:layout_alignParentStart="true"
-            android:id="@+id/ingameopt"
-            android:layout_alignBottom="@+id/felt7"
-            android:layout_toStartOf="@+id/felt6" />
+            android:layout_marginTop="16dp" />
 
-        <TextView
-            android:text="viden"
+        <Button
+            android:background="@android:color/transparent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/textviden"
-            android:fontFamily="sans-serif"
-            android:textColor="@color/black"
-            android:textSize="24sp"
-            android:layout_alignParentTop="true"
-            android:layout_toStartOf="@+id/imageView9" />
+            android:id="@+id/felt6"
+            android:layout_centerVertical="true"
+            android:layout_alignStart="@+id/felt7" />
 
-        <ImageView
-            app:srcCompat="@drawable/ikonviden"
-            android:id="@+id/imageView9"
-            android:layout_height="34dp"
-            android:layout_alignBottom="@+id/textviden"
-            android:layout_toStartOf="@+id/asha"
-            android:layout_width="30dp" />
+        <Button
+            android:background="@android:color/transparent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/felt5"
+            android:layout_marginBottom="24dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignStart="@+id/felt6" />
 
-        <ImageView
-            android:layout_width="34dp"
-            app:srcCompat="@drawable/ikonmad"
-            android:id="@+id/imageView11"
-            android:layout_height="34dp"
-            android:layout_alignBottom="@+id/textmad"
-            android:layout_toStartOf="@+id/felt0" />
+        <Button
+            android:background="@android:color/transparent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/felt4"
+            android:layout_alignBaseline="@+id/felt5"
+            android:layout_alignBottom="@+id/felt5"
+            android:layout_alignStart="@+id/felt0" />
+
+        <Button
+            android:background="@android:color/transparent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/felt0"
+            android:layout_alignBottom="@+id/asha"
+            android:layout_centerHorizontal="true" />
+
+        <Button
+            android:background="@android:color/transparent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/felt1"
+            android:layout_alignBottom="@+id/asha"
+            android:layout_toEndOf="@+id/imageView8" />
 
     </RelativeLayout>
 

@@ -15,7 +15,9 @@ import com.github.jinatonic.confetti.CommonConfetti;
 
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -51,7 +53,7 @@ public class Skole extends AppCompatActivity {
         Button bSpis = (Button) findViewById(R.id.spis);
         Button bStuder = (Button) findViewById(R.id.Studer);
         Button bEksamen = (Button) findViewById(R.id.eksamen);
-        Button back = (Button) findViewById(R.id.skoleBack);
+        ImageView back = (ImageView) findViewById(R.id.skoleBack);
 
         schoolText.setText("Velkommen til Skolen, her kan du spise, studere og tage din eksamen når tiden er.");
         playerInfo.setText("Navn: " + spiller.getNavn() + "\n mad: " + spiller.getHp() + "\n Penge: " + spiller.getPenge() + "\n Viden: " + spiller.getViden() + "\n Klassetrin: " + spiller.getKlassetrin() + "\n Tid: " + spiller.getTid());
@@ -140,10 +142,16 @@ public class Skole extends AppCompatActivity {
         back.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
+                SpillePlade.updateTextpenge();
+                SpillePlade.updateTextmad();
+                SpillePlade.updateTextviden();
+                v.startAnimation(AnimationUtils.loadAnimation(Skole.this, R.anim.image_click));
                 finish();
+
 
             }
         });
+
 
 
     }

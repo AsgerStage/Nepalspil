@@ -221,7 +221,7 @@ public class SpillePlade extends AppCompatActivity {
             public void onClick(View v) {
                 v.startAnimation(AnimationUtils.loadAnimation(SpillePlade.this, R.anim.image_click));
 
-                CharSequence options[] = new CharSequence[]{"Hjælp", "Sluk musik", "Sluk lyde", "Afslut spil"};
+                CharSequence options[] = new CharSequence[]{"Hjælp", "Sluk musik", "Afslut spil"};
                 AlertDialog.Builder builder = new AlertDialog.Builder(SpillePlade.this);
                 builder.setTitle("Indstillinger");
                 builder.setItems(options, new DialogInterface.OnClickListener() {
@@ -238,18 +238,12 @@ public class SpillePlade extends AppCompatActivity {
                                 MusicManager.stop();
                                 break;
                             case 2:
-                                int d;
-                                break;
-                            case 3:
                                 finish();
                                 break;
 
 
                         }
-                        // }
 
-
-                        // the user clicked on options[which]
                     }
 
                 });

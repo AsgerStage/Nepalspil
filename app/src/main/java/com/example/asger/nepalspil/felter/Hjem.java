@@ -54,6 +54,9 @@ public class Hjem extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int id) {
                         spiller.setTid(0);
                         updateInfo();
+                        SpillePlade.updateTextpenge();
+                        SpillePlade.updateTextmad();
+                        SpillePlade.updateTextviden();
                         Hjem.this.finish();
                     }
                 });

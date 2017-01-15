@@ -6,7 +6,9 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,7 +35,7 @@ public class Toejbutik extends AppCompatActivity {
         final MediaPlayer mp = MediaPlayer.create(this, R.raw.cash);
 
         Button buy = (Button) findViewById(R.id.tbBuy);
-        Button back = (Button) findViewById(R.id.tbBack);
+        ImageView back = (ImageView) findViewById(R.id.tbBack);
 
         fieldinfo.setText("Velkommen til Tøjbutikken! Her kan man købe nyt skoletøj");
         playerinfo.setText("Navn: " + spiller.getNavn() + "\n mad: " + spiller.getHp() + "\n Penge: " + spiller.getPenge() + "\n Viden: " + spiller.getViden() + "\n Klassetrin: " + spiller.getKlassetrin() + "\n Tid: " + spiller.getTid());
@@ -61,6 +63,10 @@ public class Toejbutik extends AppCompatActivity {
         back.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
+                SpillePlade.updateTextpenge();
+                SpillePlade.updateTextmad();
+                SpillePlade.updateTextviden();
+                v.startAnimation(AnimationUtils.loadAnimation(Toejbutik.this, R.anim.image_click));
                 finish();
             }
         });
