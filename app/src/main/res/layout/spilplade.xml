@@ -209,6 +209,16 @@
             android:layout_above="@+id/infobox"
             android:layout_alignStart="@+id/infobox" />
 
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            app:srcCompat="@drawable/ur0"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/ur"
+            android:scaleType="centerCrop" />
+
+
     </RelativeLayout>
 
 </LinearLayout>
