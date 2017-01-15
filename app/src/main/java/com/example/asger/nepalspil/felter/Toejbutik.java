@@ -22,6 +22,14 @@ import static com.example.asger.nepalspil.activities.MainActivity.spiller;
  */
 
 public class Toejbutik extends AppCompatActivity {
+    @Override
+    public void onBackPressed() {
+        SpillePlade.updateTextpenge();
+        SpillePlade.updateTextmad();
+        SpillePlade.updateTextviden();
+        finish();
+    }
+
     AlertDialog.Builder dialog;
     ViewPager viewPager;
 
@@ -29,7 +37,7 @@ public class Toejbutik extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.toejbutik);
 
-        dialog= new AlertDialog.Builder(Toejbutik.this);
+        dialog = new AlertDialog.Builder(Toejbutik.this);
         final TextView fieldinfo = (TextView) findViewById(R.id.tbInfo);
         final TextView playerinfo = (TextView) findViewById(R.id.tbStats);
         final MediaPlayer mp = MediaPlayer.create(this, R.raw.cash);
@@ -80,9 +88,10 @@ public class Toejbutik extends AppCompatActivity {
     }
 
     private void buyCloth() {
-        spiller.setBooks(spiller.getBooks()+1);
-        spiller.setPenge(spiller.getPenge()-10);
+        spiller.setBooks(spiller.getBooks() + 1);
+        spiller.setPenge(spiller.getPenge() - 10);
     }
+
     public String updateInfo() {
         SpillePlade.updateInfobox();
         return "Navn: " + spiller.getNavn() + "\n mad: " + spiller.getHp() + "\n Penge: " + spiller.getPenge() + "\n Viden: " + spiller.getViden() + "\n Klassetrin: " + spiller.getKlassetrin() + "\n Tid: " + spiller.getTid();

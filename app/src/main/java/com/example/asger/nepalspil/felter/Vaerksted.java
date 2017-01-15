@@ -28,6 +28,14 @@ import static com.example.asger.nepalspil.activities.MainActivity.spiller;
  */
 
 public class Vaerksted extends AppCompatActivity {
+    @Override
+    public void onBackPressed() {
+        SpillePlade.updateTextpenge();
+        SpillePlade.updateTextmad();
+        SpillePlade.updateTextviden();
+        finish();
+    }
+
     AlertDialog.Builder dialog;
     ViewPager viewPager;
 
@@ -35,7 +43,7 @@ public class Vaerksted extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.vaerksted);
 
-        dialog= new AlertDialog.Builder(Vaerksted.this);
+        dialog = new AlertDialog.Builder(Vaerksted.this);
         viewPager = (ViewPager) findViewById(R.id.view_pager);
         ImagePagerAdapter adapter = new ImagePagerAdapter();
         viewPager.setAdapter(adapter);
@@ -159,18 +167,28 @@ public class Vaerksted extends AppCompatActivity {
     }
 
     public void buy() {
-        if (viewPager.getCurrentItem() == R.drawable.books && spiller.getPenge() >= 100) {
-            spiller.setPenge(spiller.getPenge() - 100);
 
-        } else if (spiller.getPenge() < 100) {
-            Toast.makeText(Vaerksted.this, "Du har ikke råd til studiebøger", Toast.LENGTH_SHORT).show();
+        switch(viewPager.getCurrentItem()){
+            case 0:
+                if (spiller.getPenge()>=200){
+                    spiller.setPenge(spiller.getPenge()-200);
+                    spiller.setmoveSpeed(2);
+                    Toast.makeText(Vaerksted.this, "Du har købt en cykel", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    Toast.makeText(Vaerksted.this, "Du har ikke råd til en cykel, den koster 200", Toast.LENGTH_SHORT).show();
+                }
+            case 1:
+                if(spiller.getPenge()>=100){
+                    spiller.setPenge(spiller.getPenge()-1);
+                    //bøger gør intet atm
+                }
+                else {
+                    Toast.makeText(Vaerksted.this, "Du har ikke råd til studiebøger, de koster 100", Toast.LENGTH_SHORT).show();
+                }
+
         }
-        if (viewPager.getCurrentItem() == R.drawable.bike && spiller.getPenge() >= 200) {
-            spiller.setPenge(spiller.getPenge() - 200);
-            spiller.setBike(true);
-        } else if (spiller.getPenge() < 200) {
-            Toast.makeText(Vaerksted.this, "Du har ikke råd til en cykel", Toast.LENGTH_SHORT).show();
-        }
+
     }
 
     public String updateInfo() {

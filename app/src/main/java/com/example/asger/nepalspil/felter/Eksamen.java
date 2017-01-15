@@ -8,7 +8,9 @@ import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+
 import static com.example.asger.nepalspil.activities.MainActivity.spiller;
+
 import com.example.asger.nepalspil.R;
 import com.example.asger.nepalspil.activities.MainActivity;
 import com.example.asger.nepalspil.models.SpillePlade;
@@ -36,17 +38,16 @@ public class Eksamen extends AppCompatActivity {
     FrameLayout container;
 
 
-
     @Override
     public void onBackPressed() {
         new AlertDialog.Builder(this)
-                .setMessage("Er du sikker på du vil forlade eksamen? Det koster dig " + Skole.vidensKrav() +  " viden.")
+                .setMessage("Er du sikker på du vil forlade eksamen? Det koster dig " + Skole.vidensKrav() + " viden.")
                 .setCancelable(false)
                 .setPositiveButton("Ja", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         Eksamen.this.finish();
-                        spiller.setViden(spiller.getViden()-10*spiller.getKlassetrin());
-                        if(spiller.getViden()<0){
+                        spiller.setViden(spiller.getViden() - 10 * spiller.getKlassetrin());
+                        if (spiller.getViden() < 0) {
                             spiller.setViden(0);
                         }
                     }
@@ -66,51 +67,50 @@ public class Eksamen extends AppCompatActivity {
         container = (FrameLayout) findViewById(R.id.container);
 
 
-
         spiller.getViden();
-        switch(spiller.getKlassetrin()-1){
+        switch (spiller.getKlassetrin() - 1) {
             case 0:
-                setQuestion("Hvad spiser nepalesiske børn til morgenmad?","Ris og grøntsager","Havregryn med mælk","Grød");
+                setQuestion("Hvad spiser nepalesiske børn til morgenmad?", "Ris og grøntsager", "Havregryn med mælk", "Grød");
                 setSecondCorrect();
                 break;
             case 1:
-                setQuestion("Hvorfor er det godt, at børnene får skolemad?","Så kan de bedre koncentrere sig i timerne.","Så behøver de ikke selv tage mad med.","Så føles dagen længere.");
+                setQuestion("Hvorfor er det godt, at børnene får skolemad?", "Så kan de bedre koncentrere sig i timerne.", "Så behøver de ikke selv tage mad med.", "Så føles dagen længere.");
                 setFirstCorrect();
                 break;
             case 2:
-                setQuestion("Hvilke ingredienser bruges blandt andet i nepalesisk skolemad?","Ris, løg, hvidløg og chili.","Brød og kød.","Nudler og chips.");
+                setQuestion("Hvilke ingredienser bruges blandt andet i nepalesisk skolemad?", "Ris, løg, hvidløg og chili.", "Brød og kød.", "Nudler og chips.");
                 setFirstCorrect();//?
                 break;
             case 3:
-                setQuestion("Hvad tid starter den offentlige skole i Nepal?","Kl. 10","Kl. 9","Kl. 8");
+                setQuestion("Hvad tid starter den offentlige skole i Nepal?", "Kl. 10", "Kl. 9", "Kl. 8");
                 setThirdCorrect(); //?
                 break;
             case 4:
-                setQuestion("Er der privatskoler i Nepal?","Ja, mange.","Nej, det har de ikke råd til.","Nogle få, men privatskoler er ikke almindeligt.");
+                setQuestion("Er der privatskoler i Nepal?", "Ja, mange.", "Nej, det har de ikke råd til.", "Nogle få, men privatskoler er ikke almindeligt.");
                 setThirdCorrect(); //?
                 break;
             case 5:
-                setQuestion("Hvem går i folkeskolen i Nepal?","De allerfattigste","De fleste","Alle er fattige og går i folkskolen.");
+                setQuestion("Hvem går i folkeskolen i Nepal?", "De allerfattigste", "De fleste", "Alle er fattige og går i folkskolen.");
                 setThirdCorrect(); //?
                 break;
             case 6:
-                setQuestion("Hvordan kan man bruge skolehaver i undervisningen?","Det er sjovere og lettere at lære noget, når man er udenfor.","Der er ikke lokaler nok til alle klasser.","Eleverne får mere mad, hvis de bliver undervist i haven.");
+                setQuestion("Hvordan kan man bruge skolehaver i undervisningen?", "Det er sjovere og lettere at lære noget, når man er udenfor.", "Der er ikke lokaler nok til alle klasser.", "Eleverne får mere mad, hvis de bliver undervist i haven.");
                 setThirdCorrect(); //?
                 break;
             case 7:
-                setQuestion("Hvorfor er det vigtigt, at børn i Nepal lærer noget?","Fordi de skal have en uddannelse og et bedre liv.","Fordi de kommer til at kede sig derhjemme.","Fordi de ikke kan lide at være alene hjemme.");
+                setQuestion("Hvorfor er det vigtigt, at børn i Nepal lærer noget?", "Fordi de skal have en uddannelse og et bedre liv.", "Fordi de kommer til at kede sig derhjemme.", "Fordi de ikke kan lide at være alene hjemme.");
                 setThirdCorrect(); //?
                 break;
             case 8:
-                setQuestion("Hvorfor er der mange fattige børn i Nepal, som ikke laver lektier?","Deres forældre sætter dem ikke i gang","De behøver ikke lave lektier","Hindureligionen forbyder lektier");
+                setQuestion("Hvorfor er der mange fattige børn i Nepal, som ikke laver lektier?", "Deres forældre sætter dem ikke i gang", "De behøver ikke lave lektier", "Hindureligionen forbyder lektier");
                 setThirdCorrect(); //?
                 break;
             case 9:
-                setQuestion("Hvor tit går børn i Nepal til eksamen?","Hvert år","Efter 9. klasse","Aldrig");
+                setQuestion("Hvor tit går børn i Nepal til eksamen?", "Hvert år", "Efter 9. klasse", "Aldrig");
                 setThirdCorrect(); //?
                 break;
             case 10:
-                setQuestion("Hvad skal børn i Nepal kunne til eksamen?","De skal kunne deres bøger udenad","De skal kunne tænke selvstændigt","De skal kunne forstå, hvad der står i bøgerne.");
+                setQuestion("Hvad skal børn i Nepal kunne til eksamen?", "De skal kunne deres bøger udenad", "De skal kunne tænke selvstændigt", "De skal kunne forstå, hvad der står i bøgerne.");
                 setThirdCorrect(); //?
                 break;
 
@@ -118,15 +118,15 @@ public class Eksamen extends AppCompatActivity {
     }
 
 
-    public void wrong(){
+    public void wrong() {
 
-        spiller.setViden(spiller.getViden()-10*spiller.getKlassetrin());
-        if(spiller.getViden()<0){
-           spiller.setViden(0);
+        spiller.setViden(spiller.getViden() - 10 * spiller.getKlassetrin());
+        if (spiller.getViden() < 0) {
+            spiller.setViden(0);
         }
         Skole.updateInfo();
         AlertDialog.Builder dialog = new AlertDialog.Builder(Eksamen.this);
-        dialog.setMessage("Du har desværre svaret forkert på eksamen og er derfor dumpet. -"+ Skole.vidensKrav() +" viden" )
+        dialog.setMessage("Du har desværre svaret forkert på eksamen og er derfor dumpet. -" + Skole.vidensKrav() + " viden")
                 .setCancelable(false)
                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
@@ -138,24 +138,24 @@ public class Eksamen extends AppCompatActivity {
         alert.show();
     }
 
-    public void setQuestion(String titel,String answerbox1, String answerbox2,String answerbox3)
-    {
+    public void setQuestion(String titel, String answerbox1, String answerbox2, String answerbox3) {
         question.setText(titel);
         answer1.setText(answerbox1);
         answer2.setText(answerbox2);
         answer3.setText(answerbox3);
     }
-    public void setFirstCorrect(){
-        answer1.setOnClickListener(new View.OnClickListener(){
+
+    public void setFirstCorrect() {
+        answer1.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
                 final MediaPlayer mp = MediaPlayer.create(Eksamen.this, R.raw.tada);
                 mp.start();
-                CommonConfetti.rainingConfetti(container, new int[] { Color.BLACK })
+                CommonConfetti.rainingConfetti(container, new int[]{Color.BLACK})
                         .infinite();
-                spiller.setKlassetrin(spiller.getKlassetrin()+1);
+                spiller.setKlassetrin(spiller.getKlassetrin() + 1);
                 AlertDialog.Builder dialog = new AlertDialog.Builder(Eksamen.this);
-                dialog.setMessage("TILLYKKE!! Du bestod og går nu i "+spiller.getKlassetrin()+". klasse." )
+                dialog.setMessage("TILLYKKE!! Du bestod og går nu i " + spiller.getKlassetrin() + ". klasse.")
                         .setCancelable(false)
                         .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
@@ -168,12 +168,12 @@ public class Eksamen extends AppCompatActivity {
 
             }
         });
-        answer2.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v){
+        answer2.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
                 wrong();
             }
         });
-        answer3.setOnClickListener(new View.OnClickListener(){
+        answer3.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 wrong();
             }
@@ -181,21 +181,21 @@ public class Eksamen extends AppCompatActivity {
     }
 
 
-    public void setSecondCorrect(){
-        answer1.setOnClickListener(new View.OnClickListener(){
+    public void setSecondCorrect() {
+        answer1.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 wrong();
             }
         });
-        answer2.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v){
+        answer2.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
                 final MediaPlayer mp = MediaPlayer.create(Eksamen.this, R.raw.tada);
                 mp.start();
-                CommonConfetti.rainingConfetti(container, new int[] { Color.BLACK })
+                CommonConfetti.rainingConfetti(container, new int[]{Color.BLACK})
                         .infinite();
-                spiller.setKlassetrin(spiller.getKlassetrin()+1);
+                spiller.setKlassetrin(spiller.getKlassetrin() + 1);
                 AlertDialog.Builder dialog = new AlertDialog.Builder(Eksamen.this);
-                dialog.setMessage("TILLYKKE!! Du bestod og går nu i "+spiller.getKlassetrin()+". klasse." )
+                dialog.setMessage("TILLYKKE!! Du bestod og går nu i " + spiller.getKlassetrin() + ". klasse.")
                         .setCancelable(false)
                         .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
@@ -208,7 +208,7 @@ public class Eksamen extends AppCompatActivity {
 
             }
         });
-        answer3.setOnClickListener(new View.OnClickListener(){
+        answer3.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 wrong();
             }
@@ -216,27 +216,27 @@ public class Eksamen extends AppCompatActivity {
     }
 
 
-    public void setThirdCorrect(){
-        answer1.setOnClickListener(new View.OnClickListener(){
+    public void setThirdCorrect() {
+        answer1.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 wrong();
             }
         });
 
-        answer2.setOnClickListener(new View.OnClickListener(){
+        answer2.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 wrong();
             }
         });
-        answer3.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v){
+        answer3.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
                 final MediaPlayer mp = MediaPlayer.create(Eksamen.this, R.raw.tada);
                 mp.start();
-                CommonConfetti.rainingConfetti(container, new int[] { Color.BLACK })
+                CommonConfetti.rainingConfetti(container, new int[]{Color.BLACK})
                         .infinite();
-                spiller.setKlassetrin(spiller.getKlassetrin()+1);
+                spiller.setKlassetrin(spiller.getKlassetrin() + 1);
                 AlertDialog.Builder dialog = new AlertDialog.Builder(Eksamen.this);
-                dialog.setMessage("TILLYKKE!! Du bestod og går nu i "+spiller.getKlassetrin()+". klasse." )
+                dialog.setMessage("TILLYKKE!! Du bestod og går nu i " + spiller.getKlassetrin() + ". klasse.")
                         .setCancelable(false)
                         .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {

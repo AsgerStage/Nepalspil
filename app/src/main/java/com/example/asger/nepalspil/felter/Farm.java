@@ -26,13 +26,21 @@ import static com.example.asger.nepalspil.activities.MainActivity.spiller;
  */
 
 public class Farm extends AppCompatActivity {
+    @Override
+    public void onBackPressed() {
+        SpillePlade.updateTextpenge();
+        SpillePlade.updateTextmad();
+        SpillePlade.updateTextviden();
+        finish();
+    }
 
     AlertDialog.Builder dialog;
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.farm);
 
-        dialog= new AlertDialog.Builder(Farm.this);
+        dialog = new AlertDialog.Builder(Farm.this);
         final TextView fieldinfo = (TextView) findViewById(R.id.fieldinfo);
         final TextView playerinfo = (TextView) findViewById(R.id.playerinfo);
         final MediaPlayer mp = MediaPlayer.create(this, R.raw.cash);

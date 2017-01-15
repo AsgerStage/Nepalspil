@@ -30,6 +30,13 @@ import static com.example.asger.nepalspil.activities.MainActivity.spiller;
 
 
 public class Skole extends AppCompatActivity {
+    @Override
+    public void onBackPressed() {
+        SpillePlade.updateTextpenge();
+        SpillePlade.updateTextmad();
+        SpillePlade.updateTextviden();
+        finish();
+    }
 
     TextView schoolText;
     TextView playerInfo;
@@ -55,7 +62,7 @@ public class Skole extends AppCompatActivity {
         Button bEksamen = (Button) findViewById(R.id.eksamen);
         ImageView back = (ImageView) findViewById(R.id.skoleBack);
         ImageView helpField = (ImageView) findViewById(R.id.skoleHelp);
-        dialog= new AlertDialog.Builder(Skole.this);
+        dialog = new AlertDialog.Builder(Skole.this);
         schoolText.setText("Velkommen til Skolen, her kan du spise, studere og tage din eksamen når tiden er.");
         playerInfo.setText("Navn: " + spiller.getNavn() + "\n mad: " + spiller.getHp() + "\n Penge: " + spiller.getPenge() + "\n Viden: " + spiller.getViden() + "\n Klassetrin: " + spiller.getKlassetrin() + "\n Tid: " + spiller.getTid());
 
@@ -162,12 +169,9 @@ public class Skole extends AppCompatActivity {
         });
 
 
-
     }
 
     public static int vidensKrav = 10 * spiller.getKlassetrin();
-
-
 
 
     public boolean studer() {

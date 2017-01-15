@@ -70,6 +70,7 @@ public class SpillePlade extends AppCompatActivity {
     Button felt6;
     Button felt7;
     ImageView ingameopt;
+    ImageView spilpladeHelp;
     int lastEvent = 0;
     int randomNum = 0;
 
@@ -129,6 +130,7 @@ public class SpillePlade extends AppCompatActivity {
         felt6 = (Button) findViewById(R.id.felt6);
         felt7 = (Button) findViewById(R.id.felt7);
         ingameopt = (ImageView) findViewById(R.id.ingameopt);
+        spilpladeHelp = (ImageView) findViewById(R.id.spilpladeHelp);
         MoveIcon();
 
 
@@ -216,6 +218,16 @@ public class SpillePlade extends AppCompatActivity {
             }
         });
 
+        spilpladeHelp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder dialog = new AlertDialog.Builder(SpillePlade.this);
+                dialog.setMessage("Velkommen til Nepalspillet! Målet med spillet er at bestå alle sine 10 eksamner.\nFor at klare dette, findes der 8 forskellige felter hvor du kan forskellige ting, fx. kan du arbejde i rismarken og studere i skolen. \nFor at gå hen til et felt skal du bare trykke på det. Alt hvad du gør bruger noget af din tid, så brug den fornuftigt!");
+                dialog.show();
+
+            }
+        });
+
         ingameopt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -255,17 +267,9 @@ public class SpillePlade extends AppCompatActivity {
 
 
     }
-    /*protected void moveTo(ImageButton v){
-        felt0.setColorFilter(null);
-        felt1.setColorFilter(null);
-        felt2.setColorFilter(null);
-        felt3.setColorFilter(null);
-        felt4.setColorFilter(null);
-        felt5.setColorFilter(null);
-        felt6.setColorFilter(null);
-        felt7.setColorFilter(null);
-        v.setColorFilter(android.R.color.holo_green_dark);
-    }*/
+
+
+
 
     public static void updateInfobox() {
         infobox.setText("Navn: " + spiller.getNavn() + "\n mad: " + spiller.getHp() + "\n Penge: " + spiller.getPenge() + "\n Viden: " + spiller.getViden() + "\n Klassetrin: " + spiller.getKlassetrin() + "\n Tid: " + spiller.getTid() + "\n Dag: " + spiller.getRunde());
@@ -274,9 +278,11 @@ public class SpillePlade extends AppCompatActivity {
     public static void updateTextpenge() {
         textpenge.setText(String.valueOf(spiller.getPenge()));
     }
+
     public static void updateTextviden() {
         textviden.setText(String.valueOf(spiller.getViden()));
     }
+
     public static void updateTextmad() {
         textmad.setText(String.valueOf(spiller.getHp()));
     }
@@ -434,7 +440,7 @@ public class SpillePlade extends AppCompatActivity {
         prefs.edit().putInt("Viden", spiller.getViden()).apply();
         prefs.edit().putInt("Klassetrin", spiller.getKlassetrin()).apply();
         prefs.edit().putInt("Tid", spiller.getTid()).apply();
-        prefs.edit().putBoolean("Bike", spiller.isBike()).apply();
+        prefs.edit().putInt("moveSpeed", spiller.getmoveSpeed()).apply();
         prefs.edit().putInt("Runde", spiller.getRunde()).apply();
     }
 

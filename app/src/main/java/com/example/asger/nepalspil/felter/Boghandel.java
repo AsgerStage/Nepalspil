@@ -1,5 +1,6 @@
 package com.example.asger.nepalspil.felter;
 
+import android.content.DialogInterface;
 import android.content.res.AssetFileDescriptor;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -24,6 +25,14 @@ import static com.example.asger.nepalspil.activities.MainActivity.spiller;
 
 public class Boghandel extends AppCompatActivity {
 
+    @Override
+    public void onBackPressed() {
+        SpillePlade.updateTextpenge();
+        SpillePlade.updateTextmad();
+        SpillePlade.updateTextviden();
+        finish();
+    }
+
     AlertDialog.Builder dialog;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,7 +46,7 @@ public class Boghandel extends AppCompatActivity {
         final Button buyBook = (Button) findViewById(R.id.buyBookButton);
         ImageView back = (ImageView) findViewById(R.id.backButton);
 
-        bookstoreInfo.setText("Velkommen til boghandlen. Her kan du få et arbejde hvis du er nået langt nok i din uddannelse. \n Du kan også købe skole bøger her.");
+        bookstoreInfo.setText("Velkommen til boghandlen. Her kan du få et arbejde hvis du er nået langt nok i din uddannelse. \n Du kan også købe skole bøger her. Skolebøger giver hurtig viden");
         playerInfo.setText("Navn: " + spiller.getNavn() + "\n mad: " + spiller.getHp() + "\n Penge: " + spiller.getPenge() + "\n Viden: " + spiller.getViden() + "\n Klassetrin: " + spiller.getKlassetrin() + "\n Tid: " + spiller.getTid());
 
         work.setOnClickListener(new View.OnClickListener() {
@@ -89,14 +98,22 @@ public class Boghandel extends AppCompatActivity {
         buyBook.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (spiller.getPenge() >= 20) {
-                    buyBook();
-                    playerInfo.setText(updateInfo());
+                if (spiller.getPenge() >= 100 && (spiller.getRunde() % 5 == 0)) {
+                    spiller.setPenge(spiller.getPenge() - 100);
                     AlertDialog.Builder dialog = new AlertDialog.Builder(Boghandel.this);
                     dialog.setTitle("Bog købt");
-                    dialog.setMessage("Du har købt en ny bog for 20 penge.");
+                    dialog.setMessage("Du har købt en ny bog for 100 penge. +20 viden");
                     dialog.show();
-                } else {
+                    spiller.setViden(spiller.getViden() + 20);
+                    playerInfo.setText(updateInfo());
+
+                } else if (spiller.getRunde() % 5 != 0) {
+                    AlertDialog.Builder dialog = new AlertDialog.Builder(Boghandel.this);
+                    dialog.setTitle("Ikke på lager");
+                    dialog.setMessage("Øv! Bogen er ikke på lager i dag. Kom tilbage en anden dag.");
+                    dialog.show();
+
+                } else if (spiller.getPenge() < 100) {
                     AlertDialog.Builder dialog = new AlertDialog.Builder(Boghandel.this);
                     dialog.setTitle("Ikke nok penge!");
                     dialog.setMessage("Du har ikke penge nok til at købe en ny bog. Tjen penge ved at arbejde.");
@@ -124,8 +141,8 @@ public class Boghandel extends AppCompatActivity {
     }
 
     private void buyBook() {
-        spiller.setBooks(spiller.getBooks()+1);
-        spiller.setPenge(spiller.getPenge()-10);
+        spiller.setBooks(spiller.getBooks() + 1);
+        spiller.setPenge(spiller.getPenge() - 10);
     }
 
     public String updateInfo() {
