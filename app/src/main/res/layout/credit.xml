@@ -28,7 +28,7 @@
     </RelativeLayout>
 
     <ImageView
-        android:layout_width="571dp"
+        android:layout_width="match_parent"
         app:srcCompat="@drawable/danida"
         android:id="@+id/danida"
         android:layout_height="156dp"
