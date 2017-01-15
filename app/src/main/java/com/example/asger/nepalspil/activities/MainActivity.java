@@ -143,6 +143,8 @@ public class MainActivity extends AppCompatActivity {
                                 startActivity(browserIntent);
                                 break;
                             case 1:
+                                Intent intent = new Intent(MainActivity.this, Credit.class);
+                                startActivity(intent);
                                 break;
                             case 2:
                                 MusicManager.stop();
