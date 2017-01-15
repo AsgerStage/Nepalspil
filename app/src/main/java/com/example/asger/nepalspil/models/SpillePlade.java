@@ -384,6 +384,7 @@ public class SpillePlade extends AppCompatActivity {
         prefs.edit().putInt("Tid", spiller.getTid()).apply();
         prefs.edit().putInt("moveSpeed", spiller.getmoveSpeed()).apply();
         prefs.edit().putInt("Runde", spiller.getRunde()).apply();
+        prefs.edit().putInt("LastBookBought",spiller.getLastBookBought()).apply();
     }
 
     public void MoveIcon() {

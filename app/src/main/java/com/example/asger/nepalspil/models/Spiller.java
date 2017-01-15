@@ -19,6 +19,7 @@ public class Spiller {
     private int tid;
     public int runde;
     private int moveSpeed;
+    private int lastBookBought;
 
     public Spiller(String navn) {
         this.navn = navn;
@@ -49,7 +50,9 @@ public class Spiller {
         Log.d("Spiller", "Spiller oprettet med balance");
     }
 
-    public Spiller(Boolean sex, int books, int position, String navn, int penge, int hp, int viden, int klassetrin, int tid, int runde, int moveSpeed) {
+
+
+    public Spiller(Boolean sex, int books, int position, String navn, int penge, int hp, int viden, int klassetrin, int tid, int runde, int moveSpeed, int lastBookBought) {
         this.sex = sex;
         this.books = books;
         this.position = position;
@@ -61,6 +64,7 @@ public class Spiller {
         this.tid = tid;
         this.runde = runde;
         this.moveSpeed = moveSpeed;
+        this.lastBookBought=lastBookBought;
 
     }
 
@@ -97,11 +101,20 @@ public class Spiller {
 
 
             if (count2 > count1) {
-                this.tid = (int) ((this.tid) - Math.round(count1 / moveSpeed));
+                if(count1==1){
+                    this.tid=tid-count1;
+                }
+
+                else {this.tid = (int) ((this.tid) - Math.ceil(count1 / moveSpeed));}
+
                 Log.d("Spiller", "Spiller rykket fra " + this.position + " til " + newPosition + " og mistet tid: " + count1 + " og har nu " + this.tid + " tid");
                 this.position = newPosition;
             } else if (count1 >= count2) {
-                this.tid = (int) ((this.tid) - Math.round(count2 / moveSpeed));
+                if(count2==1){
+                    this.tid=tid-count2;
+                }
+                else {this.tid = (int) ((this.tid) - Math.ceil(count2 / moveSpeed));}
+                Log.d("Spiller",count2+" "+moveSpeed);
                 Log.d("Spiller", "Spiller rykket fra " + this.position + " til " + newPosition + " og mistet tid: " + count2 + " og har nu " + this.tid + " tid");
                 this.position = newPosition;
                 //Den korteste vej trækkes fra spillerens tid
@@ -251,5 +264,11 @@ public class Spiller {
         this.runde = runde;
     }
 
+    public int getLastBookBought() {
+        return lastBookBought;
+    }
 
+    public void setLastBookBought(int lastBookBought) {
+        this.lastBookBought = lastBookBought;
+    }
 }

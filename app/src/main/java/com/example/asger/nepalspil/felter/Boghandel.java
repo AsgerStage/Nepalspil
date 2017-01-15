@@ -98,7 +98,29 @@ public class Boghandel extends AppCompatActivity {
         buyBook.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (spiller.getPenge() >= 100 && (spiller.getRunde() % 5 == 0)) {
+
+               if(spiller.getPenge()>=30&&spiller.getLastBookBought()+5<=spiller.getRunde()){
+                   spiller.setViden(spiller.getViden() + 10);
+                   spiller.setPenge(spiller.getPenge()-30);
+                   dialog.setTitle("Bog købt");
+                   dialog.setMessage("Du har købt en ny bog for 30 penge. +10 viden");
+                   dialog.show();
+                   spiller.setLastBookBought(spiller.getRunde());
+                   playerInfo.setText(updateInfo());
+               }
+
+                else if(spiller.getPenge()<30){
+                   dialog.setTitle("Du mangler penge!");
+                   dialog.setMessage("Bogen koster 30 kroner, men du har kun"+spiller.getPenge());
+                   dialog.show();
+               }
+                else if (!(spiller.getLastBookBought()+5<spiller.getRunde())){
+                   dialog.setTitle("Boghandlen har ikke den bog du vil have");
+                   dialog.setMessage("Kig tilbage på et andet tidspunkt");
+                   dialog.show();
+               }
+            }
+               /* if (spiller.getPenge() >= 100 && (spiller.getRunde() % 5 == 0)) {
                     spiller.setPenge(spiller.getPenge() - 100);
                     AlertDialog.Builder dialog = new AlertDialog.Builder(Boghandel.this);
                     dialog.setTitle("Bog købt");
@@ -119,7 +141,7 @@ public class Boghandel extends AppCompatActivity {
                     dialog.setMessage("Du har ikke penge nok til at købe en ny bog. Tjen penge ved at arbejde.");
                     dialog.show();
                 }
-            }
+            }*/
         });
 
         back.setOnClickListener(new View.OnClickListener() {
