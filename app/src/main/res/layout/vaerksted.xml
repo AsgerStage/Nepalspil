@@ -24,7 +24,7 @@
             app:srcCompat="@drawable/fieldhelp"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
-            android:id="@+id/imageView4" />
+            android:id="@+id/vaerkstedHelp" />
 
     </RelativeLayout>
 

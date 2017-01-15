@@ -1,5 +1,6 @@
 package com.example.asger.nepalspil.felter;
 
+import android.media.Image;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
@@ -27,17 +28,20 @@ import static com.example.asger.nepalspil.activities.MainActivity.spiller;
 
 public class Lektiehjaelp extends AppCompatActivity {
     Button homeworkHelp;
-
+    AlertDialog.Builder dialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.lektiehjaelp);
 
+        dialog= new AlertDialog.Builder(Lektiehjaelp.this);
+
         final TextView lektiehjaelpInfo = (TextView) findViewById(R.id.lektiehjaelpTextField);
         final TextView playerInfo = (TextView) findViewById(R.id.lektiePlayerInfo);
         ImageView back = (ImageView) findViewById(R.id.lektieBack);
         homeworkHelp = (Button) findViewById(R.id.learn);
+        ImageView helpField = (ImageView) findViewById(R.id.studyHelp);
 
         lektiehjaelpInfo.setText("Her kan du få lektiehjælp, til at indhente det du ikke forstod fra undervisningen.");
         playerInfo.setText("Navn: " + spiller.getNavn() + "\n mad: " + spiller.getHp() + "\n Penge: " + spiller.getPenge() + "\n Viden: " + spiller.getViden() + "\n Klassetrin: " + spiller.getKlassetrin() + "\n Tid: " + spiller.getTid() + "\n Viden at hente: " + spiller.getGlemtViden());
@@ -64,6 +68,13 @@ public class Lektiehjaelp extends AppCompatActivity {
             }
         });
 
+        helpField.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.setMessage("Velkommen til lektiehjælpen. Her kan du få den viden du ikke fik fra undervisningen.");
+                dialog.show();
+            }
+        });
         back.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {

@@ -23,7 +23,7 @@
             app:srcCompat="@drawable/fieldhelp"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
-            android:id="@+id/imageView10" />
+            android:id="@+id/studyHelp" />
     </RelativeLayout>
 
     <TextView

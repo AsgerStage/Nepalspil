@@ -1,6 +1,7 @@
 package com.example.asger.nepalspil.felter;
 
 import android.content.res.AssetFileDescriptor;
+import android.media.Image;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
@@ -21,11 +22,14 @@ import com.example.asger.nepalspil.models.SpillePlade;
 import java.io.IOException;
 
 public class Marked extends AppCompatActivity {
-     Toast t;
+    Toast t;
+    AlertDialog.Builder dialog;
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.marked);
 
+        dialog= new AlertDialog.Builder(Marked.this);
         t = new Toast(Marked.this);
         final TextView fieldinfo = (TextView) findViewById(R.id.fieldinfo);
         final TextView playerinfo = (TextView) findViewById(R.id.playerinfo);
@@ -34,9 +38,18 @@ public class Marked extends AppCompatActivity {
         Button work = (Button) findViewById(R.id.workButton);
         final Button eat = (Button) findViewById(R.id.eatButton);
         final ImageView back = (ImageView) findViewById(R.id.backButton);
+        ImageView helpField = (ImageView) findViewById(R.id.markedHelp);
 
         fieldinfo.setText("Dette er market. Her kan man arbejde og tjene penge, eller man kan købe mad.");
         playerinfo.setText("Navn: " + spiller.getNavn() + "\n mad: " + spiller.getHp() + "\n Penge: " + spiller.getPenge() + "\n Viden: " + spiller.getViden() + "\n Klassetrin: " + spiller.getKlassetrin() + "\n Tid: " + spiller.getTid());
+
+        helpField.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.setMessage("Velkommen til markedet. Her kan du arbejde for at tjene penge eller du kan spise for at ikke at sulte.");
+                dialog.show();
+            }
+        });
 
         work.setOnClickListener(new View.OnClickListener() {
 
