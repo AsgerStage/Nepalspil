@@ -434,67 +434,90 @@ public class SpillePlade extends AppCompatActivity {
         }
 
         lastEvent = randomNum;
+switch(randomNum) {
+    case 1:
 
-        if (randomNum == 1) {
-            dialog.setTitle("Du er blevet syg!");
-            dialog.setMessage("Du er blevet syg og har derfor halvt så meget tid idag");
-            dialog.show();
-            spiller.setTid(spiller.getTid() / 2);
-            Log.d("SpillePlade", "Random event 1 triggered");
-        } else if (randomNum == 2) {
-            dialog.setTitle("Dine forældre har brug for penge");
-            dialog.setMessage("Dine forældre har brugt nogle af dine penge");
-            dialog.show();
-            if (spiller.getPenge() >= 20) {
-                spiller.setPenge(spiller.getPenge() - 20);
-            } else spiller.setPenge(0);
-            Log.d("SpillePlade", "Random event 2 triggered");
-        } else if (randomNum == 3) {
-            dialog.setTitle("På vejen hjem faldt du og slog hovedet");
-            dialog.setMessage("Du har mistet viden");
-            dialog.show();
-            if (spiller.getViden() >= 10) {
-                spiller.setViden(spiller.getViden() - 10);
-            } else spiller.setViden(0);
-            Log.d("SpillePlade", "Random event 3 triggered");
-        } else if (randomNum == 4) {
-            dialog.setTitle("Maden du har spiste var dårlig");
-            dialog.setMessage("Du er nu mere sulten");
-            dialog.show();
-            if (spiller.getHp() >= 30) {
-                spiller.setHp(spiller.getHp() - 30);
-            } else spiller.setHp(0);
-            Log.d("SpillePlade", "Random event 4 triggered");
-        } else if (randomNum == 5) {
-            dialog.setTitle("Vejret er dårligt");
-            dialog.setMessage("Det tordner og lyner og du bliver hjemme idag");
-            dialog.show();
-            spiller.setTid(0);
-            Log.d("SpillePlade", "Random event 5 triggered");
-        } else if (randomNum == 6) {
-            dialog.setTitle("Du er blevet røvet");
-            dialog.setMessage("En tyv har taget alle dine penge");
-            dialog.show();
-            spiller.setPenge(0);
-            Log.d("SpillePlade", "Random event 6 triggered");
-        } else if (randomNum == 7) {
-            dialog.setTitle("Du vågner op super frisk!");
-            dialog.setMessage("Du er frisk og springfyldt med energi, og har ekstra tid idag");
-            dialog.show();
-            spiller.setTid(spiller.getTid() + 3);
-            Log.d("SpillePlade", "Random event 7 triggered");
-        } else if (randomNum == 8) {
-            Log.d("SpillePlade", "Random event 8 triggered (nothing)");
-        } else if (randomNum == 9) {
+        dialog.setTitle("Du er blevet syg!");
+        dialog.setMessage("Du er blevet syg og har derfor halvt så meget tid idag");
+        dialog.show();
+        spiller.setTid(spiller.getTid() / 2);
+        Log.d("SpillePlade", "Random event 1 triggered");
+        break;
 
-            Log.d("SpillePlade", "Random event 9 triggered (nothing)");
-        } else {
+    case 2:
+        dialog.setTitle("Dine forældre har brug for penge");
+        dialog.setMessage("Dine forældre har brugt nogle af dine penge");
+        dialog.show();
+        if (spiller.getPenge() >= 20) {
+            spiller.setPenge(spiller.getPenge() - 20);
+        } else spiller.setPenge(0);
+        Log.d("SpillePlade", "Random event 2 triggered");
+        break;
 
-            Log.d("SpillePlade", "Random event 10 triggered (nothing)");
-        }
+    case 3:
+        dialog.setTitle("På vejen hjem faldt du og slog hovedet");
+        dialog.setMessage("Du har mistet viden");
+        dialog.show();
+        if (spiller.getViden() >= 10) {
+            spiller.setViden(spiller.getViden() - 10);
+        } else spiller.setViden(0);
+        Log.d("SpillePlade", "Random event 3 triggered");
+        break;
 
+    case 4:
+        dialog.setTitle("Maden du har spiste var dårlig");
+        dialog.setMessage("Du er nu mere sulten");
+        dialog.show();
+        if (spiller.getHp() >= 30) {
+            spiller.setHp(spiller.getHp() - 30);
+        } else spiller.setHp(0);
+        Log.d("SpillePlade", "Random event 4 triggered");
+        break;
 
+    case 5:
+        dialog.setTitle("Vejret er dårligt");
+        dialog.setMessage("Det tordner og lyner og du bliver hjemme idag");
+        dialog.show();
+        spiller.setTid(0);
+        Log.d("SpillePlade", "Random event 5 triggered");
+        break;
+
+    case 6:
+        dialog.setTitle("Du er blevet røvet");
+        dialog.setMessage("En tyv har taget alle dine penge");
+        dialog.show();
+        spiller.setPenge(0);
+        Log.d("SpillePlade", "Random event 6 triggered");
+        break;
+
+    case 7:
+        dialog.setTitle("Du vågner op super frisk!");
+        dialog.setMessage("Du er frisk og springfyldt med energi, og har ekstra tid idag");
+        dialog.show();
+        spiller.setTid(spiller.getTid() + 3);
+        Log.d("SpillePlade", "Random event 7 triggered");
+        break;
+
+    case 8:
+        Log.d("SpillePlade", "Random event 8 triggered (nothing)");
+        break;
+
+    case 9:
+        Log.d("SpillePlade", "Random event 9 triggered (nothing)");
+        break;
+
+    case 10:
+        Log.d("SpillePlade", "Random event 10 triggered (nothing)");
+        break;
+
+    case 11:
+        Log.d("SpillePlade", "Random event 11 triggered (nothing)");
+        break;
     }
+
+}
+
+
     static public void updateEntireBoard(){
         SpillePlade.updateTextpenge();
         SpillePlade.updateTextmad();
