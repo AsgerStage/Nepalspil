@@ -484,20 +484,13 @@ public class SpillePlade extends AppCompatActivity {
             spiller.setTid(spiller.getTid() + 3);
             Log.d("SpillePlade", "Random event 7 triggered");
         } else if (randomNum == 8) {
-            dialog.setTitle("Der skete ingenting");
-            dialog.setMessage("Der er absolut ingenting sket");
-            dialog.show();
-            Log.d("SpillePlade", "Random event 8 triggered");
+            Log.d("SpillePlade", "Random event 8 triggered (nothing)");
         } else if (randomNum == 9) {
-            dialog.setTitle("Der skete ingenting");
-            dialog.setMessage("Der er absolut ingenting sket");
-            dialog.show();
-            Log.d("SpillePlade", "Random event 9 triggered");
+
+            Log.d("SpillePlade", "Random event 9 triggered (nothing)");
         } else {
-            dialog.setTitle("Der skete ingenting");
-            dialog.setMessage("Der er absolut ingenting sket");
-            dialog.show();
-            Log.d("SpillePlade", "Random event 10 triggered");
+
+            Log.d("SpillePlade", "Random event 10 triggered (nothing)");
         }
 
 
