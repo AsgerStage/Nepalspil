@@ -33,6 +33,9 @@ public class Skole extends AppCompatActivity {
 
     private Animation animation;
     private Animation animationfood;
+    static TextView textpenge;
+    static TextView textviden;
+    static TextView textmad;
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
      * See https://g.co/AppIndexing/AndroidStudio for more information.
@@ -52,7 +55,7 @@ public class Skole extends AppCompatActivity {
     @Override
     public void onResume() {
         super.onResume();
-        updateInfo();
+       // updateInfo();
 
     }
 
@@ -63,7 +66,7 @@ public class Skole extends AppCompatActivity {
 
         final MediaPlayer mp = MediaPlayer.create(this, R.raw.cash);
         final TextView schoolText = (TextView) findViewById(R.id.schoolText);
-        final TextView playerInfo = (TextView) findViewById(R.id.schoolPlayerInfo);
+       // final TextView playerInfo = (TextView) findViewById(R.id.schoolPlayerInfo);
         final TextView klassetrin = (TextView) findViewById(R.id.klassetrin);
         Button bSpis = (Button) findViewById(R.id.spis);
         Button bStuder = (Button) findViewById(R.id.Studer);
@@ -74,12 +77,18 @@ public class Skole extends AppCompatActivity {
         animationfood = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.plusfood);
         final TextView scroll = (TextView) findViewById(R.id.plusknowledge);
         final TextView mad = (TextView) findViewById(R.id.scrollfood);
+        textpenge = (TextView) findViewById(R.id.textpenge);
+        textviden = (TextView) findViewById(R.id.textviden);
+        textmad = (TextView) findViewById(R.id.textmad);
+        updateText();
 
         dialog = new AlertDialog.Builder(Skole.this);
         schoolText.setText("Velkommen til Skolen, her kan du spise, studere og tage din eksamen når tiden er.");
-        playerInfo.setText("Navn: " + spiller.getNavn() + "\n mad: " + spiller.getHp() + "\n Penge: " + spiller.getPenge() + "\n Viden: " + spiller.getViden() + "\n Klassetrin: " + spiller.getKlassetrin() + "\n Tid: " + spiller.getTid());
+      //  playerInfo.setText("Navn: " + spiller.getNavn() + "\n mad: " + spiller.getHp() + "\n Penge: " + spiller.getPenge() + "\n Viden: " + spiller.getViden() + "\n Klassetrin: " + spiller.getKlassetrin() + "\n Tid: " + spiller.getTid());
         klassetrin.setText("Du går i " + spiller.getKlassetrin() + ". klasse.");
-
+        if (spiller.getKlassetrin()>=12){
+            bEksamen.setVisibility(View.INVISIBLE);
+        }
         onResume();
         {
 
@@ -102,7 +111,7 @@ public class Skole extends AppCompatActivity {
                     mad.startAnimation(animationfood);
                     spis();
                     schoolText.setText("Mmm! Du har spist skolemad.");
-                    playerInfo.setText(updateInfo());
+                    //playerInfo.setText(updateInfo());
                     if (mp.isPlaying()) {
                         mp.stop();
                     }
@@ -136,6 +145,7 @@ public class Skole extends AppCompatActivity {
                         scroll.setText("+1 viden");
                         scroll.startAnimation(animation);
                         spiller.study(1, 1);
+                        updateText();
                         if (mp.isPlaying()) {
                             mp.stop();
                         }
@@ -165,7 +175,7 @@ public class Skole extends AppCompatActivity {
                     dialog.setMessage("Du har ikke nok tid til at studere.");
                     dialog.show();
                 }
-                playerInfo.setText(updateInfo());
+            //    playerInfo.setText(updateInfo());
             }
         });
 
@@ -206,7 +216,7 @@ public class Skole extends AppCompatActivity {
         client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
     }
 
-    public static int vidensKrav = 10 * spiller.getKlassetrin();
+    //public static int vidensKrav = 10 * spiller.getKlassetrin();
 
 
     public int studer() {
@@ -219,15 +229,15 @@ public class Skole extends AppCompatActivity {
                 break;
             case 1:
                 result = tryToStudy(0.45, 0.2, 0);
-                Log.d("Spil", "Spiller studied with 0 learning Amp");
+                Log.d("Spil", "Spiller studied with 1 learning Amp");
                 break;
             case 2:
                 result = tryToStudy(0.40, 0.15, 0);
-                Log.d("Spil", "Spiller studied with 0 learning Amp");
+                Log.d("Spil", "Spiller studied with 2 learning Amp");
                 break;
             case 3:
                 result = tryToStudy(0.30, 0, 0);
-                Log.d("Spil", "Spiller studied with 0 learning Amp");
+                Log.d("Spil", "Spiller studied with 3 learning Amp");
                 break;
 
 
@@ -240,6 +250,7 @@ public class Skole extends AppCompatActivity {
         if (spiller.getTid() > 0) {
             spiller.eat(1, 0, 5);
             SpillePlade.updateInfobox();
+            updateText();
         } else {
             schoolText.setText("");
         }
@@ -253,14 +264,40 @@ public class Skole extends AppCompatActivity {
             return false;
     }
 
-    public static String updateInfo() {
+  /*  public static String updateInfo() {
         SpillePlade.updateInfobox();
         return "Navn: " + spiller.getNavn() + "\n mad: " + spiller.getHp() + "\n Penge: " + spiller.getPenge() + "\n Viden: " + spiller.getViden() + "\n Klassetrin: " + spiller.getKlassetrin() + "\n Tid: " + spiller.getTid();
 
-    }
+    }*/
 
 
     public static int vidensKrav() {
+        switch(spiller.getKlassetrin()){
+            case 1:
+                return 10;
+            case 2:
+               return 40;
+            case 3:
+                return 90;
+            case 4:
+                return 110;
+            case 5:
+                return 160;
+            case 6:
+                return 220;
+            case 7:
+                return 300;
+            case 8:
+                return 400;
+            case 9:
+                return 500;
+            case 10:
+                return 700;
+            case 11:
+                return 800;
+
+
+        }
         return 10 * spiller.getKlassetrin();
     }
 
@@ -272,5 +309,12 @@ public class Skole extends AppCompatActivity {
         else if (rand < homework && rand >= fail) return 3;
         else return 0;
     }
+    public static void updateText() {
+        textpenge.setText(String.valueOf(spiller.getPenge()));
+        textviden.setText(String.valueOf(spiller.getViden()));
+        textmad.setText(String.valueOf(spiller.getHp()));
+    }
+
+
 
 }

@@ -75,9 +75,9 @@ public class Butikken extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 dialog.setMessage("Velkommen til tøjbutikken. Her kan du købe tøj og diverse skoleting til at gøre dit live bedre."+
-                        "Papirblokken koster 30kr. og øger chancen for at lærer noget i skolen.\n" +
-                        "Egne blyanter koster 60kr. og reducerer chancen for at skulle bruge lektiehjælp.\n"  +
-                        "Lommeregneren koster 100kr. og fjerner risikoen for ikke at lærer noget over hovedet i skolen.");
+                        "Papirblokken koster 150kr. og øger chancen for at lærer noget i skolen.\n" +
+                        "Egne blyanter koster 300kr. og reducerer chancen for at skulle bruge lektiehjælp.\n"  +
+                        "Lommeregneren koster 700kr. og fjerner risikoen for ikke at lærer noget over hovedet i skolen.");
                 dialog.show();
             }
         });
@@ -86,12 +86,12 @@ public class Butikken extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (spiller.getLearningAmp()==2) {
-                    if (spiller.getPenge() >= 100) {
+                    if (spiller.getPenge() >= 700) {
                         buy();
                         playerinfo.setText(updateInfo());
                         AlertDialog.Builder dialog = new AlertDialog.Builder(Butikken.this);
                         dialog.setTitle("Lommeregner købt");
-                        dialog.setMessage("Du har købt en ny lommeregner for 100 penge.");
+                        dialog.setMessage("Du har købt en ny lommeregner for 700kr.");
                         dialog.show();
                         buy.setVisibility(View.INVISIBLE);
                     } else {
@@ -102,12 +102,12 @@ public class Butikken extends AppCompatActivity {
                     }
                 }
                 if (spiller.getLearningAmp()==1) {
-                    if (spiller.getPenge() >= 60) {
+                    if (spiller.getPenge() >= 300) {
                         buy();
                         playerinfo.setText(updateInfo());
                         AlertDialog.Builder dialog = new AlertDialog.Builder(Butikken.this);
                         dialog.setTitle("Blyanter købt");
-                        dialog.setMessage("Du har købt nye blyanter for 60 penge.");
+                        dialog.setMessage("Du har købt nye blyanter for 300kr.");
                         dialog.show();
                         buy.setText("Køb Lommeregner");
                     } else {
@@ -118,12 +118,12 @@ public class Butikken extends AppCompatActivity {
                     }
                 }
                 if (spiller.getLearningAmp() == 0) {
-                    if (spiller.getPenge() >= 30) {
+                    if (spiller.getPenge() >= 150) {
                         buy();
                         playerinfo.setText(updateInfo());
                         AlertDialog.Builder dialog = new AlertDialog.Builder(Butikken.this);
                         dialog.setTitle("Papir købt");
-                        dialog.setMessage("Du har købt en blok papir for 30 penge.");
+                        dialog.setMessage("Du har købt en blok papir for 150kr.");
                         dialog.show();
                         buy.setText("Køb blyanter");
                     } else {
@@ -153,15 +153,15 @@ public class Butikken extends AppCompatActivity {
         switch (spiller.getLearningAmp()){
             case 0:
                 spiller.setLearningAmp(1);
-                spiller.setPenge(spiller.getPenge()-30);
+                spiller.setPenge(spiller.getPenge()-150);
                 break;
             case 1:
                 spiller.setLearningAmp(2);
-                spiller.setPenge(spiller.getPenge()-60);
+                spiller.setPenge(spiller.getPenge()-300);
                 break;
             case 2:
                 spiller.setLearningAmp(3);
-                spiller.setPenge(spiller.getPenge()-100);
+                spiller.setPenge(spiller.getPenge()-700);
                 break;
         }
     }

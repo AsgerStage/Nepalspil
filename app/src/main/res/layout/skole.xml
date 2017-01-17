@@ -9,6 +9,19 @@
         android:layout_width="match_parent"
         android:layout_height="31dp">
 
+        <TextView
+            android:text="Mad"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textmad"
+            android:elevation="1dp"
+            android:fontFamily="sans-serif"
+            android:textSize="24sp"
+            android:layout_marginStart="27dp"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@+id/skoleBack"
+            android:textColor="@color/food" />
+
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -26,6 +39,57 @@
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
             android:id="@+id/skoleHelp" />
+
+        <ImageView
+            android:layout_width="34dp"
+            android:layout_height="34dp"
+            app:srcCompat="@drawable/ikonmad"
+            android:id="@+id/imageView"
+            android:layout_marginStart="76dp"
+            android:layout_alignParentTop="true"
+            android:layout_toEndOf="@+id/skoleBack" />
+
+        <TextView
+            android:text="Viden"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textviden"
+            android:elevation="1dp"
+            android:fontFamily="sans-serif"
+            android:textSize="24sp"
+            android:textColor="@color/black"
+            android:layout_alignParentBottom="true"
+            android:layout_alignEnd="@+id/imageView12"
+            android:layout_marginEnd="35dp" />
+
+        <ImageView
+            android:layout_width="34dp"
+            android:layout_height="34dp"
+            app:srcCompat="@drawable/ikonpenge"
+            android:id="@+id/imageView13"
+            android:layout_alignTop="@+id/textView4"
+            android:layout_toStartOf="@+id/skoleHelp"
+            android:layout_marginEnd="66dp" />
+
+        <TextView
+            android:text="Penge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textpenge"
+            android:elevation="1dp"
+            android:fontFamily="sans-serif"
+            android:textSize="24sp"
+            android:textColor="@color/money"
+            android:layout_alignParentBottom="true"
+            android:layout_toStartOf="@+id/imageView13" />
+
+        <ImageView
+            android:layout_width="34dp"
+            android:layout_height="34dp"
+            app:srcCompat="@drawable/ikonviden"
+            android:id="@+id/imageView12"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true" />
     </RelativeLayout>
 
     <RelativeLayout
@@ -74,6 +138,7 @@
             android:layout_centerHorizontal="true"
             android:textAlignment="center"
             android:textColor="@color/food" />
+
     </RelativeLayout>
 
     <LinearLayout

@@ -98,7 +98,7 @@ switch(position){
         work.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
-                if (spiller.getTid() >= 2) {
+                if (spiller.getTid() >= 2 && spiller.getKlassetrin()>=3) {
                     work();
 
                     if (mp.isPlaying()) {

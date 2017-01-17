@@ -28,7 +28,7 @@ public class Eksamen extends AppCompatActivity {
     Button answer2;
     Button answer3;
     FrameLayout container;
-
+    AlertDialog.Builder dialog;
 
     @Override
     public void onBackPressed() {
@@ -57,8 +57,7 @@ public class Eksamen extends AppCompatActivity {
         answer2 = (Button) findViewById(R.id.answer2Button);
         answer3 = (Button) findViewById(R.id.answer3Button);
         container = (FrameLayout) findViewById(R.id.container);
-
-
+       dialog = new AlertDialog.Builder(Eksamen.this);
         spiller.getViden();
         switch (spiller.getKlassetrin() - 1) {
             case 0:
@@ -103,7 +102,7 @@ public class Eksamen extends AppCompatActivity {
                 break;
             case 10:
                 setQuestion("Hvad skal børn i Nepal kunne til eksamen?", "De skal kunne tænke selvstændigt", "De skal kunne deres bøger udenad", "De skal kunne forstå, hvad der står i bøgerne.");
-                setSecondCorrect();
+                setSecondAsGameWinning();
                 break;
 
         }
@@ -116,13 +115,13 @@ public class Eksamen extends AppCompatActivity {
         if (spiller.getViden() < 0) {
             spiller.setViden(0);
         }
-        Skole.updateInfo();
-        AlertDialog.Builder dialog = new AlertDialog.Builder(Eksamen.this);
+        Skole.updateText();
+
         dialog.setMessage("Du har desværre svaret forkert på eksamen og er derfor dumpet. -" + Skole.vidensKrav() + " viden")
                 .setCancelable(false)
                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        SpillePlade.updateInfobox();
+                        SpillePlade.updateEntireBoard();
                         finish();
                     }
                 });
@@ -146,12 +145,12 @@ public class Eksamen extends AppCompatActivity {
                 CommonConfetti.rainingConfetti(container, new int[]{Color.BLACK})
                         .infinite();
                 spiller.setKlassetrin(spiller.getKlassetrin() + 1);
-                AlertDialog.Builder dialog = new AlertDialog.Builder(Eksamen.this);
+
                 dialog.setMessage("TILLYKKE!! Du bestod og går nu i " + spiller.getKlassetrin() + ". klasse.")
                         .setCancelable(false)
                         .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
-                                SpillePlade.updateInfobox();
+                                SpillePlade.updateEntireBoard();
                                 finish();
                             }
                         });
@@ -186,12 +185,12 @@ public class Eksamen extends AppCompatActivity {
                 CommonConfetti.rainingConfetti(container, new int[]{Color.BLACK})
                         .infinite();
                 spiller.setKlassetrin(spiller.getKlassetrin() + 1);
-                AlertDialog.Builder dialog = new AlertDialog.Builder(Eksamen.this);
+
                 dialog.setMessage("TILLYKKE!! Du bestod og går nu i " + spiller.getKlassetrin() + ". klasse.")
                         .setCancelable(false)
                         .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
-                                SpillePlade.updateInfobox();
+                                SpillePlade.updateEntireBoard();
                                 finish();
                             }
                         });
@@ -227,12 +226,12 @@ public class Eksamen extends AppCompatActivity {
                 CommonConfetti.rainingConfetti(container, new int[]{Color.BLACK})
                         .infinite();
                 spiller.setKlassetrin(spiller.getKlassetrin() + 1);
-                AlertDialog.Builder dialog = new AlertDialog.Builder(Eksamen.this);
+
                 dialog.setMessage("TILLYKKE!! Du bestod og går nu i " + spiller.getKlassetrin() + ". klasse.")
                         .setCancelable(false)
                         .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
-                                SpillePlade.updateInfobox();
+                                SpillePlade.updateEntireBoard();
                                 finish();
                             }
                         });
@@ -240,6 +239,42 @@ public class Eksamen extends AppCompatActivity {
                 alert.show();
             }
         });
+    }
+    public void setSecondAsGameWinning() {
+        answer1.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                wrong();
+            }
+        });
+        answer2.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                final MediaPlayer mp = MediaPlayer.create(Eksamen.this, R.raw.tada);
+                mp.start();
+                CommonConfetti.rainingConfetti(container, new int[]{Color.BLACK})
+                        .infinite();
+                spiller.setKlassetrin(spiller.getKlassetrin() + 1);
+
+                dialog.setMessage("Godt klaret, du har vundet spillet på "+spiller.getRunde()+" dage! Du kan fortsætte med at spille videre hvis du vil eller gå til start menuen og starte forfra. (Eller lægge spiller fra dig)")
+                        .setCancelable(false)
+                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                SpillePlade.updateEntireBoard();
+                                finish();
+                            }
+                        });
+                AlertDialog alert = dialog.create();
+                alert.show();
+
+            }
+        });
+        answer3.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                wrong();
+            }
+        });
+    }
+    public void winGame(){
+        dialog.setMessage("");
     }
 
 }

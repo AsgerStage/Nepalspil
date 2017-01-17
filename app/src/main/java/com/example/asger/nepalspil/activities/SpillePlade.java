@@ -105,10 +105,7 @@ public class SpillePlade extends AppCompatActivity {
         ur = (ImageView) findViewById(R.id.ur);
         ur.setImageResource(R.drawable.ur16);
         infobox.setText("Navn: "+spiller.getNavn()+"\n mad: "+spiller.getHp()+"\n Penge: "+spiller.getPenge()+"\n Viden: "+spiller.getViden()+"\n Klassetrin: "+spiller.getKlassetrin()+"\n Tid: "+spiller.getTid());
-        updateInfobox();
-        updateTextpenge();
-        updateTextviden();
-        updateTextmad();
+        updateEntireBoard();
 
         felt0 = (Button) findViewById(R.id.felt0);
         felt1 = (Button) findViewById(R.id.felt1);
@@ -211,7 +208,7 @@ public class SpillePlade extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 AlertDialog.Builder dialog = new AlertDialog.Builder(SpillePlade.this);
-                dialog.setMessage("Velkommen til Nepalspillet! Målet med spillet er at bestå alle sine 10 eksaminer.\nFor at klare dette, findes der 8 forskellige felter hvor du kan forskellige ting, fx. kan du arbejde i rismarken og studere i skolen. \nFor at gå hen til et felt skal du bare trykke på det. Alt hvad du gør bruger noget af din tid, så brug den fornuftigt!");
+                dialog.setMessage("Velkommen til Nepalspillet! Målet med spillet er at bestå alle sine 12 eksaminer.\nFor at klare dette, findes der 8 forskellige felter hvor du kan forskellige ting, fx. kan du arbejde i rismarken og studere i skolen. \nFor at gå hen til et felt skal du bare trykke på det. Alt hvad du gør bruger noget af din tid, så brug den fornuftigt!");
                 dialog.show();
 
             }
