@@ -23,6 +23,10 @@ import java.io.IOException;
 public class Marked extends AppCompatActivity {
     Toast t;
     AlertDialog.Builder dialog;
+    TextView textpenge;
+    TextView textviden;
+    TextView textmad;
+    TextView playerinfo;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,7 +35,7 @@ public class Marked extends AppCompatActivity {
         dialog = new AlertDialog.Builder(Marked.this);
         t = new Toast(Marked.this);
         final TextView fieldinfo = (TextView) findViewById(R.id.fieldinfo);
-        final TextView playerinfo = (TextView) findViewById(R.id.playerinfo);
+        playerinfo = (TextView) findViewById(R.id.playerinfo);
         final MediaPlayer mp = MediaPlayer.create(this, R.raw.cash);
 
         Button work = (Button) findViewById(R.id.workButton);
@@ -39,9 +43,13 @@ public class Marked extends AppCompatActivity {
         final ImageView back = (ImageView) findViewById(R.id.backButton);
         ImageView helpField = (ImageView) findViewById(R.id.markedHelp);
 
-        fieldinfo.setText("Dette er market. Her kan man arbejde og tjene penge, eller man kan købe mad.");
-        playerinfo.setText("Navn: " + spiller.getNavn() + "\n mad: " + spiller.getHp() + "\n Penge: " + spiller.getPenge() + "\n Viden: " + spiller.getViden() + "\n Klassetrin: " + spiller.getKlassetrin() + "\n Tid: " + spiller.getTid());
+        textpenge = (TextView) findViewById(R.id.textpenge);
+        textviden = (TextView) findViewById(R.id.textviden);
+        textmad = (TextView) findViewById(R.id.textmad);
 
+
+        fieldinfo.setText("Dette er market. Her kan man arbejde og tjene penge, eller man kan købe mad.");
+        updateInfo();
         helpField.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -72,7 +80,7 @@ public class Marked extends AppCompatActivity {
                         e.printStackTrace();
                     }
 
-                    playerinfo.setText(updateInfo());
+                    updateInfo();
                 } else if (spiller.getTid() < 2) {
                     AlertDialog.Builder dialog = new AlertDialog.Builder(Marked.this);
                     dialog.setTitle("Intet tid!");
@@ -113,13 +121,14 @@ public class Marked extends AppCompatActivity {
                     t.setView(im);
                     t.setGravity(Gravity.CENTER, 0, 0);
                     t.show();
-                    if (back.isPressed()){
+                    if (back.isPressed()) {
                         SpillePlade.updateEntireBoard();
-                        t.cancel();}
+                        t.cancel();
+                    }
 
 
                     //Toast.makeText(Marked.this, "Du har spist! +10 HP -5 Penge", Toast.LENGTH_LONG).show();
-                    playerinfo.setText(updateInfo());
+                    updateInfo();
 
                 } else {
                     AlertDialog.Builder dialog = new AlertDialog.Builder(Marked.this);
@@ -150,12 +159,13 @@ public class Marked extends AppCompatActivity {
     }
 
     public void eat() {
-        spiller.eat(0,5,10);
+        spiller.eat(0, 5, 10);
     }
 
-    public String updateInfo() {
+    public void updateInfo() {
         SpillePlade.updateInfobox();
-        return "Navn: " + spiller.getNavn() + "\n mad: " + spiller.getHp() + "\n Penge: " + spiller.getPenge() + "\n Viden: " + spiller.getViden() + "\n Klassetrin: " + spiller.getKlassetrin() + "\n Tid: " + spiller.getTid();
+        updateText();
+        playerinfo.setText("Tid: " + spiller.getTid());
 
     }
 
@@ -164,5 +174,11 @@ public class Marked extends AppCompatActivity {
         SpillePlade.updateEntireBoard();
         t.cancel();
         finish();
+    }
+
+    public void updateText() {
+        textpenge.setText(String.valueOf(spiller.getPenge()));
+        textviden.setText(String.valueOf(spiller.getViden()));
+        textmad.setText(String.valueOf(spiller.getHp()));
     }
 }

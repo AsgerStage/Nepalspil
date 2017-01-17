@@ -161,6 +161,7 @@ public class Skole extends AppCompatActivity {
                     } else if (thisStudy == 2) {
                         Toast.makeText(Skole.this, "Du forstod ikke alt undervisningen, tag i lektiehjælpen for at forstå det", Toast.LENGTH_SHORT).show();
                         spiller.study(1, 0);
+                        spiller.setGlemtViden(spiller.getGlemtViden()+1);
                         updateText();
                     } else if (thisStudy == 3) {
                         Toast.makeText(Skole.this, "Du forstod ingenting af denne lektion", Toast.LENGTH_SHORT).show();

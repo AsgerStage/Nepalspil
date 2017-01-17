@@ -24,7 +24,10 @@ import static com.example.asger.nepalspil.activities.MainActivity.spiller;
  */
 
 public class Boghandel extends AppCompatActivity {
-
+    TextView textpenge;
+    TextView textviden;
+    TextView textmad;
+    TextView playerInfo;
     @Override
     public void onBackPressed() {
         SpillePlade.updateEntireBoard();
@@ -37,7 +40,7 @@ public class Boghandel extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.boghandel);
         dialog = new AlertDialog.Builder(Boghandel.this);
-        final TextView playerInfo = (TextView) findViewById(R.id.bookstorePlayerInfo);
+        playerInfo = (TextView) findViewById(R.id.bookstorePlayerInfo);
         final TextView bookstoreInfo = (TextView) findViewById(R.id.fieldinfo);
         final MediaPlayer mp = MediaPlayer.create(this, R.raw.cash);
         ImageView helpField = (ImageView) findViewById(R.id.boghandelHelp);
@@ -46,11 +49,13 @@ public class Boghandel extends AppCompatActivity {
         ImageView back = (ImageView) findViewById(R.id.backButton);
         final TextView money = (TextView) findViewById(R.id.scrollmoney);
         animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.plusmoneybook);
+        textpenge = (TextView) findViewById(R.id.textpenge);
+        textviden = (TextView) findViewById(R.id.textviden);
+        textmad = (TextView) findViewById(R.id.textmad);
 
 
         bookstoreInfo.setText("Velkommen til boghandlen. Her kan du få et arbejde hvis du er nået langt nok i din uddannelse. \n Du kan også købe skole bøger her. Skolebøger giver hurtig viden");
-        playerInfo.setText("Navn: " + spiller.getNavn() + "\n mad: " + spiller.getHp() + "\n Penge: " + spiller.getPenge() + "\n Viden: " + spiller.getViden() + "\n Klassetrin: " + spiller.getKlassetrin() + "\n Tid: " + spiller.getTid());
-
+        updateInfo();
         work.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
@@ -75,7 +80,7 @@ public class Boghandel extends AppCompatActivity {
                         e.printStackTrace();
                     }
 
-                    playerInfo.setText(updateInfo());
+                    updateInfo();
                 } else if (spiller.getTid() < 2) {
 
                     dialog.setTitle("Intet tid!");
@@ -110,7 +115,7 @@ public class Boghandel extends AppCompatActivity {
                    dialog.setMessage("Du har købt en ny bog for 30 penge. +10 viden");
                    dialog.show();
                    spiller.setLastBookBought(spiller.getRunde());
-                   playerInfo.setText(updateInfo());
+                   updateInfo();
                }
 
                 else if(spiller.getPenge()<30){
@@ -169,10 +174,15 @@ public class Boghandel extends AppCompatActivity {
         spiller.setPenge(spiller.getPenge() - 10);
     }
 
-    public String updateInfo() {
+    public void updateInfo() {
         SpillePlade.updateInfobox();
-        return "Navn: " + spiller.getNavn() + "\n mad: " + spiller.getHp() + "\n Penge: " + spiller.getPenge() + "\n Viden: " + spiller.getViden() + "\n Klassetrin: " + spiller.getKlassetrin() + "\n Tid: " + spiller.getTid();
-
+        playerInfo.setText("Tid: " + spiller.getTid());
+        updateText();
+    }
+    public void updateText() {
+        textpenge.setText(String.valueOf(spiller.getPenge()));
+        textviden.setText(String.valueOf(spiller.getViden()));
+        textmad.setText(String.valueOf(spiller.getHp()));
     }
 
 }

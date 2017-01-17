@@ -20,6 +20,10 @@ import static com.example.asger.nepalspil.activities.MainActivity.spiller;
  */
 
 public class Lektiehjaelp extends AppCompatActivity {
+    TextView textpenge;
+    TextView textviden;
+    TextView textmad;
+    TextView playerInfo;
     @Override
     public void onBackPressed() {
         SpillePlade.updateEntireBoard();
@@ -37,20 +41,21 @@ public class Lektiehjaelp extends AppCompatActivity {
         dialog = new AlertDialog.Builder(Lektiehjaelp.this);
 
         final TextView lektiehjaelpInfo = (TextView) findViewById(R.id.lektiehjaelpTextField);
-        final TextView playerInfo = (TextView) findViewById(R.id.lektiePlayerInfo);
+        playerInfo = (TextView) findViewById(R.id.lektiePlayerInfo);
         ImageView back = (ImageView) findViewById(R.id.lektieBack);
         homeworkHelp = (Button) findViewById(R.id.learn);
         ImageView helpField = (ImageView) findViewById(R.id.studyHelp);
-
+        textpenge = (TextView) findViewById(R.id.textpenge);
+        textviden = (TextView) findViewById(R.id.textviden);
+        textmad = (TextView) findViewById(R.id.textmad);
         lektiehjaelpInfo.setText("Her kan du få lektiehjælp, til at indhente det du ikke forstod fra undervisningen.");
-        playerInfo.setText("Navn: " + spiller.getNavn() + "\n mad: " + spiller.getHp() + "\n Penge: " + spiller.getPenge() + "\n Viden: " + spiller.getViden() + "\n Klassetrin: " + spiller.getKlassetrin() + "\n Tid: " + spiller.getTid() + "\n Viden at hente: " + spiller.getGlemtViden());
-
+        updateInfo();
         homeworkHelp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (spiller.getTid() > 0 && spiller.getGlemtViden() > 0) {
                     learn();
-                    playerInfo.setText(updateInfo());
+                    updateInfo();
                     Toast.makeText(Lektiehjaelp.this, "Du har opnået 1 viden.", Toast.LENGTH_SHORT).show();
                 } else if (spiller.getGlemtViden() <= 0) {
                     AlertDialog.Builder dialog = new AlertDialog.Builder(Lektiehjaelp.this);
@@ -91,9 +96,14 @@ public class Lektiehjaelp extends AppCompatActivity {
     }
 
 
-    public String updateInfo() {
+    public void updateInfo() {
         SpillePlade.updateInfobox();
-        return "Navn: " + spiller.getNavn() + "\n mad: " + spiller.getHp() + "\n Penge: " + spiller.getPenge() + "\n Viden: " + spiller.getViden() + "\n Klassetrin: " + spiller.getKlassetrin() + "\n Tid: " + spiller.getTid() + "\n Viden at hente: " + spiller.getGlemtViden();
-
+        updateText();
+        playerInfo.setText("Tid: " + spiller.getTid());
+    }
+    public void updateText() {
+        textpenge.setText(String.valueOf(spiller.getPenge()));
+        textviden.setText(String.valueOf(spiller.getViden()));
+        textmad.setText(String.valueOf(spiller.getHp()));
     }
 }
