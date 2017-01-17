@@ -13,8 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.asger.nepalspil.R;
-import com.example.asger.nepalspil.activities.MainActivity;
-import com.example.asger.nepalspil.models.SpillePlade;
+import com.example.asger.nepalspil.activities.SpillePlade;
 
 import java.io.IOException;
 
@@ -107,8 +106,7 @@ public class Farm extends AppCompatActivity {
     }
 
     public void work() {
-        spiller.setTid(spiller.getTid() - 2);
-        spiller.setPenge(spiller.getPenge() + 5);
+        spiller.work(2,5);
     }
 
     public String updateInfo() {

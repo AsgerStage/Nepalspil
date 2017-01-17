@@ -1,4 +1,4 @@
-package com.example.asger.nepalspil.models;
+package com.example.asger.nepalspil.activities;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -18,14 +18,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.asger.nepalspil.R;
-import com.example.asger.nepalspil.activities.MusicManager;
 import com.example.asger.nepalspil.felter.Boghandel;
 import com.example.asger.nepalspil.felter.Farm;
 import com.example.asger.nepalspil.felter.Hjem;
 import com.example.asger.nepalspil.felter.Lektiehjaelp;
 import com.example.asger.nepalspil.felter.Marked;
 import com.example.asger.nepalspil.felter.Skole;
-import com.example.asger.nepalspil.felter.butik;
+import com.example.asger.nepalspil.felter.Toejbutik;
 import com.example.asger.nepalspil.felter.Vaerksted;
 
 //import static com.example.asger.nepalspil.R.id.player;
@@ -201,7 +200,7 @@ public class SpillePlade extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                moveTo(7, butik.class, felt7.getLayoutParams());
+                moveTo(7, Toejbutik.class, felt7.getLayoutParams());
                 saveToPrefs();
 
 

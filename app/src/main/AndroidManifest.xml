@@ -21,7 +21,7 @@
         </activity>
 
         <activity
-            android:name=".models.SpillePlade"
+            android:name=".activities.SpillePlade"
             android:label="@string/app_name"
             android:screenOrientation="landscape">
             <intent-filter>
