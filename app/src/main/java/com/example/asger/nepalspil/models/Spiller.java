@@ -23,6 +23,7 @@ public class Spiller {
     private int lastBookBought;
     private boolean music;
 
+
     public Spiller(String navn) {
         this.navn = navn;
         this.glemtViden = 0;
