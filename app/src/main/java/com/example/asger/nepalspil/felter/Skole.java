@@ -15,6 +15,7 @@ import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.appindexing.Thing;
 import com.google.android.gms.common.api.GoogleApiClient;
 
+import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -39,7 +40,7 @@ public class Skole extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-      SpillePlade.updateEntireBoard();
+        SpillePlade.updateEntireBoard();
         finish();
     }
 
@@ -122,17 +123,25 @@ public class Skole extends AppCompatActivity {
         bStuder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                int thisStudy = studer();
                 if (spiller.getTid() > 0) {
-                    if (spiller.getTid() > 0 && studer()) {;
+                    if (spiller.getTid() > 0 && thisStudy == 1) {
+                        ;
                         scroll.setText("+1 viden");
                         scroll.startAnimation(animation);
+                        spiller.study(1,1);
                         System.out.println(spiller.getViden());
-                    } else {
+                    } else if (thisStudy==2){
                         Toast.makeText(Skole.this, "Du forstod ikke alt undervisningen, tag i lektiehjælpen for at forstå det", Toast.LENGTH_SHORT).show();
                         /*AlertDialog.Builder dialog = new AlertDialog.Builder(Skole.this);
                        dialog.setTitle("Lektiehjælp!");
                         dialog.setMessage("Du kunne ikke forstå undervisningen, så din viden kan opnås hos lektiehjælpen.");
                         dialog.show();*/
+                        spiller.study(1,0);
+                    }
+                    else if (thisStudy==3){
+                        Toast.makeText(Skole.this, "Du forstod ingenting af denne lektion", Toast.LENGTH_SHORT).show();
+                    spiller.study(1,0);
                     }
                 } else {
 
@@ -184,24 +193,37 @@ public class Skole extends AppCompatActivity {
     public static int vidensKrav = 10 * spiller.getKlassetrin();
 
 
-    public boolean studer() {
-        if (hasLearned()) {
+    public int studer() {
+        int result=0;
+        switch (spiller.getLearningAmp()) {
 
-            spiller.study(1,1);
-            SpillePlade.updateInfobox();
-            return true;
-        } else {
-            spiller.setTid(spiller.getTid() - 1);
-            spiller.setGlemtViden(spiller.getGlemtViden() + 1);
-            return false;
+            case 0:
+                result= tryToStudy(0.5, 0.25, 0);
+            Log.d("Spil", "Spiller studied with 0 learning Amp");
+            break;
+            case 1:
+                result= tryToStudy(0.45, 0.2, 0);
+            Log.d("Spil", "Spiller studied with 0 learning Amp");
+            break;
+            case 2:
+                result= tryToStudy(0.40, 0.15, 0);
+            Log.d("Spil", "Spiller studied with 0 learning Amp");
+            break;
+            case 3:
+                result= tryToStudy(0.30, 0, 0);
+            Log.d("Spil", "Spiller studied with 0 learning Amp");
+            break;
+
+
         }
+        return result;
     }
 
-    public boolean hasLearned() {
-        if (Math.random() > 0.1)
-            return true;
-        else return false;
-    }
+
+
+
+
+
 
     public void spis() {
         if (spiller.getTid() > 0) {
@@ -231,39 +253,13 @@ public class Skole extends AppCompatActivity {
         return 10 * spiller.getKlassetrin();
     }
 
-    /**
-     * ATTENTION: This was auto-generated to implement the App Indexing API.
-     * See https://g.co/AppIndexing/AndroidStudio for more information.
-     */
-    public Action getIndexApiAction() {
-        Thing object = new Thing.Builder()
-                .setName("Skole Page") // TODO: Define a title for the content shown.
-                // TODO: Make sure this auto-generated URL is correct.
-                .setUrl(Uri.parse("http://[ENTER-YOUR-URL-HERE]"))
-                .build();
-        return new Action.Builder(Action.TYPE_VIEW)
-                .setObject(object)
-                .setActionStatus(Action.STATUS_TYPE_COMPLETED)
-                .build();
-    }
+public int tryToStudy(double success, double homework,double fail){
+   double rand = Math.random();
+    Log.d("Spil","rand = "+rand+" Success = "+success+" homework = "+homework+"fail = "+fail);
+    if (success<= rand && rand<1)return 1;
+    else if (rand< success && rand>=homework) return 2;
+    else if (rand< homework && rand>=fail) return 3;
+    else return 0;
+}
 
-    @Override
-    public void onStart() {
-        super.onStart();
-
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
-        client.connect();
-        AppIndex.AppIndexApi.start(client, getIndexApiAction());
-    }
-
-    @Override
-    public void onStop() {
-        super.onStop();
-
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
-        AppIndex.AppIndexApi.end(client, getIndexApiAction());
-        client.disconnect();
-    }
 }
