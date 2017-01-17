@@ -36,13 +36,13 @@
     <TextView
         android:text="TextView"
         android:layout_width="match_parent"
-        android:layout_height="134dp"
+        android:layout_height="80dp"
         android:id="@+id/tbStats" />
 
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="325dp">
 
         <Button
             android:text="Køb"

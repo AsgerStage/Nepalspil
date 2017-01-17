@@ -132,17 +132,16 @@ public class Skole extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (spiller.getTid() > 0) {
-                    if (spiller.getTid() > 0 && studer()) {;
+                    if (studer()==0) {;
                         scroll.setText("+1 viden");
                         scroll.startAnimation(animation);
                         System.out.println(spiller.getViden());
-                    } else {
+                    } else if (studer() == 1){
                         Toast.makeText(Skole.this, "Du forstod ikke alt undervisningen, tag i lektiehjælpen for at forstå det", Toast.LENGTH_SHORT).show();
-                        /*AlertDialog.Builder dialog = new AlertDialog.Builder(Skole.this);
-                       dialog.setTitle("Lektiehjælp!");
-                        dialog.setMessage("Du kunne ikke forstå undervisningen, så din viden kan opnås hos lektiehjælpen.");
-                        dialog.show();*/
+                    } else if (studer() == 2){
+                        Toast.makeText(Skole.this, "Du forstod overhovedet ikke undervisningen", Toast.LENGTH_SHORT).show();
                     }
+
                 } else {
 
                     dialog.setTitle("Ikke nok tid!");
@@ -192,26 +191,53 @@ public class Skole extends AppCompatActivity {
 
     public static int vidensKrav = 10 * spiller.getKlassetrin();
 
+    public double getNotLearned() {
+        return notLearned;
+    }
 
-    public boolean studer() {
-        if (hasLearned()) {
+    public void setNotLearned(double notLearned) {
+        this.notLearned = notLearned;
+    }
+
+    public double getNeedHelp() {
+        return needHelp;
+    }
+
+    public void setNeedHelp(double needHelp) {
+        this.needHelp = needHelp;
+    }
+
+    public double getUnderstood() {
+        return understood;
+    }
+
+    public void setUnderstood(double understood) {
+        this.understood = understood;
+    }
+
+    private double notLearned;
+    private double needHelp;
+    private double understood;
+
+
+    public int studer() {
+        if (hasLearned >= 0.35) {
 
             spiller.setViden(spiller.getViden() + 1);
             spiller.setTid(spiller.getTid() - 1);
             SpillePlade.updateInfobox();
-            return true;
-        } else {
+            return 0;
+        } else if (hasLearned >= 0.10 && hasLearned < 0.35) {
             spiller.setTid(spiller.getTid() - 1);
             spiller.setGlemtViden(spiller.getGlemtViden() + 1);
-            return false;
+            return 1;
+        } else {
+            spiller.setTid(spiller.getTid() - 1);
+            return 2;
         }
     }
 
-    public boolean hasLearned() {
-        if (Math.random() > 0.1)
-            return true;
-        else return false;
-    }
+    public double hasLearned = Math.random();
 
     public void spis() {
         if (spiller.getTid() > 0) {
@@ -277,4 +303,6 @@ public class Skole extends AppCompatActivity {
         AppIndex.AppIndexApi.end(client, getIndexApiAction());
         client.disconnect();
     }
+
+
 }

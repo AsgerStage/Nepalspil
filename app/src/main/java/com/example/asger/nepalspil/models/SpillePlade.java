@@ -1,33 +1,23 @@
 package com.example.asger.nepalspil.models;
 
-import android.app.Dialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Bitmap;
-import android.graphics.Color;
-import android.graphics.drawable.BitmapDrawable;
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.asger.nepalspil.R;
-import com.example.asger.nepalspil.activities.MainActivity;
 import com.example.asger.nepalspil.activities.MusicManager;
 import com.example.asger.nepalspil.felter.Boghandel;
 import com.example.asger.nepalspil.felter.Farm;
@@ -35,7 +25,7 @@ import com.example.asger.nepalspil.felter.Hjem;
 import com.example.asger.nepalspil.felter.Lektiehjaelp;
 import com.example.asger.nepalspil.felter.Marked;
 import com.example.asger.nepalspil.felter.Skole;
-import com.example.asger.nepalspil.felter.Toejbutik;
+import com.example.asger.nepalspil.felter.butik;
 import com.example.asger.nepalspil.felter.Vaerksted;
 
 //import static com.example.asger.nepalspil.R.id.player;
@@ -211,7 +201,7 @@ public class SpillePlade extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                moveTo(7, Toejbutik.class, felt7.getLayoutParams());
+                moveTo(7, butik.class, felt7.getLayoutParams());
                 saveToPrefs();
 
 

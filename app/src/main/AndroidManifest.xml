@@ -41,7 +41,7 @@
         </activity>
 
         <activity
-            android:name=".felter.Toejbutik"
+            android:name=".felter.butik"
             android:label="Toejbutik"
             android:screenOrientation="landscape">
             <intent-filter>

@@ -8,6 +8,7 @@ import android.util.Log;
 
 public class Spiller {
     public boolean sex;
+    private int learningAmp = 0;
     private int glemtViden;
     private int books;
     private int position;
@@ -234,7 +235,11 @@ public class Spiller {
         return glemtViden;
     }
 
-    ;
+    public int getLearningAmp(){ return learningAmp;}
+
+    public void setLearningAmp(int learningAmp) {
+        this.learningAmp = learningAmp;
+    }
 
     public void setGlemtViden(int glemtViden) {
         this.glemtViden = glemtViden;
