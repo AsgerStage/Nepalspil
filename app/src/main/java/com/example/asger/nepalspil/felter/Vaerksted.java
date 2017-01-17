@@ -151,8 +151,8 @@ switch(position){
     private class ImagePagerAdapter extends PagerAdapter {
         private int[] mImages = new int[]{
                 R.drawable.bike,
-                R.drawable.books,
-                R.drawable.books,
+                R.drawable.bike,
+                R.drawable.bike,
         };
 
         @Override
