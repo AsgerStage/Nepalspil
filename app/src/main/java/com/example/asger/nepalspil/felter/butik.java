@@ -72,6 +72,7 @@ public class butik extends AppCompatActivity {
         );
         playerinfo.setText("Navn: " + spiller.getNavn() + "\n mad: " + spiller.getHp() + "\n Penge: " + spiller.getPenge() + "\n Viden: " + spiller.getViden() + "\n Klassetrin: " + spiller.getKlassetrin() + "\n Tid: " + spiller.getTid());
 
+        buy.setText("Køb papir");
         helpField.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
