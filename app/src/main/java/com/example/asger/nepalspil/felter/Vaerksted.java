@@ -90,7 +90,7 @@ switch(position){
         helpField.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                dialog.setMessage("Velkommen til værkstedet. Her kan du købe forskellige ting, som gøre det liv bedre.");
+                dialog.setMessage("Velkommen til værkstedet. Her kan du købe forskellige typer cykler som gør du hurtigere kan bevæge dig rundt på spillepladen.");
                 dialog.show();
             }
         });
@@ -194,31 +194,37 @@ switch(position){
 
         switch (viewPager.getCurrentItem()) {
             case 0:
+                if(spiller.getmoveSpeed()<2){
                 if (spiller.getPenge() >= 200) {
                     spiller.setPenge(spiller.getPenge() - 200);
                     spiller.setmoveSpeed(2);
                     Toast.makeText(Vaerksted.this, "Du har købt en cykel", Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(Vaerksted.this, "Du har ikke råd til en cykel, den koster 200", Toast.LENGTH_SHORT).show();
-                }
+                }}
+                else Toast.makeText(Vaerksted.this, "Du har allerede en bedre cykel", Toast.LENGTH_SHORT).show();
                 break;
             case 1:
+                if(spiller.getmoveSpeed()<3){
                 if (spiller.getPenge() >= 500) {
                     spiller.setPenge(spiller.getPenge() - 500);
                     spiller.setmoveSpeed(3);
                     Toast.makeText(Vaerksted.this, "Du har købt en pænt hurtig cykel", Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(Vaerksted.this, "Du har ikke råd til den pænt hurtige cykel, den koster 500kr", Toast.LENGTH_SHORT).show();
-                }
+                }}
+                else Toast.makeText(Vaerksted.this, "Du har allerede en bedre cykel", Toast.LENGTH_SHORT).show();
                 break;
             case 2:
+                if (spiller.getmoveSpeed()<4){
                 if (spiller.getPenge() >= 1000) {
                     spiller.setPenge(spiller.getPenge() - 1000);
                     spiller.setmoveSpeed(4);
                     Toast.makeText(Vaerksted.this, "Du har købt en racer cykel", Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(Vaerksted.this, "Du har ikke råd til racer cyklen, den koster 1000kr", Toast.LENGTH_SHORT).show();
-                }
+                }}
+                else Toast.makeText(Vaerksted.this, "Du har allerede en bedre cykel", Toast.LENGTH_SHORT).show();
                 break;
 
         }
