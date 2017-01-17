@@ -163,27 +163,36 @@ public class Vaerksted extends AppCompatActivity {
 
     public void buy() {
 
-        switch(viewPager.getCurrentItem()){
+        switch (viewPager.getCurrentItem()) {
             case 0:
-                if (spiller.getPenge()>=200){
-                    spiller.setPenge(spiller.getPenge()-200);
+                if (spiller.getPenge() >= 200) {
+                    spiller.setPenge(spiller.getPenge() - 200);
                     spiller.setmoveSpeed(2);
                     Toast.makeText(Vaerksted.this, "Du har købt en cykel", Toast.LENGTH_SHORT).show();
-                }
-                else {
+                } else {
                     Toast.makeText(Vaerksted.this, "Du har ikke råd til en cykel, den koster 200", Toast.LENGTH_SHORT).show();
                 }
+                break;
             case 1:
-                if(spiller.getPenge()>=100){
-                  //  spiller.setPenge(spiller.getPenge()-1);
-                    //bøger gør intet atm
+                if (spiller.getPenge() >= 500) {
+                    spiller.setPenge(spiller.getPenge() - 500);
+                    spiller.setmoveSpeed(3);
+                    Toast.makeText(Vaerksted.this, "Du har købt en pænt hurtig cykel", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(Vaerksted.this, "Du har ikke råd til den pænt hurtige cykel, den koster 500kr", Toast.LENGTH_SHORT).show();
                 }
-                else {
-                    Toast.makeText(Vaerksted.this, "Du har ikke råd til studiebøger, de koster 100", Toast.LENGTH_SHORT).show();
+                break;
+            case 2:
+                if (spiller.getPenge() >= 1000) {
+                    spiller.setPenge(spiller.getPenge() - 1000);
+                    spiller.setmoveSpeed(4);
+                    Toast.makeText(Vaerksted.this, "Du har købt en racer cykel", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(Vaerksted.this, "Du har ikke råd til racer cyklen, den koster 1000kr", Toast.LENGTH_SHORT).show();
                 }
+                break;
 
         }
-
     }
 
     public String updateInfo() {

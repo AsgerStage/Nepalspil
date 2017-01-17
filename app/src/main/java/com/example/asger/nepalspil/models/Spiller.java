@@ -78,6 +78,7 @@ public class Spiller {
         int count2 = 0;
         int j = this.position;
         int i = this.position;
+        int timeToSubtract=0;
 
         boolean flag = true;
         boolean flag2 = true;
@@ -103,21 +104,32 @@ public class Spiller {
 
 
             if (count2 > count1) {
-                if(count1==1){
-                    this.tid=tid-count1;
+                timeToSubtract=(Math.round(count1/moveSpeed));
+                if (count1==4 && moveSpeed==3)
+                {
+                    timeToSubtract=2;
+                }
+                else if(timeToSubtract==0){
+                    timeToSubtract=1;
                 }
 
-                else {this.tid = (int) ((this.tid) - Math.ceil(count1 / moveSpeed));}
+                tid = tid-timeToSubtract;
 
-                Log.d("Spiller", "Spiller rykket fra " + this.position + " til " + newPosition + " og mistet tid: " + count1 + " og har nu " + this.tid + " tid");
+                Log.d("Spiller", "Spiller rykket fra " + this.position + " til " + newPosition + " og mistet tid: " + timeToSubtract + " og har nu " + this.tid + " tid");
                 this.position = newPosition;
             } else if (count1 >= count2) {
-                if(count2==1){
-                    this.tid=tid-count2;
+                timeToSubtract=(Math.round(count2/moveSpeed));
+                if (count2==4 && moveSpeed==3)
+                {
+                    timeToSubtract=2;
                 }
-                else {this.tid = (int) ((this.tid) - Math.ceil(count2 / moveSpeed));}
+                if(timeToSubtract==0){
+                    timeToSubtract=1;
+                }
+
+               tid = tid-timeToSubtract;
                 Log.d("Spiller",count2+" "+moveSpeed);
-                Log.d("Spiller", "Spiller rykket fra " + this.position + " til " + newPosition + " og mistet tid: " + count2 + " og har nu " + this.tid + " tid");
+                Log.d("Spiller", "Spiller rykket fra " + this.position + " til " + newPosition + " og mistet tid: " + timeToSubtract + " og har nu " + this.tid + " tid");
                 this.position = newPosition;
                 //Den korteste vej trækkes fra spillerens tid
             }
