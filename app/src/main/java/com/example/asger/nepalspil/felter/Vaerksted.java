@@ -158,8 +158,7 @@ public class Vaerksted extends AppCompatActivity {
     }
 
     public void work() {
-        spiller.setTid(spiller.getTid() - 2);
-        spiller.setPenge(spiller.getPenge() + 10);
+        spiller.work(2,10);
     }
 
     public void buy() {

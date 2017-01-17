@@ -187,8 +187,7 @@ public class Skole extends AppCompatActivity {
     public boolean studer() {
         if (hasLearned()) {
 
-            spiller.setViden(spiller.getViden() + 1);
-            spiller.setTid(spiller.getTid() - 1);
+            spiller.study(1,1);
             SpillePlade.updateInfobox();
             return true;
         } else {
@@ -206,8 +205,7 @@ public class Skole extends AppCompatActivity {
 
     public void spis() {
         if (spiller.getTid() > 0) {
-            spiller.setTid(spiller.getTid() - 1);
-            spiller.setHp(spiller.getHp() + 1);
+            spiller.eat(1,0,5);
             SpillePlade.updateInfobox();
         } else {
             schoolText.setText("");

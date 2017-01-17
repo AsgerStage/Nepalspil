@@ -20,6 +20,7 @@ public class Spiller {
     public int runde;
     private int moveSpeed;
     private int lastBookBought;
+    private boolean music;
 
     public Spiller(String navn) {
         this.navn = navn;
@@ -140,6 +141,20 @@ public class Spiller {
         return false;
     }
 
+    public void work(int timeCost, int money){
+        setPenge(getPenge()+money);
+        setTid(getTid()-timeCost);
+    }
+
+    public void study(int timeCost, int viden){
+        setViden(getViden()+viden);
+        setTid(getTid()-timeCost);
+    }
+    public void eat(int timeCost,int moneyCost, int hp){
+        setHp(getHp()+hp);
+        setTid(getTid()-timeCost);
+        setPenge(getPenge()-moneyCost);
+    }
 /*
         if (newPosition > this.position)  { //Ryk fra en lavere position til en højere, men max 4 højere
            if(this.position+4>newPosition)

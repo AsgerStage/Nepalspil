@@ -150,8 +150,7 @@ public class Marked extends AppCompatActivity {
     }
 
     public void eat() {
-        spiller.setPenge(spiller.getPenge() - 5);
-        spiller.setHp(spiller.getHp() + 10);
+        spiller.eat(0,5,10);
     }
 
     public String updateInfo() {

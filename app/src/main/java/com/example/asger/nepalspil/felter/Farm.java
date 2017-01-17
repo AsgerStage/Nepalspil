@@ -106,8 +106,7 @@ public class Farm extends AppCompatActivity {
     }
 
     public void work() {
-        spiller.setTid(spiller.getTid() - 2);
-        spiller.setPenge(spiller.getPenge() + 5);
+        spiller.work(2,5);
     }
 
     public String updateInfo() {

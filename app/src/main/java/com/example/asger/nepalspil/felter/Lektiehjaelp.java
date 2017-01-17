@@ -86,8 +86,7 @@ public class Lektiehjaelp extends AppCompatActivity {
     }
 
     private void learn() {
-        spiller.setViden(spiller.getViden() + 1);
-        spiller.setTid(spiller.getTid() - 1);
+        spiller.study(1,1);
         spiller.setGlemtViden(spiller.getGlemtViden() - 1);
     }
 
