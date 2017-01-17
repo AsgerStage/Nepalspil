@@ -13,7 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.asger.nepalspil.R;
-import com.example.asger.nepalspil.models.SpillePlade;
+import com.example.asger.nepalspil.activities.SpillePlade;
 import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.appindexing.Thing;
