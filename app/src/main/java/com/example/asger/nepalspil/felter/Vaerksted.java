@@ -5,6 +5,7 @@ import android.content.res.AssetFileDescriptor;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v4.view.PagerAdapter;
+import android.support.v4.view.PagerTabStrip;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -36,7 +37,7 @@ public class Vaerksted extends AppCompatActivity {
 
     AlertDialog.Builder dialog;
     ViewPager viewPager;
-
+    TextView viewPagerText;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.vaerksted);
@@ -54,6 +55,33 @@ public class Vaerksted extends AppCompatActivity {
         Button work = (Button) findViewById(R.id.workButton);
         Button buy = (Button) findViewById(R.id.buyBikeButton);
         ImageView back = (ImageView) findViewById(R.id.backButton);
+        viewPagerText = (TextView) findViewById(R.id.viewpagerPris);
+viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener(){
+
+    @Override
+    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+    }
+
+    @Override
+    public void onPageSelected(int position) {
+switch(position){
+    case 0:
+        viewPagerText.setText("Cykel - 200kr");
+        break;
+    case 1:
+        viewPagerText.setText("Pænt hurtig cykel - 500kr");
+        break;
+    case 2:
+        viewPagerText.setText("Racer cykel - 1000kr");
+}
+    }
+
+    @Override
+    public void onPageScrollStateChanged(int state) {
+
+    }
+});
 
 
         fieldinfo.setText("Velkommen til værkstedet! Her kan man arbejde eller købe en cykel.");
@@ -155,6 +183,7 @@ public class Vaerksted extends AppCompatActivity {
             ((ViewPager) container).removeView((ImageView) object);
 
         }
+
     }
 
     public void work() {
