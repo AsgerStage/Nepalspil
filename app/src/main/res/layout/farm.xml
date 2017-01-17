@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:weightSum="1"
-    android:background="@drawable/barninside">
+    android:weightSum="1">
 
 
     <RelativeLayout
@@ -47,27 +46,6 @@
             android:fontFamily="sans-serif" />
 
         <ImageView
-            android:layout_height="wrap_content"
-            app:srcCompat="@drawable/bubble"
-            android:id="@+id/imageView6"
-            android:layout_width="250dp"
-            android:layout_alignParentTop="true"
-            android:layout_toStartOf="@+id/imageView5" />
-
-        <TextView
-            android:text="Info om farm"
-            android:layout_width="match_parent"
-            android:layout_height="85dp"
-            android:id="@+id/fieldinfo"
-            android:layout_marginTop="62dp"
-            android:textSize="20sp"
-            android:textStyle="normal|bold"
-            android:layout_marginStart="49dp"
-            android:layout_alignParentTop="true"
-            android:layout_alignStart="@+id/imageView6"
-            android:layout_alignEnd="@+id/workButton" />
-
-        <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:srcCompat="@drawable/pige1"
@@ -77,13 +55,42 @@
             android:layout_alignParentEnd="true"
             android:layout_marginBottom="52dp" />
 
+        <ImageView
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/bubble"
+            android:id="@+id/imageView6"
+            android:layout_width="250dp"
+            android:layout_above="@+id/playerinfo"
+            android:layout_alignEnd="@+id/imageView5" />
+
+        <TextView
+            android:text="Info om farm"
+            android:id="@+id/fieldinfo"
+            android:textSize="20dp"
+            android:textStyle="normal|bold"
+            android:layout_marginTop="19dp"
+            android:layout_alignParentTop="true"
+            android:layout_toEndOf="@+id/workButton"
+            android:layout_height="60dp"
+            android:layout_width="120dp"
+            android:textAlignment="center" />
+
         <Button
             android:text="Arbejd"
             android:layout_width="189dp"
             android:layout_height="wrap_content"
             android:id="@+id/workButton"
-            android:layout_alignBottom="@+id/imageView6"
+            android:layout_alignBottom="@+id/imageView5"
             android:layout_centerHorizontal="true" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/workButton"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/scrollmoney"
+            android:textAlignment="center"
+            android:textColor="@color/money" />
 
     </RelativeLayout>
 

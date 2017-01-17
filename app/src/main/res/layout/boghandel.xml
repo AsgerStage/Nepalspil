@@ -3,7 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/insidebookstore"
     android:weightSum="1">
 
     <RelativeLayout
@@ -39,6 +38,13 @@
         android:layout_height="wrap_content"
         android:id="@+id/bookstorePlayerInfo"
         android:layout_weight="0.97" />
+
+    <TextView
+        android:layout_width="287dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/scrollmoney"
+        android:textColor="@color/money"
+        android:textAlignment="center" />
 
     <LinearLayout
         android:orientation="horizontal"

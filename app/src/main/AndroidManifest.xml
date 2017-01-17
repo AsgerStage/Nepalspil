@@ -120,7 +120,8 @@
             </intent-filter>
         </activity>
         
-        <activity android:name=".activities.Credit"/>
+        <activity android:name=".activities.Credit"
+            android:screenOrientation="landscape"/>
 
 
 

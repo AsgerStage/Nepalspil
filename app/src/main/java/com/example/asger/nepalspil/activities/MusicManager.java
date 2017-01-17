@@ -112,4 +112,11 @@ public class MusicManager {
 
     }
 
+    public static void resume() {
+        if(mp != null){
+        if (mp.isPlaying() == false) {
+            mp.start();
+        }
+        }
+    }
 }

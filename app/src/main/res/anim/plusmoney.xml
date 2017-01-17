@@ -4,8 +4,8 @@
 
     <translate
         android:interpolator="@android:anim/linear_interpolator"
-        android:fromYDelta="5%p"
-        android:toYDelta="-100%p"
+        android:fromYDelta="80%p"
+        android:toYDelta="-10%p"
         android:duration="1000"
         ></translate>
 

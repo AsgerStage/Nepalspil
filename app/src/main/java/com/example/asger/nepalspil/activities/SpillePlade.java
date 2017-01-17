@@ -222,7 +222,7 @@ public class SpillePlade extends AppCompatActivity {
             public void onClick(View v) {
                 v.startAnimation(AnimationUtils.loadAnimation(SpillePlade.this, R.anim.image_click));
 
-                CharSequence options[] = new CharSequence[]{"Sluk musik", "Afslut spil"};
+                CharSequence options[] = new CharSequence[]{"Sluk musik", "Start musik", "Afslut spil"};
                 AlertDialog.Builder builder = new AlertDialog.Builder(SpillePlade.this);
                 builder.setTitle("Indstillinger");
                 builder.setItems(options, new DialogInterface.OnClickListener() {
@@ -233,9 +233,14 @@ public class SpillePlade extends AppCompatActivity {
 
                         switch (which) {
                             case 0:
-                                MusicManager.stop();
+                                onStop();
+
                                 break;
                             case 1:
+                                onStart();
+
+                                break;
+                            case 2:
                                 finish();
                                 break;
 
@@ -261,7 +266,7 @@ public class SpillePlade extends AppCompatActivity {
         infobox.setText("Navn: " + spiller.getNavn() + "\n mad: " + spiller.getHp() + "\n Penge: " + spiller.getPenge() + "\n Viden: " + spiller.getViden() + "\n Klassetrin: " + spiller.getKlassetrin() + "\n Tid: " + spiller.getTid() + "\n Dag: " + spiller.getRunde());
     }*/
     public static void updateInfobox() {
-        infobox.setText("Dag: " + spiller.getRunde());
+        infobox.setText("Uge: " + spiller.getRunde());
     }
 
     public static void updateTextpenge() {
@@ -280,11 +285,11 @@ public class SpillePlade extends AppCompatActivity {
         if (spiller.move(pos)) {
             if (spiller.getHp() - 30 > 0) {
 
-                Toast.makeText(SpillePlade.this, "Dagen er gået", Toast.LENGTH_SHORT).show();
+                Toast.makeText(SpillePlade.this, "Ugen er gået", Toast.LENGTH_SHORT).show();
 
             } else if (spiller.getHp() - 30 <= 0) {
                 dialog.setTitle("Husk at spise!");
-                dialog.setMessage("Dagen er gået og du har glemt at spise, du har derfor har du mindre tid i dag");
+                dialog.setMessage("Ugen er gået og du har glemt at spise, du har derfor har du mindre tid i denne uge");
                 dialog.show();
 
                 spiller.setTid(8);
@@ -427,7 +432,7 @@ switch(randomNum) {
     case 1:
 
         dialog.setTitle("Du er blevet syg!");
-        dialog.setMessage("Du er blevet syg og har derfor halvt så meget tid idag");
+        dialog.setMessage("Du er blevet syg og har derfor halvt så meget tid i denne uge.");
         dialog.show();
         spiller.setTid(spiller.getTid() / 2);
         Log.d("SpillePlade", "Random event 1 triggered");
@@ -435,7 +440,7 @@ switch(randomNum) {
 
     case 2:
         dialog.setTitle("Dine forældre har brug for penge");
-        dialog.setMessage("Dine forældre har brugt nogle af dine penge");
+        dialog.setMessage("Dine forældre har brugt nogle af dine penge. -20kr");
         dialog.show();
         if (spiller.getPenge() >= 20) {
             spiller.setPenge(spiller.getPenge() - 20);
@@ -445,7 +450,7 @@ switch(randomNum) {
 
     case 3:
         dialog.setTitle("På vejen hjem faldt du og slog hovedet");
-        dialog.setMessage("Du har mistet viden");
+        dialog.setMessage("Du har mistet viden. -10 viden");
         dialog.show();
         if (spiller.getViden() >= 10) {
             spiller.setViden(spiller.getViden() - 10);
@@ -455,7 +460,7 @@ switch(randomNum) {
 
     case 4:
         dialog.setTitle("Maden du har spiste var dårlig");
-        dialog.setMessage("Du er nu mere sulten");
+        dialog.setMessage("Du er nu mere sulten. -30 mad");
         dialog.show();
         if (spiller.getHp() >= 30) {
             spiller.setHp(spiller.getHp() - 30);
@@ -465,7 +470,7 @@ switch(randomNum) {
 
     case 5:
         dialog.setTitle("Vejret er dårligt");
-        dialog.setMessage("Det tordner og lyner og du bliver hjemme idag");
+        dialog.setMessage("Det tordner og lyner og du bliver hjemme i denne uge.");
         dialog.show();
         spiller.setTid(0);
         Log.d("SpillePlade", "Random event 5 triggered");
@@ -473,7 +478,7 @@ switch(randomNum) {
 
     case 6:
         dialog.setTitle("Du er blevet røvet");
-        dialog.setMessage("En tyv har taget alle dine penge");
+        dialog.setMessage("En tyv har taget alle dine penge -"+spiller.getPenge());
         dialog.show();
         spiller.setPenge(0);
         Log.d("SpillePlade", "Random event 6 triggered");
@@ -481,7 +486,7 @@ switch(randomNum) {
 
     case 7:
         dialog.setTitle("Du vågner op super frisk!");
-        dialog.setMessage("Du er frisk og springfyldt med energi, og har ekstra tid idag");
+        dialog.setMessage("Du er frisk og springfyldt med energi, og har ekstra tid i denne uge. +3 tid");
         dialog.show();
         spiller.setTid(spiller.getTid() + 3);
         Log.d("SpillePlade", "Random event 7 triggered");

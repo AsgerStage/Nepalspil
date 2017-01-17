@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -33,6 +34,7 @@ public class Hjem extends AppCompatActivity {
         TextView tv = (TextView) findViewById(R.id.hjemtext);
         Button bSov = (Button) findViewById(R.id.sleep);
         Button bBack = (Button) findViewById(R.id.hjemback);
+        ImageView hjemBack = (ImageView) findViewById(R.id.hjemBack);
 
         if (spiller.getNavn() == "Asha") {
             im.setImageResource(R.drawable.pige2);
@@ -42,9 +44,11 @@ public class Hjem extends AppCompatActivity {
 
         tv.setText(("Navn: " + spiller.getNavn() + "\n mad: " + spiller.getHp() + "\n Penge: " + spiller.getPenge() + "\n Viden: " + spiller.getViden() + "\n Klassetrin: " + spiller.getKlassetrin() + "\n Tid: " + spiller.getTid()));
 
-        bBack.setOnClickListener(new View.OnClickListener() {
+        hjemBack.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
+                SpillePlade.updateEntireBoard();
+                v.startAnimation(AnimationUtils.loadAnimation(Hjem.this, R.anim.image_click));
                 finish();
             }
         });

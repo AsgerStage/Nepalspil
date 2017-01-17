@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -32,6 +33,7 @@ public class Farm extends AppCompatActivity {
     }
 
     AlertDialog.Builder dialog;
+    private Animation animation;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,23 +43,25 @@ public class Farm extends AppCompatActivity {
         final TextView fieldinfo = (TextView) findViewById(R.id.fieldinfo);
         final TextView playerinfo = (TextView) findViewById(R.id.playerinfo);
         final MediaPlayer mp = MediaPlayer.create(this, R.raw.cash);
+        animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.plusmoney);
 
         Button work = (Button) findViewById(R.id.workButton);
         ImageView back = (ImageView) findViewById(R.id.backButton);
         ImageView helpfield = (ImageView) findViewById(R.id.farmHelp);
+        final TextView money = (TextView) findViewById(R.id.scrollmoney);
 
 
         Typeface face;
         face = Typeface.createFromAsset(getAssets(), "fonts/Mathlete-Bulky.otf");
         fieldinfo.setTypeface(face);
 
-        fieldinfo.setText("Velkommen ind i laden! Du kan arbejde her, hvis du er klog nok!");
+        fieldinfo.setText("Velkommen til rismarken.");
         playerinfo.setText("Navn: " + spiller.getNavn() + "\n mad: " + spiller.getHp() + "\n Penge: " + spiller.getPenge() + "\n Viden: " + spiller.getViden() + "\n Klassetrin: " + spiller.getKlassetrin() + "\n Tid: " + spiller.getTid());
 
         helpfield.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                dialog.setMessage("Velkommen til rismarken. Her kan du arbejde fra 1 klassetrin af og tjene en smule penge");
+                dialog.setMessage("Velkommen til rismarken. Her kan du arbejde fra 1 klassetrin af og tjene en smule penge. Gad vide om butikken har et værktøj der kan gøre det nemmere?");
                 dialog.show();
             }
         });
@@ -66,6 +70,8 @@ public class Farm extends AppCompatActivity {
             public void onClick(View v) {
                 if (spiller.getTid() >= 2) {
                     work();
+                    money.setText("+5 kr");
+                    money.startAnimation(animation);
                     playerinfo.setText(updateInfo());
 
                     if (mp.isPlaying()) {

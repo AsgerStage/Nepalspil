@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -29,6 +30,7 @@ public class Boghandel extends AppCompatActivity {
         SpillePlade.updateEntireBoard();
         finish();
     }
+    private Animation animation;
 
     AlertDialog.Builder dialog;
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +44,8 @@ public class Boghandel extends AppCompatActivity {
         Button work = (Button) findViewById(R.id.workButton);
         final Button buyBook = (Button) findViewById(R.id.buyBookButton);
         ImageView back = (ImageView) findViewById(R.id.backButton);
+        final TextView money = (TextView) findViewById(R.id.scrollmoney);
+        animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.plusmoneybook);
 
         bookstoreInfo.setText("Velkommen til boghandlen. Her kan du få et arbejde hvis du er nået langt nok i din uddannelse. \n Du kan også købe skole bøger her. Skolebøger giver hurtig viden");
         playerInfo.setText("Navn: " + spiller.getNavn() + "\n mad: " + spiller.getHp() + "\n Penge: " + spiller.getPenge() + "\n Viden: " + spiller.getViden() + "\n Klassetrin: " + spiller.getKlassetrin() + "\n Tid: " + spiller.getTid());
@@ -49,7 +53,9 @@ public class Boghandel extends AppCompatActivity {
         work.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
-                if (spiller.getTid() >= 2 && spiller.getKlassetrin() >= 6) {
+                if (spiller.getTid() >= 2 && spiller.getKlassetrin() >= 1) {
+                    money.setText("+20 kr");
+                    money.startAnimation(animation);
                     work();
 
                     if (mp.isPlaying()) {
@@ -108,7 +114,7 @@ public class Boghandel extends AppCompatActivity {
 
                 else if(spiller.getPenge()<30){
                    dialog.setTitle("Du mangler penge!");
-                   dialog.setMessage("Bogen koster 30 kroner, men du har kun"+spiller.getPenge());
+                   dialog.setMessage("Bogen koster 30 kroner, men du har kun "+spiller.getPenge());
                    dialog.show();
                }
                 else if (!(spiller.getLastBookBought()+5<spiller.getRunde())){

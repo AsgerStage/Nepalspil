@@ -36,11 +36,19 @@
         android:layout_centerHorizontal="true" />
 
     <TextView
+        android:text="TextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/viewpagerPris"
+        android:layout_weight="0.10"
+        android:textAlignment="center" />
+
+    <TextView
         android:text="Egenskaber"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/playerinfo"
-        android:layout_weight="1.32"
+        android:layout_weight="1.17"
         android:textColorLink="@android:color/white" />
 
     <TextView
