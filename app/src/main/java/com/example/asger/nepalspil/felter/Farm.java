@@ -14,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.asger.nepalspil.R;
+import com.example.asger.nepalspil.activities.MusicManager;
 import com.example.asger.nepalspil.activities.SpillePlade;
 
 import java.io.IOException;
@@ -26,6 +27,7 @@ import static com.example.asger.nepalspil.activities.MainActivity.spiller;
  */
 
 public class Farm extends AppCompatActivity {
+
     @Override
     public void onBackPressed() {
         SpillePlade.updateEntireBoard();
@@ -38,6 +40,7 @@ public class Farm extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.farm);
+
 
         dialog = new AlertDialog.Builder(Farm.this);
         final TextView fieldinfo = (TextView) findViewById(R.id.fieldinfo);
@@ -61,7 +64,7 @@ public class Farm extends AppCompatActivity {
         helpfield.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                dialog.setMessage("Velkommen til rismarken. Her kan du arbejde fra 1 klassetrin af og tjene en smule penge. Gad vide om butikken har et værktøj der kan gøre det nemmere?");
+                dialog.setMessage("Her kan du arbejde fra 1 klassetrin af og tjene en smule penge. ");
                 dialog.show();
             }
         });
@@ -119,5 +122,6 @@ public class Farm extends AppCompatActivity {
         SpillePlade.updateInfobox();
         return "Navn: " + spiller.getNavn() + "\n mad: " + spiller.getHp() + "\n Penge: " + spiller.getPenge() + "\n Viden: " + spiller.getViden() + "\n Klassetrin: " + spiller.getKlassetrin() + "\n Tid: " + spiller.getTid();
     }
+
 
 }

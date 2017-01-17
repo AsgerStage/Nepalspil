@@ -116,6 +116,7 @@ public class MusicManager {
         if(mp != null){
         if (mp.isPlaying() == false) {
             mp.start();
+
         }
         }
     }

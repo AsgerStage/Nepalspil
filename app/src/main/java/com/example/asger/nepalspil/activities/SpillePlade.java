@@ -228,8 +228,7 @@ public class SpillePlade extends AppCompatActivity {
                 builder.setItems(options, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        // if (which == 1) {
-                        //   MusicManager.stop();
+
 
                         switch (which) {
                             case 0:
@@ -237,7 +236,7 @@ public class SpillePlade extends AppCompatActivity {
 
                                 break;
                             case 1:
-                                onStart();
+                                onResume();
 
                                 break;
                             case 2:
@@ -367,7 +366,7 @@ public class SpillePlade extends AppCompatActivity {
     public void onResume() {
         super.onResume();
 
-        continueBGMusic = false;
+        continueBGMusic = true;
         MusicManager.start(this, R.raw.backgroundloop);
     }
 

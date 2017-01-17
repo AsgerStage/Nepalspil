@@ -144,8 +144,6 @@ public class MainActivity extends AppCompatActivity {
 
                         }
 
-
-                        // the user clicked on options[which]
                     }
                 });
                 builder.show();

@@ -47,6 +47,7 @@ public class Boghandel extends AppCompatActivity {
         final TextView money = (TextView) findViewById(R.id.scrollmoney);
         animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.plusmoneybook);
 
+
         bookstoreInfo.setText("Velkommen til boghandlen. Her kan du få et arbejde hvis du er nået langt nok i din uddannelse. \n Du kan også købe skole bøger her. Skolebøger giver hurtig viden");
         playerInfo.setText("Navn: " + spiller.getNavn() + "\n mad: " + spiller.getHp() + "\n Penge: " + spiller.getPenge() + "\n Viden: " + spiller.getViden() + "\n Klassetrin: " + spiller.getKlassetrin() + "\n Tid: " + spiller.getTid());
 

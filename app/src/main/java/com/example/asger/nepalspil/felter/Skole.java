@@ -32,6 +32,7 @@ import static com.example.asger.nepalspil.activities.MainActivity.spiller;
 public class Skole extends AppCompatActivity {
 
     private Animation animation;
+    private Animation animationfood;
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
      * See https://g.co/AppIndexing/AndroidStudio for more information.
@@ -70,7 +71,9 @@ public class Skole extends AppCompatActivity {
         ImageView back = (ImageView) findViewById(R.id.skoleBack);
         ImageView helpField = (ImageView) findViewById(R.id.skoleHelp);
         animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.plusknowledge);
+        animationfood = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.plusfood);
         final TextView scroll = (TextView) findViewById(R.id.plusknowledge);
+        final TextView mad = (TextView) findViewById(R.id.scrollfood);
 
         dialog = new AlertDialog.Builder(Skole.this);
         schoolText.setText("Velkommen til Skolen, her kan du spise, studere og tage din eksamen når tiden er.");
@@ -87,7 +90,7 @@ public class Skole extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 dialog.setTitle("Skolen");
-                dialog.setMessage("I skolen kan du studere og få en smule mad. Tryk på knapperne for at studere eller spise. Når du har gået nok i skole kan du tage din eksamen for at komme op i næste klasse. En gang imellem når man studerer forstår man ikke alt undervisningen, og derfor kan man tage i lektiehjælpen for at forstå det.");
+                dialog.setMessage("I skolen kan du studere og få en smule mad. Tryk på knapperne for at studere eller spise.\n Når du har gået nok i skole kan du tage din eksamen for at komme op i næste klasse. Alt undervisning er svær, så husk derfor at benyt lektiehjælpen, hvis du ikke forstår det hele. .");
                 dialog.show();
             }
         });
@@ -95,6 +98,8 @@ public class Skole extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (spiller.getTid() > 0) {
+                    mad.setText("+5 mad");
+                    mad.startAnimation(animationfood);
                     spis();
                     schoolText.setText("Mmm! Du har spist skolemad.");
                     playerInfo.setText(updateInfo());
@@ -128,22 +133,31 @@ public class Skole extends AppCompatActivity {
                 int thisStudy = studer();
                 if (spiller.getTid() > 0) {
                     if (spiller.getTid() > 0 && thisStudy == 1) {
-                        ;
                         scroll.setText("+1 viden");
                         scroll.startAnimation(animation);
-                        spiller.study(1,1);
+                        spiller.study(1, 1);
+                        if (mp.isPlaying()) {
+                            mp.stop();
+                        }
+                        try {
+                            mp.reset();
+                            AssetFileDescriptor afd;
+                            afd = getAssets().openFd("study.mp3");
+                            mp.setDataSource(afd.getFileDescriptor(), afd.getStartOffset(), afd.getLength());
+                            mp.prepare();
+                            mp.start();
+                        } catch (IllegalStateException e) {
+                            e.printStackTrace();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
                         System.out.println(spiller.getViden());
-                    } else if (thisStudy==2){
+                    } else if (thisStudy == 2) {
                         Toast.makeText(Skole.this, "Du forstod ikke alt undervisningen, tag i lektiehjælpen for at forstå det", Toast.LENGTH_SHORT).show();
-                        /*AlertDialog.Builder dialog = new AlertDialog.Builder(Skole.this);
-                       dialog.setTitle("Lektiehjælp!");
-                        dialog.setMessage("Du kunne ikke forstå undervisningen, så din viden kan opnås hos lektiehjælpen.");
-                        dialog.show();*/
-                        spiller.study(1,0);
-                    }
-                    else if (thisStudy==3){
+                        spiller.study(1, 0);
+                    } else if (thisStudy == 3) {
                         Toast.makeText(Skole.this, "Du forstod ingenting af denne lektion", Toast.LENGTH_SHORT).show();
-                    spiller.study(1,0);
+                        spiller.study(1, 0);
                     }
                 } else {
 
@@ -196,25 +210,25 @@ public class Skole extends AppCompatActivity {
 
 
     public int studer() {
-        int result=0;
+        int result = 0;
         switch (spiller.getLearningAmp()) {
 
             case 0:
-                result= tryToStudy(0.5, 0.25, 0);
-            Log.d("Spil", "Spiller studied with 0 learning Amp");
-            break;
+                result = tryToStudy(0.5, 0.25, 0);
+                Log.d("Spil", "Spiller studied with 0 learning Amp");
+                break;
             case 1:
-                result= tryToStudy(0.45, 0.2, 0);
-            Log.d("Spil", "Spiller studied with 0 learning Amp");
-            break;
+                result = tryToStudy(0.45, 0.2, 0);
+                Log.d("Spil", "Spiller studied with 0 learning Amp");
+                break;
             case 2:
-                result= tryToStudy(0.40, 0.15, 0);
-            Log.d("Spil", "Spiller studied with 0 learning Amp");
-            break;
+                result = tryToStudy(0.40, 0.15, 0);
+                Log.d("Spil", "Spiller studied with 0 learning Amp");
+                break;
             case 3:
-                result= tryToStudy(0.30, 0, 0);
-            Log.d("Spil", "Spiller studied with 0 learning Amp");
-            break;
+                result = tryToStudy(0.30, 0, 0);
+                Log.d("Spil", "Spiller studied with 0 learning Amp");
+                break;
 
 
         }
@@ -222,14 +236,9 @@ public class Skole extends AppCompatActivity {
     }
 
 
-
-
-
-
-
     public void spis() {
         if (spiller.getTid() > 0) {
-            spiller.eat(1,0,5);
+            spiller.eat(1, 0, 5);
             SpillePlade.updateInfobox();
         } else {
             schoolText.setText("");
@@ -255,13 +264,13 @@ public class Skole extends AppCompatActivity {
         return 10 * spiller.getKlassetrin();
     }
 
-public int tryToStudy(double success, double homework,double fail){
-   double rand = Math.random();
-    Log.d("Spil","rand = "+rand+" Success = "+success+" homework = "+homework+"fail = "+fail);
-    if (success<= rand && rand<1)return 1;
-    else if (rand< success && rand>=homework) return 2;
-    else if (rand< homework && rand>=fail) return 3;
-    else return 0;
-}
+    public int tryToStudy(double success, double homework, double fail) {
+        double rand = Math.random();
+        Log.d("Spil", "rand = " + rand + " Success = " + success + " homework = " + homework + "fail = " + fail);
+        if (success <= rand && rand < 1) return 1;
+        else if (rand < success && rand >= homework) return 2;
+        else if (rand < homework && rand >= fail) return 3;
+        else return 0;
+    }
 
 }

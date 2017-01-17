@@ -21,7 +21,7 @@ public class Spiller {
     public int runde;
     private int moveSpeed;
     private int lastBookBought;
-    private boolean music;
+    public boolean music;
 
 
     public Spiller(String navn) {
@@ -34,6 +34,7 @@ public class Spiller {
         this.klassetrin = 1;
         this.runde = 1;
         this.moveSpeed = 1;
+
 
         Log.d("Spiller", "Spiller oprettet");
     }
@@ -50,6 +51,7 @@ public class Spiller {
         this.runde = runde;
         this.moveSpeed = moveSpeed;
         this.glemtViden = glemtViden;
+
         Log.d("Spiller", "Spiller oprettet med balance");
     }
 
@@ -68,6 +70,7 @@ public class Spiller {
         this.runde = runde;
         this.moveSpeed = moveSpeed;
         this.lastBookBought=lastBookBought;
+        this.music = music;
 
     }
 
