@@ -1,7 +1,6 @@
 package com.example.asger.nepalspil.felter;
 
 import android.content.res.AssetFileDescriptor;
-import android.media.Image;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
@@ -17,7 +16,7 @@ import android.widget.Toast;
 import static com.example.asger.nepalspil.activities.MainActivity.spiller;
 
 import com.example.asger.nepalspil.R;
-import com.example.asger.nepalspil.models.SpillePlade;
+import com.example.asger.nepalspil.activities.SpillePlade;
 
 import java.io.IOException;
 

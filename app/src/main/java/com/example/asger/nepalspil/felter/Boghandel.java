@@ -1,6 +1,5 @@
 package com.example.asger.nepalspil.felter;
 
-import android.content.DialogInterface;
 import android.content.res.AssetFileDescriptor;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -13,7 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.asger.nepalspil.R;
-import com.example.asger.nepalspil.models.SpillePlade;
+import com.example.asger.nepalspil.activities.SpillePlade;
 
 import java.io.IOException;
 

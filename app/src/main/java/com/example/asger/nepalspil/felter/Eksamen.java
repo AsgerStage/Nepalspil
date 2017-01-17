@@ -1,8 +1,6 @@
 package com.example.asger.nepalspil.felter;
 
 import android.content.DialogInterface;
-import android.content.Intent;
-import android.content.res.AssetFileDescriptor;
 import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -12,19 +10,13 @@ import android.support.v7.app.AppCompatActivity;
 import static com.example.asger.nepalspil.activities.MainActivity.spiller;
 
 import com.example.asger.nepalspil.R;
-import com.example.asger.nepalspil.activities.MainActivity;
-import com.example.asger.nepalspil.models.SpillePlade;
-import com.example.asger.nepalspil.models.Spiller;
+import com.example.asger.nepalspil.activities.SpillePlade;
 import com.github.jinatonic.confetti.CommonConfetti;
 
-import android.text.Layout;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.TextView;
-
-import java.io.IOException;
 
 /**
  * Created by Senad on 1/12/2017.

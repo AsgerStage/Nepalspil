@@ -1,13 +1,9 @@
 package com.example.asger.nepalspil.felter;
 
-import android.media.Image;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -15,10 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.asger.nepalspil.R;
-import com.example.asger.nepalspil.models.SpillePlade;
-import com.example.asger.nepalspil.models.Spiller;
-
-import org.w3c.dom.Text;
+import com.example.asger.nepalspil.activities.SpillePlade;
 
 import static com.example.asger.nepalspil.activities.MainActivity.spiller;
 

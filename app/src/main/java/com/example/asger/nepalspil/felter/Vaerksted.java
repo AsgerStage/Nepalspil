@@ -17,7 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.asger.nepalspil.R;
-import com.example.asger.nepalspil.models.SpillePlade;
+import com.example.asger.nepalspil.activities.SpillePlade;
 
 import java.io.IOException;
 
@@ -176,7 +176,7 @@ public class Vaerksted extends AppCompatActivity {
                 }
             case 1:
                 if(spiller.getPenge()>=100){
-                    spiller.setPenge(spiller.getPenge()-1);
+                  //  spiller.setPenge(spiller.getPenge()-1);
                     //bøger gør intet atm
                 }
                 else {

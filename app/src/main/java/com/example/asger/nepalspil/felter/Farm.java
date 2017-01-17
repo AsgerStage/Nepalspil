@@ -13,8 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.asger.nepalspil.R;
-import com.example.asger.nepalspil.activities.MainActivity;
-import com.example.asger.nepalspil.models.SpillePlade;
+import com.example.asger.nepalspil.activities.SpillePlade;
 
 import java.io.IOException;
 
