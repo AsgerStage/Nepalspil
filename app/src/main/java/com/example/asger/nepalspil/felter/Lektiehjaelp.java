@@ -24,6 +24,10 @@ public class Lektiehjaelp extends AppCompatActivity {
     TextView textviden;
     TextView textmad;
     TextView playerInfo;
+    //Studying
+    final int VIDEN_PER_CLICK =1;
+    final int TIME_PER_CLICK =1;
+
     @Override
     public void onBackPressed() {
         SpillePlade.updateEntireBoard();
@@ -53,7 +57,7 @@ public class Lektiehjaelp extends AppCompatActivity {
         homeworkHelp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (spiller.getTid() > 0 && spiller.getGlemtViden() > 0) {
+                if (spiller.getTid() >= TIME_PER_CLICK && spiller.getGlemtViden() > 0) {
                     learn();
                     updateInfo();
                     Toast.makeText(Lektiehjaelp.this, "Du har opnået 1 viden.", Toast.LENGTH_SHORT).show();
@@ -62,7 +66,7 @@ public class Lektiehjaelp extends AppCompatActivity {
                     dialog.setTitle("Ingen glemt viden.");
                     dialog.setMessage("Du har ikke behov for lektiehjælp, da du forstået al undervisning.");
                     dialog.show();
-                } else if (spiller.getTid() <= 0) {
+                } else if (spiller.getTid() <= TIME_PER_CLICK) {
                     AlertDialog.Builder dialog = new AlertDialog.Builder(Lektiehjaelp.this);
                     dialog.setTitle("Ikke nok tid!");
                     dialog.setMessage("Du har ikke nok tid til at få lektiehjælp. Kom igen i morgen.");
@@ -91,7 +95,7 @@ public class Lektiehjaelp extends AppCompatActivity {
     }
 
     private void learn() {
-        spiller.study(1,1);
+        spiller.study(TIME_PER_CLICK,VIDEN_PER_CLICK);
         spiller.setGlemtViden(spiller.getGlemtViden() - 1);
     }
 

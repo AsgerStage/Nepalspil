@@ -28,6 +28,8 @@ public class Boghandel extends AppCompatActivity {
     TextView textviden;
     TextView textmad;
     TextView playerInfo;
+    final int MONEY_PER_CLICK =40;
+    final int TIME_PER_CLICK =2;
     @Override
     public void onBackPressed() {
         SpillePlade.updateEntireBoard();
@@ -59,10 +61,10 @@ public class Boghandel extends AppCompatActivity {
         work.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
-                if (spiller.getTid() >= 2 && spiller.getKlassetrin() >= 1) {
-                    money.setText("+20 kr");
+                if (spiller.getTid() >= TIME_PER_CLICK && spiller.getKlassetrin() >= 6) {
+                    money.setText("+"+ MONEY_PER_CLICK +" kr");
                     money.startAnimation(animation);
-                    work();
+                    spiller.work(TIME_PER_CLICK, MONEY_PER_CLICK);
 
                     if (mp.isPlaying()) {
                         mp.stop();
@@ -164,15 +166,8 @@ public class Boghandel extends AppCompatActivity {
 
     }
 
-    private static void work() {
-        spiller.setTid(spiller.getTid() - 2);
-        spiller.setPenge(spiller.getPenge() + 20);
-    }
 
-    private void buyBook() {
-        spiller.setBooks(spiller.getBooks() + 1);
-        spiller.setPenge(spiller.getPenge() - 10);
-    }
+
 
     public void updateInfo() {
         SpillePlade.updateInfobox();

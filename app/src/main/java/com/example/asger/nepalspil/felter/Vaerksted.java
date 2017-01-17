@@ -33,6 +33,9 @@ public class Vaerksted extends AppCompatActivity {
     TextView textviden;
     TextView textmad;
     TextView playerinfo;
+    //Working
+    final int MONEY_PER_CLICK =10;
+    final int TIME_PER_CLICK =2;
     @Override
     public void onBackPressed() {
         SpillePlade.updateEntireBoard();
@@ -75,13 +78,13 @@ viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener(){
     public void onPageSelected(int position) {
 switch(position){
     case 0:
-        viewPagerText.setText("Cykel - 200kr");
+        viewPagerText.setText("Cykel: 200kr");
         break;
     case 1:
-        viewPagerText.setText("Pænt hurtig cykel - 500kr");
+        viewPagerText.setText("Pænt hurtig cykel: 500kr");
         break;
     case 2:
-        viewPagerText.setText("Racer cykel - 1000kr");
+        viewPagerText.setText("Racer cykel: 1000kr");
 }
     }
 
@@ -105,8 +108,8 @@ switch(position){
         work.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
-                if (spiller.getTid() >= 2 && spiller.getKlassetrin()>=3) {
-                    work();
+                if (spiller.getTid() >= TIME_PER_CLICK && spiller.getKlassetrin()>=3) {
+                    spiller.work(TIME_PER_CLICK,MONEY_PER_CLICK);
 
                     if (mp.isPlaying()) {
                         mp.stop();
@@ -198,10 +201,7 @@ switch(position){
 
     }
 
-    public void work() {
 
-        spiller.work(2,10);
-    }
 
     public void buy() {
 

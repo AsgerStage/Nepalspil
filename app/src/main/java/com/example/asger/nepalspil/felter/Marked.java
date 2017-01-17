@@ -28,6 +28,16 @@ public class Marked extends AppCompatActivity {
     TextView textmad;
     TextView playerinfo;
 
+    //Working
+    final int MONEY_PER_CLICK =10;
+    final int TIME_PER_CLICK =2;
+
+    //Eating
+    final int FOOD_PER_CLICK=10;
+    final int COST_PER_FOOD_CLICK=5;
+    final int TIME_COST_EATING=0;
+
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.marked);
@@ -61,8 +71,9 @@ public class Marked extends AppCompatActivity {
         work.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
-                if (spiller.getTid() >= 2 && spiller.getKlassetrin() >= 4) {
-                    work();
+                if (spiller.getTid() >= TIME_PER_CLICK && spiller.getKlassetrin() >= 4) {
+                    spiller.work(TIME_PER_CLICK,MONEY_PER_CLICK);
+
 
                     if (mp.isPlaying()) {
                         mp.stop();
@@ -99,8 +110,8 @@ public class Marked extends AppCompatActivity {
         eat.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
-                if (spiller.getPenge() >= 5) {
-                    eat();
+                if (spiller.getPenge() >= COST_PER_FOOD_CLICK) {
+                    spiller.eat(TIME_COST_EATING,COST_PER_FOOD_CLICK,FOOD_PER_CLICK);
                     if (mp.isPlaying()) {
                         mp.stop();
                     }
@@ -153,13 +164,10 @@ public class Marked extends AppCompatActivity {
         });
     }
 
-    public void work() {
-        spiller.setTid(spiller.getTid() - 2);
-        spiller.setPenge(spiller.getPenge() + 10);
-    }
+
 
     public void eat() {
-        spiller.eat(0, 5, 10);
+        ;
     }
 
     public void updateInfo() {

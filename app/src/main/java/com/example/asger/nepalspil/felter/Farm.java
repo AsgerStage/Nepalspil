@@ -30,7 +30,8 @@ public class Farm extends AppCompatActivity {
     TextView textpenge;
     TextView textviden;
     TextView textmad;
-
+    final int MONEY_PER_CLICK =5;
+    final int TIME_PER_CLICK =2;
 
     @Override
     public void onBackPressed() {
@@ -78,9 +79,9 @@ public class Farm extends AppCompatActivity {
         work.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
-                if (spiller.getTid() >= 2) {
-                    work();
-                    money.setText("+5 kr");
+                if (spiller.getTid() >= TIME_PER_CLICK) {
+                    spiller.work(TIME_PER_CLICK,MONEY_PER_CLICK);
+                    money.setText("+"+MONEY_PER_CLICK+" kr");
                     money.startAnimation(animation);
                    playerinfo.setText(updateInfo());
                     updateText();
@@ -122,9 +123,7 @@ public class Farm extends AppCompatActivity {
         });
     }
 
-    public void work() {
-        spiller.work(2,5);
-    }
+
 
     public String updateInfo() {
         SpillePlade.updateInfobox();

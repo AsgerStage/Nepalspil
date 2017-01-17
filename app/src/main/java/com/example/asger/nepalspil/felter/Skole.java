@@ -38,6 +38,15 @@ public class Skole extends AppCompatActivity {
     static TextView textmad;
     static TextView playerInfo;
 
+    //Studying
+    final int VIDEN_PER_CLICK =1;
+    final int TIME_PER_CLICK =1;
+
+    //Eating
+    final int FOOD_PER_CLICK=5;
+    final int COST_PER_FOOD_CLICK=0;
+    final int TIME_COST_EATING=1;
+
     @Override
     public void onBackPressed() {
         SpillePlade.updateEntireBoard();
@@ -136,11 +145,11 @@ public class Skole extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 int thisStudy = studer();
-                if (spiller.getTid() > 0) {
-                    if (spiller.getTid() > 0 && thisStudy == 1) {
-                        scroll.setText("+1 viden");
+                if (spiller.getTid() >= TIME_PER_CLICK) {
+                    if (spiller.getTid() >= TIME_PER_CLICK && thisStudy == 1) {
+                        scroll.setText("+"+VIDEN_PER_CLICK+" viden");
                         scroll.startAnimation(animation);
-                        spiller.study(1, 1);
+                        spiller.study(TIME_PER_CLICK, VIDEN_PER_CLICK);
                         updateText();
                         if (mp.isPlaying()) {
                             mp.stop();
@@ -160,12 +169,12 @@ public class Skole extends AppCompatActivity {
                         System.out.println(spiller.getViden());
                     } else if (thisStudy == 2) {
                         Toast.makeText(Skole.this, "Du forstod ikke alt undervisningen, tag i lektiehjælpen for at forstå det", Toast.LENGTH_SHORT).show();
-                        spiller.study(1, 0);
+                        spiller.study(TIME_PER_CLICK, 0);
                         spiller.setGlemtViden(spiller.getGlemtViden()+1);
                         updateText();
                     } else if (thisStudy == 3) {
                         Toast.makeText(Skole.this, "Du forstod ingenting af denne lektion", Toast.LENGTH_SHORT).show();
-                        spiller.study(1, 0);
+                        spiller.study(TIME_PER_CLICK, 0);
                         updateText();
                     }
                 } else {
@@ -245,7 +254,7 @@ public class Skole extends AppCompatActivity {
 
     public void spis() {
         if (spiller.getTid() > 0) {
-            spiller.eat(1, 0, 5);
+            spiller.eat(TIME_COST_EATING,COST_PER_FOOD_CLICK,FOOD_PER_CLICK);
             SpillePlade.updateInfobox();
             updateText();
         } else {
