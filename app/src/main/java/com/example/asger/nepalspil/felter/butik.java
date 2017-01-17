@@ -65,16 +65,17 @@ public class butik extends AppCompatActivity {
         */
 
 
-        fieldinfo.setText("Velkommen til Tøjbutikken! Her kan man købe nyt skoletøj");
+        fieldinfo.setText("Velkommen til Tøjbutikken! Her kan man købe nyt skoletøj. \n" +
+                "Papirblokken koster 30kr. og øger chancen for at lærer noget i skolen.\n" +
+                "Egne blyanter koster 60kr. og fjerne risikoen for ikke at lærer noget over hovedet i skolen.\n"  +
+                "Lommeregneren koster 100kr. og reducerer chancen for at skulle bruge lektiehjælp."
+        );
         playerinfo.setText("Navn: " + spiller.getNavn() + "\n mad: " + spiller.getHp() + "\n Penge: " + spiller.getPenge() + "\n Viden: " + spiller.getViden() + "\n Klassetrin: " + spiller.getKlassetrin() + "\n Tid: " + spiller.getTid());
 
         helpField.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                dialog.setMessage("Velkommen til tøjbutikken. Her kan du købe tøj og diverse skoleting til at gøre dit live bedre.\n " +
-                        "          Papirblokken koster 30kr. og øger chancen for at lærer noget i skolen.\n " +
-                        "          Egne blyanter koster 60kr. og fjerne risikoen for ikke at lærer noget over hovedet i skolen. \n " +
-                        "          Lommeregneren koster 100kr. og reducerer chancen for at skulle bruge lektiehjælp." );
+                dialog.setMessage("Velkommen til tøjbutikken. Her kan du købe tøj og diverse skoleting til at gøre dit live bedre.");
                 dialog.show();
             }
         });

@@ -24,7 +24,6 @@ import com.example.asger.nepalspil.felter.Hjem;
 import com.example.asger.nepalspil.felter.Lektiehjaelp;
 import com.example.asger.nepalspil.felter.Marked;
 import com.example.asger.nepalspil.felter.Skole;
-import com.example.asger.nepalspil.felter.Toejbutik;
 import com.example.asger.nepalspil.felter.Vaerksted;
 import com.example.asger.nepalspil.felter.butik;
 

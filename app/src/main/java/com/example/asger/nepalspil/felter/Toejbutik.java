@@ -1,4 +1,4 @@
-package com.example.asger.nepalspil.felter;
+/*package com.example.asger.nepalspil.felter;
 
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -19,7 +19,7 @@ import static com.example.asger.nepalspil.activities.MainActivity.spiller;
 /**
  * Created by Bruger on 03-01-2017.
  */
-
+/*
 public class Toejbutik extends AppCompatActivity {
     @Override
     public void onBackPressed() {
@@ -92,3 +92,4 @@ public class Toejbutik extends AppCompatActivity {
         return "Navn: " + spiller.getNavn() + "\n mad: " + spiller.getHp() + "\n Penge: " + spiller.getPenge() + "\n Viden: " + spiller.getViden() + "\n Klassetrin: " + spiller.getKlassetrin() + "\n Tid: " + spiller.getTid();
     }
 }
+*/
