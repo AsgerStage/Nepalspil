@@ -53,18 +53,6 @@ public class butik extends AppCompatActivity {
         final Button buy = (Button) findViewById(R.id.tbBuy);
         ImageView back = (ImageView) findViewById(R.id.tbBack);
 
-
-        /*
-        if (spiller.getLearningAmp()==0){
-            buy.setText("Køb papir");
-        } else if (spiller.getLearningAmp()==1){
-            buy.setText("Køb blyanter");
-        } else if (spiller.getLearningAmp()==2){
-            buy.setText("Køb Lommeregner");
-        }
-        */
-
-
         fieldinfo.setText("Velkommen til Tøjbutikken! Her kan man købe nyt skoletøj. \n" +
                 "Papirblokken koster 30kr. og øger chancen for at lærer noget i skolen.\n" +
                 "Egne blyanter koster 60kr. og fjerne risikoen for ikke at lærer noget over hovedet i skolen.\n"  +
@@ -72,7 +60,21 @@ public class butik extends AppCompatActivity {
         );
         playerinfo.setText("Navn: " + spiller.getNavn() + "\n mad: " + spiller.getHp() + "\n Penge: " + spiller.getPenge() + "\n Viden: " + spiller.getViden() + "\n Klassetrin: " + spiller.getKlassetrin() + "\n Tid: " + spiller.getTid());
 
-        buy.setText("Køb papir");
+        switch (spiller.getLearningAmp()) {
+            case 0:
+                buy.setText("Køb Papir");
+                break;
+            case 1:
+                buy.setText("Køb blyanter");
+                break;
+            case 2:
+                buy.setText("Køb Lommeregner");
+                break;
+            case 3:
+                buy.setVisibility(View.INVISIBLE);
+                break;
+        }
+
         helpField.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

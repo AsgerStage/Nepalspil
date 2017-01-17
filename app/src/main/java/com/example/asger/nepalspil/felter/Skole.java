@@ -63,6 +63,7 @@ public class Skole extends AppCompatActivity {
         final MediaPlayer mp = MediaPlayer.create(this, R.raw.cash);
         final TextView schoolText = (TextView) findViewById(R.id.schoolText);
         final TextView playerInfo = (TextView) findViewById(R.id.schoolPlayerInfo);
+        final TextView klassetrin = (TextView) findViewById(R.id.klassetrin);
         Button bSpis = (Button) findViewById(R.id.spis);
         Button bStuder = (Button) findViewById(R.id.Studer);
         Button bEksamen = (Button) findViewById(R.id.eksamen);
@@ -74,6 +75,7 @@ public class Skole extends AppCompatActivity {
         dialog = new AlertDialog.Builder(Skole.this);
         schoolText.setText("Velkommen til Skolen, her kan du spise, studere og tage din eksamen når tiden er.");
         playerInfo.setText("Navn: " + spiller.getNavn() + "\n mad: " + spiller.getHp() + "\n Penge: " + spiller.getPenge() + "\n Viden: " + spiller.getViden() + "\n Klassetrin: " + spiller.getKlassetrin() + "\n Tid: " + spiller.getTid());
+        klassetrin.setText("Du går i " + spiller.getKlassetrin() + ". klasse.");
 
         onResume();
         {
