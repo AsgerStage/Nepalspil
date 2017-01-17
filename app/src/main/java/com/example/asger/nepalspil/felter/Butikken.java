@@ -25,7 +25,7 @@ import static com.example.asger.nepalspil.activities.MainActivity.spiller;
  * Created by Bruger on 03-01-2017.
  */
 
-public class butik extends AppCompatActivity {
+public class Butikken extends AppCompatActivity {
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
      * See https://g.co/AppIndexing/AndroidStudio for more information.
@@ -45,7 +45,7 @@ public class butik extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.toejbutik);
 
-        dialog = new AlertDialog.Builder(butik.this);
+        dialog = new AlertDialog.Builder(Butikken.this);
         final TextView fieldinfo = (TextView) findViewById(R.id.tbInfo);
         final TextView playerinfo = (TextView) findViewById(R.id.tbStats);
         final MediaPlayer mp = MediaPlayer.create(this, R.raw.cash);
@@ -89,13 +89,13 @@ public class butik extends AppCompatActivity {
                     if (spiller.getPenge() >= 100) {
                         buy();
                         playerinfo.setText(updateInfo());
-                        AlertDialog.Builder dialog = new AlertDialog.Builder(butik.this);
+                        AlertDialog.Builder dialog = new AlertDialog.Builder(Butikken.this);
                         dialog.setTitle("Lommeregner købt");
                         dialog.setMessage("Du har købt en ny lommeregner for 100 penge.");
                         dialog.show();
                         buy.setVisibility(View.INVISIBLE);
                     } else {
-                        AlertDialog.Builder dialog = new AlertDialog.Builder(butik.this);
+                        AlertDialog.Builder dialog = new AlertDialog.Builder(Butikken.this);
                         dialog.setTitle("Ikke nok penge!");
                         dialog.setMessage("Du har ikke penge nok. Tjen penge ved at arbejde.");
                         dialog.show();
@@ -105,13 +105,13 @@ public class butik extends AppCompatActivity {
                     if (spiller.getPenge() >= 60) {
                         buy();
                         playerinfo.setText(updateInfo());
-                        AlertDialog.Builder dialog = new AlertDialog.Builder(butik.this);
+                        AlertDialog.Builder dialog = new AlertDialog.Builder(Butikken.this);
                         dialog.setTitle("Blyanter købt");
                         dialog.setMessage("Du har købt nye blyanter for 60 penge.");
                         dialog.show();
                         buy.setText("Køb Lommeregner");
                     } else {
-                        AlertDialog.Builder dialog = new AlertDialog.Builder(butik.this);
+                        AlertDialog.Builder dialog = new AlertDialog.Builder(Butikken.this);
                         dialog.setTitle("Ikke nok penge!");
                         dialog.setMessage("Du har ikke penge nok. Tjen penge ved at arbejde.");
                         dialog.show();
@@ -121,13 +121,13 @@ public class butik extends AppCompatActivity {
                     if (spiller.getPenge() >= 30) {
                         buy();
                         playerinfo.setText(updateInfo());
-                        AlertDialog.Builder dialog = new AlertDialog.Builder(butik.this);
+                        AlertDialog.Builder dialog = new AlertDialog.Builder(Butikken.this);
                         dialog.setTitle("Papir købt");
                         dialog.setMessage("Du har købt en blok papir for 30 penge.");
                         dialog.show();
                         buy.setText("Køb blyanter");
                     } else {
-                        AlertDialog.Builder dialog = new AlertDialog.Builder(butik.this);
+                        AlertDialog.Builder dialog = new AlertDialog.Builder(Butikken.this);
                         dialog.setTitle("Ikke nok penge!");
                         dialog.setMessage("Du har ikke penge nok. Tjen penge ved at arbejde.");
                         dialog.show();
@@ -140,7 +140,7 @@ public class butik extends AppCompatActivity {
 
             public void onClick(View v) {
                 SpillePlade.updateEntireBoard();
-                v.startAnimation(AnimationUtils.loadAnimation(butik.this, R.anim.image_click));
+                v.startAnimation(AnimationUtils.loadAnimation(Butikken.this, R.anim.image_click));
                 finish();
             }
         });

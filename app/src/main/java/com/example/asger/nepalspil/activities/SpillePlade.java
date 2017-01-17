@@ -25,7 +25,7 @@ import com.example.asger.nepalspil.felter.Lektiehjaelp;
 import com.example.asger.nepalspil.felter.Marked;
 import com.example.asger.nepalspil.felter.Skole;
 import com.example.asger.nepalspil.felter.Vaerksted;
-import com.example.asger.nepalspil.felter.butik;
+import com.example.asger.nepalspil.felter.Butikken;
 
 //import static com.example.asger.nepalspil.R.id.player;
 
@@ -200,7 +200,7 @@ public class SpillePlade extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                moveTo(7, butik.class, felt7.getLayoutParams());
+                moveTo(7, Butikken.class, felt7.getLayoutParams());
                 saveToPrefs();
 
 
