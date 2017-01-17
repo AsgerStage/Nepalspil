@@ -26,8 +26,71 @@
             app:srcCompat="@drawable/newback"
             android:id="@+id/backButton"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
+            android:layout_alignParentBottom="true"
             android:layout_alignParentStart="true" />
+
+        <ImageView
+            android:layout_width="34dp"
+            android:layout_height="34dp"
+            app:srcCompat="@drawable/ikonmad"
+            android:id="@+id/imageView4"
+            android:layout_alignParentBottom="true"
+            android:layout_toEndOf="@+id/textmad" />
+
+        <TextView
+            android:text="Mad"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textmad"
+            android:elevation="1dp"
+            android:fontFamily="sans-serif"
+            android:textSize="24sp"
+            android:textColor="@color/food"
+            android:layout_marginStart="16dp"
+            android:layout_alignBottom="@+id/imageView14"
+            android:layout_toEndOf="@+id/backButton" />
+
+        <ImageView
+            android:layout_width="34dp"
+            android:layout_height="34dp"
+            app:srcCompat="@drawable/ikonviden"
+            android:id="@+id/imageView10"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true" />
+
+        <TextView
+            android:text="Viden"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textviden"
+            android:elevation="1dp"
+            android:fontFamily="sans-serif"
+            android:textSize="24sp"
+            android:textColor="@color/black"
+            android:layout_alignBaseline="@+id/textmad"
+            android:layout_alignBottom="@+id/textmad"
+            android:layout_toStartOf="@+id/imageView10" />
+
+        <TextView
+            android:text="Penge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textpenge"
+            android:elevation="1dp"
+            android:fontFamily="sans-serif"
+            android:textSize="24sp"
+            android:textColor="@color/money"
+            android:layout_marginStart="106dp"
+            android:layout_alignBottom="@+id/imageView14"
+            android:layout_toEndOf="@+id/imageView10" />
+
+        <ImageView
+            android:layout_width="34dp"
+            android:layout_height="34dp"
+            app:srcCompat="@drawable/ikonpenge"
+            android:id="@+id/imageView14"
+            android:layout_alignParentTop="true"
+            android:layout_toEndOf="@+id/textpenge" />
     </RelativeLayout>
 
     <RelativeLayout
@@ -36,8 +99,6 @@
         android:layout_weight="1.25">
 
         <TextView
-            android:background="#8888"
-            android:text="Egenskaber"
             android:layout_width="wrap_content"
             android:layout_height="179dp"
             android:id="@+id/playerinfo"
@@ -95,6 +156,13 @@
             android:layout_alignParentTop="true"
             android:layout_toEndOf="@+id/workButton"
             android:layout_marginTop="14dp" />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignTop="@+id/playerinfo"
+            android:layout_alignParentStart="true"></LinearLayout>
 
     </RelativeLayout>
 

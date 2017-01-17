@@ -104,7 +104,7 @@ public class SpillePlade extends AppCompatActivity {
 
         ur = (ImageView) findViewById(R.id.ur);
         ur.setImageResource(R.drawable.ur16);
-        infobox.setText("Navn: "+spiller.getNavn()+"\n mad: "+spiller.getHp()+"\n Penge: "+spiller.getPenge()+"\n Viden: "+spiller.getViden()+"\n Klassetrin: "+spiller.getKlassetrin()+"\n Tid: "+spiller.getTid());
+        updateInfobox();
         updateEntireBoard();
 
         felt0 = (Button) findViewById(R.id.felt0);

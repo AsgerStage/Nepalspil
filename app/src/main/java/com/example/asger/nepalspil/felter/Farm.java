@@ -27,6 +27,10 @@ import static com.example.asger.nepalspil.activities.MainActivity.spiller;
  */
 
 public class Farm extends AppCompatActivity {
+    TextView textpenge;
+    TextView textviden;
+    TextView textmad;
+
 
     @Override
     public void onBackPressed() {
@@ -52,14 +56,17 @@ public class Farm extends AppCompatActivity {
         ImageView back = (ImageView) findViewById(R.id.backButton);
         ImageView helpfield = (ImageView) findViewById(R.id.farmHelp);
         final TextView money = (TextView) findViewById(R.id.scrollmoney);
-
+        textpenge = (TextView) findViewById(R.id.textpenge);
+        textviden = (TextView) findViewById(R.id.textviden);
+        textmad = (TextView) findViewById(R.id.textmad);
+        updateText();
 
         Typeface face;
         face = Typeface.createFromAsset(getAssets(), "fonts/Mathlete-Bulky.otf");
         fieldinfo.setTypeface(face);
 
         fieldinfo.setText("Velkommen til rismarken.");
-        playerinfo.setText("Navn: " + spiller.getNavn() + "\n mad: " + spiller.getHp() + "\n Penge: " + spiller.getPenge() + "\n Viden: " + spiller.getViden() + "\n Klassetrin: " + spiller.getKlassetrin() + "\n Tid: " + spiller.getTid());
+       playerinfo.setText("Tid: " + spiller.getTid());
 
         helpfield.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -75,7 +82,8 @@ public class Farm extends AppCompatActivity {
                     work();
                     money.setText("+5 kr");
                     money.startAnimation(animation);
-                    playerinfo.setText(updateInfo());
+                   playerinfo.setText(updateInfo());
+                    updateText();
 
                     if (mp.isPlaying()) {
                         mp.stop();
@@ -120,8 +128,12 @@ public class Farm extends AppCompatActivity {
 
     public String updateInfo() {
         SpillePlade.updateInfobox();
-        return "Navn: " + spiller.getNavn() + "\n mad: " + spiller.getHp() + "\n Penge: " + spiller.getPenge() + "\n Viden: " + spiller.getViden() + "\n Klassetrin: " + spiller.getKlassetrin() + "\n Tid: " + spiller.getTid();
+        return "Tid: " + spiller.getTid();
     }
 
-
+    public  void updateText() {
+        textpenge.setText(String.valueOf(spiller.getPenge()));
+        textviden.setText(String.valueOf(spiller.getViden()));
+        textmad.setText(String.valueOf(spiller.getHp()));
+    }
 }

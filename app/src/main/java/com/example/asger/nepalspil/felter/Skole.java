@@ -36,11 +36,7 @@ public class Skole extends AppCompatActivity {
     static TextView textpenge;
     static TextView textviden;
     static TextView textmad;
-    /**
-     * ATTENTION: This was auto-generated to implement the App Indexing API.
-     * See https://g.co/AppIndexing/AndroidStudio for more information.
-     */
-    private GoogleApiClient client;
+    static TextView playerInfo;
 
     @Override
     public void onBackPressed() {
@@ -49,7 +45,7 @@ public class Skole extends AppCompatActivity {
     }
 
     TextView schoolText;
-    TextView playerInfo;
+
     AlertDialog.Builder dialog;
 
     @Override
@@ -66,7 +62,7 @@ public class Skole extends AppCompatActivity {
 
         final MediaPlayer mp = MediaPlayer.create(this, R.raw.cash);
         final TextView schoolText = (TextView) findViewById(R.id.schoolText);
-       // final TextView playerInfo = (TextView) findViewById(R.id.schoolPlayerInfo);
+        playerInfo = (TextView) findViewById(R.id.schoolPlayerInfo);
         final TextView klassetrin = (TextView) findViewById(R.id.klassetrin);
         Button bSpis = (Button) findViewById(R.id.spis);
         Button bStuder = (Button) findViewById(R.id.Studer);
@@ -84,7 +80,7 @@ public class Skole extends AppCompatActivity {
 
         dialog = new AlertDialog.Builder(Skole.this);
         schoolText.setText("Velkommen til Skolen, her kan du spise, studere og tage din eksamen når tiden er.");
-      //  playerInfo.setText("Navn: " + spiller.getNavn() + "\n mad: " + spiller.getHp() + "\n Penge: " + spiller.getPenge() + "\n Viden: " + spiller.getViden() + "\n Klassetrin: " + spiller.getKlassetrin() + "\n Tid: " + spiller.getTid());
+        playerInfo.setText("Tid: " + spiller.getTid());
         klassetrin.setText("Du går i " + spiller.getKlassetrin() + ". klasse.");
         if (spiller.getKlassetrin()>=12){
             bEksamen.setVisibility(View.INVISIBLE);
@@ -111,7 +107,7 @@ public class Skole extends AppCompatActivity {
                     mad.startAnimation(animationfood);
                     spis();
                     schoolText.setText("Mmm! Du har spist skolemad.");
-                    //playerInfo.setText(updateInfo());
+                    playerInfo.setText(updateInfo());
                     if (mp.isPlaying()) {
                         mp.stop();
                     }
@@ -165,9 +161,11 @@ public class Skole extends AppCompatActivity {
                     } else if (thisStudy == 2) {
                         Toast.makeText(Skole.this, "Du forstod ikke alt undervisningen, tag i lektiehjælpen for at forstå det", Toast.LENGTH_SHORT).show();
                         spiller.study(1, 0);
+                        updateText();
                     } else if (thisStudy == 3) {
                         Toast.makeText(Skole.this, "Du forstod ingenting af denne lektion", Toast.LENGTH_SHORT).show();
                         spiller.study(1, 0);
+                        updateText();
                     }
                 } else {
 
@@ -211,9 +209,7 @@ public class Skole extends AppCompatActivity {
         });
 
 
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
-        client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
+
     }
 
     //public static int vidensKrav = 10 * spiller.getKlassetrin();
@@ -264,11 +260,11 @@ public class Skole extends AppCompatActivity {
             return false;
     }
 
-  /*  public static String updateInfo() {
+    public static String updateInfo() {
         SpillePlade.updateInfobox();
-        return "Navn: " + spiller.getNavn() + "\n mad: " + spiller.getHp() + "\n Penge: " + spiller.getPenge() + "\n Viden: " + spiller.getViden() + "\n Klassetrin: " + spiller.getKlassetrin() + "\n Tid: " + spiller.getTid();
+        return "Tid: " + spiller.getTid();
 
-    }*/
+    }
 
 
     public static int vidensKrav() {
@@ -313,6 +309,7 @@ public class Skole extends AppCompatActivity {
         textpenge.setText(String.valueOf(spiller.getPenge()));
         textviden.setText(String.valueOf(spiller.getViden()));
         textmad.setText(String.valueOf(spiller.getHp()));
+        playerInfo.setText("Tid: " + spiller.getTid());
     }
 
 

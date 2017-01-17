@@ -26,12 +26,9 @@ import static com.example.asger.nepalspil.activities.MainActivity.spiller;
  */
 
 public class Butikken extends AppCompatActivity {
-    /**
-     * ATTENTION: This was auto-generated to implement the App Indexing API.
-     * See https://g.co/AppIndexing/AndroidStudio for more information.
-     */
-    private GoogleApiClient client;
-
+  TextView textpenge;
+    TextView textviden;
+    TextView textmad;
     @Override
     public void onBackPressed() {
         SpillePlade.updateEntireBoard();
@@ -52,9 +49,13 @@ public class Butikken extends AppCompatActivity {
         ImageView helpField = (ImageView) findViewById(R.id.tbHelp);
         final Button buy = (Button) findViewById(R.id.tbBuy);
         ImageView back = (ImageView) findViewById(R.id.tbBack);
+        textpenge = (TextView) findViewById(R.id.textpenge);
+        textviden = (TextView) findViewById(R.id.textviden);
+        textmad = (TextView) findViewById(R.id.textmad);
+        updateText();
 
         fieldinfo.setText("Velkommen til butikken! her kan du købe skoleudstyr som gør det nemmere at lære i skolen");
-        playerinfo.setText("Navn: " + spiller.getNavn() + "\n mad: " + spiller.getHp() + "\n Penge: " + spiller.getPenge() + "\n Viden: " + spiller.getViden() + "\n Klassetrin: " + spiller.getKlassetrin() + "\n Tid: " + spiller.getTid());
+        playerinfo.setText("");
 
         switch (spiller.getLearningAmp()) {
             case 0:
@@ -144,9 +145,7 @@ public class Butikken extends AppCompatActivity {
                 finish();
             }
         });
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
-        client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
+
     }
 
     private void buy() {
@@ -168,42 +167,13 @@ public class Butikken extends AppCompatActivity {
 
     public String updateInfo() {
         SpillePlade.updateInfobox();
-        return "Navn: " + spiller.getNavn() + "\n mad: " + spiller.getHp() + "\n Penge: " + spiller.getPenge() + "\n Viden: " + spiller.getViden() + "\n Klassetrin: " + spiller.getKlassetrin() + "\n Tid: " + spiller.getTid();
+        //Har ingen funktion i butikken
+        return "";
     }
 
-    /**
-     * ATTENTION: This was auto-generated to implement the App Indexing API.
-     * See https://g.co/AppIndexing/AndroidStudio for more information.
-     */
-    public Action getIndexApiAction() {
-        Thing object = new Thing.Builder()
-                .setName("butik Page") // TODO: Define a title for the content shown.
-                // TODO: Make sure this auto-generated URL is correct.
-                .setUrl(Uri.parse("http://[ENTER-YOUR-URL-HERE]"))
-                .build();
-        return new Action.Builder(Action.TYPE_VIEW)
-                .setObject(object)
-                .setActionStatus(Action.STATUS_TYPE_COMPLETED)
-                .build();
-    }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
-        client.connect();
-        AppIndex.AppIndexApi.start(client, getIndexApiAction());
-    }
-
-    @Override
-    public void onStop() {
-        super.onStop();
-
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
-        AppIndex.AppIndexApi.end(client, getIndexApiAction());
-        client.disconnect();
+    public  void updateText() {
+        textpenge.setText(String.valueOf(spiller.getPenge()));
+        textviden.setText(String.valueOf(spiller.getViden()));
+        textmad.setText(String.valueOf(spiller.getHp()));
     }
 }
