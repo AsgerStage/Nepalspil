@@ -21,12 +21,8 @@ import com.google.android.gms.common.api.GoogleApiClient;
 
 import static com.example.asger.nepalspil.activities.MainActivity.spiller;
 
-/**
- * Created by Bruger on 03-01-2017.
- */
-
 public class Butikken extends AppCompatActivity {
-  TextView textpenge;
+    TextView textpenge;
     TextView textviden;
     TextView textmad;
 
@@ -37,7 +33,7 @@ public class Butikken extends AppCompatActivity {
     }
 
     AlertDialog.Builder dialog;
-    ViewPager viewPager;
+
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,7 +41,6 @@ public class Butikken extends AppCompatActivity {
 
         dialog = new AlertDialog.Builder(Butikken.this);
         final TextView fieldinfo = (TextView) findViewById(R.id.tbInfo);
-       // final TextView playerinfo = (TextView) findViewById(R.id.tbStats);
         final MediaPlayer mp = MediaPlayer.create(this, R.raw.cash);
         ImageView helpField = (ImageView) findViewById(R.id.tbHelp);
         final Button buy = (Button) findViewById(R.id.tbBuy);
@@ -56,7 +51,7 @@ public class Butikken extends AppCompatActivity {
         updateText();
 
         fieldinfo.setText("I butikken kan du købe skoleting, som gør det lettere at få viden.");
-       // playerinfo.setText("");
+
 
         switch (spiller.getLearningAmp()) {
             case 0:
@@ -85,10 +80,9 @@ public class Butikken extends AppCompatActivity {
         buy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (spiller.getLearningAmp()==2) {
+                if (spiller.getLearningAmp() == 2) {
                     if (spiller.getPenge() >= 700) {
                         buy();
-                      //  playerinfo.setText(updateInfo());
                         AlertDialog.Builder dialog = new AlertDialog.Builder(Butikken.this);
                         dialog.setTitle("Lommeregner købt");
                         dialog.setMessage("Du har købt en ny lommeregner for 700kr.");
@@ -101,10 +95,10 @@ public class Butikken extends AppCompatActivity {
                         dialog.show();
                     }
                 }
-                if (spiller.getLearningAmp()==1) {
+                if (spiller.getLearningAmp() == 1) {
                     if (spiller.getPenge() >= 300) {
                         buy();
-                       // playerinfo.setText(updateInfo());
+                        // playerinfo.setText(updateInfo());
                         AlertDialog.Builder dialog = new AlertDialog.Builder(Butikken.this);
                         dialog.setTitle("Blyanter købt");
                         dialog.setMessage("Du har købt nye blyanter for 300kr.");
@@ -120,7 +114,6 @@ public class Butikken extends AppCompatActivity {
                 if (spiller.getLearningAmp() == 0) {
                     if (spiller.getPenge() >= 150) {
                         buy();
-                       // playerinfo.setText(updateInfo());
                         AlertDialog.Builder dialog = new AlertDialog.Builder(Butikken.this);
                         dialog.setTitle("Papir købt");
                         dialog.setMessage("Du har købt en blok papir for 150kr.");
@@ -148,18 +141,18 @@ public class Butikken extends AppCompatActivity {
     }
 
     private void buy() {
-        switch (spiller.getLearningAmp()){
+        switch (spiller.getLearningAmp()) {
             case 0:
                 spiller.setLearningAmp(1);
-                spiller.setPenge(spiller.getPenge()-150);
+                spiller.setPenge(spiller.getPenge() - 150);
                 break;
             case 1:
                 spiller.setLearningAmp(2);
-                spiller.setPenge(spiller.getPenge()-300);
+                spiller.setPenge(spiller.getPenge() - 300);
                 break;
             case 2:
                 spiller.setLearningAmp(3);
-                spiller.setPenge(spiller.getPenge()-700);
+                spiller.setPenge(spiller.getPenge() - 700);
                 break;
         }
     }
@@ -170,7 +163,7 @@ public class Butikken extends AppCompatActivity {
         return "";
     }
 
-    public  void updateText() {
+    public void updateText() {
         textpenge.setText(String.valueOf(spiller.getPenge()));
         textviden.setText(String.valueOf(spiller.getViden()));
         textmad.setText(String.valueOf(spiller.getHp()));

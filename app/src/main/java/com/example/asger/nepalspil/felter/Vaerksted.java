@@ -28,27 +28,28 @@ import me.relex.circleindicator.CircleIndicator;
 
 import static com.example.asger.nepalspil.activities.MainActivity.spiller;
 
-/**
- * Created by Bruger on 03-01-2017.
- */
 
 public class Vaerksted extends AppCompatActivity {
     TextView textpenge;
     TextView textviden;
     TextView textmad;
     TextView playerinfo;
+
     //Working
-    final int MONEY_PER_CLICK =10;
-    final int TIME_PER_CLICK =2;
+    final int MONEY_PER_CLICK = 10;
+    final int TIME_PER_CLICK = 2;
+
     @Override
     public void onBackPressed() {
         SpillePlade.updateEntireBoard();
         finish();
     }
+
     private Animation animation;
     AlertDialog.Builder dialog;
     ViewPager viewPager;
     TextView viewPagerText;
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.vaerksted);
@@ -58,8 +59,6 @@ public class Vaerksted extends AppCompatActivity {
         ImagePagerAdapter adapter = new ImagePagerAdapter();
         viewPager.setAdapter(adapter);
 
-
-        //final TextView fieldinfo = (TextView) findViewById(R.id.fieldinfo);
         playerinfo = (TextView) findViewById(R.id.playerinfo);
         final MediaPlayer mp = MediaPlayer.create(this, R.raw.cash);
         ImageView helpField = (ImageView) findViewById(R.id.vaerkstedHelp);
@@ -75,35 +74,33 @@ public class Vaerksted extends AppCompatActivity {
         animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.plusmoneyworkshop);
         final TextView money = (TextView) findViewById(R.id.money);
         updateInfo();
-viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener(){
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
 
-    @Override
-    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
-    }
+            }
 
-    @Override
-    public void onPageSelected(int position) {
-switch(position){
-    case 0:
-        viewPagerText.setText("Cykel: 200kr");
-        break;
-    case 1:
-        viewPagerText.setText("Pænt hurtig cykel: 500kr");
-        break;
-    case 2:
-        viewPagerText.setText("Racer cykel: 1000kr");
-}
-    }
+            @Override
+            public void onPageSelected(int position) {
+                switch (position) {
+                    case 0:
+                        viewPagerText.setText("Cykel: 200kr");
+                        break;
+                    case 1:
+                        viewPagerText.setText("Pænt hurtig cykel: 500kr");
+                        break;
+                    case 2:
+                        viewPagerText.setText("Racer cykel: 1000kr");
+                }
+            }
 
-    @Override
-    public void onPageScrollStateChanged(int state) {
+            @Override
+            public void onPageScrollStateChanged(int state) {
 
-    }
-});
+            }
+        });
 
-
-//        fieldinfo.setText("På værkstedet kan du købe forskellige cykler, så du hurtigere kan komme omkring. Med en cykel er det lettere at få mad og viden nok.");
 
         helpField.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -118,9 +115,9 @@ switch(position){
 
             public void onClick(View v) {
                 v.startAnimation(AnimationUtils.loadAnimation(Vaerksted.this, R.anim.image_click));
-                if (spiller.getTid() >= TIME_PER_CLICK && spiller.getKlassetrin()>=3) {
-                    spiller.work(TIME_PER_CLICK,MONEY_PER_CLICK);
-                    money.setText("+"+MONEY_PER_CLICK+" kr");
+                if (spiller.getTid() >= TIME_PER_CLICK && spiller.getKlassetrin() >= 3) {
+                    spiller.work(TIME_PER_CLICK, MONEY_PER_CLICK);
+                    money.setText("+" + MONEY_PER_CLICK + " kr");
                     money.startAnimation(animation);
 
                     if (mp.isPlaying()) {
@@ -146,8 +143,7 @@ switch(position){
                     dialog.setMessage("Du har ikke nok tid til at arbejde");
                     dialog.show();
 
-                }
-                else if (spiller.getKlassetrin()<3){
+                } else if (spiller.getKlassetrin() < 3) {
                     dialog.setTitle("Du er ikke klog nok");
                     dialog.setMessage("Du skal gå i mindst 3. klasse for at arbejde her");
                     dialog.show();
@@ -215,42 +211,44 @@ switch(position){
     }
 
 
-
     public void buy() {
 
         switch (viewPager.getCurrentItem()) {
             case 0:
-                if(spiller.getmoveSpeed()<2){
-                if (spiller.getPenge() >= 200) {
-                    spiller.setPenge(spiller.getPenge() - 200);
-                    spiller.setmoveSpeed(2);
-                    Toast.makeText(Vaerksted.this, "Du har købt en cykel", Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(Vaerksted.this, "Du har ikke råd til en cykel, den koster 200", Toast.LENGTH_SHORT).show();
-                }}
-                else Toast.makeText(Vaerksted.this, "Du har allerede en bedre cykel", Toast.LENGTH_SHORT).show();
+                if (spiller.getmoveSpeed() < 2) {
+                    if (spiller.getPenge() >= 200) {
+                        spiller.setPenge(spiller.getPenge() - 200);
+                        spiller.setmoveSpeed(2);
+                        Toast.makeText(Vaerksted.this, "Du har købt en cykel", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(Vaerksted.this, "Du har ikke råd til en cykel, den koster 200", Toast.LENGTH_SHORT).show();
+                    }
+                } else
+                    Toast.makeText(Vaerksted.this, "Du har allerede en bedre cykel", Toast.LENGTH_SHORT).show();
                 break;
             case 1:
-                if(spiller.getmoveSpeed()<3){
-                if (spiller.getPenge() >= 500) {
-                    spiller.setPenge(spiller.getPenge() - 500);
-                    spiller.setmoveSpeed(3);
-                    Toast.makeText(Vaerksted.this, "Du har købt en pænt hurtig cykel", Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(Vaerksted.this, "Du har ikke råd til den pænt hurtige cykel, den koster 500kr", Toast.LENGTH_SHORT).show();
-                }}
-                else Toast.makeText(Vaerksted.this, "Du har allerede en bedre cykel", Toast.LENGTH_SHORT).show();
+                if (spiller.getmoveSpeed() < 3) {
+                    if (spiller.getPenge() >= 500) {
+                        spiller.setPenge(spiller.getPenge() - 500);
+                        spiller.setmoveSpeed(3);
+                        Toast.makeText(Vaerksted.this, "Du har købt en pænt hurtig cykel", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(Vaerksted.this, "Du har ikke råd til den pænt hurtige cykel, den koster 500kr", Toast.LENGTH_SHORT).show();
+                    }
+                } else
+                    Toast.makeText(Vaerksted.this, "Du har allerede en bedre cykel", Toast.LENGTH_SHORT).show();
                 break;
             case 2:
-                if (spiller.getmoveSpeed()<4){
-                if (spiller.getPenge() >= 1000) {
-                    spiller.setPenge(spiller.getPenge() - 1000);
-                    spiller.setmoveSpeed(4);
-                    Toast.makeText(Vaerksted.this, "Du har købt en racer cykel", Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(Vaerksted.this, "Du har ikke råd til racer cyklen, den koster 1000kr", Toast.LENGTH_SHORT).show();
-                }}
-                else Toast.makeText(Vaerksted.this, "Du har allerede en bedre cykel", Toast.LENGTH_SHORT).show();
+                if (spiller.getmoveSpeed() < 4) {
+                    if (spiller.getPenge() >= 1000) {
+                        spiller.setPenge(spiller.getPenge() - 1000);
+                        spiller.setmoveSpeed(4);
+                        Toast.makeText(Vaerksted.this, "Du har købt en racer cykel", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(Vaerksted.this, "Du har ikke råd til racer cyklen, den koster 1000kr", Toast.LENGTH_SHORT).show();
+                    }
+                } else
+                    Toast.makeText(Vaerksted.this, "Du har allerede en bedre cykel", Toast.LENGTH_SHORT).show();
                 break;
 
         }
@@ -261,7 +259,8 @@ switch(position){
         updateText();
         playerinfo.setText("Tid: " + spiller.getTid());
     }
-    public  void updateText() {
+
+    public void updateText() {
         textpenge.setText(String.valueOf(spiller.getPenge()));
         textviden.setText(String.valueOf(spiller.getViden()));
         textmad.setText(String.valueOf(spiller.getHp()));

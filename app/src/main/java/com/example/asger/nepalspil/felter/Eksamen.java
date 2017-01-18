@@ -19,10 +19,6 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
-/**
- * Created by Senad on 1/12/2017.
- */
-
 public class Eksamen extends AppCompatActivity {
     TextView question;
     Button answer1;
@@ -57,8 +53,7 @@ public class Eksamen extends AppCompatActivity {
         answer1 = (Button) findViewById(R.id.answer1Button);
         answer2 = (Button) findViewById(R.id.answer2Button);
         answer3 = (Button) findViewById(R.id.answer3Button);
-       // container = (FrameLayout) findViewById(R.id.container);
-       dialog = new AlertDialog.Builder(Eksamen.this);
+        dialog = new AlertDialog.Builder(Eksamen.this);
 
         Typeface face;
         face = Typeface.createFromAsset(getAssets(), "fonts/EraserDust.ttf");
@@ -238,6 +233,7 @@ public class Eksamen extends AppCompatActivity {
             }
         });
     }
+
     public void setSecondAsGameWinning() {
         answer1.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -252,7 +248,7 @@ public class Eksamen extends AppCompatActivity {
                         .infinite();
                 spiller.setKlassetrin(spiller.getKlassetrin() + 1);
 
-                dialog.setMessage("Godt klaret, du har vundet spillet på "+spiller.getRunde()+" dage! Du kan fortsætte med at spille videre hvis du vil eller gå til start menuen og starte forfra. (Eller lægge spiller fra dig)")
+                dialog.setMessage("Godt klaret, du har vundet spillet på " + spiller.getRunde() + " dage! Du kan fortsætte med at spille videre hvis du vil eller gå til start menuen og starte forfra. (Eller lægge spiller fra dig)")
                         .setCancelable(false)
                         .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
@@ -270,9 +266,6 @@ public class Eksamen extends AppCompatActivity {
                 wrong();
             }
         });
-    }
-    public void winGame(){
-        dialog.setMessage("");
     }
 
 }

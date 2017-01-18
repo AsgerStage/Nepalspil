@@ -1,9 +1,5 @@
 package com.example.asger.nepalspil.activities;
 
-/**
- * Created by PeterPc on 10-01-2017.
- */
-
 import android.content.Context;
 import android.media.MediaPlayer;
 import android.util.Log;
@@ -113,11 +109,11 @@ public class MusicManager {
     }
 
     public static void resume() {
-        if(mp != null){
-        if (mp.isPlaying() == false) {
-            mp.start();
+        if (mp != null) {
+            if (mp.isPlaying() == false) {
+                mp.start();
 
-        }
+            }
         }
     }
 }

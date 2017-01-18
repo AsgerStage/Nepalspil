@@ -19,25 +19,24 @@ import java.io.IOException;
 
 import static com.example.asger.nepalspil.activities.MainActivity.spiller;
 
-/**
- * Created by Bruger on 03-01-2017.
- */
-
 public class Boghandel extends AppCompatActivity {
     TextView textpenge;
     TextView textviden;
     TextView textmad;
     TextView playerInfo;
-    final int MONEY_PER_CLICK =40;
-    final int TIME_PER_CLICK =2;
+    final int MONEY_PER_CLICK = 40;
+    final int TIME_PER_CLICK = 2;
+
     @Override
     public void onBackPressed() {
         SpillePlade.updateEntireBoard();
         finish();
     }
+
     private Animation animation;
 
     AlertDialog.Builder dialog;
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.boghandel);
@@ -64,7 +63,7 @@ public class Boghandel extends AppCompatActivity {
             public void onClick(View v) {
                 v.startAnimation(AnimationUtils.loadAnimation(Boghandel.this, R.anim.image_click));
                 if (spiller.getTid() >= TIME_PER_CLICK && spiller.getKlassetrin() >= 6) {
-                    money.setText("+"+ MONEY_PER_CLICK +" kr");
+                    money.setText("+" + MONEY_PER_CLICK + " kr");
                     money.startAnimation(animation);
                     spiller.work(TIME_PER_CLICK, MONEY_PER_CLICK);
 
@@ -107,56 +106,31 @@ public class Boghandel extends AppCompatActivity {
                 dialog.setMessage("I boghandlen kan man købe skolebøger, som hjælper en med at få viden, hvis man har penge nok. Du kan også arbejde i boghandlen fra 6. klasse.");
                 dialog.show();
             }
-            });
+        });
 
         buyBook.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 v.startAnimation(AnimationUtils.loadAnimation(Boghandel.this, R.anim.image_click));
-               if(spiller.getPenge()>=30&&spiller.getLastBookBought()+5<=spiller.getRunde()){
+                if (spiller.getPenge() >= 30 && spiller.getLastBookBought() + 5 <= spiller.getRunde()) {
 
-                   spiller.setViden(spiller.getViden() + 10);
-                   spiller.setPenge(spiller.getPenge()-30);
-                   dialog.setTitle("Bog købt");
-                   dialog.setMessage("Du har købt en ny bog for 30 penge. +10 viden");
-                   dialog.show();
-                   spiller.setLastBookBought(spiller.getRunde());
-                   updateInfo();
-               }
-
-                else if(spiller.getPenge()<30){
-                   dialog.setTitle("Du mangler penge!");
-                   dialog.setMessage("Bogen koster 30 kroner, men du har kun "+spiller.getPenge());
-                   dialog.show();
-               }
-                else if (!(spiller.getLastBookBought()+5<spiller.getRunde())){
-                   dialog.setTitle("Boghandlen har ikke den bog du vil have");
-                   dialog.setMessage("Kig tilbage på et andet tidspunkt");
-                   dialog.show();
-               }
-            }
-               /* if (spiller.getPenge() >= 100 && (spiller.getRunde() % 5 == 0)) {
-                    spiller.setPenge(spiller.getPenge() - 100);
-                    AlertDialog.Builder dialog = new AlertDialog.Builder(Boghandel.this);
+                    spiller.setViden(spiller.getViden() + 10);
+                    spiller.setPenge(spiller.getPenge() - 30);
                     dialog.setTitle("Bog købt");
-                    dialog.setMessage("Du har købt en ny bog for 100 penge. +20 viden");
+                    dialog.setMessage("Du har købt en ny bog for 30 penge. +10 viden");
                     dialog.show();
-                    spiller.setViden(spiller.getViden() + 20);
-                    playerInfo.setText(updateInfo());
-
-                } else if (spiller.getRunde() % 5 != 0) {
-                    AlertDialog.Builder dialog = new AlertDialog.Builder(Boghandel.this);
-                    dialog.setTitle("Ikke på lager");
-                    dialog.setMessage("Øv! Bogen er ikke på lager i dag. Kom tilbage en anden dag.");
+                    spiller.setLastBookBought(spiller.getRunde());
+                    updateInfo();
+                } else if (spiller.getPenge() < 30) {
+                    dialog.setTitle("Du mangler penge!");
+                    dialog.setMessage("Bogen koster 30 kroner, men du har kun " + spiller.getPenge());
                     dialog.show();
-
-                } else if (spiller.getPenge() < 100) {
-                    AlertDialog.Builder dialog = new AlertDialog.Builder(Boghandel.this);
-                    dialog.setTitle("Ikke nok penge!");
-                    dialog.setMessage("Du har ikke penge nok til at købe en ny bog. Tjen penge ved at arbejde.");
+                } else if (!(spiller.getLastBookBought() + 5 < spiller.getRunde())) {
+                    dialog.setTitle("Boghandlen har ikke den bog du vil have");
+                    dialog.setMessage("Kig tilbage på et andet tidspunkt");
                     dialog.show();
                 }
-            }*/
+            }
         });
 
         back.setOnClickListener(new View.OnClickListener() {
@@ -171,13 +145,12 @@ public class Boghandel extends AppCompatActivity {
     }
 
 
-
-
     public void updateInfo() {
         SpillePlade.updateInfobox();
         playerInfo.setText("Tid: " + spiller.getTid());
         updateText();
     }
+
     public void updateText() {
         textpenge.setText(String.valueOf(spiller.getPenge()));
         textviden.setText(String.valueOf(spiller.getViden()));

@@ -23,10 +23,6 @@ import com.example.asger.nepalspil.models.Spiller;
 
 import io.fabric.sdk.android.Fabric;
 
-/**
- * Created by Peter on 22-11-2016.
- */
-
 public class MainActivity extends AppCompatActivity {
     public static Spiller spiller;
     boolean continueBGMusic;
@@ -35,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
     SharedPreferences prefs;
 
     AlertDialog.Builder dialog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -105,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 v.startAnimation(AnimationUtils.loadAnimation(MainActivity.this, R.anim.image_click));
 
-                spiller = new Spiller(prefs.getBoolean("Sex", true), prefs.getInt("Books", 0), prefs.getInt("Position", 0), prefs.getString("Navn", null), prefs.getInt("Penge", 0), prefs.getInt("Hp", 0), prefs.getInt("Viden", 0), prefs.getInt("Klassetrin", 0), prefs.getInt("Tid", 0), prefs.getInt("Runde", 0), prefs.getInt("Movespeed", 1),prefs.getInt("LastBookBought",0));
+                spiller = new Spiller(prefs.getBoolean("Sex", true), prefs.getInt("Books", 0), prefs.getInt("Position", 0), prefs.getString("Navn", null), prefs.getInt("Penge", 0), prefs.getInt("Hp", 0), prefs.getInt("Viden", 0), prefs.getInt("Klassetrin", 0), prefs.getInt("Tid", 0), prefs.getInt("Runde", 0), prefs.getInt("Movespeed", 1), prefs.getInt("LastBookBought", 0));
                 if (spiller.getSex() == true) {
                     checkmarkasha.setVisibility(View.INVISIBLE);
                     checkmarkkaka.setVisibility(View.VISIBLE);

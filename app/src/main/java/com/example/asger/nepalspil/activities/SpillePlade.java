@@ -33,10 +33,6 @@ import java.util.concurrent.ThreadLocalRandom;
 
 import static com.example.asger.nepalspil.activities.MainActivity.spiller;
 
-/**
- * Created by Nicki on 22-11-2016.
- */
-
 public class SpillePlade extends AppCompatActivity {
     static TextView infobox;
     static TextView textpenge;
@@ -66,16 +62,16 @@ public class SpillePlade extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         new AlertDialog.Builder(this)
-            .setMessage("Er du sikker på du vil afslutte spillet?")
-    .setCancelable(false)
-    .setPositiveButton("Ja", new DialogInterface.OnClickListener() {
-        public void onClick(DialogInterface dialog, int id) {
-            SpillePlade.this.finish();
-        }
-    })
-            .setNegativeButton("Nej", null)
-    .show();
-}
+                .setMessage("Er du sikker på du vil afslutte spillet?")
+                .setCancelable(false)
+                .setPositiveButton("Ja", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        SpillePlade.this.finish();
+                    }
+                })
+                .setNegativeButton("Nej", null)
+                .show();
+    }
 
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -90,7 +86,7 @@ public class SpillePlade extends AppCompatActivity {
             new AlertDialog.Builder(this)
                     .setMessage("Hej! Hjælp os med at få en uddannelse. Vi skal have mad, viden og penge, så vi kan købe bøger, blyanter og en cykel og bestå de årlige eksamener. \n \n Hvis vi når 10. klasse, kan vi tag en uddannelse og få et godt job, og du har vundet spillet.")
                     .setCancelable(false)
-                    .setPositiveButton("OK", null )
+                    .setPositiveButton("OK", null)
                     .show();
             Player = (ImageView) findViewById(R.id.kaka);
             unusedPlayer = (ImageView) findViewById(R.id.asha);
@@ -99,7 +95,7 @@ public class SpillePlade extends AppCompatActivity {
             new AlertDialog.Builder(this)
                     .setMessage("Hej! Hjælp os med at få en uddannelse. Vi skal have mad, viden og penge, så vi kan købe bøger, blyanter og en cykel og bestå de årlige eksamener. \n \n Hvis vi når 10. klasse, kan vi tag en uddannelse og få et godt job, og du har vundet spillet.")
                     .setCancelable(false)
-                    .setPositiveButton("OK", null )
+                    .setPositiveButton("OK", null)
                     .show();
             Player = (ImageView) findViewById(R.id.asha);
             unusedPlayer = (ImageView) findViewById(R.id.kaka);
@@ -261,11 +257,9 @@ public class SpillePlade extends AppCompatActivity {
     }
 
 
-
-
-   /* public static void updateInfobox() {
-        infobox.setText("Navn: " + spiller.getNavn() + "\n mad: " + spiller.getHp() + "\n Penge: " + spiller.getPenge() + "\n Viden: " + spiller.getViden() + "\n Klassetrin: " + spiller.getKlassetrin() + "\n Tid: " + spiller.getTid() + "\n Dag: " + spiller.getRunde());
-    }*/
+    /* public static void updateInfobox() {
+         infobox.setText("Navn: " + spiller.getNavn() + "\n mad: " + spiller.getHp() + "\n Penge: " + spiller.getPenge() + "\n Viden: " + spiller.getViden() + "\n Klassetrin: " + spiller.getKlassetrin() + "\n Tid: " + spiller.getTid() + "\n Dag: " + spiller.getRunde());
+     }*/
     public static void updateInfobox() {
         infobox.setText("Uge: " + spiller.getRunde());
     }
@@ -334,26 +328,66 @@ public class SpillePlade extends AppCompatActivity {
 
     static public void updateTimer() {
         switch (spiller.getTid()) {
-            case 0: ur.setImageResource(R.drawable.ur0); break;
-            case 1: ur.setImageResource(R.drawable.ur1); break;
-            case 2: ur.setImageResource(R.drawable.ur2); break;
-            case 3: ur.setImageResource(R.drawable.ur3); break;
-            case 4: ur.setImageResource(R.drawable.ur4); break;
-            case 5: ur.setImageResource(R.drawable.ur5); break;
-            case 6: ur.setImageResource(R.drawable.ur6); break;
-            case 7: ur.setImageResource(R.drawable.ur7); break;
-            case 8: ur.setImageResource(R.drawable.ur8); break;
-            case 9: ur.setImageResource(R.drawable.ur9); break;
-            case 10: ur.setImageResource(R.drawable.ur10); break;
-            case 11: ur.setImageResource(R.drawable.ur11); break;
-            case 12: ur.setImageResource(R.drawable.ur12); break;
-            case 13: ur.setImageResource(R.drawable.ur13); break;
-            case 14: ur.setImageResource(R.drawable.ur14); break;
-            case 15: ur.setImageResource(R.drawable.ur15); break;
-            case 16: ur.setImageResource(R.drawable.ur16); break;
-            case 17: ur.setImageResource(R.drawable.ur17); break;
-            case 18: ur.setImageResource(R.drawable.ur18); break;
-            case 19: ur.setImageResource(R.drawable.ur19); break;
+            case 0:
+                ur.setImageResource(R.drawable.ur0);
+                break;
+            case 1:
+                ur.setImageResource(R.drawable.ur1);
+                break;
+            case 2:
+                ur.setImageResource(R.drawable.ur2);
+                break;
+            case 3:
+                ur.setImageResource(R.drawable.ur3);
+                break;
+            case 4:
+                ur.setImageResource(R.drawable.ur4);
+                break;
+            case 5:
+                ur.setImageResource(R.drawable.ur5);
+                break;
+            case 6:
+                ur.setImageResource(R.drawable.ur6);
+                break;
+            case 7:
+                ur.setImageResource(R.drawable.ur7);
+                break;
+            case 8:
+                ur.setImageResource(R.drawable.ur8);
+                break;
+            case 9:
+                ur.setImageResource(R.drawable.ur9);
+                break;
+            case 10:
+                ur.setImageResource(R.drawable.ur10);
+                break;
+            case 11:
+                ur.setImageResource(R.drawable.ur11);
+                break;
+            case 12:
+                ur.setImageResource(R.drawable.ur12);
+                break;
+            case 13:
+                ur.setImageResource(R.drawable.ur13);
+                break;
+            case 14:
+                ur.setImageResource(R.drawable.ur14);
+                break;
+            case 15:
+                ur.setImageResource(R.drawable.ur15);
+                break;
+            case 16:
+                ur.setImageResource(R.drawable.ur16);
+                break;
+            case 17:
+                ur.setImageResource(R.drawable.ur17);
+                break;
+            case 18:
+                ur.setImageResource(R.drawable.ur18);
+                break;
+            case 19:
+                ur.setImageResource(R.drawable.ur19);
+                break;
 
         }
 
@@ -392,7 +426,7 @@ public class SpillePlade extends AppCompatActivity {
         prefs.edit().putInt("Tid", spiller.getTid()).apply();
         prefs.edit().putInt("moveSpeed", spiller.getmoveSpeed()).apply();
         prefs.edit().putInt("Runde", spiller.getRunde()).apply();
-        prefs.edit().putInt("LastBookBought",spiller.getLastBookBought()).apply();
+        prefs.edit().putInt("LastBookBought", spiller.getLastBookBought()).apply();
     }
 
     public void MoveIcon() {
@@ -429,91 +463,91 @@ public class SpillePlade extends AppCompatActivity {
         }
 
         lastEvent = randomNum;
-switch(randomNum) {
-    case 1:
+        switch (randomNum) {
+            case 1:
 
-        dialog.setTitle("Du er blevet syg!");
-        dialog.setMessage("Du er blevet syg og har derfor halvt så meget tid i denne uge.");
-        dialog.show();
-        spiller.setTid(spiller.getTid() / 2);
-        Log.d("SpillePlade", "Random event 1 triggered");
-        break;
+                dialog.setTitle("Du er blevet syg!");
+                dialog.setMessage("Du er blevet syg og har derfor halvt så meget tid i denne uge.");
+                dialog.show();
+                spiller.setTid(spiller.getTid() / 2);
+                Log.d("SpillePlade", "Random event 1 triggered");
+                break;
 
-    case 2:
-        dialog.setTitle("Dine forældre har brug for penge");
-        dialog.setMessage("Dine forældre har brugt nogle af dine penge. -20kr");
-        dialog.show();
-        if (spiller.getPenge() >= 20) {
-            spiller.setPenge(spiller.getPenge() - 20);
-        } else spiller.setPenge(0);
-        Log.d("SpillePlade", "Random event 2 triggered");
-        break;
+            case 2:
+                dialog.setTitle("Dine forældre har brug for penge");
+                dialog.setMessage("Dine forældre har brugt nogle af dine penge. -20kr");
+                dialog.show();
+                if (spiller.getPenge() >= 20) {
+                    spiller.setPenge(spiller.getPenge() - 20);
+                } else spiller.setPenge(0);
+                Log.d("SpillePlade", "Random event 2 triggered");
+                break;
 
-    case 3:
-        dialog.setTitle("På vejen hjem faldt du og slog hovedet");
-        dialog.setMessage("Du har mistet viden. -10 viden");
-        dialog.show();
-        if (spiller.getViden() >= 10) {
-            spiller.setViden(spiller.getViden() - 10);
-        } else spiller.setViden(0);
-        Log.d("SpillePlade", "Random event 3 triggered");
-        break;
+            case 3:
+                dialog.setTitle("På vejen hjem faldt du og slog hovedet");
+                dialog.setMessage("Du har mistet viden. -10 viden");
+                dialog.show();
+                if (spiller.getViden() >= 10) {
+                    spiller.setViden(spiller.getViden() - 10);
+                } else spiller.setViden(0);
+                Log.d("SpillePlade", "Random event 3 triggered");
+                break;
 
-    case 4:
-        dialog.setTitle("Maden du har spiste var dårlig");
-        dialog.setMessage("Du er nu mere sulten. -30 mad");
-        dialog.show();
-        if (spiller.getHp() >= 30) {
-            spiller.setHp(spiller.getHp() - 30);
-        } else spiller.setHp(0);
-        Log.d("SpillePlade", "Random event 4 triggered");
-        break;
+            case 4:
+                dialog.setTitle("Maden du har spiste var dårlig");
+                dialog.setMessage("Du er nu mere sulten. -30 mad");
+                dialog.show();
+                if (spiller.getHp() >= 30) {
+                    spiller.setHp(spiller.getHp() - 30);
+                } else spiller.setHp(0);
+                Log.d("SpillePlade", "Random event 4 triggered");
+                break;
 
-    case 5:
-        dialog.setTitle("Vejret er dårligt");
-        dialog.setMessage("Det tordner og lyner og du bliver hjemme i denne uge.");
-        dialog.show();
-        spiller.setTid(0);
-        Log.d("SpillePlade", "Random event 5 triggered");
-        break;
+            case 5:
+                dialog.setTitle("Vejret er dårligt");
+                dialog.setMessage("Det tordner og lyner og du bliver hjemme i denne uge.");
+                dialog.show();
+                spiller.setTid(0);
+                Log.d("SpillePlade", "Random event 5 triggered");
+                break;
 
-    case 6:
-        dialog.setTitle("Du er blevet røvet");
-        dialog.setMessage("En tyv har taget alle dine penge -"+spiller.getPenge());
-        dialog.show();
-        spiller.setPenge(0);
-        Log.d("SpillePlade", "Random event 6 triggered");
-        break;
+            case 6:
+                dialog.setTitle("Du er blevet røvet");
+                dialog.setMessage("En tyv har taget alle dine penge -" + spiller.getPenge());
+                dialog.show();
+                spiller.setPenge(0);
+                Log.d("SpillePlade", "Random event 6 triggered");
+                break;
 
-    case 7:
-        dialog.setTitle("Du vågner op super frisk!");
-        dialog.setMessage("Du er frisk og springfyldt med energi, og har ekstra tid i denne uge. +3 tid");
-        dialog.show();
-        spiller.setTid(spiller.getTid() + 3);
-        Log.d("SpillePlade", "Random event 7 triggered");
-        break;
+            case 7:
+                dialog.setTitle("Du vågner op super frisk!");
+                dialog.setMessage("Du er frisk og springfyldt med energi, og har ekstra tid i denne uge. +3 tid");
+                dialog.show();
+                spiller.setTid(spiller.getTid() + 3);
+                Log.d("SpillePlade", "Random event 7 triggered");
+                break;
 
-    case 8:
-        Log.d("SpillePlade", "Random event 8 triggered (nothing)");
-        break;
+            case 8:
+                Log.d("SpillePlade", "Random event 8 triggered (nothing)");
+                break;
 
-    case 9:
-        Log.d("SpillePlade", "Random event 9 triggered (nothing)");
-        break;
+            case 9:
+                Log.d("SpillePlade", "Random event 9 triggered (nothing)");
+                break;
 
-    case 10:
-        Log.d("SpillePlade", "Random event 10 triggered (nothing)");
-        break;
+            case 10:
+                Log.d("SpillePlade", "Random event 10 triggered (nothing)");
+                break;
 
-    case 11:
-        Log.d("SpillePlade", "Random event 11 triggered (nothing)");
-        break;
+            case 11:
+                Log.d("SpillePlade", "Random event 11 triggered (nothing)");
+                break;
+        }
+
     }
 
-}
 
-
-    static public void updateEntireBoard(){
+    static public void updateEntireBoard() {
         SpillePlade.updateTextpenge();
         SpillePlade.updateTextmad();
         SpillePlade.updateTextviden();

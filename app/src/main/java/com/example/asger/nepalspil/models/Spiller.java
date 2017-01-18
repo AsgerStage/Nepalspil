@@ -2,9 +2,6 @@ package com.example.asger.nepalspil.models;
 
 import android.util.Log;
 
-/**
- * Created by Asger on 21-11-2016.
- */
 
 public class Spiller {
     public boolean sex;
@@ -56,7 +53,6 @@ public class Spiller {
     }
 
 
-
     public Spiller(Boolean sex, int books, int position, String navn, int penge, int hp, int viden, int klassetrin, int tid, int runde, int moveSpeed, int lastBookBought) {
         this.sex = sex;
         this.books = books;
@@ -69,7 +65,7 @@ public class Spiller {
         this.tid = tid;
         this.runde = runde;
         this.moveSpeed = moveSpeed;
-        this.lastBookBought=lastBookBought;
+        this.lastBookBought = lastBookBought;
         this.music = music;
 
     }
@@ -82,14 +78,14 @@ public class Spiller {
         int count2 = 0;
         int j = this.position;
         int i = this.position;
-        int timeToSubtract=0;
+        int timeToSubtract = 0;
 
         boolean flag = true;
         boolean flag2 = true;
         if (newPosition != this.position) {
             while (flag2) {//Flags som denne bliver brugt da både while og for loops checkede i eller j's værdi på forkerte tidspunkter og skabte uendelige løkker.
                 count1++;
-                // Log.d("Spiller","1count1:"+count1); //Til debugging
+                // Log.d("Spiller","1count1:"+count1); Til debugging
                 i++;
                 Log.d("Spiller", "i:" + i + " Newposition= " + newPosition);
                 if (((i % boardsize + boardsize) % boardsize) == newPosition) {
@@ -108,31 +104,28 @@ public class Spiller {
 
 
             if (count2 > count1) {
-                timeToSubtract=(Math.round(count1/moveSpeed));
-                if (count1==4 && moveSpeed==3)
-                {
-                    timeToSubtract=2;
-                }
-                else if(timeToSubtract==0){
-                    timeToSubtract=1;
+                timeToSubtract = (Math.round(count1 / moveSpeed));
+                if (count1 == 4 && moveSpeed == 3) {
+                    timeToSubtract = 2;
+                } else if (timeToSubtract == 0) {
+                    timeToSubtract = 1;
                 }
 
-                tid = tid-timeToSubtract;
+                tid = tid - timeToSubtract;
 
                 Log.d("Spiller", "Spiller rykket fra " + this.position + " til " + newPosition + " og mistet tid: " + timeToSubtract + " og har nu " + this.tid + " tid");
                 this.position = newPosition;
             } else if (count1 >= count2) {
-                timeToSubtract=(Math.round(count2/moveSpeed));
-                if (count2==4 && moveSpeed==3)
-                {
-                    timeToSubtract=2;
+                timeToSubtract = (Math.round(count2 / moveSpeed));
+                if (count2 == 4 && moveSpeed == 3) {
+                    timeToSubtract = 2;
                 }
-                if(timeToSubtract==0){
-                    timeToSubtract=1;
+                if (timeToSubtract == 0) {
+                    timeToSubtract = 1;
                 }
 
-               tid = tid-timeToSubtract;
-                Log.d("Spiller",count2+" "+moveSpeed);
+                tid = tid - timeToSubtract;
+                Log.d("Spiller", count2 + " " + moveSpeed);
                 Log.d("Spiller", "Spiller rykket fra " + this.position + " til " + newPosition + " og mistet tid: " + timeToSubtract + " og har nu " + this.tid + " tid");
                 this.position = newPosition;
                 //Den korteste vej trækkes fra spillerens tid
@@ -158,41 +151,21 @@ public class Spiller {
         return false;
     }
 
-    public void work(int timeCost, int money){
-        setPenge(getPenge()+money);
-        setTid(getTid()-timeCost);
+    public void work(int timeCost, int money) {
+        setPenge(getPenge() + money);
+        setTid(getTid() - timeCost);
     }
 
-    public void study(int timeCost, int viden){
-        setViden(getViden()+viden);
-        setTid(getTid()-timeCost);
+    public void study(int timeCost, int viden) {
+        setViden(getViden() + viden);
+        setTid(getTid() - timeCost);
     }
-    public void eat(int timeCost,int moneyCost, int hp){
-        setHp(getHp()+hp);
-        setTid(getTid()-timeCost);
-        setPenge(getPenge()-moneyCost);
+
+    public void eat(int timeCost, int moneyCost, int hp) {
+        setHp(getHp() + hp);
+        setTid(getTid() - timeCost);
+        setPenge(getPenge() - moneyCost);
     }
-/*
-        if (newPosition > this.position)  { //Ryk fra en lavere position til en højere, men max 4 højere
-           if(this.position+4>newPosition)
-               this.position%8
-
-            this.setTid(tid - (newPosition - this.position));
-            this.position = newPosition;
-            Log.d("Spiller", "Spiller rykket til ny position på felt nr: " + this.position + ", tid tilbage er nu:" + this.tid);
-        } else if (newPosition < this.position && ((this.position - 4) >= newPosition)) { //Ryk fra en Højere position til en lavere, men max 4 lavere
-            this.setTid(tid - (this.position - newPosition));
-            this.position = newPosition;
-            Log.d("Spiller", "Spiller rykket til ny position på felt nr: " + this.position + ", tid tilbage er nu:" + this.tid);
-        }
-        //else if (newPosition)
-
-        else {
-            this.position = newPosition;
-            Log.d("Spiller", "Spiller position ændret til " + this.position + " tid tilbage:" + this.tid);
-        }
-
-    }*/
 
     public String getNavn() {
         return navn;
@@ -266,7 +239,9 @@ public class Spiller {
         return glemtViden;
     }
 
-    public int getLearningAmp(){ return learningAmp;}
+    public int getLearningAmp() {
+        return learningAmp;
+    }
 
     public void setLearningAmp(int learningAmp) {
         this.learningAmp = learningAmp;

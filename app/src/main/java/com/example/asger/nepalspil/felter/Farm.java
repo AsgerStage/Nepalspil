@@ -21,11 +21,6 @@ import java.io.IOException;
 
 import static com.example.asger.nepalspil.activities.MainActivity.spiller;
 
-
-/**
- * Created by Asger on 21-11-2016.
- */
-
 public class Farm extends AppCompatActivity {
     TextView textpenge;
     TextView textviden;
