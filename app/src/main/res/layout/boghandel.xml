@@ -91,18 +91,47 @@
             android:layout_toEndOf="@+id/textmad" />
     </RelativeLayout>
 
-    <TextView
-        android:text="Info om boghandel"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="123dp"
-        android:id="@+id/fieldinfo" />
+        android:layout_height="167dp"
+        android:layout_weight="0.92">
 
-    <TextView
-        android:text="Egenskaber"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/bookstorePlayerInfo"
-        android:layout_weight="0.97" />
+        <TextView
+            android:text="Egenskaber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/bookstorePlayerInfo"
+            android:layout_weight="0.97"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/pige1"
+            android:id="@+id/imageView30"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/bubble"
+            android:id="@+id/imageView31"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="81dp" />
+
+        <TextView
+            android:text="Info om boghandel"
+            android:id="@+id/fieldinfo"
+            android:layout_height="100dp"
+            android:layout_marginTop="26dp"
+            android:layout_width="170dp"
+            android:layout_marginEnd="17dp"
+            android:layout_alignTop="@+id/imageView30"
+            android:layout_toStartOf="@+id/imageView30" />
+    </RelativeLayout>
 
     <TextView
         android:layout_width="287dp"

@@ -96,7 +96,7 @@ public class Skole extends AppCompatActivity {
         schoolText.setText("I skolen kan du spise, studere og gå til eksamen.");
         playerInfo.setText("Tid: " + spiller.getTid());
         klassetrin.setText("Du går i " + spiller.getKlassetrin() + ". klasse.");
-        if (spiller.getKlassetrin()>=12){
+        if (spiller.getKlassetrin()>=10){
             bEksamen.setVisibility(View.INVISIBLE);
         }
         onResume();
