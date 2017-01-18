@@ -3,6 +3,7 @@ package com.example.asger.nepalspil.activities;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.preference.PreferenceManager;
@@ -222,42 +223,41 @@ public class SpillePlade extends AppCompatActivity {
         });
 
         ingameopt.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                v.startAnimation(AnimationUtils.loadAnimation(SpillePlade.this, R.anim.image_click));
+                                         @Override
+                                         public void onClick(View v) {
+                                             v.startAnimation(AnimationUtils.loadAnimation(SpillePlade.this, R.anim.image_click));
 
-                CharSequence options[] = new CharSequence[]{"Stop/Start music", "Afslut spil"};
-                AlertDialog.Builder builder = new AlertDialog.Builder(SpillePlade.this);
-                builder.setTitle("Indstillinger");
-                builder.setItems(options, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-
-
-                        switch (which) {
-                            case 0:
-                                if(mp.isPlaying()){
-                                    mp.pause();
-                                } else {
-                                    mp.start();
-                                }
-                                break;
-
-                            case 2:
-                                finish();
-                                break;
+                                             CharSequence options[] = new CharSequence[]{"Stop musik", "Afslut spil"};
+                                             AlertDialog.Builder builder = new AlertDialog.Builder(SpillePlade.this);
+                                             builder.setTitle("Indstillinger");
+                                             builder.setItems(options, new DialogInterface.OnClickListener() {
+                                                         @Override
+                                                         public void onClick(DialogInterface dialog, int which) {
 
 
-                        }
+                                                             switch (which) {
+                                                                 case 0:
+                                                                     mp.stop();
+                                                                     break;
+                                                                 case 1:
+                                                                     finish();
+                                                                     break;
 
-                    }
 
-                });
-                builder.show();
+                                                             }
+
+                                                         }
+
+                                                     }
+
+                                             );
+                                             builder.show();
 
 
-            }
-        });
+                                         }
+                                     }
+
+        );
 
 
     }
@@ -399,24 +399,19 @@ public class SpillePlade extends AppCompatActivity {
 
     }
 
-    public void onPause() {
+    @Override
+    protected void onPause() {
         super.onPause();
-        if (!continueBGMusic)
+        if (!continueBGMusic) {
             MusicManager.pause();
+        }
     }
 
-    public void onResume() {
+    @Override
+    protected void onResume() {
         super.onResume();
-
         continueBGMusic = false;
         MusicManager.start(this, R.raw.backgroundloop);
-    }
-
-    public void onStop() {
-        super.onStop();
-
-        continueBGMusic = false;
-        MusicManager.stop();
     }
 
     public void saveToPrefs() {

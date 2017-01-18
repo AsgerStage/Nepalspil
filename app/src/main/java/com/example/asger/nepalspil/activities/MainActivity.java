@@ -45,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
         String checkIfPlayedBefore = prefs.getString("Navn", null);
 
 
+
         setContentView(R.layout.splash);
 
         ImageButton asha = (ImageButton) findViewById(R.id.imageButton4);

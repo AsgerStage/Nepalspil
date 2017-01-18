@@ -14,7 +14,7 @@ public class MusicManager {
     private static int previousMusic = -1;
 
 
-    public static void start(Context context, int music) {
+   public static void start(Context context, int music) {
         start(context, music, false);
     }
 
@@ -107,6 +107,7 @@ public class MusicManager {
         }
 
     }
+
 
     public static void resume() {
         if (mp != null) {

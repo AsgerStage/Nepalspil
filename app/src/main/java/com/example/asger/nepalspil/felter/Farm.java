@@ -1,5 +1,6 @@
 package com.example.asger.nepalspil.felter;
 
+import android.content.Intent;
 import android.content.res.AssetFileDescriptor;
 import android.graphics.Typeface;
 import android.media.MediaPlayer;
@@ -21,6 +22,7 @@ import java.io.IOException;
 
 import static com.example.asger.nepalspil.activities.MainActivity.spiller;
 
+
 public class Farm extends AppCompatActivity {
     TextView textpenge;
     TextView textviden;
@@ -30,6 +32,7 @@ public class Farm extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
+
         SpillePlade.updateEntireBoard();
         finish();
     }
@@ -111,9 +114,9 @@ public class Farm extends AppCompatActivity {
         back.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
-                SpillePlade.updateEntireBoard();
-                v.startAnimation(AnimationUtils.loadAnimation(Farm.this, R.anim.image_click));
-                finish();
+                    SpillePlade.updateEntireBoard();
+                    v.startAnimation(AnimationUtils.loadAnimation(Farm.this, R.anim.image_click));
+                    finish();
 
             }
         });
