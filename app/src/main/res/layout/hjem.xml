@@ -9,7 +9,7 @@
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="411dp">
+        android:layout_height="wrap_content">
 
         <ImageView
             android:layout_width="57dp"
@@ -18,18 +18,79 @@
             android:id="@+id/hjemBack" />
 
         <TextView
-            android:text="TextView"
+            android:text="Mad"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/hjemtext"
-            android:layout_weight="0.11" />
+            android:id="@+id/textmad"
+            android:elevation="1dp"
+            android:fontFamily="sans-serif"
+            android:textSize="24sp"
+            android:textColor="@color/food"
+            android:layout_marginStart="16dp"
+            android:layout_alignBottom="@+id/imageView14"
+            android:layout_toEndOf="@+id/backButton"
+            android:layout_weight="1" />
 
         <ImageView
+            android:layout_width="34dp"
+            android:layout_height="34dp"
+            app:srcCompat="@drawable/ikonmad"
+            android:id="@+id/imageView32"
+            android:layout_alignParentBottom="true"
+            android:layout_toEndOf="@+id/textmad"
+            android:layout_weight="1" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="79dp"
+            android:layout_height="29dp"
+            android:layout_weight="2.55"></LinearLayout>
+
+        <TextView
+            android:text="Viden"
             android:layout_width="wrap_content"
-            android:layout_height="369dp"
-            app:srcCompat="@drawable/dreng1"
-            android:id="@+id/hjemprofile"
-            android:layout_weight="0.11" />
+            android:layout_height="wrap_content"
+            android:id="@+id/textviden"
+            android:elevation="1dp"
+            android:fontFamily="sans-serif"
+            android:textSize="24sp"
+            android:textColor="@color/black"
+            android:layout_alignBaseline="@+id/textmad"
+            android:layout_alignBottom="@+id/textmad"
+            android:layout_toStartOf="@+id/imageView10"
+            android:layout_weight="1" />
+
+        <ImageView
+            android:layout_width="34dp"
+            android:layout_height="34dp"
+            app:srcCompat="@drawable/ikonviden"
+            android:id="@+id/imageView33"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_weight="1" />
+
+        <TextView
+            android:text="Penge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textpenge"
+            android:elevation="1dp"
+            android:fontFamily="sans-serif"
+            android:textSize="24sp"
+            android:textColor="@color/money"
+            android:layout_marginStart="106dp"
+            android:layout_alignBottom="@+id/imageView14"
+            android:layout_toEndOf="@+id/imageView10"
+            android:layout_weight="1" />
+
+        <ImageView
+            android:layout_width="34dp"
+            android:layout_height="34dp"
+            app:srcCompat="@drawable/ikonpenge"
+            android:id="@+id/imageView34"
+            android:layout_alignParentTop="true"
+            android:layout_toEndOf="@+id/textpenge"
+            android:layout_weight="1" />
 
         <ImageView
             app:srcCompat="@drawable/fieldhelp"
@@ -39,40 +100,11 @@
 
     </LinearLayout>
 
-    <LinearLayout
-        android:orientation="horizontal"
+    <ImageView
         android:layout_width="match_parent"
-        android:layout_height="127dp">
-
-        <Space
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
-
-        <Button
-            android:text="Sov"
-            android:layout_width="wrap_content"
-            android:layout_height="45dp"
-            android:id="@+id/sleep"
-            android:layout_weight="1" />
-
-        <Space
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
-
-        <Button
-            android:text="Tilbage"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/hjemback"
-            android:layout_weight="1" />
-
-        <Space
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
-
-    </LinearLayout>
+        android:layout_height="369dp"
+        app:srcCompat="@drawable/dreng1"
+        android:id="@+id/hjemprofile"
+        android:layout_weight="1" />
 
 </LinearLayout>
