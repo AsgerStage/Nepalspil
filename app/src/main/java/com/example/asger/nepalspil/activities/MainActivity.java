@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import com.crashlytics.android.Crashlytics;
 import com.example.asger.nepalspil.R;
+import com.example.asger.nepalspil.felter.Farm;
 import com.example.asger.nepalspil.models.Spiller;
 
 import io.fabric.sdk.android.Fabric;
@@ -33,10 +34,12 @@ public class MainActivity extends AppCompatActivity {
     ImageView checkmarkkaka;
     SharedPreferences prefs;
 
+    AlertDialog.Builder dialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         continueBGMusic = true;
+        dialog = new AlertDialog.Builder(MainActivity.this);
         boolean EMULATOR = Build.PRODUCT.contains("sdk") || Build.MODEL.contains("Emulator");
         if (!EMULATOR) {
             Fabric.with(this, new Crashlytics());

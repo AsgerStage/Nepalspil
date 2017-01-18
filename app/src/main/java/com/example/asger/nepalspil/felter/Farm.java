@@ -66,13 +66,13 @@ public class Farm extends AppCompatActivity {
         face = Typeface.createFromAsset(getAssets(), "fonts/Mathlete-Bulky.otf");
         fieldinfo.setTypeface(face);
 
-        fieldinfo.setText("Velkommen til rismarken.");
+        fieldinfo.setText("I marken kan du tjene lidt penge til mad, skolesager eller en cykel ved at arbejde.");
        playerinfo.setText("Tid: " + spiller.getTid());
 
         helpfield.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                dialog.setMessage("Her kan du arbejde fra 1 klassetrin af og tjene en smule penge. ");
+                dialog.setMessage("Dine forældre har ikke råd til at give dig en cykel eller til at købe frugt og grønt, så du må selv tjene penge i marken fra første klasse. Men husk, det tager tid fra dine studier. ");
                 dialog.show();
             }
         });

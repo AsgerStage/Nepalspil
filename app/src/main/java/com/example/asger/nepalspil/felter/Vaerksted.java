@@ -103,12 +103,12 @@ switch(position){
 });
 
 
-        fieldinfo.setText("Velkommen til værkstedet! Her kan man arbejde eller købe en cykel.");
+        fieldinfo.setText("På værkstedet kan du købe forskellige cykler, så du hurtigere kan komme omkring. Med en cykel er det lettere at få mad og viden nok.");
 
         helpField.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                dialog.setMessage("Velkommen til værkstedet. Her kan du købe forskellige typer cykler som gør du hurtigere kan bevæge dig rundt på spillepladen.");
+                dialog.setMessage("Du bor ikke lige ved siden af skolen, så hvis du skal gå derhen tager det lang tid. Men en cykel koster mange penge, så du må først spare op.");
                 dialog.show();
             }
         });

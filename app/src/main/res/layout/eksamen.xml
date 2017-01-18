@@ -3,6 +3,7 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:weightSum="1"
+    android:background="@drawable/eksameninside"
     >
 
     <RelativeLayout
@@ -43,21 +44,15 @@
 
         <TextView
             android:text="TextView"
-            android:layout_width="369dp"
-            android:layout_height="165dp"
             android:id="@+id/examQuestion"
-            android:layout_marginStart="30dp"
+            android:layout_width="320dp"
             android:layout_centerVertical="true"
-            android:layout_alignParentStart="true" />
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="99dp"
+            android:layout_height="130dp"
+            android:textSize="24sp"
+            android:textColor="@color/white" />
 
-        <FrameLayout
-            android:id="@+id/container"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentStart="true">
-
-        </FrameLayout>
     </RelativeLayout>
 
 </LinearLayout>

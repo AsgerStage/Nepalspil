@@ -19,22 +19,25 @@ import static com.example.asger.nepalspil.activities.MainActivity.spiller;
  * Created by Asger on 21-11-2016.
  */
 
+
 public class Hjem extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         SpillePlade.updateEntireBoard();
         finish();
     }
+    AlertDialog.Builder dialog;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.hjem);          //Har ikke lavet hjem layout endnu
 
         ImageView im = (ImageView) findViewById(R.id.hjemprofile);
+        dialog = new AlertDialog.Builder(Hjem.this);
         TextView tv = (TextView) findViewById(R.id.hjemtext);
         Button bSov = (Button) findViewById(R.id.sleep);
-        Button bBack = (Button) findViewById(R.id.hjemback);
         ImageView hjemBack = (ImageView) findViewById(R.id.hjemBack);
+        ImageView hjemhelp = (ImageView) findViewById(R.id.hjemhelp);
 
         if (spiller.getNavn() == "Asha") {
             im.setImageResource(R.drawable.pige2);
@@ -50,6 +53,16 @@ public class Hjem extends AppCompatActivity {
                 SpillePlade.updateEntireBoard();
                 v.startAnimation(AnimationUtils.loadAnimation(Hjem.this, R.anim.image_click));
                 finish();
+            }
+        });
+
+        hjemhelp.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View v) {
+                SpillePlade.updateEntireBoard();
+                v.startAnimation(AnimationUtils.loadAnimation(Hjem.this, R.anim.image_click));
+                dialog.setMessage("Hej jeg hedder "+spiller.getNavn()+ ". Jeg bor med min familie i en landsby i Nepal. \n Min mor og far har aldrig gået i skole, så de tjener ikke så mange penge, så det er svært for dem at hjælpe mig med at få en uddannelse.");
+                dialog.show();
             }
         });
 

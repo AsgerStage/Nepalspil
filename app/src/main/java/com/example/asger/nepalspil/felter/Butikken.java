@@ -55,7 +55,7 @@ public class Butikken extends AppCompatActivity {
         textmad = (TextView) findViewById(R.id.textmad);
         updateText();
 
-        fieldinfo.setText("Velkommen til butikken! her kan du købe skoleudstyr som gør det nemmere at lære i skolen");
+        fieldinfo.setText("I butikken kan du købe skoleting, som gør det lettere at få viden.");
        // playerinfo.setText("");
 
         switch (spiller.getLearningAmp()) {
@@ -76,10 +76,7 @@ public class Butikken extends AppCompatActivity {
         helpField.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                dialog.setMessage("Velkommen til tøjbutikken. Her kan du købe tøj og diverse skoleting til at gøre dit live bedre."+
-                        "Papirblokken koster 150kr. og øger chancen for at lærer noget i skolen.\n" +
-                        "Egne blyanter koster 300kr. og reducerer chancen for at skulle bruge lektiehjælp.\n"  +
-                        "Lommeregneren koster 700kr. og fjerner risikoen for ikke at lærer noget over hovedet i skolen.");
+                dialog.setMessage("I butikken kan du købe skoleting. Kladdehæfter koster 150 kr og øger din chance for at lære noget i skolen \n blyanter koster 300 kr \n lommeregner koster 700 kr og fjerner risiko for overhovedet ikke at lære noget i skolen.");
                 dialog.show();
             }
         });

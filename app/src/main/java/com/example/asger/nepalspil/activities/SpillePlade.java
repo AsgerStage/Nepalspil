@@ -66,16 +66,16 @@ public class SpillePlade extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         new AlertDialog.Builder(this)
-                .setMessage("Er du sikker på du vil afslutte spillet?")
-                .setCancelable(false)
-                .setPositiveButton("Ja", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        SpillePlade.this.finish();
-                    }
-                })
-                .setNegativeButton("Nej", null)
-                .show();
-    }
+            .setMessage("Er du sikker på du vil afslutte spillet?")
+    .setCancelable(false)
+    .setPositiveButton("Ja", new DialogInterface.OnClickListener() {
+        public void onClick(DialogInterface dialog, int id) {
+            SpillePlade.this.finish();
+        }
+    })
+            .setNegativeButton("Nej", null)
+    .show();
+}
 
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,10 +87,20 @@ public class SpillePlade extends AppCompatActivity {
 
         dialog = new AlertDialog.Builder(SpillePlade.this);
         if (spiller.sex) {
+            new AlertDialog.Builder(this)
+                    .setMessage("Hej! Hjælp os med at få en uddannelse. Vi skal have mad, viden og penge, så vi kan købe bøger, blyanter og en cykel og bestå de årlige eksamener. \n \n Hvis vi når 10. klasse, kan vi tag en uddannelse og få et godt job, og du har vundet spillet.")
+                    .setCancelable(false)
+                    .setPositiveButton("OK", null )
+                    .show();
             Player = (ImageView) findViewById(R.id.kaka);
             unusedPlayer = (ImageView) findViewById(R.id.asha);
 
         } else if (!spiller.sex) {
+            new AlertDialog.Builder(this)
+                    .setMessage("Hej! Hjælp os med at få en uddannelse. Vi skal have mad, viden og penge, så vi kan købe bøger, blyanter og en cykel og bestå de årlige eksamener. \n \n Hvis vi når 10. klasse, kan vi tag en uddannelse og få et godt job, og du har vundet spillet.")
+                    .setCancelable(false)
+                    .setPositiveButton("OK", null )
+                    .show();
             Player = (ImageView) findViewById(R.id.asha);
             unusedPlayer = (ImageView) findViewById(R.id.kaka);
 

@@ -66,12 +66,12 @@ public class Marked extends AppCompatActivity {
         animationfood = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.plusfoodmarked);
 
 
-        fieldinfo.setText("Dette er market. Her kan man arbejde og tjene penge, eller man kan købe mad.");
+        fieldinfo.setText("På markedet kan du købe mad eller arbejde for at tjene penge.");
         updateInfo();
         helpField.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                dialog.setMessage("Velkommen til markedet. Her kan du arbejde for at tjene penge eller du kan spise for at ikke at sulte.");
+                dialog.setMessage("På markedet kan du købe masser af sund mad. Det giver overskud til at få viden, men det er dyrt. Du kan også arbejde på markedet, men det tager tid.");
                 dialog.show();
             }
         });
@@ -79,7 +79,7 @@ public class Marked extends AppCompatActivity {
         work.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
-                if (spiller.getTid() >= TIME_PER_CLICK && spiller.getKlassetrin() >= 1) {
+                if (spiller.getTid() >= TIME_PER_CLICK && spiller.getKlassetrin() >= 2) {
                     spiller.work(TIME_PER_CLICK,MONEY_PER_CLICK);
                     money.setText("+"+MONEY_PER_CLICK+" kr");
                     money.startAnimation(animation);

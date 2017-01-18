@@ -56,7 +56,7 @@ public class Boghandel extends AppCompatActivity {
         textmad = (TextView) findViewById(R.id.textmad);
 
 
-        bookstoreInfo.setText("Velkommen til boghandlen. Her kan du få et arbejde hvis du er nået langt nok i din uddannelse. \n Du kan også købe skole bøger her. Skolebøger giver hurtig viden");
+        bookstoreInfo.setText("I boghandlen kan du købe skolebøger. Skolebøger giver mere viden. \n Du kan også få et job i boghandlen, hvis du har gået i skole længe nok.");
         updateInfo();
         work.setOnClickListener(new View.OnClickListener() {
 
@@ -101,7 +101,7 @@ public class Boghandel extends AppCompatActivity {
         helpField.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                dialog.setMessage("I boghandlen kan man købe skolebøger som hjælper en med at studere, og så kan man arbejde her når man går i 6. klasse eller derover.");
+                dialog.setMessage("I boghandlen kan man købe skolebøger, som hjælper en med at få viden, hvis man har penge nok. Du kan også arbejde i boghandlen fra 6. klasse.");
                 dialog.show();
             }
             });

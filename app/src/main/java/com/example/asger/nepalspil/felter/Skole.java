@@ -93,7 +93,7 @@ public class Skole extends AppCompatActivity {
         klassetrin.setTypeface(face);
 
         dialog = new AlertDialog.Builder(Skole.this);
-        schoolText.setText("Velkommen til Skolen, her kan du spise, studere og tage din eksamen.");
+        schoolText.setText("I skolen kan du spise, studere og gå til eksamen.");
         playerInfo.setText("Tid: " + spiller.getTid());
         klassetrin.setText("Du går i " + spiller.getKlassetrin() + ". klasse.");
         if (spiller.getKlassetrin()>=12){
@@ -109,7 +109,7 @@ public class Skole extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 dialog.setTitle("Skolen");
-                dialog.setMessage("I skolen kan du studere og få en smule mad. Tryk på knapperne for at studere eller spise.\n Når du har gået nok i skole kan du tage din eksamen for at komme op i næste klasse. Alt undervisning er svær, så husk derfor at benyt lektiehjælpen, hvis du ikke forstår det hele. .");
+                dialog.setMessage("I skolen kan du studere og få en smule mad. \n Tryk på knapperne for at studere eller spise. Når du har fået viden nok, kan du gå til eksamen og hvis du består, kan du rykke op i næste klasse.\n Al undervisning er svær, så husk at bruge lektiehjælpen, hvis du ikke forstår det hele.");
                 dialog.show();
             }
         });

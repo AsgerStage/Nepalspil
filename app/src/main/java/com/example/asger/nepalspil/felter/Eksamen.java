@@ -2,6 +2,7 @@ package com.example.asger.nepalspil.felter;
 
 import android.content.DialogInterface;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
@@ -56,8 +57,13 @@ public class Eksamen extends AppCompatActivity {
         answer1 = (Button) findViewById(R.id.answer1Button);
         answer2 = (Button) findViewById(R.id.answer2Button);
         answer3 = (Button) findViewById(R.id.answer3Button);
-        container = (FrameLayout) findViewById(R.id.container);
+       // container = (FrameLayout) findViewById(R.id.container);
        dialog = new AlertDialog.Builder(Eksamen.this);
+
+        Typeface face;
+        face = Typeface.createFromAsset(getAssets(), "fonts/EraserDust.ttf");
+        question.setTypeface(face);
+
         spiller.getViden();
         switch (spiller.getKlassetrin() - 1) {
             case 0:
@@ -85,22 +91,14 @@ public class Eksamen extends AppCompatActivity {
                 setThirdCorrect();
                 break;
             case 6:
-                setQuestion("Hvordan kan man bruge skolehaver i undervisningen?", "Det er sjovere og lettere at lære noget, når man er udenfor.", "Der er ikke lokaler nok til alle klasser.", "Eleverne får mere mad, hvis de bliver undervist i haven.");
-                setSecondCorrect();
-                break;
-            case 7:
                 setQuestion("Hvorfor er det vigtigt, at børn i Nepal lærer noget?", "Fordi de skal have en uddannelse og et bedre liv.", "Fordi de kommer til at kede sig derhjemme.", "Fordi de ikke kan lide at være alene hjemme.");
                 setFirstCorrect();
                 break;
-            case 8:
+            case 7:
                 setQuestion("Hvorfor er der mange fattige børn i Nepal, som ikke laver lektier?", "Deres forældre sætter dem ikke i gang", "De behøver ikke lave lektier", "Hindureligionen forbyder lektier");
                 setFirstCorrect();
                 break;
-            case 9:
-                setQuestion("Hvor tit går børn i Nepal til eksamen?", "Hvert år", "Efter 9. klasse", "Aldrig");
-                setFirstCorrect();
-                break;
-            case 10:
+            case 8:
                 setQuestion("Hvad skal børn i Nepal kunne til eksamen?", "De skal kunne tænke selvstændigt", "De skal kunne deres bøger udenad", "De skal kunne forstå, hvad der står i bøgerne.");
                 setSecondAsGameWinning();
                 break;

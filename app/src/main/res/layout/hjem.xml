@@ -31,6 +31,12 @@
             android:id="@+id/hjemprofile"
             android:layout_weight="0.11" />
 
+        <ImageView
+            app:srcCompat="@drawable/fieldhelp"
+            android:id="@+id/hjemhelp"
+            android:layout_width="57dp"
+            android:layout_height="35dp" />
+
     </LinearLayout>
 
     <LinearLayout
