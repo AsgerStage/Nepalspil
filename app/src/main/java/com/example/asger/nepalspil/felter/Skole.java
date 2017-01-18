@@ -44,7 +44,7 @@ public class Skole extends AppCompatActivity {
     final int TIME_PER_CLICK =1;
 
     //Eating
-    final int FOOD_PER_CLICK=5;
+    final int FOOD_PER_CLICK=10;
     final int COST_PER_FOOD_CLICK=0;
     final int TIME_COST_EATING=1;
 
@@ -117,7 +117,7 @@ public class Skole extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (spiller.getTid() > 0) {
-                    mad.setText("+5 mad");
+                    mad.setText("+"+FOOD_PER_CLICK+" mad");
                     mad.startAnimation(animationfood);
                     spis();
                     schoolText.setText("Mmm! Du har spist skolemad.");
