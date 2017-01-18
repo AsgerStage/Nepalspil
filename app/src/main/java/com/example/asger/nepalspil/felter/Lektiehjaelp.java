@@ -16,18 +16,14 @@ import com.example.asger.nepalspil.activities.SpillePlade;
 
 import static com.example.asger.nepalspil.activities.MainActivity.spiller;
 
-/**
- * Created by Bruger on 03-01-2017.
- */
-
 public class Lektiehjaelp extends AppCompatActivity {
     TextView textpenge;
     TextView textviden;
     TextView textmad;
     TextView playerInfo;
     //Studying
-    final int VIDEN_PER_CLICK =1;
-    final int TIME_PER_CLICK =1;
+    final int VIDEN_PER_CLICK = 1;
+    final int TIME_PER_CLICK = 1;
 
     @Override
     public void onBackPressed() {
@@ -102,7 +98,7 @@ public class Lektiehjaelp extends AppCompatActivity {
     }
 
     private void learn() {
-        spiller.study(TIME_PER_CLICK,VIDEN_PER_CLICK);
+        spiller.study(TIME_PER_CLICK, VIDEN_PER_CLICK);
         spiller.setGlemtViden(spiller.getGlemtViden() - 1);
     }
 
@@ -112,6 +108,7 @@ public class Lektiehjaelp extends AppCompatActivity {
         updateText();
         playerInfo.setText("Tid: " + spiller.getTid());
     }
+
     public void updateText() {
         textpenge.setText(String.valueOf(spiller.getPenge()));
         textviden.setText(String.valueOf(spiller.getViden()));
