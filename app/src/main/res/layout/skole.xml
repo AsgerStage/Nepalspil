@@ -95,7 +95,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="263dp">
+        android:layout_height="247dp">
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
@@ -140,7 +140,8 @@
             android:layout_marginTop="33dp"
             android:layout_alignParentTop="true"
             android:layout_alignStart="@+id/scrollfood"
-            android:layout_marginStart="123dp" />
+            android:layout_marginStart="123dp"
+            android:layout_alignBottom="@+id/imageView23" />
 
         <ImageView
             android:layout_width="100dp"
@@ -174,7 +175,7 @@
     <LinearLayout
        android:orientation="horizontal"
        android:layout_width="match_parent"
-       android:layout_height="match_parent">
+       android:layout_height="137dp">
 
         <Button
             android:background="@android:color/transparent"

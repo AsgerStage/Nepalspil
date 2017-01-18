@@ -53,6 +53,7 @@ public class Eksamen extends AppCompatActivity {
         answer1 = (Button) findViewById(R.id.answer1Button);
         answer2 = (Button) findViewById(R.id.answer2Button);
         answer3 = (Button) findViewById(R.id.answer3Button);
+        container = (FrameLayout) findViewById(R.id.container);;
         dialog = new AlertDialog.Builder(Eksamen.this);
 
         Typeface face;
