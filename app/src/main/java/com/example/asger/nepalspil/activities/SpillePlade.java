@@ -284,7 +284,7 @@ public class SpillePlade extends AppCompatActivity {
 
             } else if (spiller.getHp() - 30 <= 0) {
                 dialog.setTitle("Husk at spise!");
-                dialog.setMessage("Ugen er gået og du har glemt at spise, du har derfor har du mindre tid i denne uge");
+                dialog.setMessage("Ugen er gået og du har glemt at spise, du har derfor mindre tid i denne uge");
                 dialog.show();
 
                 spiller.setTid(8);
