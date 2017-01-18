@@ -218,7 +218,7 @@ public class SpillePlade extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 AlertDialog.Builder dialog = new AlertDialog.Builder(SpillePlade.this);
-                dialog.setMessage("Velkommen til Nepalspillet! Målet med spillet er at bestå alle sine 12 eksaminer.\nFor at klare dette, findes der 8 forskellige felter hvor du kan forskellige ting, fx. kan du arbejde i rismarken og studere i skolen. \nFor at gå hen til et felt skal du bare trykke på det. Alt hvad du gør bruger noget af din tid, så brug den fornuftigt!");
+                dialog.setMessage("Målet med spillet er at færdiggøre 10. klasse. Du starter i 1. klasse og skal til eksamen hvert år. \n \nFor at bestå den årlige eksamen skal du optjene viden, og for at få viden skal du studere og have noget at spise. \n\nPå pladens otte felter kan du optjene viden, mad og penge og købe vigtige hjælpemidler.\n \nUndervejs vil du møde forhindringer, som gør det sværere at nå målet.\nSpillet er på tid, så du skal skynde dig. Du kan se, hvor meget du har optjent øverst på skærmen. ");
                 dialog.show();
 
             }
@@ -229,7 +229,7 @@ public class SpillePlade extends AppCompatActivity {
             public void onClick(View v) {
                 v.startAnimation(AnimationUtils.loadAnimation(SpillePlade.this, R.anim.image_click));
 
-                CharSequence options[] = new CharSequence[]{"Sluk musik", "Start musik", "Afslut spil"};
+                CharSequence options[] = new CharSequence[]{"Sluk musik", "Afslut spil"};
                 AlertDialog.Builder builder = new AlertDialog.Builder(SpillePlade.this);
                 builder.setTitle("Indstillinger");
                 builder.setItems(options, new DialogInterface.OnClickListener() {
@@ -240,13 +240,8 @@ public class SpillePlade extends AppCompatActivity {
                         switch (which) {
                             case 0:
                                 onStop();
-
                                 break;
                             case 1:
-                                onResume();
-
-                                break;
-                            case 2:
                                 finish();
                                 break;
 
