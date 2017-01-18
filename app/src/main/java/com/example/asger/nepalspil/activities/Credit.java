@@ -10,10 +10,6 @@ import android.widget.TextView;
 
 import com.example.asger.nepalspil.R;
 
-/**
- * Created by PeterPc on 15-01-2017.
- */
-
 public class Credit extends AppCompatActivity {
     private Animation animation;
 

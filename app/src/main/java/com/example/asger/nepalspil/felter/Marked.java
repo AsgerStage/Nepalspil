@@ -31,14 +31,14 @@ public class Marked extends AppCompatActivity {
     private Animation animation;
     private Animation animationfood;
 
-        //Working
-    final int MONEY_PER_CLICK =10;
-    final int TIME_PER_CLICK =2;
+    //Working
+    final int MONEY_PER_CLICK = 10;
+    final int TIME_PER_CLICK = 2;
 
     //Eating
-    final int FOOD_PER_CLICK=10;
-    final int COST_PER_FOOD_CLICK=5;
-    final int TIME_COST_EATING=0;
+    final int FOOD_PER_CLICK = 10;
+    final int COST_PER_FOOD_CLICK = 5;
+    final int TIME_COST_EATING = 0;
 
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,8 +81,8 @@ public class Marked extends AppCompatActivity {
             public void onClick(View v) {
                 v.startAnimation(AnimationUtils.loadAnimation(Marked.this, R.anim.image_click));
                 if (spiller.getTid() >= TIME_PER_CLICK && spiller.getKlassetrin() >= 2) {
-                    spiller.work(TIME_PER_CLICK,MONEY_PER_CLICK);
-                    money.setText("+"+MONEY_PER_CLICK+" kr");
+                    spiller.work(TIME_PER_CLICK, MONEY_PER_CLICK);
+                    money.setText("+" + MONEY_PER_CLICK + " kr");
                     money.startAnimation(animation);
 
 
@@ -123,10 +123,10 @@ public class Marked extends AppCompatActivity {
             public void onClick(View v) {
                 v.startAnimation(AnimationUtils.loadAnimation(Marked.this, R.anim.image_click));
                 if (spiller.getPenge() >= COST_PER_FOOD_CLICK) {
-                    spiller.eat(TIME_COST_EATING,COST_PER_FOOD_CLICK,FOOD_PER_CLICK);
+                    spiller.eat(TIME_COST_EATING, COST_PER_FOOD_CLICK, FOOD_PER_CLICK);
                     if (mp.isPlaying()) {
                         mp.stop();
-                        food.setText("+"+FOOD_PER_CLICK+" mad");
+                        food.setText("+" + FOOD_PER_CLICK + " mad");
                         food.startAnimation(animationfood);
                     }
                     try {
@@ -141,7 +141,6 @@ public class Marked extends AppCompatActivity {
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
-
 
 
                     updateInfo();
@@ -168,7 +167,6 @@ public class Marked extends AppCompatActivity {
             }
         });
     }
-
 
 
     public void eat() {
