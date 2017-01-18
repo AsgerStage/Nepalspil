@@ -32,6 +32,7 @@ import com.example.asger.nepalspil.felter.Butikken;
 import java.util.concurrent.ThreadLocalRandom;
 
 import static com.example.asger.nepalspil.activities.MainActivity.spiller;
+import static com.example.asger.nepalspil.activities.MusicManager.mp;
 
 public class SpillePlade extends AppCompatActivity {
     static TextView infobox;
@@ -225,7 +226,7 @@ public class SpillePlade extends AppCompatActivity {
             public void onClick(View v) {
                 v.startAnimation(AnimationUtils.loadAnimation(SpillePlade.this, R.anim.image_click));
 
-                CharSequence options[] = new CharSequence[]{"Sluk musik", "Afslut spil"};
+                CharSequence options[] = new CharSequence[]{"Stop/Start music", "Afslut spil"};
                 AlertDialog.Builder builder = new AlertDialog.Builder(SpillePlade.this);
                 builder.setTitle("Indstillinger");
                 builder.setItems(options, new DialogInterface.OnClickListener() {
@@ -235,9 +236,14 @@ public class SpillePlade extends AppCompatActivity {
 
                         switch (which) {
                             case 0:
-                                onStop();
+                                if(mp.isPlaying()){
+                                    mp.pause();
+                                } else {
+                                    mp.start();
+                                }
                                 break;
-                            case 1:
+
+                            case 2:
                                 finish();
                                 break;
 
@@ -402,7 +408,7 @@ public class SpillePlade extends AppCompatActivity {
     public void onResume() {
         super.onResume();
 
-        continueBGMusic = true;
+        continueBGMusic = false;
         MusicManager.start(this, R.raw.backgroundloop);
     }
 
