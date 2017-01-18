@@ -1,5 +1,6 @@
 package com.example.asger.nepalspil.felter;
 
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -52,6 +53,10 @@ public class Lektiehjaelp extends AppCompatActivity {
         textpenge = (TextView) findViewById(R.id.textpenge);
         textviden = (TextView) findViewById(R.id.textviden);
         textmad = (TextView) findViewById(R.id.textmad);
+
+        Typeface face;
+        face = Typeface.createFromAsset(getAssets(), "fonts/EraserDust.ttf");
+        lektiehjaelpInfo.setTypeface(face);
         lektiehjaelpInfo.setText("Her kan du få lektiehjælp for at indhente det, du ikke forstod i timerne.");
         updateInfo();
         homeworkHelp.setOnClickListener(new View.OnClickListener() {
