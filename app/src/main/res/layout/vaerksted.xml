@@ -132,7 +132,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/playerinfo"
-        android:layout_weight="1.17"
+        android:layout_weight="0.75"
         android:textColorLink="@android:color/white" />
 
     <TextView
@@ -141,14 +141,6 @@
         android:id="@+id/money"
         android:textAlignment="center"
         android:textColor="@color/money" />
-
-    <TextView
-        android:text="Info om værksted"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/fieldinfo"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
 
     <LinearLayout
         android:orientation="horizontal"

@@ -59,7 +59,7 @@ public class Vaerksted extends AppCompatActivity {
         viewPager.setAdapter(adapter);
 
 
-        final TextView fieldinfo = (TextView) findViewById(R.id.fieldinfo);
+        //final TextView fieldinfo = (TextView) findViewById(R.id.fieldinfo);
         playerinfo = (TextView) findViewById(R.id.playerinfo);
         final MediaPlayer mp = MediaPlayer.create(this, R.raw.cash);
         ImageView helpField = (ImageView) findViewById(R.id.vaerkstedHelp);
@@ -103,7 +103,7 @@ switch(position){
 });
 
 
-        fieldinfo.setText("På værkstedet kan du købe forskellige cykler, så du hurtigere kan komme omkring. Med en cykel er det lettere at få mad og viden nok.");
+//        fieldinfo.setText("På værkstedet kan du købe forskellige cykler, så du hurtigere kan komme omkring. Med en cykel er det lettere at få mad og viden nok.");
 
         helpField.setOnClickListener(new View.OnClickListener() {
             @Override

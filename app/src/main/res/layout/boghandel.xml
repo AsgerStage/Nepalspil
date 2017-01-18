@@ -138,7 +138,8 @@
         android:layout_height="wrap_content"
         android:id="@+id/scrollmoney"
         android:textColor="@color/money"
-        android:textAlignment="center" />
+        android:textAlignment="center"
+        android:textSize="20sp" />
 
     <LinearLayout
         android:orientation="horizontal"

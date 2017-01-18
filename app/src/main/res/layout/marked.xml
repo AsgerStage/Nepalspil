@@ -139,7 +139,8 @@
             android:layout_width="150dp"
             android:layout_below="@+id/playerinfo"
             android:layout_toEndOf="@+id/playerinfo"
-            android:textColor="@color/money" />
+            android:textColor="@color/money"
+            android:textSize="20sp" />
 
         <TextView
             android:layout_width="150dp"
@@ -149,7 +150,8 @@
             android:layout_marginEnd="85dp"
             android:layout_centerVertical="true"
             android:layout_alignParentEnd="true"
-            android:textColor="@color/food" />
+            android:textColor="@color/food"
+            android:textSize="20sp" />
 
         <ImageView
             app:srcCompat="@drawable/bubble"
