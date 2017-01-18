@@ -79,6 +79,7 @@ public class Marked extends AppCompatActivity {
         work.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
+                v.startAnimation(AnimationUtils.loadAnimation(Marked.this, R.anim.image_click));
                 if (spiller.getTid() >= TIME_PER_CLICK && spiller.getKlassetrin() >= 2) {
                     spiller.work(TIME_PER_CLICK,MONEY_PER_CLICK);
                     money.setText("+"+MONEY_PER_CLICK+" kr");
@@ -120,6 +121,7 @@ public class Marked extends AppCompatActivity {
         eat.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
+                v.startAnimation(AnimationUtils.loadAnimation(Marked.this, R.anim.image_click));
                 if (spiller.getPenge() >= COST_PER_FOOD_CLICK) {
                     spiller.eat(TIME_COST_EATING,COST_PER_FOOD_CLICK,FOOD_PER_CLICK);
                     if (mp.isPlaying()) {

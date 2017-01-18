@@ -79,6 +79,7 @@ public class Farm extends AppCompatActivity {
         work.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
+                v.startAnimation(AnimationUtils.loadAnimation(Farm.this, R.anim.image_click));
                 if (spiller.getTid() >= TIME_PER_CLICK) {
                     spiller.work(TIME_PER_CLICK,MONEY_PER_CLICK);
                     money.setText("+"+MONEY_PER_CLICK+" kr");

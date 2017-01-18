@@ -75,7 +75,8 @@ public class Butikken extends AppCompatActivity {
 
         helpField.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View v) {
+                v.startAnimation(AnimationUtils.loadAnimation(Butikken.this, R.anim.image_click));
                 dialog.setMessage("I butikken kan du købe skoleting. Kladdehæfter koster 150 kr og øger din chance for at lære noget i skolen \n blyanter koster 300 kr \n lommeregner koster 700 kr og fjerner risiko for overhovedet ikke at lære noget i skolen.");
                 dialog.show();
             }

@@ -156,14 +156,16 @@
         android:layout_height="79dp">
 
         <Button
-            android:text="Arbejd"
+            android:background="@android:color/transparent"
+            android:drawableTop="@drawable/arbejdbutton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/workButton"
             android:layout_weight="1" />
 
         <Button
-            android:text="Køb"
+            android:background="@android:color/transparent"
+            android:drawableTop="@drawable/kobbutton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/buyBikeButton"

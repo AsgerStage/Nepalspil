@@ -107,7 +107,8 @@ public class Skole extends AppCompatActivity {
 
         helpField.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View v) {
+                v.startAnimation(AnimationUtils.loadAnimation(Skole.this, R.anim.image_click));
                 dialog.setTitle("Skolen");
                 dialog.setMessage("I skolen kan du studere og få en smule mad. \n Tryk på knapperne for at studere eller spise. Når du har fået viden nok, kan du gå til eksamen og hvis du består, kan du rykke op i næste klasse.\n Al undervisning er svær, så husk at bruge lektiehjælpen, hvis du ikke forstår det hele.");
                 dialog.show();
@@ -115,7 +116,8 @@ public class Skole extends AppCompatActivity {
         });
         bSpis.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View v) {
+                v.startAnimation(AnimationUtils.loadAnimation(Skole.this, R.anim.image_click));
                 if (spiller.getTid() > 0) {
                     mad.setText("+"+FOOD_PER_CLICK+" mad");
                     mad.startAnimation(animationfood);
@@ -148,7 +150,8 @@ public class Skole extends AppCompatActivity {
 
         bStuder.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View v) {
+                v.startAnimation(AnimationUtils.loadAnimation(Skole.this, R.anim.image_click));
                 int thisStudy = studer();
                 if (spiller.getTid() >= TIME_PER_CLICK) {
                     if (spiller.getTid() >= TIME_PER_CLICK && thisStudy == 1) {
@@ -194,7 +197,8 @@ public class Skole extends AppCompatActivity {
 
         bEksamen.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View v) {
+                v.startAnimation(AnimationUtils.loadAnimation(Skole.this, R.anim.image_click));
                 if (kanStartEksamen()) {
                     schoolText.setText("Held og Lykke!");
                     finish();

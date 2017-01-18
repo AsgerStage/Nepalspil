@@ -107,7 +107,8 @@ switch(position){
 
         helpField.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View v) {
+                v.startAnimation(AnimationUtils.loadAnimation(Vaerksted.this, R.anim.image_click));
                 dialog.setMessage("Du bor ikke lige ved siden af skolen, så hvis du skal gå derhen tager det lang tid. Men en cykel koster mange penge, så du må først spare op.");
                 dialog.show();
             }
@@ -116,6 +117,7 @@ switch(position){
         work.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
+                v.startAnimation(AnimationUtils.loadAnimation(Vaerksted.this, R.anim.image_click));
                 if (spiller.getTid() >= TIME_PER_CLICK && spiller.getKlassetrin()>=3) {
                     spiller.work(TIME_PER_CLICK,MONEY_PER_CLICK);
                     money.setText("+"+MONEY_PER_CLICK+" kr");
@@ -156,6 +158,7 @@ switch(position){
         buy.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
+                v.startAnimation(AnimationUtils.loadAnimation(Vaerksted.this, R.anim.image_click));
                 buy();
                 updateInfo();
             }

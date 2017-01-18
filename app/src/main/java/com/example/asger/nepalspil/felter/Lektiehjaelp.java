@@ -61,7 +61,8 @@ public class Lektiehjaelp extends AppCompatActivity {
         updateInfo();
         homeworkHelp.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View v) {
+                v.startAnimation(AnimationUtils.loadAnimation(Lektiehjaelp.this, R.anim.image_click));
                 if (spiller.getTid() >= TIME_PER_CLICK && spiller.getGlemtViden() > 0) {
                     learn();
                     updateInfo();
@@ -83,7 +84,8 @@ public class Lektiehjaelp extends AppCompatActivity {
 
         helpField.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View v) {
+                v.startAnimation(AnimationUtils.loadAnimation(Lektiehjaelp.this, R.anim.image_click));
                 dialog.setMessage("Tit er det rigtig svært at forstå, hvad lærerne forklarer og dine forældre kan ikke hjælpe med lektierne. Så derfor har du brug for lektiehjælp.");
                 dialog.show();
             }

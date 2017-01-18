@@ -115,14 +115,16 @@
             android:layout_alignParentStart="true">
 
             <Button
-                android:text="Arbejd"
+                android:background="@android:color/transparent"
+                android:drawableTop="@drawable/arbejdbutton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/workButton"
                 android:layout_weight="1" />
 
             <Button
-                android:text="Spis"
+                android:background="@android:color/transparent"
+                android:drawableTop="@drawable/spisbutton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/eatButton"

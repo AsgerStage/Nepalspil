@@ -41,6 +41,7 @@ public class Boghandel extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.boghandel);
+
         dialog = new AlertDialog.Builder(Boghandel.this);
         playerInfo = (TextView) findViewById(R.id.bookstorePlayerInfo);
         final TextView bookstoreInfo = (TextView) findViewById(R.id.fieldinfo);
@@ -61,6 +62,7 @@ public class Boghandel extends AppCompatActivity {
         work.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
+                v.startAnimation(AnimationUtils.loadAnimation(Boghandel.this, R.anim.image_click));
                 if (spiller.getTid() >= TIME_PER_CLICK && spiller.getKlassetrin() >= 6) {
                     money.setText("+"+ MONEY_PER_CLICK +" kr");
                     money.startAnimation(animation);
@@ -100,7 +102,8 @@ public class Boghandel extends AppCompatActivity {
 
         helpField.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View v) {
+                v.startAnimation(AnimationUtils.loadAnimation(Boghandel.this, R.anim.image_click));
                 dialog.setMessage("I boghandlen kan man købe skolebøger, som hjælper en med at få viden, hvis man har penge nok. Du kan også arbejde i boghandlen fra 6. klasse.");
                 dialog.show();
             }
@@ -108,9 +111,10 @@ public class Boghandel extends AppCompatActivity {
 
         buyBook.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-
+            public void onClick(View v) {
+                v.startAnimation(AnimationUtils.loadAnimation(Boghandel.this, R.anim.image_click));
                if(spiller.getPenge()>=30&&spiller.getLastBookBought()+5<=spiller.getRunde()){
+
                    spiller.setViden(spiller.getViden() + 10);
                    spiller.setPenge(spiller.getPenge()-30);
                    dialog.setTitle("Bog købt");
