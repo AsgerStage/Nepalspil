@@ -99,14 +99,6 @@
         android:layout_alignParentStart="true">
 
         <TextView
-            android:text="Info about market"
-            android:layout_width="match_parent"
-            android:layout_height="72dp"
-            android:id="@+id/fieldinfo"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentStart="true" />
-
-        <TextView
             android:text="Stats"
             android:layout_width="84dp"
             android:layout_height="80dp"
@@ -156,6 +148,34 @@
             android:layout_centerVertical="true"
             android:layout_alignParentEnd="true"
             android:textColor="@color/food" />
+
+        <ImageView
+            app:srcCompat="@drawable/bubble"
+            android:id="@+id/imageView31"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_marginEnd="21dp"
+            android:layout_above="@+id/food"
+            android:layout_alignEnd="@+id/food" />
+
+        <TextView
+            android:text="Info about market"
+            android:id="@+id/fieldinfo"
+            android:layout_marginTop="16dp"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_marginStart="30dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignStart="@+id/imageView31" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/pige1"
+            android:id="@+id/imageView30"
+            android:layout_marginEnd="14dp"
+            android:layout_alignTop="@+id/fieldinfo"
+            android:layout_alignParentEnd="true" />
 
     </RelativeLayout>
 

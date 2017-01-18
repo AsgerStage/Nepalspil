@@ -31,7 +31,7 @@ public class Marked extends AppCompatActivity {
     private Animation animation;
     private Animation animationfood;
 
-    //Working
+        //Working
     final int MONEY_PER_CLICK =10;
     final int TIME_PER_CLICK =2;
 
@@ -66,7 +66,7 @@ public class Marked extends AppCompatActivity {
         animationfood = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.plusfoodmarked);
 
 
-        fieldinfo.setText("På markedet kan du købe mad eller arbejde for at tjene penge.");
+        fieldinfo.setText(" På markedet kan du\n købe mad eller arbejde \n for at tjene penge.");
         updateInfo();
         helpField.setOnClickListener(new View.OnClickListener() {
             @Override
