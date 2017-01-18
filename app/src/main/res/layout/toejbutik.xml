@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    >
+    android:background="@drawable/butikinside"
+    android:weightSum="1">
 
 
     <RelativeLayout
@@ -90,34 +91,58 @@
             android:layout_toStartOf="@+id/imageView16" />
     </RelativeLayout>
 
-    <TextView
-        android:text="TextView"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="115dp"
-        android:id="@+id/tbInfo" />
+        android:layout_height="189dp"
+        android:layout_weight="0.77">
 
-    <TextView
-        android:text="TextView"
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:id="@+id/tbStats" />
-
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="325dp">
-
-        <Button
-            android:text="Køb"
+        <LinearLayout
+            android:orientation="horizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/tbBuy"
-            android:layout_weight="1" />
+            android:layout_alignParentBottom="true">
 
-        <Space
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.82" />
+
+            <Button
+                android:text="Køb"
+                android:layout_width="156dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/tbBuy" />
+
+        </LinearLayout>
+
+        <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1.82" />
+            app:srcCompat="@drawable/pige1"
+            android:id="@+id/imageView24"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true" />
 
-    </LinearLayout>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/bubble"
+            android:id="@+id/imageView26"
+            android:layout_marginStart="231dp"
+            android:layout_marginBottom="94dp"
+            android:layout_above="@+id/linearLayout2"
+            android:layout_toEndOf="@+id/linearLayout2" />
+
+        <TextView
+            android:text="TextView"
+            android:id="@+id/tbInfo"
+            android:layout_height="100dp"
+            android:layout_marginTop="26dp"
+            android:layout_width="150dp"
+            android:layout_marginEnd="82dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignEnd="@+id/imageView26" />
+
+    </RelativeLayout>
+
 </LinearLayout>

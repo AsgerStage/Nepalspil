@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@drawable/skoleinside">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -100,26 +101,13 @@
         android:layout_width="match_parent"
         android:layout_height="132dp">
 
-        <TextView
-            android:text="."
-            android:layout_width="match_parent"
-            android:layout_height="102dp"
-            android:id="@+id/schoolText"
-            android:layout_weight="1" />
-
-        <TextView
-            android:text="TextView"
-            android:layout_width="288dp"
-            android:layout_height="match_parent"
-            android:id="@+id/klassetrin"
-            android:textAlignment="textEnd" />
     </LinearLayout>
 
         <TextView
-            android:layout_width="578dp"
-            android:layout_height="128dp"
             android:id="@+id/schoolPlayerInfo"
-            android:gravity="right" />
+            android:gravity="right"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content" />
 
         <TextView
             android:layout_width="193dp"
@@ -138,6 +126,46 @@
             android:layout_centerHorizontal="true"
             android:textAlignment="center"
             android:textColor="@color/food" />
+
+        <TextView
+            android:text="TextView"
+            android:layout_width="288dp"
+            android:layout_height="match_parent"
+            android:id="@+id/klassetrin"
+            android:textAlignment="center"
+            android:textSize="30dp"
+            android:textColor="@color/white"
+            android:layout_marginTop="33dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignStart="@+id/scrollfood"
+            android:layout_marginStart="123dp" />
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/pige1"
+            android:id="@+id/imageView22"
+            android:layout_alignTop="@+id/klassetrin"
+            android:layout_toEndOf="@+id/plusknowledge"
+            android:layout_marginTop="26dp" />
+
+        <ImageView
+            app:srcCompat="@drawable/bubble"
+            android:id="@+id/imageView23"
+            android:layout_width="300dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true"
+            android:layout_height="170dp" />
+
+        <TextView
+            android:text="."
+            android:layout_width="120dp"
+            android:layout_height="102dp"
+            android:id="@+id/schoolText"
+            android:layout_weight="1"
+            android:layout_below="@+id/schoolPlayerInfo"
+            android:layout_alignEnd="@+id/imageView22"
+            android:layout_marginEnd="82dp" />
 
     </RelativeLayout>
 

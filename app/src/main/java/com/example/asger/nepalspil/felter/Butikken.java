@@ -45,7 +45,7 @@ public class Butikken extends AppCompatActivity {
 
         dialog = new AlertDialog.Builder(Butikken.this);
         final TextView fieldinfo = (TextView) findViewById(R.id.tbInfo);
-        final TextView playerinfo = (TextView) findViewById(R.id.tbStats);
+       // final TextView playerinfo = (TextView) findViewById(R.id.tbStats);
         final MediaPlayer mp = MediaPlayer.create(this, R.raw.cash);
         ImageView helpField = (ImageView) findViewById(R.id.tbHelp);
         final Button buy = (Button) findViewById(R.id.tbBuy);
@@ -56,7 +56,7 @@ public class Butikken extends AppCompatActivity {
         updateText();
 
         fieldinfo.setText("Velkommen til butikken! her kan du købe skoleudstyr som gør det nemmere at lære i skolen");
-        playerinfo.setText("");
+       // playerinfo.setText("");
 
         switch (spiller.getLearningAmp()) {
             case 0:
@@ -90,7 +90,7 @@ public class Butikken extends AppCompatActivity {
                 if (spiller.getLearningAmp()==2) {
                     if (spiller.getPenge() >= 700) {
                         buy();
-                        playerinfo.setText(updateInfo());
+                      //  playerinfo.setText(updateInfo());
                         AlertDialog.Builder dialog = new AlertDialog.Builder(Butikken.this);
                         dialog.setTitle("Lommeregner købt");
                         dialog.setMessage("Du har købt en ny lommeregner for 700kr.");
@@ -106,7 +106,7 @@ public class Butikken extends AppCompatActivity {
                 if (spiller.getLearningAmp()==1) {
                     if (spiller.getPenge() >= 300) {
                         buy();
-                        playerinfo.setText(updateInfo());
+                       // playerinfo.setText(updateInfo());
                         AlertDialog.Builder dialog = new AlertDialog.Builder(Butikken.this);
                         dialog.setTitle("Blyanter købt");
                         dialog.setMessage("Du har købt nye blyanter for 300kr.");
@@ -122,7 +122,7 @@ public class Butikken extends AppCompatActivity {
                 if (spiller.getLearningAmp() == 0) {
                     if (spiller.getPenge() >= 150) {
                         buy();
-                        playerinfo.setText(updateInfo());
+                       // playerinfo.setText(updateInfo());
                         AlertDialog.Builder dialog = new AlertDialog.Builder(Butikken.this);
                         dialog.setTitle("Papir købt");
                         dialog.setMessage("Du har købt en blok papir for 150kr.");

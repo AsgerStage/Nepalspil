@@ -7,6 +7,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
 import android.view.View;
+import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -27,6 +28,8 @@ public class Marked extends AppCompatActivity {
     TextView textviden;
     TextView textmad;
     TextView playerinfo;
+    private Animation animation;
+    private Animation animationfood;
 
     //Working
     final int MONEY_PER_CLICK =10;
@@ -56,6 +59,11 @@ public class Marked extends AppCompatActivity {
         textpenge = (TextView) findViewById(R.id.textpenge);
         textviden = (TextView) findViewById(R.id.textviden);
         textmad = (TextView) findViewById(R.id.textmad);
+        final TextView money = (TextView) findViewById(R.id.money);
+        final TextView food = (TextView) findViewById(R.id.food);
+
+        animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.plusmoneymarked);
+        animationfood = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.plusfoodmarked);
 
 
         fieldinfo.setText("Dette er market. Her kan man arbejde og tjene penge, eller man kan købe mad.");
@@ -71,8 +79,10 @@ public class Marked extends AppCompatActivity {
         work.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
-                if (spiller.getTid() >= TIME_PER_CLICK && spiller.getKlassetrin() >= 4) {
+                if (spiller.getTid() >= TIME_PER_CLICK && spiller.getKlassetrin() >= 1) {
                     spiller.work(TIME_PER_CLICK,MONEY_PER_CLICK);
+                    money.setText("+"+MONEY_PER_CLICK+" kr");
+                    money.startAnimation(animation);
 
 
                     if (mp.isPlaying()) {
@@ -114,6 +124,8 @@ public class Marked extends AppCompatActivity {
                     spiller.eat(TIME_COST_EATING,COST_PER_FOOD_CLICK,FOOD_PER_CLICK);
                     if (mp.isPlaying()) {
                         mp.stop();
+                        food.setText("+"+FOOD_PER_CLICK+" mad");
+                        food.startAnimation(animationfood);
                     }
                     try {
                         mp.reset();
@@ -127,18 +139,9 @@ public class Marked extends AppCompatActivity {
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
-                    ImageView im = new ImageView(Marked.this);
-                    im.setImageResource(R.drawable.mad);
-                    t.setView(im);
-                    t.setGravity(Gravity.CENTER, 0, 0);
-                    t.show();
-                    if (back.isPressed()) {
-                        SpillePlade.updateEntireBoard();
-                        t.cancel();
-                    }
 
 
-                    //Toast.makeText(Marked.this, "Du har spist! +10 HP -5 Penge", Toast.LENGTH_LONG).show();
+
                     updateInfo();
 
                 } else {

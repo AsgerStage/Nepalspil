@@ -2,6 +2,7 @@ package com.example.asger.nepalspil.felter;
 
 import android.content.Intent;
 import android.content.res.AssetFileDescriptor;
+import android.graphics.Typeface;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
@@ -87,8 +88,12 @@ public class Skole extends AppCompatActivity {
         textmad = (TextView) findViewById(R.id.textmad);
         updateText();
 
+        Typeface face;
+        face = Typeface.createFromAsset(getAssets(), "fonts/EraserDust.ttf");
+        klassetrin.setTypeface(face);
+
         dialog = new AlertDialog.Builder(Skole.this);
-        schoolText.setText("Velkommen til Skolen, her kan du spise, studere og tage din eksamen når tiden er.");
+        schoolText.setText("Velkommen til Skolen, her kan du spise, studere og tage din eksamen.");
         playerInfo.setText("Tid: " + spiller.getTid());
         klassetrin.setText("Du går i " + spiller.getKlassetrin() + ". klasse.");
         if (spiller.getKlassetrin()>=12){

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.res.AssetFileDescriptor;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.support.design.widget.TabLayout;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.PagerTabStrip;
 import android.support.v4.view.ViewPager;
@@ -11,6 +12,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -21,6 +23,8 @@ import com.example.asger.nepalspil.R;
 import com.example.asger.nepalspil.activities.SpillePlade;
 
 import java.io.IOException;
+
+import me.relex.circleindicator.CircleIndicator;
 
 import static com.example.asger.nepalspil.activities.MainActivity.spiller;
 
@@ -41,7 +45,7 @@ public class Vaerksted extends AppCompatActivity {
         SpillePlade.updateEntireBoard();
         finish();
     }
-
+    private Animation animation;
     AlertDialog.Builder dialog;
     ViewPager viewPager;
     TextView viewPagerText;
@@ -66,6 +70,10 @@ public class Vaerksted extends AppCompatActivity {
         textpenge = (TextView) findViewById(R.id.textpenge);
         textviden = (TextView) findViewById(R.id.textviden);
         textmad = (TextView) findViewById(R.id.textmad);
+        TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
+        tabLayout.setupWithViewPager(viewPager, true);
+        animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.plusmoneyworkshop);
+        final TextView money = (TextView) findViewById(R.id.money);
         updateInfo();
 viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener(){
 
@@ -110,6 +118,8 @@ switch(position){
             public void onClick(View v) {
                 if (spiller.getTid() >= TIME_PER_CLICK && spiller.getKlassetrin()>=3) {
                     spiller.work(TIME_PER_CLICK,MONEY_PER_CLICK);
+                    money.setText("+"+MONEY_PER_CLICK+" kr");
+                    money.startAnimation(animation);
 
                     if (mp.isPlaying()) {
                         mp.stop();
