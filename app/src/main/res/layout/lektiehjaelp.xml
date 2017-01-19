@@ -109,17 +109,27 @@
 
         <TextView
             android:text="TextView"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="50dp"
             android:id="@+id/lektiePlayerInfo"
             android:layout_alignParentBottom="true"
             android:layout_alignParentStart="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/scrollknowledge"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            android:textColor="@color/black" />
     </RelativeLayout>
 
-    <LinearLayout
-        android:orientation="horizontal"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="81dp">
+        android:layout_height="60dp"
+        android:layout_weight="0.53">
 
         <Button
             android:background="@android:color/transparent"
@@ -129,13 +139,10 @@
             android:id="@+id/learn"
             android:layout_weight="1"
             android:elevation="0dp"
-            android:textAlignment="center" />
+            android:textAlignment="center"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true" />
 
-        <Space
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1.61" />
-
-    </LinearLayout>
+    </RelativeLayout>
 
 </LinearLayout>

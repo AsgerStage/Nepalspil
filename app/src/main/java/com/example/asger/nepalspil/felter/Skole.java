@@ -176,12 +176,14 @@ public class Skole extends AppCompatActivity {
                         }
                         System.out.println(spiller.getViden());
                     } else if (thisStudy == 2) {
-                        Toast.makeText(Skole.this, "Du forstod ikke alt undervisningen, tag i lektiehjælpen for at forstå det", Toast.LENGTH_SHORT).show();
+                        scroll.setText("+1 lektiehjælp");
+                        scroll.startAnimation(animation);
                         spiller.study(TIME_PER_CLICK, 0);
                         spiller.setGlemtViden(spiller.getGlemtViden() + 1);
                         updateText();
                     } else if (thisStudy == 3) {
-                        Toast.makeText(Skole.this, "Du forstod ingenting af denne lektion", Toast.LENGTH_SHORT).show();
+                        scroll.setText("+0 viden");
+                        scroll.startAnimation(animation);
                         spiller.study(TIME_PER_CLICK, 0);
                         updateText();
                     }
@@ -207,7 +209,7 @@ public class Skole extends AppCompatActivity {
                 } else {
                     AlertDialog.Builder dialog = new AlertDialog.Builder(Skole.this);
                     dialog.setTitle("Ikke nok viden!");
-                    dialog.setMessage("Du har ikke nok viden til at starte eksamenen! Du skal have mindst " + vidensKrav() + " for at starte eksamenen.");
+                    dialog.setMessage("Du har ikke nok viden til at starte eksamenen! Du skal have mindst " + vidensKrav() + " viden for at starte eksamen.");
                     dialog.show();
 
                 }

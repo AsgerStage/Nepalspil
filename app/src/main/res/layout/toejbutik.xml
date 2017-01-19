@@ -93,8 +93,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="189dp"
-        android:layout_weight="0.77">
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:orientation="horizontal"
@@ -108,7 +107,7 @@
                 android:layout_weight="1.82" />
 
             <Button
-                android:text="Køb"
+                android:text="Køb kladehæfte"
                 android:layout_width="156dp"
                 android:layout_height="wrap_content"
                 android:id="@+id/tbBuy" />
@@ -137,7 +136,7 @@
             android:text="TextView"
             android:id="@+id/tbInfo"
             android:layout_height="100dp"
-            android:layout_marginTop="26dp"
+            android:layout_marginTop="36dp"
             android:layout_width="150dp"
             android:layout_marginEnd="82dp"
             android:layout_alignParentTop="true"

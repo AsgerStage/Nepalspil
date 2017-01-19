@@ -22,23 +22,26 @@
             <Button
                 android:text="Button"
                 android:layout_width="180dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:id="@+id/answer1Button"
-                android:layout_weight="1" />
+                android:layout_weight="0.98"
+                android:textAlignment="center" />
 
             <Button
                 android:text="Button"
                 android:layout_width="180dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:id="@+id/answer2Button"
-                android:layout_weight="1" />
+                android:layout_weight="1.00"
+                android:textAlignment="center" />
 
             <Button
                 android:text="Button"
                 android:layout_width="180dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:id="@+id/answer3Button"
-                android:layout_weight="1" />
+                android:layout_weight="1.00"
+                android:textAlignment="center" />
 
         </LinearLayout>
 

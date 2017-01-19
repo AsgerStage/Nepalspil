@@ -107,65 +107,63 @@
             android:layout_alignParentStart="true"
             android:fontFamily="sans-serif" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_above="@+id/workButton"
-            android:layout_centerHorizontal="true"
-            android:id="@+id/scrollmoney"
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textSize="20sp" />
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/workButton"
-            android:layout_alignBottom="@+id/imageView5"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="27dp"
-            android:background="@android:color/transparent"
-            android:drawableTop="@drawable/arbejdbutton"
-
-            />
-
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_alignTop="@+id/playerinfo"
-            android:layout_alignParentStart="true"></LinearLayout>
-
-        <ImageView
-            android:layout_height="wrap_content"
-            app:srcCompat="@drawable/bubble"
-            android:id="@+id/imageView6"
-            android:layout_width="300dp"
-            android:layout_marginBottom="42dp"
-            android:layout_above="@+id/workButton"
-            android:layout_alignParentEnd="true" />
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/imageView6"></LinearLayout>
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:srcCompat="@drawable/pige1"
             android:id="@+id/imageView5"
-            android:layout_marginBottom="45dp"
             android:layout_alignParentBottom="true"
-            android:layout_alignParentEnd="true" />
+            android:layout_alignParentStart="true"
+            android:layout_marginBottom="45dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/scrollmoney"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:layout_alignParentTop="true"
+            android:layout_toEndOf="@+id/playerinfo" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/workButton"
+            android:background="@android:color/transparent"
+            android:drawableTop="@drawable/arbejdbutton"
+
+            android:layout_alignBottom="@+id/imageView5"
+            android:layout_centerHorizontal="true" />
+
+        <ImageView
+            app:srcCompat="@drawable/bubble"
+            android:id="@+id/imageView6"
+            android:layout_width="300dp"
+            android:layout_height="220dp"
+            android:layout_alignParentTop="true"
+            android:layout_toEndOf="@+id/playerinfo"
+            android:layout_marginStart="38dp" />
 
         <TextView
             android:text="Info om farm"
             android:id="@+id/fieldinfo"
-            android:textSize="20dp"
+            android:textSize="14sp"
             android:textStyle="normal|bold"
             android:textAlignment="center"
             android:layout_width="160dp"
-            android:layout_height="90dp"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginEnd="67dp"
-            android:layout_marginTop="27dp" />
+            android:layout_marginStart="67dp"
+            android:layout_height="100dp"
+            android:layout_above="@+id/playerinfo"
+            android:layout_alignStart="@+id/imageView6"
+            android:layout_marginBottom="22dp" />
 
     </RelativeLayout>
 

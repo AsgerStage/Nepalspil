@@ -98,71 +98,113 @@
 
     </RelativeLayout>
 
-    <android.support.v4.view.ViewPager
-        android:id="@+id/view_pager"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="97dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" >
+        android:layout_height="204dp">
 
-    </android.support.v4.view.ViewPager>
+        <android.support.v4.view.ViewPager
+            android:id="@+id/view_pager"
+            android:layout_width="167dp"
+            android:layout_height="97dp"
+            android:layout_weight="0.74"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true"
+            android:layout_above="@+id/tab_layout">
 
-    <TextView
-        android:text="Cykel:  200kr"
+        </android.support.v4.view.ViewPager>
+
+        <android.support.design.widget.TabLayout
+            android:id="@+id/tab_layout"
+            android:layout_width="171dp"
+            app:tabBackground="@drawable/tab_selector"
+            app:tabGravity="center"
+            app:tabIndicatorHeight="0dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true"
+            android:layout_height="20dp"
+            android:layout_alignEnd="@+id/view_pager" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/pige1"
+            android:id="@+id/imageView35"
+            android:layout_marginEnd="93dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true" />
+
+        <ImageView
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/bubble"
+            android:id="@+id/imageView36"
+            android:layout_width="200dp"
+            android:layout_above="@+id/tab_layout"
+            android:layout_centerHorizontal="true" />
+
+        <TextView
+            android:text="Punkteret cykel:  200kr"
+            android:layout_width="167dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/viewpagerPris"
+            android:textAlignment="center"
+            android:textColor="@color/money"
+            android:textSize="24sp"
+            android:textAllCaps="false"
+            android:layout_weight="0.26"
+            android:layout_marginTop="22dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/money"
+            android:textAlignment="center"
+            android:textColor="@color/money"
+            android:textSize="20sp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignStart="@+id/imageView35" />
+    </RelativeLayout>
+
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/viewpagerPris"
-        android:layout_weight="0.10"
-        android:textAlignment="center"
-        android:textColor="@color/black"
-        android:textSize="18sp"
-        android:textAllCaps="false" />
-
-    <android.support.design.widget.TabLayout
-        android:id="@+id/tab_layout"
-        android:layout_width="match_parent"
-        android:layout_height="21dp"
-        android:layout_weight="0.19"
-        app:tabBackground="@drawable/tab_selector"
-        app:tabGravity="center"
-        app:tabIndicatorHeight="0dp"/>
-
-    <TextView
-        android:text="Egenskaber"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/playerinfo"
-        android:layout_weight="0.75"
-        android:textColorLink="@android:color/white" />
-
-    <TextView
-        android:layout_width="298dp"
-        android:layout_height="wrap_content"
-        android:id="@+id/money"
-        android:textAlignment="center"
-        android:textColor="@color/money" />
-
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="79dp">
+        android:layout_height="75dp">
 
         <Button
             android:background="@android:color/transparent"
             android:drawableTop="@drawable/arbejdbutton"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="61dp"
             android:id="@+id/workButton"
-            android:layout_weight="1" />
+            android:layout_alignBaseline="@+id/buyBikeButton"
+            android:layout_alignBottom="@+id/buyBikeButton"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="12dp" />
 
         <Button
             android:background="@android:color/transparent"
             android:drawableTop="@drawable/kobbutton"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="63dp"
             android:id="@+id/buyBikeButton"
-            android:layout_weight="1" />
+            android:layout_centerVertical="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="24dp" />
 
-    </LinearLayout>
+        <TextView
+            android:text="Egenskaber"
+            android:layout_width="102dp"
+            android:layout_height="36dp"
+            android:id="@+id/playerinfo"
+            android:textColorLink="@android:color/white"
+            android:textSize="30sp"
+            android:layout_alignParentBottom="true"
+            android:layout_toEndOf="@+id/buyBikeButton"
+            android:layout_marginStart="14dp"
+            android:fontFamily="sans-serif"
+            android:textColor="@color/black" />
+
+    </RelativeLayout>
 
 </LinearLayout>

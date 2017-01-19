@@ -13,6 +13,8 @@ import android.widget.TextView;
 import com.example.asger.nepalspil.R;
 import com.example.asger.nepalspil.activities.SpillePlade;
 
+import org.w3c.dom.Text;
+
 import static com.example.asger.nepalspil.activities.MainActivity.spiller;
 
 
@@ -31,7 +33,7 @@ public class Hjem extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.hjem);          //Har ikke lavet hjem layout endnu
+        setContentView(R.layout.hjem);         
 
         ImageView im = (ImageView) findViewById(R.id.hjemprofile);
         dialog = new AlertDialog.Builder(Hjem.this);
@@ -40,7 +42,9 @@ public class Hjem extends AppCompatActivity {
         textmad = (TextView) findViewById(R.id.textmad);
         updateText();
         ImageView hjemBack = (ImageView) findViewById(R.id.hjemBack);
-        ImageView hjemhelp = (ImageView) findViewById(R.id.hjemhelp);
+       // ImageView hjemhelp = (ImageView) findViewById(R.id.hjemhelp);
+        TextView spillerintro = (TextView) findViewById(R.id.spillerintro);
+        spillerintro.setText("Hej jeg hedder " + spiller.getNavn() + ". Jeg bor med min familie i en landsby i Nepal. \nMin mor og far har aldrig gået i skole, så de tjener ikke så mange penge, så det er svært for dem at hjælpe mig med at få en uddannelse.");
 
         if (spiller.getSex() == false) {
             im.setImageResource(R.drawable.pige2);
@@ -58,7 +62,7 @@ public class Hjem extends AppCompatActivity {
             }
         });
 
-        hjemhelp.setOnClickListener(new View.OnClickListener() {
+      /*  hjemhelp.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
                 SpillePlade.updateEntireBoard();
@@ -66,7 +70,7 @@ public class Hjem extends AppCompatActivity {
                 dialog.setMessage("Hej jeg hedder " + spiller.getNavn() + ". Jeg bor med min familie i en landsby i Nepal. \n Min mor og far har aldrig gået i skole, så de tjener ikke så mange penge, så det er svært for dem at hjælpe mig med at få en uddannelse.");
                 dialog.show();
             }
-        });
+        });*/
 
 
     }

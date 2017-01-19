@@ -60,9 +60,9 @@ public class Farm extends AppCompatActivity {
         textmad = (TextView) findViewById(R.id.textmad);
         updateText();
 
-        Typeface face;
+       /* Typeface face;
         face = Typeface.createFromAsset(getAssets(), "fonts/Mathlete-Bulky.otf");
-        fieldinfo.setTypeface(face);
+        fieldinfo.setTypeface(face);*/
 
         fieldinfo.setText("I marken kan du tjene lidt penge til mad, skolesager eller en cykel ved at arbejde.");
        playerinfo.setText("Tid: " + spiller.getTid());

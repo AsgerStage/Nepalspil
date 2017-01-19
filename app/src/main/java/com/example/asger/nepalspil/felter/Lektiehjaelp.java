@@ -1,10 +1,13 @@
 package com.example.asger.nepalspil.felter;
 
+import android.content.res.AssetFileDescriptor;
 import android.graphics.Typeface;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -13,6 +16,8 @@ import android.widget.Toast;
 
 import com.example.asger.nepalspil.R;
 import com.example.asger.nepalspil.activities.SpillePlade;
+
+import java.io.IOException;
 
 import static com.example.asger.nepalspil.activities.MainActivity.spiller;
 
@@ -33,6 +38,7 @@ public class Lektiehjaelp extends AppCompatActivity {
 
     Button homeworkHelp;
     AlertDialog.Builder dialog;
+    private Animation animation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +47,7 @@ public class Lektiehjaelp extends AppCompatActivity {
 
         dialog = new AlertDialog.Builder(Lektiehjaelp.this);
 
+        final MediaPlayer mp = MediaPlayer.create(this, R.raw.cash);
         final TextView lektiehjaelpInfo = (TextView) findViewById(R.id.lektiehjaelpTextField);
         playerInfo = (TextView) findViewById(R.id.lektiePlayerInfo);
         ImageView back = (ImageView) findViewById(R.id.lektieBack);
@@ -49,6 +56,8 @@ public class Lektiehjaelp extends AppCompatActivity {
         textpenge = (TextView) findViewById(R.id.textpenge);
         textviden = (TextView) findViewById(R.id.textviden);
         textmad = (TextView) findViewById(R.id.textmad);
+        final TextView scrollknowledge = (TextView) findViewById(R.id.scrollknowledge);
+        animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.plusknowledge);
 
         Typeface face;
         face = Typeface.createFromAsset(getAssets(), "fonts/EraserDust.ttf");
@@ -60,9 +69,25 @@ public class Lektiehjaelp extends AppCompatActivity {
             public void onClick(View v) {
                 v.startAnimation(AnimationUtils.loadAnimation(Lektiehjaelp.this, R.anim.image_click));
                 if (spiller.getTid() >= TIME_PER_CLICK && spiller.getGlemtViden() > 0) {
+                    scrollknowledge.setText("+" + VIDEN_PER_CLICK + " viden");
+                    scrollknowledge.startAnimation(animation);
+                    if (mp.isPlaying()) {
+                        mp.stop();
+                    }
+                    try {
+                        mp.reset();
+                        AssetFileDescriptor afd;
+                        afd = getAssets().openFd("study.mp3");
+                        mp.setDataSource(afd.getFileDescriptor(), afd.getStartOffset(), afd.getLength());
+                        mp.prepare();
+                        mp.start();
+                    } catch (IllegalStateException e) {
+                        e.printStackTrace();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                     learn();
                     updateInfo();
-                    Toast.makeText(Lektiehjaelp.this, "Du har opnået 1 viden.", Toast.LENGTH_SHORT).show();
                 } else if (spiller.getGlemtViden() <= 0) {
                     AlertDialog.Builder dialog = new AlertDialog.Builder(Lektiehjaelp.this);
                     dialog.setTitle("Ingen glemt viden.");

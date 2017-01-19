@@ -55,7 +55,7 @@ public class Butikken extends AppCompatActivity {
 
         switch (spiller.getLearningAmp()) {
             case 0:
-                buy.setText("Køb Papir");
+                buy.setText("Køb Kladehæfte");
                 break;
             case 1:
                 buy.setText("Køb blyanter");
@@ -72,7 +72,7 @@ public class Butikken extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 v.startAnimation(AnimationUtils.loadAnimation(Butikken.this, R.anim.image_click));
-                dialog.setMessage("I butikken kan du købe skoleting. Kladdehæfter koster 150 kr og øger din chance for at lære noget i skolen \n blyanter koster 300 kr \n lommeregner koster 700 kr og fjerner risiko for overhovedet ikke at lære noget i skolen.");
+                dialog.setMessage("I butikken kan du købe skoleting. Kladdehæfter koster 150 kr og øger din chance for at lære noget i skolen \n\n blyanter koster 300 kr \n\n lommeregner koster 700 kr og fjerner risiko for overhovedet ikke at lære noget i skolen.");
                 dialog.show();
             }
         });
