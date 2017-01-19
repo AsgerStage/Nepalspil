@@ -85,13 +85,13 @@ public class Vaerksted extends AppCompatActivity {
             public void onPageSelected(int position) {
                 switch (position) {
                     case 0:
-                        viewPagerText.setText("Punkteret cykel:\n200kr");
+                        viewPagerText.setText("Cykel: 200kr");
                         break;
                     case 1:
-                        viewPagerText.setText("Pænt hurtig cykel:\n500kr");
+                        viewPagerText.setText("Pænt hurtig cykel: 500kr");
                         break;
                     case 2:
-                        viewPagerText.setText("Racer cykel:\b1000kr");
+                        viewPagerText.setText("Racer cykel: 1000kr");
                 }
             }
 
@@ -219,7 +219,7 @@ public class Vaerksted extends AppCompatActivity {
                     if (spiller.getPenge() >= 200) {
                         spiller.setPenge(spiller.getPenge() - 200);
                         spiller.setmoveSpeed(2);
-                        Toast.makeText(Vaerksted.this, "Du har købt en punkteret cykel", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Vaerksted.this, "Du har købt en cykel", Toast.LENGTH_SHORT).show();
                     } else {
                         Toast.makeText(Vaerksted.this, "Du har ikke råd til en cykel, den koster 200", Toast.LENGTH_SHORT).show();
                     }

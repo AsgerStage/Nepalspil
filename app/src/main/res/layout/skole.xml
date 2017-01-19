@@ -185,8 +185,9 @@
             android:id="@+id/schoolText"
             android:layout_weight="1"
             android:layout_marginEnd="79dp"
-            android:layout_below="@+id/schoolPlayerInfo"
-            android:layout_alignEnd="@+id/imageView22" />
+            android:layout_alignParentTop="true"
+            android:layout_alignEnd="@+id/imageView22"
+            android:layout_marginTop="12dp" />
 
     </RelativeLayout>
 
