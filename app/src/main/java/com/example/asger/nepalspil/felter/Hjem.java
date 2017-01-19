@@ -35,7 +35,7 @@ public class Hjem extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.hjem);         
+        setContentView(R.layout.hjem);
 
         ImageView im = (ImageView) findViewById(R.id.hjemprofile);
         dialog = new AlertDialog.Builder(Hjem.this);
@@ -45,7 +45,7 @@ public class Hjem extends AppCompatActivity {
         texttid= (TextView) findViewById(R.id.texttid);
         updateText();
         ImageView hjemBack = (ImageView) findViewById(R.id.hjemBack);
-       // ImageView hjemhelp = (ImageView) findViewById(R.id.hjemhelp);
+        // ImageView hjemhelp = (ImageView) findViewById(R.id.hjemhelp);
         TextView spillerintro = (TextView) findViewById(R.id.spillerintro);
         spillerintro.setText("Hej jeg hedder " + spiller.getNavn() + ". Jeg bor med min familie i en landsby i Nepal. \nMin mor og far har aldrig gået i skole, så de tjener ikke så mange penge, så det er svært for dem at hjælpe mig med at få en uddannelse.");
 
