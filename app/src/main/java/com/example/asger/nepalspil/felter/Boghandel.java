@@ -24,8 +24,8 @@ public class Boghandel extends AppCompatActivity {
     TextView textviden;
     TextView textmad;
     TextView playerInfo;
-    final int MONEY_PER_CLICK = 40;
-    final int TIME_PER_CLICK = 2;
+    final int MONEY_PER_CLICK = 20;
+    final int TIME_PER_CLICK = 1;
 
     @Override
     public void onBackPressed() {
@@ -57,7 +57,7 @@ public class Boghandel extends AppCompatActivity {
 
 
         bookstoreInfo.setText("I boghandlen kan du købe skolebøger. Skolebøger giver mere viden. \n Du kan også få et job i boghandlen, hvis du har gået i skole længe nok.");
-        updateInfo();
+        updateText();
         work.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
@@ -83,7 +83,7 @@ public class Boghandel extends AppCompatActivity {
                         e.printStackTrace();
                     }
 
-                    updateInfo();
+                    updateText();
                 } else if (spiller.getTid() < 2) {
 
                     dialog.setTitle("Intet tid!");
@@ -120,7 +120,7 @@ public class Boghandel extends AppCompatActivity {
                     dialog.setMessage("Du har købt en ny bog for 30 penge. +10 viden");
                     dialog.show();
                     spiller.setLastBookBought(spiller.getRunde());
-                    updateInfo();
+                    updateText();
                 } else if (spiller.getPenge() < 30) {
                     dialog.setTitle("Du mangler penge!");
                     dialog.setMessage("Bogen koster 30 kroner, men du har kun " + spiller.getPenge());
@@ -145,16 +145,13 @@ public class Boghandel extends AppCompatActivity {
     }
 
 
-    public void updateInfo() {
-        SpillePlade.updateInfobox();
-        playerInfo.setText("Tid: " + spiller.getTid());
-        updateText();
-    }
 
     public void updateText() {
         textpenge.setText(String.valueOf(spiller.getPenge()));
         textviden.setText(String.valueOf(spiller.getViden()));
         textmad.setText(String.valueOf(spiller.getHp()));
+        playerInfo.setText(String.valueOf(spiller.getTid()));
+        SpillePlade.updateInfobox();
     }
 
 }

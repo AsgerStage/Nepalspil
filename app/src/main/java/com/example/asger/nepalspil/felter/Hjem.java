@@ -19,9 +19,11 @@ import static com.example.asger.nepalspil.activities.MainActivity.spiller;
 
 
 public class Hjem extends AppCompatActivity {
-    static TextView textpenge;
-    static TextView textviden;
-    static TextView textmad;
+     TextView textpenge;
+     TextView textviden;
+     TextView textmad;
+    TextView texttid;
+
 
     @Override
     public void onBackPressed() {
@@ -40,6 +42,7 @@ public class Hjem extends AppCompatActivity {
         textpenge = (TextView) findViewById(R.id.textpenge);
         textviden = (TextView) findViewById(R.id.textviden);
         textmad = (TextView) findViewById(R.id.textmad);
+        texttid= (TextView) findViewById(R.id.texttid);
         updateText();
         ImageView hjemBack = (ImageView) findViewById(R.id.hjemBack);
        // ImageView hjemhelp = (ImageView) findViewById(R.id.hjemhelp);
@@ -80,10 +83,11 @@ public class Hjem extends AppCompatActivity {
         return "Navn: " + spiller.getNavn() + "\n mad: " + spiller.getHp() + "\n Penge: " + spiller.getPenge() + "\n Viden: " + spiller.getViden() + "\n Klassetrin: " + spiller.getKlassetrin() + "\n Tid: " + spiller.getTid();
     }
 
-    public static void updateText() {
+    public void updateText() {
         textpenge.setText(String.valueOf(spiller.getPenge()));
         textviden.setText(String.valueOf(spiller.getViden()));
         textmad.setText(String.valueOf(spiller.getHp()));
+        texttid.setText(String.valueOf(spiller.getTid()));
 
     }
 }

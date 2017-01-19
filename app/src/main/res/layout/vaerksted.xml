@@ -11,11 +11,6 @@
         android:layout_width="match_parent"
         android:layout_height="34dp">
 
-        <me.relex.circleindicator.CircleIndicator
-            android:id="@+id/indicator"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"/>
-
         <ImageView
             android:layout_width="34dp"
             android:layout_height="34dp"
@@ -31,19 +26,6 @@
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
             android:id="@+id/vaerkstedHelp" />
-
-        <TextView
-            android:text="Penge"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/textpenge"
-            android:elevation="1dp"
-            android:fontFamily="sans-serif"
-            android:textSize="24sp"
-            android:textColor="@color/money"
-            android:layout_marginStart="56dp"
-            android:layout_alignParentBottom="true"
-            android:layout_toEndOf="@+id/imageView19" />
 
         <ImageView
             android:layout_width="wrap_content"
@@ -95,6 +77,52 @@
             android:layout_marginStart="35dp"
             android:layout_alignParentTop="true"
             android:layout_alignStart="@+id/textmad" />
+
+        <TextView
+            android:text="Penge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textpenge"
+            android:elevation="1dp"
+            android:fontFamily="sans-serif"
+            android:textSize="24sp"
+            android:textColor="@color/money"
+            android:layout_marginStart="19dp"
+            android:layout_alignParentBottom="true"
+            android:layout_toEndOf="@+id/imageView19" />
+
+        <ImageView
+            android:layout_height="34dp"
+            app:srcCompat="@drawable/urikon"
+            android:id="@+id/imageView45"
+            android:layout_width="34dp"
+            android:layout_weight="1"
+            android:layout_alignTop="@+id/imageView20"
+            android:layout_toEndOf="@+id/playerinfo" />
+
+        <TextView
+            android:text="16"
+            android:layout_width="34dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/playerinfo"
+            android:elevation="1dp"
+            android:fontFamily="sans-serif"
+            android:textSize="24sp"
+            android:textColor="@color/black"
+            android:gravity="right"
+            android:textAlignment="gravity"
+            android:layout_weight="1"
+            android:layout_centerVertical="true"
+            android:layout_toStartOf="@+id/vaerkstedHelp" />
+
+        <me.relex.circleindicator.CircleIndicator
+            android:id="@+id/indicator"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true">
+
+        </me.relex.circleindicator.CircleIndicator>
 
     </RelativeLayout>
 
@@ -165,6 +193,7 @@
             android:layout_alignParentBottom="true"
             android:layout_alignParentEnd="true"
             android:layout_alignStart="@+id/imageView35" />
+
     </RelativeLayout>
 
     <RelativeLayout
@@ -191,19 +220,6 @@
             android:layout_centerVertical="true"
             android:layout_alignParentStart="true"
             android:layout_marginStart="24dp" />
-
-        <TextView
-            android:text="Egenskaber"
-            android:layout_width="102dp"
-            android:layout_height="36dp"
-            android:id="@+id/playerinfo"
-            android:textColorLink="@android:color/white"
-            android:textSize="30sp"
-            android:layout_alignParentBottom="true"
-            android:layout_toEndOf="@+id/buyBikeButton"
-            android:layout_marginStart="14dp"
-            android:fontFamily="sans-serif"
-            android:textColor="@color/black" />
 
     </RelativeLayout>
 

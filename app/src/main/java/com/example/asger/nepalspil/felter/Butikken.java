@@ -1,9 +1,7 @@
 package com.example.asger.nepalspil.felter;
 
 import android.media.MediaPlayer;
-import android.net.Uri;
 import android.os.Bundle;
-import android.support.v4.view.ViewPager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -14,10 +12,6 @@ import android.widget.TextView;
 
 import com.example.asger.nepalspil.R;
 import com.example.asger.nepalspil.activities.SpillePlade;
-import com.google.android.gms.appindexing.Action;
-import com.google.android.gms.appindexing.AppIndex;
-import com.google.android.gms.appindexing.Thing;
-import com.google.android.gms.common.api.GoogleApiClient;
 
 import static com.example.asger.nepalspil.activities.MainActivity.spiller;
 
@@ -25,7 +19,7 @@ public class Butikken extends AppCompatActivity {
     TextView textpenge;
     TextView textviden;
     TextView textmad;
-
+    TextView texttid;
     @Override
     public void onBackPressed() {
         SpillePlade.updateEntireBoard();
@@ -48,6 +42,7 @@ public class Butikken extends AppCompatActivity {
         textpenge = (TextView) findViewById(R.id.textpenge);
         textviden = (TextView) findViewById(R.id.textviden);
         textmad = (TextView) findViewById(R.id.textmad);
+        texttid = (TextView) findViewById(R.id.schoolPlayerInfo);
         updateText();
 
         fieldinfo.setText("I butikken kan du købe skoleting, som gør det lettere at få viden.");
@@ -167,5 +162,6 @@ public class Butikken extends AppCompatActivity {
         textpenge.setText(String.valueOf(spiller.getPenge()));
         textviden.setText(String.valueOf(spiller.getViden()));
         textmad.setText(String.valueOf(spiller.getHp()));
+        texttid.setText(String.valueOf(spiller.getTid()));
     }
 }

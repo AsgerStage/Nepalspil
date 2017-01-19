@@ -111,7 +111,7 @@ public class Eksamen extends AppCompatActivity {
         }
         Skole.updateText();
 
-        dialog.setMessage("Du har desværre svaret forkert på eksamen og er derfor dumpet. -" + Skole.vidensKrav() + " viden")
+        dialog.setMessage("Du har desværre svaret forkert på eksamen og er derfor dumpet. -" + 10*spiller.getKlassetrin()+ " viden")
                 .setCancelable(false)
                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {

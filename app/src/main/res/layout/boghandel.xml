@@ -57,19 +57,6 @@
             android:layout_marginStart="9dp" />
 
         <TextView
-            android:text="Penge"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/textpenge"
-            android:elevation="1dp"
-            android:fontFamily="sans-serif"
-            android:textSize="24sp"
-            android:textColor="@color/money"
-            android:layout_marginStart="56dp"
-            android:layout_alignParentBottom="true"
-            android:layout_toEndOf="@+id/imageView28" />
-
-        <TextView
             android:text="Mad"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -89,21 +76,48 @@
             android:id="@+id/imageView27"
             android:layout_alignTop="@+id/textmad"
             android:layout_toEndOf="@+id/textmad" />
+
+        <TextView
+            android:text="Penge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textpenge"
+            android:elevation="1dp"
+            android:fontFamily="sans-serif"
+            android:textSize="24sp"
+            android:textColor="@color/money"
+            android:layout_marginStart="25dp"
+            android:layout_alignParentBottom="true"
+            android:layout_toEndOf="@+id/imageView28" />
+
+        <ImageView
+            android:layout_height="34dp"
+            app:srcCompat="@drawable/urikon"
+            android:id="@+id/imageView40"
+            android:layout_marginStart="32dp"
+            android:layout_width="34dp"
+            android:layout_alignParentTop="true"
+            android:layout_toEndOf="@+id/imageView29" />
+
+        <TextView
+            android:text="16"
+            android:layout_width="34dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/bookstorePlayerInfo"
+            android:elevation="1dp"
+            android:fontFamily="sans-serif"
+            android:textSize="24sp"
+            android:textColor="@color/black"
+            android:gravity="right"
+            android:textAlignment="gravity"
+            android:layout_alignParentBottom="true"
+            android:layout_toEndOf="@+id/imageView29" />
     </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="167dp"
         android:layout_weight="0.92">
-
-        <TextView
-            android:text="Egenskaber"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/bookstorePlayerInfo"
-            android:layout_weight="0.97"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentStart="true" />
 
         <ImageView
             android:layout_width="wrap_content"

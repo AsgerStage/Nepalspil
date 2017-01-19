@@ -27,8 +27,9 @@ public class Farm extends AppCompatActivity {
     TextView textpenge;
     TextView textviden;
     TextView textmad;
-    final int MONEY_PER_CLICK =5;
-    final int TIME_PER_CLICK =2;
+    TextView playerinfo;
+    final int MONEY_PER_CLICK =3;
+    final int TIME_PER_CLICK =1;
 
     @Override
     public void onBackPressed() {
@@ -47,7 +48,7 @@ public class Farm extends AppCompatActivity {
 
         dialog = new AlertDialog.Builder(Farm.this);
         final TextView fieldinfo = (TextView) findViewById(R.id.fieldinfo);
-        final TextView playerinfo = (TextView) findViewById(R.id.playerinfo);
+        playerinfo = (TextView) findViewById(R.id.playerinfo);
         final MediaPlayer mp = MediaPlayer.create(this, R.raw.cash);
         animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.plusmoney);
 
@@ -65,7 +66,7 @@ public class Farm extends AppCompatActivity {
         fieldinfo.setTypeface(face);*/
 
         fieldinfo.setText("I marken kan du tjene lidt penge til mad, skolesager eller en cykel ved at arbejde.");
-       playerinfo.setText("Tid: " + spiller.getTid());
+
 
         helpfield.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -82,7 +83,6 @@ public class Farm extends AppCompatActivity {
                     spiller.work(TIME_PER_CLICK,MONEY_PER_CLICK);
                     money.setText("+"+MONEY_PER_CLICK+" kr");
                     money.startAnimation(animation);
-                   playerinfo.setText(updateInfo());
                     updateText();
 
                     if (mp.isPlaying()) {
@@ -124,14 +124,12 @@ public class Farm extends AppCompatActivity {
 
 
 
-    public String updateInfo() {
-        SpillePlade.updateInfobox();
-        return "Tid: " + spiller.getTid();
-    }
 
     public  void updateText() {
         textpenge.setText(String.valueOf(spiller.getPenge()));
         textviden.setText(String.valueOf(spiller.getViden()));
         textmad.setText(String.valueOf(spiller.getHp()));
+        playerinfo.setText(String.valueOf(spiller.getTid()));
+        SpillePlade.updateEntireBoard();
     }
 }

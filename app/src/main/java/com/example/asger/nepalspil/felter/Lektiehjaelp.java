@@ -63,7 +63,7 @@ public class Lektiehjaelp extends AppCompatActivity {
         face = Typeface.createFromAsset(getAssets(), "fonts/EraserDust.ttf");
         lektiehjaelpInfo.setTypeface(face);
         lektiehjaelpInfo.setText("Her kan du få lektiehjælp for at indhente det, du ikke forstod i timerne.");
-        updateInfo();
+        updateText();
         homeworkHelp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -87,7 +87,7 @@ public class Lektiehjaelp extends AppCompatActivity {
                         e.printStackTrace();
                     }
                     learn();
-                    updateInfo();
+                    updateText();
                 } else if (spiller.getGlemtViden() <= 0) {
                     AlertDialog.Builder dialog = new AlertDialog.Builder(Lektiehjaelp.this);
                     dialog.setTitle("Ingen glemt viden.");
@@ -128,15 +128,13 @@ public class Lektiehjaelp extends AppCompatActivity {
     }
 
 
-    public void updateInfo() {
-        SpillePlade.updateInfobox();
-        updateText();
-        playerInfo.setText("Tid: " + spiller.getTid());
-    }
+
 
     public void updateText() {
         textpenge.setText(String.valueOf(spiller.getPenge()));
         textviden.setText(String.valueOf(spiller.getViden()));
         textmad.setText(String.valueOf(spiller.getHp()));
+        playerInfo.setText(String.valueOf(spiller.getTid()));
+        SpillePlade.updateInfobox();
     }
 }

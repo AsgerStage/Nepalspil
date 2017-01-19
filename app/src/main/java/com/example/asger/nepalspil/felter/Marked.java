@@ -32,8 +32,8 @@ public class Marked extends AppCompatActivity {
     private Animation animationfood;
 
     //Working
-    final int MONEY_PER_CLICK = 10;
-    final int TIME_PER_CLICK = 2;
+    final int MONEY_PER_CLICK = 5;
+    final int TIME_PER_CLICK = 1;
 
     //Eating
     final int FOOD_PER_CLICK = 10;
@@ -67,7 +67,7 @@ public class Marked extends AppCompatActivity {
 
 
         fieldinfo.setText(" På markedet kan du\n købe mad eller arbejde \n for at tjene penge.");
-        updateInfo();
+        updateText();
         helpField.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -102,7 +102,7 @@ public class Marked extends AppCompatActivity {
                         e.printStackTrace();
                     }
 
-                    updateInfo();
+                   updateText();
                 } else if (spiller.getTid() < 2) {
                     AlertDialog.Builder dialog = new AlertDialog.Builder(Marked.this);
                     dialog.setTitle("Intet tid!");
@@ -143,7 +143,7 @@ public class Marked extends AppCompatActivity {
                     }
 
 
-                    updateInfo();
+                    updateText();
 
                 } else {
                     AlertDialog.Builder dialog = new AlertDialog.Builder(Marked.this);
@@ -173,12 +173,7 @@ public class Marked extends AppCompatActivity {
         ;
     }
 
-    public void updateInfo() {
-        SpillePlade.updateInfobox();
-        updateText();
-        playerinfo.setText("Tid: " + spiller.getTid());
 
-    }
 
     @Override
     public void onBackPressed() {
@@ -191,5 +186,7 @@ public class Marked extends AppCompatActivity {
         textpenge.setText(String.valueOf(spiller.getPenge()));
         textviden.setText(String.valueOf(spiller.getViden()));
         textmad.setText(String.valueOf(spiller.getHp()));
+        playerinfo.setText(String.valueOf(spiller.getTid()));
+        SpillePlade.updateEntireBoard();
     }
 }

@@ -94,7 +94,6 @@ public class Skole extends AppCompatActivity {
 
         dialog = new AlertDialog.Builder(Skole.this);
         schoolText.setText("I skolen kan du spise, studere og gå til eksamen.");
-        playerInfo.setText("Tid: " + spiller.getTid());
         klassetrin.setText("Du går i " + spiller.getKlassetrin() + ". klasse.");
         if (spiller.getKlassetrin() >= 10) {
             bEksamen.setVisibility(View.INVISIBLE);
@@ -327,7 +326,7 @@ public class Skole extends AppCompatActivity {
         textpenge.setText(String.valueOf(spiller.getPenge()));
         textviden.setText(String.valueOf(spiller.getViden()));
         textmad.setText(String.valueOf(spiller.getHp()));
-        playerInfo.setText("Tid: " + spiller.getTid());
+        playerInfo.setText(String.valueOf(spiller.getTid()));
     }
 
 

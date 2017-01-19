@@ -36,8 +36,8 @@ public class Vaerksted extends AppCompatActivity {
     TextView playerinfo;
 
     //Working
-    final int MONEY_PER_CLICK = 10;
-    final int TIME_PER_CLICK = 2;
+    final int MONEY_PER_CLICK = 7;
+    final int TIME_PER_CLICK = 1;
 
     @Override
     public void onBackPressed() {
@@ -73,7 +73,7 @@ public class Vaerksted extends AppCompatActivity {
         tabLayout.setupWithViewPager(viewPager, true);
         animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.plusmoneyworkshop);
         final TextView money = (TextView) findViewById(R.id.money);
-        updateInfo();
+        updateText();
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
 
             @Override
@@ -136,7 +136,7 @@ public class Vaerksted extends AppCompatActivity {
                         e.printStackTrace();
                     }
 
-                    updateInfo();
+                    updateText();
                 } else if (spiller.getTid() < 2) {
 
                     dialog.setTitle("Intet tid!");
@@ -156,7 +156,7 @@ public class Vaerksted extends AppCompatActivity {
             public void onClick(View v) {
                 v.startAnimation(AnimationUtils.loadAnimation(Vaerksted.this, R.anim.image_click));
                 buy();
-                updateInfo();
+                updateText();
             }
         });
 
@@ -254,16 +254,13 @@ public class Vaerksted extends AppCompatActivity {
         }
     }
 
-    public void updateInfo() {
-        SpillePlade.updateInfobox();
-        updateText();
-        playerinfo.setText("Tid: " + spiller.getTid());
-    }
 
     public void updateText() {
         textpenge.setText(String.valueOf(spiller.getPenge()));
         textviden.setText(String.valueOf(spiller.getViden()));
         textmad.setText(String.valueOf(spiller.getHp()));
+        playerinfo.setText(String.valueOf(spiller.getTid()));
+        SpillePlade.updateEntireBoard();
     }
 
 }

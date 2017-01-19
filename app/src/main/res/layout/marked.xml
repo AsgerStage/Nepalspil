@@ -36,19 +36,6 @@
             android:layout_alignParentEnd="true"
             android:id="@+id/markedHelp" />
 
-        <TextView
-            android:text="Penge"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/textpenge"
-            android:elevation="1dp"
-            android:fontFamily="sans-serif"
-            android:textSize="24sp"
-            android:textColor="@color/money"
-            android:layout_alignTop="@+id/imageView22"
-            android:layout_toEndOf="@+id/imageView22"
-            android:layout_marginStart="64dp" />
-
         <ImageView
             android:layout_width="34dp"
             android:layout_height="34dp"
@@ -90,6 +77,42 @@
             android:layout_marginStart="50dp"
             android:layout_alignParentBottom="true"
             android:layout_toEndOf="@+id/backButton" />
+
+        <TextView
+            android:text="Penge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textpenge"
+            android:elevation="1dp"
+            android:fontFamily="sans-serif"
+            android:textSize="24sp"
+            android:textColor="@color/money"
+            android:layout_marginStart="19dp"
+            android:layout_alignBottom="@+id/imageView23"
+            android:layout_toEndOf="@+id/imageView22" />
+
+        <ImageView
+            android:layout_height="34dp"
+            app:srcCompat="@drawable/urikon"
+            android:id="@+id/imageView43"
+            android:layout_width="34dp"
+            android:layout_alignParentBottom="true"
+            android:layout_toEndOf="@+id/playerinfo" />
+
+        <TextView
+            android:text="16"
+            android:layout_width="34dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/playerinfo"
+            android:elevation="1dp"
+            android:fontFamily="sans-serif"
+            android:textSize="24sp"
+            android:textColor="@color/black"
+            android:gravity="right"
+            android:textAlignment="gravity"
+            android:layout_alignBottom="@+id/imageView23"
+            android:layout_toEndOf="@+id/imageView23"
+            android:layout_marginStart="11dp" />
     </RelativeLayout>
 
     <RelativeLayout
@@ -97,14 +120,6 @@
         android:layout_height="match_parent"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true">
-
-        <TextView
-            android:text="Stats"
-            android:layout_width="84dp"
-            android:layout_height="80dp"
-            android:id="@+id/playerinfo"
-            android:layout_below="@+id/fieldinfo"
-            android:layout_alignParentStart="true" />
 
         <LinearLayout
             android:orientation="horizontal"
@@ -131,16 +146,6 @@
                 android:layout_weight="1" />
 
         </LinearLayout>
-
-        <TextView
-            android:layout_height="wrap_content"
-            android:id="@+id/money"
-            android:textAlignment="center"
-            android:layout_width="150dp"
-            android:layout_below="@+id/playerinfo"
-            android:layout_toEndOf="@+id/playerinfo"
-            android:textColor="@color/money"
-            android:textSize="20sp" />
 
         <TextView
             android:layout_width="150dp"
@@ -180,6 +185,18 @@
             android:layout_marginEnd="14dp"
             android:layout_alignTop="@+id/fieldinfo"
             android:layout_alignParentEnd="true" />
+
+        <TextView
+            android:layout_height="wrap_content"
+            android:id="@+id/money"
+            android:textAlignment="center"
+            android:layout_width="150dp"
+            android:textColor="@color/money"
+            android:textSize="20sp"
+            android:layout_below="@+id/imageView31"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="67dp"
+            android:layout_marginTop="12dp" />
 
     </RelativeLayout>
 

@@ -88,6 +88,30 @@
             android:textColor="@color/black"
             android:layout_alignParentBottom="true"
             android:layout_toStartOf="@+id/imageView25" />
+
+        <TextView
+            android:text="16"
+            android:layout_width="34dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/lektiePlayerInfo"
+            android:elevation="1dp"
+            android:fontFamily="sans-serif"
+            android:textSize="24sp"
+            android:textColor="@color/black"
+            android:layout_marginEnd="18dp"
+            android:gravity="right"
+            android:textAlignment="gravity"
+            android:layout_alignParentBottom="true"
+            android:layout_toStartOf="@+id/studyHelp" />
+
+        <ImageView
+            android:layout_height="34dp"
+            app:srcCompat="@drawable/urikon"
+            android:id="@+id/imageView41"
+            android:layout_marginStart="35dp"
+            android:layout_width="34dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignStart="@+id/lektiePlayerInfo" />
     </RelativeLayout>
 
     <RelativeLayout
@@ -106,14 +130,6 @@
             android:layout_marginTop="117dp"
             android:textColor="@color/white"
             android:textSize="18sp" />
-
-        <TextView
-            android:text="TextView"
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:id="@+id/lektiePlayerInfo"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentStart="true" />
 
         <TextView
             android:layout_width="wrap_content"
