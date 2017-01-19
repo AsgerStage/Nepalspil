@@ -249,7 +249,7 @@ public class Eksamen extends AppCompatActivity {
                         .infinite();
                 spiller.setKlassetrin(spiller.getKlassetrin() + 1);
 
-                dialog.setMessage("Godt klaret, du har vundet spillet på " + spiller.getRunde() + " dage! Du kan fortsætte med at spille videre hvis du vil eller gå til start menuen og starte forfra. (Eller lægge spiller fra dig)")
+                dialog.setMessage("Godt klaret, du har vundet spillet på " + spiller.getRunde() + " uger! Du kan fortsætte med at spille videre hvis du vil eller gå til start menuen og starte forfra. (Eller lægge spiller fra dig)")
                         .setCancelable(false)
                         .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
