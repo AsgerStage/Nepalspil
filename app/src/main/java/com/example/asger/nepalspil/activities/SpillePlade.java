@@ -87,24 +87,20 @@ public class SpillePlade extends AppCompatActivity {
 
         dialog = new AlertDialog.Builder(SpillePlade.this);
         if (spiller.sex) {
-            new AlertDialog.Builder(this)
-                    .setMessage("Hej! Hjælp os med at få en uddannelse. Vi skal have mad, viden og penge, så vi kan købe bøger, blyanter og en cykel og bestå de årlige eksamener. \n \n Hvis vi når 10. klasse, kan vi tag en uddannelse og få et godt job, og du har vundet spillet.")
-                    .setCancelable(false)
-                    .setPositiveButton("OK", null)
-                    .show();
             Player = (ImageView) findViewById(R.id.kaka);
             unusedPlayer = (ImageView) findViewById(R.id.asha);
-
         } else if (!spiller.sex) {
+            Player = (ImageView) findViewById(R.id.asha);
+            unusedPlayer = (ImageView) findViewById(R.id.kaka);
+        }
+        if (getIntent().getBooleanExtra("genoptag", false) == false) { // nyt spil - vis dialog
             new AlertDialog.Builder(this)
-                    .setMessage("Hej! Hjælp os med at få en uddannelse. Vi skal have mad, viden og penge, så vi kan købe bøger, blyanter og en cykel og bestå de årlige eksamener. \n \n Hvis vi når 10. klasse, kan vi tag en uddannelse og få et godt job, og du har vundet spillet.")
+                    .setMessage("Hej! Hjælp os med at få en uddannelse. Vi skal have mad, viden og penge, så vi kan købe bøger, blyanter og en cykel og bestå de årlige eksamener. \n \n Hvis vi når 10. klasse, kan vi tage en uddannelse og få et godt job, og du har vundet spillet.")
                     .setCancelable(false)
                     .setPositiveButton("OK", null)
                     .show();
-            Player = (ImageView) findViewById(R.id.asha);
-            unusedPlayer = (ImageView) findViewById(R.id.kaka);
-
         }
+
         unusedPlayer.setVisibility(View.INVISIBLE);
 
         infobox = (TextView) findViewById(R.id.infobox);

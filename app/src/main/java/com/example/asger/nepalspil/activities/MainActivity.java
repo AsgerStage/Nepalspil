@@ -107,14 +107,13 @@ public class MainActivity extends AppCompatActivity {
                 if (spiller.getSex() == true) {
                     checkmarkasha.setVisibility(View.INVISIBLE);
                     checkmarkkaka.setVisibility(View.VISIBLE);
-                    Intent intent = new Intent(MainActivity.this, SpillePlade.class);
-                    startActivity(intent);
                 } else if (spiller.getSex() == false) {
                     checkmarkkaka.setVisibility(View.INVISIBLE);
                     checkmarkasha.setVisibility(View.VISIBLE);
-                    Intent intent = new Intent(MainActivity.this, SpillePlade.class);
-                    startActivity(intent);
                 }
+                Intent intent = new Intent(MainActivity.this, SpillePlade.class);
+                intent.putExtra("genoptag", true);
+                startActivity(intent);
             }
         });
 
