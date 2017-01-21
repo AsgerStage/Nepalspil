@@ -282,8 +282,14 @@ public class SpillePlade extends AppCompatActivity {
         textmad.setText(String.valueOf(spiller.getHp()));
     }
 
-    public void moveTo(int pos, java.lang.Class<?> cls, ViewGroup.LayoutParams params) {
-        if (spiller.move(pos)) {
+    /**
+     * Flytter spilleren
+     * @param feltPos feltnummer
+     * @param aktivitet skærmbillede der skal startes hvis rykket lykkedes
+     * @param params
+     */
+    public void moveTo(int feltPos, java.lang.Class<?> aktivitet, ViewGroup.LayoutParams params) {
+        if (spiller.move(feltPos)) {
             if (spiller.getHp() - 30 > 0) {
 
                 Toast.makeText(SpillePlade.this, "Ugen er gået", Toast.LENGTH_SHORT).show();
@@ -308,7 +314,7 @@ public class SpillePlade extends AppCompatActivity {
 
             MoveIcon();
         } else {
-            final Intent intent = new Intent(SpillePlade.this, cls);
+            final Intent intent = new Intent(SpillePlade.this, aktivitet);
             updateTimer();
             updateInfobox();
             updateTextpenge();
@@ -319,15 +325,15 @@ public class SpillePlade extends AppCompatActivity {
             MoveIcon();
 
 
-            startActivity(intent);
             final Handler handler = new Handler();
             handler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
 
+                    startActivity(intent);
                     //Do something after 1500ms
                 }
-            }, 1500);
+            }, 500);
             //
         }
     }
@@ -452,8 +458,9 @@ public class SpillePlade extends AppCompatActivity {
     }
 
     public void setPlayerIconParams(Button felt) {
-        Player.setX(felt.getX());
-        Player.setY(felt.getY());
+        Player.animate().translationXBy(felt.getX()-Player.getX()).translationYBy(felt.getY()-Player.getY());
+        //Player.setX(felt.getX());
+        //Player.setY(felt.getY());
 
 
     }
