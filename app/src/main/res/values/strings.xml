@@ -1,3 +1,22 @@
 <resources>
     <string name="app_name">Nepal Spillet</string>
+    <string name="takTil1">
+\n\nUDVIKLERE
+\n\nUdvikler - Asger Stage
+\n\nUdvikler - Rasmus Olsen
+\n\nUdvikler - Peter Jensen
+\n\nUdvikler - Nicki Pedersen
+\n\nUdvikler - Senad Begovic
+\n
+</string>
+    <string name="takTil2">
+\n\nGRAFIK AF
+\n\nBrian Johannsen
+\n\n
+\n\nPROJEKTLEDER &amp; IDÉ
+\n\nAnne Mette Nordfalk &amp; Skoleliv i Nepal
+\n\n
+\n\nSPONSERET AF
+\n
+</string>
 </resources>
