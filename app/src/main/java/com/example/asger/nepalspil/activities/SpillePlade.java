@@ -43,6 +43,8 @@ public class SpillePlade extends AppCompatActivity {
 
     ImageView Player;
     static ImageView ur;
+//    static ClockImageView ur;
+    static private TextView tidTextView;
     ImageView unusedPlayer;
     boolean continueBGMusic;
     AlertDialog.Builder dialog;
@@ -110,6 +112,8 @@ public class SpillePlade extends AppCompatActivity {
         textviden = (TextView) findViewById(R.id.textviden);
         textmad = (TextView) findViewById(R.id.textmad);
 
+        tidTextView = (TextView) findViewById(R.id.tid);
+        //ur = (ClockImageView) findViewById(R.id.ur);
         ur = (ImageView) findViewById(R.id.ur);
         ur.setImageResource(R.drawable.ur16);
         updateInfobox();
@@ -339,6 +343,9 @@ public class SpillePlade extends AppCompatActivity {
     }
 
     static public void updateTimer() {
+        tidTextView.setText(""+spiller.getTid());
+        //int minutter = (20 - spiller.getTid())*60*12 / 24; // Vi regner i dage á 12 timer, da uret er 12timers
+        //ur.animateToTime(minutter / 60, minutter % 60);
         switch (spiller.getTid()) {
             case 0:
                 ur.setImageResource(R.drawable.ur0);

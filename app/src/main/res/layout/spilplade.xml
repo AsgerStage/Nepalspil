@@ -164,6 +164,22 @@
             android:id="@+id/spilpladeHelp"
             android:layout_above="@+id/felt0" />
 
+        <!--
+        <rm.com.clocks.ClockImageView
+            android:id="@+id/ur"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:scaleType="centerCrop"
+            app:clockColor="#BB000000"
+            app:frameWidth="regular"
+            app:hours="16"
+            app:indeterminateSpeed="2"
+            app:minutes="10"
+            app:pointerWidth="thin"
+            app:timeSetDuration="400"/>
+        -->
         <ImageView
             android:layout_width="100dp"
             android:layout_height="100dp"
@@ -174,12 +190,25 @@
             android:scaleType="centerCrop" />
 
         <TextView
+            android:text="16"
+            android:layout_width="34dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/tid"
+            android:elevation="1dp"
+            android:fontFamily="sans-serif"
+            android:textSize="24sp"
+            android:textColor="@color/black"
+            android:layout_marginStart="2dp"
+            android:layout_alignBaseline="@+id/felt6"
+            android:layout_alignBottom="@+id/felt6"
+            android:layout_toEndOf="@+id/ur" />
+
+        <TextView
             android:text="TextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/infobox"
-            android:layout_alignBaseline="@+id/felt6"
-            android:layout_alignBottom="@+id/felt6"
+            android:layout_below="@+id/tid"
             android:layout_toEndOf="@+id/ur" />
 
         <Button
