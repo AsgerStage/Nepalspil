@@ -5,8 +5,15 @@
     <translate
         android:interpolator="@android:anim/linear_interpolator"
         android:fromYDelta="5%p"
-        android:toYDelta="-100%p"
+        android:toYDelta="-80%p"
         android:duration="1000"
         ></translate>
+
+    <alpha
+        android:interpolator="@android:anim/linear_interpolator"
+        android:fromAlpha="1"
+        android:toAlpha="0"
+        android:duration="1000"
+        ></alpha>
 
 </set>

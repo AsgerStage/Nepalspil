@@ -13,10 +13,12 @@ import android.view.View;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
 import com.crashlytics.android.Crashlytics;
+import com.example.asger.nepalspil.BuildConfig;
 import com.example.asger.nepalspil.R;
 import com.example.asger.nepalspil.felter.Farm;
 import com.example.asger.nepalspil.models.Spiller;
@@ -47,6 +49,9 @@ public class MainActivity extends AppCompatActivity {
 
 
         setContentView(R.layout.splash);
+
+      TextView versionTv = (TextView) findViewById(R.id.version);
+      versionTv.setText("v. "+BuildConfig.VERSION_NAME);
 
         ImageButton asha = (ImageButton) findViewById(R.id.imageButton4);
         final ImageButton kaka = (ImageButton) findViewById(R.id.imageButton5);
@@ -107,14 +112,13 @@ public class MainActivity extends AppCompatActivity {
                 if (spiller.getSex() == true) {
                     checkmarkasha.setVisibility(View.INVISIBLE);
                     checkmarkkaka.setVisibility(View.VISIBLE);
-                    Intent intent = new Intent(MainActivity.this, SpillePlade.class);
-                    startActivity(intent);
                 } else if (spiller.getSex() == false) {
                     checkmarkkaka.setVisibility(View.INVISIBLE);
                     checkmarkasha.setVisibility(View.VISIBLE);
-                    Intent intent = new Intent(MainActivity.this, SpillePlade.class);
-                    startActivity(intent);
                 }
+                Intent intent = new Intent(MainActivity.this, SpillePlade.class);
+                intent.putExtra("genoptag", true);
+                startActivity(intent);
             }
         });
 

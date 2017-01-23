@@ -70,7 +70,12 @@ public class Spiller {
 
     }
 
-    public boolean move(int newPosition) { //Metode til at rykke spilleren og trække den korrekte mængde tid fra spilleren.
+    /**
+     * Rykker spilleren og trækker den korrekte mængde tid fra spilleren.
+     * @param newPosition ønsket ny pos
+     * @return true hvis tiden er gået og ny runde er startet
+     */
+    public boolean move(int newPosition) {
         //Løsningen virker lidt bøvlet, men da Javas modulo (%) kan blive negativ gav det nogle problemer.
         //Math.floorMod metoden kunne være benyttet, men det ville samtidigt gøre at applikationen kun vil virke til android API 24 og frem.
         int boardsize = 8;//Kan ændres hvis spillepladen skulle udvides
@@ -78,33 +83,33 @@ public class Spiller {
         int count2 = 0;
         int j = this.position;
         int i = this.position;
-        int timeToSubtract = 0;
 
-        boolean flag = true;
-        boolean flag2 = true;
-        if (newPosition != this.position) {
-            while (flag2) {//Flags som denne bliver brugt da både while og for loops checkede i eller j's værdi på forkerte tidspunkter og skabte uendelige løkker.
+        if (newPosition == this.position) {
+            Log.d("Spiller", "Spiller trykkede på felt han/hun allerede stod på");
+        } else {
+            // Vi går begge veje rundt om spillebrættet for at finde ud af hvilken vej der er kortest
+            while (true) {
                 count1++;
                 // Log.d("Spiller","1count1:"+count1); Til debugging
                 i++;
                 Log.d("Spiller", "i:" + i + " Newposition= " + newPosition);
-                if (((i % boardsize + boardsize) % boardsize) == newPosition) {
-                    flag2 = false;
+                if (((i + boardsize) % boardsize) == newPosition) {
+                    break;
                 }              //Laver en ikke-negativ modulo, som Math.floorMod ville gøre.
             }
-            while (flag) {
+            while (true) {
                 count2++;
                 //  Log.d("Spiller","1count2:"+count2); //Til debugging
                 j--;
                 Log.d("Spiller", "j:" + j + " Newposition= " + newPosition);
-                if (((j % boardsize + boardsize) % boardsize) == newPosition) {
-                    flag = false;
-                }                       //Vi går begge veje rundt om spillebrættet for at finde ud af hvilken vej der er kortest
+                if (((j + boardsize) % boardsize) == newPosition) {
+                    break;
+                }
             }
 
 
-            if (count2 > count1) {
-                timeToSubtract = (Math.round(count1 / moveSpeed));
+            if (count2 > count1) { // fremad er kortest
+                int timeToSubtract = (Math.round(count1 / moveSpeed));
                 if (count1 == 4 && moveSpeed == 3) {
                     timeToSubtract = 2;
                 } else if (timeToSubtract == 0) {
@@ -115,8 +120,8 @@ public class Spiller {
 
                 Log.d("Spiller", "Spiller rykket fra " + this.position + " til " + newPosition + " og mistet tid: " + timeToSubtract + " og har nu " + this.tid + " tid");
                 this.position = newPosition;
-            } else if (count1 >= count2) {
-                timeToSubtract = (Math.round(count2 / moveSpeed));
+            } else if (count1 >= count2) { // baglæns er kortest
+                int timeToSubtract = (Math.round(count2 / moveSpeed));
                 if (count2 == 4 && moveSpeed == 3) {
                     timeToSubtract = 2;
                 }
@@ -130,8 +135,6 @@ public class Spiller {
                 this.position = newPosition;
                 //Den korteste vej trækkes fra spillerens tid
             }
-        } else if (count1 + count2 == 0) {
-            Log.d("Spiller", "Spiller trykkede på felt han/hun allerede stod på");
         }
 
 
@@ -139,7 +142,11 @@ public class Spiller {
 
     }
 
-    public boolean checkTur() {
+    /**
+     * Tjekker om en ny runde skal startes
+     * @return true hvis tiden er gået og ny runde er startet
+     */
+    private boolean checkTur() {
         if (this.tid <= 0) {
             this.runde++;
             this.tid = 16;

@@ -80,9 +80,11 @@ public class Skole extends AppCompatActivity {
         ImageView back = (ImageView) findViewById(R.id.skoleBack);
         ImageView helpField = (ImageView) findViewById(R.id.skoleHelp);
         animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.plusknowledge);
-        animationfood = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.plusfood);
+        animationfood = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.plusknowledge);
         final TextView scroll = (TextView) findViewById(R.id.plusknowledge);
         final TextView mad = (TextView) findViewById(R.id.scrollfood);
+        mad.setText("");
+        scroll.setText("");
         textpenge = (TextView) findViewById(R.id.textpenge);
         textviden = (TextView) findViewById(R.id.textviden);
         textmad = (TextView) findViewById(R.id.textmad);
