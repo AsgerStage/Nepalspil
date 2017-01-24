@@ -35,10 +35,10 @@ import static com.example.asger.nepalspil.activities.MusicManager.mp;
 //import static com.example.asger.nepalspil.R.id.player;
 
 public class SpillePlade extends AppCompatActivity {
-    static TextView infobox;
-    static TextView textpenge;
-    static TextView textviden;
-    static TextView textmad;
+    TextView infobox;
+    TextView textpenge;
+    TextView textviden;
+    TextView textmad;
 
     ImageView Player;
     static ImageView ur;
@@ -124,7 +124,14 @@ public class SpillePlade extends AppCompatActivity {
         felt7 = (Button) findViewById(R.id.felt7);
         ingameopt = (ImageView) findViewById(R.id.ingameopt);
         spilpladeHelp = (ImageView) findViewById(R.id.spilpladeHelp);
-        MoveIcon();
+
+        // Placér spilleren på pladen - skal ske efter onCreate, så vi sender det til hovedtråden forsinket
+        new Handler().post(new Runnable() {
+            @Override
+            public void run() {
+                MoveIcon();
+            }
+        });
 
 
         felt0.setOnClickListener(new View.OnClickListener() {
@@ -266,19 +273,15 @@ public class SpillePlade extends AppCompatActivity {
          infobox.setText("Navn: " + spiller.getNavn() + "\n mad: " + spiller.getHp() + "\n Penge: " + spiller.getPenge() + "\n Viden: " + spiller.getViden() + "\n Klassetrin: " + spiller.getKlassetrin() + "\n Tid: " + spiller.getTid() + "\n Dag: " + spiller.getRunde());
      }*/
     public static void updateInfobox() {
-        infobox.setText("Uge: " + spiller.getRunde());
     }
 
     public static void updateTextpenge() {
-        textpenge.setText(String.valueOf(spiller.getPenge()));
     }
 
     public static void updateTextviden() {
-        textviden.setText(String.valueOf(spiller.getViden()));
     }
 
     public static void updateTextmad() {
-        textmad.setText(String.valueOf(spiller.getHp()));
     }
 
     /**
@@ -288,7 +291,7 @@ public class SpillePlade extends AppCompatActivity {
      * @param aktivitet skærmbillede der skal startes hvis rykket lykkedes
      * @param params
      */
-    public void moveTo(int feltPos, java.lang.Class<?> aktivitet, ViewGroup.LayoutParams params) {
+    private void moveTo(int feltPos, java.lang.Class<?> aktivitet, ViewGroup.LayoutParams params) {
         if (spiller.move(feltPos)) {
             if (spiller.getHp() - 30 > 0) {
 
@@ -305,21 +308,12 @@ public class SpillePlade extends AppCompatActivity {
                 spiller.setHp(spiller.getHp() - 30);
             } else spiller.setHp(0);
             if (spiller.runde % 5 == 0) randomEvent();
-
-            updateTimer();
-            updateInfobox();
-            updateTextpenge();
-            updateTextviden();
-            updateTextmad();
+            opdaterSkærm();
 
             MoveIcon();
         } else {
             final Intent intent = new Intent(SpillePlade.this, aktivitet);
-            updateTimer();
-            updateInfobox();
-            updateTextpenge();
-            updateTextviden();
-            updateTextmad();
+            opdaterSkærm();
 
             Log.d("Spilleplade", "Height:" + params.height + " Width: " + params.width);
             MoveIcon();
@@ -338,7 +332,7 @@ public class SpillePlade extends AppCompatActivity {
         }
     }
 
-    static public void updateTimer() {
+    private void updateTimer() {
         tidTextView.setText("" + spiller.getTid());
         //int minutter = (20 - spiller.getTid())*60*12 / 24; // Vi regner i dage á 12 timer, da uret er 12timers
         //ur.animateToTime(minutter / 60, minutter % 60);
@@ -415,12 +409,20 @@ public class SpillePlade extends AppCompatActivity {
             MusicManager.pause();
         }
     }
+    private void opdaterSkærm() {
+        updateTimer();
+        infobox.setText("Uge: " + spiller.getRunde());
+        textpenge.setText(String.valueOf(spiller.getPenge()));
+        textviden.setText(String.valueOf(spiller.getViden()));
+        textmad.setText(String.valueOf(spiller.getHp()));
+    }
 
     @Override
     protected void onResume() {
         super.onResume();
         continueBGMusic = false;
         MusicManager.start(this, R.raw.backgroundloop);
+        opdaterSkærm();
     }
 
     public void saveToPrefs() {
@@ -559,10 +561,6 @@ public class SpillePlade extends AppCompatActivity {
 
 
     static public void updateEntireBoard() {
-        SpillePlade.updateTextpenge();
-        SpillePlade.updateTextmad();
-        SpillePlade.updateTextviden();
-        SpillePlade.updateTimer();
     }
 }
 
