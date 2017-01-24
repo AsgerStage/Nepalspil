@@ -39,7 +39,7 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:srcCompat="@drawable/hjemBack"
+            app:srcCompat="@drawable/hjemback"
             android:id="@+id/hjemBack"
             android:layout_alignTop="@+id/imageView17"
             android:layout_alignParentStart="true"/>

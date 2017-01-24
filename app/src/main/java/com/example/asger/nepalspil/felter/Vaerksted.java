@@ -27,14 +27,11 @@ import static com.example.asger.nepalspil.activities.Hovedmenu_akt.spiller;
 
 
 public class Vaerksted extends AppCompatActivity {
-    TextView textpenge;
-    TextView textviden;
-    TextView textmad;
-    TextView playerinfo;
 
     //Working
     final int MONEY_PER_CLICK = 7;
     final int TIME_PER_CLICK = 1;
+    private Topbar topbar;
 
     @Override
     public void onBackPressed() {
@@ -56,16 +53,16 @@ public class Vaerksted extends AppCompatActivity {
         ImagePagerAdapter adapter = new ImagePagerAdapter();
         viewPager.setAdapter(adapter);
 
-        playerinfo = (TextView) findViewById(R.id.playerinfo);
         final MediaPlayer mp = MediaPlayer.create(this, R.raw.cash);
         ImageView helpField = (ImageView) findViewById(R.id.vaerkstedHelp);
         Button work = (Button) findViewById(R.id.workButton);
         Button buy = (Button) findViewById(R.id.buyBikeButton);
         ImageView hjemBack = (ImageView) findViewById(R.id.hjemBack);
         viewPagerText = (TextView) findViewById(R.id.viewpagerPris);
-        textpenge = (TextView) findViewById(R.id.textpenge);
-        textviden = (TextView) findViewById(R.id.textviden);
-        textmad = (TextView) findViewById(R.id.textmad);
+
+        topbar = new Topbar();
+        topbar.init(this);
+
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
         tabLayout.setupWithViewPager(viewPager, true);
         animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.plusmoneyworkshop);
@@ -253,10 +250,7 @@ public class Vaerksted extends AppCompatActivity {
 
 
     public void updateText() {
-        textpenge.setText(String.valueOf(spiller.getPenge()));
-        textviden.setText(String.valueOf(spiller.getViden()));
-        textmad.setText(String.valueOf(spiller.getHp()));
-        playerinfo.setText(String.valueOf(spiller.getTid()));
+        topbar.opdaterGui(spiller);
         SpillePlade.updateEntireBoard();
     }
 
