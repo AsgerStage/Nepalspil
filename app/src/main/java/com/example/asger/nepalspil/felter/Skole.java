@@ -20,7 +20,7 @@ import com.example.asger.nepalspil.activities.SpillePlade;
 
 import java.io.IOException;
 
-import static com.example.asger.nepalspil.activities.Hovedmenu_akt.spiller;
+import static com.example.asger.nepalspil.models.Spiller.instans;
 
 
 public class Skole extends AppCompatActivity {
@@ -89,8 +89,8 @@ public class Skole extends AppCompatActivity {
 
         dialog = new AlertDialog.Builder(Skole.this);
         schoolText.setText("I skolen kan du spise, studere og gå til eksamen.");
-        klassetrin.setText("Du går i " + spiller.getKlassetrin() + ". klasse.");
-        if (spiller.getKlassetrin() >= 10) {
+        klassetrin.setText("Du går i " + instans.getKlassetrin() + ". klasse.");
+        if (instans.getKlassetrin() >= 10) {
             bEksamen.setVisibility(View.INVISIBLE);
         }
         onResume();
@@ -112,7 +112,7 @@ public class Skole extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 v.startAnimation(AnimationUtils.loadAnimation(Skole.this, R.anim.image_click));
-                if (spiller.getTid() > 0) {
+                if (instans.getTid() > 0) {
                     mad.setText("+" + FOOD_PER_CLICK + " mad");
                     mad.startAnimation(animationfood);
                     spis();
@@ -147,11 +147,11 @@ public class Skole extends AppCompatActivity {
             public void onClick(View v) {
                 v.startAnimation(AnimationUtils.loadAnimation(Skole.this, R.anim.image_click));
                 int thisStudy = studer();
-                if (spiller.getTid() >= TIME_PER_CLICK) {
-                    if (spiller.getTid() >= TIME_PER_CLICK && thisStudy == 1) {
+                if (instans.getTid() >= TIME_PER_CLICK) {
+                    if (instans.getTid() >= TIME_PER_CLICK && thisStudy == 1) {
                         scroll.setText("+" + VIDEN_PER_CLICK + " viden");
                         scroll.startAnimation(animation);
-                        spiller.study(TIME_PER_CLICK, VIDEN_PER_CLICK);
+                        instans.study(TIME_PER_CLICK, VIDEN_PER_CLICK);
                         updateText();
                         if (mp.isPlaying()) {
                             mp.stop();
@@ -168,17 +168,17 @@ public class Skole extends AppCompatActivity {
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
-                        System.out.println(spiller.getViden());
+                        System.out.println(instans.getViden());
                     } else if (thisStudy == 2) {
                         scroll.setText("+1 lektiehjælp");
                         scroll.startAnimation(animation);
-                        spiller.study(TIME_PER_CLICK, 0);
-                        spiller.setGlemtViden(spiller.getGlemtViden() + 1);
+                        instans.study(TIME_PER_CLICK, 0);
+                        instans.setGlemtViden(instans.getGlemtViden() + 1);
                         updateText();
                     } else if (thisStudy == 3) {
                         scroll.setText("+0 viden");
                         scroll.startAnimation(animation);
-                        spiller.study(TIME_PER_CLICK, 0);
+                        instans.study(TIME_PER_CLICK, 0);
                         updateText();
                     }
                 } else {
@@ -228,7 +228,7 @@ public class Skole extends AppCompatActivity {
 
     public int studer() {
         int result = 0;
-        switch (spiller.getLearningAmp()) {
+        switch (instans.getLearningAmp()) {
 
             case 0:
                 result = tryToStudy(0.5, 0.25, 0);
@@ -254,8 +254,8 @@ public class Skole extends AppCompatActivity {
 
 
     public void spis() {
-        if (spiller.getTid() > 0) {
-            spiller.eat(TIME_COST_EATING, COST_PER_FOOD_CLICK, FOOD_PER_CLICK);
+        if (instans.getTid() > 0) {
+            instans.eat(TIME_COST_EATING, COST_PER_FOOD_CLICK, FOOD_PER_CLICK);
             updateText();
         } else {
             schoolText.setText("");
@@ -264,20 +264,20 @@ public class Skole extends AppCompatActivity {
     }
 
     public boolean kanStartEksamen() {
-        if ((spiller.getViden() >= vidensKrav())) {
+        if ((instans.getViden() >= vidensKrav())) {
             return true;
         } else
             return false;
     }
 
     public static String updateInfo() {
-        return "Tid: " + spiller.getTid();
+        return "Tid: " + instans.getTid();
 
     }
 
 
     public static int vidensKrav() {
-        switch (spiller.getKlassetrin()) {
+        switch (instans.getKlassetrin()) {
             case 1:
                 return 10;
             case 2:
@@ -303,7 +303,7 @@ public class Skole extends AppCompatActivity {
 
 
         }
-        return 10 * spiller.getKlassetrin();
+        return 10 * instans.getKlassetrin();
     }
 
     public int tryToStudy(double success, double homework, double fail) {
@@ -316,10 +316,10 @@ public class Skole extends AppCompatActivity {
     }
 
     public static void updateText() {
-        textpenge.setText(String.valueOf(spiller.getPenge()));
-        textviden.setText(String.valueOf(spiller.getViden()));
-        textmad.setText(String.valueOf(spiller.getHp()));
-        playerInfo.setText(String.valueOf(spiller.getTid()));
+        textpenge.setText(String.valueOf(instans.getPenge()));
+        textviden.setText(String.valueOf(instans.getViden()));
+        textmad.setText(String.valueOf(instans.getHp()));
+        playerInfo.setText(String.valueOf(instans.getTid()));
     }
 
 

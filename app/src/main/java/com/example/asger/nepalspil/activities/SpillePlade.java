@@ -26,10 +26,10 @@ import com.example.asger.nepalspil.felter.Lektiehjaelp;
 import com.example.asger.nepalspil.felter.Marked;
 import com.example.asger.nepalspil.felter.Skole;
 import com.example.asger.nepalspil.felter.Vaerksted;
+import com.example.asger.nepalspil.models.Spiller;
 
 import java.util.concurrent.ThreadLocalRandom;
 
-import static com.example.asger.nepalspil.activities.Hovedmenu_akt.spiller;
 import static com.example.asger.nepalspil.activities.MusicManager.mp;
 
 //import static com.example.asger.nepalspil.R.id.player;
@@ -85,10 +85,10 @@ public class SpillePlade extends AppCompatActivity {
         prefs = PreferenceManager.getDefaultSharedPreferences(this);
 
         dialog = new AlertDialog.Builder(SpillePlade.this);
-        if (spiller.sex) {
+        if (Spiller.instans.sex) {
             Player = (ImageView) findViewById(R.id.kaka);
             unusedPlayer = (ImageView) findViewById(R.id.asha);
-        } else if (!spiller.sex) {
+        } else if (!Spiller.instans.sex) {
             Player = (ImageView) findViewById(R.id.asha);
             unusedPlayer = (ImageView) findViewById(R.id.kaka);
         }
@@ -276,22 +276,22 @@ public class SpillePlade extends AppCompatActivity {
      * @param params
      */
     private void moveTo(int feltPos, java.lang.Class<?> aktivitet, ViewGroup.LayoutParams params) {
-        if (spiller.move(feltPos)) {
-            if (spiller.getHp() - 30 > 0) {
+        if (Spiller.instans.move(feltPos)) {
+            if (Spiller.instans.getHp() - 30 > 0) {
 
                 Toast.makeText(SpillePlade.this, "Ugen er gået", Toast.LENGTH_SHORT).show();
 
-            } else if (spiller.getHp() - 30 <= 0) {
+            } else if (Spiller.instans.getHp() - 30 <= 0) {
                 dialog.setTitle("Husk at spise!");
                 dialog.setMessage("Ugen er gået og du har glemt at spise, du har derfor mindre tid i denne uge");
                 dialog.show();
 
-                spiller.setTid(8);
+                Spiller.instans.setTid(8);
             }
-            if (spiller.getHp() >= 30) {
-                spiller.setHp(spiller.getHp() - 30);
-            } else spiller.setHp(0);
-            if (spiller.runde % 5 == 0) randomEvent();
+            if (Spiller.instans.getHp() >= 30) {
+                Spiller.instans.setHp(Spiller.instans.getHp() - 30);
+            } else Spiller.instans.setHp(0);
+            if (Spiller.instans.runde % 5 == 0) randomEvent();
             opdaterSkærm();
 
             MoveIcon();
@@ -317,10 +317,10 @@ public class SpillePlade extends AppCompatActivity {
     }
 
     private void updateTimer() {
-        tidTextView.setText("" + spiller.getTid());
-        //int minutter = (20 - spiller.getTid())*60*12 / 24; // Vi regner i dage á 12 timer, da uret er 12timers
+        tidTextView.setText("" + Spiller.instans.getTid());
+        //int minutter = (20 - Spiller.instans.getTid())*60*12 / 24; // Vi regner i dage á 12 timer, da uret er 12timers
         //ur.animateToTime(minutter / 60, minutter % 60);
-        switch (spiller.getTid()) {
+        switch (Spiller.instans.getTid()) {
             case 0:
                 ur.setImageResource(R.drawable.ur0);
                 break;
@@ -395,10 +395,10 @@ public class SpillePlade extends AppCompatActivity {
     }
     private void opdaterSkærm() {
         updateTimer();
-        infobox.setText("Uge: " + spiller.getRunde());
-        textpenge.setText(String.valueOf(spiller.getPenge()));
-        textviden.setText(String.valueOf(spiller.getViden()));
-        textmad.setText(String.valueOf(spiller.getHp()));
+        infobox.setText("Uge: " + Spiller.instans.getRunde());
+        textpenge.setText(String.valueOf(Spiller.instans.getPenge()));
+        textviden.setText(String.valueOf(Spiller.instans.getViden()));
+        textmad.setText(String.valueOf(Spiller.instans.getHp()));
     }
 
     @Override
@@ -410,40 +410,40 @@ public class SpillePlade extends AppCompatActivity {
     }
 
     public void saveToPrefs() {
-        prefs.edit().putBoolean("Sex", spiller.getSex()).apply();
-        prefs.edit().putInt("GlemtViden", spiller.getGlemtViden()).apply();
-        prefs.edit().putInt("Books", spiller.getBooks()).apply();
-        prefs.edit().putInt("Position", spiller.getPosition()).apply();
-        prefs.edit().putString("Navn", spiller.getNavn()).apply();
-        prefs.edit().putInt("Penge", spiller.getPenge()).apply();
-        prefs.edit().putInt("Hp", spiller.getHp()).apply();
-        prefs.edit().putInt("Viden", spiller.getViden()).apply();
-        prefs.edit().putInt("Klassetrin", spiller.getKlassetrin()).apply();
-        prefs.edit().putInt("Tid", spiller.getTid()).apply();
-        prefs.edit().putInt("moveSpeed", spiller.getmoveSpeed()).apply();
-        prefs.edit().putInt("Runde", spiller.getRunde()).apply();
-        prefs.edit().putInt("LastBookBought", spiller.getLastBookBought()).apply();
+        prefs.edit().putBoolean("Sex", Spiller.instans.getSex()).apply();
+        prefs.edit().putInt("GlemtViden", Spiller.instans.getGlemtViden()).apply();
+        prefs.edit().putInt("Books", Spiller.instans.getBooks()).apply();
+        prefs.edit().putInt("Position", Spiller.instans.getPosition()).apply();
+        prefs.edit().putString("Navn", Spiller.instans.getNavn()).apply();
+        prefs.edit().putInt("Penge", Spiller.instans.getPenge()).apply();
+        prefs.edit().putInt("Hp", Spiller.instans.getHp()).apply();
+        prefs.edit().putInt("Viden", Spiller.instans.getViden()).apply();
+        prefs.edit().putInt("Klassetrin", Spiller.instans.getKlassetrin()).apply();
+        prefs.edit().putInt("Tid", Spiller.instans.getTid()).apply();
+        prefs.edit().putInt("moveSpeed", Spiller.instans.getmoveSpeed()).apply();
+        prefs.edit().putInt("Runde", Spiller.instans.getRunde()).apply();
+        prefs.edit().putInt("LastBookBought", Spiller.instans.getLastBookBought()).apply();
     }
 
     public void MoveIcon() {
-        if (spiller.getPosition() == 1) {
+        if (Spiller.instans.getPosition() == 1) {
             setPlayerIconParams(felt1);
-        } else if (spiller.getPosition() == 2) {
+        } else if (Spiller.instans.getPosition() == 2) {
             setPlayerIconParams(felt2);
-        } else if (spiller.getPosition() == 3) {
+        } else if (Spiller.instans.getPosition() == 3) {
             setPlayerIconParams(felt3);
-        } else if (spiller.getPosition() == 4) {
+        } else if (Spiller.instans.getPosition() == 4) {
             setPlayerIconParams(felt4);
-        } else if (spiller.getPosition() == 5) {
+        } else if (Spiller.instans.getPosition() == 5) {
             setPlayerIconParams(felt5);
-        } else if (spiller.getPosition() == 6) {
+        } else if (Spiller.instans.getPosition() == 6) {
             setPlayerIconParams(felt6);
-        } else if (spiller.getPosition() == 7) {
+        } else if (Spiller.instans.getPosition() == 7) {
             setPlayerIconParams(felt7);
         } else {
             setPlayerIconParams(felt0);
         }
-        Log.d("Spilleplade", "MoveIcon called to " + spiller.getPosition());
+        Log.d("Spilleplade", "MoveIcon called to " + Spiller.instans.getPosition());
     }
 
     public void setPlayerIconParams(Button felt) {
@@ -466,7 +466,7 @@ public class SpillePlade extends AppCompatActivity {
                 dialog.setTitle("Du er blevet syg!");
                 dialog.setMessage("Du er blevet syg og har derfor halvt så meget tid i denne uge.");
                 dialog.show();
-                spiller.setTid(spiller.getTid() / 2);
+                Spiller.instans.setTid(Spiller.instans.getTid() / 2);
                 Log.d("SpillePlade", "Random event 1 triggered");
                 break;
 
@@ -474,9 +474,9 @@ public class SpillePlade extends AppCompatActivity {
                 dialog.setTitle("Dine forældre har brug for penge");
                 dialog.setMessage("Dine forældre har brugt nogle af dine penge. -20kr");
                 dialog.show();
-                if (spiller.getPenge() >= 20) {
-                    spiller.setPenge(spiller.getPenge() - 20);
-                } else spiller.setPenge(0);
+                if (Spiller.instans.getPenge() >= 20) {
+                    Spiller.instans.setPenge(Spiller.instans.getPenge() - 20);
+                } else Spiller.instans.setPenge(0);
                 Log.d("SpillePlade", "Random event 2 triggered");
                 break;
 
@@ -484,9 +484,9 @@ public class SpillePlade extends AppCompatActivity {
                 dialog.setTitle("På vejen hjem faldt du og slog hovedet");
                 dialog.setMessage("Du har mistet viden. -10 viden");
                 dialog.show();
-                if (spiller.getViden() >= 10) {
-                    spiller.setViden(spiller.getViden() - 10);
-                } else spiller.setViden(0);
+                if (Spiller.instans.getViden() >= 10) {
+                    Spiller.instans.setViden(Spiller.instans.getViden() - 10);
+                } else Spiller.instans.setViden(0);
                 Log.d("SpillePlade", "Random event 3 triggered");
                 break;
 
@@ -494,9 +494,9 @@ public class SpillePlade extends AppCompatActivity {
                 dialog.setTitle("Maden du har spiste var dårlig");
                 dialog.setMessage("Du er nu mere sulten. -30 mad");
                 dialog.show();
-                if (spiller.getHp() >= 30) {
-                    spiller.setHp(spiller.getHp() - 30);
-                } else spiller.setHp(0);
+                if (Spiller.instans.getHp() >= 30) {
+                    Spiller.instans.setHp(Spiller.instans.getHp() - 30);
+                } else Spiller.instans.setHp(0);
                 Log.d("SpillePlade", "Random event 4 triggered");
                 break;
 
@@ -504,15 +504,15 @@ public class SpillePlade extends AppCompatActivity {
                 dialog.setTitle("Vejret er dårligt");
                 dialog.setMessage("Det tordner og lyner og du bliver hjemme i denne uge.");
                 dialog.show();
-                spiller.setTid(0);
+                Spiller.instans.setTid(0);
                 Log.d("SpillePlade", "Random event 5 triggered");
                 break;
 
             case 6:
                 dialog.setTitle("Du er blevet røvet");
-                dialog.setMessage("En tyv har taget alle dine penge -" + spiller.getPenge());
+                dialog.setMessage("En tyv har taget alle dine penge -" + Spiller.instans.getPenge());
                 dialog.show();
-                spiller.setPenge(0);
+                Spiller.instans.setPenge(0);
                 Log.d("SpillePlade", "Random event 6 triggered");
                 break;
 
@@ -520,7 +520,7 @@ public class SpillePlade extends AppCompatActivity {
                 dialog.setTitle("Du vågner op super frisk!");
                 dialog.setMessage("Du er frisk og springfyldt med energi, og har ekstra tid i denne uge. +3 tid");
                 dialog.show();
-                spiller.setTid(spiller.getTid() + 3);
+                Spiller.instans.setTid(Spiller.instans.getTid() + 3);
                 Log.d("SpillePlade", "Random event 7 triggered");
                 break;
 

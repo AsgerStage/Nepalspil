@@ -4,6 +4,7 @@ import android.util.Log;
 
 
 public class Spiller {
+    public static Spiller instans;
     public boolean sex;
     private int learningAmp = 0;
     private int glemtViden;

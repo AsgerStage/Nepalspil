@@ -6,8 +6,6 @@ import android.widget.TextView;
 import com.example.asger.nepalspil.R;
 import com.example.asger.nepalspil.models.Spiller;
 
-import static com.example.asger.nepalspil.activities.Hovedmenu_akt.spiller;
-
 /**
  * Created by j on 24-01-17.
  */

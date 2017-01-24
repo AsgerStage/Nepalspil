@@ -23,7 +23,7 @@ import com.example.asger.nepalspil.activities.SpillePlade;
 
 import java.io.IOException;
 
-import static com.example.asger.nepalspil.activities.Hovedmenu_akt.spiller;
+import static com.example.asger.nepalspil.models.Spiller.instans;
 
 
 public class Vaerksted extends AppCompatActivity {
@@ -109,8 +109,8 @@ public class Vaerksted extends AppCompatActivity {
 
             public void onClick(View v) {
                 v.startAnimation(AnimationUtils.loadAnimation(Vaerksted.this, R.anim.image_click));
-                if (spiller.getTid() >= TIME_PER_CLICK && spiller.getKlassetrin() >= 3) {
-                    spiller.work(TIME_PER_CLICK, MONEY_PER_CLICK);
+                if (instans.getTid() >= TIME_PER_CLICK && instans.getKlassetrin() >= 3) {
+                    instans.work(TIME_PER_CLICK, MONEY_PER_CLICK);
                     money.setText("+" + MONEY_PER_CLICK + " kr");
                     money.startAnimation(animation);
 
@@ -131,13 +131,13 @@ public class Vaerksted extends AppCompatActivity {
                     }
 
                     updateText();
-                } else if (spiller.getTid() < 2) {
+                } else if (instans.getTid() < 2) {
 
                     dialog.setTitle("Intet tid!");
                     dialog.setMessage("Du har ikke nok tid til at arbejde");
                     dialog.show();
 
-                } else if (spiller.getKlassetrin() < 3) {
+                } else if (instans.getKlassetrin() < 3) {
                     dialog.setTitle("Du er ikke klog nok");
                     dialog.setMessage("Du skal gå i mindst 3. klasse for at arbejde her");
                     dialog.show();
@@ -209,10 +209,10 @@ public class Vaerksted extends AppCompatActivity {
 
         switch (viewPager.getCurrentItem()) {
             case 0:
-                if (spiller.getmoveSpeed() < 2) {
-                    if (spiller.getPenge() >= 200) {
-                        spiller.setPenge(spiller.getPenge() - 200);
-                        spiller.setmoveSpeed(2);
+                if (instans.getmoveSpeed() < 2) {
+                    if (instans.getPenge() >= 200) {
+                        instans.setPenge(instans.getPenge() - 200);
+                        instans.setmoveSpeed(2);
                         Toast.makeText(Vaerksted.this, "Du har købt en cykel", Toast.LENGTH_SHORT).show();
                     } else {
                         Toast.makeText(Vaerksted.this, "Du har ikke råd til en cykel, den koster 200", Toast.LENGTH_SHORT).show();
@@ -221,10 +221,10 @@ public class Vaerksted extends AppCompatActivity {
                     Toast.makeText(Vaerksted.this, "Du har allerede en bedre cykel", Toast.LENGTH_SHORT).show();
                 break;
             case 1:
-                if (spiller.getmoveSpeed() < 3) {
-                    if (spiller.getPenge() >= 500) {
-                        spiller.setPenge(spiller.getPenge() - 500);
-                        spiller.setmoveSpeed(3);
+                if (instans.getmoveSpeed() < 3) {
+                    if (instans.getPenge() >= 500) {
+                        instans.setPenge(instans.getPenge() - 500);
+                        instans.setmoveSpeed(3);
                         Toast.makeText(Vaerksted.this, "Du har købt en pænt hurtig cykel", Toast.LENGTH_SHORT).show();
                     } else {
                         Toast.makeText(Vaerksted.this, "Du har ikke råd til den pænt hurtige cykel, den koster 500kr", Toast.LENGTH_SHORT).show();
@@ -233,10 +233,10 @@ public class Vaerksted extends AppCompatActivity {
                     Toast.makeText(Vaerksted.this, "Du har allerede en bedre cykel", Toast.LENGTH_SHORT).show();
                 break;
             case 2:
-                if (spiller.getmoveSpeed() < 4) {
-                    if (spiller.getPenge() >= 1000) {
-                        spiller.setPenge(spiller.getPenge() - 1000);
-                        spiller.setmoveSpeed(4);
+                if (instans.getmoveSpeed() < 4) {
+                    if (instans.getPenge() >= 1000) {
+                        instans.setPenge(instans.getPenge() - 1000);
+                        instans.setmoveSpeed(4);
                         Toast.makeText(Vaerksted.this, "Du har købt en racer cykel", Toast.LENGTH_SHORT).show();
                     } else {
                         Toast.makeText(Vaerksted.this, "Du har ikke råd til racer cyklen, den koster 1000kr", Toast.LENGTH_SHORT).show();
@@ -250,7 +250,7 @@ public class Vaerksted extends AppCompatActivity {
 
 
     public void updateText() {
-        topbar.opdaterGui(spiller);
+        topbar.opdaterGui(instans);
         SpillePlade.updateEntireBoard();
     }
 

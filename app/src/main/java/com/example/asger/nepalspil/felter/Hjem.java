@@ -11,7 +11,7 @@ import android.widget.TextView;
 import com.example.asger.nepalspil.R;
 import com.example.asger.nepalspil.activities.SpillePlade;
 
-import static com.example.asger.nepalspil.activities.Hovedmenu_akt.spiller;
+import static com.example.asger.nepalspil.models.Spiller.instans;
 
 
 public class Hjem extends AppCompatActivity {
@@ -43,9 +43,9 @@ public class Hjem extends AppCompatActivity {
         ImageView hjemBack = (ImageView) findViewById(R.id.hjemBack);
         // ImageView hjemhelp = (ImageView) findViewById(R.id.hjemhelp);
         TextView spillerintro = (TextView) findViewById(R.id.spillerintro);
-        spillerintro.setText("Hej jeg hedder " + spiller.getNavn() + ". Jeg bor med min familie i en landsby i Nepal. \nMin mor og far har aldrig gået i skole, så de tjener ikke så mange penge, så det er svært for dem at hjælpe mig med at få en uddannelse.");
+        spillerintro.setText("Hej jeg hedder " + instans.getNavn() + ". Jeg bor med min familie i en landsby i Nepal. \nMin mor og far har aldrig gået i skole, så de tjener ikke så mange penge, så det er svært for dem at hjælpe mig med at få en uddannelse.");
 
-        if (spiller.getSex() == false) {
+        if (instans.getSex() == false) {
             im.setImageResource(R.drawable.pige2);
         } else {
             im.setImageResource(R.drawable.dreng1);
@@ -66,7 +66,7 @@ public class Hjem extends AppCompatActivity {
             public void onClick(View v) {
                 SpillePlade.updateEntireBoard();
                 v.startAnimation(AnimationUtils.loadAnimation(Hjem.this, R.anim.image_click));
-                dialog.setMessage("Hej jeg hedder " + spiller.getNavn() + ". Jeg bor med min familie i en landsby i Nepal. \n Min mor og far har aldrig gået i skole, så de tjener ikke så mange penge, så det er svært for dem at hjælpe mig med at få en uddannelse.");
+                dialog.setMessage("Hej jeg hedder " + instans.getNavn() + ". Jeg bor med min familie i en landsby i Nepal. \n Min mor og far har aldrig gået i skole, så de tjener ikke så mange penge, så det er svært for dem at hjælpe mig med at få en uddannelse.");
                 dialog.show();
             }
         });*/
@@ -75,14 +75,14 @@ public class Hjem extends AppCompatActivity {
     }
 
     public String updateInfo() {
-        return "Navn: " + spiller.getNavn() + "\n mad: " + spiller.getHp() + "\n Penge: " + spiller.getPenge() + "\n Viden: " + spiller.getViden() + "\n Klassetrin: " + spiller.getKlassetrin() + "\n Tid: " + spiller.getTid();
+        return "Navn: " + instans.getNavn() + "\n mad: " + instans.getHp() + "\n Penge: " + instans.getPenge() + "\n Viden: " + instans.getViden() + "\n Klassetrin: " + instans.getKlassetrin() + "\n Tid: " + instans.getTid();
     }
 
     public void updateText() {
-        textpenge.setText(String.valueOf(spiller.getPenge()));
-        textviden.setText(String.valueOf(spiller.getViden()));
-        textmad.setText(String.valueOf(spiller.getHp()));
-        texttid.setText(String.valueOf(spiller.getTid()));
+        textpenge.setText(String.valueOf(instans.getPenge()));
+        textviden.setText(String.valueOf(instans.getViden()));
+        textmad.setText(String.valueOf(instans.getHp()));
+        texttid.setText(String.valueOf(instans.getTid()));
 
     }
 }

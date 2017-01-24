@@ -13,7 +13,7 @@ import android.widget.TextView;
 import com.example.asger.nepalspil.R;
 import com.example.asger.nepalspil.activities.SpillePlade;
 
-import static com.example.asger.nepalspil.activities.Hovedmenu_akt.spiller;
+import static com.example.asger.nepalspil.models.Spiller.instans;
 
 public class Butikken extends AppCompatActivity {
     TextView textpenge;
@@ -49,7 +49,7 @@ public class Butikken extends AppCompatActivity {
         fieldinfo.setText("I butikken kan du købe skoleting, som gør det lettere at få viden.");
 
 
-        switch (spiller.getLearningAmp()) {
+        switch (instans.getLearningAmp()) {
             case 0:
                 buy.setText("Køb Kladehæfte");
                 break;
@@ -76,8 +76,8 @@ public class Butikken extends AppCompatActivity {
         buy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (spiller.getLearningAmp() == 2) {
-                    if (spiller.getPenge() >= 700) {
+                if (instans.getLearningAmp() == 2) {
+                    if (instans.getPenge() >= 700) {
                         buy();
                         AlertDialog.Builder dialog = new AlertDialog.Builder(Butikken.this);
                         dialog.setTitle("Lommeregner købt");
@@ -91,8 +91,8 @@ public class Butikken extends AppCompatActivity {
                         dialog.show();
                     }
                 }
-                if (spiller.getLearningAmp() == 1) {
-                    if (spiller.getPenge() >= 300) {
+                if (instans.getLearningAmp() == 1) {
+                    if (instans.getPenge() >= 300) {
                         buy();
                         // playerinfo.setText(updateInfo());
                         AlertDialog.Builder dialog = new AlertDialog.Builder(Butikken.this);
@@ -107,8 +107,8 @@ public class Butikken extends AppCompatActivity {
                         dialog.show();
                     }
                 }
-                if (spiller.getLearningAmp() == 0) {
-                    if (spiller.getPenge() >= 150) {
+                if (instans.getLearningAmp() == 0) {
+                    if (instans.getPenge() >= 150) {
                         buy();
                         AlertDialog.Builder dialog = new AlertDialog.Builder(Butikken.this);
                         dialog.setTitle("Kladehæfte købt");
@@ -137,18 +137,18 @@ public class Butikken extends AppCompatActivity {
     }
 
     private void buy() {
-        switch (spiller.getLearningAmp()) {
+        switch (instans.getLearningAmp()) {
             case 0:
-                spiller.setLearningAmp(1);
-                spiller.setPenge(spiller.getPenge() - 150);
+                instans.setLearningAmp(1);
+                instans.setPenge(instans.getPenge() - 150);
                 break;
             case 1:
-                spiller.setLearningAmp(2);
-                spiller.setPenge(spiller.getPenge() - 300);
+                instans.setLearningAmp(2);
+                instans.setPenge(instans.getPenge() - 300);
                 break;
             case 2:
-                spiller.setLearningAmp(3);
-                spiller.setPenge(spiller.getPenge() - 700);
+                instans.setLearningAmp(3);
+                instans.setPenge(instans.getPenge() - 700);
                 break;
         }
     }
@@ -159,9 +159,9 @@ public class Butikken extends AppCompatActivity {
     }
 
     public void updateText() {
-        textpenge.setText(String.valueOf(spiller.getPenge()));
-        textviden.setText(String.valueOf(spiller.getViden()));
-        textmad.setText(String.valueOf(spiller.getHp()));
-        texttid.setText(String.valueOf(spiller.getTid()));
+        textpenge.setText(String.valueOf(instans.getPenge()));
+        textviden.setText(String.valueOf(instans.getViden()));
+        textmad.setText(String.valueOf(instans.getHp()));
+        texttid.setText(String.valueOf(instans.getTid()));
     }
 }

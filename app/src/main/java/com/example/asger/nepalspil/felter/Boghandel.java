@@ -17,7 +17,7 @@ import com.example.asger.nepalspil.activities.SpillePlade;
 
 import java.io.IOException;
 
-import static com.example.asger.nepalspil.activities.Hovedmenu_akt.spiller;
+import static com.example.asger.nepalspil.models.Spiller.instans;
 
 public class Boghandel extends AppCompatActivity {
     TextView textpenge;
@@ -62,10 +62,10 @@ public class Boghandel extends AppCompatActivity {
 
             public void onClick(View v) {
                 v.startAnimation(AnimationUtils.loadAnimation(Boghandel.this, R.anim.image_click));
-                if (spiller.getTid() >= TIME_PER_CLICK && spiller.getKlassetrin() >= 6) {
+                if (instans.getTid() >= TIME_PER_CLICK && instans.getKlassetrin() >= 6) {
                     money.setText("+" + MONEY_PER_CLICK + " kr");
                     money.startAnimation(animation);
-                    spiller.work(TIME_PER_CLICK, MONEY_PER_CLICK);
+                    instans.work(TIME_PER_CLICK, MONEY_PER_CLICK);
 
                     if (mp.isPlaying()) {
                         mp.stop();
@@ -84,7 +84,7 @@ public class Boghandel extends AppCompatActivity {
                     }
 
                     updateText();
-                } else if (spiller.getTid() < 2) {
+                } else if (instans.getTid() < 2) {
 
                     dialog.setTitle("Intet tid!");
                     dialog.setMessage("Du har ikke nok tid til at arbejde");
@@ -112,20 +112,20 @@ public class Boghandel extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 v.startAnimation(AnimationUtils.loadAnimation(Boghandel.this, R.anim.image_click));
-                if (spiller.getPenge() >= 30 && spiller.getLastBookBought() + 5 <= spiller.getRunde()) {
+                if (instans.getPenge() >= 30 && instans.getLastBookBought() + 5 <= instans.getRunde()) {
 
-                    spiller.setViden(spiller.getViden() + 10);
-                    spiller.setPenge(spiller.getPenge() - 30);
+                    instans.setViden(instans.getViden() + 10);
+                    instans.setPenge(instans.getPenge() - 30);
                     dialog.setTitle("Bog købt");
                     dialog.setMessage("Du har købt en ny bog for 30 penge. +10 viden");
                     dialog.show();
-                    spiller.setLastBookBought(spiller.getRunde());
+                    instans.setLastBookBought(instans.getRunde());
                     updateText();
-                } else if (spiller.getPenge() < 30) {
+                } else if (instans.getPenge() < 30) {
                     dialog.setTitle("Du mangler penge!");
-                    dialog.setMessage("Bogen koster 30 kroner, men du har kun " + spiller.getPenge());
+                    dialog.setMessage("Bogen koster 30 kroner, men du har kun " + instans.getPenge());
                     dialog.show();
-                } else if (!(spiller.getLastBookBought() + 5 < spiller.getRunde())) {
+                } else if (!(instans.getLastBookBought() + 5 < instans.getRunde())) {
                     dialog.setTitle("Boghandlen har ikke den bog du vil have");
                     dialog.setMessage("Kig tilbage på et andet tidspunkt");
                     dialog.show();
@@ -146,10 +146,10 @@ public class Boghandel extends AppCompatActivity {
 
 
     public void updateText() {
-        textpenge.setText(String.valueOf(spiller.getPenge()));
-        textviden.setText(String.valueOf(spiller.getViden()));
-        textmad.setText(String.valueOf(spiller.getHp()));
-        playerInfo.setText(String.valueOf(spiller.getTid()));
+        textpenge.setText(String.valueOf(instans.getPenge()));
+        textviden.setText(String.valueOf(instans.getViden()));
+        textmad.setText(String.valueOf(instans.getHp()));
+        playerInfo.setText(String.valueOf(instans.getTid()));
     }
 
 }

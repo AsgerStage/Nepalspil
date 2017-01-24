@@ -24,7 +24,6 @@ import com.example.asger.nepalspil.models.Spiller;
 import io.fabric.sdk.android.Fabric;
 
 public class Hovedmenu_akt extends AppCompatActivity {
-    public static Spiller spiller;
     boolean continueBGMusic;
     ImageView checkmarkasha;
     ImageView checkmarkkaka;
@@ -66,7 +65,7 @@ public class Hovedmenu_akt extends AppCompatActivity {
                 Toast.makeText(Hovedmenu_akt.this, "Du har valgt Asha!", Toast.LENGTH_SHORT).show();
                 checkmarkkaka.setVisibility(View.INVISIBLE);
                 checkmarkasha.setVisibility(View.VISIBLE);
-                spiller = new Spiller("Asha", 10, 16, 0, 100, 1, false, 1, 1, 0);
+                Spiller.instans = new Spiller("Asha", 10, 16, 0, 100, 1, false, 1, 1, 0);
             }
 
 
@@ -77,7 +76,7 @@ public class Hovedmenu_akt extends AppCompatActivity {
                 Toast.makeText(Hovedmenu_akt.this, "Du har valgt Kaka!", Toast.LENGTH_SHORT).show();
                 checkmarkasha.setVisibility(View.INVISIBLE);
                 checkmarkkaka.setVisibility(View.VISIBLE);
-                spiller = new Spiller("Kaka", 10, 16, 0, 100, 1, true, 1, 1, 0);
+                Spiller.instans = new Spiller("Kaka", 10, 16, 0, 100, 1, true, 1, 1, 0);
 
             }
         });
@@ -87,12 +86,12 @@ public class Hovedmenu_akt extends AppCompatActivity {
             public void onClick(View v) {
                 v.startAnimation(AnimationUtils.loadAnimation(Hovedmenu_akt.this, R.anim.image_click));
 
-                if (spiller == null) {
+                if (Spiller.instans == null) {
                     Toast.makeText(Hovedmenu_akt.this, "Du mangler at vælge en figur.", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
-                if (spiller.getNavn() == "Kaka" || spiller.getNavn() == "Asha") {
+                if (Spiller.instans.getNavn() == "Kaka" || Spiller.instans.getNavn() == "Asha") {
                     Intent intent = new Intent(Hovedmenu_akt.this, SpillePlade.class);
                     startActivity(intent);
                 }
@@ -105,11 +104,11 @@ public class Hovedmenu_akt extends AppCompatActivity {
             public void onClick(View v) {
                 v.startAnimation(AnimationUtils.loadAnimation(Hovedmenu_akt.this, R.anim.image_click));
 
-                spiller = new Spiller(prefs.getBoolean("Sex", true), prefs.getInt("Books", 0), prefs.getInt("Position", 0), prefs.getString("Navn", null), prefs.getInt("Penge", 0), prefs.getInt("Hp", 0), prefs.getInt("Viden", 0), prefs.getInt("Klassetrin", 0), prefs.getInt("Tid", 0), prefs.getInt("Runde", 0), prefs.getInt("Movespeed", 1), prefs.getInt("LastBookBought", 0));
-                if (spiller.getSex() == true) {
+                Spiller.instans = new Spiller(prefs.getBoolean("Sex", true), prefs.getInt("Books", 0), prefs.getInt("Position", 0), prefs.getString("Navn", null), prefs.getInt("Penge", 0), prefs.getInt("Hp", 0), prefs.getInt("Viden", 0), prefs.getInt("Klassetrin", 0), prefs.getInt("Tid", 0), prefs.getInt("Runde", 0), prefs.getInt("Movespeed", 1), prefs.getInt("LastBookBought", 0));
+                if (Spiller.instans.getSex() == true) {
                     checkmarkasha.setVisibility(View.INVISIBLE);
                     checkmarkkaka.setVisibility(View.VISIBLE);
-                } else if (spiller.getSex() == false) {
+                } else if (Spiller.instans.getSex() == false) {
                     checkmarkkaka.setVisibility(View.INVISIBLE);
                     checkmarkasha.setVisibility(View.VISIBLE);
                 }

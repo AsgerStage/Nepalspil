@@ -17,7 +17,7 @@ import com.example.asger.nepalspil.activities.SpillePlade;
 
 import java.io.IOException;
 
-import static com.example.asger.nepalspil.activities.Hovedmenu_akt.spiller;
+import static com.example.asger.nepalspil.models.Spiller.instans;
 
 
 public class Farm extends AppCompatActivity {
@@ -76,8 +76,8 @@ public class Farm extends AppCompatActivity {
 
             public void onClick(View v) {
                 v.startAnimation(AnimationUtils.loadAnimation(Farm.this, R.anim.image_click));
-                if (spiller.getTid() >= TIME_PER_CLICK) {
-                    spiller.work(TIME_PER_CLICK, MONEY_PER_CLICK);
+                if (instans.getTid() >= TIME_PER_CLICK) {
+                    instans.work(TIME_PER_CLICK, MONEY_PER_CLICK);
                     money.setText("+" + MONEY_PER_CLICK + " kr");
                     money.startAnimation(animation);
                     updateText();
@@ -98,7 +98,7 @@ public class Farm extends AppCompatActivity {
                         e.printStackTrace();
                     }
 
-                } else if (spiller.getTid() < 2) {
+                } else if (instans.getTid() < 2) {
 
                     dialog.setTitle("Intet tid!");
                     dialog.setMessage("Du har ikke nok tid til at arbejde");
@@ -121,10 +121,10 @@ public class Farm extends AppCompatActivity {
 
 
     public void updateText() {
-        textpenge.setText(String.valueOf(spiller.getPenge()));
-        textviden.setText(String.valueOf(spiller.getViden()));
-        textmad.setText(String.valueOf(spiller.getHp()));
-        playerinfo.setText(String.valueOf(spiller.getTid()));
+        textpenge.setText(String.valueOf(instans.getPenge()));
+        textviden.setText(String.valueOf(instans.getViden()));
+        textmad.setText(String.valueOf(instans.getHp()));
+        playerinfo.setText(String.valueOf(instans.getTid()));
         SpillePlade.updateEntireBoard();
     }
 }
