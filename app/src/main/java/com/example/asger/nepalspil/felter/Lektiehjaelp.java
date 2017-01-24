@@ -132,6 +132,5 @@ public class Lektiehjaelp extends AppCompatActivity {
         textviden.setText(String.valueOf(spiller.getViden()));
         textmad.setText(String.valueOf(spiller.getHp()));
         playerInfo.setText(String.valueOf(spiller.getTid()));
-        SpillePlade.updateInfobox();
     }
 }

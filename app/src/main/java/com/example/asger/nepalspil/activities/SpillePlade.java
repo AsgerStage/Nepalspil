@@ -111,7 +111,6 @@ public class SpillePlade extends AppCompatActivity {
         //ur = (ClockImageView) findViewById(R.id.ur);
         ur = (ImageView) findViewById(R.id.ur);
         ur.setImageResource(R.drawable.ur16);
-        updateInfobox();
         updateEntireBoard();
 
         felt0 = (Button) findViewById(R.id.felt0);
@@ -268,21 +267,6 @@ public class SpillePlade extends AppCompatActivity {
 
     }
 
-
-    /* public static void updateInfobox() {
-         infobox.setText("Navn: " + spiller.getNavn() + "\n mad: " + spiller.getHp() + "\n Penge: " + spiller.getPenge() + "\n Viden: " + spiller.getViden() + "\n Klassetrin: " + spiller.getKlassetrin() + "\n Tid: " + spiller.getTid() + "\n Dag: " + spiller.getRunde());
-     }*/
-    public static void updateInfobox() {
-    }
-
-    public static void updateTextpenge() {
-    }
-
-    public static void updateTextviden() {
-    }
-
-    public static void updateTextmad() {
-    }
 
     /**
      * Flytter spilleren

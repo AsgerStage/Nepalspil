@@ -157,9 +157,6 @@ public class Marked extends AppCompatActivity {
 
             public void onClick(View v) {
                 t.cancel();
-                SpillePlade.updateTextpenge();
-                SpillePlade.updateTextmad();
-                SpillePlade.updateTextviden();
                 v.startAnimation(AnimationUtils.loadAnimation(Marked.this, R.anim.image_click));
                 finish();
 

@@ -154,7 +154,6 @@ public class Butikken extends AppCompatActivity {
     }
 
     public String updateInfo() {
-        SpillePlade.updateInfobox();
         //Har ingen funktion i butikken
         return "";
     }

@@ -256,7 +256,6 @@ public class Skole extends AppCompatActivity {
     public void spis() {
         if (spiller.getTid() > 0) {
             spiller.eat(TIME_COST_EATING, COST_PER_FOOD_CLICK, FOOD_PER_CLICK);
-            SpillePlade.updateInfobox();
             updateText();
         } else {
             schoolText.setText("");
@@ -272,7 +271,6 @@ public class Skole extends AppCompatActivity {
     }
 
     public static String updateInfo() {
-        SpillePlade.updateInfobox();
         return "Tid: " + spiller.getTid();
 
     }

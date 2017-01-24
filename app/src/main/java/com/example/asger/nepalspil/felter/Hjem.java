@@ -75,7 +75,6 @@ public class Hjem extends AppCompatActivity {
     }
 
     public String updateInfo() {
-        SpillePlade.updateInfobox();
         return "Navn: " + spiller.getNavn() + "\n mad: " + spiller.getHp() + "\n Penge: " + spiller.getPenge() + "\n Viden: " + spiller.getViden() + "\n Klassetrin: " + spiller.getKlassetrin() + "\n Tid: " + spiller.getTid();
     }
 
