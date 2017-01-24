@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<RelativeLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="34dp"
+    tools:showIn="@layout/vaerksted">
+
+    <ImageView
+        android:layout_width="34dp"
+        android:layout_height="34dp"
+        app:srcCompat="@drawable/ikonviden"
+        android:id="@+id/imageView19"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/fieldhelp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:id="@+id/vaerkstedHelp"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/hjemBack"
+        android:id="@+id/hjemBack"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"/>
+
+    <ImageView
+        android:layout_width="34dp"
+        android:layout_height="34dp"
+        app:srcCompat="@drawable/ikonpenge"
+        android:id="@+id/imageView20"
+        android:layout_alignTop="@+id/textmad"
+        android:layout_toEndOf="@+id/textpenge"/>
+
+    <TextView
+        android:text="Viden"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textviden"
+        android:elevation="1dp"
+        android:fontFamily="sans-serif"
+        android:textSize="24sp"
+        android:textColor="@color/black"
+        android:layout_alignTop="@+id/imageView18"
+        android:layout_toStartOf="@+id/imageView19"
+        android:layout_marginEnd="8dp"/>
+
+    <TextView
+        android:text="Mad"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textmad"
+        android:elevation="1dp"
+        android:fontFamily="sans-serif"
+        android:textSize="24sp"
+        android:textColor="@color/food"
+        android:layout_marginStart="19dp"
+        android:layout_centerVertical="true"
+        android:layout_toEndOf="@+id/hjemBack"/>
+
+    <ImageView
+        android:layout_width="34dp"
+        android:layout_height="34dp"
+        app:srcCompat="@drawable/ikonmad"
+        android:id="@+id/imageView18"
+        android:layout_marginStart="35dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/textmad"/>
+
+    <TextView
+        android:text="Penge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textpenge"
+        android:elevation="1dp"
+        android:fontFamily="sans-serif"
+        android:textSize="24sp"
+        android:textColor="@color/money"
+        android:layout_marginStart="19dp"
+        android:layout_alignParentBottom="true"
+        android:layout_toEndOf="@+id/imageView19"/>
+
+    <ImageView
+        android:layout_height="34dp"
+        app:srcCompat="@drawable/urikon"
+        android:id="@+id/imageView45"
+        android:layout_width="34dp"
+        android:layout_weight="1"
+        android:layout_alignTop="@+id/imageView20"
+        android:layout_toEndOf="@+id/playerinfo"/>
+
+    <TextView
+        android:text="16"
+        android:layout_width="34dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/playerinfo"
+        android:elevation="1dp"
+        android:fontFamily="sans-serif"
+        android:textSize="24sp"
+        android:textColor="@color/black"
+        android:gravity="right"
+        android:textAlignment="gravity"
+        android:layout_weight="1"
+        android:layout_centerVertical="true"
+        android:layout_toStartOf="@+id/vaerkstedHelp"/>
+
+</RelativeLayout>
+
+    

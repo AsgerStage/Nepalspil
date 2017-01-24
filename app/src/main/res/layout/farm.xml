@@ -24,7 +24,7 @@
 
         <ImageView
             android:layout_width="wrap_content"
-            app:srcCompat="@drawable/newback"
+            app:srcCompat="@drawable/hjemBack"
             android:id="@+id/hjemBack"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"

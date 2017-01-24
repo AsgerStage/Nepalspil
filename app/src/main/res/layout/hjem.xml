@@ -15,7 +15,7 @@
         <ImageView
             android:layout_width="57dp"
             android:layout_height="35dp"
-            app:srcCompat="@drawable/newback"
+            app:srcCompat="@drawable/hjemBack"
             android:id="@+id/hjemBack"/>
 
         <TextView
