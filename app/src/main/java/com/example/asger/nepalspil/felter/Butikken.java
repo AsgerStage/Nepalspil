@@ -39,7 +39,7 @@ public class Butikken extends AppCompatActivity {
         final MediaPlayer mp = MediaPlayer.create(this, R.raw.cash);
         ImageView helpField = (ImageView) findViewById(R.id.tbHelp);
         final Button buy = (Button) findViewById(R.id.tbBuy);
-        ImageView back = (ImageView) findViewById(R.id.tbBack);
+        ImageView hjemBack = (ImageView) findViewById(R.id.hjemBack);
         textpenge = (TextView) findViewById(R.id.textpenge);
         textviden = (TextView) findViewById(R.id.textviden);
         textmad = (TextView) findViewById(R.id.textmad);
@@ -125,7 +125,7 @@ public class Butikken extends AppCompatActivity {
             }
         });
 
-        back.setOnClickListener(new View.OnClickListener() {
+        hjemBack.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
                 SpillePlade.updateEntireBoard();

@@ -22,7 +22,7 @@
 
         <ImageView
             app:srcCompat="@drawable/newback"
-            android:id="@+id/backButton"
+            android:id="@+id/hjemBack"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
@@ -67,7 +67,7 @@
             android:textColor="@color/food"
             android:layout_alignBaseline="@+id/textviden"
             android:layout_alignBottom="@+id/textviden"
-            android:layout_toEndOf="@+id/backButton"/>
+            android:layout_toEndOf="@+id/hjemBack"/>
 
         <ImageView
             android:layout_width="34dp"
@@ -76,7 +76,7 @@
             android:id="@+id/imageView21"
             android:layout_marginStart="50dp"
             android:layout_alignParentBottom="true"
-            android:layout_toEndOf="@+id/backButton"/>
+            android:layout_toEndOf="@+id/hjemBack"/>
 
         <TextView
             android:text="Penge"

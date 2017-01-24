@@ -61,7 +61,7 @@ public class Vaerksted extends AppCompatActivity {
         ImageView helpField = (ImageView) findViewById(R.id.vaerkstedHelp);
         Button work = (Button) findViewById(R.id.workButton);
         Button buy = (Button) findViewById(R.id.buyBikeButton);
-        ImageView back = (ImageView) findViewById(R.id.backButton);
+        ImageView hjemBack = (ImageView) findViewById(R.id.hjemBack);
         viewPagerText = (TextView) findViewById(R.id.viewpagerPris);
         textpenge = (TextView) findViewById(R.id.textpenge);
         textviden = (TextView) findViewById(R.id.textviden);
@@ -157,7 +157,7 @@ public class Vaerksted extends AppCompatActivity {
             }
         });
 
-        back.setOnClickListener(new View.OnClickListener() {
+        hjemBack.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
                 SpillePlade.updateEntireBoard();

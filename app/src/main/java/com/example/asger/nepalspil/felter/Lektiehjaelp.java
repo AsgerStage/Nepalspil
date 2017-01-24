@@ -49,7 +49,7 @@ public class Lektiehjaelp extends AppCompatActivity {
         final MediaPlayer mp = MediaPlayer.create(this, R.raw.cash);
         final TextView lektiehjaelpInfo = (TextView) findViewById(R.id.lektiehjaelpTextField);
         playerInfo = (TextView) findViewById(R.id.lektiePlayerInfo);
-        ImageView back = (ImageView) findViewById(R.id.lektieBack);
+        ImageView hjemBack = (ImageView) findViewById(R.id.hjemBack);
         homeworkHelp = (Button) findViewById(R.id.learn);
         ImageView helpField = (ImageView) findViewById(R.id.studyHelp);
         textpenge = (TextView) findViewById(R.id.textpenge);
@@ -110,7 +110,7 @@ public class Lektiehjaelp extends AppCompatActivity {
                 dialog.show();
             }
         });
-        back.setOnClickListener(new View.OnClickListener() {
+        hjemBack.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
                 SpillePlade.updateEntireBoard();

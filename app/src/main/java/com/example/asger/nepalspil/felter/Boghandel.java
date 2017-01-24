@@ -48,7 +48,7 @@ public class Boghandel extends AppCompatActivity {
         ImageView helpField = (ImageView) findViewById(R.id.boghandelHelp);
         Button work = (Button) findViewById(R.id.workButton);
         final Button buyBook = (Button) findViewById(R.id.buyBookButton);
-        ImageView back = (ImageView) findViewById(R.id.backButton);
+        ImageView hjemBack = (ImageView) findViewById(R.id.hjemBack);
         final TextView money = (TextView) findViewById(R.id.scrollmoney);
         animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.plusmoneybook);
         textpenge = (TextView) findViewById(R.id.textpenge);
@@ -133,7 +133,7 @@ public class Boghandel extends AppCompatActivity {
             }
         });
 
-        back.setOnClickListener(new View.OnClickListener() {
+        hjemBack.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
                 SpillePlade.updateEntireBoard();

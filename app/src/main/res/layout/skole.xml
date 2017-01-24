@@ -20,7 +20,7 @@
             android:textSize="24sp"
             android:layout_marginStart="27dp"
             android:layout_centerVertical="true"
-            android:layout_toEndOf="@+id/skoleBack"
+            android:layout_toEndOf="@+id/hjemBack"
             android:textColor="@color/food"/>
 
         <ImageView
@@ -30,7 +30,7 @@
             android:layout_alignParentTop="true"
             android:layout_alignParentStart="true"
             android:layout_marginStart="8dp"
-            android:id="@+id/skoleBack"
+            android:id="@+id/hjemBack"
             android:layout_alignParentBottom="true"/>
 
         <ImageView
@@ -48,7 +48,7 @@
             android:id="@+id/imageView"
             android:layout_marginStart="76dp"
             android:layout_alignParentTop="true"
-            android:layout_toEndOf="@+id/skoleBack"/>
+            android:layout_toEndOf="@+id/hjemBack"/>
 
         <TextView
             android:text="Viden"

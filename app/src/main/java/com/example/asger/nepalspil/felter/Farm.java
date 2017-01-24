@@ -50,7 +50,7 @@ public class Farm extends AppCompatActivity {
         animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.plusmoney);
 
         Button work = (Button) findViewById(R.id.workButton);
-        ImageView back = (ImageView) findViewById(R.id.backButton);
+        ImageView hjemBack = (ImageView) findViewById(R.id.hjemBack);
         ImageView helpfield = (ImageView) findViewById(R.id.farmHelp);
         final TextView money = (TextView) findViewById(R.id.scrollmoney);
         textpenge = (TextView) findViewById(R.id.textpenge);
@@ -108,7 +108,7 @@ public class Farm extends AppCompatActivity {
             }
         });
 
-        back.setOnClickListener(new View.OnClickListener() {
+        hjemBack.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
                 SpillePlade.updateEntireBoard();

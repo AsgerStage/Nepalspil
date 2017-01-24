@@ -52,7 +52,7 @@ public class Marked extends AppCompatActivity {
 
         Button work = (Button) findViewById(R.id.workButton);
         final Button eat = (Button) findViewById(R.id.eatButton);
-        final ImageView back = (ImageView) findViewById(R.id.backButton);
+        final ImageView hjemBack = (ImageView) findViewById(R.id.hjemBack);
         ImageView helpField = (ImageView) findViewById(R.id.markedHelp);
 
         textpenge = (TextView) findViewById(R.id.textpenge);
@@ -153,7 +153,7 @@ public class Marked extends AppCompatActivity {
             }
         });
 
-        back.setOnClickListener(new View.OnClickListener() {
+        hjemBack.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
                 t.cancel();

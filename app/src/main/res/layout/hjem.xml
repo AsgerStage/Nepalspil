@@ -29,7 +29,7 @@
             android:textColor="@color/food"
             android:layout_marginStart="16dp"
             android:layout_alignBottom="@+id/imageView14"
-            android:layout_toEndOf="@+id/backButton"
+            android:layout_toEndOf="@+id/hjemBack"
             android:layout_weight="0.41"/>
 
         <ImageView

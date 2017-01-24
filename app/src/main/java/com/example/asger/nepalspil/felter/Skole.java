@@ -70,7 +70,7 @@ public class Skole extends AppCompatActivity {
         Button bSpis = (Button) findViewById(R.id.spis);
         Button bStuder = (Button) findViewById(R.id.Studer);
         Button bEksamen = (Button) findViewById(R.id.eksamen);
-        ImageView back = (ImageView) findViewById(R.id.skoleBack);
+        ImageView hjemBack = (ImageView) findViewById(R.id.hjemBack);
         ImageView helpField = (ImageView) findViewById(R.id.skoleHelp);
         animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.plusknowledge);
         animationfood = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.plusknowledge);
@@ -211,7 +211,7 @@ public class Skole extends AppCompatActivity {
             }
         });
 
-        back.setOnClickListener(new View.OnClickListener() {
+        hjemBack.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
                 SpillePlade.updateEntireBoard();
