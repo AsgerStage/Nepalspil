@@ -16,7 +16,7 @@ import com.example.asger.nepalspil.R;
 import com.example.asger.nepalspil.activities.SpillePlade;
 import com.github.jinatonic.confetti.CommonConfetti;
 
-import static com.example.asger.nepalspil.activities.MainActivity.spiller;
+import static com.example.asger.nepalspil.activities.Hovedmenu_akt.spiller;
 
 public class Eksamen extends AppCompatActivity {
     TextView question;

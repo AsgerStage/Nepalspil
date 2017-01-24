@@ -23,7 +23,7 @@ import com.example.asger.nepalspil.models.Spiller;
 
 import io.fabric.sdk.android.Fabric;
 
-public class MainActivity extends AppCompatActivity {
+public class Hovedmenu_akt extends AppCompatActivity {
     public static Spiller spiller;
     boolean continueBGMusic;
     ImageView checkmarkasha;
@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         continueBGMusic = true;
-        dialog = new AlertDialog.Builder(MainActivity.this);
+        dialog = new AlertDialog.Builder(this);
         boolean EMULATOR = Build.PRODUCT.contains("sdk") || Build.MODEL.contains("Emulator");
         if (!EMULATOR) {
             Fabric.with(this, new Crashlytics());
@@ -45,25 +45,25 @@ public class MainActivity extends AppCompatActivity {
         String checkIfPlayedBefore = prefs.getString("Navn", null);
 
 
-        setContentView(R.layout.splash);
+        setContentView(R.layout.hovedmenu);
 
         TextView versionTv = (TextView) findViewById(R.id.version);
         versionTv.setText("v. " + BuildConfig.VERSION_NAME);
 
         ImageButton asha = (ImageButton) findViewById(R.id.imageButton4);
         final ImageButton kaka = (ImageButton) findViewById(R.id.imageButton5);
-        checkmarkasha = (ImageView) findViewById(R.id.imageView1);
-        checkmarkkaka = (ImageView) findViewById(R.id.imageView2);
-        ImageView start = (ImageView) findViewById(R.id.startknap);
-        ImageView options = (ImageView) findViewById(R.id.optionsknap);
-        ImageView genoptag = (ImageView) findViewById(R.id.genoptag);
+        checkmarkasha = (ImageView) findViewById(R.id.checkmarkasha);
+        checkmarkkaka = (ImageView) findViewById(R.id.checkmarkkaka);
+        ImageView startknap = (ImageView) findViewById(R.id.startknap);
+        ImageView indstillingerknap = (ImageView) findViewById(R.id.indstillingerknap);
+        ImageView genoptagKnap = (ImageView) findViewById(R.id.genoptagKnap);
 
 
         asha.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                Toast.makeText(MainActivity.this, "Du har valgt Asha!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Hovedmenu_akt.this, "Du har valgt Asha!", Toast.LENGTH_SHORT).show();
                 checkmarkkaka.setVisibility(View.INVISIBLE);
                 checkmarkasha.setVisibility(View.VISIBLE);
                 spiller = new Spiller("Asha", 10, 16, 0, 100, 1, false, 1, 1, 0);
@@ -74,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
         kaka.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(MainActivity.this, "Du har valgt Kaka!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Hovedmenu_akt.this, "Du har valgt Kaka!", Toast.LENGTH_SHORT).show();
                 checkmarkasha.setVisibility(View.INVISIBLE);
                 checkmarkkaka.setVisibility(View.VISIBLE);
                 spiller = new Spiller("Kaka", 10, 16, 0, 100, 1, true, 1, 1, 0);
@@ -82,28 +82,28 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        start.setOnClickListener(new View.OnClickListener() {
+        startknap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                v.startAnimation(AnimationUtils.loadAnimation(MainActivity.this, R.anim.image_click));
+                v.startAnimation(AnimationUtils.loadAnimation(Hovedmenu_akt.this, R.anim.image_click));
 
                 if (spiller == null) {
-                    Toast.makeText(MainActivity.this, "Du mangler at vælge en figur.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Hovedmenu_akt.this, "Du mangler at vælge en figur.", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
                 if (spiller.getNavn() == "Kaka" || spiller.getNavn() == "Asha") {
-                    Intent intent = new Intent(MainActivity.this, SpillePlade.class);
+                    Intent intent = new Intent(Hovedmenu_akt.this, SpillePlade.class);
                     startActivity(intent);
                 }
             }
         });
 
 
-        genoptag.setOnClickListener(new View.OnClickListener() {
+        genoptagKnap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                v.startAnimation(AnimationUtils.loadAnimation(MainActivity.this, R.anim.image_click));
+                v.startAnimation(AnimationUtils.loadAnimation(Hovedmenu_akt.this, R.anim.image_click));
 
                 spiller = new Spiller(prefs.getBoolean("Sex", true), prefs.getInt("Books", 0), prefs.getInt("Position", 0), prefs.getString("Navn", null), prefs.getInt("Penge", 0), prefs.getInt("Hp", 0), prefs.getInt("Viden", 0), prefs.getInt("Klassetrin", 0), prefs.getInt("Tid", 0), prefs.getInt("Runde", 0), prefs.getInt("Movespeed", 1), prefs.getInt("LastBookBought", 0));
                 if (spiller.getSex() == true) {
@@ -113,19 +113,19 @@ public class MainActivity extends AppCompatActivity {
                     checkmarkkaka.setVisibility(View.INVISIBLE);
                     checkmarkasha.setVisibility(View.VISIBLE);
                 }
-                Intent intent = new Intent(MainActivity.this, SpillePlade.class);
+                Intent intent = new Intent(Hovedmenu_akt.this, SpillePlade.class);
                 intent.putExtra("genoptag", true);
                 startActivity(intent);
             }
         });
 
-        options.setOnClickListener(new View.OnClickListener() {
+        indstillingerknap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                v.startAnimation(AnimationUtils.loadAnimation(MainActivity.this, R.anim.image_click));
+                v.startAnimation(AnimationUtils.loadAnimation(Hovedmenu_akt.this, R.anim.image_click));
 
                 CharSequence options[] = new CharSequence[]{"Skoleliv i Nepal", "Credits", "Sluk musik"};
-                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                AlertDialog.Builder builder = new AlertDialog.Builder(Hovedmenu_akt.this);
                 builder.setTitle("Indstillinger");
                 builder.setItems(options, new DialogInterface.OnClickListener() {
                     @Override
@@ -136,7 +136,7 @@ public class MainActivity extends AppCompatActivity {
                                 startActivity(browserIntent);
                                 break;
                             case 1:
-                                Intent intent = new Intent(MainActivity.this, Credit.class);
+                                Intent intent = new Intent(Hovedmenu_akt.this, Credit.class);
                                 startActivity(intent);
                                 break;
                             case 2:

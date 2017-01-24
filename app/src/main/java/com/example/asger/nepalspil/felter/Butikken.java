@@ -13,7 +13,7 @@ import android.widget.TextView;
 import com.example.asger.nepalspil.R;
 import com.example.asger.nepalspil.activities.SpillePlade;
 
-import static com.example.asger.nepalspil.activities.MainActivity.spiller;
+import static com.example.asger.nepalspil.activities.Hovedmenu_akt.spiller;
 
 public class Butikken extends AppCompatActivity {
     TextView textpenge;

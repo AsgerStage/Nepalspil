@@ -29,7 +29,7 @@ import com.example.asger.nepalspil.felter.Vaerksted;
 
 import java.util.concurrent.ThreadLocalRandom;
 
-import static com.example.asger.nepalspil.activities.MainActivity.spiller;
+import static com.example.asger.nepalspil.activities.Hovedmenu_akt.spiller;
 import static com.example.asger.nepalspil.activities.MusicManager.mp;
 
 //import static com.example.asger.nepalspil.R.id.player;

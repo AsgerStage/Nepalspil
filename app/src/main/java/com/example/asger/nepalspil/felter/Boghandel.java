@@ -17,7 +17,7 @@ import com.example.asger.nepalspil.activities.SpillePlade;
 
 import java.io.IOException;
 
-import static com.example.asger.nepalspil.activities.MainActivity.spiller;
+import static com.example.asger.nepalspil.activities.Hovedmenu_akt.spiller;
 
 public class Boghandel extends AppCompatActivity {
     TextView textpenge;

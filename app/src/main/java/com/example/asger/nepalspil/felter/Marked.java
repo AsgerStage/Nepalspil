@@ -14,11 +14,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.asger.nepalspil.R;
+import com.example.asger.nepalspil.activities.Hovedmenu_akt;
 import com.example.asger.nepalspil.activities.SpillePlade;
 
 import java.io.IOException;
 
-import static com.example.asger.nepalspil.activities.MainActivity.spiller;
 
 public class Marked extends AppCompatActivity {
     Toast t;
@@ -79,8 +79,8 @@ public class Marked extends AppCompatActivity {
 
             public void onClick(View v) {
                 v.startAnimation(AnimationUtils.loadAnimation(Marked.this, R.anim.image_click));
-                if (spiller.getTid() >= TIME_PER_CLICK && spiller.getKlassetrin() >= 2) {
-                    spiller.work(TIME_PER_CLICK, MONEY_PER_CLICK);
+                if (Hovedmenu_akt.spiller.getTid() >= TIME_PER_CLICK && Hovedmenu_akt.spiller.getKlassetrin() >= 2) {
+                    Hovedmenu_akt.spiller.work(TIME_PER_CLICK, MONEY_PER_CLICK);
                     money.setText("+" + MONEY_PER_CLICK + " kr");
                     money.startAnimation(animation);
 
@@ -102,7 +102,7 @@ public class Marked extends AppCompatActivity {
                     }
 
                     updateText();
-                } else if (spiller.getTid() < 2) {
+                } else if (Hovedmenu_akt.spiller.getTid() < 2) {
                     AlertDialog.Builder dialog = new AlertDialog.Builder(Marked.this);
                     dialog.setTitle("Intet tid!");
                     dialog.setMessage("Du har ikke nok tid til at arbejde");
@@ -121,8 +121,8 @@ public class Marked extends AppCompatActivity {
 
             public void onClick(View v) {
                 v.startAnimation(AnimationUtils.loadAnimation(Marked.this, R.anim.image_click));
-                if (spiller.getPenge() >= COST_PER_FOOD_CLICK) {
-                    spiller.eat(TIME_COST_EATING, COST_PER_FOOD_CLICK, FOOD_PER_CLICK);
+                if (Hovedmenu_akt.spiller.getPenge() >= COST_PER_FOOD_CLICK) {
+                    Hovedmenu_akt.spiller.eat(TIME_COST_EATING, COST_PER_FOOD_CLICK, FOOD_PER_CLICK);
                     if (mp.isPlaying()) {
                         mp.stop();
                         food.setText("+" + FOOD_PER_CLICK + " mad");
@@ -181,10 +181,10 @@ public class Marked extends AppCompatActivity {
     }
 
     public void updateText() {
-        textpenge.setText(String.valueOf(spiller.getPenge()));
-        textviden.setText(String.valueOf(spiller.getViden()));
-        textmad.setText(String.valueOf(spiller.getHp()));
-        playerinfo.setText(String.valueOf(spiller.getTid()));
+        textpenge.setText(String.valueOf(Hovedmenu_akt.spiller.getPenge()));
+        textviden.setText(String.valueOf(Hovedmenu_akt.spiller.getViden()));
+        textmad.setText(String.valueOf(Hovedmenu_akt.spiller.getHp()));
+        playerinfo.setText(String.valueOf(Hovedmenu_akt.spiller.getTid()));
         SpillePlade.updateEntireBoard();
     }
 }
