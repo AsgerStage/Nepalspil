@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:fab="http://schemas.android.com/apk/res-auto"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              xmlns:fab="http://schemas.android.com/apk/res-auto"
 
 
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:weightSum="1"
-    android:background="@drawable/sky"
-    android:baselineAligned="false">
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              android:weightSum="1"
+              android:background="@drawable/sky"
+              android:baselineAligned="false">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -43,7 +42,7 @@
             app:srcCompat="@drawable/skoleliv"
             android:id="@+id/imageView3"
             android:layout_alignParentTop="true"
-            android:layout_alignParentStart="true" />
+            android:layout_alignParentStart="true"/>
 
         <ImageButton
             app:srcCompat="@drawable/dreng1"
@@ -56,7 +55,7 @@
             android:layout_width="199dp"
             android:layout_alignParentBottom="true"
             android:layout_alignParentEnd="true"
-            android:layout_marginEnd="11dp" />
+            android:layout_marginEnd="11dp"/>
 
         <ImageView
             android:layout_width="wrap_content"
@@ -75,7 +74,7 @@
             android:visibility="invisible"
             android:layout_alignParentBottom="true"
             android:layout_alignStart="@+id/imageButton4"
-            android:layout_marginStart="15dp" />
+            android:layout_marginStart="15dp"/>
 
         <ImageView
             android:layout_width="wrap_content"
@@ -84,7 +83,7 @@
             android:id="@+id/genoptag"
             android:layout_marginBottom="15dp"
             android:layout_above="@+id/optionsknap"
-            android:layout_centerHorizontal="true" />
+            android:layout_centerHorizontal="true"/>
 
         <ImageView
             android:layout_width="wrap_content"
@@ -92,7 +91,7 @@
             android:id="@+id/optionsknap"
             android:layout_alignBottom="@+id/imageView2"
             android:layout_centerHorizontal="true"
-            android:layout_height="50dp" />
+            android:layout_height="50dp"/>
 
         <ImageView
             android:layout_width="wrap_content"
@@ -102,7 +101,7 @@
             android:layout_marginStart="123dp"
             android:layout_alignBottom="@+id/imageView3"
             android:layout_alignStart="@+id/imageView2"
-            android:layout_marginBottom="11dp" />
+            android:layout_marginBottom="11dp"/>
 
         <ImageView
             android:layout_width="wrap_content"
@@ -111,7 +110,7 @@
             android:id="@+id/startknap"
             android:layout_marginBottom="15dp"
             android:layout_above="@+id/genoptag"
-            android:layout_alignStart="@+id/genoptag" />
+            android:layout_alignStart="@+id/genoptag"/>
 
         <TextView
             android:id="@+id/version"

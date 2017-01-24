@@ -3,7 +3,6 @@ package com.example.asger.nepalspil.activities;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.preference.PreferenceManager;
@@ -20,20 +19,20 @@ import android.widget.Toast;
 
 import com.example.asger.nepalspil.R;
 import com.example.asger.nepalspil.felter.Boghandel;
+import com.example.asger.nepalspil.felter.Butikken;
 import com.example.asger.nepalspil.felter.Farm;
 import com.example.asger.nepalspil.felter.Hjem;
 import com.example.asger.nepalspil.felter.Lektiehjaelp;
 import com.example.asger.nepalspil.felter.Marked;
 import com.example.asger.nepalspil.felter.Skole;
 import com.example.asger.nepalspil.felter.Vaerksted;
-import com.example.asger.nepalspil.felter.Butikken;
-
-//import static com.example.asger.nepalspil.R.id.player;
 
 import java.util.concurrent.ThreadLocalRandom;
 
 import static com.example.asger.nepalspil.activities.MainActivity.spiller;
 import static com.example.asger.nepalspil.activities.MusicManager.mp;
+
+//import static com.example.asger.nepalspil.R.id.player;
 
 public class SpillePlade extends AppCompatActivity {
     static TextView infobox;
@@ -43,7 +42,7 @@ public class SpillePlade extends AppCompatActivity {
 
     ImageView Player;
     static ImageView ur;
-//    static ClockImageView ur;
+    //    static ClockImageView ur;
     static private TextView tidTextView;
     ImageView unusedPlayer;
     boolean continueBGMusic;
@@ -284,7 +283,8 @@ public class SpillePlade extends AppCompatActivity {
 
     /**
      * Flytter spilleren
-     * @param feltPos feltnummer
+     *
+     * @param feltPos   feltnummer
      * @param aktivitet skærmbillede der skal startes hvis rykket lykkedes
      * @param params
      */
@@ -339,7 +339,7 @@ public class SpillePlade extends AppCompatActivity {
     }
 
     static public void updateTimer() {
-        tidTextView.setText(""+spiller.getTid());
+        tidTextView.setText("" + spiller.getTid());
         //int minutter = (20 - spiller.getTid())*60*12 / 24; // Vi regner i dage á 12 timer, da uret er 12timers
         //ur.animateToTime(minutter / 60, minutter % 60);
         switch (spiller.getTid()) {
@@ -461,7 +461,7 @@ public class SpillePlade extends AppCompatActivity {
     }
 
     public void setPlayerIconParams(Button felt) {
-        Player.animate().translationXBy(felt.getX()-Player.getX()).translationYBy(felt.getY()-Player.getY());
+        Player.animate().translationXBy(felt.getX() - Player.getX()).translationYBy(felt.getY() - Player.getY());
         //Player.setX(felt.getX());
         //Player.setY(felt.getY());
 

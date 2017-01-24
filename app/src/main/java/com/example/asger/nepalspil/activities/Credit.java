@@ -52,6 +52,7 @@ public class Credit extends AppCompatActivity {
         });
 
     }
+
     Handler h = new Handler();
     Runnable runnable = new Runnable() {
         @Override

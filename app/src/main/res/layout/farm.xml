@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:weightSum="1"
-    android:background="@drawable/farminside">
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:weightSum="1"
+              android:background="@drawable/farminside">
 
 
     <RelativeLayout
@@ -20,7 +20,7 @@
             app:srcCompat="@drawable/fieldhelp"
             android:id="@+id/farmHelp"
             android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true" />
+            android:layout_alignParentEnd="true"/>
 
         <ImageView
             android:layout_width="wrap_content"
@@ -28,7 +28,7 @@
             android:id="@+id/backButton"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:layout_alignParentStart="true" />
+            android:layout_alignParentStart="true"/>
 
         <ImageView
             android:layout_width="34dp"
@@ -36,7 +36,7 @@
             app:srcCompat="@drawable/ikonmad"
             android:id="@+id/imageView4"
             android:layout_alignParentBottom="true"
-            android:layout_toEndOf="@+id/textmad" />
+            android:layout_toEndOf="@+id/textmad"/>
 
         <TextView
             android:text="Mad"
@@ -49,7 +49,7 @@
             android:textColor="@color/food"
             android:layout_marginStart="16dp"
             android:layout_alignBottom="@+id/imageView14"
-            android:layout_toEndOf="@+id/backButton" />
+            android:layout_toEndOf="@+id/backButton"/>
 
         <ImageView
             android:layout_width="34dp"
@@ -57,7 +57,7 @@
             app:srcCompat="@drawable/ikonviden"
             android:id="@+id/imageView10"
             android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true" />
+            android:layout_centerHorizontal="true"/>
 
         <TextView
             android:text="Viden"
@@ -70,7 +70,7 @@
             android:textColor="@color/black"
             android:layout_alignBaseline="@+id/textmad"
             android:layout_alignBottom="@+id/textmad"
-            android:layout_toStartOf="@+id/imageView10" />
+            android:layout_toStartOf="@+id/imageView10"/>
 
         <ImageView
             android:layout_width="34dp"
@@ -78,7 +78,7 @@
             app:srcCompat="@drawable/ikonpenge"
             android:id="@+id/imageView14"
             android:layout_alignParentTop="true"
-            android:layout_toEndOf="@+id/textpenge" />
+            android:layout_toEndOf="@+id/textpenge"/>
 
         <TextView
             android:text="Penge"
@@ -91,7 +91,7 @@
             android:textColor="@color/money"
             android:layout_marginStart="11dp"
             android:layout_alignBottom="@+id/imageView14"
-            android:layout_toEndOf="@+id/imageView10" />
+            android:layout_toEndOf="@+id/imageView10"/>
 
         <TextView
             android:text="16"
@@ -106,7 +106,7 @@
             android:textAlignment="gravity"
             android:layout_alignParentBottom="true"
             android:layout_toEndOf="@+id/imageView14"
-            android:layout_marginStart="11dp" />
+            android:layout_marginStart="11dp"/>
 
         <ImageView
             android:layout_height="34dp"
@@ -114,7 +114,7 @@
             android:id="@+id/imageView42"
             android:layout_width="34dp"
             android:layout_alignTop="@+id/textpenge"
-            android:layout_toEndOf="@+id/playerinfo" />
+            android:layout_toEndOf="@+id/playerinfo"/>
     </RelativeLayout>
 
     <RelativeLayout
@@ -136,7 +136,7 @@
             android:id="@+id/imageView5"
             android:layout_alignParentBottom="true"
             android:layout_alignParentStart="true"
-            android:layout_marginBottom="45dp" />
+            android:layout_marginBottom="45dp"/>
 
         <TextView
             android:layout_width="match_parent"
@@ -146,7 +146,7 @@
             android:textColor="@color/white"
             android:textSize="20sp"
             android:layout_alignParentTop="true"
-            android:layout_toEndOf="@+id/playerinfo" />
+            android:layout_toEndOf="@+id/playerinfo"/>
 
         <Button
             android:layout_width="wrap_content"
@@ -156,7 +156,7 @@
             android:drawableTop="@drawable/arbejdbutton"
 
             android:layout_alignBottom="@+id/imageView5"
-            android:layout_centerHorizontal="true" />
+            android:layout_centerHorizontal="true"/>
 
         <ImageView
             app:srcCompat="@drawable/bubble"
@@ -165,7 +165,7 @@
             android:layout_height="220dp"
             android:layout_alignParentTop="true"
             android:layout_toEndOf="@+id/playerinfo"
-            android:layout_marginStart="38dp" />
+            android:layout_marginStart="38dp"/>
 
         <TextView
             android:text="Info om farm"
@@ -178,7 +178,7 @@
             android:layout_height="100dp"
             android:layout_alignParentTop="true"
             android:layout_alignStart="@+id/imageView6"
-            android:layout_marginTop="24dp" />
+            android:layout_marginTop="24dp"/>
 
     </RelativeLayout>
 

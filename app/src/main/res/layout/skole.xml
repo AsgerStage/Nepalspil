@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@drawable/skoleinside">
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              android:background="@drawable/skoleinside">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -21,7 +21,7 @@
             android:layout_marginStart="27dp"
             android:layout_centerVertical="true"
             android:layout_toEndOf="@+id/skoleBack"
-            android:textColor="@color/food" />
+            android:textColor="@color/food"/>
 
         <ImageView
             android:layout_width="wrap_content"
@@ -31,7 +31,7 @@
             android:layout_alignParentStart="true"
             android:layout_marginStart="8dp"
             android:id="@+id/skoleBack"
-            android:layout_alignParentBottom="true" />
+            android:layout_alignParentBottom="true"/>
 
         <ImageView
             android:layout_width="wrap_content"
@@ -39,7 +39,7 @@
             app:srcCompat="@drawable/fieldhelp"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
-            android:id="@+id/skoleHelp" />
+            android:id="@+id/skoleHelp"/>
 
         <ImageView
             android:layout_width="34dp"
@@ -48,7 +48,7 @@
             android:id="@+id/imageView"
             android:layout_marginStart="76dp"
             android:layout_alignParentTop="true"
-            android:layout_toEndOf="@+id/skoleBack" />
+            android:layout_toEndOf="@+id/skoleBack"/>
 
         <TextView
             android:text="Viden"
@@ -61,7 +61,7 @@
             android:textColor="@color/black"
             android:layout_alignParentBottom="true"
             android:layout_alignEnd="@+id/imageView12"
-            android:layout_marginEnd="35dp" />
+            android:layout_marginEnd="35dp"/>
 
         <ImageView
             android:layout_width="34dp"
@@ -70,7 +70,7 @@
             android:id="@+id/imageView13"
             android:layout_alignTop="@+id/textView4"
             android:layout_toStartOf="@+id/skoleHelp"
-            android:layout_marginEnd="66dp" />
+            android:layout_marginEnd="66dp"/>
 
         <TextView
             android:text="Penge"
@@ -82,7 +82,7 @@
             android:textSize="24sp"
             android:textColor="@color/money"
             android:layout_alignParentBottom="true"
-            android:layout_toStartOf="@+id/imageView13" />
+            android:layout_toStartOf="@+id/imageView13"/>
 
         <ImageView
             android:layout_width="34dp"
@@ -90,7 +90,7 @@
             app:srcCompat="@drawable/ikonviden"
             android:id="@+id/imageView12"
             android:layout_centerVertical="true"
-            android:layout_centerHorizontal="true" />
+            android:layout_centerHorizontal="true"/>
 
         <TextView
             android:text="16"
@@ -105,7 +105,7 @@
             android:gravity="right"
             android:textAlignment="gravity"
             android:layout_alignParentBottom="true"
-            android:layout_toStartOf="@+id/skoleHelp" />
+            android:layout_toStartOf="@+id/skoleHelp"/>
 
         <ImageView
             android:layout_height="34dp"
@@ -114,18 +114,19 @@
             android:layout_marginStart="37dp"
             android:layout_width="34dp"
             android:layout_alignTop="@+id/schoolPlayerInfo"
-            android:layout_alignStart="@+id/schoolPlayerInfo" />
+            android:layout_alignStart="@+id/schoolPlayerInfo"/>
     </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="247dp">
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="132dp">
 
-    </LinearLayout>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="132dp">
+
+        </LinearLayout>
 
         <TextView
             android:text="TextView"
@@ -139,7 +140,7 @@
             android:layout_alignParentTop="true"
             android:layout_alignStart="@+id/scrollfood"
             android:layout_marginStart="123dp"
-            android:layout_alignBottom="@+id/imageView23" />
+            android:layout_alignBottom="@+id/imageView23"/>
 
         <ImageView
             android:layout_width="100dp"
@@ -148,7 +149,7 @@
             android:id="@+id/imageView22"
             android:layout_alignTop="@+id/klassetrin"
             android:layout_toEndOf="@+id/plusknowledge"
-            android:layout_marginTop="26dp" />
+            android:layout_marginTop="26dp"/>
 
         <ImageView
             app:srcCompat="@drawable/bubble"
@@ -156,7 +157,7 @@
             android:layout_width="300dp"
             android:layout_alignParentTop="true"
             android:layout_alignParentStart="true"
-            android:layout_height="150dp" />
+            android:layout_height="150dp"/>
 
         <TextView
             android:text="."
@@ -167,7 +168,7 @@
             android:layout_marginEnd="79dp"
             android:layout_alignParentTop="true"
             android:layout_alignEnd="@+id/imageView22"
-            android:layout_marginTop="12dp" />
+            android:layout_marginTop="12dp"/>
 
         <TextView
             android:layout_width="193dp"
@@ -178,7 +179,7 @@
             android:layout_alignParentBottom="true"
             android:layout_alignParentStart="true"
             android:text="+1 viden"
-            android:textSize="20sp" />
+            android:textSize="20sp"/>
 
         <TextView
             android:layout_width="193dp"
@@ -189,22 +190,22 @@
             android:textAlignment="center"
             android:textColor="@color/food"
             android:text="+10 mad"
-            android:textSize="20sp" />
+            android:textSize="20sp"/>
 
     </RelativeLayout>
 
     <LinearLayout
-       android:orientation="horizontal"
-       android:layout_width="match_parent"
-       android:layout_height="137dp">
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="137dp">
 
         <Button
             android:background="@android:color/transparent"
             android:drawableTop="@drawable/studerskolebutton"
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:id="@+id/Studer"
-           android:layout_weight="1" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/Studer"
+            android:layout_weight="1"/>
 
         <Button
             android:background="@android:color/transparent"
@@ -212,16 +213,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/spis"
-            android:layout_weight="1" />
+            android:layout_weight="1"/>
 
         <Button
-           android:background="@android:color/transparent"
-           android:drawableTop="@drawable/eksamenbutton"
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:id="@+id/eksamen"
-           android:layout_weight="1"
-            android:elevation="0dp" />
+            android:background="@android:color/transparent"
+            android:drawableTop="@drawable/eksamenbutton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/eksamen"
+            android:layout_weight="1"
+            android:elevation="0dp"/>
 
     </LinearLayout>
 

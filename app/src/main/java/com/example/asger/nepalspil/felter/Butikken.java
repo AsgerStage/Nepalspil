@@ -20,6 +20,7 @@ public class Butikken extends AppCompatActivity {
     TextView textviden;
     TextView textmad;
     TextView texttid;
+
     @Override
     public void onBackPressed() {
         SpillePlade.updateEntireBoard();

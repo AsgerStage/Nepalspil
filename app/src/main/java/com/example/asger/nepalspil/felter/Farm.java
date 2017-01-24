@@ -1,8 +1,6 @@
 package com.example.asger.nepalspil.felter;
 
-import android.content.Intent;
 import android.content.res.AssetFileDescriptor;
-import android.graphics.Typeface;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
@@ -15,7 +13,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.asger.nepalspil.R;
-import com.example.asger.nepalspil.activities.MusicManager;
 import com.example.asger.nepalspil.activities.SpillePlade;
 
 import java.io.IOException;
@@ -28,8 +25,8 @@ public class Farm extends AppCompatActivity {
     TextView textviden;
     TextView textmad;
     TextView playerinfo;
-    final int MONEY_PER_CLICK =3;
-    final int TIME_PER_CLICK =1;
+    final int MONEY_PER_CLICK = 3;
+    final int TIME_PER_CLICK = 1;
 
     @Override
     public void onBackPressed() {
@@ -80,8 +77,8 @@ public class Farm extends AppCompatActivity {
             public void onClick(View v) {
                 v.startAnimation(AnimationUtils.loadAnimation(Farm.this, R.anim.image_click));
                 if (spiller.getTid() >= TIME_PER_CLICK) {
-                    spiller.work(TIME_PER_CLICK,MONEY_PER_CLICK);
-                    money.setText("+"+MONEY_PER_CLICK+" kr");
+                    spiller.work(TIME_PER_CLICK, MONEY_PER_CLICK);
+                    money.setText("+" + MONEY_PER_CLICK + " kr");
                     money.startAnimation(animation);
                     updateText();
 
@@ -114,18 +111,16 @@ public class Farm extends AppCompatActivity {
         back.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
-                    SpillePlade.updateEntireBoard();
-                    v.startAnimation(AnimationUtils.loadAnimation(Farm.this, R.anim.image_click));
-                    finish();
+                SpillePlade.updateEntireBoard();
+                v.startAnimation(AnimationUtils.loadAnimation(Farm.this, R.anim.image_click));
+                finish();
 
             }
         });
     }
 
 
-
-
-    public  void updateText() {
+    public void updateText() {
         textpenge.setText(String.valueOf(spiller.getPenge()));
         textviden.setText(String.valueOf(spiller.getViden()));
         textmad.setText(String.valueOf(spiller.getHp()));

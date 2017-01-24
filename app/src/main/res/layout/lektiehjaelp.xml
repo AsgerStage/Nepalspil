@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:weightSum="1"
-    android:background="@drawable/lektieinside">
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:weightSum="1"
+              android:background="@drawable/lektieinside">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -16,7 +17,7 @@
             app:srcCompat="@drawable/ikonviden"
             android:id="@+id/imageView25"
             android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true" />
+            android:layout_centerHorizontal="true"/>
 
         <ImageView
             android:layout_width="wrap_content"
@@ -24,7 +25,7 @@
             app:srcCompat="@drawable/fieldhelp"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
-            android:id="@+id/studyHelp" />
+            android:id="@+id/studyHelp"/>
 
         <ImageView
             android:layout_width="wrap_content"
@@ -32,7 +33,7 @@
             app:srcCompat="@drawable/newback"
             android:id="@+id/lektieBack"
             android:layout_centerVertical="true"
-            android:layout_alignParentStart="true" />
+            android:layout_alignParentStart="true"/>
 
         <ImageView
             android:layout_width="34dp"
@@ -41,7 +42,7 @@
             android:id="@+id/imageView26"
             android:layout_alignTop="@+id/textviden"
             android:layout_toStartOf="@+id/studyHelp"
-            android:layout_marginEnd="60dp" />
+            android:layout_marginEnd="60dp"/>
 
         <TextView
             android:text="Penge"
@@ -53,7 +54,7 @@
             android:textSize="24sp"
             android:textColor="@color/money"
             android:layout_alignParentBottom="true"
-            android:layout_toStartOf="@+id/imageView26" />
+            android:layout_toStartOf="@+id/imageView26"/>
 
         <TextView
             android:text="Mad"
@@ -66,7 +67,7 @@
             android:textColor="@color/food"
             android:layout_alignParentTop="true"
             android:layout_alignEnd="@+id/imageView24"
-            android:layout_marginEnd="34dp" />
+            android:layout_marginEnd="34dp"/>
 
         <ImageView
             android:layout_width="34dp"
@@ -75,7 +76,7 @@
             android:id="@+id/imageView24"
             android:layout_marginStart="50dp"
             android:layout_alignTop="@+id/textviden"
-            android:layout_toEndOf="@+id/lektieBack" />
+            android:layout_toEndOf="@+id/lektieBack"/>
 
         <TextView
             android:text="Viden"
@@ -87,7 +88,7 @@
             android:textSize="24sp"
             android:textColor="@color/black"
             android:layout_alignParentBottom="true"
-            android:layout_toStartOf="@+id/imageView25" />
+            android:layout_toStartOf="@+id/imageView25"/>
 
         <TextView
             android:text="16"
@@ -102,7 +103,7 @@
             android:gravity="right"
             android:textAlignment="gravity"
             android:layout_alignParentBottom="true"
-            android:layout_toStartOf="@+id/studyHelp" />
+            android:layout_toStartOf="@+id/studyHelp"/>
 
         <ImageView
             android:layout_height="34dp"
@@ -111,7 +112,7 @@
             android:layout_marginStart="35dp"
             android:layout_width="34dp"
             android:layout_alignParentTop="true"
-            android:layout_alignStart="@+id/lektiePlayerInfo" />
+            android:layout_alignStart="@+id/lektiePlayerInfo"/>
     </RelativeLayout>
 
     <RelativeLayout
@@ -126,7 +127,7 @@
             android:layout_centerHorizontal="true"
             android:textAlignment="center"
             android:textSize="20sp"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"/>
 
         <TextView
             android:text="TextView"
@@ -138,7 +139,7 @@
             android:layout_height="50dp"
             android:layout_width="330dp"
             android:layout_alignParentBottom="true"
-            android:layout_alignParentStart="true" />
+            android:layout_alignParentStart="true"/>
     </RelativeLayout>
 
     <RelativeLayout
@@ -157,7 +158,7 @@
             android:layout_alignParentStart="true"
             android:layout_marginStart="188dp"
             android:layout_alignParentBottom="true"
-            android:layout_height="52dp" />
+            android:layout_height="52dp"/>
 
     </RelativeLayout>
 

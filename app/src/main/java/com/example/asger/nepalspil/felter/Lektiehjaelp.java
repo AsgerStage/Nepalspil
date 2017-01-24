@@ -12,7 +12,6 @@ import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.asger.nepalspil.R;
 import com.example.asger.nepalspil.activities.SpillePlade;
@@ -126,8 +125,6 @@ public class Lektiehjaelp extends AppCompatActivity {
         spiller.study(TIME_PER_CLICK, VIDEN_PER_CLICK);
         spiller.setGlemtViden(spiller.getGlemtViden() - 1);
     }
-
-
 
 
     public void updateText() {

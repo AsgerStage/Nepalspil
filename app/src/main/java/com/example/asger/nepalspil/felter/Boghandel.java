@@ -145,7 +145,6 @@ public class Boghandel extends AppCompatActivity {
     }
 
 
-
     public void updateText() {
         textpenge.setText(String.valueOf(spiller.getPenge()));
         textviden.setText(String.valueOf(spiller.getViden()));

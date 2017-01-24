@@ -72,6 +72,7 @@ public class Spiller {
 
     /**
      * Rykker spilleren og trækker den korrekte mængde tid fra spilleren.
+     *
      * @param newPosition ønsket ny pos
      * @return true hvis tiden er gået og ny runde er startet
      */
@@ -144,6 +145,7 @@ public class Spiller {
 
     /**
      * Tjekker om en ny runde skal startes
+     *
      * @return true hvis tiden er gået og ny runde er startet
      */
     private boolean checkTur() {

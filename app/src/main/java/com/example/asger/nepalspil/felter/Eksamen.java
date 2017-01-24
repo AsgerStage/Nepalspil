@@ -7,17 +7,16 @@ import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-
-import static com.example.asger.nepalspil.activities.MainActivity.spiller;
+import android.view.View;
+import android.widget.Button;
+import android.widget.FrameLayout;
+import android.widget.TextView;
 
 import com.example.asger.nepalspil.R;
 import com.example.asger.nepalspil.activities.SpillePlade;
 import com.github.jinatonic.confetti.CommonConfetti;
 
-import android.view.View;
-import android.widget.Button;
-import android.widget.FrameLayout;
-import android.widget.TextView;
+import static com.example.asger.nepalspil.activities.MainActivity.spiller;
 
 public class Eksamen extends AppCompatActivity {
     TextView question;
@@ -53,7 +52,7 @@ public class Eksamen extends AppCompatActivity {
         answer1 = (Button) findViewById(R.id.answer1Button);
         answer2 = (Button) findViewById(R.id.answer2Button);
         answer3 = (Button) findViewById(R.id.answer3Button);
-        container = (FrameLayout) findViewById(R.id.container);;
+        container = (FrameLayout) findViewById(R.id.container);
         dialog = new AlertDialog.Builder(Eksamen.this);
 
         Typeface face;
@@ -111,7 +110,7 @@ public class Eksamen extends AppCompatActivity {
         }
         Skole.updateText();
 
-        dialog.setMessage("Du har desværre svaret forkert på eksamen og er derfor dumpet. -" + 10*spiller.getKlassetrin()+ " viden")
+        dialog.setMessage("Du har desværre svaret forkert på eksamen og er derfor dumpet. -" + 10 * spiller.getKlassetrin() + " viden")
                 .setCancelable(false)
                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {

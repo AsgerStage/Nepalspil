@@ -1,27 +1,23 @@
 package com.example.asger.nepalspil.felter;
 
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.animation.AnimationUtils;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.asger.nepalspil.R;
 import com.example.asger.nepalspil.activities.SpillePlade;
 
-import org.w3c.dom.Text;
-
 import static com.example.asger.nepalspil.activities.MainActivity.spiller;
 
 
 public class Hjem extends AppCompatActivity {
-     TextView textpenge;
-     TextView textviden;
-     TextView textmad;
+    TextView textpenge;
+    TextView textviden;
+    TextView textmad;
     TextView texttid;
 
 
@@ -42,7 +38,7 @@ public class Hjem extends AppCompatActivity {
         textpenge = (TextView) findViewById(R.id.textpenge);
         textviden = (TextView) findViewById(R.id.textviden);
         textmad = (TextView) findViewById(R.id.textmad);
-        texttid= (TextView) findViewById(R.id.texttid);
+        texttid = (TextView) findViewById(R.id.texttid);
         updateText();
         ImageView hjemBack = (ImageView) findViewById(R.id.hjemBack);
         // ImageView hjemhelp = (ImageView) findViewById(R.id.hjemhelp);

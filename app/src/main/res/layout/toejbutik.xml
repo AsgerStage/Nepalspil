@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/butikinside"
-    android:weightSum="1">
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@drawable/butikinside"
+              android:weightSum="1">
 
 
     <RelativeLayout
@@ -17,7 +18,7 @@
             app:srcCompat="@drawable/ikonviden"
             android:id="@+id/imageView16"
             android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true" />
+            android:layout_centerHorizontal="true"/>
 
         <ImageView
             android:layout_width="wrap_content"
@@ -25,7 +26,7 @@
             app:srcCompat="@drawable/fieldhelp"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
-            android:id="@+id/tbHelp" />
+            android:id="@+id/tbHelp"/>
 
         <ImageView
             android:layout_width="34dp"
@@ -33,7 +34,7 @@
             app:srcCompat="@drawable/ikonpenge"
             android:id="@+id/imageView15"
             android:layout_alignTop="@+id/textpenge"
-            android:layout_toEndOf="@+id/textpenge" />
+            android:layout_toEndOf="@+id/textpenge"/>
 
         <ImageView
             android:layout_width="wrap_content"
@@ -41,7 +42,7 @@
             app:srcCompat="@drawable/newback"
             android:id="@+id/tbBack"
             android:layout_alignTop="@+id/imageView17"
-            android:layout_alignParentStart="true" />
+            android:layout_alignParentStart="true"/>
 
         <ImageView
             android:layout_width="34dp"
@@ -50,7 +51,7 @@
             android:id="@+id/imageView17"
             android:layout_marginStart="37dp"
             android:layout_alignParentTop="true"
-            android:layout_toEndOf="@+id/tbBack" />
+            android:layout_toEndOf="@+id/tbBack"/>
 
         <TextView
             android:text="Mad"
@@ -63,7 +64,7 @@
             android:textColor="@color/food"
             android:layout_marginEnd="31dp"
             android:layout_alignParentTop="true"
-            android:layout_alignEnd="@+id/imageView17" />
+            android:layout_alignEnd="@+id/imageView17"/>
 
         <TextView
             android:text="Viden"
@@ -75,7 +76,7 @@
             android:textSize="24sp"
             android:textColor="@color/black"
             android:layout_alignParentBottom="true"
-            android:layout_toStartOf="@+id/imageView16" />
+            android:layout_toStartOf="@+id/imageView16"/>
 
         <TextView
             android:text="16"
@@ -100,7 +101,7 @@
             android:layout_marginStart="33dp"
             android:layout_width="34dp"
             android:layout_alignParentTop="true"
-            android:layout_alignStart="@+id/schoolPlayerInfo" />
+            android:layout_alignStart="@+id/schoolPlayerInfo"/>
 
         <TextView
             android:text="Penge"
@@ -113,7 +114,7 @@
             android:textColor="@color/money"
             android:layout_marginStart="27dp"
             android:layout_alignParentBottom="true"
-            android:layout_toEndOf="@+id/imageView16" />
+            android:layout_toEndOf="@+id/imageView16"/>
     </RelativeLayout>
 
     <RelativeLayout
@@ -129,13 +130,13 @@
             <Space
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1.82" />
+                android:layout_weight="1.82"/>
 
             <Button
                 android:text="Køb kladehæfte"
                 android:layout_width="156dp"
                 android:layout_height="wrap_content"
-                android:id="@+id/tbBuy" />
+                android:id="@+id/tbBuy"/>
 
         </LinearLayout>
 
@@ -145,7 +146,7 @@
             app:srcCompat="@drawable/pige1"
             android:id="@+id/imageView24"
             android:layout_alignParentBottom="true"
-            android:layout_alignParentEnd="true" />
+            android:layout_alignParentEnd="true"/>
 
         <ImageView
             android:layout_width="200dp"
@@ -154,7 +155,7 @@
             android:id="@+id/imageView26"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
-            android:layout_marginEnd="100dp" />
+            android:layout_marginEnd="100dp"/>
 
         <TextView
             android:text="TextView"
@@ -164,7 +165,7 @@
             android:layout_height="70dp"
             android:layout_alignParentTop="true"
             android:layout_alignEnd="@+id/imageView26"
-            android:layout_marginEnd="24dp" />
+            android:layout_marginEnd="24dp"/>
 
     </RelativeLayout>
 

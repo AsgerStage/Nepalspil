@@ -5,7 +5,6 @@ import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.view.Gravity;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -14,12 +13,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import static com.example.asger.nepalspil.activities.MainActivity.spiller;
-
 import com.example.asger.nepalspil.R;
 import com.example.asger.nepalspil.activities.SpillePlade;
 
 import java.io.IOException;
+
+import static com.example.asger.nepalspil.activities.MainActivity.spiller;
 
 public class Marked extends AppCompatActivity {
     Toast t;
@@ -102,7 +101,7 @@ public class Marked extends AppCompatActivity {
                         e.printStackTrace();
                     }
 
-                   updateText();
+                    updateText();
                 } else if (spiller.getTid() < 2) {
                     AlertDialog.Builder dialog = new AlertDialog.Builder(Marked.this);
                     dialog.setTitle("Intet tid!");
@@ -172,7 +171,6 @@ public class Marked extends AppCompatActivity {
     public void eat() {
         ;
     }
-
 
 
     @Override

@@ -4,18 +4,9 @@ import android.content.Intent;
 import android.content.res.AssetFileDescriptor;
 import android.graphics.Typeface;
 import android.media.MediaPlayer;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-
-import com.example.asger.nepalspil.R;
-import com.example.asger.nepalspil.activities.SpillePlade;
-import com.google.android.gms.appindexing.Action;
-import com.google.android.gms.appindexing.AppIndex;
-import com.google.android.gms.appindexing.Thing;
-import com.google.android.gms.common.api.GoogleApiClient;
-
 import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
@@ -23,7 +14,9 @@ import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import com.example.asger.nepalspil.R;
+import com.example.asger.nepalspil.activities.SpillePlade;
 
 import java.io.IOException;
 
