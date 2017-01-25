@@ -19,7 +19,15 @@ import android.widget.Toast;
 import com.crashlytics.android.Crashlytics;
 import com.example.asger.nepalspil.BuildConfig;
 import com.example.asger.nepalspil.R;
+import com.example.asger.nepalspil.models.Figuruheld;
+import com.example.asger.nepalspil.models.Grunddata;
 import com.example.asger.nepalspil.models.Spiller;
+import com.example.asger.nepalspil.models.Figurdata;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.io.InputStream;
 
 import io.fabric.sdk.android.Fabric;
 
@@ -57,6 +65,7 @@ public class Hovedmenu_akt extends AppCompatActivity {
         ImageView indstillingerknap = (ImageView) findViewById(R.id.indstillingerknap);
         ImageView genoptagKnap = (ImageView) findViewById(R.id.genoptagKnap);
 
+        indlæsGrunddata();
 
         asha.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -154,6 +163,54 @@ public class Hovedmenu_akt extends AppCompatActivity {
         });
 
 
+    }
+
+    private void indlæsGrunddata() {
+        Grunddata gd = new Grunddata();
+        try {
+            InputStream is = getResources().openRawResource(R.raw.data_jsoneksempel);
+            //InputStream is = new URL("http://javabog.dk/eksempel.json").openStream();
+
+            byte b[] = new byte[is.available()]; // kun små filer
+            is.read(b);
+            String str = new String(b, "UTF-8");
+            System.err.println("indlæsGrunddata str = " + str);
+
+            JSONObject json = new JSONObject(str);
+
+            JSONArray figurer = json.getJSONArray("figurer");
+            for (int i = 0; i < figurer.length(); i++) {
+                JSONObject figurjson = figurer.getJSONObject(i);
+                System.err.println("obj = " + figurjson);
+                Figurdata figur = new Figurdata();
+                figur.json = figurjson;
+                figur.navn = figurjson.getString("navn");
+                figur.beskrivelse = figurjson.getString("beskrivelse");
+                figur.startpenge = figurjson.getInt("startpenge");
+
+                JSONArray uheld = figurjson.getJSONArray("uheld");
+                for (int j = 0; j < uheld.length(); j++) {
+                    JSONObject uheldjson = uheld.getJSONObject(j);
+                    Figuruheld u = new Figuruheld();
+                    u.json = uheldjson;
+                    figur.uheld.add(u);
+                    u.titel = uheldjson.optString("titel", null);
+                    if (u.titel == null) continue; // tomt uheld, dvs faktisk ikke et uheld, men fyld for at mindste risikoen for 'rigtige' uheld
+                    u.tekst = uheldjson.getString("tekst");
+                    u.pengeForskel = uheldjson.optInt("pengeForskel");
+                    u.madForskel = uheldjson.optInt("madForskel");
+                    u.videnForskel = uheldjson.optInt("videnForskel");
+                    u.tidFaktor = uheldjson.optDouble("tidFaktor", 1);
+                    // ... etc
+                }
+
+                gd.spillere.put(figur.navn, figur);
+            }
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        Grunddata.instans = gd;
     }
 
 
