@@ -7,7 +7,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="34dp"
-    tools:showIn="@layout/vaerksted">
+    android:background="@color/blue_semi_transparent">
 
     <ImageView
         android:layout_width="34dp"
@@ -16,14 +16,6 @@
         android:id="@+id/imageView19"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"/>
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/fieldhelp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:id="@+id/vaerkstedHelp"/>
 
     <ImageView
         android:layout_width="wrap_content"
@@ -112,6 +104,22 @@
         android:layout_weight="1"
         android:layout_centerVertical="true"
         android:layout_toStartOf="@+id/vaerkstedHelp"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/fieldhelp"
+        android:id="@+id/vaerkstedHelp"
+        android:layout_alignBottom="@+id/playerinfo"
+        android:layout_alignParentEnd="true" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/knaphjem"
+        android:id="@+id/menuknap"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
 
 </RelativeLayout>
 

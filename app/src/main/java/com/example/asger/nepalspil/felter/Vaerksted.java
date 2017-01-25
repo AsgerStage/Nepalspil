@@ -59,13 +59,15 @@ public class Vaerksted extends AppCompatActivity {
         Button buy = (Button) findViewById(R.id.buyBikeButton);
         ImageView hjemBack = (ImageView) findViewById(R.id.hjemBack);
         viewPagerText = (TextView) findViewById(R.id.viewpagerPris);
+        ImageView menu = (ImageView) findViewById(R.id.menuknap);
+        menu.setVisibility(View.INVISIBLE);
 
         topbar = new Topbar();
         topbar.init(this);
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
         tabLayout.setupWithViewPager(viewPager, true);
-        animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.plusmoneyworkshop);
+        animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.plusknowledge);
         final TextView money = (TextView) findViewById(R.id.money);
         updateText();
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {

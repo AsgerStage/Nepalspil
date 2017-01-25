@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
+import android.view.animation.AnimationSet;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -31,6 +32,8 @@ public class Skole extends AppCompatActivity {
     static TextView textviden;
     static TextView textmad;
     static TextView playerInfo;
+    private Topbar topbar;
+
 
     //Studying
     final int VIDEN_PER_CLICK = 1;
@@ -62,30 +65,34 @@ public class Skole extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.skole);
 
+        topbar = new Topbar();
+        topbar.init(this);
 
         final MediaPlayer mp = MediaPlayer.create(this, R.raw.cash);
         final TextView schoolText = (TextView) findViewById(R.id.schoolText);
-        playerInfo = (TextView) findViewById(R.id.schoolPlayerInfo);
+       // playerInfo = (TextView) findViewById(R.id.schoolPlayerInfo);
         final TextView klassetrin = (TextView) findViewById(R.id.klassetrin);
         Button bSpis = (Button) findViewById(R.id.spis);
         Button bStuder = (Button) findViewById(R.id.Studer);
         Button bEksamen = (Button) findViewById(R.id.eksamen);
         ImageView hjemBack = (ImageView) findViewById(R.id.hjemBack);
-        ImageView helpField = (ImageView) findViewById(R.id.skoleHelp);
+        ImageView helpField = (ImageView) findViewById(R.id.vaerkstedHelp);
         animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.plusknowledge);
         animationfood = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.plusknowledge);
         final TextView scroll = (TextView) findViewById(R.id.plusknowledge);
         final TextView mad = (TextView) findViewById(R.id.scrollfood);
         mad.setText("");
         scroll.setText("");
-        textpenge = (TextView) findViewById(R.id.textpenge);
-        textviden = (TextView) findViewById(R.id.textviden);
-        textmad = (TextView) findViewById(R.id.textmad);
+        ImageView menu = (ImageView) findViewById(R.id.menuknap);
+        menu.setVisibility(View.INVISIBLE);
+
         updateText();
 
         Typeface face;
         face = Typeface.createFromAsset(getAssets(), "fonts/EraserDust.ttf");
         klassetrin.setTypeface(face);
+
+
 
         dialog = new AlertDialog.Builder(Skole.this);
         schoolText.setText("I skolen kan du spise, studere og gå til eksamen.");
@@ -112,12 +119,12 @@ public class Skole extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 v.startAnimation(AnimationUtils.loadAnimation(Skole.this, R.anim.image_click));
-                if (instans.getTid() > 0) {
+                if (instans.getTid() >= TIME_PER_CLICK) {
                     mad.setText("+" + FOOD_PER_CLICK + " mad");
                     mad.startAnimation(animationfood);
                     spis();
                     schoolText.setText("Mmm! Du har spist skolemad.");
-                    playerInfo.setText(updateInfo());
+                   updateText();
                     if (mp.isPlaying()) {
                         mp.stop();
                     }
@@ -152,7 +159,7 @@ public class Skole extends AppCompatActivity {
                         scroll.setText("+" + VIDEN_PER_CLICK + " viden");
                         scroll.startAnimation(animation);
                         instans.study(TIME_PER_CLICK, VIDEN_PER_CLICK);
-                        updateText();
+                       updateText();
                         if (mp.isPlaying()) {
                             mp.stop();
                         }
@@ -314,13 +321,10 @@ public class Skole extends AppCompatActivity {
         else if (rand < homework && rand >= fail) return 3;
         else return 0;
     }
-
-    public static void updateText() {
-        textpenge.setText(String.valueOf(instans.getPenge()));
-        textviden.setText(String.valueOf(instans.getViden()));
-        textmad.setText(String.valueOf(instans.getHp()));
-        playerInfo.setText(String.valueOf(instans.getTid()));
-    }
+   public void updateText() {
+       topbar.opdaterGui(instans);
+       SpillePlade.updateEntireBoard();
+   }
 
 
 }

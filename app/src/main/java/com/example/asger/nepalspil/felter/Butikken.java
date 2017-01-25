@@ -28,22 +28,28 @@ public class Butikken extends AppCompatActivity {
     }
 
     AlertDialog.Builder dialog;
+    private Topbar topbar;
 
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.toejbutik);
 
+        topbar = new Topbar();
+        topbar.init(this);
+
         dialog = new AlertDialog.Builder(Butikken.this);
         final TextView fieldinfo = (TextView) findViewById(R.id.tbInfo);
         final MediaPlayer mp = MediaPlayer.create(this, R.raw.cash);
-        ImageView helpField = (ImageView) findViewById(R.id.tbHelp);
+        ImageView helpField = (ImageView) findViewById(R.id.vaerkstedHelp);
         final Button buy = (Button) findViewById(R.id.tbBuy);
         ImageView hjemBack = (ImageView) findViewById(R.id.hjemBack);
-        textpenge = (TextView) findViewById(R.id.textpenge);
+        ImageView menu = (ImageView) findViewById(R.id.menuknap);
+        menu.setVisibility(View.INVISIBLE);
+       /* textpenge = (TextView) findViewById(R.id.textpenge);
         textviden = (TextView) findViewById(R.id.textviden);
         textmad = (TextView) findViewById(R.id.textmad);
-        texttid = (TextView) findViewById(R.id.schoolPlayerInfo);
+        texttid = (TextView) findViewById(R.id.schoolPlayerInfo);*/
         updateText();
 
         fieldinfo.setText("I butikken kan du købe skoleting, som gør det lettere at få viden.");
@@ -159,9 +165,7 @@ public class Butikken extends AppCompatActivity {
     }
 
     public void updateText() {
-        textpenge.setText(String.valueOf(instans.getPenge()));
-        textviden.setText(String.valueOf(instans.getViden()));
-        textmad.setText(String.valueOf(instans.getHp()));
-        texttid.setText(String.valueOf(instans.getTid()));
+        topbar.opdaterGui(instans);
+        SpillePlade.updateEntireBoard();
     }
 }

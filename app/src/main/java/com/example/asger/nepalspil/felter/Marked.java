@@ -19,6 +19,8 @@ import com.example.asger.nepalspil.models.Spiller;
 
 import java.io.IOException;
 
+import static com.example.asger.nepalspil.models.Spiller.instans;
+
 
 public class Marked extends AppCompatActivity {
     Toast t;
@@ -29,6 +31,7 @@ public class Marked extends AppCompatActivity {
     TextView playerinfo;
     private Animation animation;
     private Animation animationfood;
+    private Topbar topbar;
 
     //Working
     final int MONEY_PER_CLICK = 5;
@@ -50,19 +53,24 @@ public class Marked extends AppCompatActivity {
         playerinfo = (TextView) findViewById(R.id.playerinfo);
         final MediaPlayer mp = MediaPlayer.create(this, R.raw.cash);
 
+        topbar = new Topbar();
+        topbar.init(this);
+
         Button work = (Button) findViewById(R.id.workButton);
         final Button eat = (Button) findViewById(R.id.eatButton);
         final ImageView hjemBack = (ImageView) findViewById(R.id.hjemBack);
-        ImageView helpField = (ImageView) findViewById(R.id.markedHelp);
+        ImageView helpField = (ImageView) findViewById(R.id.vaerkstedHelp);
+        ImageView menu = (ImageView) findViewById(R.id.menuknap);
+        menu.setVisibility(View.INVISIBLE);
 
-        textpenge = (TextView) findViewById(R.id.textpenge);
+        /*textpenge = (TextView) findViewById(R.id.textpenge);
         textviden = (TextView) findViewById(R.id.textviden);
-        textmad = (TextView) findViewById(R.id.textmad);
+        textmad = (TextView) findViewById(R.id.textmad);*/
         final TextView money = (TextView) findViewById(R.id.money);
         final TextView food = (TextView) findViewById(R.id.food);
 
-        animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.plusmoneymarked);
-        animationfood = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.plusfoodmarked);
+        animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.plusknowledge);
+        animationfood = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.plusknowledge);
 
 
         fieldinfo.setText(" På markedet kan du\n købe mad eller arbejde \n for at tjene penge.");
@@ -79,7 +87,7 @@ public class Marked extends AppCompatActivity {
 
             public void onClick(View v) {
                 v.startAnimation(AnimationUtils.loadAnimation(Marked.this, R.anim.image_click));
-                if (Spiller.instans.getTid() >= TIME_PER_CLICK && Spiller.instans.getKlassetrin() >= 2) {
+                if (Spiller.instans.getTid() >= TIME_PER_CLICK && Spiller.instans.getKlassetrin() >= 3) {
                     Spiller.instans.work(TIME_PER_CLICK, MONEY_PER_CLICK);
                     money.setText("+" + MONEY_PER_CLICK + " kr");
                     money.startAnimation(animation);
@@ -178,10 +186,7 @@ public class Marked extends AppCompatActivity {
     }
 
     public void updateText() {
-        textpenge.setText(String.valueOf(Spiller.instans.getPenge()));
-        textviden.setText(String.valueOf(Spiller.instans.getViden()));
-        textmad.setText(String.valueOf(Spiller.instans.getHp()));
-        playerinfo.setText(String.valueOf(Spiller.instans.getTid()));
+        topbar.opdaterGui(instans);
         SpillePlade.updateEntireBoard();
     }
 }

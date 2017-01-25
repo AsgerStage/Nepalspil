@@ -28,21 +28,28 @@ public class Hjem extends AppCompatActivity {
     }
 
     AlertDialog.Builder dialog;
+    private Topbar topbar;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.hjem);
 
+        topbar = new Topbar();
+        topbar.init(this);
+
         ImageView im = (ImageView) findViewById(R.id.hjemprofile);
         dialog = new AlertDialog.Builder(Hjem.this);
-        textpenge = (TextView) findViewById(R.id.textpenge);
+       /* textpenge = (TextView) findViewById(R.id.textpenge);
         textviden = (TextView) findViewById(R.id.textviden);
         textmad = (TextView) findViewById(R.id.textmad);
-        texttid = (TextView) findViewById(R.id.texttid);
+        texttid = (TextView) findViewById(R.id.texttid);*/
         updateText();
         ImageView hjemBack = (ImageView) findViewById(R.id.hjemBack);
-        // ImageView hjemhelp = (ImageView) findViewById(R.id.hjemhelp);
+        ImageView hjemhelp = (ImageView) findViewById(R.id.vaerkstedHelp);
+        hjemhelp.setVisibility(View.INVISIBLE);
         TextView spillerintro = (TextView) findViewById(R.id.spillerintro);
+        ImageView menu = (ImageView) findViewById(R.id.menuknap);
+        menu.setVisibility(View.INVISIBLE);
         spillerintro.setText("Hej jeg hedder " + instans.getNavn() + ". Jeg bor med min familie i en landsby i Nepal. \nMin mor og far har aldrig gået i skole, så de tjener ikke så mange penge, så det er svært for dem at hjælpe mig med at få en uddannelse.");
 
         if (instans.getSex() == false) {
@@ -79,10 +86,8 @@ public class Hjem extends AppCompatActivity {
     }
 
     public void updateText() {
-        textpenge.setText(String.valueOf(instans.getPenge()));
-        textviden.setText(String.valueOf(instans.getViden()));
-        textmad.setText(String.valueOf(instans.getHp()));
-        texttid.setText(String.valueOf(instans.getTid()));
+        topbar.opdaterGui(instans);
+        SpillePlade.updateEntireBoard();
 
     }
 }

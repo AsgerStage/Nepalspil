@@ -34,6 +34,7 @@ public class Boghandel extends AppCompatActivity {
     }
 
     private Animation animation;
+    private Topbar topbar;
 
     AlertDialog.Builder dialog;
 
@@ -41,20 +42,25 @@ public class Boghandel extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.boghandel);
 
+        topbar = new Topbar();
+        topbar.init(this);
+
         dialog = new AlertDialog.Builder(Boghandel.this);
-        playerInfo = (TextView) findViewById(R.id.bookstorePlayerInfo);
+      //  playerInfo = (TextView) findViewById(R.id.bookstorePlayerInfo);
         final TextView bookstoreInfo = (TextView) findViewById(R.id.fieldinfo);
         final MediaPlayer mp = MediaPlayer.create(this, R.raw.cash);
-        ImageView helpField = (ImageView) findViewById(R.id.boghandelHelp);
+        ImageView helpField = (ImageView) findViewById(R.id.vaerkstedHelp);
         Button work = (Button) findViewById(R.id.workButton);
         final Button buyBook = (Button) findViewById(R.id.buyBookButton);
         ImageView hjemBack = (ImageView) findViewById(R.id.hjemBack);
         final TextView money = (TextView) findViewById(R.id.scrollmoney);
-        animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.plusmoneybook);
-        textpenge = (TextView) findViewById(R.id.textpenge);
+        animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.plusknowledge);
+        ImageView menu = (ImageView) findViewById(R.id.menuknap);
+        menu.setVisibility(View.INVISIBLE);
+       /* textpenge = (TextView) findViewById(R.id.textpenge);
         textviden = (TextView) findViewById(R.id.textviden);
         textmad = (TextView) findViewById(R.id.textmad);
-
+*/
 
         bookstoreInfo.setText("I boghandlen kan du købe skolebøger. Skolebøger giver mere viden. \n Du kan også få et job i boghandlen, hvis du har gået i skole længe nok.");
         updateText();
@@ -146,10 +152,8 @@ public class Boghandel extends AppCompatActivity {
 
 
     public void updateText() {
-        textpenge.setText(String.valueOf(instans.getPenge()));
-        textviden.setText(String.valueOf(instans.getViden()));
-        textmad.setText(String.valueOf(instans.getHp()));
-        playerInfo.setText(String.valueOf(instans.getTid()));
+        topbar.opdaterGui(instans);
+        SpillePlade.updateEntireBoard();
     }
 
 }

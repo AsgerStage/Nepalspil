@@ -6,118 +6,12 @@
               android:layout_height="match_parent"
               android:weightSum="1"
               android:background="@drawable/lektieinside">
+    <include layout="@layout/topbar"/>
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="31dp">
-
-        <ImageView
-            android:layout_width="34dp"
-            android:layout_height="34dp"
-            app:srcCompat="@drawable/ikonviden"
-            android:id="@+id/imageView25"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"/>
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:srcCompat="@drawable/fieldhelp"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:id="@+id/studyHelp"/>
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:srcCompat="@drawable/hjemback"
-            android:id="@+id/hjemBack"
-            android:layout_centerVertical="true"
-            android:layout_alignParentStart="true"/>
-
-        <ImageView
-            android:layout_width="34dp"
-            android:layout_height="34dp"
-            app:srcCompat="@drawable/ikonpenge"
-            android:id="@+id/imageView26"
-            android:layout_alignTop="@+id/textviden"
-            android:layout_toStartOf="@+id/studyHelp"
-            android:layout_marginEnd="60dp"/>
-
-        <TextView
-            android:text="Penge"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/textpenge"
-            android:elevation="1dp"
-            android:fontFamily="sans-serif"
-            android:textSize="24sp"
-            android:textColor="@color/money"
-            android:layout_alignParentBottom="true"
-            android:layout_toStartOf="@+id/imageView26"/>
-
-        <TextView
-            android:text="Mad"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/textmad"
-            android:elevation="1dp"
-            android:fontFamily="sans-serif"
-            android:textSize="24sp"
-            android:textColor="@color/food"
-            android:layout_alignParentTop="true"
-            android:layout_alignEnd="@+id/imageView24"
-            android:layout_marginEnd="34dp"/>
-
-        <ImageView
-            android:layout_width="34dp"
-            android:layout_height="34dp"
-            app:srcCompat="@drawable/ikonmad"
-            android:id="@+id/imageView24"
-            android:layout_marginStart="50dp"
-            android:layout_alignTop="@+id/textviden"
-            android:layout_toEndOf="@+id/hjemBack"/>
-
-        <TextView
-            android:text="Viden"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/textviden"
-            android:elevation="1dp"
-            android:fontFamily="sans-serif"
-            android:textSize="24sp"
-            android:textColor="@color/black"
-            android:layout_alignParentBottom="true"
-            android:layout_toStartOf="@+id/imageView25"/>
-
-        <TextView
-            android:text="16"
-            android:layout_width="34dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/lektiePlayerInfo"
-            android:elevation="1dp"
-            android:fontFamily="sans-serif"
-            android:textSize="24sp"
-            android:textColor="@color/black"
-            android:layout_marginEnd="18dp"
-            android:gravity="right"
-            android:textAlignment="gravity"
-            android:layout_alignParentBottom="true"
-            android:layout_toStartOf="@+id/studyHelp"/>
-
-        <ImageView
-            android:layout_height="34dp"
-            app:srcCompat="@drawable/urikon"
-            android:id="@+id/imageView41"
-            android:layout_marginStart="35dp"
-            android:layout_width="34dp"
-            android:layout_alignParentTop="true"
-            android:layout_alignStart="@+id/lektiePlayerInfo"/>
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="205dp">
+        android:layout_height="205dp"
+        android:layout_weight="0.56">
 
         <TextView
             android:layout_width="wrap_content"
@@ -135,17 +29,17 @@
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="18sp"
-            android:layout_marginStart="112dp"
-            android:layout_height="50dp"
             android:layout_width="330dp"
+            android:layout_height="55dp"
+            android:layout_marginStart="111dp"
+            android:layout_marginBottom="13dp"
             android:layout_alignParentBottom="true"
-            android:layout_alignParentStart="true"/>
+            android:layout_alignParentStart="true" />
     </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_weight="0.53">
+        android:layout_height="86dp">
 
         <Button
             android:background="@android:color/transparent"

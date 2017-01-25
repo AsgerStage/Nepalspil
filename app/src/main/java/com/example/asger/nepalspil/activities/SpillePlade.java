@@ -31,8 +31,9 @@ import com.example.asger.nepalspil.models.Figuruheld;
 import com.example.asger.nepalspil.models.Spiller;
 
 import java.util.concurrent.ThreadLocalRandom;
-
+import com.example.asger.nepalspil.felter.Topbar;
 import static com.example.asger.nepalspil.activities.MusicManager.mp;
+import static com.example.asger.nepalspil.models.Spiller.instans;
 
 //import static com.example.asger.nepalspil.R.id.player;
 
@@ -41,6 +42,8 @@ public class SpillePlade extends AppCompatActivity {
     TextView textpenge;
     TextView textviden;
     TextView textmad;
+    private Topbar topbar;
+
 
     ImageView Player;
     static ImageView ur;
@@ -50,6 +53,7 @@ public class SpillePlade extends AppCompatActivity {
     boolean continueBGMusic;
     AlertDialog.Builder dialog;
     SharedPreferences prefs;
+
 
     private Button[] felter = new Button[8];
     private static Class[] feltNummerTilAktivitet = {
@@ -82,6 +86,9 @@ public class SpillePlade extends AppCompatActivity {
         continueBGMusic = true;
         prefs = PreferenceManager.getDefaultSharedPreferences(this);
 
+        topbar = new Topbar();
+        topbar.init(this);
+
         dialog = new AlertDialog.Builder(SpillePlade.this);
         if (Spiller.instans.sex) {
             Player = (ImageView) findViewById(R.id.kaka);
@@ -101,9 +108,10 @@ public class SpillePlade extends AppCompatActivity {
         unusedPlayer.setVisibility(View.INVISIBLE);
 
         infobox = (TextView) findViewById(R.id.infobox);
+        /*
         textpenge = (TextView) findViewById(R.id.textpenge);
         textviden = (TextView) findViewById(R.id.textviden);
-        textmad = (TextView) findViewById(R.id.textmad);
+        textmad = (TextView) findViewById(R.id.textmad);*/
 
         tidTextView = (TextView) findViewById(R.id.tid);
         //ur = (ClockImageView) findViewById(R.id.ur);
@@ -119,8 +127,10 @@ public class SpillePlade extends AppCompatActivity {
         felter[5] = (Button) findViewById(R.id.felt5);
         felter[6] = (Button) findViewById(R.id.felt6);
         felter[7] = (Button) findViewById(R.id.felt7);
-        ingameopt = (ImageView) findViewById(R.id.ingameopt);
-        spilpladeHelp = (ImageView) findViewById(R.id.spilpladeHelp);
+        ImageView back = (ImageView) findViewById(R.id.hjemBack);
+        back.setVisibility(View.INVISIBLE);
+        ingameopt = (ImageView) findViewById(R.id.menuknap);
+        spilpladeHelp = (ImageView) findViewById(R.id.vaerkstedHelp);
 
         // Placér spilleren på pladen - skal ske efter onCreate, så vi sender det til hovedtråden forsinket
         new Handler().post(new Runnable() {
@@ -353,13 +363,13 @@ public class SpillePlade extends AppCompatActivity {
                 Spiller.instans.setHp(Spiller.instans.getHp() - 30);
             } else Spiller.instans.setHp(0);
             if (Spiller.instans.runde % 5 == 0) randomEvent();
-            opdaterSkærm();
+            updateText();
 
             sætBrikposition(Spiller.instans.getPosition());
         } else {
             Class aktivitet = feltNummerTilAktivitet[feltPos];
             final Intent intent = new Intent(SpillePlade.this, aktivitet);
-            opdaterSkærm();
+            updateText();
 
             sætBrikposition(Spiller.instans.getPosition());
 
@@ -454,12 +464,18 @@ public class SpillePlade extends AppCompatActivity {
             MusicManager.pause();
         }
     }
-    private void opdaterSkærm() {
-        updateTimer(Spiller.instans.getTid());
-        infobox.setText("Uge: " + Spiller.instans.getRunde());
+    /*private void opdaterSkærm() {
+
         textpenge.setText(String.valueOf(Spiller.instans.getPenge()));
         textviden.setText(String.valueOf(Spiller.instans.getViden()));
         textmad.setText(String.valueOf(Spiller.instans.getHp()));
+    }*/
+
+    public void updateText() {
+        topbar.opdaterGui(instans);
+        SpillePlade.updateEntireBoard();
+       // updateTimer(Spiller.instans.getTid());
+        infobox.setText("Uge: " + Spiller.instans.getRunde());
     }
 
     @Override
@@ -467,7 +483,7 @@ public class SpillePlade extends AppCompatActivity {
         super.onResume();
         continueBGMusic = false;
         MusicManager.start(this, R.raw.backgroundloop);
-        opdaterSkærm();
+        updateText();
     }
 
     public void saveToPrefs() {

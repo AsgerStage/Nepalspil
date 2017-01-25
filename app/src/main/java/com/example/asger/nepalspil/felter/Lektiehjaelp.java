@@ -38,25 +38,31 @@ public class Lektiehjaelp extends AppCompatActivity {
     Button homeworkHelp;
     AlertDialog.Builder dialog;
     private Animation animation;
+    private Topbar topbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.lektiehjaelp);
 
+        topbar = new Topbar();
+        topbar.init(this);
+
         dialog = new AlertDialog.Builder(Lektiehjaelp.this);
 
         final MediaPlayer mp = MediaPlayer.create(this, R.raw.cash);
         final TextView lektiehjaelpInfo = (TextView) findViewById(R.id.lektiehjaelpTextField);
-        playerInfo = (TextView) findViewById(R.id.lektiePlayerInfo);
+      //  playerInfo = (TextView) findViewById(R.id.lektiePlayerInfo);
         ImageView hjemBack = (ImageView) findViewById(R.id.hjemBack);
         homeworkHelp = (Button) findViewById(R.id.learn);
-        ImageView helpField = (ImageView) findViewById(R.id.studyHelp);
-        textpenge = (TextView) findViewById(R.id.textpenge);
+        ImageView helpField = (ImageView) findViewById(R.id.vaerkstedHelp);
+       /* textpenge = (TextView) findViewById(R.id.textpenge);
         textviden = (TextView) findViewById(R.id.textviden);
-        textmad = (TextView) findViewById(R.id.textmad);
+        textmad = (TextView) findViewById(R.id.textmad);*/
         final TextView scrollknowledge = (TextView) findViewById(R.id.scrollknowledge);
         animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.plusknowledge);
+        ImageView menu = (ImageView) findViewById(R.id.menuknap);
+        menu.setVisibility(View.INVISIBLE);
 
         Typeface face;
         face = Typeface.createFromAsset(getAssets(), "fonts/EraserDust.ttf");
@@ -128,9 +134,7 @@ public class Lektiehjaelp extends AppCompatActivity {
 
 
     public void updateText() {
-        textpenge.setText(String.valueOf(instans.getPenge()));
-        textviden.setText(String.valueOf(instans.getViden()));
-        textmad.setText(String.valueOf(instans.getHp()));
-        playerInfo.setText(String.valueOf(instans.getTid()));
+        topbar.opdaterGui(instans);
+        SpillePlade.updateEntireBoard();
     }
 }

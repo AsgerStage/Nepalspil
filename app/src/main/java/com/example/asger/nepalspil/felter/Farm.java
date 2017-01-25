@@ -37,25 +37,30 @@ public class Farm extends AppCompatActivity {
 
     AlertDialog.Builder dialog;
     private Animation animation;
+    private Topbar topbar;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.farm);
 
+        topbar = new Topbar();
+        topbar.init(this);
 
         dialog = new AlertDialog.Builder(Farm.this);
         final TextView fieldinfo = (TextView) findViewById(R.id.fieldinfo);
-        playerinfo = (TextView) findViewById(R.id.playerinfo);
+       // playerinfo = (TextView) findViewById(R.id.playerinfo);
         final MediaPlayer mp = MediaPlayer.create(this, R.raw.cash);
-        animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.plusmoney);
+        animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.plusknowledge);
 
         Button work = (Button) findViewById(R.id.workButton);
         ImageView hjemBack = (ImageView) findViewById(R.id.hjemBack);
-        ImageView helpfield = (ImageView) findViewById(R.id.farmHelp);
+        ImageView helpfield = (ImageView) findViewById(R.id.vaerkstedHelp);
         final TextView money = (TextView) findViewById(R.id.scrollmoney);
-        textpenge = (TextView) findViewById(R.id.textpenge);
+        ImageView menu = (ImageView) findViewById(R.id.menuknap);
+        menu.setVisibility(View.INVISIBLE);
+       /* textpenge = (TextView) findViewById(R.id.textpenge);
         textviden = (TextView) findViewById(R.id.textviden);
-        textmad = (TextView) findViewById(R.id.textmad);
+        textmad = (TextView) findViewById(R.id.textmad);*/
         updateText();
 
        /* Typeface face;
@@ -121,10 +126,7 @@ public class Farm extends AppCompatActivity {
 
 
     public void updateText() {
-        textpenge.setText(String.valueOf(instans.getPenge()));
-        textviden.setText(String.valueOf(instans.getViden()));
-        textmad.setText(String.valueOf(instans.getHp()));
-        playerinfo.setText(String.valueOf(instans.getTid()));
+        topbar.opdaterGui(instans);
         SpillePlade.updateEntireBoard();
     }
 }

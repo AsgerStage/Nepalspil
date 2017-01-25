@@ -15,5 +15,4 @@
         android:toAlpha="0"
         android:duration="1000"
         ></alpha>
-
 </set>

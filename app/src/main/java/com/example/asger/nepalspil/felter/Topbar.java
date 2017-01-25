@@ -10,7 +10,7 @@ import com.example.asger.nepalspil.models.Spiller;
  * Created by j on 24-01-17.
  */
 
-class Topbar {
+public class Topbar {
     TextView textpenge;
     TextView textviden;
     TextView textmad;
