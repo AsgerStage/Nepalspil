@@ -14,7 +14,6 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.crashlytics.android.Crashlytics;
 import com.example.asger.nepalspil.BuildConfig;
@@ -38,6 +37,7 @@ public class Hovedmenu_akt extends AppCompatActivity {
     SharedPreferences prefs;
 
     AlertDialog.Builder dialog;
+    static final int FIGURNUMMER_REQUEST = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -109,7 +109,7 @@ public class Hovedmenu_akt extends AppCompatActivity {
                 }
                 */
                 Intent intent = new Intent(Hovedmenu_akt.this, Figurvalg_akt.class);
-                startActivity(intent);
+                startActivityForResult(intent, FIGURNUMMER_REQUEST);
             }
         });
 
@@ -172,6 +172,18 @@ public class Hovedmenu_akt extends AppCompatActivity {
         });
 
 
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == FIGURNUMMER_REQUEST) {
+            if (resultCode == RESULT_OK) {
+                Figurdata figurdata = Grunddata.instans.spillere.get(data.getStringExtra("result"));
+                Spiller.instans = new Spiller(figurdata);
+                Intent intent = new Intent(Hovedmenu_akt.this, SpillePlade.class);
+                startActivity(intent);
+            }
+        }
     }
 
     private void indlæsGrunddata() {

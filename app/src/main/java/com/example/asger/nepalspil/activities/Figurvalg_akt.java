@@ -1,5 +1,6 @@
 package com.example.asger.nepalspil.activities;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -56,10 +57,10 @@ public class Figurvalg_akt extends AppCompatActivity {
                             @Override
                             public void onClick(SweetAlertDialog sDialog) {
                                 sDialog.dismissWithAnimation();
-                                Figurdata figurdata = Grunddata.instans.spillere.get("Asha");
-                                Spiller.instans = new Spiller(figurdata);
-                                Intent intent = new Intent(Figurvalg_akt.this, SpillePlade.class);
-                                startActivity(intent);
+                                Intent returnIntent = new Intent();
+                                returnIntent.putExtra("result","Asha");
+                                setResult(Activity.RESULT_OK,returnIntent);
+                                finish();
                             }
 
                         }).show();
@@ -88,11 +89,11 @@ public class Figurvalg_akt extends AppCompatActivity {
                             @Override
                             public void onClick(SweetAlertDialog sDialog) {
                                 sDialog.dismissWithAnimation();
-                                Figurdata figurdata = Grunddata.instans.spillere.get("Krishna");
-                                Spiller.instans = new Spiller(figurdata);
-                                Intent intent = new Intent(Figurvalg_akt.this, SpillePlade.class);
-                                startActivity(intent);
-                            }
+                                Intent returnIntent = new Intent();
+                                returnIntent.putExtra("result","Krishna");
+                                setResult(Activity.RESULT_OK,returnIntent);
+                                finish();
+                        }
 
                         }).show();
                 ;
@@ -120,10 +121,10 @@ public class Figurvalg_akt extends AppCompatActivity {
                             @Override
                             public void onClick(SweetAlertDialog sDialog) {
                                 sDialog.dismissWithAnimation();
-                                Figurdata figurdata = Grunddata.instans.spillere.get("Laxmi");
-                                Spiller.instans = new Spiller(figurdata);
-                                Intent intent = new Intent(Figurvalg_akt.this, SpillePlade.class);
-                                startActivity(intent);
+                                Intent returnIntent = new Intent();
+                                returnIntent.putExtra("result","Laxmi");
+                                setResult(Activity.RESULT_OK,returnIntent);
+                                finish();
                             }
 
                         }).show();
@@ -153,10 +154,11 @@ public class Figurvalg_akt extends AppCompatActivity {
                             @Override
                             public void onClick(SweetAlertDialog sDialog) {
                                 sDialog.dismissWithAnimation();
-                                Figurdata figurdata = Grunddata.instans.spillere.get("Kamal");
-                                Spiller.instans = new Spiller(figurdata);
-                                Intent intent = new Intent(Figurvalg_akt.this, SpillePlade.class);
-                                startActivity(intent);
+
+                                Intent returnIntent = new Intent();
+                                returnIntent.putExtra("result","Kamal");
+                                setResult(Activity.RESULT_OK,returnIntent);
+                                finish();
                             }
 
                         }).show();
