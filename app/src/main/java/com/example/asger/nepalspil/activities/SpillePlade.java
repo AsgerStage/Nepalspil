@@ -1,5 +1,7 @@
 package com.example.asger.nepalspil.activities;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -270,16 +272,65 @@ public class SpillePlade extends AppCompatActivity {
      */
     private void flytBrikTilFelt(int feltPos) {
 
-        int gammelPos = Spiller.instans.getPosition();
-        int gammelTid = Spiller.instans.getTid();
+        final int gammelPos = Spiller.instans.getPosition();
+        final int gammelTid = Spiller.instans.getTid();
 
-        boolean turenErGået = Spiller.instans.move(feltPos);
+        final boolean turenErGået = Spiller.instans.move(feltPos);
 
-        int nyPos = Spiller.instans.getPosition() - gammelPos;
-        int nyTid = Spiller.instans.getTid();
-        double posÆndringPerTid = (double) (nyPos - gammelPos) / (nyTid - gammelTid);
+        final int nyPos = Spiller.instans.getPosition();
+        final int nyTid = Spiller.instans.getTid();
+        int tidÆndring = gammelTid - nyTid;
 
-        flytBrikTilFeltAfslutning(turenErGået, feltPos);
+        if (turenErGået || tidÆndring==0) {
+            flytBrikTilFeltAfslutning(turenErGået, nyPos);
+            return;
+        }
+
+        // Vi skal lave en animation fra startfelt til slutfelt
+        if (tidÆndring<=0) {
+            new IllegalStateException("Intern fejl - tidÆndring="+tidÆndring).printStackTrace();
+            flytBrikTilFeltAfslutning(turenErGået, nyPos);
+            return;
+        }
+
+        int posÆndring = nyPos - gammelPos;
+        // ovenstående vil gå mellem felterne 0-1-2-3-4-5-6 til 7, men aldrig passere 0.
+        // tjek for om det er smartere med et hop mellem felt 7 og felt 0:
+        if (posÆndring>Spiller.BRÆTSTØRRELSE/2) {
+            posÆndring = posÆndring - Spiller.BRÆTSTØRRELSE; // smartere at gå baglæns via 0 og 7
+            Log.d("SpillePlade", "flytBrikTilFelt: smartere at gå baglæns via 0 og 7  posÆndring="+posÆndring);
+        } else if (posÆndring<-Spiller.BRÆTSTØRRELSE/2) {
+            posÆndring = posÆndring + Spiller.BRÆTSTØRRELSE; // smartere at gå forlæns via 7 og 0
+            Log.d("SpillePlade", "flytBrikTilFelt: smartere at gå forlæns via 7 og 0  posÆndring="+posÆndring);
+        }
+
+        final double posÆndringPerTid = (double) (posÆndring) / tidÆndring;
+
+        final AnimatorListenerAdapter brikAnimationLytter = new AnimatorListenerAdapter() {
+            int tid = gammelTid;
+            double pos = gammelPos;
+
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                Log.d("SpillePlade", "onAnimationEnd "+tid+ " =? "+nyTid+"  pos="+pos);
+                if (tid == nyTid) return; // vi er allerede færdige (forstår ikke hvorfor onAnimationEnd blir kaldt en ekstra gang, men det gør den)
+                tid = tid - 1;
+                pos = pos + posÆndringPerTid;
+                updateTimer(tid);
+                if (tid == nyTid) {
+                    // vi er færdige med at rykke animeret
+                    flytBrikTilFeltAfslutning(turenErGået, nyPos);
+                } else {
+                    // ryk til næste felt animeret. onAnimationEnd kaldes igen når brikken er fremme ved næste felt
+                    sætBrikpositionOgTidAnimeret((int) (pos+0.5), this);
+                }
+            }
+        };
+
+        brikAnimationLytter.onAnimationEnd(null); // start animationen ved at kalde onAnimationEnd (lidt et hack :-)
+
+
+
     }
 
 
@@ -436,14 +487,22 @@ public class SpillePlade extends AppCompatActivity {
 
     private void sætBrikposition(int feltnummer) {
         Log.d("Spilleplade", "sætBrikposition called to " + feltnummer);
-
-        Button felt = felter[feltnummer];
+        Button felt = felter[(feltnummer+Spiller.BRÆTSTØRRELSE) % Spiller.BRÆTSTØRRELSE];
         Player.animate().translationXBy(felt.getX() - Player.getX()).translationYBy(felt.getY() - Player.getY());
         //Player.setX(felt.getX());
         //Player.setY(felt.getY());
-
-
     }
+
+
+    private void sætBrikpositionOgTidAnimeret(int feltnummer, Animator.AnimatorListener animatorListener) {
+        Log.d("Spilleplade", "sætBrikpositionOgTidAnimeret " + feltnummer);
+        Button felt = felter[(feltnummer+Spiller.BRÆTSTØRRELSE) % Spiller.BRÆTSTØRRELSE];
+        Player.animate()
+                .translationXBy(felt.getX() - Player.getX())
+                .translationYBy(felt.getY() - Player.getY())
+                .setListener(animatorListener);
+    }
+
 
     public void randomEvent() {
         while (lastEvent == randomNum) {
