@@ -1,8 +1,6 @@
 package com.example.asger.nepalspil.felter;
 
-import android.content.Intent;
 import android.content.res.AssetFileDescriptor;
-import android.graphics.Typeface;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
@@ -15,21 +13,16 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.asger.nepalspil.R;
-import com.example.asger.nepalspil.activities.MusicManager;
 import com.example.asger.nepalspil.activities.SpillePlade;
 
 import java.io.IOException;
 
-import static com.example.asger.nepalspil.activities.MainActivity.spiller;
+import static com.example.asger.nepalspil.models.Spiller.instans;
 
 
 public class Farm extends AppCompatActivity {
-    TextView textpenge;
-    TextView textviden;
-    TextView textmad;
-    TextView playerinfo;
-    final int MONEY_PER_CLICK =3;
-    final int TIME_PER_CLICK =1;
+    final int MONEY_PER_CLICK = 3;
+    final int TIME_PER_CLICK = 1;
 
     @Override
     public void onBackPressed() {
@@ -40,25 +33,27 @@ public class Farm extends AppCompatActivity {
 
     AlertDialog.Builder dialog;
     private Animation animation;
+    private Topbar topbar;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.farm);
 
+        topbar = new Topbar();
+        topbar.init(this);
 
         dialog = new AlertDialog.Builder(Farm.this);
         final TextView fieldinfo = (TextView) findViewById(R.id.fieldinfo);
-        playerinfo = (TextView) findViewById(R.id.playerinfo);
+        // playerinfo = (TextView) findViewById(R.id.playerinfo);
         final MediaPlayer mp = MediaPlayer.create(this, R.raw.cash);
-        animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.plusmoney);
+        animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.plusknowledge);
 
         Button work = (Button) findViewById(R.id.workButton);
-        ImageView back = (ImageView) findViewById(R.id.backButton);
-        ImageView helpfield = (ImageView) findViewById(R.id.farmHelp);
+        ImageView hjemBack = (ImageView) findViewById(R.id.hjemBack);
+        ImageView helpfield = (ImageView) findViewById(R.id.vaerkstedHelp);
         final TextView money = (TextView) findViewById(R.id.scrollmoney);
-        textpenge = (TextView) findViewById(R.id.textpenge);
-        textviden = (TextView) findViewById(R.id.textviden);
-        textmad = (TextView) findViewById(R.id.textmad);
+        ImageView menu = (ImageView) findViewById(R.id.menuknap);
+        menu.setVisibility(View.INVISIBLE);
         updateText();
 
        /* Typeface face;
@@ -79,9 +74,9 @@ public class Farm extends AppCompatActivity {
 
             public void onClick(View v) {
                 v.startAnimation(AnimationUtils.loadAnimation(Farm.this, R.anim.image_click));
-                if (spiller.getTid() >= TIME_PER_CLICK) {
-                    spiller.work(TIME_PER_CLICK,MONEY_PER_CLICK);
-                    money.setText("+"+MONEY_PER_CLICK+" kr");
+                if (instans.getTid() >= TIME_PER_CLICK) {
+                    instans.work(TIME_PER_CLICK, MONEY_PER_CLICK);
+                    money.setText("+" + MONEY_PER_CLICK + " kr");
                     money.startAnimation(animation);
                     updateText();
 
@@ -101,7 +96,7 @@ public class Farm extends AppCompatActivity {
                         e.printStackTrace();
                     }
 
-                } else if (spiller.getTid() < 2) {
+                } else if (instans.getTid() < 2) {
 
                     dialog.setTitle("Intet tid!");
                     dialog.setMessage("Du har ikke nok tid til at arbejde");
@@ -111,25 +106,20 @@ public class Farm extends AppCompatActivity {
             }
         });
 
-        back.setOnClickListener(new View.OnClickListener() {
+        hjemBack.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
-                    SpillePlade.updateEntireBoard();
-                    v.startAnimation(AnimationUtils.loadAnimation(Farm.this, R.anim.image_click));
-                    finish();
+                SpillePlade.updateEntireBoard();
+                v.startAnimation(AnimationUtils.loadAnimation(Farm.this, R.anim.image_click));
+                finish();
 
             }
         });
     }
 
 
-
-
-    public  void updateText() {
-        textpenge.setText(String.valueOf(spiller.getPenge()));
-        textviden.setText(String.valueOf(spiller.getViden()));
-        textmad.setText(String.valueOf(spiller.getHp()));
-        playerinfo.setText(String.valueOf(spiller.getTid()));
+    public void updateText() {
+        topbar.opdaterGui(instans);
         SpillePlade.updateEntireBoard();
     }
 }

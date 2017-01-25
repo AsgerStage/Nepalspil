@@ -1,0 +1,72 @@
+{
+  "figurer" : [
+    {
+      "navn": "Asha",
+      "drengekøn": "false",
+      "fuldtNavn": "Asha Musahar",
+      "beskrivelse": "Hun er en sød pige, men hendes forældre har ikke så mange penge",
+      "startpenge": 10,
+      "startviden": 0,
+
+      "uheld": [
+        { "titel" : "Du er blevet syg!",
+          "tekst" : "Du er blevet syg og har derfor halvt så meget tid i denne uge.",
+          "tidFaktor" : 0.5
+        },
+        { "titel" : "Dine forældre har brug for penge",
+          "tekst" : "Dine forældre har brugt nogle af dine penge. -20kr",
+          "pengeForskel" : -20
+        },
+        { "titel" : "Maden du har spiste var dårlig",
+          "tekst" : "Du er nu mere sulten. -30 mad",
+          "madForskel" : 0.5
+        },
+        { "titel" : "Undervisningen var kedelig",
+          "tekst" : "Undervisningen var kedelig, så du faldt i søvn. -10 viden og dagen er gået",
+          "videnForskel" : -10,
+          "tidFaktor" : 0.1
+        },
+        { "fyld" : "fyld" },
+        { "fyld" : "fyld" }
+      ]
+    },
+
+    {
+      "navn": "Krishna",
+      "drengekøn": "true",
+      "beskrivelse": "Han er en frisk dreng, som har lidt rige forældre",
+      "startpenge": 70,
+
+      "uheld": [
+        { "titel" : "Du er blevet syg!",
+          "tekst" : "Du er blevet syg og har derfor halvt så meget tid i denne uge.",
+          "tidFaktor" : 0.5
+        },
+        { "titel" : "Dine forældre har brug for penge",
+          "tekst" : "Dine forældre har brugt nogle af dine penge. -20kr",
+          "pengeForskel" : -20
+        },
+        { "titel" : "Maden du har spiste var dårlig",
+          "tekst" : "Du er nu mere sulten. -30 mad",
+          "madForskel" : 0.5
+        },
+        { "titel" : "Undervisningen var kedelig",
+          "tekst" : "Undervisningen var kedelig, så du faldt i søvn. -10 viden",
+          "videnForskel" : -10,
+          "tidFaktor" : 0.1
+        },
+        { "fyld" : "fyld" },
+        { "fyld" : "fyld" },
+        { "fyld" : "fyld" },
+        { "fyld" : "fyld" },
+        { "fyld" : "fyld" },
+        { "fyld" : "fyld" },
+        { "fyld" : "fyld" },
+        { "fyld" : "fyld" },
+        { "fyld" : "fyld" }
+      ]
+    }
+  ]
+}
+
+

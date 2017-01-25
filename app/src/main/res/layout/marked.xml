@@ -1,119 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:weightSum="1"
-    android:background="@drawable/markedinside">
-
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="38dp">
-
-        <ImageView
-            android:layout_width="34dp"
-            android:layout_height="34dp"
-            app:srcCompat="@drawable/ikonviden"
-            android:id="@+id/imageView22"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true" />
-
-        <ImageView
-            app:srcCompat="@drawable/newback"
-            android:id="@+id/backButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentStart="true" />
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:srcCompat="@drawable/fieldhelp"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:id="@+id/markedHelp" />
-
-        <ImageView
-            android:layout_width="34dp"
-            android:layout_height="34dp"
-            app:srcCompat="@drawable/ikonpenge"
-            android:id="@+id/imageView23"
-            android:layout_alignParentTop="true"
-            android:layout_toEndOf="@+id/textpenge" />
-
-        <TextView
-            android:text="Viden"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/textviden"
-            android:elevation="1dp"
-            android:fontFamily="sans-serif"
-            android:textSize="24sp"
-            android:textColor="@color/black"
-            android:layout_alignBottom="@+id/imageView23"
-            android:layout_toStartOf="@+id/imageView22" />
-
-        <TextView
-            android:text="Mad"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/textmad"
-            android:elevation="1dp"
-            android:fontFamily="sans-serif"
-            android:textSize="24sp"
-            android:textColor="@color/food"
-            android:layout_alignBaseline="@+id/textviden"
-            android:layout_alignBottom="@+id/textviden"
-            android:layout_toEndOf="@+id/backButton" />
-
-        <ImageView
-            android:layout_width="34dp"
-            android:layout_height="34dp"
-            app:srcCompat="@drawable/ikonmad"
-            android:id="@+id/imageView21"
-            android:layout_marginStart="50dp"
-            android:layout_alignParentBottom="true"
-            android:layout_toEndOf="@+id/backButton" />
-
-        <TextView
-            android:text="Penge"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/textpenge"
-            android:elevation="1dp"
-            android:fontFamily="sans-serif"
-            android:textSize="24sp"
-            android:textColor="@color/money"
-            android:layout_marginStart="19dp"
-            android:layout_alignBottom="@+id/imageView23"
-            android:layout_toEndOf="@+id/imageView22" />
-
-        <ImageView
-            android:layout_height="34dp"
-            app:srcCompat="@drawable/urikon"
-            android:id="@+id/imageView43"
-            android:layout_width="34dp"
-            android:layout_alignParentBottom="true"
-            android:layout_toEndOf="@+id/playerinfo" />
-
-        <TextView
-            android:text="16"
-            android:layout_width="34dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/playerinfo"
-            android:elevation="1dp"
-            android:fontFamily="sans-serif"
-            android:textSize="24sp"
-            android:textColor="@color/black"
-            android:gravity="right"
-            android:textAlignment="gravity"
-            android:layout_alignBottom="@+id/imageView23"
-            android:layout_toEndOf="@+id/imageView23"
-            android:layout_marginStart="11dp" />
-    </RelativeLayout>
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:weightSum="1"
+              android:background="@drawable/markedinside">
+    <include layout="@layout/topbar"/>
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -135,7 +28,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/workButton"
-                android:layout_weight="1" />
+                android:layout_weight="1"/>
 
             <Button
                 android:background="@android:color/transparent"
@@ -143,20 +36,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/eatButton"
-                android:layout_weight="1" />
+                android:layout_weight="1"/>
 
         </LinearLayout>
-
-        <TextView
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/food"
-            android:textAlignment="center"
-            android:layout_marginEnd="85dp"
-            android:layout_centerVertical="true"
-            android:layout_alignParentEnd="true"
-            android:textColor="@color/food"
-            android:textSize="20sp" />
 
         <ImageView
             app:srcCompat="@drawable/bubble"
@@ -165,17 +47,17 @@
             android:layout_height="200dp"
             android:layout_marginEnd="21dp"
             android:layout_above="@+id/food"
-            android:layout_alignEnd="@+id/food" />
+            android:layout_alignEnd="@+id/food"/>
 
         <TextView
             android:text="Info about market"
             android:id="@+id/fieldinfo"
-            android:layout_marginTop="16dp"
             android:layout_width="200dp"
-            android:layout_height="200dp"
-            android:layout_marginStart="30dp"
+            android:layout_height="150dp"
+            android:layout_marginTop="37dp"
             android:layout_alignParentTop="true"
-            android:layout_alignStart="@+id/imageView31" />
+            android:layout_alignStart="@+id/imageView31"
+            android:layout_marginStart="38dp" />
 
         <ImageView
             android:layout_width="wrap_content"
@@ -183,20 +65,30 @@
             app:srcCompat="@drawable/pige1"
             android:id="@+id/imageView30"
             android:layout_marginEnd="14dp"
-            android:layout_alignTop="@+id/fieldinfo"
+            android:layout_above="@+id/linearLayout2"
             android:layout_alignParentEnd="true" />
 
         <TextView
             android:layout_height="wrap_content"
-            android:id="@+id/money"
+            android:id="@+id/food"
             android:textAlignment="center"
-            android:layout_width="150dp"
+            android:layout_marginEnd="102dp"
+            android:textColor="@color/food"
+            android:textSize="20sp"
+            android:layout_width="100dp"
+            android:layout_below="@+id/imageView30"
+            android:layout_alignEnd="@+id/imageView30" />
+
+        <TextView
+            android:layout_height="wrap_content"
+            android:id="@+id/money"
+            android:textAlignment="textEnd"
             android:textColor="@color/money"
             android:textSize="20sp"
+            android:layout_width="100dp"
+            android:layout_marginStart="77dp"
             android:layout_below="@+id/imageView31"
-            android:layout_alignParentStart="true"
-            android:layout_marginStart="67dp"
-            android:layout_marginTop="12dp" />
+            android:layout_alignParentStart="true" />
 
     </RelativeLayout>
 

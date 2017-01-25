@@ -7,17 +7,16 @@ import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-
-import static com.example.asger.nepalspil.activities.MainActivity.spiller;
+import android.view.View;
+import android.widget.Button;
+import android.widget.FrameLayout;
+import android.widget.TextView;
 
 import com.example.asger.nepalspil.R;
 import com.example.asger.nepalspil.activities.SpillePlade;
 import com.github.jinatonic.confetti.CommonConfetti;
 
-import android.view.View;
-import android.widget.Button;
-import android.widget.FrameLayout;
-import android.widget.TextView;
+import static com.example.asger.nepalspil.models.Spiller.instans;
 
 public class Eksamen extends AppCompatActivity {
     TextView question;
@@ -35,9 +34,9 @@ public class Eksamen extends AppCompatActivity {
                 .setPositiveButton("Ja", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         Eksamen.this.finish();
-                        spiller.setViden(spiller.getViden() - 10 * spiller.getKlassetrin());
-                        if (spiller.getViden() < 0) {
-                            spiller.setViden(0);
+                        instans.setViden(instans.getViden() - 10 * instans.getKlassetrin());
+                        if (instans.getViden() < 0) {
+                            instans.setViden(0);
                         }
                     }
                 })
@@ -53,15 +52,15 @@ public class Eksamen extends AppCompatActivity {
         answer1 = (Button) findViewById(R.id.answer1Button);
         answer2 = (Button) findViewById(R.id.answer2Button);
         answer3 = (Button) findViewById(R.id.answer3Button);
-        container = (FrameLayout) findViewById(R.id.container);;
+        container = (FrameLayout) findViewById(R.id.container);
         dialog = new AlertDialog.Builder(Eksamen.this);
 
         Typeface face;
         face = Typeface.createFromAsset(getAssets(), "fonts/EraserDust.ttf");
         question.setTypeface(face);
 
-        spiller.getViden();
-        switch (spiller.getKlassetrin() - 1) {
+        instans.getViden();
+        switch (instans.getKlassetrin() - 1) {
             case 0:
                 setQuestion("Hvad spiser nepalesiske børn til morgenmad?", "Ris og grøntsager", "Havregryn med mælk", "Grød");
                 setFirstCorrect();
@@ -105,13 +104,13 @@ public class Eksamen extends AppCompatActivity {
 
     public void wrong() {
 
-        spiller.setViden(spiller.getViden() - 10 * spiller.getKlassetrin());
-        if (spiller.getViden() < 0) {
-            spiller.setViden(0);
+        instans.setViden(instans.getViden() - 10 * instans.getKlassetrin());
+        if (instans.getViden() < 0) {
+            instans.setViden(0);
         }
-        Skole.updateText();
 
-        dialog.setMessage("Du har desværre svaret forkert på eksamen og er derfor dumpet. -" + 10*spiller.getKlassetrin()+ " viden")
+
+        dialog.setMessage("Du har desværre svaret forkert på eksamen og er derfor dumpet. -" + 10 * instans.getKlassetrin() + " viden")
                 .setCancelable(false)
                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
@@ -138,9 +137,9 @@ public class Eksamen extends AppCompatActivity {
                 mp.start();
                 CommonConfetti.rainingConfetti(container, new int[]{Color.BLACK})
                         .infinite();
-                spiller.setKlassetrin(spiller.getKlassetrin() + 1);
+                instans.setKlassetrin(instans.getKlassetrin() + 1);
 
-                dialog.setMessage("TILLYKKE!! Du bestod og går nu i " + spiller.getKlassetrin() + ". klasse.")
+                dialog.setMessage("TILLYKKE!! Du bestod og går nu i " + instans.getKlassetrin() + ". klasse.")
                         .setCancelable(false)
                         .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
@@ -178,9 +177,9 @@ public class Eksamen extends AppCompatActivity {
                 mp.start();
                 CommonConfetti.rainingConfetti(container, new int[]{Color.BLACK})
                         .infinite();
-                spiller.setKlassetrin(spiller.getKlassetrin() + 1);
+                instans.setKlassetrin(instans.getKlassetrin() + 1);
 
-                dialog.setMessage("TILLYKKE!! Du bestod og går nu i " + spiller.getKlassetrin() + ". klasse.")
+                dialog.setMessage("TILLYKKE!! Du bestod og går nu i " + instans.getKlassetrin() + ". klasse.")
                         .setCancelable(false)
                         .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
@@ -219,9 +218,9 @@ public class Eksamen extends AppCompatActivity {
                 mp.start();
                 CommonConfetti.rainingConfetti(container, new int[]{Color.BLACK})
                         .infinite();
-                spiller.setKlassetrin(spiller.getKlassetrin() + 1);
+                instans.setKlassetrin(instans.getKlassetrin() + 1);
 
-                dialog.setMessage("TILLYKKE!! Du bestod og går nu i " + spiller.getKlassetrin() + ". klasse.")
+                dialog.setMessage("TILLYKKE!! Du bestod og går nu i " + instans.getKlassetrin() + ". klasse.")
                         .setCancelable(false)
                         .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
@@ -247,9 +246,9 @@ public class Eksamen extends AppCompatActivity {
                 mp.start();
                 CommonConfetti.rainingConfetti(container, new int[]{Color.BLACK})
                         .infinite();
-                spiller.setKlassetrin(spiller.getKlassetrin() + 1);
+                instans.setKlassetrin(instans.getKlassetrin() + 1);
 
-                dialog.setMessage("Godt klaret, du har vundet spillet på " + spiller.getRunde() + " uger! Du kan fortsætte med at spille videre hvis du vil eller gå til start menuen og starte forfra. (Eller lægge spiller fra dig)")
+                dialog.setMessage("Godt klaret, du har vundet spillet på " + instans.getRunde() + " uger! Du kan fortsætte med at spille videre hvis du vil eller gå til start menuen og starte forfra. (Eller lægge instans fra dig)")
                         .setCancelable(false)
                         .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {

@@ -12,20 +12,15 @@ import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.asger.nepalspil.R;
 import com.example.asger.nepalspil.activities.SpillePlade;
 
 import java.io.IOException;
 
-import static com.example.asger.nepalspil.activities.MainActivity.spiller;
+import static com.example.asger.nepalspil.models.Spiller.instans;
 
 public class Lektiehjaelp extends AppCompatActivity {
-    TextView textpenge;
-    TextView textviden;
-    TextView textmad;
-    TextView playerInfo;
     //Studying
     final int VIDEN_PER_CLICK = 1;
     final int TIME_PER_CLICK = 1;
@@ -39,25 +34,27 @@ public class Lektiehjaelp extends AppCompatActivity {
     Button homeworkHelp;
     AlertDialog.Builder dialog;
     private Animation animation;
+    private Topbar topbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.lektiehjaelp);
 
+        topbar = new Topbar();
+        topbar.init(this);
+
         dialog = new AlertDialog.Builder(Lektiehjaelp.this);
 
         final MediaPlayer mp = MediaPlayer.create(this, R.raw.cash);
         final TextView lektiehjaelpInfo = (TextView) findViewById(R.id.lektiehjaelpTextField);
-        playerInfo = (TextView) findViewById(R.id.lektiePlayerInfo);
-        ImageView back = (ImageView) findViewById(R.id.lektieBack);
+        ImageView hjemBack = (ImageView) findViewById(R.id.hjemBack);
         homeworkHelp = (Button) findViewById(R.id.learn);
-        ImageView helpField = (ImageView) findViewById(R.id.studyHelp);
-        textpenge = (TextView) findViewById(R.id.textpenge);
-        textviden = (TextView) findViewById(R.id.textviden);
-        textmad = (TextView) findViewById(R.id.textmad);
+        ImageView helpField = (ImageView) findViewById(R.id.vaerkstedHelp);
         final TextView scrollknowledge = (TextView) findViewById(R.id.scrollknowledge);
         animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.plusknowledge);
+        ImageView menu = (ImageView) findViewById(R.id.menuknap);
+        menu.setVisibility(View.INVISIBLE);
 
         Typeface face;
         face = Typeface.createFromAsset(getAssets(), "fonts/EraserDust.ttf");
@@ -68,7 +65,7 @@ public class Lektiehjaelp extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 v.startAnimation(AnimationUtils.loadAnimation(Lektiehjaelp.this, R.anim.image_click));
-                if (spiller.getTid() >= TIME_PER_CLICK && spiller.getGlemtViden() > 0) {
+                if (instans.getTid() >= TIME_PER_CLICK && instans.getGlemtViden() > 0) {
                     scrollknowledge.setText("+" + VIDEN_PER_CLICK + " viden");
                     scrollknowledge.startAnimation(animation);
                     if (mp.isPlaying()) {
@@ -88,12 +85,12 @@ public class Lektiehjaelp extends AppCompatActivity {
                     }
                     learn();
                     updateText();
-                } else if (spiller.getGlemtViden() <= 0) {
+                } else if (instans.getGlemtViden() <= 0) {
                     AlertDialog.Builder dialog = new AlertDialog.Builder(Lektiehjaelp.this);
                     dialog.setTitle("Ingen glemt viden.");
                     dialog.setMessage("Du har ikke behov for lektiehjælp, da du forstået al undervisning.");
                     dialog.show();
-                } else if (spiller.getTid() <= TIME_PER_CLICK) {
+                } else if (instans.getTid() <= TIME_PER_CLICK) {
                     AlertDialog.Builder dialog = new AlertDialog.Builder(Lektiehjaelp.this);
                     dialog.setTitle("Ikke nok tid!");
                     dialog.setMessage("Du har ikke nok tid til at få lektiehjælp. Kom igen i morgen.");
@@ -111,7 +108,7 @@ public class Lektiehjaelp extends AppCompatActivity {
                 dialog.show();
             }
         });
-        back.setOnClickListener(new View.OnClickListener() {
+        hjemBack.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
                 SpillePlade.updateEntireBoard();
@@ -123,18 +120,13 @@ public class Lektiehjaelp extends AppCompatActivity {
     }
 
     private void learn() {
-        spiller.study(TIME_PER_CLICK, VIDEN_PER_CLICK);
-        spiller.setGlemtViden(spiller.getGlemtViden() - 1);
+        instans.study(TIME_PER_CLICK, VIDEN_PER_CLICK);
+        instans.setGlemtViden(instans.getGlemtViden() - 1);
     }
 
 
-
-
     public void updateText() {
-        textpenge.setText(String.valueOf(spiller.getPenge()));
-        textviden.setText(String.valueOf(spiller.getViden()));
-        textmad.setText(String.valueOf(spiller.getHp()));
-        playerInfo.setText(String.valueOf(spiller.getTid()));
-        SpillePlade.updateInfobox();
+        topbar.opdaterGui(instans);
+        SpillePlade.updateEntireBoard();
     }
 }

@@ -1,168 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/newboard"
-    android:weightSum="1"
-    android:launchMode="singleTask">
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@drawable/newboard"
+              android:weightSum="1"
+              android:launchMode="singleTask">
+
+    <include layout="@layout/topbar"/>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="0.08">
-
-        <!-- home felt-->
-
-        <!-- homework felt -->
-
-        <!-- marked felt-->
-
-        <!-- skole felt -->
-
-        <!-- Bookstore felt -->
-
-        <!-- Shop felt -->
-
-        <!-- Workshop felt -->
-
-        <!-- Farm felt -->
-
-        <ImageView
-            android:layout_width="wrap_content"
-            app:srcCompat="@drawable/pige2"
-            android:id="@+id/asha"
-            android:layout_height="85dp"
-            android:layout_below="@+id/textmad"
-            android:layout_alignStart="@+id/felt4"
-            android:layout_marginStart="14dp" />
-
-        <TextView
-            android:text="penge"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/textpenge"
-            android:fontFamily="sans-serif"
-            android:textColor="@color/money"
-            android:textSize="24sp"
-            android:layout_alignParentTop="true"
-            android:layout_toEndOf="@+id/felt4" />
-
-        <ImageView
-            app:srcCompat="@drawable/ikonpenge"
-            android:id="@+id/imageView8"
-            android:layout_width="30dp"
-            android:layout_height="25dp"
-            android:layout_alignParentTop="true"
-            android:layout_toEndOf="@+id/textpenge" />
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:srcCompat="@drawable/knaphjem"
-            android:id="@+id/ingameopt"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentStart="true"
-            android:layout_toStartOf="@+id/textmad"
-            android:layout_alignBottom="@+id/imageView11" />
-
-        <TextView
-            android:text="mad"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/textmad"
-            android:fontFamily="sans-serif"
-            android:textColor="@color/food"
-            android:textSize="24sp"
-            android:layout_alignParentTop="true"
-            android:layout_toStartOf="@+id/imageView11" />
-
-        <Button
-            android:background="@android:color/transparent"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/felt4"
-            android:layout_alignStart="@+id/felt0"
-            android:layout_below="@+id/felt2"
-            android:layout_alignParentBottom="true"
-            android:layout_alignEnd="@+id/felt0" />
-
-        <Button
-            android:background="@android:color/transparent"
-            android:layout_height="wrap_content"
-            android:id="@+id/felt0"
-            android:layout_alignBottom="@+id/asha"
-            android:layout_centerHorizontal="true"
-            android:layout_below="@+id/imageView9"
-            android:layout_width="120dp" />
-
-        <ImageView
-            android:layout_width="wrap_content"
-            app:srcCompat="@drawable/dreng1"
-            android:id="@+id/kaka"
-            android:adjustViewBounds="false"
-            android:layout_height="85dp"
-            android:layout_weight="0.08"
-            android:layout_below="@+id/textpenge"
-            android:layout_alignEnd="@+id/asha" />
-
-        <Button
-            android:layout_width="110dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/felt7"
-            android:background="@android:color/transparent"
-            android:layout_above="@+id/felt6"
-            android:layout_toStartOf="@+id/imageView9"
-            android:layout_marginEnd="58dp"
-            android:layout_below="@+id/ingameopt" />
-
-        <Button
-            android:background="@android:color/transparent"
-            android:id="@+id/felt1"
-            android:layout_height="80dp"
-            android:layout_width="100dp"
-            android:layout_below="@+id/imageView8"
-            android:layout_alignParentEnd="true"
-            android:layout_toEndOf="@+id/textpenge" />
-
-        <Button
-            android:background="@android:color/transparent"
-            android:layout_height="wrap_content"
-            android:id="@+id/felt3"
-            android:layout_alignParentBottom="true"
-            android:layout_below="@+id/felt2"
-            android:layout_alignStart="@+id/felt1"
-            android:layout_alignParentEnd="true"
-            android:layout_width="120dp" />
-
-        <Button
-            android:background="@android:color/transparent"
-            android:id="@+id/felt6"
-            android:layout_centerVertical="true"
-            android:layout_alignEnd="@+id/felt7"
-            android:layout_marginEnd="10dp"
-            android:layout_height="90dp"
-            android:layout_width="110dp" />
-
-        <Button
-            android:background="@android:color/transparent"
-            android:layout_width="wrap_content"
-            android:id="@+id/felt5"
-            android:layout_height="70dp"
-            android:layout_alignParentBottom="true"
-            android:layout_alignEnd="@+id/felt6"
-            android:layout_alignTop="@+id/felt4"
-            android:layout_alignStart="@+id/felt6" />
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:srcCompat="@drawable/fieldhelp"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:id="@+id/spilpladeHelp"
-            android:layout_above="@+id/felt0" />
 
         <!--
         <rm.com.clocks.ClockImageView
@@ -180,14 +32,7 @@
             app:pointerWidth="thin"
             app:timeSetDuration="400"/>
         -->
-        <ImageView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            app:srcCompat="@drawable/ur0"
-            android:layout_centerVertical="true"
-            android:layout_centerHorizontal="true"
-            android:id="@+id/ur"
-            android:scaleType="centerCrop" />
+
 
         <TextView
             android:text="16"
@@ -201,7 +46,7 @@
             android:layout_marginStart="2dp"
             android:layout_alignBaseline="@+id/felt6"
             android:layout_alignBottom="@+id/felt6"
-            android:layout_toEndOf="@+id/ur" />
+            android:layout_toEndOf="@+id/ur"/>
 
         <TextView
             android:text="TextView"
@@ -209,43 +54,119 @@
             android:layout_height="wrap_content"
             android:id="@+id/infobox"
             android:layout_below="@+id/tid"
-            android:layout_toEndOf="@+id/ur" />
+            android:layout_toEndOf="@+id/ur"/>
 
+        <!-- market felt-->
         <Button
             android:background="@android:color/transparent"
-            android:id="@+id/felt2"
-            android:layout_height="100dp"
-            android:layout_width="200dp"
+            android:id="@+id/felt6"
+            android:layout_height="90dp"
+            android:layout_width="110dp"
             android:layout_below="@+id/felt7"
-            android:layout_toEndOf="@+id/imageView8"
-            android:layout_alignStart="@+id/felt3" />
-
-        <TextView
-            android:text="viden"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/textviden"
-            android:fontFamily="sans-serif"
-            android:textColor="@color/black"
-            android:textSize="24sp"
-            android:layout_alignParentTop="true"
-            android:layout_toStartOf="@+id/imageView9" />
+            android:layout_alignStart="@+id/felt7"
+            android:layout_marginTop="21dp" />
 
         <ImageView
-            app:srcCompat="@drawable/ikonviden"
-            android:id="@+id/imageView9"
-            android:layout_height="34dp"
-            android:layout_width="30dp"
+            android:layout_width="wrap_content"
+            app:srcCompat="@drawable/dreng1"
+            android:id="@+id/kaka"
+            android:adjustViewBounds="false"
+            android:layout_height="85dp"
+            android:layout_weight="0.08"
             android:layout_alignParentTop="true"
             android:layout_alignStart="@+id/felt0" />
 
+
         <ImageView
-            android:layout_width="34dp"
-            app:srcCompat="@drawable/ikonmad"
-            android:id="@+id/imageView11"
-            android:layout_height="34dp"
+            android:layout_width="wrap_content"
+            app:srcCompat="@drawable/pige2"
+            android:id="@+id/asha"
+            android:layout_height="85dp"
             android:layout_alignParentTop="true"
-            android:layout_alignStart="@+id/felt7" />
+            android:layout_alignEnd="@+id/kaka"
+            android:layout_alignBottom="@+id/felt1" />
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            app:srcCompat="@drawable/ur0"
+            android:id="@+id/ur"
+            android:scaleType="centerCrop"
+            android:layout_below="@+id/felt7"
+            android:layout_centerHorizontal="true" />
+
+        <!-- skole felt -->
+        <Button
+            android:background="@android:color/transparent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/felt4"
+            android:layout_alignBottom="@+id/felt5"
+            android:layout_alignStart="@+id/ur"
+            android:layout_alignTop="@+id/felt5"
+            android:layout_alignEnd="@+id/felt0" />
+
+        <!-- boghandel felt-->
+        <Button
+            android:background="@android:color/transparent"
+            android:layout_height="wrap_content"
+            android:id="@+id/felt3"
+            android:layout_width="120dp"
+            android:layout_marginStart="49dp"
+            android:layout_alignBottom="@+id/felt4"
+            android:layout_toEndOf="@+id/infobox"
+            android:layout_alignTop="@+id/felt4" />
+
+        <!-- lektiehjælp felt-->
+        <Button
+            android:background="@android:color/transparent"
+            android:id="@+id/felt1"
+            android:layout_height="80dp"
+            android:layout_width="100dp"
+            android:layout_alignParentTop="true"
+            android:layout_toEndOf="@+id/infobox"
+            android:layout_marginStart="23dp" />
+
+        <!-- butik felt-->
+        <Button
+            android:layout_width="110dp"
+            android:id="@+id/felt7"
+            android:background="@android:color/transparent"
+            android:layout_marginStart="81dp"
+            android:layout_alignParentStart="true"
+            android:layout_height="100dp" />
+
+        <!-- home felt-->
+        <Button
+            android:background="@android:color/transparent"
+            android:layout_height="wrap_content"
+            android:id="@+id/felt0"
+            android:layout_width="120dp"
+            android:layout_alignBaseline="@+id/felt1"
+            android:layout_alignBottom="@+id/felt1"
+            android:layout_alignStart="@+id/ur" />
+
+
+        <!-- Farm felt -->
+        <Button
+            android:background="@android:color/transparent"
+            android:id="@+id/felt5"
+            android:layout_height="100dp"
+            android:layout_marginTop="28dp"
+            android:layout_width="140dp"
+            android:layout_below="@+id/felt6"
+            android:layout_alignStart="@+id/felt6" />
+
+        <!-- cykel felt-->
+        <Button
+            android:background="@android:color/transparent"
+            android:id="@+id/felt2"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_above="@+id/felt3"
+            android:layout_alignStart="@+id/felt3"
+            android:layout_alignTop="@+id/felt6"
+            android:layout_alignEnd="@+id/felt3" />
 
 
     </RelativeLayout>

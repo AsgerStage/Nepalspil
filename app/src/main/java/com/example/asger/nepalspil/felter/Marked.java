@@ -5,7 +5,6 @@ import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.view.Gravity;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -14,22 +13,22 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import static com.example.asger.nepalspil.activities.MainActivity.spiller;
-
 import com.example.asger.nepalspil.R;
 import com.example.asger.nepalspil.activities.SpillePlade;
+import com.example.asger.nepalspil.models.Spiller;
 
 import java.io.IOException;
+
+import static com.example.asger.nepalspil.models.Spiller.instans;
+
 
 public class Marked extends AppCompatActivity {
     Toast t;
     AlertDialog.Builder dialog;
-    TextView textpenge;
-    TextView textviden;
-    TextView textmad;
     TextView playerinfo;
     private Animation animation;
     private Animation animationfood;
+    private Topbar topbar;
 
     //Working
     final int MONEY_PER_CLICK = 5;
@@ -51,19 +50,21 @@ public class Marked extends AppCompatActivity {
         playerinfo = (TextView) findViewById(R.id.playerinfo);
         final MediaPlayer mp = MediaPlayer.create(this, R.raw.cash);
 
+        topbar = new Topbar();
+        topbar.init(this);
+
         Button work = (Button) findViewById(R.id.workButton);
         final Button eat = (Button) findViewById(R.id.eatButton);
-        final ImageView back = (ImageView) findViewById(R.id.backButton);
-        ImageView helpField = (ImageView) findViewById(R.id.markedHelp);
+        final ImageView hjemBack = (ImageView) findViewById(R.id.hjemBack);
+        ImageView helpField = (ImageView) findViewById(R.id.vaerkstedHelp);
+        ImageView menu = (ImageView) findViewById(R.id.menuknap);
+        menu.setVisibility(View.INVISIBLE);
 
-        textpenge = (TextView) findViewById(R.id.textpenge);
-        textviden = (TextView) findViewById(R.id.textviden);
-        textmad = (TextView) findViewById(R.id.textmad);
         final TextView money = (TextView) findViewById(R.id.money);
         final TextView food = (TextView) findViewById(R.id.food);
 
-        animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.plusmoneymarked);
-        animationfood = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.plusfoodmarked);
+        animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.plusknowledge);
+        animationfood = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.plusknowledge);
 
 
         fieldinfo.setText(" På markedet kan du\n købe mad eller arbejde \n for at tjene penge.");
@@ -80,8 +81,8 @@ public class Marked extends AppCompatActivity {
 
             public void onClick(View v) {
                 v.startAnimation(AnimationUtils.loadAnimation(Marked.this, R.anim.image_click));
-                if (spiller.getTid() >= TIME_PER_CLICK && spiller.getKlassetrin() >= 2) {
-                    spiller.work(TIME_PER_CLICK, MONEY_PER_CLICK);
+                if (Spiller.instans.getTid() >= TIME_PER_CLICK && Spiller.instans.getKlassetrin() >= 3) {
+                    Spiller.instans.work(TIME_PER_CLICK, MONEY_PER_CLICK);
                     money.setText("+" + MONEY_PER_CLICK + " kr");
                     money.startAnimation(animation);
 
@@ -102,8 +103,8 @@ public class Marked extends AppCompatActivity {
                         e.printStackTrace();
                     }
 
-                   updateText();
-                } else if (spiller.getTid() < 2) {
+                    updateText();
+                } else if (Spiller.instans.getTid() < 2) {
                     AlertDialog.Builder dialog = new AlertDialog.Builder(Marked.this);
                     dialog.setTitle("Intet tid!");
                     dialog.setMessage("Du har ikke nok tid til at arbejde");
@@ -122,8 +123,8 @@ public class Marked extends AppCompatActivity {
 
             public void onClick(View v) {
                 v.startAnimation(AnimationUtils.loadAnimation(Marked.this, R.anim.image_click));
-                if (spiller.getPenge() >= COST_PER_FOOD_CLICK) {
-                    spiller.eat(TIME_COST_EATING, COST_PER_FOOD_CLICK, FOOD_PER_CLICK);
+                if (Spiller.instans.getPenge() >= COST_PER_FOOD_CLICK) {
+                    Spiller.instans.eat(TIME_COST_EATING, COST_PER_FOOD_CLICK, FOOD_PER_CLICK);
                     if (mp.isPlaying()) {
                         mp.stop();
                         food.setText("+" + FOOD_PER_CLICK + " mad");
@@ -154,13 +155,10 @@ public class Marked extends AppCompatActivity {
             }
         });
 
-        back.setOnClickListener(new View.OnClickListener() {
+        hjemBack.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
                 t.cancel();
-                SpillePlade.updateTextpenge();
-                SpillePlade.updateTextmad();
-                SpillePlade.updateTextviden();
                 v.startAnimation(AnimationUtils.loadAnimation(Marked.this, R.anim.image_click));
                 finish();
 
@@ -174,7 +172,6 @@ public class Marked extends AppCompatActivity {
     }
 
 
-
     @Override
     public void onBackPressed() {
         SpillePlade.updateEntireBoard();
@@ -183,10 +180,7 @@ public class Marked extends AppCompatActivity {
     }
 
     public void updateText() {
-        textpenge.setText(String.valueOf(spiller.getPenge()));
-        textviden.setText(String.valueOf(spiller.getViden()));
-        textmad.setText(String.valueOf(spiller.getHp()));
-        playerinfo.setText(String.valueOf(spiller.getTid()));
+        topbar.opdaterGui(instans);
         SpillePlade.updateEntireBoard();
     }
 }

@@ -13,13 +13,9 @@ import android.widget.TextView;
 import com.example.asger.nepalspil.R;
 import com.example.asger.nepalspil.activities.SpillePlade;
 
-import static com.example.asger.nepalspil.activities.MainActivity.spiller;
+import static com.example.asger.nepalspil.models.Spiller.instans;
 
 public class Butikken extends AppCompatActivity {
-    TextView textpenge;
-    TextView textviden;
-    TextView textmad;
-    TextView texttid;
     @Override
     public void onBackPressed() {
         SpillePlade.updateEntireBoard();
@@ -27,28 +23,30 @@ public class Butikken extends AppCompatActivity {
     }
 
     AlertDialog.Builder dialog;
+    private Topbar topbar;
 
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.toejbutik);
 
+        topbar = new Topbar();
+        topbar.init(this);
+
         dialog = new AlertDialog.Builder(Butikken.this);
         final TextView fieldinfo = (TextView) findViewById(R.id.tbInfo);
         final MediaPlayer mp = MediaPlayer.create(this, R.raw.cash);
-        ImageView helpField = (ImageView) findViewById(R.id.tbHelp);
+        ImageView helpField = (ImageView) findViewById(R.id.vaerkstedHelp);
         final Button buy = (Button) findViewById(R.id.tbBuy);
-        ImageView back = (ImageView) findViewById(R.id.tbBack);
-        textpenge = (TextView) findViewById(R.id.textpenge);
-        textviden = (TextView) findViewById(R.id.textviden);
-        textmad = (TextView) findViewById(R.id.textmad);
-        texttid = (TextView) findViewById(R.id.schoolPlayerInfo);
+        ImageView hjemBack = (ImageView) findViewById(R.id.hjemBack);
+        ImageView menu = (ImageView) findViewById(R.id.menuknap);
+        menu.setVisibility(View.INVISIBLE);
         updateText();
 
         fieldinfo.setText("I butikken kan du købe skoleting, som gør det lettere at få viden.");
 
 
-        switch (spiller.getLearningAmp()) {
+        switch (instans.getLearningAmp()) {
             case 0:
                 buy.setText("Køb Kladehæfte");
                 break;
@@ -75,8 +73,8 @@ public class Butikken extends AppCompatActivity {
         buy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (spiller.getLearningAmp() == 2) {
-                    if (spiller.getPenge() >= 700) {
+                if (instans.getLearningAmp() == 2) {
+                    if (instans.getPenge() >= 700) {
                         buy();
                         AlertDialog.Builder dialog = new AlertDialog.Builder(Butikken.this);
                         dialog.setTitle("Lommeregner købt");
@@ -90,10 +88,9 @@ public class Butikken extends AppCompatActivity {
                         dialog.show();
                     }
                 }
-                if (spiller.getLearningAmp() == 1) {
-                    if (spiller.getPenge() >= 300) {
+                if (instans.getLearningAmp() == 1) {
+                    if (instans.getPenge() >= 300) {
                         buy();
-                        // playerinfo.setText(updateInfo());
                         AlertDialog.Builder dialog = new AlertDialog.Builder(Butikken.this);
                         dialog.setTitle("Blyanter købt");
                         dialog.setMessage("Du har købt nye blyanter for 300kr.");
@@ -106,8 +103,8 @@ public class Butikken extends AppCompatActivity {
                         dialog.show();
                     }
                 }
-                if (spiller.getLearningAmp() == 0) {
-                    if (spiller.getPenge() >= 150) {
+                if (instans.getLearningAmp() == 0) {
+                    if (instans.getPenge() >= 150) {
                         buy();
                         AlertDialog.Builder dialog = new AlertDialog.Builder(Butikken.this);
                         dialog.setTitle("Kladehæfte købt");
@@ -124,7 +121,7 @@ public class Butikken extends AppCompatActivity {
             }
         });
 
-        back.setOnClickListener(new View.OnClickListener() {
+        hjemBack.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
                 SpillePlade.updateEntireBoard();
@@ -136,32 +133,25 @@ public class Butikken extends AppCompatActivity {
     }
 
     private void buy() {
-        switch (spiller.getLearningAmp()) {
+        switch (instans.getLearningAmp()) {
             case 0:
-                spiller.setLearningAmp(1);
-                spiller.setPenge(spiller.getPenge() - 150);
+                instans.setLearningAmp(1);
+                instans.setPenge(instans.getPenge() - 150);
                 break;
             case 1:
-                spiller.setLearningAmp(2);
-                spiller.setPenge(spiller.getPenge() - 300);
+                instans.setLearningAmp(2);
+                instans.setPenge(instans.getPenge() - 300);
                 break;
             case 2:
-                spiller.setLearningAmp(3);
-                spiller.setPenge(spiller.getPenge() - 700);
+                instans.setLearningAmp(3);
+                instans.setPenge(instans.getPenge() - 700);
                 break;
         }
     }
 
-    public String updateInfo() {
-        SpillePlade.updateInfobox();
-        //Har ingen funktion i butikken
-        return "";
-    }
 
     public void updateText() {
-        textpenge.setText(String.valueOf(spiller.getPenge()));
-        textviden.setText(String.valueOf(spiller.getViden()));
-        textmad.setText(String.valueOf(spiller.getHp()));
-        texttid.setText(String.valueOf(spiller.getTid()));
+        topbar.opdaterGui(instans);
+        SpillePlade.updateEntireBoard();
     }
 }

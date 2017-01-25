@@ -1,118 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:weightSum="1"
-    android:background="@drawable/boghandelinside"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:weightSum="1"
+              android:background="@drawable/boghandelinside"
     >
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="30dp">
-
-        <ImageView
-            android:layout_width="34dp"
-            android:layout_height="34dp"
-            app:srcCompat="@drawable/ikonviden"
-            android:id="@+id/imageView28"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true" />
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:srcCompat="@drawable/newback"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentStart="true"
-            android:id="@+id/backButton" />
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:srcCompat="@drawable/fieldhelp"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentEnd="true"
-            android:id="@+id/boghandelHelp" />
-
-        <TextView
-            android:text="Viden"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/textviden"
-            android:elevation="1dp"
-            android:fontFamily="sans-serif"
-            android:textSize="24sp"
-            android:textColor="@color/black"
-            android:layout_alignParentBottom="true"
-            android:layout_toStartOf="@+id/imageView28" />
-
-        <ImageView
-            android:layout_width="34dp"
-            android:layout_height="34dp"
-            app:srcCompat="@drawable/ikonpenge"
-            android:id="@+id/imageView29"
-            android:layout_alignParentBottom="true"
-            android:layout_toEndOf="@+id/textpenge"
-            android:layout_marginStart="9dp" />
-
-        <TextView
-            android:text="Mad"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/textmad"
-            android:elevation="1dp"
-            android:fontFamily="sans-serif"
-            android:textSize="24sp"
-            android:textColor="@color/food"
-            android:layout_alignParentBottom="true"
-            android:layout_toEndOf="@+id/backButton"
-            android:layout_marginStart="9dp" />
-
-        <ImageView
-            android:layout_width="34dp"
-            android:layout_height="34dp"
-            app:srcCompat="@drawable/ikonmad"
-            android:id="@+id/imageView27"
-            android:layout_alignTop="@+id/textmad"
-            android:layout_toEndOf="@+id/textmad" />
-
-        <TextView
-            android:text="Penge"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/textpenge"
-            android:elevation="1dp"
-            android:fontFamily="sans-serif"
-            android:textSize="24sp"
-            android:textColor="@color/money"
-            android:layout_marginStart="25dp"
-            android:layout_alignParentBottom="true"
-            android:layout_toEndOf="@+id/imageView28" />
-
-        <ImageView
-            android:layout_height="34dp"
-            app:srcCompat="@drawable/urikon"
-            android:id="@+id/imageView40"
-            android:layout_marginStart="32dp"
-            android:layout_width="34dp"
-            android:layout_alignParentTop="true"
-            android:layout_toEndOf="@+id/imageView29" />
-
-        <TextView
-            android:text="16"
-            android:layout_width="34dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/bookstorePlayerInfo"
-            android:elevation="1dp"
-            android:fontFamily="sans-serif"
-            android:textSize="24sp"
-            android:textColor="@color/black"
-            android:gravity="right"
-            android:textAlignment="gravity"
-            android:layout_alignParentBottom="true"
-            android:layout_toEndOf="@+id/imageView29" />
-    </RelativeLayout>
+    <include layout="@layout/topbar"/>
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -125,7 +20,7 @@
             app:srcCompat="@drawable/pige1"
             android:id="@+id/imageView30"
             android:layout_alignParentBottom="true"
-            android:layout_alignParentEnd="true" />
+            android:layout_alignParentEnd="true"/>
 
         <ImageView
             android:layout_width="wrap_content"
@@ -134,7 +29,7 @@
             android:id="@+id/imageView31"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
-            android:layout_marginEnd="81dp" />
+            android:layout_marginEnd="81dp"/>
 
         <TextView
             android:text="Info om boghandel"
@@ -144,7 +39,7 @@
             android:layout_width="170dp"
             android:layout_marginEnd="17dp"
             android:layout_alignTop="@+id/imageView30"
-            android:layout_toStartOf="@+id/imageView30" />
+            android:layout_toStartOf="@+id/imageView30"/>
     </RelativeLayout>
 
     <TextView
@@ -153,7 +48,7 @@
         android:id="@+id/scrollmoney"
         android:textColor="@color/money"
         android:textAlignment="center"
-        android:textSize="20sp" />
+        android:textSize="20sp"/>
 
     <LinearLayout
         android:orientation="horizontal"
@@ -166,7 +61,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/workButton"
-            android:layout_weight="1" />
+            android:layout_weight="1"/>
 
         <Button
             android:background="@android:color/transparent"
@@ -174,7 +69,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/buyBookButton"
-            android:layout_weight="1" />
+            android:layout_weight="1"/>
 
     </LinearLayout>
 

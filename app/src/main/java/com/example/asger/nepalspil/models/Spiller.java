@@ -4,6 +4,7 @@ import android.util.Log;
 
 
 public class Spiller {
+    public static Spiller instans;
     public boolean sex;
     private int learningAmp = 0;
     private int glemtViden;
@@ -19,6 +20,8 @@ public class Spiller {
     private int moveSpeed;
     private int lastBookBought;
     public boolean music;
+
+    public Figurdata figurdata;
 
 
     public Spiller(String navn) {
@@ -70,15 +73,22 @@ public class Spiller {
 
     }
 
+    public final static int BRÆTSTØRRELSE = 8;//Kan ændres hvis spillepladen skulle udvides
+
+    public Spiller(Figurdata figur) {
+        this(figur.navn, figur.startpenge, 16, 0, 100, 1, figur.drengekøn, 1, 1, 0);
+        figurdata = figur;
+    }
+
     /**
      * Rykker spilleren og trækker den korrekte mængde tid fra spilleren.
+     *
      * @param newPosition ønsket ny pos
      * @return true hvis tiden er gået og ny runde er startet
      */
     public boolean move(int newPosition) {
         //Løsningen virker lidt bøvlet, men da Javas modulo (%) kan blive negativ gav det nogle problemer.
         //Math.floorMod metoden kunne være benyttet, men det ville samtidigt gøre at applikationen kun vil virke til android API 24 og frem.
-        int boardsize = 8;//Kan ændres hvis spillepladen skulle udvides
         int count1 = 0;
         int count2 = 0;
         int j = this.position;
@@ -93,7 +103,7 @@ public class Spiller {
                 // Log.d("Spiller","1count1:"+count1); Til debugging
                 i++;
                 Log.d("Spiller", "i:" + i + " Newposition= " + newPosition);
-                if (((i + boardsize) % boardsize) == newPosition) {
+                if (((i + BRÆTSTØRRELSE) % BRÆTSTØRRELSE) == newPosition) {
                     break;
                 }              //Laver en ikke-negativ modulo, som Math.floorMod ville gøre.
             }
@@ -102,7 +112,7 @@ public class Spiller {
                 //  Log.d("Spiller","1count2:"+count2); //Til debugging
                 j--;
                 Log.d("Spiller", "j:" + j + " Newposition= " + newPosition);
-                if (((j + boardsize) % boardsize) == newPosition) {
+                if (((j + BRÆTSTØRRELSE) % BRÆTSTØRRELSE) == newPosition) {
                     break;
                 }
             }
@@ -138,22 +148,11 @@ public class Spiller {
         }
 
 
-        return checkTur();
-
-    }
-
-    /**
-     * Tjekker om en ny runde skal startes
-     * @return true hvis tiden er gået og ny runde er startet
-     */
-    private boolean checkTur() {
         if (this.tid <= 0) {
             this.runde++;
             this.tid = 16;
             this.position = 0;
             return true;
-
-
         }
         return false;
     }
