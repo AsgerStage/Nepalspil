@@ -7,7 +7,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="116dp">
+        android:layout_height="92dp">
 
         <TextView
             android:text="Vælg figur"
@@ -31,14 +31,14 @@
             android:layout_width="wrap_content"
             android:layout_weight="1">
 
-            <ImageView
+            <ImageButton
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                app:srcCompat="@drawable/dreng2"
+                app:srcCompat="@drawable/drenghelfigur2"
+                android:background="?android:selectableItemBackground"
                 android:id="@+id/KamalFigur"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentStart="true"
-                android:layout_alignTop="@+id/LaxmiFigur" />
+                android:scaleType="centerInside"/>
+
         </LinearLayout>
 
         <LinearLayout
@@ -47,15 +47,14 @@
             android:layout_width="wrap_content"
             android:layout_weight="1">
 
-            <ImageView
+            <ImageButton
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                app:srcCompat="@drawable/pige1"
+                app:srcCompat="@drawable/pigehelfigur1"
                 android:id="@+id/LaxmiFigur"
-                android:layout_alignTop="@+id/KrishnaFigur"
-                android:layout_toEndOf="@+id/KamalFigur"
-                android:layout_alignParentBottom="true"
-                android:layout_weight="1" />
+                android:background="?android:selectableItemBackground"
+                android:scaleType="centerInside" />
+
         </LinearLayout>
 
         <LinearLayout
@@ -64,13 +63,15 @@
             android:layout_height="match_parent"
             android:layout_weight="1">
 
-            <ImageView
+            <ImageButton
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                app:srcCompat="@drawable/dreng1"
+                app:srcCompat="@drawable/drenghelfigur1"
                 android:id="@+id/KrishnaFigur"
-                android:layout_toStartOf="@+id/AshaFigure"
+                android:background="?android:selectableItemBackground"
+                android:scaleType="centerInside"
                 android:layout_weight="1" />
+
         </LinearLayout>
 
         <LinearLayout
@@ -79,11 +80,15 @@
             android:layout_weight="1"
             android:layout_width="wrap_content">
 
-            <ImageView
+            <ImageButton
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                app:srcCompat="@drawable/pige2"
-                android:id="@+id/AshaFigur" />
+                app:srcCompat="@drawable/pigehelfigur2"
+                android:background="?android:selectableItemBackground"
+                android:id="@+id/AshaFigur"
+                android:scaleType="centerInside"
+                />
+
         </LinearLayout>
     </LinearLayout>
 

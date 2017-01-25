@@ -68,23 +68,22 @@
 
         <ImageView
             android:layout_width="wrap_content"
-            app:srcCompat="@drawable/dreng1"
-            android:id="@+id/kaka"
+            app:srcCompat="@drawable/drenghelfigur1"
+            android:id="@+id/krishna"
             android:adjustViewBounds="false"
-            android:layout_height="85dp"
             android:layout_weight="0.08"
             android:layout_alignParentTop="true"
-            android:layout_alignStart="@+id/felt0" />
+            android:layout_alignStart="@+id/felt0"
+            android:layout_height="100dp" />
 
 
         <ImageView
             android:layout_width="wrap_content"
-            app:srcCompat="@drawable/pige2"
+            app:srcCompat="@drawable/pigehelfigur2"
             android:id="@+id/asha"
-            android:layout_height="85dp"
             android:layout_alignParentTop="true"
-            android:layout_alignEnd="@+id/kaka"
-            android:layout_alignBottom="@+id/felt1" />
+            android:layout_alignEnd="@+id/krishna"
+            android:layout_height="100dp" />
 
         <ImageView
             android:layout_width="100dp"

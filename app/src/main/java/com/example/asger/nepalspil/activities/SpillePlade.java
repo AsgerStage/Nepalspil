@@ -105,11 +105,11 @@ public class SpillePlade extends AppCompatActivity {
 
         dialog = new AlertDialog.Builder(SpillePlade.this);
         if (Spiller.instans.sex) {
-            Player = (ImageView) findViewById(R.id.kaka);
+            Player = (ImageView) findViewById(R.id.krishna);
             unusedPlayer = (ImageView) findViewById(R.id.asha);
         } else if (!Spiller.instans.sex) {
             Player = (ImageView) findViewById(R.id.asha);
-            unusedPlayer = (ImageView) findViewById(R.id.kaka);
+            unusedPlayer = (ImageView) findViewById(R.id.krishna);
         }
         if (getIntent().getBooleanExtra("genoptag", false) == false) { // nyt spil - vis dialog
             new AlertDialog.Builder(this)
