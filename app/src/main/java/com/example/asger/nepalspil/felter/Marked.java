@@ -25,9 +25,6 @@ import static com.example.asger.nepalspil.models.Spiller.instans;
 public class Marked extends AppCompatActivity {
     Toast t;
     AlertDialog.Builder dialog;
-    TextView textpenge;
-    TextView textviden;
-    TextView textmad;
     TextView playerinfo;
     private Animation animation;
     private Animation animationfood;
@@ -63,9 +60,6 @@ public class Marked extends AppCompatActivity {
         ImageView menu = (ImageView) findViewById(R.id.menuknap);
         menu.setVisibility(View.INVISIBLE);
 
-        /*textpenge = (TextView) findViewById(R.id.textpenge);
-        textviden = (TextView) findViewById(R.id.textviden);
-        textmad = (TextView) findViewById(R.id.textmad);*/
         final TextView money = (TextView) findViewById(R.id.money);
         final TextView food = (TextView) findViewById(R.id.food);
 

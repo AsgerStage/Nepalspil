@@ -28,10 +28,7 @@ public class Skole extends AppCompatActivity {
 
     private Animation animation;
     private Animation animationfood;
-    static TextView textpenge;
-    static TextView textviden;
-    static TextView textmad;
-    static TextView playerInfo;
+
     private Topbar topbar;
 
 
@@ -70,7 +67,6 @@ public class Skole extends AppCompatActivity {
 
         final MediaPlayer mp = MediaPlayer.create(this, R.raw.cash);
         final TextView schoolText = (TextView) findViewById(R.id.schoolText);
-       // playerInfo = (TextView) findViewById(R.id.schoolPlayerInfo);
         final TextView klassetrin = (TextView) findViewById(R.id.klassetrin);
         Button bSpis = (Button) findViewById(R.id.spis);
         Button bStuder = (Button) findViewById(R.id.Studer);
@@ -91,7 +87,6 @@ public class Skole extends AppCompatActivity {
         Typeface face;
         face = Typeface.createFromAsset(getAssets(), "fonts/EraserDust.ttf");
         klassetrin.setTypeface(face);
-
 
 
         dialog = new AlertDialog.Builder(Skole.this);
@@ -124,7 +119,7 @@ public class Skole extends AppCompatActivity {
                     mad.startAnimation(animationfood);
                     spis();
                     schoolText.setText("Mmm! Du har spist skolemad.");
-                   updateText();
+                    updateText();
                     if (mp.isPlaying()) {
                         mp.stop();
                     }
@@ -159,7 +154,7 @@ public class Skole extends AppCompatActivity {
                         scroll.setText("+" + VIDEN_PER_CLICK + " viden");
                         scroll.startAnimation(animation);
                         instans.study(TIME_PER_CLICK, VIDEN_PER_CLICK);
-                       updateText();
+                        updateText();
                         if (mp.isPlaying()) {
                             mp.stop();
                         }
@@ -321,10 +316,11 @@ public class Skole extends AppCompatActivity {
         else if (rand < homework && rand >= fail) return 3;
         else return 0;
     }
-   public void updateText() {
-       topbar.opdaterGui(instans);
-       SpillePlade.updateEntireBoard();
-   }
+
+    public void updateText() {
+        topbar.opdaterGui(instans);
+        SpillePlade.updateEntireBoard();
+    }
 
 
 }

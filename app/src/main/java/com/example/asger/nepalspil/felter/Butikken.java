@@ -16,11 +16,6 @@ import com.example.asger.nepalspil.activities.SpillePlade;
 import static com.example.asger.nepalspil.models.Spiller.instans;
 
 public class Butikken extends AppCompatActivity {
-    TextView textpenge;
-    TextView textviden;
-    TextView textmad;
-    TextView texttid;
-
     @Override
     public void onBackPressed() {
         SpillePlade.updateEntireBoard();
@@ -46,10 +41,6 @@ public class Butikken extends AppCompatActivity {
         ImageView hjemBack = (ImageView) findViewById(R.id.hjemBack);
         ImageView menu = (ImageView) findViewById(R.id.menuknap);
         menu.setVisibility(View.INVISIBLE);
-       /* textpenge = (TextView) findViewById(R.id.textpenge);
-        textviden = (TextView) findViewById(R.id.textviden);
-        textmad = (TextView) findViewById(R.id.textmad);
-        texttid = (TextView) findViewById(R.id.schoolPlayerInfo);*/
         updateText();
 
         fieldinfo.setText("I butikken kan du købe skoleting, som gør det lettere at få viden.");
@@ -100,7 +91,6 @@ public class Butikken extends AppCompatActivity {
                 if (instans.getLearningAmp() == 1) {
                     if (instans.getPenge() >= 300) {
                         buy();
-                        // playerinfo.setText(updateInfo());
                         AlertDialog.Builder dialog = new AlertDialog.Builder(Butikken.this);
                         dialog.setTitle("Blyanter købt");
                         dialog.setMessage("Du har købt nye blyanter for 300kr.");
@@ -159,10 +149,6 @@ public class Butikken extends AppCompatActivity {
         }
     }
 
-    public String updateInfo() {
-        //Har ingen funktion i butikken
-        return "";
-    }
 
     public void updateText() {
         topbar.opdaterGui(instans);

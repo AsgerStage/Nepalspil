@@ -21,10 +21,6 @@ import static com.example.asger.nepalspil.models.Spiller.instans;
 
 
 public class Farm extends AppCompatActivity {
-    TextView textpenge;
-    TextView textviden;
-    TextView textmad;
-    TextView playerinfo;
     final int MONEY_PER_CLICK = 3;
     final int TIME_PER_CLICK = 1;
 
@@ -48,7 +44,7 @@ public class Farm extends AppCompatActivity {
 
         dialog = new AlertDialog.Builder(Farm.this);
         final TextView fieldinfo = (TextView) findViewById(R.id.fieldinfo);
-       // playerinfo = (TextView) findViewById(R.id.playerinfo);
+        // playerinfo = (TextView) findViewById(R.id.playerinfo);
         final MediaPlayer mp = MediaPlayer.create(this, R.raw.cash);
         animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.plusknowledge);
 
@@ -58,9 +54,6 @@ public class Farm extends AppCompatActivity {
         final TextView money = (TextView) findViewById(R.id.scrollmoney);
         ImageView menu = (ImageView) findViewById(R.id.menuknap);
         menu.setVisibility(View.INVISIBLE);
-       /* textpenge = (TextView) findViewById(R.id.textpenge);
-        textviden = (TextView) findViewById(R.id.textviden);
-        textmad = (TextView) findViewById(R.id.textmad);*/
         updateText();
 
        /* Typeface face;

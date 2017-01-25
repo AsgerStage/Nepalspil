@@ -21,10 +21,6 @@ import java.io.IOException;
 import static com.example.asger.nepalspil.models.Spiller.instans;
 
 public class Lektiehjaelp extends AppCompatActivity {
-    TextView textpenge;
-    TextView textviden;
-    TextView textmad;
-    TextView playerInfo;
     //Studying
     final int VIDEN_PER_CLICK = 1;
     final int TIME_PER_CLICK = 1;
@@ -52,13 +48,9 @@ public class Lektiehjaelp extends AppCompatActivity {
 
         final MediaPlayer mp = MediaPlayer.create(this, R.raw.cash);
         final TextView lektiehjaelpInfo = (TextView) findViewById(R.id.lektiehjaelpTextField);
-      //  playerInfo = (TextView) findViewById(R.id.lektiePlayerInfo);
         ImageView hjemBack = (ImageView) findViewById(R.id.hjemBack);
         homeworkHelp = (Button) findViewById(R.id.learn);
         ImageView helpField = (ImageView) findViewById(R.id.vaerkstedHelp);
-       /* textpenge = (TextView) findViewById(R.id.textpenge);
-        textviden = (TextView) findViewById(R.id.textviden);
-        textmad = (TextView) findViewById(R.id.textmad);*/
         final TextView scrollknowledge = (TextView) findViewById(R.id.scrollknowledge);
         animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.plusknowledge);
         ImageView menu = (ImageView) findViewById(R.id.menuknap);

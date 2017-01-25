@@ -117,7 +117,8 @@ public class Hovedmenu_akt extends AppCompatActivity {
 
                 Spiller.instans = new Spiller(prefs.getBoolean("Sex", true), prefs.getInt("Books", 0), prefs.getInt("Position", 0), prefs.getString("Navn", null), prefs.getInt("Penge", 0), prefs.getInt("Hp", 0), prefs.getInt("Viden", 0), prefs.getInt("Klassetrin", 0), prefs.getInt("Tid", 0), prefs.getInt("Runde", 0), prefs.getInt("Movespeed", 1), prefs.getInt("LastBookBought", 0));
                 Spiller.instans.figurdata = Grunddata.instans.spillere.get(Spiller.instans.getNavn());
-                if (Spiller.instans.figurdata==null) throw new IllegalStateException(Spiller.instans.getNavn()+" mangler i grunddata");
+                if (Spiller.instans.figurdata == null)
+                    throw new IllegalStateException(Spiller.instans.getNavn() + " mangler i grunddata");
                 if (Spiller.instans.getSex() == true) {
                     checkmarkasha.setVisibility(View.INVISIBLE);
                     checkmarkkrishna.setVisibility(View.VISIBLE);
@@ -200,7 +201,8 @@ public class Hovedmenu_akt extends AppCompatActivity {
                     u.json = uheldjson;
                     figur.uheld.add(u);
                     u.titel = uheldjson.optString("titel", null);
-                    if (u.titel == null) continue; // tomt uheld, dvs faktisk ikke et uheld, men fyld for at mindste risikoen for 'rigtige' uheld
+                    if (u.titel == null)
+                        continue; // tomt uheld, dvs faktisk ikke et uheld, men fyld for at mindste risikoen for 'rigtige' uheld
                     u.tekst = uheldjson.getString("tekst");
                     u.pengeForskel = uheldjson.optInt("pengeForskel");
                     u.madForskel = uheldjson.optInt("madForskel");

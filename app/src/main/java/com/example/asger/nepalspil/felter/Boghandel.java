@@ -20,10 +20,6 @@ import java.io.IOException;
 import static com.example.asger.nepalspil.models.Spiller.instans;
 
 public class Boghandel extends AppCompatActivity {
-    TextView textpenge;
-    TextView textviden;
-    TextView textmad;
-    TextView playerInfo;
     final int MONEY_PER_CLICK = 20;
     final int TIME_PER_CLICK = 1;
 
@@ -46,7 +42,6 @@ public class Boghandel extends AppCompatActivity {
         topbar.init(this);
 
         dialog = new AlertDialog.Builder(Boghandel.this);
-      //  playerInfo = (TextView) findViewById(R.id.bookstorePlayerInfo);
         final TextView bookstoreInfo = (TextView) findViewById(R.id.fieldinfo);
         final MediaPlayer mp = MediaPlayer.create(this, R.raw.cash);
         ImageView helpField = (ImageView) findViewById(R.id.vaerkstedHelp);
@@ -57,10 +52,6 @@ public class Boghandel extends AppCompatActivity {
         animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.plusknowledge);
         ImageView menu = (ImageView) findViewById(R.id.menuknap);
         menu.setVisibility(View.INVISIBLE);
-       /* textpenge = (TextView) findViewById(R.id.textpenge);
-        textviden = (TextView) findViewById(R.id.textviden);
-        textmad = (TextView) findViewById(R.id.textmad);
-*/
 
         bookstoreInfo.setText("I boghandlen kan du købe skolebøger. Skolebøger giver mere viden. \n Du kan også få et job i boghandlen, hvis du har gået i skole længe nok.");
         updateText();

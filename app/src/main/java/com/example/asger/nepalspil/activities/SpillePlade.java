@@ -31,7 +31,9 @@ import com.example.asger.nepalspil.models.Figuruheld;
 import com.example.asger.nepalspil.models.Spiller;
 
 import java.util.concurrent.ThreadLocalRandom;
+
 import com.example.asger.nepalspil.felter.Topbar;
+
 import static com.example.asger.nepalspil.activities.MusicManager.mp;
 import static com.example.asger.nepalspil.models.Spiller.instans;
 
@@ -39,9 +41,6 @@ import static com.example.asger.nepalspil.models.Spiller.instans;
 
 public class SpillePlade extends AppCompatActivity {
     TextView infobox;
-    TextView textpenge;
-    TextView textviden;
-    TextView textmad;
     private Topbar topbar;
 
 
@@ -108,10 +107,7 @@ public class SpillePlade extends AppCompatActivity {
         unusedPlayer.setVisibility(View.INVISIBLE);
 
         infobox = (TextView) findViewById(R.id.infobox);
-        /*
-        textpenge = (TextView) findViewById(R.id.textpenge);
-        textviden = (TextView) findViewById(R.id.textviden);
-        textmad = (TextView) findViewById(R.id.textmad);*/
+
 
         tidTextView = (TextView) findViewById(R.id.tid);
         //ur = (ClockImageView) findViewById(R.id.ur);
@@ -278,8 +274,8 @@ public class SpillePlade extends AppCompatActivity {
 
     /**
      * Flytter spilleren
-     * @param feltPos   feltnummer
      *
+     * @param feltPos feltnummer
      */
     private void flytBrikTilFelt(int feltPos) {
 
@@ -292,14 +288,14 @@ public class SpillePlade extends AppCompatActivity {
         final int nyTid = Spiller.instans.getTid();
         int tidÆndring = gammelTid - nyTid;
 
-        if (turenErGået || tidÆndring==0) {
+        if (turenErGået || tidÆndring == 0) {
             flytBrikTilFeltAfslutning(turenErGået, nyPos);
             return;
         }
 
         // Vi skal lave en animation fra startfelt til slutfelt
-        if (tidÆndring<=0) {
-            new IllegalStateException("Intern fejl - tidÆndring="+tidÆndring).printStackTrace();
+        if (tidÆndring <= 0) {
+            new IllegalStateException("Intern fejl - tidÆndring=" + tidÆndring).printStackTrace();
             flytBrikTilFeltAfslutning(turenErGået, nyPos);
             return;
         }
@@ -307,12 +303,12 @@ public class SpillePlade extends AppCompatActivity {
         int posÆndring = nyPos - gammelPos;
         // ovenstående vil gå mellem felterne 0-1-2-3-4-5-6 til 7, men aldrig passere 0.
         // tjek for om det er smartere med et hop mellem felt 7 og felt 0:
-        if (posÆndring>Spiller.BRÆTSTØRRELSE/2) {
+        if (posÆndring > Spiller.BRÆTSTØRRELSE / 2) {
             posÆndring = posÆndring - Spiller.BRÆTSTØRRELSE; // smartere at gå baglæns via 0 og 7
-            Log.d("SpillePlade", "flytBrikTilFelt: smartere at gå baglæns via 0 og 7  posÆndring="+posÆndring);
-        } else if (posÆndring<-Spiller.BRÆTSTØRRELSE/2) {
+            Log.d("SpillePlade", "flytBrikTilFelt: smartere at gå baglæns via 0 og 7  posÆndring=" + posÆndring);
+        } else if (posÆndring < -Spiller.BRÆTSTØRRELSE / 2) {
             posÆndring = posÆndring + Spiller.BRÆTSTØRRELSE; // smartere at gå forlæns via 7 og 0
-            Log.d("SpillePlade", "flytBrikTilFelt: smartere at gå forlæns via 7 og 0  posÆndring="+posÆndring);
+            Log.d("SpillePlade", "flytBrikTilFelt: smartere at gå forlæns via 7 og 0  posÆndring=" + posÆndring);
         }
 
         final double posÆndringPerTid = (double) (posÆndring) / tidÆndring;
@@ -323,8 +319,9 @@ public class SpillePlade extends AppCompatActivity {
 
             @Override
             public void onAnimationEnd(Animator animation) {
-                Log.d("SpillePlade", "onAnimationEnd "+tid+ " =? "+nyTid+"  pos="+pos);
-                if (tid == nyTid) return; // vi er allerede færdige (forstår ikke hvorfor onAnimationEnd blir kaldt en ekstra gang, men det gør den)
+                Log.d("SpillePlade", "onAnimationEnd " + tid + " =? " + nyTid + "  pos=" + pos);
+                if (tid == nyTid)
+                    return; // vi er allerede færdige (forstår ikke hvorfor onAnimationEnd blir kaldt en ekstra gang, men det gør den)
                 tid = tid - 1;
                 pos = pos + posÆndringPerTid;
                 updateTimer(tid);
@@ -333,13 +330,12 @@ public class SpillePlade extends AppCompatActivity {
                     flytBrikTilFeltAfslutning(turenErGået, nyPos);
                 } else {
                     // ryk til næste felt animeret. onAnimationEnd kaldes igen når brikken er fremme ved næste felt
-                    sætBrikpositionOgTidAnimeret((int) (pos+0.5), this);
+                    sætBrikpositionOgTidAnimeret((int) (pos + 0.5), this);
                 }
             }
         };
 
         brikAnimationLytter.onAnimationEnd(null); // start animationen ved at kalde onAnimationEnd (lidt et hack :-)
-
 
 
     }
@@ -464,17 +460,12 @@ public class SpillePlade extends AppCompatActivity {
             MusicManager.pause();
         }
     }
-    /*private void opdaterSkærm() {
 
-        textpenge.setText(String.valueOf(Spiller.instans.getPenge()));
-        textviden.setText(String.valueOf(Spiller.instans.getViden()));
-        textmad.setText(String.valueOf(Spiller.instans.getHp()));
-    }*/
 
     public void updateText() {
         topbar.opdaterGui(instans);
         SpillePlade.updateEntireBoard();
-       // updateTimer(Spiller.instans.getTid());
+        // updateTimer(Spiller.instans.getTid());
         infobox.setText("Uge: " + Spiller.instans.getRunde());
     }
 
@@ -504,7 +495,7 @@ public class SpillePlade extends AppCompatActivity {
 
     private void sætBrikposition(int feltnummer) {
         Log.d("Spilleplade", "sætBrikposition called to " + feltnummer);
-        Button felt = felter[(feltnummer+Spiller.BRÆTSTØRRELSE) % Spiller.BRÆTSTØRRELSE];
+        Button felt = felter[(feltnummer + Spiller.BRÆTSTØRRELSE) % Spiller.BRÆTSTØRRELSE];
         Player.animate().translationXBy(felt.getX() - Player.getX()).translationYBy(felt.getY() - Player.getY());
         //Player.setX(felt.getX());
         //Player.setY(felt.getY());
@@ -513,7 +504,7 @@ public class SpillePlade extends AppCompatActivity {
 
     private void sætBrikpositionOgTidAnimeret(int feltnummer, Animator.AnimatorListener animatorListener) {
         Log.d("Spilleplade", "sætBrikpositionOgTidAnimeret " + feltnummer);
-        Button felt = felter[(feltnummer+Spiller.BRÆTSTØRRELSE) % Spiller.BRÆTSTØRRELSE];
+        Button felt = felter[(feltnummer + Spiller.BRÆTSTØRRELSE) % Spiller.BRÆTSTØRRELSE];
         Player.animate()
                 .translationXBy(felt.getX() - Player.getX())
                 .translationYBy(felt.getY() - Player.getY())
@@ -528,15 +519,15 @@ public class SpillePlade extends AppCompatActivity {
 
         lastEvent = randomNum;
         Figuruheld u = Spiller.instans.figurdata.uheld.get(randomNum);
-        Log.d("SpillePlade", "Uheld "+randomNum+" skete: "+u.json);
-        if (u.titel==null) return;// ikke et rigtigt uheld, bare fyld
+        Log.d("SpillePlade", "Uheld " + randomNum + " skete: " + u.json);
+        if (u.titel == null) return;// ikke et rigtigt uheld, bare fyld
 
         int nyPenge = Spiller.instans.getPenge() + u.pengeForskel;
-        if (nyPenge<0) return; // uheld kunne ikke ske - ikke penge nok
+        if (nyPenge < 0) return; // uheld kunne ikke ske - ikke penge nok
         int nyViden = Spiller.instans.getViden() + u.videnForskel;
-        if (nyViden<0) return; // uheld kunne ikke ske - ikke viden nok
+        if (nyViden < 0) return; // uheld kunne ikke ske - ikke viden nok
         int nyMad = Spiller.instans.getHp() + u.madForskel;
-        if (nyMad<0) return; // uheld kunne ikke ske - ikke mad nok
+        if (nyMad < 0) return; // uheld kunne ikke ske - ikke mad nok
 
         // Opdater spiller med uheld
         Spiller.instans.setPenge(nyPenge);

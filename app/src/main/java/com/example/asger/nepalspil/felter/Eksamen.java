@@ -108,7 +108,7 @@ public class Eksamen extends AppCompatActivity {
         if (instans.getViden() < 0) {
             instans.setViden(0);
         }
-        //Skole.updateText();
+
 
         dialog.setMessage("Du har desværre svaret forkert på eksamen og er derfor dumpet. -" + 10 * instans.getKlassetrin() + " viden")
                 .setCancelable(false)

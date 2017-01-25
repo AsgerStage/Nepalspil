@@ -15,11 +15,6 @@ import static com.example.asger.nepalspil.models.Spiller.instans;
 
 
 public class Hjem extends AppCompatActivity {
-    TextView textpenge;
-    TextView textviden;
-    TextView textmad;
-    TextView texttid;
-
 
     @Override
     public void onBackPressed() {
@@ -39,10 +34,6 @@ public class Hjem extends AppCompatActivity {
 
         ImageView im = (ImageView) findViewById(R.id.hjemprofile);
         dialog = new AlertDialog.Builder(Hjem.this);
-       /* textpenge = (TextView) findViewById(R.id.textpenge);
-        textviden = (TextView) findViewById(R.id.textviden);
-        textmad = (TextView) findViewById(R.id.textmad);
-        texttid = (TextView) findViewById(R.id.texttid);*/
         updateText();
         ImageView hjemBack = (ImageView) findViewById(R.id.hjemBack);
         ImageView hjemhelp = (ImageView) findViewById(R.id.vaerkstedHelp);
@@ -68,22 +59,9 @@ public class Hjem extends AppCompatActivity {
             }
         });
 
-      /*  hjemhelp.setOnClickListener(new View.OnClickListener() {
-
-            public void onClick(View v) {
-                SpillePlade.updateEntireBoard();
-                v.startAnimation(AnimationUtils.loadAnimation(Hjem.this, R.anim.image_click));
-                dialog.setMessage("Hej jeg hedder " + instans.getNavn() + ". Jeg bor med min familie i en landsby i Nepal. \n Min mor og far har aldrig gået i skole, så de tjener ikke så mange penge, så det er svært for dem at hjælpe mig med at få en uddannelse.");
-                dialog.show();
-            }
-        });*/
-
 
     }
 
-    public String updateInfo() {
-        return "Navn: " + instans.getNavn() + "\n mad: " + instans.getHp() + "\n Penge: " + instans.getPenge() + "\n Viden: " + instans.getViden() + "\n Klassetrin: " + instans.getKlassetrin() + "\n Tid: " + instans.getTid();
-    }
 
     public void updateText() {
         topbar.opdaterGui(instans);
