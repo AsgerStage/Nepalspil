@@ -34,6 +34,8 @@ import java.util.concurrent.ThreadLocalRandom;
 
 import com.example.asger.nepalspil.felter.Topbar;
 
+import cn.pedant.SweetAlert.SweetAlertDialog;
+
 import static com.example.asger.nepalspil.activities.MusicManager.mp;
 import static com.example.asger.nepalspil.models.Spiller.instans;
 
@@ -51,6 +53,7 @@ public class SpillePlade extends AppCompatActivity {
     ImageView unusedPlayer;
     boolean continueBGMusic;
     AlertDialog.Builder dialog;
+    SweetAlertDialog pDialog;
     SharedPreferences prefs;
 
 
@@ -65,16 +68,28 @@ public class SpillePlade extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        new AlertDialog.Builder(this)
-                .setMessage("Er du sikker på du vil afslutte spillet?")
-                .setCancelable(false)
-                .setPositiveButton("Ja", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
+        new SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE)
+                .setTitleText("Afslut spil?")
+                .setContentText("Er du sikker på du vil afslutte spillet?")
+                .showCancelButton(true)
+                .setConfirmText("Ja")
+                .setCancelText("Nej")
+                .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                    @Override
+                    public void onClick(SweetAlertDialog sDialog) {
+                        sDialog.dismissWithAnimation();
                         SpillePlade.this.finish();
                     }
                 })
-                .setNegativeButton("Nej", null)
+                .setCancelClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                    @Override
+                    public void onClick(SweetAlertDialog sDialog) {
+                        sDialog.cancel();
+                    }
+                })
                 .show();
+
+
     }
 
 
