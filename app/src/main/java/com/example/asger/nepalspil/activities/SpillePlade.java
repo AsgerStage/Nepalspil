@@ -10,7 +10,6 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -49,14 +48,10 @@ public class SpillePlade extends AppCompatActivity {
     AlertDialog.Builder dialog;
     SharedPreferences prefs;
 
-    Button felt0;
-    Button felt1;
-    Button felt2;
-    Button felt3;
-    Button felt4;
-    Button felt5;
-    Button felt6;
-    Button felt7;
+    private Button[] felter = new Button[8];
+    private static Class[] feltNummerTilAktivitet = {
+            Hjem.class, Lektiehjaelp.class, Vaerksted.class, Boghandel.class, Skole.class, Farm.class, Marked.class, Butikken.class
+    };
     ImageView ingameopt;
     ImageView spilpladeHelp;
     int lastEvent = 0;
@@ -113,14 +108,14 @@ public class SpillePlade extends AppCompatActivity {
         ur.setImageResource(R.drawable.ur16);
         updateEntireBoard();
 
-        felt0 = (Button) findViewById(R.id.felt0);
-        felt1 = (Button) findViewById(R.id.felt1);
-        felt2 = (Button) findViewById(R.id.felt2);
-        felt3 = (Button) findViewById(R.id.felt3);
-        felt4 = (Button) findViewById(R.id.felt4);
-        felt5 = (Button) findViewById(R.id.felt5);
-        felt6 = (Button) findViewById(R.id.felt6);
-        felt7 = (Button) findViewById(R.id.felt7);
+        felter[0] = (Button) findViewById(R.id.felt0);
+        felter[1] = (Button) findViewById(R.id.felt1);
+        felter[2] = (Button) findViewById(R.id.felt2);
+        felter[3] = (Button) findViewById(R.id.felt3);
+        felter[4] = (Button) findViewById(R.id.felt4);
+        felter[5] = (Button) findViewById(R.id.felt5);
+        felter[6] = (Button) findViewById(R.id.felt6);
+        felter[7] = (Button) findViewById(R.id.felt7);
         ingameopt = (ImageView) findViewById(R.id.ingameopt);
         spilpladeHelp = (ImageView) findViewById(R.id.spilpladeHelp);
 
@@ -128,26 +123,26 @@ public class SpillePlade extends AppCompatActivity {
         new Handler().post(new Runnable() {
             @Override
             public void run() {
-                MoveIcon();
+                sætBrikposition(Spiller.instans.getPosition());
             }
         });
 
 
-        felt0.setOnClickListener(new View.OnClickListener() {
+        felter[0].setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                moveTo(0, Hjem.class, felt0.getLayoutParams());
+                flytBrikTilFelt(0);
                 saveToPrefs();
             }
         });
 
 
-        felt1.setOnClickListener(new View.OnClickListener() {
+        felter[1].setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                moveTo(1, Lektiehjaelp.class, felt1.getLayoutParams());
+                flytBrikTilFelt(1);
                 saveToPrefs();
 
 
@@ -161,56 +156,56 @@ public class SpillePlade extends AppCompatActivity {
             }
         });
 
-        felt2.setOnClickListener(new View.OnClickListener() {
+        felter[2].setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                moveTo(2, Vaerksted.class, felt2.getLayoutParams());
+                flytBrikTilFelt(2);
                 saveToPrefs();
             }
         });
 
-        felt3.setOnClickListener(new View.OnClickListener() {
+        felter[3].setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                moveTo(3, Boghandel.class, felt3.getLayoutParams());
+                flytBrikTilFelt(3);
                 saveToPrefs();
             }
         });
 
-        felt4.setOnClickListener(new View.OnClickListener() {
+        felter[4].setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                moveTo(4, Skole.class, felt4.getLayoutParams());
+                flytBrikTilFelt(4);
                 saveToPrefs();
             }
         });
 
-        felt5.setOnClickListener(new View.OnClickListener() {
+        felter[5].setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                moveTo(5, Farm.class, felt5.getLayoutParams());
+                flytBrikTilFelt(5);
                 saveToPrefs();
             }
         });
 
-        felt6.setOnClickListener(new View.OnClickListener() {
+        felter[6].setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                moveTo(6, Marked.class, felt6.getLayoutParams());
+                flytBrikTilFelt(6);
                 saveToPrefs();
             }
         });
 
-        felt7.setOnClickListener(new View.OnClickListener() {
+        felter[7].setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                moveTo(7, Butikken.class, felt7.getLayoutParams());
+                flytBrikTilFelt(7);
                 saveToPrefs();
 
 
@@ -270,13 +265,14 @@ public class SpillePlade extends AppCompatActivity {
 
     /**
      * Flytter spilleren
-     *
      * @param feltPos   feltnummer
-     * @param aktivitet skærmbillede der skal startes hvis rykket lykkedes
-     * @param params
+     *
      */
-    private void moveTo(int feltPos, java.lang.Class<?> aktivitet, ViewGroup.LayoutParams params) {
-        if (Spiller.instans.move(feltPos)) {
+    private void flytBrikTilFelt(int feltPos) {
+
+        boolean turenErGået = Spiller.instans.move(feltPos);
+
+        if (turenErGået) {
             if (Spiller.instans.getHp() - 30 > 0) {
 
                 Toast.makeText(SpillePlade.this, "Ugen er gået", Toast.LENGTH_SHORT).show();
@@ -294,13 +290,13 @@ public class SpillePlade extends AppCompatActivity {
             if (Spiller.instans.runde % 5 == 0) randomEvent();
             opdaterSkærm();
 
-            MoveIcon();
+            sætBrikposition(Spiller.instans.getPosition());
         } else {
+            Class aktivitet = feltNummerTilAktivitet[feltPos];
             final Intent intent = new Intent(SpillePlade.this, aktivitet);
             opdaterSkærm();
 
-            Log.d("Spilleplade", "Height:" + params.height + " Width: " + params.width);
-            MoveIcon();
+            sætBrikposition(Spiller.instans.getPosition());
 
 
             final Handler handler = new Handler();
@@ -425,28 +421,10 @@ public class SpillePlade extends AppCompatActivity {
         prefs.edit().putInt("LastBookBought", Spiller.instans.getLastBookBought()).apply();
     }
 
-    public void MoveIcon() {
-        if (Spiller.instans.getPosition() == 1) {
-            setPlayerIconParams(felt1);
-        } else if (Spiller.instans.getPosition() == 2) {
-            setPlayerIconParams(felt2);
-        } else if (Spiller.instans.getPosition() == 3) {
-            setPlayerIconParams(felt3);
-        } else if (Spiller.instans.getPosition() == 4) {
-            setPlayerIconParams(felt4);
-        } else if (Spiller.instans.getPosition() == 5) {
-            setPlayerIconParams(felt5);
-        } else if (Spiller.instans.getPosition() == 6) {
-            setPlayerIconParams(felt6);
-        } else if (Spiller.instans.getPosition() == 7) {
-            setPlayerIconParams(felt7);
-        } else {
-            setPlayerIconParams(felt0);
-        }
-        Log.d("Spilleplade", "MoveIcon called to " + Spiller.instans.getPosition());
-    }
+    private void sætBrikposition(int feltnummer) {
+        Log.d("Spilleplade", "sætBrikposition called to " + feltnummer);
 
-    public void setPlayerIconParams(Button felt) {
+        Button felt = felter[feltnummer];
         Player.animate().translationXBy(felt.getX() - Player.getX()).translationYBy(felt.getY() - Player.getY());
         //Player.setX(felt.getX());
         //Player.setY(felt.getY());

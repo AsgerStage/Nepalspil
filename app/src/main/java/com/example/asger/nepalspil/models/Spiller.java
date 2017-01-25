@@ -140,23 +140,11 @@ public class Spiller {
         }
 
 
-        return checkTur();
-
-    }
-
-    /**
-     * Tjekker om en ny runde skal startes
-     *
-     * @return true hvis tiden er gået og ny runde er startet
-     */
-    private boolean checkTur() {
         if (this.tid <= 0) {
             this.runde++;
             this.tid = 16;
             this.position = 0;
             return true;
-
-
         }
         return false;
     }
