@@ -71,6 +71,7 @@ public class Spiller {
 
     }
 
+    public final static int BRÆTSTØRRELSE = 8;//Kan ændres hvis spillepladen skulle udvides
     /**
      * Rykker spilleren og trækker den korrekte mængde tid fra spilleren.
      *
@@ -80,7 +81,6 @@ public class Spiller {
     public boolean move(int newPosition) {
         //Løsningen virker lidt bøvlet, men da Javas modulo (%) kan blive negativ gav det nogle problemer.
         //Math.floorMod metoden kunne være benyttet, men det ville samtidigt gøre at applikationen kun vil virke til android API 24 og frem.
-        int boardsize = 8;//Kan ændres hvis spillepladen skulle udvides
         int count1 = 0;
         int count2 = 0;
         int j = this.position;
@@ -95,7 +95,7 @@ public class Spiller {
                 // Log.d("Spiller","1count1:"+count1); Til debugging
                 i++;
                 Log.d("Spiller", "i:" + i + " Newposition= " + newPosition);
-                if (((i + boardsize) % boardsize) == newPosition) {
+                if (((i + BRÆTSTØRRELSE) % BRÆTSTØRRELSE) == newPosition) {
                     break;
                 }              //Laver en ikke-negativ modulo, som Math.floorMod ville gøre.
             }
@@ -104,7 +104,7 @@ public class Spiller {
                 //  Log.d("Spiller","1count2:"+count2); //Til debugging
                 j--;
                 Log.d("Spiller", "j:" + j + " Newposition= " + newPosition);
-                if (((j + boardsize) % boardsize) == newPosition) {
+                if (((j + BRÆTSTØRRELSE) % BRÆTSTØRRELSE) == newPosition) {
                     break;
                 }
             }
