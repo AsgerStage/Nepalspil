@@ -50,7 +50,7 @@ public class SpillePlade extends AppCompatActivity {
     static ImageView ur;
     //    static ClockImageView ur;
     static private TextView tidTextView;
-    ImageView unusedPlayer;
+
     boolean continueBGMusic;
     AlertDialog.Builder dialog;
     SweetAlertDialog pDialog;
@@ -106,10 +106,12 @@ public class SpillePlade extends AppCompatActivity {
         dialog = new AlertDialog.Builder(SpillePlade.this);
         if (Spiller.instans.sex) {
             Player = (ImageView) findViewById(R.id.krishna);
-            unusedPlayer = (ImageView) findViewById(R.id.asha);
+            Player.setImageResource(R.drawable.drenghelfigur1);
+
         } else if (!Spiller.instans.sex) {
-            Player = (ImageView) findViewById(R.id.asha);
-            unusedPlayer = (ImageView) findViewById(R.id.krishna);
+            Player = (ImageView) findViewById(R.id.krishna);
+            Player.setImageResource(R.drawable.pigehelfigur2);
+
         }
         if (getIntent().getBooleanExtra("genoptag", false) == false) { // nyt spil - vis dialog
             new AlertDialog.Builder(this)
@@ -119,7 +121,7 @@ public class SpillePlade extends AppCompatActivity {
                     .show();
         }
 
-        unusedPlayer.setVisibility(View.INVISIBLE);
+
 
         infobox = (TextView) findViewById(R.id.infobox);
 

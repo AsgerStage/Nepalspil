@@ -151,14 +151,6 @@
 
         <ImageView
             android:layout_width="wrap_content"
-            app:srcCompat="@drawable/pigehelfigur2"
-            android:id="@+id/asha"
-            android:layout_alignParentTop="true"
-            android:layout_alignEnd="@+id/krishna"
-            android:layout_height="100dp" />
-
-        <ImageView
-            android:layout_width="wrap_content"
             app:srcCompat="@drawable/drenghelfigur1"
             android:id="@+id/krishna"
             android:adjustViewBounds="false"
