@@ -40,7 +40,7 @@ public class Figurvalg_akt extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                pDialog = new SweetAlertDialog(Figurvalg_akt.this, SweetAlertDialog.WARNING_TYPE);
+                pDialog = new SweetAlertDialog(Figurvalg_akt.this);
                 pDialog
                         .setTitleText("Vil du spille som Asha?")
                         .setContentText("Asha er meget fattig og vil have det ekstra svært")
@@ -72,7 +72,7 @@ public class Figurvalg_akt extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                pDialog = new SweetAlertDialog(Figurvalg_akt.this, SweetAlertDialog.WARNING_TYPE);
+                pDialog = new SweetAlertDialog(Figurvalg_akt.this);
                 pDialog
                         .setTitleText("Vil du spille som Krishna?")
                         .setContentText("Krishna kommer fra en fattig familie og har det svært i skolen")
@@ -104,7 +104,7 @@ public class Figurvalg_akt extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                pDialog = new SweetAlertDialog(Figurvalg_akt.this, SweetAlertDialog.WARNING_TYPE);
+                pDialog = new SweetAlertDialog(Figurvalg_akt.this);
                 pDialog
                         .setTitleText("Vil du spille som Laxmi?")
                         .setContentText("Laxmi er en klog pige fra en lidt fattig familie")
@@ -137,7 +137,7 @@ public class Figurvalg_akt extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                pDialog = new SweetAlertDialog(Figurvalg_akt.this, SweetAlertDialog.WARNING_TYPE);
+                pDialog = new SweetAlertDialog(Figurvalg_akt.this);
                 pDialog
                         .setTitleText("Vil du spille som Kamal?")
                         .setContentText("Kamal er en klog dreng fra en ikke så fattig familie")
