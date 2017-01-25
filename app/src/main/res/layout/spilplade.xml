@@ -66,24 +66,6 @@
             android:layout_alignStart="@+id/felt7"
             android:layout_marginTop="21dp" />
 
-        <ImageView
-            android:layout_width="wrap_content"
-            app:srcCompat="@drawable/drenghelfigur1"
-            android:id="@+id/krishna"
-            android:adjustViewBounds="false"
-            android:layout_weight="0.08"
-            android:layout_alignParentTop="true"
-            android:layout_alignStart="@+id/felt0"
-            android:layout_height="100dp" />
-
-
-        <ImageView
-            android:layout_width="wrap_content"
-            app:srcCompat="@drawable/pigehelfigur2"
-            android:id="@+id/asha"
-            android:layout_alignParentTop="true"
-            android:layout_alignEnd="@+id/krishna"
-            android:layout_height="100dp" />
 
         <ImageView
             android:layout_width="100dp"
@@ -166,6 +148,24 @@
             android:layout_alignStart="@+id/felt3"
             android:layout_alignTop="@+id/felt6"
             android:layout_alignEnd="@+id/felt3" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            app:srcCompat="@drawable/pigehelfigur2"
+            android:id="@+id/asha"
+            android:layout_alignParentTop="true"
+            android:layout_alignEnd="@+id/krishna"
+            android:layout_height="100dp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            app:srcCompat="@drawable/drenghelfigur1"
+            android:id="@+id/krishna"
+            android:adjustViewBounds="false"
+            android:layout_weight="0.08"
+            android:layout_alignParentTop="true"
+            android:layout_alignStart="@+id/felt0"
+            android:layout_height="100dp" />
 
 
     </RelativeLayout>
