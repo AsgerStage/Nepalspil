@@ -270,7 +270,20 @@ public class SpillePlade extends AppCompatActivity {
      */
     private void flytBrikTilFelt(int feltPos) {
 
+        int gammelPos = Spiller.instans.getPosition();
+        int gammelTid = Spiller.instans.getTid();
+
         boolean turenErGået = Spiller.instans.move(feltPos);
+
+        int nyPos = Spiller.instans.getPosition() - gammelPos;
+        int nyTid = Spiller.instans.getTid();
+        double posÆndringPerTid = (double) (nyPos - gammelPos) / (nyTid - gammelTid);
+
+        flytBrikTilFeltAfslutning(turenErGået, feltPos);
+    }
+
+
+    private void flytBrikTilFeltAfslutning(boolean turenErGået, int feltPos) {
 
         if (turenErGået) {
             if (Spiller.instans.getHp() - 30 > 0) {
@@ -312,11 +325,11 @@ public class SpillePlade extends AppCompatActivity {
         }
     }
 
-    private void updateTimer() {
-        tidTextView.setText("" + Spiller.instans.getTid());
+    private void updateTimer(int tid) {
+        tidTextView.setText("" + tid);
         //int minutter = (20 - Spiller.instans.getTid())*60*12 / 24; // Vi regner i dage á 12 timer, da uret er 12timers
         //ur.animateToTime(minutter / 60, minutter % 60);
-        switch (Spiller.instans.getTid()) {
+        switch (tid) {
             case 0:
                 ur.setImageResource(R.drawable.ur0);
                 break;
@@ -390,7 +403,7 @@ public class SpillePlade extends AppCompatActivity {
         }
     }
     private void opdaterSkærm() {
-        updateTimer();
+        updateTimer(Spiller.instans.getTid());
         infobox.setText("Uge: " + Spiller.instans.getRunde());
         textpenge.setText(String.valueOf(Spiller.instans.getPenge()));
         textviden.setText(String.valueOf(Spiller.instans.getViden()));
