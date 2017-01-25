@@ -67,7 +67,7 @@ public class Hovedmenu_akt extends AppCompatActivity {
 
         indlæsGrunddata();
 
-        asha.setOnClickListener(new View.OnClickListener() {
+      /*  asha.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -90,22 +90,26 @@ public class Hovedmenu_akt extends AppCompatActivity {
                 Spiller.instans = new Spiller(figurdata);
 
             }
-        });
+        });*/ //udfaset
 
         startknap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 v.startAnimation(AnimationUtils.loadAnimation(Hovedmenu_akt.this, R.anim.image_click));
 
-                if (Spiller.instans == null) {
+        /*        if (Spiller.instans == null) {
                     Toast.makeText(Hovedmenu_akt.this, "Du mangler at vælge en figur.", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
                 if ("Krishna".equals(Spiller.instans.getNavn()) || "Asha".equals(Spiller.instans.getNavn())) {
+
                     Intent intent = new Intent(Hovedmenu_akt.this, SpillePlade.class);
                     startActivity(intent);
                 }
+                */
+                Intent intent = new Intent(Hovedmenu_akt.this, Figurvalg_akt.class);
+                startActivity(intent);
             }
         });
 
