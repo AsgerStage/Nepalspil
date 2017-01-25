@@ -2,6 +2,7 @@
   "figurer" : [
     {
       "navn": "Asha",
+      "drengekøn": "false",
       "fuldtNavn": "Asha Musahar",
       "beskrivelse": "Hun er en sød pige, men hendes forældre har ikke så mange penge",
       "startpenge": 10,
@@ -21,19 +22,19 @@
           "madForskel" : 0.5
         },
         { "titel" : "Undervisningen var kedelig",
-          "tekst" : "Undervisningen var kedelig, så du faldt i søvn. -10 viden",
+          "tekst" : "Undervisningen var kedelig, så du faldt i søvn. -10 viden og dagen er gået",
           "videnForskel" : -10,
           "tidFaktor" : 0.1
         },
-        { "fyld" : "fyld" },
         { "fyld" : "fyld" },
         { "fyld" : "fyld" }
       ]
     },
 
     {
-      "navn": "Laxmi",
-      "beskrivelse": "Hun er en sød pige, som har lidt rige forældre",
+      "navn": "Krishna",
+      "drengekøn": "true",
+      "beskrivelse": "Han er en frisk dreng, som har lidt rige forældre",
       "startpenge": 70,
 
       "uheld": [

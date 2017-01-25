@@ -27,6 +27,7 @@ import com.example.asger.nepalspil.felter.Lektiehjaelp;
 import com.example.asger.nepalspil.felter.Marked;
 import com.example.asger.nepalspil.felter.Skole;
 import com.example.asger.nepalspil.felter.Vaerksted;
+import com.example.asger.nepalspil.models.Figuruheld;
 import com.example.asger.nepalspil.models.Spiller;
 
 import java.util.concurrent.ThreadLocalRandom;
@@ -506,10 +507,32 @@ public class SpillePlade extends AppCompatActivity {
 
     public void randomEvent() {
         while (lastEvent == randomNum) {
-            randomNum = ThreadLocalRandom.current().nextInt(1, 11);
+            randomNum = ThreadLocalRandom.current().nextInt(0, Spiller.instans.figurdata.uheld.size());
         }
 
         lastEvent = randomNum;
+        Figuruheld u = Spiller.instans.figurdata.uheld.get(randomNum);
+        Log.d("SpillePlade", "Uheld "+randomNum+" skete: "+u.json);
+        if (u.titel==null) return;// ikke et rigtigt uheld, bare fyld
+
+        int nyPenge = Spiller.instans.getPenge() + u.pengeForskel;
+        if (nyPenge<0) return; // uheld kunne ikke ske - ikke penge nok
+        int nyViden = Spiller.instans.getViden() + u.videnForskel;
+        if (nyViden<0) return; // uheld kunne ikke ske - ikke viden nok
+        int nyMad = Spiller.instans.getHp() + u.madForskel;
+        if (nyMad<0) return; // uheld kunne ikke ske - ikke mad nok
+
+        // Opdater spiller med uheld
+        Spiller.instans.setPenge(nyPenge);
+        Spiller.instans.setViden(nyViden);
+        Spiller.instans.setHp(nyMad);
+        Spiller.instans.setTid((int) (Spiller.instans.getTid() * u.tidFaktor));
+
+        dialog.setTitle(u.titel);
+        dialog.setMessage(u.tekst);
+        dialog.show();
+
+        /*
         switch (randomNum) {
             case 1:
 
@@ -590,6 +613,7 @@ public class SpillePlade extends AppCompatActivity {
                 Log.d("SpillePlade", "Random event 11 triggered (nothing)");
                 break;
         }
+        */
 
     }
 

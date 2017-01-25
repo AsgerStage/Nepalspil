@@ -61,7 +61,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             fab:srcCompat="@drawable/checkmark"
-            android:id="@+id/checkmarkkaka"
+            android:id="@+id/checkmarkkrishna"
             android:layout_alignTop="@+id/imageButton5"
             android:layout_alignParentEnd="true"
             android:visibility="invisible"/>
@@ -89,7 +89,7 @@
             android:layout_width="wrap_content"
             fab:srcCompat="@drawable/optionsknap"
             android:id="@+id/indstillingerknap"
-            android:layout_alignBottom="@+id/checkmarkkaka"
+            android:layout_alignBottom="@+id/checkmarkkrishna"
             android:layout_centerHorizontal="true"
             android:layout_height="50dp"/>
 
@@ -100,7 +100,7 @@
             android:id="@+id/imageView7"
             android:layout_marginStart="123dp"
             android:layout_alignBottom="@+id/imageView3"
-            android:layout_alignStart="@+id/checkmarkkaka"
+            android:layout_alignStart="@+id/checkmarkkrishna"
             android:layout_marginBottom="11dp"/>
 
         <ImageView

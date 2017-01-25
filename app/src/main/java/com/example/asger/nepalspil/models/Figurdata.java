@@ -11,6 +11,7 @@ import java.util.ArrayList;
 public class Figurdata {
     public JSONObject json;
     public String navn;
+    public boolean drengekøn;
     public String beskrivelse;
     public int startpenge;
     public ArrayList<Figuruheld> uheld = new ArrayList<>();

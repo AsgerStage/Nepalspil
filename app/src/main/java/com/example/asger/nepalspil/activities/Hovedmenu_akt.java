@@ -34,7 +34,7 @@ import io.fabric.sdk.android.Fabric;
 public class Hovedmenu_akt extends AppCompatActivity {
     boolean continueBGMusic;
     ImageView checkmarkasha;
-    ImageView checkmarkkaka;
+    ImageView checkmarkkrishna;
     SharedPreferences prefs;
 
     AlertDialog.Builder dialog;
@@ -58,9 +58,9 @@ public class Hovedmenu_akt extends AppCompatActivity {
         versionTv.setText("v. " + BuildConfig.VERSION_NAME);
 
         ImageButton asha = (ImageButton) findViewById(R.id.imageButton4);
-        final ImageButton kaka = (ImageButton) findViewById(R.id.imageButton5);
+        final ImageButton krishna = (ImageButton) findViewById(R.id.imageButton5);
         checkmarkasha = (ImageView) findViewById(R.id.checkmarkasha);
-        checkmarkkaka = (ImageView) findViewById(R.id.checkmarkkaka);
+        checkmarkkrishna = (ImageView) findViewById(R.id.checkmarkkrishna);
         ImageView startknap = (ImageView) findViewById(R.id.startknap);
         ImageView indstillingerknap = (ImageView) findViewById(R.id.indstillingerknap);
         ImageView genoptagKnap = (ImageView) findViewById(R.id.genoptagKnap);
@@ -72,20 +72,22 @@ public class Hovedmenu_akt extends AppCompatActivity {
             public void onClick(View v) {
 
                 Toast.makeText(Hovedmenu_akt.this, "Du har valgt Asha!", Toast.LENGTH_SHORT).show();
-                checkmarkkaka.setVisibility(View.INVISIBLE);
+                checkmarkkrishna.setVisibility(View.INVISIBLE);
                 checkmarkasha.setVisibility(View.VISIBLE);
-                Spiller.instans = new Spiller("Asha", 10, 16, 0, 100, 1, false, 1, 1, 0);
+                Figurdata figurdata = Grunddata.instans.spillere.get("Asha");
+                Spiller.instans = new Spiller(figurdata);
             }
 
 
         });
-        kaka.setOnClickListener(new View.OnClickListener() {
+        krishna.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(Hovedmenu_akt.this, "Du har valgt Kaka!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Hovedmenu_akt.this, "Du har valgt Krishna!", Toast.LENGTH_SHORT).show();
                 checkmarkasha.setVisibility(View.INVISIBLE);
-                checkmarkkaka.setVisibility(View.VISIBLE);
-                Spiller.instans = new Spiller("Kaka", 10, 16, 0, 100, 1, true, 1, 1, 0);
+                checkmarkkrishna.setVisibility(View.VISIBLE);
+                Figurdata figurdata = Grunddata.instans.spillere.get("Krishna");
+                Spiller.instans = new Spiller(figurdata);
 
             }
         });
@@ -100,7 +102,7 @@ public class Hovedmenu_akt extends AppCompatActivity {
                     return;
                 }
 
-                if (Spiller.instans.getNavn() == "Kaka" || Spiller.instans.getNavn() == "Asha") {
+                if ("Krishna".equals(Spiller.instans.getNavn()) || "Asha".equals(Spiller.instans.getNavn())) {
                     Intent intent = new Intent(Hovedmenu_akt.this, SpillePlade.class);
                     startActivity(intent);
                 }
@@ -114,11 +116,13 @@ public class Hovedmenu_akt extends AppCompatActivity {
                 v.startAnimation(AnimationUtils.loadAnimation(Hovedmenu_akt.this, R.anim.image_click));
 
                 Spiller.instans = new Spiller(prefs.getBoolean("Sex", true), prefs.getInt("Books", 0), prefs.getInt("Position", 0), prefs.getString("Navn", null), prefs.getInt("Penge", 0), prefs.getInt("Hp", 0), prefs.getInt("Viden", 0), prefs.getInt("Klassetrin", 0), prefs.getInt("Tid", 0), prefs.getInt("Runde", 0), prefs.getInt("Movespeed", 1), prefs.getInt("LastBookBought", 0));
+                Spiller.instans.figurdata = Grunddata.instans.spillere.get(Spiller.instans.getNavn());
+                if (Spiller.instans.figurdata==null) throw new IllegalStateException(Spiller.instans.getNavn()+" mangler i grunddata");
                 if (Spiller.instans.getSex() == true) {
                     checkmarkasha.setVisibility(View.INVISIBLE);
-                    checkmarkkaka.setVisibility(View.VISIBLE);
+                    checkmarkkrishna.setVisibility(View.VISIBLE);
                 } else if (Spiller.instans.getSex() == false) {
-                    checkmarkkaka.setVisibility(View.INVISIBLE);
+                    checkmarkkrishna.setVisibility(View.INVISIBLE);
                     checkmarkasha.setVisibility(View.VISIBLE);
                 }
                 Intent intent = new Intent(Hovedmenu_akt.this, SpillePlade.class);
@@ -168,7 +172,7 @@ public class Hovedmenu_akt extends AppCompatActivity {
     private void indlæsGrunddata() {
         Grunddata gd = new Grunddata();
         try {
-            InputStream is = getResources().openRawResource(R.raw.data_jsoneksempel);
+            InputStream is = getResources().openRawResource(R.raw.grunddata);
             //InputStream is = new URL("http://javabog.dk/eksempel.json").openStream();
 
             byte b[] = new byte[is.available()]; // kun små filer
@@ -185,6 +189,7 @@ public class Hovedmenu_akt extends AppCompatActivity {
                 Figurdata figur = new Figurdata();
                 figur.json = figurjson;
                 figur.navn = figurjson.getString("navn");
+                figur.drengekøn = figurjson.optBoolean("drengekøn");
                 figur.beskrivelse = figurjson.getString("beskrivelse");
                 figur.startpenge = figurjson.getInt("startpenge");
 

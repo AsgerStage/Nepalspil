@@ -21,6 +21,8 @@ public class Spiller {
     private int lastBookBought;
     public boolean music;
 
+    public Figurdata figurdata;
+
 
     public Spiller(String navn) {
         this.navn = navn;
@@ -72,6 +74,12 @@ public class Spiller {
     }
 
     public final static int BRÆTSTØRRELSE = 8;//Kan ændres hvis spillepladen skulle udvides
+
+    public Spiller(Figurdata figur) {
+        this(figur.navn, figur.startpenge, 16, 0, 100, 1, figur.drengekøn, 1, 1, 0);
+        figurdata = figur;
+    }
+
     /**
      * Rykker spilleren og trækker den korrekte mængde tid fra spilleren.
      *
