@@ -51,7 +51,7 @@
             android:layout_marginEnd="100dp"/>
 
         <TextView
-            android:text="TextView"
+            android:text="@string/butik_taleboble"
             android:id="@+id/taleboble_tekst"
             android:layout_marginTop="43dp"
             android:layout_width="150dp"

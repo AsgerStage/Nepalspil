@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.example.asger.nepalspil.R;
 import com.example.asger.nepalspil.activities.SpillePlade;
+import com.example.asger.nepalspil.models.Spiller;
 
 import static com.example.asger.nepalspil.models.Spiller.instans;
 
@@ -34,7 +35,8 @@ public class Butikken extends AppCompatActivity {
         topbar.init(this);
 
         dialog = new AlertDialog.Builder(Butikken.this);
-        final TextView fieldinfo = (TextView) findViewById(R.id.taleboble_tekst);
+        ImageView figur = (ImageView) findViewById(R.id.figur);
+        figur.setImageResource(Spiller.instans.figurdata.drawable_figur_halv_id);
         final MediaPlayer mp = MediaPlayer.create(this, R.raw.cash);
         ImageView helpField = (ImageView) findViewById(R.id.vaerkstedHelp);
         final Button buy = (Button) findViewById(R.id.knap_koeb);
@@ -43,7 +45,6 @@ public class Butikken extends AppCompatActivity {
         menu.setVisibility(View.INVISIBLE);
         updateText();
 
-        fieldinfo.setText("I butikken kan du købe skoleting, som gør det lettere at få viden.");
 
 
         switch (instans.getLearningAmp()) {
@@ -65,7 +66,7 @@ public class Butikken extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 v.startAnimation(AnimationUtils.loadAnimation(Butikken.this, R.anim.image_click));
-                dialog.setMessage("I butikken kan du købe skoleting. Kladdehæfter koster 150 kr og øger din chance for at lære noget i skolen \n\n blyanter koster 300 kr \n\n lommeregner koster 700 kr og fjerner risiko for overhovedet ikke at lære noget i skolen.");
+                dialog.setMessage(R.string.butik_hjælp);
                 dialog.show();
             }
         });

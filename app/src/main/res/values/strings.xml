@@ -22,4 +22,6 @@
 </string>
     <string name="boghandel_taleboble">I boghandlen kan du købe skolebøger. Skolebøger giver mere viden.   Du kan også få et job i boghandlen, hvis du har gået i skole længe nok.</string>
     <string name="boghandel_hjælp">I boghandlen kan man købe skolebøger, som hjælper en med at få viden, hvis man har penge nok. Du kan også arbejde i boghandlen fra 6. klasse.</string>
+    <string name="butik_taleboble">I butikken kan du købe skoleting, som gør det lettere at få viden.</string>
+    <string name="butik_hjælp">I butikken kan du købe skoleting. Kladdehæfter koster 150 kr og øger din chance for at lære noget i skolen    blyanter koster 300 kr    lommeregner koster 700 kr og fjerner risiko for overhovedet ikke at lære noget i skolen.</string>
 </resources>
