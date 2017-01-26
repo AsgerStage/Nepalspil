@@ -4,21 +4,28 @@
               android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
-              android:weightSum="1"
               android:background="@drawable/felt_boghandel"
     >
     <include layout="@layout/topbar"/>
 
+    <FrameLayout
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="0dp">
+
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="167dp"
-        android:layout_weight="0.92">
+        android:layout_height="match_parent"
+        >
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:srcCompat="@drawable/figur_laxmi_halv"
+            app:srcCompat="@drawable/figur_laxmi_hel"
             android:id="@+id/figur"
+            android:layout_marginTop="60dp"
+            android:layout_marginRight="0dp"
+            android:layout_marginBottom="-40dp"
             android:layout_alignParentBottom="true"
             android:layout_alignParentEnd="true"/>
 
@@ -27,19 +34,22 @@
             android:layout_height="wrap_content"
             app:srcCompat="@drawable/taleboble"
             android:id="@+id/taleboble"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="100dp"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
-            android:layout_marginEnd="81dp"/>
+            android:layout_marginEnd="60dp"/>
 
         <TextView
-            android:text="Info om boghandel"
+            android:text="@string/boghandel_taleboble"
             android:id="@+id/taleboble_tekst"
             android:layout_height="100dp"
-            android:layout_marginTop="26dp"
             android:layout_width="170dp"
-            android:layout_marginEnd="17dp"
-            android:layout_alignTop="@+id/figur"
-            android:layout_toStartOf="@+id/figur"/>
+            android:layout_alignTop="@+id/taleboble"
+            android:layout_alignLeft="@+id/taleboble"
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="80dp"
+            />
     </RelativeLayout>
 
     <TextView
@@ -53,6 +63,7 @@
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
+        android:layout_gravity="bottom"
         android:layout_height="79dp">
 
         <Button
@@ -72,5 +83,5 @@
             android:layout_weight="1"/>
 
     </LinearLayout>
-
+    </FrameLayout>
 </LinearLayout>
