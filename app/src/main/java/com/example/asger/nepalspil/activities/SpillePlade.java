@@ -13,6 +13,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.view.animation.AnimationUtils;
+import android.view.animation.BounceInterpolator;
+import android.view.animation.LinearInterpolator;
+import android.view.animation.OvershootInterpolator;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -322,26 +325,34 @@ public class SpillePlade extends AppCompatActivity {
             Log.d("SpillePlade", "flytBrikTilFelt: smartere at gå forlæns via 7 og 0  posÆndring=" + posÆndring);
         }
 
-        final double posÆndringPerTid = (double) (posÆndring) / tidÆndring;
+        final double posÆndringPerSkridt, tidÆndringPerSkridt;
+        if (Math.abs(posÆndring) <= Math.abs(tidÆndring)) {
+            posÆndringPerSkridt = (double) posÆndring / tidÆndring;
+            tidÆndringPerSkridt = 1;
+        } else {
+            posÆndringPerSkridt = Math.signum(posÆndring);
+            tidÆndringPerSkridt = (double) Math.abs(tidÆndring) / Math.abs(posÆndring);
+        }
+
 
         final AnimatorListenerAdapter brikAnimationLytter = new AnimatorListenerAdapter() {
-            int tid = gammelTid;
+            double tid = gammelTid + 0.001; // undgå afrundingsproblemer
             double pos = gammelPos;
 
             @Override
             public void onAnimationEnd(Animator animation) {
                 Log.d("SpillePlade", "onAnimationEnd " + tid + " =? " + nyTid + "  pos=" + pos);
-                if (tid == nyTid)
+                if (tid <= nyTid)
                     return; // vi er allerede færdige (forstår ikke hvorfor onAnimationEnd blir kaldt en ekstra gang, men det gør den)
-                tid = tid - 1;
-                pos = pos + posÆndringPerTid;
-                updateTimer(tid);
-                if (tid == nyTid) {
+                tid = tid - tidÆndringPerSkridt;
+                pos = pos + posÆndringPerSkridt;
+                updateTimer((int) (tid+0.5));
+                if (tid <= nyTid) {
                     // vi er færdige med at rykke animeret
                     flytBrikTilFeltAfslutning(turenErGået, nyPos);
                 } else {
                     // ryk til næste felt animeret. onAnimationEnd kaldes igen når brikken er fremme ved næste felt
-                    sætBrikpositionOgTidAnimeret((int) (pos + 0.5), this);
+                    sætBrikpositionOgTidAnimeret((int) (pos + 0.5), this, tidÆndringPerSkridt);
                 }
             }
         };
@@ -508,18 +519,23 @@ public class SpillePlade extends AppCompatActivity {
     private void sætBrikposition(int feltnummer) {
         Log.d("Spilleplade", "sætBrikposition called to " + feltnummer);
         Button felt = felter[(feltnummer + Spiller.BRÆTSTØRRELSE) % Spiller.BRÆTSTØRRELSE];
-        figurbrik.animate().translationXBy(felt.getX() - figurbrik.getX()).translationYBy(felt.getY() - figurbrik.getY());
+        figurbrik.animate()
+                .setDuration(100)
+                .setInterpolator(new LinearInterpolator())
+                .translationXBy(felt.getX() - figurbrik.getX()).translationYBy(felt.getY() - figurbrik.getY());
         //figurbrik.setX(felt.getX());
         //figurbrik.setY(felt.getY());
     }
 
 
-    private void sætBrikpositionOgTidAnimeret(int feltnummer, Animator.AnimatorListener animatorListener) {
+    private void sætBrikpositionOgTidAnimeret(int feltnummer, Animator.AnimatorListener animatorListener, double tidÆndringPerSkridt) {
         Log.d("Spilleplade", "sætBrikpositionOgTidAnimeret " + feltnummer);
         Button felt = felter[(feltnummer + Spiller.BRÆTSTØRRELSE) % Spiller.BRÆTSTØRRELSE];
         figurbrik.animate()
                 .translationXBy(felt.getX() - figurbrik.getX())
                 .translationYBy(felt.getY() - figurbrik.getY())
+                .setDuration((int) (300*tidÆndringPerSkridt))
+                .setInterpolator(new LinearInterpolator())
                 .setListener(animatorListener);
     }
 
