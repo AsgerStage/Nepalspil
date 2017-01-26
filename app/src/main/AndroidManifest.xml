@@ -12,10 +12,8 @@
         tools:replace="android:icon,android:theme"
         >
 
-
         <activity
             android:name=".activities.Hovedmenu_akt"
-            android:label="@string/app_name"
             android:screenOrientation="landscape">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -24,108 +22,57 @@
         </activity>
         <activity
             android:name=".activities.Figurvalg_akt"
-            android:label="Nepal Spillet"
             android:screenOrientation="landscape">
         </activity>
 
         <activity
             android:name=".activities.SpillePlade"
-            android:label="@string/app_name"
             android:screenOrientation="landscape">
-            <intent-filter>
-                <action android:name="android.intent.action.SPIL"/>
-                <category android:name="android.intent.category.DEFAULT"/>
-            </intent-filter>
         </activity>
 
         <activity
             android:name=".felter.Marken"
-            android:label="Farm"
             android:screenOrientation="landscape">
-            <intent-filter>
-                <action android:name="android.intent.action.FARM"/>
-                <category android:name="android.intent.category.DEFAULT"/>
-            </intent-filter>
         </activity>
 
         <activity
             android:name=".felter.Butikken"
-            android:label="Toejbutik"
             android:screenOrientation="landscape">
-            <intent-filter>
-                <action android:name="android.intent.action.TOEJBUTIK"/>
-                <category android:name="android.intent.category.DEFAULT"/>
-            </intent-filter>
         </activity>
 
         <activity
             android:name=".felter.Marked"
-            android:label="Marked"
             android:screenOrientation="landscape">
-            <intent-filter>
-                <action android:name="android.intent.action.MARKED"/>
-                <category android:name="android.intent.category.DEFAULT"/>
-            </intent-filter>
         </activity>
 
         <activity
             android:name=".felter.Skole"
-            android:label="Skole"
             android:screenOrientation="landscape">
-            <intent-filter>
-                <action android:name="android.intent.action.SKOLE"/>
-                <category android:name="android.intent.category.DEFAULT"/>
-            </intent-filter>
         </activity>
 
         <activity
             android:name=".felter.Vaerksted"
-            android:label="Vaerksted"
             android:screenOrientation="landscape">
-            <intent-filter>
-                <action android:name="android.intent.action.VAERKSTED"/>
-                <category android:name="android.intent.category.DEFAULT"/>
-            </intent-filter>
         </activity>
 
         <activity
             android:name=".felter.Hjem"
-            android:label="Hjem"
             android:screenOrientation="landscape">
-            <intent-filter>
-                <action android:name="android.intent.action.HJEM"/>
-                <category android:name="android.intent.category.DEFAULT"/>
-            </intent-filter>
         </activity>
 
         <activity
             android:name=".felter.Boghandel"
-            android:label="Boghandel"
             android:screenOrientation="landscape">
-            <intent-filter>
-                <action android:name="android.intent.action.BOGHANDEL"/>
-                <category android:name="android.intent.category.DEFAULT"/>
-            </intent-filter>
         </activity>
 
         <activity
             android:name=".felter.Lektiehjaelp"
-            android:label="Lektiehjaelp"
             android:screenOrientation="landscape">
-            <intent-filter>
-                <action android:name="android.intent.action.LEKTIEHJAELP"/>
-                <category android:name="android.intent.category.DEFAULT"/>
-            </intent-filter>
         </activity>
 
         <activity
             android:name=".felter.Eksamen"
-            android:label="Eksamen"
             android:screenOrientation="landscape">
-            <intent-filter>
-                <action android:name="android.intent.action.EKSAMEN"/>
-                <category android:name="android.intent.category.DEFAULT"/>
-            </intent-filter>
         </activity>
 
         <activity

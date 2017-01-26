@@ -15,4 +15,8 @@ public class Figurdata {
     public String beskrivelse;
     public int startpenge;
     public ArrayList<Figuruheld> uheld = new ArrayList<>();
+
+    /** drawable ID-er bruges til at vise figuren på felterne og på spillepladen */
+    public int drawable_figur_halv_id;
+    public int drawable_figur_hel_id;
 }
