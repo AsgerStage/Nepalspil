@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
 
               xmlns:app="http://schemas.android.com/apk/res-auto"
               android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:background="@drawable/felt_spilleplade"
-              android:weightSum="1"
               android:launchMode="singleTask">
 
     <include layout="@layout/topbar"/>
@@ -14,7 +13,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="0.08">
+        android:layout_marginTop="20dp">
 
         <!--
         <rm.com.clocks.ClockImageView
@@ -133,7 +132,7 @@
             android:background="@android:color/transparent"
             android:id="@+id/felt5"
             android:layout_height="100dp"
-            android:layout_marginTop="28dp"
+            android:layout_marginTop="18dp"
             android:layout_width="140dp"
             android:layout_below="@+id/felt6"
             android:layout_alignStart="@+id/felt6" />
@@ -151,15 +150,14 @@
 
         <ImageView
             android:layout_width="wrap_content"
-            app:srcCompat="@drawable/figur_krishna_hel"
+            app:srcCompat="@drawable/figur_krishna_halv"
             android:id="@+id/krishna"
             android:adjustViewBounds="false"
-            android:layout_weight="0.08"
             android:layout_alignParentTop="true"
             android:layout_alignStart="@+id/felt0"
-            android:layout_height="100dp" />
+            android:layout_height="75dp" />
 
 
     </RelativeLayout>
 
-</LinearLayout>
+</FrameLayout>

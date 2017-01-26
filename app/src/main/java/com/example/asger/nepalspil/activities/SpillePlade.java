@@ -46,10 +46,10 @@ public class SpillePlade extends AppCompatActivity {
     private Topbar topbar;
 
 
-    ImageView Player;
-    static ImageView ur;
+    ImageView figurbrik;
+    ImageView ur;
     //    static ClockImageView ur;
-    static private TextView tidTextView;
+    TextView tidTextView;
 
     boolean continueBGMusic;
     AlertDialog.Builder dialog;
@@ -104,15 +104,9 @@ public class SpillePlade extends AppCompatActivity {
         topbar.init(this);
 
         dialog = new AlertDialog.Builder(SpillePlade.this);
-        if (Spiller.instans.sex) {
-            Player = (ImageView) findViewById(R.id.krishna);
-            Player.setImageResource(R.drawable.figur_krishna_hel);
+        figurbrik = (ImageView) findViewById(R.id.krishna);
+        figurbrik.setImageResource(Spiller.instans.figurdata.drawable_figur_halv_id);
 
-        } else if (!Spiller.instans.sex) {
-            Player = (ImageView) findViewById(R.id.krishna);
-            Player.setImageResource(R.drawable.figur_asha_hel);
-
-        }
         if (getIntent().getBooleanExtra("genoptag", false) == false) { // nyt spil - vis dialog
             new AlertDialog.Builder(this)
                     .setMessage("Hej! Hjælp os med at få en uddannelse. Vi skal have mad, viden og penge, så vi kan købe bøger, blyanter og en cykel og bestå de årlige eksamener. \n \n Hvis vi når 10. klasse, kan vi tage en uddannelse og få et godt job, og du har vundet spillet.")
@@ -516,18 +510,18 @@ public class SpillePlade extends AppCompatActivity {
     private void sætBrikposition(int feltnummer) {
         Log.d("Spilleplade", "sætBrikposition called to " + feltnummer);
         Button felt = felter[(feltnummer + Spiller.BRÆTSTØRRELSE) % Spiller.BRÆTSTØRRELSE];
-        Player.animate().translationXBy(felt.getX() - Player.getX()).translationYBy(felt.getY() - Player.getY());
-        //Player.setX(felt.getX());
-        //Player.setY(felt.getY());
+        figurbrik.animate().translationXBy(felt.getX() - figurbrik.getX()).translationYBy(felt.getY() - figurbrik.getY());
+        //figurbrik.setX(felt.getX());
+        //figurbrik.setY(felt.getY());
     }
 
 
     private void sætBrikpositionOgTidAnimeret(int feltnummer, Animator.AnimatorListener animatorListener) {
         Log.d("Spilleplade", "sætBrikpositionOgTidAnimeret " + feltnummer);
         Button felt = felter[(feltnummer + Spiller.BRÆTSTØRRELSE) % Spiller.BRÆTSTØRRELSE];
-        Player.animate()
-                .translationXBy(felt.getX() - Player.getX())
-                .translationYBy(felt.getY() - Player.getY())
+        figurbrik.animate()
+                .translationXBy(felt.getX() - figurbrik.getX())
+                .translationYBy(felt.getY() - figurbrik.getY())
                 .setListener(animatorListener);
     }
 
