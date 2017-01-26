@@ -2,15 +2,19 @@ package com.example.asger.nepalspil.activities;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.asger.nepalspil.R;
 import com.example.asger.nepalspil.models.Figurdata;
 import com.example.asger.nepalspil.models.Grunddata;
 import com.example.asger.nepalspil.models.Spiller;
+
+import org.w3c.dom.Text;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
 
@@ -34,6 +38,7 @@ public class Figurvalg_akt extends AppCompatActivity {
         KrishnaFigur = (ImageView) findViewById(R.id.KrishnaFigur);
         LaxmiFigur = (ImageView) findViewById(R.id.LaxmiFigur);
         KamalFigur = (ImageView) findViewById(R.id.KamalFigur);
+
 
 
         AshaFigur.setOnClickListener(new View.OnClickListener() {

@@ -3,20 +3,20 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/sky">
+    android:background="@drawable/felt_skole">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="92dp">
 
-        <TextView
-            android:text="Vælg figur"
+        <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/FigurOverskrift"
-            android:layout_centerVertical="true"
+            app:srcCompat="@drawable/vaelgfigur"
+            android:id="@+id/imageView"
+            android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            android:textSize="50sp" />
+            android:layout_marginTop="11dp" />
     </RelativeLayout>
 
     <LinearLayout
