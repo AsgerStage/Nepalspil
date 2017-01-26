@@ -4,7 +4,7 @@
       "navn": "Asha",
       "drengekøn": "false",
       "fuldtNavn": "Asha Musahar",
-      "beskrivelse": "Asha er en sød pige, men hendes forældre har ikke så mange penge",
+      "beskrivelse": "Asha Musahar er en sød pige, men hun er meget fattig, så det bliver svært for hende at nå 10. klasse",
       "startpenge": 10,
       "startviden": 0,
 
@@ -26,6 +26,11 @@
           "videnForskel" : -10,
           "tidFaktor" : 0.1
         },
+        { "titel" : "Din lillebror er blevet syg",
+          "tekst" : "Du må blive hjemme og passe ham. -10 viden og dagen er gået",
+          "videnForskel" : -10,
+          "tidFaktor" : 0.1
+        },        
         { "fyld" : "fyld" },
         { "fyld" : "fyld" }
       ]
@@ -34,8 +39,8 @@
     {
       "navn": "Krishna",
       "drengekøn": "true",
-      "beskrivelse": "Krishna kommer fra en fattig familie og har det svært i skolen",
-      "startpenge": 70,
+      "beskrivelse": "Krishna Pariyar kommer fra en fattig familie og har det svært i skolen. Det bliver ikke helt nemt at nå 10. klasse",
+      "startpenge": 30,
 
       "uheld": [
         { "titel" : "Du er blevet syg!",
@@ -46,8 +51,8 @@
           "tekst" : "Dine forældre har brugt nogle af dine penge. -20kr",
           "pengeForskel" : -20
         },
-        { "titel" : "Maden du har spiste var dårlig",
-          "tekst" : "Du er nu mere sulten. -30 mad",
+        { "titel" : "Din lillebror er blevet syg",
+          "tekst" : "Du må give ham noget af din mad, så han kan blive hurtigt rask. -30 mad",
           "madForskel" : 0.5
         },
         { "titel" : "Undervisningen var kedelig",
@@ -70,10 +75,10 @@
     {
       "navn": "Laxmi",
       "drengekøn": "false",
-      "fuldtNavn": "Laxmi Kuwar",
-      "beskrivelse": "Laxmi er en klog pige, men hendes forældre har ikke så mange penge",
-      "startpenge": 10,
-      "startviden": 0,
+      "fuldtNavn": "Laxmi Kunwar",
+      "beskrivelse": "Laxmi Kunwar er en klog pige, hendes forældre har ikke så mange penge, men med din hjælp skal hun nok nå 10. klasse",
+      "startpenge": 50,
+      "startviden": 10,
 
       "uheld": [
         { "titel" : "Du er blevet syg!",
@@ -84,9 +89,10 @@
           "tekst" : "Dine forældre har brugt nogle af dine penge. -20kr",
           "pengeForskel" : -20
         },
-        { "titel" : "Maden du har spiste var dårlig",
-          "tekst" : "Du er nu mere sulten. -30 mad",
-          "madForskel" : 0.5
+        { "titel" : "Du skulle hjælpe din mor med at vaske tøj",
+          "tekst" : "Så dagen er gået og du fik ikke studeret nok. -10 viden",
+           "videnForskel" : -10,
+          "tidFaktor" : 0.1
         },
         { "titel" : "Undervisningen var kedelig",
           "tekst" : "Undervisningen var kedelig, så du faldt i søvn. -10 viden og dagen er gået",
@@ -102,10 +108,10 @@
     {
       "navn": "Kamal",
       "drengekøn": "true",
-      "fuldtNavn": "Kamal Musahar",
-      "beskrivelse": "Kamal er en klog dreng fra en knapt så fattig familie",
-      "startpenge": 10,
-      "startviden": 0,
+      "fuldtNavn": "Kamal Pandey",
+      "beskrivelse": "Kamal Pandey er en klog dreng fra en familie et par køer og en lille rismark. Med din hjælp klarer han nemt 10. klasse",
+      "startpenge": 30,
+      "startviden": 20,
 
       "uheld": [
         { "titel" : "Du er blevet syg!",
