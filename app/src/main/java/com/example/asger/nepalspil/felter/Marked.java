@@ -14,7 +14,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.asger.nepalspil.R;
-import com.example.asger.nepalspil.activities.SpillePlade;
 import com.example.asger.nepalspil.models.Spiller;
 
 import java.io.IOException;
@@ -43,10 +42,11 @@ public class Marked extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.marked);
+        ImageView figur = (ImageView) findViewById(R.id.figur);
+        figur.setImageResource(Spiller.instans.figurdata.drawable_figur_halv_id);
 
         dialog = new AlertDialog.Builder(Marked.this);
         t = new Toast(Marked.this);
-        final TextView fieldinfo = (TextView) findViewById(R.id.taleboble_tekst);
         playerinfo = (TextView) findViewById(R.id.texttid);
         final MediaPlayer mp = MediaPlayer.create(this, R.raw.cash);
 
@@ -67,12 +67,11 @@ public class Marked extends AppCompatActivity {
         animationfood = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.plusknowledge);
 
 
-        fieldinfo.setText(" På markedet kan du\n købe mad eller arbejde \n for at tjene penge.");
         updateText();
         helpField.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                dialog.setMessage("På markedet kan du købe masser af sund mad. Det giver overskud til at få viden, men det er dyrt. Du kan også arbejde på markedet, men det tager tid.");
+                dialog.setMessage(R.string.marked_hjælp);
                 dialog.show();
             }
         });
@@ -174,13 +173,11 @@ public class Marked extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        SpillePlade.updateEntireBoard();
         t.cancel();
         finish();
     }
 
     public void updateText() {
         topbar.opdaterGui(instans);
-        SpillePlade.updateEntireBoard();
     }
 }

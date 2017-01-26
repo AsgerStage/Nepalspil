@@ -124,7 +124,6 @@ public class SpillePlade extends AppCompatActivity {
         //ur = (ClockImageView) findViewById(R.id.ur);
         ur = (ImageView) findViewById(R.id.ur);
         ur.setImageResource(R.drawable.ur16);
-        updateEntireBoard();
 
         felter[0] = (Button) findViewById(R.id.felt0);
         felter[1] = (Button) findViewById(R.id.felt1);
@@ -476,7 +475,6 @@ public class SpillePlade extends AppCompatActivity {
 
     public void updateText() {
         topbar.opdaterGui(instans);
-        SpillePlade.updateEntireBoard();
         updateTimer(Spiller.instans.getTid());
         infobox.setText("Uge: " + Spiller.instans.getRunde());
     }
@@ -639,8 +637,6 @@ public class SpillePlade extends AppCompatActivity {
     }
 
 
-    static public void updateEntireBoard() {
-    }
 }
 
 
