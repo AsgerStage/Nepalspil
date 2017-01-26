@@ -21,7 +21,7 @@ import android.widget.Toast;
 import com.example.asger.nepalspil.R;
 import com.example.asger.nepalspil.felter.Boghandel;
 import com.example.asger.nepalspil.felter.Butikken;
-import com.example.asger.nepalspil.felter.Farm;
+import com.example.asger.nepalspil.felter.Marken;
 import com.example.asger.nepalspil.felter.Hjem;
 import com.example.asger.nepalspil.felter.Lektiehjaelp;
 import com.example.asger.nepalspil.felter.Marked;
@@ -59,7 +59,7 @@ public class SpillePlade extends AppCompatActivity {
 
     private Button[] felter = new Button[8];
     private static Class[] feltNummerTilAktivitet = {
-            Hjem.class, Lektiehjaelp.class, Vaerksted.class, Boghandel.class, Skole.class, Farm.class, Marked.class, Butikken.class
+            Hjem.class, Lektiehjaelp.class, Vaerksted.class, Boghandel.class, Skole.class, Marken.class, Marked.class, Butikken.class
     };
     ImageView ingameopt;
     ImageView spilpladeHelp;
@@ -95,7 +95,7 @@ public class SpillePlade extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.spilplade);
+        setContentView(R.layout.spilleplade);
 
         continueBGMusic = true;
         prefs = PreferenceManager.getDefaultSharedPreferences(this);
@@ -106,11 +106,11 @@ public class SpillePlade extends AppCompatActivity {
         dialog = new AlertDialog.Builder(SpillePlade.this);
         if (Spiller.instans.sex) {
             Player = (ImageView) findViewById(R.id.krishna);
-            Player.setImageResource(R.drawable.drenghelfigur1);
+            Player.setImageResource(R.drawable.figur_krishna_hel);
 
         } else if (!Spiller.instans.sex) {
             Player = (ImageView) findViewById(R.id.krishna);
-            Player.setImageResource(R.drawable.pigehelfigur2);
+            Player.setImageResource(R.drawable.figur_asha_hel);
 
         }
         if (getIntent().getBooleanExtra("genoptag", false) == false) { // nyt spil - vis dialog
@@ -140,7 +140,7 @@ public class SpillePlade extends AppCompatActivity {
         felter[5] = (Button) findViewById(R.id.felt5);
         felter[6] = (Button) findViewById(R.id.felt6);
         felter[7] = (Button) findViewById(R.id.felt7);
-        ImageView back = (ImageView) findViewById(R.id.hjemBack);
+        ImageView back = (ImageView) findViewById(R.id.ikon_tilbage);
         back.setVisibility(View.INVISIBLE);
         ingameopt = (ImageView) findViewById(R.id.menuknap);
         spilpladeHelp = (ImageView) findViewById(R.id.vaerkstedHelp);

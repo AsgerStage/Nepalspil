@@ -14,19 +14,19 @@ public class Topbar {
     TextView textpenge;
     TextView textviden;
     TextView textmad;
-    TextView playerinfo;
+    TextView texttid;
 
     public void init(Activity akt) {
         textpenge = (TextView) akt.findViewById(R.id.textpenge);
         textviden = (TextView) akt.findViewById(R.id.textviden);
         textmad = (TextView) akt.findViewById(R.id.textmad);
-        playerinfo = (TextView) akt.findViewById(R.id.playerinfo);
+        texttid = (TextView) akt.findViewById(R.id.texttid);
     }
 
     public void opdaterGui(Spiller spiller) {
         textpenge.setText(String.valueOf(spiller.getPenge()));
         textviden.setText(String.valueOf(spiller.getViden()));
         textmad.setText(String.valueOf(spiller.getHp()));
-        playerinfo.setText(String.valueOf(spiller.getTid()));
+        texttid.setText(String.valueOf(spiller.getTid()));
     }
 }

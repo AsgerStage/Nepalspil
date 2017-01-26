@@ -19,7 +19,7 @@
             android:layout_marginTop="200dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:srcCompat="@drawable/skoleliv"/>
+            app:srcCompat="@drawable/logo_skoleliv"/>
 
         <TextView
             android:id="@+id/textView1"
@@ -35,7 +35,7 @@
             android:id="@+id/dtu"
             android:layout_width="match_parent"
             android:layout_height="132dp"
-            app:srcCompat="@drawable/dtulogo"/>
+            app:srcCompat="@drawable/logo_dtu"/>
 
 
         <TextView
@@ -52,7 +52,7 @@
             android:id="@+id/danida"
             android:layout_width="match_parent"
             android:layout_height="156dp"
-            app:srcCompat="@drawable/danida"/>
+            app:srcCompat="@drawable/logo_danida"/>
 
 
     </LinearLayout>

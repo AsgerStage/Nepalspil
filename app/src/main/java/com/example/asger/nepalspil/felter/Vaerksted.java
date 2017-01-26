@@ -55,9 +55,9 @@ public class Vaerksted extends AppCompatActivity {
 
         final MediaPlayer mp = MediaPlayer.create(this, R.raw.cash);
         ImageView helpField = (ImageView) findViewById(R.id.vaerkstedHelp);
-        Button work = (Button) findViewById(R.id.workButton);
+        Button work = (Button) findViewById(R.id.knap_arbejd);
         Button buy = (Button) findViewById(R.id.buyBikeButton);
-        ImageView hjemBack = (ImageView) findViewById(R.id.hjemBack);
+        ImageView hjemBack = (ImageView) findViewById(R.id.ikon_tilbage);
         viewPagerText = (TextView) findViewById(R.id.viewpagerPris);
         ImageView menu = (ImageView) findViewById(R.id.menuknap);
         menu.setVisibility(View.INVISIBLE);
@@ -68,7 +68,7 @@ public class Vaerksted extends AppCompatActivity {
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
         tabLayout.setupWithViewPager(viewPager, true);
         animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.plusknowledge);
-        final TextView money = (TextView) findViewById(R.id.money);
+        final TextView money = (TextView) findViewById(R.id.flyvoptekst_arbejd);
         updateText();
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
 
@@ -170,9 +170,9 @@ public class Vaerksted extends AppCompatActivity {
 
     private class ImagePagerAdapter extends PagerAdapter {
         private int[] mImages = new int[]{
-                R.drawable.badbike,
-                R.drawable.bike,
-                R.drawable.bike,
+                R.drawable.cykel1,
+                R.drawable.cykel2,
+                R.drawable.cykel2,
         };
 
         @Override

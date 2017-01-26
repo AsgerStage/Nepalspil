@@ -48,8 +48,8 @@ public class Lektiehjaelp extends AppCompatActivity {
 
         final MediaPlayer mp = MediaPlayer.create(this, R.raw.cash);
         final TextView lektiehjaelpInfo = (TextView) findViewById(R.id.lektiehjaelpTextField);
-        ImageView hjemBack = (ImageView) findViewById(R.id.hjemBack);
-        homeworkHelp = (Button) findViewById(R.id.learn);
+        ImageView hjemBack = (ImageView) findViewById(R.id.ikon_tilbage);
+        homeworkHelp = (Button) findViewById(R.id.knap_lektiehjaelp);
         ImageView helpField = (ImageView) findViewById(R.id.vaerkstedHelp);
         final TextView scrollknowledge = (TextView) findViewById(R.id.scrollknowledge);
         animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.plusknowledge);

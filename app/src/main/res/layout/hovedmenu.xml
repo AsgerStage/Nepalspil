@@ -19,7 +19,7 @@
 
         <ImageButton
             android:layout_height="219dp"
-            app:srcCompat="@drawable/pige2"
+            app:srcCompat="@drawable/figur_asha_halv"
             android:id="@+id/imageButton4"
             android:layout_weight="0.48"
             android:scaleType="fitCenter"
@@ -39,13 +39,13 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:srcCompat="@drawable/skoleliv"
+            app:srcCompat="@drawable/logo_skoleliv"
             android:id="@+id/imageView3"
             android:layout_alignParentTop="true"
             android:layout_alignParentStart="true"/>
 
         <ImageButton
-            app:srcCompat="@drawable/dreng1"
+            app:srcCompat="@drawable/figur_krishna_halv"
             android:id="@+id/imageButton5"
             android:layout_weight="0.51"
             android:scaleType="fitCenter"
@@ -79,38 +79,38 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="50dp"
-            fab:srcCompat="@drawable/genoptag"
             android:id="@+id/genoptagKnap"
             android:layout_marginBottom="15dp"
             android:layout_above="@+id/indstillingerknap"
-            android:layout_centerHorizontal="true"/>
+            android:layout_centerHorizontal="true"
+            app:srcCompat="@drawable/knap_genoptag_spil"/>
 
         <ImageView
             android:layout_width="wrap_content"
-            fab:srcCompat="@drawable/optionsknap"
             android:id="@+id/indstillingerknap"
             android:layout_alignBottom="@+id/checkmarkkrishna"
             android:layout_centerHorizontal="true"
-            android:layout_height="50dp"/>
+            android:layout_height="50dp"
+            app:srcCompat="@drawable/knap_indstillinger"/>
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            fab:srcCompat="@drawable/danida"
             android:id="@+id/imageView7"
             android:layout_marginStart="123dp"
             android:layout_alignBottom="@+id/imageView3"
             android:layout_alignStart="@+id/checkmarkkrishna"
-            android:layout_marginBottom="11dp"/>
+            android:layout_marginBottom="11dp"
+            app:srcCompat="@drawable/logo_danida"/>
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="50dp"
-            fab:srcCompat="@drawable/startknap"
             android:id="@+id/startknap"
             android:layout_marginBottom="15dp"
             android:layout_above="@+id/genoptagKnap"
-            android:layout_alignStart="@+id/genoptagKnap"/>
+            android:layout_alignStart="@+id/genoptagKnap"
+            app:srcCompat="@drawable/knap_start_spil"/>
 
         <TextView
             android:id="@+id/version"

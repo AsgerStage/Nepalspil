@@ -4,7 +4,7 @@
               android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
-              android:background="@drawable/hjeminside"
+              android:background="@drawable/felt_hjem"
     >
     <include layout="@layout/topbar"/>
 
@@ -15,27 +15,27 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="369dp"
-            app:srcCompat="@drawable/dreng1"
-            android:id="@+id/hjemprofile"
+            app:srcCompat="@drawable/figur_krishna_halv"
+            android:id="@+id/figur"
             android:layout_weight="1"
-            android:layout_toEndOf="@+id/imageView37"/>
+            android:layout_toEndOf="@+id/taleboble"/>
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:srcCompat="@drawable/bubble"
-            android:id="@+id/imageView37"
+            app:srcCompat="@drawable/taleboble"
+            android:id="@+id/taleboble"
             android:layout_alignParentStart="true"
             android:layout_marginStart="23dp"/>
 
         <TextView
             android:text="TextView"
             android:layout_marginTop="25dp"
-            android:id="@+id/spillerintro"
+            android:id="@+id/taleboble_tekst"
             android:layout_width="200dp"
             android:layout_height="150dp"
             android:layout_alignParentTop="true"
-            android:layout_toStartOf="@+id/hjemprofile"
+            android:layout_toStartOf="@+id/figur"
             android:layout_marginEnd="62dp"
             android:textAlignment="center"/>
     </RelativeLayout>

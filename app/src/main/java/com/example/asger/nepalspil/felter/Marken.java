@@ -20,7 +20,7 @@ import java.io.IOException;
 import static com.example.asger.nepalspil.models.Spiller.instans;
 
 
-public class Farm extends AppCompatActivity {
+public class Marken extends AppCompatActivity {
     final int MONEY_PER_CLICK = 3;
     final int TIME_PER_CLICK = 1;
 
@@ -37,19 +37,19 @@ public class Farm extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.farm);
+        setContentView(R.layout.marken);
 
         topbar = new Topbar();
         topbar.init(this);
 
-        dialog = new AlertDialog.Builder(Farm.this);
-        final TextView fieldinfo = (TextView) findViewById(R.id.fieldinfo);
-        // playerinfo = (TextView) findViewById(R.id.playerinfo);
+        dialog = new AlertDialog.Builder(Marken.this);
+        final TextView fieldinfo = (TextView) findViewById(R.id.taleboble_tekst);
+        // texttid = (TextView) findViewById(R.id.texttid);
         final MediaPlayer mp = MediaPlayer.create(this, R.raw.cash);
         animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.plusknowledge);
 
-        Button work = (Button) findViewById(R.id.workButton);
-        ImageView hjemBack = (ImageView) findViewById(R.id.hjemBack);
+        Button work = (Button) findViewById(R.id.knap_arbejd);
+        ImageView hjemBack = (ImageView) findViewById(R.id.ikon_tilbage);
         ImageView helpfield = (ImageView) findViewById(R.id.vaerkstedHelp);
         final TextView money = (TextView) findViewById(R.id.scrollmoney);
         ImageView menu = (ImageView) findViewById(R.id.menuknap);
@@ -73,7 +73,7 @@ public class Farm extends AppCompatActivity {
         work.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
-                v.startAnimation(AnimationUtils.loadAnimation(Farm.this, R.anim.image_click));
+                v.startAnimation(AnimationUtils.loadAnimation(Marken.this, R.anim.image_click));
                 if (instans.getTid() >= TIME_PER_CLICK) {
                     instans.work(TIME_PER_CLICK, MONEY_PER_CLICK);
                     money.setText("+" + MONEY_PER_CLICK + " kr");
@@ -110,7 +110,7 @@ public class Farm extends AppCompatActivity {
 
             public void onClick(View v) {
                 SpillePlade.updateEntireBoard();
-                v.startAnimation(AnimationUtils.loadAnimation(Farm.this, R.anim.image_click));
+                v.startAnimation(AnimationUtils.loadAnimation(Marken.this, R.anim.image_click));
                 finish();
 
             }

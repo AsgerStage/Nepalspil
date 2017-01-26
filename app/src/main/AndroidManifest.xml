@@ -26,10 +26,6 @@
             android:name=".activities.Figurvalg_akt"
             android:label="Nepal Spillet"
             android:screenOrientation="landscape">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
         </activity>
 
         <activity
@@ -43,7 +39,7 @@
         </activity>
 
         <activity
-            android:name=".felter.Farm"
+            android:name=".felter.Marken"
             android:label="Farm"
             android:screenOrientation="landscape">
             <intent-filter>

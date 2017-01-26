@@ -5,7 +5,7 @@
               android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
-              android:background="@drawable/newboard"
+              android:background="@drawable/felt_spilleplade"
               android:weightSum="1"
               android:launchMode="singleTask">
 
@@ -151,7 +151,7 @@
 
         <ImageView
             android:layout_width="wrap_content"
-            app:srcCompat="@drawable/drenghelfigur1"
+            app:srcCompat="@drawable/figur_krishna_hel"
             android:id="@+id/krishna"
             android:adjustViewBounds="false"
             android:layout_weight="0.08"

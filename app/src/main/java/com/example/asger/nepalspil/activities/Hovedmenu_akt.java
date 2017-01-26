@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
@@ -178,7 +179,9 @@ public class Hovedmenu_akt extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == FIGURNUMMER_REQUEST) {
             if (resultCode == RESULT_OK) {
-                Figurdata figurdata = Grunddata.instans.spillere.get(data.getStringExtra("result"));
+                String figurnavn = data.getStringExtra("result");
+                Figurdata figurdata = Grunddata.instans.spillere.get(figurnavn);
+                Log.d("Hovedmenu_akt", "figurnavn = "+ figurnavn + " valgt ud af "+Grunddata.instans.spillere.keySet());
                 Spiller.instans = new Spiller(figurdata);
                 Intent intent = new Intent(Hovedmenu_akt.this, SpillePlade.class);
                 startActivity(intent);

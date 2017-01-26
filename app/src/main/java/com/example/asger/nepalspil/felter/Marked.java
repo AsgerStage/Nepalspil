@@ -46,22 +46,22 @@ public class Marked extends AppCompatActivity {
 
         dialog = new AlertDialog.Builder(Marked.this);
         t = new Toast(Marked.this);
-        final TextView fieldinfo = (TextView) findViewById(R.id.fieldinfo);
-        playerinfo = (TextView) findViewById(R.id.playerinfo);
+        final TextView fieldinfo = (TextView) findViewById(R.id.taleboble_tekst);
+        playerinfo = (TextView) findViewById(R.id.texttid);
         final MediaPlayer mp = MediaPlayer.create(this, R.raw.cash);
 
         topbar = new Topbar();
         topbar.init(this);
 
-        Button work = (Button) findViewById(R.id.workButton);
+        Button work = (Button) findViewById(R.id.knap_arbejd);
         final Button eat = (Button) findViewById(R.id.eatButton);
-        final ImageView hjemBack = (ImageView) findViewById(R.id.hjemBack);
+        final ImageView hjemBack = (ImageView) findViewById(R.id.ikon_tilbage);
         ImageView helpField = (ImageView) findViewById(R.id.vaerkstedHelp);
         ImageView menu = (ImageView) findViewById(R.id.menuknap);
         menu.setVisibility(View.INVISIBLE);
 
-        final TextView money = (TextView) findViewById(R.id.money);
-        final TextView food = (TextView) findViewById(R.id.food);
+        final TextView money = (TextView) findViewById(R.id.flyvoptekst_arbejd);
+        final TextView food = (TextView) findViewById(R.id.flyvoptekst_spis);
 
         animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.plusknowledge);
         animationfood = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.plusknowledge);

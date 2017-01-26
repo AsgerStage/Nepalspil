@@ -28,17 +28,17 @@ public class Butikken extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.toejbutik);
+        setContentView(R.layout.butik);
 
         topbar = new Topbar();
         topbar.init(this);
 
         dialog = new AlertDialog.Builder(Butikken.this);
-        final TextView fieldinfo = (TextView) findViewById(R.id.tbInfo);
+        final TextView fieldinfo = (TextView) findViewById(R.id.taleboble_tekst);
         final MediaPlayer mp = MediaPlayer.create(this, R.raw.cash);
         ImageView helpField = (ImageView) findViewById(R.id.vaerkstedHelp);
-        final Button buy = (Button) findViewById(R.id.tbBuy);
-        ImageView hjemBack = (ImageView) findViewById(R.id.hjemBack);
+        final Button buy = (Button) findViewById(R.id.knap_koeb);
+        ImageView hjemBack = (ImageView) findViewById(R.id.ikon_tilbage);
         ImageView menu = (ImageView) findViewById(R.id.menuknap);
         menu.setVisibility(View.INVISIBLE);
         updateText();

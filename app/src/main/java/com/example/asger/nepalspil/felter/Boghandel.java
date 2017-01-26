@@ -42,12 +42,12 @@ public class Boghandel extends AppCompatActivity {
         topbar.init(this);
 
         dialog = new AlertDialog.Builder(Boghandel.this);
-        final TextView bookstoreInfo = (TextView) findViewById(R.id.fieldinfo);
+        final TextView bookstoreInfo = (TextView) findViewById(R.id.taleboble_tekst);
         final MediaPlayer mp = MediaPlayer.create(this, R.raw.cash);
         ImageView helpField = (ImageView) findViewById(R.id.vaerkstedHelp);
-        Button work = (Button) findViewById(R.id.workButton);
-        final Button buyBook = (Button) findViewById(R.id.buyBookButton);
-        ImageView hjemBack = (ImageView) findViewById(R.id.hjemBack);
+        Button work = (Button) findViewById(R.id.knap_arbejd);
+        final Button buyBook = (Button) findViewById(R.id.knap_koeb_bog);
+        ImageView hjemBack = (ImageView) findViewById(R.id.ikon_tilbage);
         final TextView money = (TextView) findViewById(R.id.scrollmoney);
         animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.plusknowledge);
         ImageView menu = (ImageView) findViewById(R.id.menuknap);

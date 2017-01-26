@@ -5,7 +5,7 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:weightSum="1"
-              android:background="@drawable/boghandelinside"
+              android:background="@drawable/felt_boghandel"
     >
     <include layout="@layout/topbar"/>
 
@@ -17,29 +17,29 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:srcCompat="@drawable/pige1"
-            android:id="@+id/imageView30"
+            app:srcCompat="@drawable/figur_laxmi_halv"
+            android:id="@+id/figur"
             android:layout_alignParentBottom="true"
             android:layout_alignParentEnd="true"/>
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:srcCompat="@drawable/bubble"
-            android:id="@+id/imageView31"
+            app:srcCompat="@drawable/taleboble"
+            android:id="@+id/taleboble"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
             android:layout_marginEnd="81dp"/>
 
         <TextView
             android:text="Info om boghandel"
-            android:id="@+id/fieldinfo"
+            android:id="@+id/taleboble_tekst"
             android:layout_height="100dp"
             android:layout_marginTop="26dp"
             android:layout_width="170dp"
             android:layout_marginEnd="17dp"
-            android:layout_alignTop="@+id/imageView30"
-            android:layout_toStartOf="@+id/imageView30"/>
+            android:layout_alignTop="@+id/figur"
+            android:layout_toStartOf="@+id/figur"/>
     </RelativeLayout>
 
     <TextView
@@ -57,18 +57,18 @@
 
         <Button
             android:background="@android:color/transparent"
-            android:drawableTop="@drawable/arbejdbutton"
+            android:drawableTop="@drawable/knap_arbejd"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/workButton"
+            android:id="@+id/knap_arbejd"
             android:layout_weight="1"/>
 
         <Button
             android:background="@android:color/transparent"
-            android:drawableTop="@drawable/kobbogbutton"
+            android:drawableTop="@drawable/knap_koeb_bog"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/buyBookButton"
+            android:id="@+id/knap_koeb_bog"
             android:layout_weight="1"/>
 
     </LinearLayout>

@@ -34,7 +34,7 @@
             <ImageButton
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                app:srcCompat="@drawable/drenghelfigur2"
+                app:srcCompat="@drawable/figur_kamal_hel"
                 android:background="?android:selectableItemBackground"
                 android:id="@+id/KamalFigur"
                 android:scaleType="centerInside"/>
@@ -50,7 +50,7 @@
             <ImageButton
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                app:srcCompat="@drawable/pigehelfigur1"
+                app:srcCompat="@drawable/figur_laxmi_hel"
                 android:id="@+id/LaxmiFigur"
                 android:background="?android:selectableItemBackground"
                 android:scaleType="centerInside" />
@@ -66,7 +66,7 @@
             <ImageButton
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                app:srcCompat="@drawable/drenghelfigur1"
+                app:srcCompat="@drawable/figur_krishna_hel"
                 android:id="@+id/KrishnaFigur"
                 android:background="?android:selectableItemBackground"
                 android:scaleType="centerInside"
@@ -83,7 +83,7 @@
             <ImageButton
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                app:srcCompat="@drawable/pigehelfigur2"
+                app:srcCompat="@drawable/figur_asha_hel"
                 android:background="?android:selectableItemBackground"
                 android:id="@+id/AshaFigur"
                 android:scaleType="centerInside"
