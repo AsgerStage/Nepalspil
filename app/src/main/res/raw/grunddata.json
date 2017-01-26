@@ -5,6 +5,7 @@
       "drengekøn": "false",
       "fuldtNavn": "Asha Musahar",
       "beskrivelse": "Asha Musahar er en sød pige, men hun er meget fattig, så det bliver svært for hende at nå 10. klasse",
+      "beskrivelse_hjemme": "Hej jeg hedder Asha. Jeg bor med min familie i en landsby i Nepal. \nMin mor og far har aldrig gået i skole, så de tjener ikke så mange penge, så det er svært for dem at hjælpe mig med at få en uddannelse.",
       "startpenge": 10,
       "startviden": 0,
 
@@ -40,6 +41,7 @@
       "navn": "Krishna",
       "drengekøn": "true",
       "beskrivelse": "Krishna Pariyar kommer fra en fattig familie og har det svært i skolen. Det bliver ikke helt nemt at nå 10. klasse",
+      "beskrivelse_hjemme": "Hej jeg hedder Krishna. Jeg bor med min familie i en landsby i Nepal. \nMin mor og far har aldrig gået i skole, så de tjener ikke så mange penge, så det er svært for dem at hjælpe mig med at få en uddannelse.",
       "startpenge": 30,
 
       "uheld": [
@@ -77,6 +79,7 @@
       "drengekøn": "false",
       "fuldtNavn": "Laxmi Kunwar",
       "beskrivelse": "Laxmi Kunwar er en klog pige, hendes forældre har ikke så mange penge, men med din hjælp skal hun nok nå 10. klasse",
+      "beskrivelse_hjemme": "Hej jeg hedder Laxmi. Jeg bor med min familie i en landsby i Nepal. \nMin mor og far har aldrig gået i skole, så de tjener ikke så mange penge, så det er svært for dem at hjælpe mig med at få en uddannelse.",
       "startpenge": 50,
       "startviden": 10,
 
@@ -110,6 +113,7 @@
       "drengekøn": "true",
       "fuldtNavn": "Kamal Pandey",
       "beskrivelse": "Kamal Pandey er en klog dreng fra en familie et par køer og en lille rismark. Med din hjælp klarer han nemt 10. klasse",
+      "beskrivelse_hjemme": "Hej jeg hedder Kamal. Jeg bor med min familie i en landsby i Nepal. \nMin mor og far har aldrig gået i skole, så de tjener ikke så mange penge, så det er svært for dem at hjælpe mig med at få en uddannelse.",
       "startpenge": 30,
       "startviden": 20,
 

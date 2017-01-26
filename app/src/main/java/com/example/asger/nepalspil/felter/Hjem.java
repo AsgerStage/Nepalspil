@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.example.asger.nepalspil.R;
 import com.example.asger.nepalspil.activities.SpillePlade;
+import com.example.asger.nepalspil.models.Spiller;
 
 import static com.example.asger.nepalspil.models.Spiller.instans;
 
@@ -32,22 +33,20 @@ public class Hjem extends AppCompatActivity {
         topbar = new Topbar();
         topbar.init(this);
 
-        ImageView im = (ImageView) findViewById(R.id.figur);
+        ImageView figur = (ImageView) findViewById(R.id.figur);
+        figur.setImageResource(Spiller.instans.figurdata.drawable_figur_halv_id);
         dialog = new AlertDialog.Builder(Hjem.this);
         updateText();
         ImageView hjemBack = (ImageView) findViewById(R.id.ikon_tilbage);
         ImageView hjemhelp = (ImageView) findViewById(R.id.vaerkstedHelp);
         hjemhelp.setVisibility(View.INVISIBLE);
-        TextView spillerintro = (TextView) findViewById(R.id.taleboble_tekst);
+        TextView taleboble_tekst = (TextView) findViewById(R.id.taleboble_tekst);
         ImageView menu = (ImageView) findViewById(R.id.menuknap);
         menu.setVisibility(View.INVISIBLE);
-        spillerintro.setText("Hej jeg hedder " + instans.getNavn() + ". Jeg bor med min familie i en landsby i Nepal. \nMin mor og far har aldrig gået i skole, så de tjener ikke så mange penge, så det er svært for dem at hjælpe mig med at få en uddannelse.");
 
-        if (instans.getSex() == false) {
-            im.setImageResource(R.drawable.figur_asha_halv);
-        } else {
-            im.setImageResource(R.drawable.figur_krishna_halv);
-        }
+        String beskrivelse_hjemme = Spiller.instans.figurdata.json.optString("beskrivelse_hjemme" , "(FEJL: 'beskrivelse_hjemme' mangler for denne figur)\nHej jeg hedder " + instans.getNavn() + ". Jeg bor med min familie i en landsby i Nepal. \nMin mor og far har aldrig gået i skole, så de tjener ikke så mange penge, så det er svært for dem at hjælpe mig med at få en uddannelse.");
+        taleboble_tekst.setText(beskrivelse_hjemme);
+        figur.setImageResource(Spiller.instans.figurdata.drawable_figur_halv_id);
 
 
         hjemBack.setOnClickListener(new View.OnClickListener() {
