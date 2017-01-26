@@ -1,6 +1,8 @@
 package com.example.asger.nepalspil.felter;
 
+import android.app.Activity;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.media.MediaPlayer;
@@ -14,6 +16,8 @@ import android.widget.TextView;
 
 import com.example.asger.nepalspil.R;
 import com.github.jinatonic.confetti.CommonConfetti;
+
+import cn.pedant.SweetAlert.SweetAlertDialog;
 
 import static com.example.asger.nepalspil.models.Spiller.instans;
 
@@ -41,6 +45,27 @@ public class Eksamen extends AppCompatActivity {
                 })
                 .setNegativeButton("Nej", null)
                 .show();
+
+        new SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE)
+                .setTitleText("Er du sikker?")
+                .setContentText("Hvis du forlader eksamen vil det koste dig " + Skole.vidensKrav() + " viden.")
+                .setConfirmText("Ja")
+                .showCancelButton(true)
+                .setCancelText("Nej, jeg kan godt!")
+                .setCancelClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                    @Override
+                    public void onClick(SweetAlertDialog sDialog) {
+                        sDialog.cancel();
+                    }
+                })
+                .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                    @Override
+                    public void onClick(SweetAlertDialog sDialog) {
+                        sDialog.dismissWithAnimation();
+                        finish();
+                    }
+
+                }).show();
     }
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -109,15 +134,19 @@ public class Eksamen extends AppCompatActivity {
         }
 
 
-        dialog.setMessage("Du har desværre svaret forkert på eksamen og er derfor dumpet. -" + 10 * instans.getKlassetrin() + " viden")
-                .setCancelable(false)
-                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
+        new SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE)
+                .setTitleText("Øv...")
+                .setContentText("Du har desværre svaret forkert på eksamen og er derfor dumpet. -" + 10 * instans.getKlassetrin() + " viden")
+                .setConfirmText("Ok")
+                .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                    @Override
+                    public void onClick(SweetAlertDialog sDialog) {
+                        sDialog.dismiss();
                         finish();
                     }
-                });
-        AlertDialog alert = dialog.create();
-        alert.show();
+                })
+                .show();
+
     }
 
     public void setQuestion(String titel, String answerbox1, String answerbox2, String answerbox3) {
@@ -137,15 +166,18 @@ public class Eksamen extends AppCompatActivity {
                         .infinite();
                 instans.setKlassetrin(instans.getKlassetrin() + 1);
 
-                dialog.setMessage("TILLYKKE!! Du bestod og går nu i " + instans.getKlassetrin() + ". klasse.")
-                        .setCancelable(false)
-                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
+                new SweetAlertDialog(Eksamen.this, SweetAlertDialog.SUCCESS_TYPE)
+                        .setTitleText("TILLYKKE!!!")
+                        .setContentText("Du bestod og går nu i " + instans.getKlassetrin() + ". klasse.")
+                        .setConfirmText("Fedt!")
+                        .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                            @Override
+                            public void onClick(SweetAlertDialog sDialog) {
+                                sDialog.dismissWithAnimation();
                                 finish();
                             }
-                        });
-                AlertDialog alert = dialog.create();
-                alert.show();
+                        })
+                        .show();
 
             }
         });
@@ -176,15 +208,18 @@ public class Eksamen extends AppCompatActivity {
                         .infinite();
                 instans.setKlassetrin(instans.getKlassetrin() + 1);
 
-                dialog.setMessage("TILLYKKE!! Du bestod og går nu i " + instans.getKlassetrin() + ". klasse.")
-                        .setCancelable(false)
-                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
+                new SweetAlertDialog(Eksamen.this, SweetAlertDialog.SUCCESS_TYPE)
+                        .setTitleText("TILLYKKE!!!")
+                        .setContentText("Du bestod og går nu i " + instans.getKlassetrin() + ". klasse.")
+                        .setConfirmText("Fedt!")
+                        .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                            @Override
+                            public void onClick(SweetAlertDialog sDialog) {
+                                sDialog.dismissWithAnimation();
                                 finish();
                             }
-                        });
-                AlertDialog alert = dialog.create();
-                alert.show();
+                        })
+                        .show();
 
             }
         });
@@ -216,15 +251,18 @@ public class Eksamen extends AppCompatActivity {
                         .infinite();
                 instans.setKlassetrin(instans.getKlassetrin() + 1);
 
-                dialog.setMessage("TILLYKKE!! Du bestod og går nu i " + instans.getKlassetrin() + ". klasse.")
-                        .setCancelable(false)
-                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
+                new SweetAlertDialog(Eksamen.this, SweetAlertDialog.SUCCESS_TYPE)
+                        .setTitleText("TILLYKKE!!!")
+                        .setContentText("Du bestod og går nu i " + instans.getKlassetrin() + ". klasse.")
+                        .setConfirmText("Fedt!")
+                        .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                            @Override
+                            public void onClick(SweetAlertDialog sDialog) {
+                                sDialog.dismissWithAnimation();
                                 finish();
                             }
-                        });
-                AlertDialog alert = dialog.create();
-                alert.show();
+                        })
+                        .show();
             }
         });
     }
