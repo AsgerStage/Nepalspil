@@ -51,7 +51,7 @@
             android:layout_marginStart="38dp"/>
 
         <TextView
-            android:text="Info om farm"
+            android:text="@string/marken_taleboble"
             android:id="@+id/taleboble_tekst"
             android:textSize="14sp"
             android:textStyle="normal|bold"

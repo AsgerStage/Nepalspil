@@ -13,7 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.asger.nepalspil.R;
-import com.example.asger.nepalspil.activities.SpillePlade;
+import com.example.asger.nepalspil.models.Spiller;
 
 import java.io.IOException;
 
@@ -23,13 +23,6 @@ import static com.example.asger.nepalspil.models.Spiller.instans;
 public class Marken extends AppCompatActivity {
     final int MONEY_PER_CLICK = 3;
     final int TIME_PER_CLICK = 1;
-
-    @Override
-    public void onBackPressed() {
-
-        SpillePlade.updateEntireBoard();
-        finish();
-    }
 
     AlertDialog.Builder dialog;
     private Animation animation;
@@ -43,8 +36,8 @@ public class Marken extends AppCompatActivity {
         topbar.init(this);
 
         dialog = new AlertDialog.Builder(Marken.this);
-        final TextView fieldinfo = (TextView) findViewById(R.id.taleboble_tekst);
-        // texttid = (TextView) findViewById(R.id.texttid);
+        ImageView figur = (ImageView) findViewById(R.id.figur);
+        figur.setImageResource(Spiller.instans.figurdata.drawable_figur_halv_id);
         final MediaPlayer mp = MediaPlayer.create(this, R.raw.cash);
         animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.plusknowledge);
 
@@ -60,13 +53,11 @@ public class Marken extends AppCompatActivity {
         face = Typeface.createFromAsset(getAssets(), "fonts/Mathlete-Bulky.otf");
         fieldinfo.setTypeface(face);*/
 
-        fieldinfo.setText("I marken kan du tjene lidt penge til mad, skolesager eller en cykel ved at arbejde.");
-
 
         helpfield.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                dialog.setMessage("Dine forældre har ikke råd til at give dig en cykel eller til at købe frugt og grønt, så du må selv tjene penge i marken fra første klasse. Men husk, det tager tid fra dine studier. ");
+                dialog.setMessage(R.string.marken_hjælp);
                 dialog.show();
             }
         });
@@ -109,7 +100,6 @@ public class Marken extends AppCompatActivity {
         hjemBack.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
-                SpillePlade.updateEntireBoard();
                 v.startAnimation(AnimationUtils.loadAnimation(Marken.this, R.anim.image_click));
                 finish();
 
@@ -120,6 +110,5 @@ public class Marken extends AppCompatActivity {
 
     public void updateText() {
         topbar.opdaterGui(instans);
-        SpillePlade.updateEntireBoard();
     }
 }
