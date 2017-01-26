@@ -12,6 +12,8 @@ import android.widget.ImageView;
 import com.example.asger.nepalspil.R;
 import com.example.asger.nepalspil.models.Spiller;
 
+import cn.pedant.SweetAlert.SweetAlertDialog;
+
 import static com.example.asger.nepalspil.models.Spiller.instans;
 
 public class Butikken extends AppCompatActivity {
@@ -37,7 +39,6 @@ public class Butikken extends AppCompatActivity {
         ImageView menu = (ImageView) findViewById(R.id.menuknap);
         menu.setVisibility(View.INVISIBLE);
         topbar.opdaterGui(instans);
-
 
 
         switch (instans.getLearningAmp()) {
@@ -70,46 +71,47 @@ public class Butikken extends AppCompatActivity {
                 if (instans.getLearningAmp() == 2) {
                     if (instans.getPenge() >= 700) {
                         buy();
-                        AlertDialog.Builder dialog = new AlertDialog.Builder(Butikken.this);
-                        dialog.setTitle("Lommeregner købt");
-                        dialog.setMessage("Du har købt en ny lommeregner for 700kr.");
-                        dialog.show();
+                        new SweetAlertDialog(Butikken.this, SweetAlertDialog.SUCCESS_TYPE)
+                                .setTitleText("Lommeregner købt!")
+                                .setContentText("Du har købt en ny lommeregner for 700kr.")
+                                .show();
                         buy.setVisibility(View.INVISIBLE);
                     } else {
-                        AlertDialog.Builder dialog = new AlertDialog.Builder(Butikken.this);
-                        dialog.setTitle("Ikke nok penge!");
-                        dialog.setMessage("Du har ikke penge nok. Tjen penge ved at arbejde.");
-                        dialog.show();
+                        new SweetAlertDialog(Butikken.this, SweetAlertDialog.ERROR_TYPE)
+                                .setTitleText("Ikke nok penge!")
+                                .setContentText("Du har ikke penge nok. Tjen penge ved at arbejde.")
+                                .show();
                     }
                 }
                 if (instans.getLearningAmp() == 1) {
                     if (instans.getPenge() >= 300) {
                         buy();
-                        AlertDialog.Builder dialog = new AlertDialog.Builder(Butikken.this);
-                        dialog.setTitle("Blyanter købt");
-                        dialog.setMessage("Du har købt nye blyanter for 300kr.");
-                        dialog.show();
+                        new SweetAlertDialog(Butikken.this, SweetAlertDialog.SUCCESS_TYPE)
+                                .setTitleText("Blyanter købt!")
+                                .setContentText("Du har købt nye blyanter for 300kr.")
+                                .show();
                         buy.setText("Køb Lommeregner");
                     } else {
-                        AlertDialog.Builder dialog = new AlertDialog.Builder(Butikken.this);
-                        dialog.setTitle("Ikke nok penge!");
-                        dialog.setMessage("Du har ikke penge nok. Tjen penge ved at arbejde.");
-                        dialog.show();
+                        new SweetAlertDialog(Butikken.this, SweetAlertDialog.ERROR_TYPE)
+                                .setTitleText("Ikke nok penge!")
+                                .setContentText("Du har ikke penge nok. Tjen penge ved at arbejde.")
+                                .show();
+
                     }
                 }
                 if (instans.getLearningAmp() == 0) {
                     if (instans.getPenge() >= 150) {
                         buy();
-                        AlertDialog.Builder dialog = new AlertDialog.Builder(Butikken.this);
-                        dialog.setTitle("Kladehæfte købt");
-                        dialog.setMessage("Du har købt et kladehæfte for 150kr.");
-                        dialog.show();
+                        new SweetAlertDialog(Butikken.this, SweetAlertDialog.SUCCESS_TYPE)
+                                .setTitleText("Kladehæfte købt!")
+                                .setContentText("Du har købt et kladehæfte for 150kr.")
+                                .show();
                         buy.setText("Køb blyanter");
                     } else {
-                        AlertDialog.Builder dialog = new AlertDialog.Builder(Butikken.this);
-                        dialog.setTitle("Ikke nok penge!");
-                        dialog.setMessage("Du har ikke penge nok. Tjen penge ved at arbejde.");
-                        dialog.show();
+                        new SweetAlertDialog(Butikken.this, SweetAlertDialog.ERROR_TYPE)
+                                .setTitleText("Ikke nok penge!")
+                                .setContentText("Du har ikke penge nok. Tjen penge ved at arbejde.")
+                                .show();
                     }
                 }
             }

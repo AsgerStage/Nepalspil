@@ -23,6 +23,7 @@ import com.example.asger.nepalspil.models.Spiller;
 
 import java.io.IOException;
 
+import cn.pedant.SweetAlert.SweetAlertDialog;
 
 
 public class Vaerksted extends AppCompatActivity {
@@ -130,14 +131,15 @@ public class Vaerksted extends AppCompatActivity {
                     topbar.opdaterGui(Spiller.instans);
                 } else if (Spiller.instans.getTid() < 2) {
 
-                    dialog.setTitle("Intet tid!");
-                    dialog.setMessage("Du har ikke nok tid til at arbejde");
-                    dialog.show();
+                    new SweetAlertDialog(Vaerksted.this, SweetAlertDialog.ERROR_TYPE)
+                            .setTitleText("Du har ikke tid til at arbejde.")
+                            .show();
 
                 } else if (Spiller.instans.getKlassetrin() < 3) {
-                    dialog.setTitle("Du er ikke klog nok");
-                    dialog.setMessage("Du skal gå i mindst 3. klasse for at arbejde her");
-                    dialog.show();
+                    new SweetAlertDialog(Vaerksted.this, SweetAlertDialog.ERROR_TYPE)
+                            .setTitleText("Du har ikke tid til at arbejde.")
+                            .setContentText("Du skal gå i mindst 3 klasse for at arbejde her.")
+                            .show();
                 }
             }
         });
@@ -209,9 +211,15 @@ public class Vaerksted extends AppCompatActivity {
                     if (Spiller.instans.getPenge() >= 200) {
                         Spiller.instans.setPenge(Spiller.instans.getPenge() - 200);
                         Spiller.instans.setmoveSpeed(2);
-                        Toast.makeText(Vaerksted.this, "Du har købt en cykel", Toast.LENGTH_SHORT).show();
+                        new SweetAlertDialog(Vaerksted.this, SweetAlertDialog.SUCCESS_TYPE)
+                                .setTitleText("Cykel købt!")
+                                .setContentText("Du har købt punkteret cykel for 200kr.")
+                                .show();
                     } else {
-                        Toast.makeText(Vaerksted.this, "Du har ikke råd til en cykel, den koster 200", Toast.LENGTH_SHORT).show();
+                        new SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE)
+                                .setTitleText("Ikke nok penge!")
+                                .setContentText("Du har ikke råd til en cykel, den koster 200kr")
+                                .show();
                     }
                 } else
                     Toast.makeText(Vaerksted.this, "Du har allerede en bedre cykel", Toast.LENGTH_SHORT).show();
@@ -221,9 +229,15 @@ public class Vaerksted extends AppCompatActivity {
                     if (Spiller.instans.getPenge() >= 500) {
                         Spiller.instans.setPenge(Spiller.instans.getPenge() - 500);
                         Spiller.instans.setmoveSpeed(3);
-                        Toast.makeText(Vaerksted.this, "Du har købt en pænt hurtig cykel", Toast.LENGTH_SHORT).show();
+                        new SweetAlertDialog(Vaerksted.this, SweetAlertDialog.SUCCESS_TYPE)
+                                .setTitleText("Pænt hurtig cykel købt!")
+                                .setContentText("Du har købt en pænt hurtig cykel for 500kr.")
+                                .show();
                     } else {
-                        Toast.makeText(Vaerksted.this, "Du har ikke råd til den pænt hurtige cykel, den koster 500kr", Toast.LENGTH_SHORT).show();
+                        new SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE)
+                                .setTitleText("Ikke nok penge!")
+                                .setContentText("Du har ikke råd til den pænt hurtige cykel, den koster 500kr")
+                                .show();
                     }
                 } else
                     Toast.makeText(Vaerksted.this, "Du har allerede en bedre cykel", Toast.LENGTH_SHORT).show();
@@ -233,9 +247,15 @@ public class Vaerksted extends AppCompatActivity {
                     if (Spiller.instans.getPenge() >= 1000) {
                         Spiller.instans.setPenge(Spiller.instans.getPenge() - 1000);
                         Spiller.instans.setmoveSpeed(4);
-                        Toast.makeText(Vaerksted.this, "Du har købt en racer cykel", Toast.LENGTH_SHORT).show();
+                        new SweetAlertDialog(Vaerksted.this, SweetAlertDialog.SUCCESS_TYPE)
+                                .setTitleText("Racer cykel købt!")
+                                .setContentText("Du har købt en racer cykel for 1000kr.")
+                                .show();
                     } else {
-                        Toast.makeText(Vaerksted.this, "Du har ikke råd til racer cyklen, den koster 1000kr", Toast.LENGTH_SHORT).show();
+                        new SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE)
+                                .setTitleText("Ikke nok penge!")
+                                .setContentText("Du har ikke råd til racer cyklen, den koster 1000kr")
+                                .show();
                     }
                 } else
                     Toast.makeText(Vaerksted.this, "Du har allerede en bedre cykel", Toast.LENGTH_SHORT).show();

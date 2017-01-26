@@ -17,6 +17,8 @@ import com.example.asger.nepalspil.models.Spiller;
 
 import java.io.IOException;
 
+import cn.pedant.SweetAlert.SweetAlertDialog;
+
 public class Boghandel extends AppCompatActivity {
     final int MONEY_PER_CLICK = 20;
     final int TIME_PER_CLICK = 1;
@@ -75,15 +77,15 @@ public class Boghandel extends AppCompatActivity {
                     topbar.opdaterGui(Spiller.instans);
                 } else if (Spiller.instans.getTid() < 2) {
 
-                    dialog.setTitle("Intet tid!");
-                    dialog.setMessage("Du har ikke nok tid til at arbejde");
-                    dialog.show();
+                    new SweetAlertDialog(Boghandel.this, SweetAlertDialog.ERROR_TYPE)
+                            .setTitleText("Du har ikke tid til at arbejde.")
+                            .show();
 
                 } else {
-                    AlertDialog.Builder dialog = new AlertDialog.Builder(Boghandel.this);
-                    dialog.setTitle("Ikke nok viden!");
-                    dialog.setMessage("Du har ikke uddannelse nok til at arbejde her");
-                    dialog.show();
+                    new SweetAlertDialog(Boghandel.this, SweetAlertDialog.ERROR_TYPE)
+                            .setTitleText("Ikke nok viden")
+                            .setContentText("Du har ikke uddannelse nok til at arbejde her.")
+                            .show();
                 }
             }
         });
@@ -105,19 +107,25 @@ public class Boghandel extends AppCompatActivity {
 
                     Spiller.instans.setViden(Spiller.instans.getViden() + 10);
                     Spiller.instans.setPenge(Spiller.instans.getPenge() - 30);
-                    dialog.setTitle("Bog købt");
-                    dialog.setMessage("Du har købt en ny bog for 30 penge. +10 viden");
-                    dialog.show();
+                    new SweetAlertDialog(Boghandel.this, SweetAlertDialog.SUCCESS_TYPE)
+                            .setTitleText("Bog købt")
+                            .setContentText("Du har købt en ny bog for 30kr. +10 viden")
+                            .show();
+
                     Spiller.instans.setLastBookBought(Spiller.instans.getRunde());
                     topbar.opdaterGui(Spiller.instans);
+
                 } else if (Spiller.instans.getPenge() < 30) {
-                    dialog.setTitle("Du mangler penge!");
-                    dialog.setMessage("Bogen koster 30 kroner, men du har kun " + Spiller.instans.getPenge());
-                    dialog.show();
+                    new SweetAlertDialog(Boghandel.this, SweetAlertDialog.ERROR_TYPE)
+                            .setTitleText("Ikke nok penge!.")
+                            .setContentText("Bogen koster 30 kroner, men du har kun " + Spiller.instans.getPenge())
+                            .show();
+
                 } else if (!(Spiller.instans.getLastBookBought() + 5 < Spiller.instans.getRunde())) {
-                    dialog.setTitle("Boghandlen har ikke den bog du vil have");
-                    dialog.setMessage("Kig tilbage på et andet tidspunkt");
-                    dialog.show();
+                    new SweetAlertDialog(Boghandel.this, SweetAlertDialog.ERROR_TYPE)
+                            .setTitleText("Bogen er ikke på lager.")
+                            .setContentText("Kig tilbage på et andet tidspunkt")
+                            .show();
                 }
             }
         });

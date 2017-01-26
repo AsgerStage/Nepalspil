@@ -18,6 +18,8 @@ import com.example.asger.nepalspil.models.Spiller;
 
 import java.io.IOException;
 
+import cn.pedant.SweetAlert.SweetAlertDialog;
+
 import static com.example.asger.nepalspil.models.Spiller.instans;
 
 
@@ -104,16 +106,15 @@ public class Marked extends AppCompatActivity {
 
                     updateText();
                 } else if (Spiller.instans.getTid() < 2) {
-                    AlertDialog.Builder dialog = new AlertDialog.Builder(Marked.this);
-                    dialog.setTitle("Intet tid!");
-                    dialog.setMessage("Du har ikke nok tid til at arbejde");
-                    dialog.show();
+                    new SweetAlertDialog(Marked.this, SweetAlertDialog.ERROR_TYPE)
+                            .setTitleText("Du har ikke tid til at arbejde.")
+                            .show();
 
                 } else {
-                    AlertDialog.Builder dialog = new AlertDialog.Builder(Marked.this);
-                    dialog.setTitle("Ikke nok viden!");
-                    dialog.setMessage("Du har ikke uddannelse nok til at arbejde her");
-                    dialog.show();
+                    new SweetAlertDialog(Marked.this, SweetAlertDialog.ERROR_TYPE)
+                            .setTitleText("Ikke nok viden")
+                            .setContentText("Du har ikke uddannelse nok til at arbejde her.")
+                            .show();
                 }
             }
         });
@@ -146,10 +147,10 @@ public class Marked extends AppCompatActivity {
                     updateText();
 
                 } else {
-                    AlertDialog.Builder dialog = new AlertDialog.Builder(Marked.this);
-                    dialog.setTitle("Ingen penge!");
-                    dialog.setMessage("Du har ikke nok penge til at spise");
-                    dialog.show();
+                    new SweetAlertDialog(Marked.this, SweetAlertDialog.ERROR_TYPE)
+                            .setTitleText("Ingen penge")
+                            .setContentText("Du har ikke råd til at spise her.")
+                            .show();
                 }
             }
         });
