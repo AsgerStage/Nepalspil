@@ -293,7 +293,7 @@ public class Eksamen extends AppCompatActivity {
                 prefs.edit().putInt(""+instans.getNavn(), instans.getRunde()).apply();
                 }
 
-                dialog.setMessage("Godt klaret, du har vundet spillet på " + instans.getRunde() + " uger! Du kan fortsætte med at spille videre hvis du vil eller gå til start menuen og starte forfra. (Eller lægge instans fra dig)")
+                dialog.setMessage("Godt klaret, du har vundet spillet på " + instans.getRunde() + " uger! Du kan fortsætte med at spille videre hvis du vil eller gå til start menuen og starte forfra. (Eller lægge spillet fra dig)")
                         .setCancelable(false)
                         .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
