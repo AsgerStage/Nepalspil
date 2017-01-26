@@ -14,6 +14,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.animation.AnimationUtils;
 import android.view.animation.BounceInterpolator;
+import android.view.animation.DecelerateInterpolator;
 import android.view.animation.LinearInterpolator;
 import android.view.animation.OvershootInterpolator;
 import android.widget.Button;
@@ -68,6 +69,7 @@ public class SpillePlade extends AppCompatActivity {
     ImageView spilpladeHelp;
     int lastEvent = 0;
     int randomNum = 0;
+    private boolean brikErUnderFlytning;
 
     @Override
     public void onBackPressed() {
@@ -292,6 +294,8 @@ public class SpillePlade extends AppCompatActivity {
      * @param feltPos feltnummer
      */
     private void flytBrikTilFelt(int feltPos) {
+        if (brikErUnderFlytning) return;
+        brikErUnderFlytning = true;
 
         final int gammelPos = Spiller.instans.getPosition();
         final int gammelTid = Spiller.instans.getTid();
@@ -336,12 +340,12 @@ public class SpillePlade extends AppCompatActivity {
 
 
         final AnimatorListenerAdapter brikAnimationLytter = new AnimatorListenerAdapter() {
-            double tid = gammelTid + 0.001; // undgå afrundingsproblemer
+            double tid = gammelTid - 0.001; // undgå afrundingsproblemer
             double pos = gammelPos;
 
             @Override
             public void onAnimationEnd(Animator animation) {
-                Log.d("SpillePlade", "onAnimationEnd " + tid + " =? " + nyTid + "  pos=" + pos);
+                Log.d("SpillePlade", "onAnimationEnd " + tid + " <=? " + nyTid + "  pos=" + pos);
                 if (tid <= nyTid)
                     return; // vi er allerede færdige (forstår ikke hvorfor onAnimationEnd blir kaldt en ekstra gang, men det gør den)
                 tid = tid - tidÆndringPerSkridt;
@@ -352,7 +356,7 @@ public class SpillePlade extends AppCompatActivity {
                     flytBrikTilFeltAfslutning(turenErGået, nyPos);
                 } else {
                     // ryk til næste felt animeret. onAnimationEnd kaldes igen når brikken er fremme ved næste felt
-                    sætBrikpositionOgTidAnimeret((int) (pos + 0.5), this, tidÆndringPerSkridt);
+                    sætBrikpositionOgTidAnimeret((int) (pos + 0.5 + Spiller.BRÆTSTØRRELSE), this, tidÆndringPerSkridt);
                 }
             }
         };
@@ -384,6 +388,7 @@ public class SpillePlade extends AppCompatActivity {
             updateText();
 
             sætBrikposition(Spiller.instans.getPosition());
+            brikErUnderFlytning = false;
         } else {
             Class aktivitet = feltNummerTilAktivitet[feltPos];
             final Intent intent = new Intent(SpillePlade.this, aktivitet);
@@ -397,6 +402,7 @@ public class SpillePlade extends AppCompatActivity {
                 @Override
                 public void run() {
 
+                    brikErUnderFlytning = false;
                     startActivity(intent);
                     //Do something after 1500ms
                 }
@@ -520,8 +526,8 @@ public class SpillePlade extends AppCompatActivity {
         Log.d("Spilleplade", "sætBrikposition called to " + feltnummer);
         Button felt = felter[(feltnummer + Spiller.BRÆTSTØRRELSE) % Spiller.BRÆTSTØRRELSE];
         figurbrik.animate()
-                .setDuration(100)
-                .setInterpolator(new LinearInterpolator())
+                .setDuration(300)
+                .setInterpolator(new DecelerateInterpolator())
                 .translationXBy(felt.getX() - figurbrik.getX()).translationYBy(felt.getY() - figurbrik.getY());
         //figurbrik.setX(felt.getX());
         //figurbrik.setY(felt.getY());
@@ -534,7 +540,7 @@ public class SpillePlade extends AppCompatActivity {
         figurbrik.animate()
                 .translationXBy(felt.getX() - figurbrik.getX())
                 .translationYBy(felt.getY() - figurbrik.getY())
-                .setDuration((int) (300*tidÆndringPerSkridt))
+                .setDuration((int) (250*tidÆndringPerSkridt))
                 .setInterpolator(new LinearInterpolator())
                 .setListener(animatorListener);
     }
