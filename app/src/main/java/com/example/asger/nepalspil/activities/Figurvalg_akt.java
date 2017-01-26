@@ -43,7 +43,7 @@ public class Figurvalg_akt extends AppCompatActivity {
                 pDialog = new SweetAlertDialog(Figurvalg_akt.this);
                 pDialog
                         .setTitleText("Vil du spille som Asha?")
-                        .setContentText("Asha er meget fattig og vil have det ekstra svært")
+                        .setContentText(Grunddata.Asha.beskrivelse)
                         .setConfirmText("Ja, vi klarer det!")
                         .showCancelButton(true)
                         .setCancelText("Nej")
@@ -75,7 +75,7 @@ public class Figurvalg_akt extends AppCompatActivity {
                 pDialog = new SweetAlertDialog(Figurvalg_akt.this);
                 pDialog
                         .setTitleText("Vil du spille som Krishna?")
-                        .setContentText("Krishna kommer fra en fattig familie og har det svært i skolen")
+                        .setContentText(Grunddata.Krishna.beskrivelse)
                         .setConfirmText("Ja, vi klarer det!")
                         .showCancelButton(true)
                         .setCancelText("Nej")
@@ -107,7 +107,7 @@ public class Figurvalg_akt extends AppCompatActivity {
                 pDialog = new SweetAlertDialog(Figurvalg_akt.this);
                 pDialog
                         .setTitleText("Vil du spille som Laxmi?")
-                        .setContentText("Laxmi er en klog pige fra en lidt fattig familie")
+                        .setContentText(Grunddata.Laxmi.beskrivelse)
                         .setConfirmText("Ja, vi klarer det!")
                         .showCancelButton(true)
                         .setCancelText("Nej")
@@ -140,7 +140,7 @@ public class Figurvalg_akt extends AppCompatActivity {
                 pDialog = new SweetAlertDialog(Figurvalg_akt.this);
                 pDialog
                         .setTitleText("Vil du spille som Kamal?")
-                        .setContentText("Kamal er en klog dreng fra en ikke så fattig familie")
+                        .setContentText(Grunddata.Kamal.beskrivelse)
                         .setConfirmText("Ja, vi klarer det!")
                         .showCancelButton(true)
                         .setCancelText("Nej")

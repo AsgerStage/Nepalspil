@@ -181,7 +181,12 @@ public class Hovedmenu_akt extends AppCompatActivity {
             if (resultCode == RESULT_OK) {
                 String figurnavn = data.getStringExtra("result");
                 Figurdata figurdata = Grunddata.instans.spillere.get(figurnavn);
-                Log.d("Hovedmenu_akt", "figurnavn = "+ figurnavn + " valgt ud af "+Grunddata.instans.spillere.keySet());
+                Log.d("Hovedmenu_akt", "figurnavn = "+ figurnavn + " vælges ud af "+Grunddata.instans.spillere.keySet());
+                if (figurdata==null) {
+                    Exception fejl = new IllegalStateException("figurnavn "+ figurnavn + " fandtes ikke i "+Grunddata.instans.spillere.keySet());
+                    fejl.printStackTrace();
+                    figurdata = Grunddata.instans.spillere.entrySet().iterator().next().getValue(); // Tag en tilfældig!
+                }
                 Spiller.instans = new Spiller(figurdata);
                 Intent intent = new Intent(Hovedmenu_akt.this, SpillePlade.class);
                 startActivity(intent);
@@ -237,6 +242,21 @@ public class Hovedmenu_akt extends AppCompatActivity {
             ex.printStackTrace();
         }
         Grunddata.instans = gd;
+        // Initialisering af de fire figurer der altid er
+        Grunddata.Asha = Grunddata.instans.spillere.get("Asha");
+        Grunddata.Krishna = Grunddata.instans.spillere.get("Krishna");
+        Grunddata.Laxmi = Grunddata.instans.spillere.get("Laxmi");
+        Grunddata.Kamal = Grunddata.instans.spillere.get("Kamal");
+
+        // Initialisering af drawables til figurerne
+        Grunddata.Asha.drawable_figur_halv_id = R.drawable.figur_asha_halv;
+        Grunddata.Asha.drawable_figur_hel_id = R.drawable.figur_asha_hel;
+        Grunddata.Krishna.drawable_figur_halv_id = R.drawable.figur_krishna_halv;
+        Grunddata.Krishna.drawable_figur_hel_id = R.drawable.figur_krishna_hel;
+        Grunddata.Laxmi.drawable_figur_halv_id = R.drawable.figur_laxmi_halv;
+        Grunddata.Laxmi.drawable_figur_hel_id = R.drawable.figur_laxmi_hel;
+        Grunddata.Kamal.drawable_figur_halv_id = R.drawable.figur_kamal_halv;
+        Grunddata.Kamal.drawable_figur_hel_id = R.drawable.figur_kamal_hel;
     }
 
 
