@@ -3,10 +3,12 @@ package com.example.asger.nepalspil.felter;
 import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -15,6 +17,7 @@ import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import com.example.asger.nepalspil.R;
+import com.example.asger.nepalspil.models.Spiller;
 import com.github.jinatonic.confetti.CommonConfetti;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
@@ -28,6 +31,7 @@ public class Eksamen extends AppCompatActivity {
     Button answer3;
     FrameLayout container;
     AlertDialog.Builder dialog;
+    SharedPreferences prefs;
 
     @Override
     public void onBackPressed() {
@@ -71,6 +75,7 @@ public class Eksamen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.eksamen);
+        prefs = PreferenceManager.getDefaultSharedPreferences(this);
 
         question = (TextView) findViewById(R.id.examQuestion);
         answer1 = (Button) findViewById(R.id.answer1Button);
@@ -280,7 +285,7 @@ public class Eksamen extends AppCompatActivity {
                 CommonConfetti.rainingConfetti(container, new int[]{Color.BLACK})
                         .infinite();
                 instans.setKlassetrin(instans.getKlassetrin() + 1);
-
+                prefs.edit().putInt(""+instans.getNavn(), instans.getRunde()).apply();
                 dialog.setMessage("Godt klaret, du har vundet spillet på " + instans.getRunde() + " uger! Du kan fortsætte med at spille videre hvis du vil eller gå til start menuen og starte forfra. (Eller lægge instans fra dig)")
                         .setCancelable(false)
                         .setPositiveButton("OK", new DialogInterface.OnClickListener() {

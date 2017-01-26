@@ -2,8 +2,10 @@ package com.example.asger.nepalspil.activities;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
@@ -17,6 +19,7 @@ import com.example.asger.nepalspil.models.Spiller;
 import org.w3c.dom.Text;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
+import me.grantland.widget.AutofitTextView;
 
 /**
  * Created by Asger on 25-01-2017.
@@ -27,19 +30,43 @@ public class Figurvalg_akt extends AppCompatActivity {
     ImageView KrishnaFigur;
     ImageView LaxmiFigur;
     ImageView KamalFigur;
+
+    AutofitTextView  KrishnaHighscore;
+    AutofitTextView  LaxmiHighscore;
+    AutofitTextView  AshaHighscore;
+    AutofitTextView  KamalHighscore;
+
     SweetAlertDialog pDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.figurvalg);
-
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         AshaFigur = (ImageView) findViewById(R.id.AshaFigur);
         KrishnaFigur = (ImageView) findViewById(R.id.KrishnaFigur);
         LaxmiFigur = (ImageView) findViewById(R.id.LaxmiFigur);
         KamalFigur = (ImageView) findViewById(R.id.KamalFigur);
 
+        KrishnaHighscore = (AutofitTextView) findViewById(R.id.KrishnaHighscore);
+        LaxmiHighscore = (AutofitTextView) findViewById(R.id.LaxmiHighscore);
+        AshaHighscore = (AutofitTextView) findViewById(R.id.AshaHighscore);
+        KamalHighscore = (AutofitTextView) findViewById(R.id.KamalHighscore);
 
+        if (prefs.getInt("Kamal", -1) != -1) {
+            KamalHighscore.setText("Kamal Highscore: " + prefs.getInt("Kamal", -1));
+
+        }
+        if (prefs.getInt("Laxmi", -1) != -1) {
+            LaxmiHighscore.setText("Laxmi Highscore: " + prefs.getInt("Laxmi", -1));
+        }
+        if (prefs.getInt("Krishna", -1) != -1) {
+            KrishnaHighscore.setText("Krishna Highscore: " + prefs.getInt("Krishna", -1));
+
+        }
+        if (prefs.getInt("Asha", -1) != -1) {
+            AshaHighscore.setText("Asha Highscore: " + prefs.getInt("Asha", -1));
+        }
 
         AshaFigur.setOnClickListener(new View.OnClickListener() {
 
@@ -63,8 +90,8 @@ public class Figurvalg_akt extends AppCompatActivity {
                             public void onClick(SweetAlertDialog sDialog) {
                                 sDialog.dismissWithAnimation();
                                 Intent returnIntent = new Intent();
-                                returnIntent.putExtra("result","Asha");
-                                setResult(Activity.RESULT_OK,returnIntent);
+                                returnIntent.putExtra("result", "Asha");
+                                setResult(Activity.RESULT_OK, returnIntent);
                                 finish();
                             }
 
@@ -95,10 +122,10 @@ public class Figurvalg_akt extends AppCompatActivity {
                             public void onClick(SweetAlertDialog sDialog) {
                                 sDialog.dismissWithAnimation();
                                 Intent returnIntent = new Intent();
-                                returnIntent.putExtra("result","Krishna");
-                                setResult(Activity.RESULT_OK,returnIntent);
+                                returnIntent.putExtra("result", "Krishna");
+                                setResult(Activity.RESULT_OK, returnIntent);
                                 finish();
-                        }
+                            }
 
                         }).show();
                 ;
@@ -127,8 +154,8 @@ public class Figurvalg_akt extends AppCompatActivity {
                             public void onClick(SweetAlertDialog sDialog) {
                                 sDialog.dismissWithAnimation();
                                 Intent returnIntent = new Intent();
-                                returnIntent.putExtra("result","Laxmi");
-                                setResult(Activity.RESULT_OK,returnIntent);
+                                returnIntent.putExtra("result", "Laxmi");
+                                setResult(Activity.RESULT_OK, returnIntent);
                                 finish();
                             }
 
@@ -161,8 +188,8 @@ public class Figurvalg_akt extends AppCompatActivity {
                                 sDialog.dismissWithAnimation();
 
                                 Intent returnIntent = new Intent();
-                                returnIntent.putExtra("result","Kamal");
-                                setResult(Activity.RESULT_OK,returnIntent);
+                                returnIntent.putExtra("result", "Kamal");
+                                setResult(Activity.RESULT_OK, returnIntent);
                                 finish();
                             }
 

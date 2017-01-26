@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/felt_skole">
+    android:background="@drawable/felt_skole"
+    android:weightSum="1">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -23,91 +24,7 @@
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="18dp"
-        android:weightSum="4">
-
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1">
-
-            <me.grantland.widget.AutofitTextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/KamalHighscore"
-                android:layout_weight="1"
-                android:maxLines="1"
-                android:textSize="40sp"
-                android:text="Kamal highscore: 110"
-                android:layout_marginRight="15dp"
-                android:layout_marginLeft="15dp"
-                android:textColor="@color/black" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1">
-
-            <me.grantland.widget.AutofitTextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/LaxmiHighscore"
-                android:layout_weight="1"
-                android:maxLines="1"
-                android:textSize="40sp"
-                android:text="Laxmi highscore: 150"
-                android:paddingRight="15dp"
-                android:paddingLeft="15dp"
-                android:textColor="@color/black" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1">
-
-            <me.grantland.widget.AutofitTextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/KrishnaHighscore"
-                android:layout_weight="1"
-                android:maxLines="1"
-                android:textSize="40sp"
-                android:text="Krishna highscore: 115"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp"
-                android:textColor="@color/black" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1">
-
-            <me.grantland.widget.AutofitTextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/AshaHighscore"
-                android:layout_weight="1"
-                android:maxLines="1"
-                android:textSize="40sp"
-                android:text="Asha highscore: 112"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp"
-                android:textColor="@color/black" />
-        </LinearLayout>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="263dp"
         android:weightSum="4">
 
         <LinearLayout
@@ -175,6 +92,87 @@
                 />
 
         </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:weightSum="4"
+        android:background="@color/white_semi_transparent">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <me.grantland.widget.AutofitTextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/KamalHighscore"
+                android:layout_weight="1"
+                android:maxLines="1"
+                android:textSize="40sp"
+                android:layout_marginRight="15dp"
+                android:layout_marginLeft="15dp"
+                android:textColor="@color/black" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <me.grantland.widget.AutofitTextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/LaxmiHighscore"
+                android:layout_weight="1"
+                android:maxLines="1"
+                android:textSize="40sp"
+                android:paddingRight="15dp"
+                android:paddingLeft="15dp"
+                android:textColor="@color/black" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <me.grantland.widget.AutofitTextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/KrishnaHighscore"
+                android:layout_weight="1"
+                android:maxLines="1"
+                android:textSize="40sp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:textColor="@color/black" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <me.grantland.widget.AutofitTextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/AshaHighscore"
+                android:layout_weight="1"
+                android:maxLines="1"
+                android:textSize="40sp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:textColor="@color/black" />
+        </LinearLayout>
+
     </LinearLayout>
 
 </LinearLayout>

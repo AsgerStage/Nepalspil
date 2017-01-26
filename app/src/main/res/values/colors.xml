@@ -16,5 +16,6 @@
     <color name="money">#216c2a</color>
     <color name="black">#000000</color>
     <color name="food">#62471d</color>
+    <color name="white_semi_transparent">#80FFFFFF</color>
 
 </resources>
