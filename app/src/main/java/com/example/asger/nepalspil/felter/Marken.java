@@ -17,6 +17,8 @@ import com.example.asger.nepalspil.models.Spiller;
 
 import java.io.IOException;
 
+import cn.pedant.SweetAlert.SweetAlertDialog;
+
 import static com.example.asger.nepalspil.models.Spiller.instans;
 
 
@@ -89,9 +91,9 @@ public class Marken extends AppCompatActivity {
 
                 } else if (instans.getTid() < 2) {
 
-                    dialog.setTitle("Intet tid!");
-                    dialog.setMessage("Du har ikke nok tid til at arbejde");
-                    dialog.show();
+                    new SweetAlertDialog(Marken.this, SweetAlertDialog.ERROR_TYPE)
+                            .setTitleText("Du har ikke tid til at arbejde.")
+                            .show();
 
                 }
             }

@@ -20,6 +20,8 @@ import com.example.asger.nepalspil.models.Spiller;
 
 import java.io.IOException;
 
+import cn.pedant.SweetAlert.SweetAlertDialog;
+
 import static com.example.asger.nepalspil.models.Spiller.instans;
 
 
@@ -117,10 +119,9 @@ public class Skole extends AppCompatActivity {
                         e.printStackTrace();
                     }
                 } else {
-                    AlertDialog.Builder dialog = new AlertDialog.Builder(Skole.this);
-                    dialog.setTitle("Ikke nok tid!");
-                    dialog.setMessage("Du har ikke nok tid til at spise");
-                    dialog.show();
+                    new SweetAlertDialog(Skole.this, SweetAlertDialog.ERROR_TYPE)
+                            .setTitleText("Du har ikke tid til at spise.")
+                            .show();
                 }
                 topbar.opdaterGui(instans);
             }
@@ -165,9 +166,9 @@ public class Skole extends AppCompatActivity {
                     }
                 } else {
 
-                    dialog.setTitle("Ikke nok tid!");
-                    dialog.setMessage("Du har ikke nok tid til at studere.");
-                    dialog.show();
+                    new SweetAlertDialog(Skole.this, SweetAlertDialog.ERROR_TYPE)
+                            .setTitleText("Du har ikke tid til at studere.")
+                            .show();
                 }
                 topbar.opdaterGui(instans);
             }
@@ -184,10 +185,10 @@ public class Skole extends AppCompatActivity {
                     startActivity(myIntent);
 
                 } else {
-                    AlertDialog.Builder dialog = new AlertDialog.Builder(Skole.this);
-                    dialog.setTitle("Ikke nok viden!");
-                    dialog.setMessage("Du har ikke nok viden til at starte eksamenen! Du skal have mindst " + vidensKrav() + " viden for at starte eksamen.");
-                    dialog.show();
+                    new SweetAlertDialog(Skole.this, SweetAlertDialog.ERROR_TYPE)
+                            .setTitleText("Ikke nok viden!")
+                            .setContentText("Du har ikke nok viden til at starte eksamen! Du skal have mindst " + vidensKrav() + " viden for at starte eksamen.")
+                            .show();
 
                 }
 

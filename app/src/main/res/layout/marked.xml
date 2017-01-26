@@ -72,7 +72,6 @@
             android:layout_height="wrap_content"
             android:id="@+id/flyvoptekst_spis"
             android:textAlignment="center"
-            android:text="+5 mad"
             android:layout_marginEnd="102dp"
             android:textColor="@color/food"
             android:textSize="20sp"

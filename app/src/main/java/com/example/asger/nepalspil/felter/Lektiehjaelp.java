@@ -17,6 +17,8 @@ import com.example.asger.nepalspil.R;
 
 import java.io.IOException;
 
+import cn.pedant.SweetAlert.SweetAlertDialog;
+
 import static com.example.asger.nepalspil.models.Spiller.instans;
 
 public class Lektiehjaelp extends AppCompatActivity {
@@ -78,15 +80,15 @@ public class Lektiehjaelp extends AppCompatActivity {
                     }
                     learn();
                 } else if (instans.getGlemtViden() <= 0) {
-                    AlertDialog.Builder dialog = new AlertDialog.Builder(Lektiehjaelp.this);
-                    dialog.setTitle("Ingen glemt viden.");
-                    dialog.setMessage("Du har ikke behov for lektiehjælp, da du forstået al undervisning.");
-                    dialog.show();
+                    new SweetAlertDialog(Lektiehjaelp.this, SweetAlertDialog.SUCCESS_TYPE)
+                            .setTitleText("Ingen glemt viden.")
+                            .setContentText("Du har ikke behov for lektiehjælp, da du forstået al undervisning.")
+                            .show();
                 } else if (instans.getTid() <= TIME_PER_CLICK) {
-                    AlertDialog.Builder dialog = new AlertDialog.Builder(Lektiehjaelp.this);
-                    dialog.setTitle("Ikke nok tid!");
-                    dialog.setMessage("Du har ikke nok tid til at få lektiehjælp. Kom igen i morgen.");
-                    dialog.show();
+                    new SweetAlertDialog(Lektiehjaelp.this, SweetAlertDialog.ERROR_TYPE)
+                            .setTitleText("Ikke tid nok!")
+                            .setContentText("Du har ikke nok tid til at få lektiehjælp. Kom igen i morgen.")
+                            .show();
                 }
 
             }
