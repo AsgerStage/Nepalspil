@@ -285,7 +285,14 @@ public class Eksamen extends AppCompatActivity {
                 CommonConfetti.rainingConfetti(container, new int[]{Color.BLACK})
                         .infinite();
                 instans.setKlassetrin(instans.getKlassetrin() + 1);
+                if (prefs.getInt(""+instans.getNavn(),-1)==-1){
+                    prefs.edit().putInt(""+instans.getNavn(), instans.getRunde()).apply();
+                }
+
+                else if (prefs.getInt(""+instans.getNavn(),-1)>instans.getRunde()){
                 prefs.edit().putInt(""+instans.getNavn(), instans.getRunde()).apply();
+                }
+
                 dialog.setMessage("Godt klaret, du har vundet spillet på " + instans.getRunde() + " uger! Du kan fortsætte med at spille videre hvis du vil eller gå til start menuen og starte forfra. (Eller lægge instans fra dig)")
                         .setCancelable(false)
                         .setPositiveButton("OK", new DialogInterface.OnClickListener() {

@@ -36,6 +36,7 @@ public class Figurvalg_akt extends AppCompatActivity {
     AutofitTextView  AshaHighscore;
     AutofitTextView  KamalHighscore;
 
+
     SweetAlertDialog pDialog;
 
     @Override
@@ -53,19 +54,21 @@ public class Figurvalg_akt extends AppCompatActivity {
         AshaHighscore = (AutofitTextView) findViewById(R.id.AshaHighscore);
         KamalHighscore = (AutofitTextView) findViewById(R.id.KamalHighscore);
 
+
+
         if (prefs.getInt("Kamal", -1) != -1) {
-            KamalHighscore.setText("Kamal Highscore: " + prefs.getInt("Kamal", -1));
+            KamalHighscore.setText("Kamal highscore: " + prefs.getInt("Kamal", -1)+" uger");
 
         }
         if (prefs.getInt("Laxmi", -1) != -1) {
-            LaxmiHighscore.setText("Laxmi Highscore: " + prefs.getInt("Laxmi", -1));
+            LaxmiHighscore.setText("Laxmi highscore: " + prefs.getInt("Laxmi", -1)+" uger");
         }
         if (prefs.getInt("Krishna", -1) != -1) {
-            KrishnaHighscore.setText("Krishna Highscore: " + prefs.getInt("Krishna", -1));
+            KrishnaHighscore.setText("Krishna highscore: " + prefs.getInt("Krishna", -1)+" uger");
 
         }
         if (prefs.getInt("Asha", -1) != -1) {
-            AshaHighscore.setText("Asha Highscore: " + prefs.getInt("Asha", -1));
+            AshaHighscore.setText("Asha highscore: " + prefs.getInt("Asha", -1)+" uger");
         }
 
         AshaFigur.setOnClickListener(new View.OnClickListener() {
