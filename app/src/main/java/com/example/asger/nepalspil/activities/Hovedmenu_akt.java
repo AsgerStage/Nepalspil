@@ -124,13 +124,13 @@ public class Hovedmenu_akt extends AppCompatActivity {
                 Spiller.instans.figurdata = Grunddata.instans.spillere.get(Spiller.instans.getNavn());
                 if (Spiller.instans.figurdata == null)
                     throw new IllegalStateException(Spiller.instans.getNavn() + " mangler i grunddata");
-                if (Spiller.instans.getSex() == true) {
+               /* if (Spiller.instans.getSex() == true) {
                     checkmarkasha.setVisibility(View.INVISIBLE);
                     checkmarkkrishna.setVisibility(View.VISIBLE);
                 } else if (Spiller.instans.getSex() == false) {
                     checkmarkkrishna.setVisibility(View.INVISIBLE);
                     checkmarkasha.setVisibility(View.VISIBLE);
-                }
+                }*/
                 Intent intent = new Intent(Hovedmenu_akt.this, SpillePlade.class);
                 intent.putExtra("genoptag", true);
                 startActivity(intent);
