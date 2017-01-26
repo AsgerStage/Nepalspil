@@ -10,14 +10,6 @@
     android:background="@color/blue_semi_transparent">
 
     <ImageView
-        android:layout_width="34dp"
-        android:layout_height="34dp"
-        app:srcCompat="@drawable/ikon_viden"
-        android:id="@+id/ikon_viden"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"/>
-
-    <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:srcCompat="@drawable/ikon_tilbage"
@@ -33,54 +25,6 @@
         android:layout_alignTop="@+id/textmad"
         android:layout_toEndOf="@+id/textpenge"/>
 
-    <TextView
-        android:text="Viden"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textviden"
-        android:elevation="1dp"
-        android:fontFamily="sans-serif"
-        android:textSize="24sp"
-        android:textColor="@color/black"
-        android:layout_alignTop="@+id/ikon_mad"
-        android:layout_toStartOf="@+id/ikon_viden"
-        android:layout_marginEnd="8dp"/>
-
-    <TextView
-        android:text="Mad"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textmad"
-        android:elevation="1dp"
-        android:fontFamily="sans-serif"
-        android:textSize="24sp"
-        android:textColor="@color/food"
-        android:layout_marginStart="19dp"
-        android:layout_centerVertical="true"
-        android:layout_toEndOf="@+id/ikon_tilbage"/>
-
-    <ImageView
-        android:layout_width="34dp"
-        android:layout_height="34dp"
-        app:srcCompat="@drawable/ikon_mad"
-        android:id="@+id/ikon_mad"
-        android:layout_marginStart="35dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignStart="@+id/textmad"/>
-
-    <TextView
-        android:text="Penge"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textpenge"
-        android:elevation="1dp"
-        android:fontFamily="sans-serif"
-        android:textSize="24sp"
-        android:textColor="@color/money"
-        android:layout_marginStart="19dp"
-        android:layout_alignParentBottom="true"
-        android:layout_toEndOf="@+id/ikon_viden"/>
-
     <ImageView
         android:layout_height="34dp"
         app:srcCompat="@drawable/ikon_ur"
@@ -89,21 +33,6 @@
         android:layout_weight="1"
         android:layout_alignTop="@+id/ikon_penge"
         android:layout_toEndOf="@+id/texttid"/>
-
-    <TextView
-        android:text="16"
-        android:layout_width="34dp"
-        android:layout_height="wrap_content"
-        android:id="@+id/texttid"
-        android:elevation="1dp"
-        android:fontFamily="sans-serif"
-        android:textSize="24sp"
-        android:textColor="@color/black"
-        android:gravity="right"
-        android:textAlignment="gravity"
-        android:layout_weight="1"
-        android:layout_centerVertical="true"
-        android:layout_toStartOf="@+id/vaerkstedHelp"/>
 
     <ImageView
         android:layout_width="wrap_content"
@@ -120,6 +49,78 @@
         android:id="@+id/menuknap"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true" />
+
+    <TextView
+        android:text="16"
+        android:layout_width="34dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/texttid"
+        android:elevation="1dp"
+        android:fontFamily="sans-serif"
+        android:textSize="24sp"
+        android:textColor="@color/black"
+        android:gravity="right"
+        android:textAlignment="gravity"
+        android:layout_weight="1"
+        android:layout_marginStart="33dp"
+        android:layout_alignTop="@+id/ikon_ur"
+        android:layout_toEndOf="@+id/ikon_penge" />
+
+    <TextView
+        android:text="Mad"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textmad"
+        android:elevation="1dp"
+        android:fontFamily="sans-serif"
+        android:textSize="24sp"
+        android:textColor="@color/food"
+        android:layout_marginStart="46dp"
+        android:layout_centerVertical="true"
+        android:layout_toEndOf="@+id/ikon_tilbage" />
+
+    <ImageView
+        android:layout_width="34dp"
+        android:layout_height="34dp"
+        app:srcCompat="@drawable/ikon_mad"
+        android:id="@+id/ikon_mad"
+        android:layout_alignParentTop="true"
+        android:layout_toEndOf="@+id/textmad" />
+
+    <ImageView
+        android:layout_width="34dp"
+        android:layout_height="34dp"
+        app:srcCompat="@drawable/ikon_viden"
+        android:id="@+id/ikon_viden"
+        android:layout_alignParentTop="true"
+        android:layout_toEndOf="@+id/textviden" />
+
+    <TextView
+        android:text="Viden"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textviden"
+        android:elevation="1dp"
+        android:fontFamily="sans-serif"
+        android:textSize="24sp"
+        android:textColor="@color/black"
+        android:layout_marginStart="22dp"
+        android:layout_alignBaseline="@+id/textmad"
+        android:layout_alignBottom="@+id/textmad"
+        android:layout_toEndOf="@+id/ikon_mad" />
+
+    <TextView
+        android:text="Penge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textpenge"
+        android:elevation="1dp"
+        android:fontFamily="sans-serif"
+        android:textSize="24sp"
+        android:textColor="@color/money"
+        android:layout_marginStart="26dp"
+        android:layout_alignTop="@+id/ikon_penge"
+        android:layout_toEndOf="@+id/ikon_viden" />
 
 </RelativeLayout>
 
