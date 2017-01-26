@@ -8,20 +8,13 @@ import android.view.View;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.example.asger.nepalspil.R;
-import com.example.asger.nepalspil.activities.SpillePlade;
 import com.example.asger.nepalspil.models.Spiller;
 
 import static com.example.asger.nepalspil.models.Spiller.instans;
 
 public class Butikken extends AppCompatActivity {
-    @Override
-    public void onBackPressed() {
-        SpillePlade.updateEntireBoard();
-        finish();
-    }
 
     AlertDialog.Builder dialog;
     private Topbar topbar;
@@ -43,7 +36,7 @@ public class Butikken extends AppCompatActivity {
         ImageView hjemBack = (ImageView) findViewById(R.id.ikon_tilbage);
         ImageView menu = (ImageView) findViewById(R.id.menuknap);
         menu.setVisibility(View.INVISIBLE);
-        updateText();
+        topbar.opdaterGui(instans);
 
 
 
@@ -125,7 +118,6 @@ public class Butikken extends AppCompatActivity {
         hjemBack.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
-                SpillePlade.updateEntireBoard();
                 v.startAnimation(AnimationUtils.loadAnimation(Butikken.this, R.anim.image_click));
                 finish();
             }
@@ -148,11 +140,6 @@ public class Butikken extends AppCompatActivity {
                 instans.setPenge(instans.getPenge() - 700);
                 break;
         }
-    }
-
-
-    public void updateText() {
         topbar.opdaterGui(instans);
-        SpillePlade.updateEntireBoard();
     }
 }

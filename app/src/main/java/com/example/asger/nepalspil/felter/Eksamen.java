@@ -13,7 +13,6 @@ import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import com.example.asger.nepalspil.R;
-import com.example.asger.nepalspil.activities.SpillePlade;
 import com.github.jinatonic.confetti.CommonConfetti;
 
 import static com.example.asger.nepalspil.models.Spiller.instans;
@@ -114,7 +113,6 @@ public class Eksamen extends AppCompatActivity {
                 .setCancelable(false)
                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        SpillePlade.updateEntireBoard();
                         finish();
                     }
                 });
@@ -143,7 +141,6 @@ public class Eksamen extends AppCompatActivity {
                         .setCancelable(false)
                         .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
-                                SpillePlade.updateEntireBoard();
                                 finish();
                             }
                         });
@@ -183,7 +180,6 @@ public class Eksamen extends AppCompatActivity {
                         .setCancelable(false)
                         .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
-                                SpillePlade.updateEntireBoard();
                                 finish();
                             }
                         });
@@ -224,7 +220,6 @@ public class Eksamen extends AppCompatActivity {
                         .setCancelable(false)
                         .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
-                                SpillePlade.updateEntireBoard();
                                 finish();
                             }
                         });
@@ -252,7 +247,6 @@ public class Eksamen extends AppCompatActivity {
                         .setCancelable(false)
                         .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
-                                SpillePlade.updateEntireBoard();
                                 finish();
                             }
                         });

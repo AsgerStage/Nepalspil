@@ -11,7 +11,8 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="204dp">
+        android:layout_weight="1"
+        android:layout_height="0dp">
 
         <android.support.v4.view.ViewPager
             android:id="@+id/view_pager"
@@ -39,29 +40,27 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:srcCompat="@drawable/figur_laxmi_halv"
-            android:id="@+id/imageView35"
+            android:id="@+id/figur"
             android:layout_marginEnd="93dp"
-            android:layout_alignParentTop="true"
+            android:layout_alignParentBottom="true"
             android:layout_alignParentEnd="true"/>
 
         <ImageView
-            android:layout_height="wrap_content"
+            android:layout_height="200dp"
             app:srcCompat="@drawable/taleboble"
-            android:id="@+id/imageView36"
             android:layout_width="200dp"
-            android:layout_above="@+id/tab_layout"
+            android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"/>
 
         <TextView
             android:text="Punkteret cykel:  200kr"
             android:layout_width="167dp"
             android:layout_height="wrap_content"
-            android:id="@+id/viewpagerPris"
+            android:id="@+id/taleboble_tekst"
             android:textAlignment="center"
             android:textColor="@color/money"
             android:textSize="24sp"
             android:textAllCaps="false"
-            android:layout_weight="0.26"
             android:layout_marginTop="22dp"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"/>
@@ -75,13 +74,13 @@
             android:textSize="20sp"
             android:layout_alignParentBottom="true"
             android:layout_alignParentEnd="true"
-            android:layout_alignStart="@+id/imageView35"/>
+            android:layout_alignStart="@+id/figur"/>
 
     </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="75dp">
+        android:layout_height="wrap_content">
 
         <Button
             android:background="@android:color/transparent"

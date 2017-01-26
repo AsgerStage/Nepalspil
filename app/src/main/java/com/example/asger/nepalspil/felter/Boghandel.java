@@ -13,7 +13,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.asger.nepalspil.R;
-import com.example.asger.nepalspil.activities.SpillePlade;
 import com.example.asger.nepalspil.models.Spiller;
 
 import java.io.IOException;
@@ -21,12 +20,6 @@ import java.io.IOException;
 public class Boghandel extends AppCompatActivity {
     final int MONEY_PER_CLICK = 20;
     final int TIME_PER_CLICK = 1;
-
-    @Override
-    public void onBackPressed() {
-        SpillePlade.updateEntireBoard();
-        finish();
-    }
 
     private Animation animation;
     private Topbar topbar;
@@ -132,7 +125,6 @@ public class Boghandel extends AppCompatActivity {
         hjemBack.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
-                SpillePlade.updateEntireBoard();
                 v.startAnimation(AnimationUtils.loadAnimation(Boghandel.this, R.anim.image_click));
                 finish();
             }

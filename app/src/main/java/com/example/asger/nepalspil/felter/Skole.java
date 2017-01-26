@@ -16,7 +16,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.asger.nepalspil.R;
-import com.example.asger.nepalspil.activities.SpillePlade;
+import com.example.asger.nepalspil.models.Spiller;
 
 import java.io.IOException;
 
@@ -40,22 +40,9 @@ public class Skole extends AppCompatActivity {
     final int COST_PER_FOOD_CLICK = 0;
     final int TIME_COST_EATING = 1;
 
-    @Override
-    public void onBackPressed() {
-        SpillePlade.updateEntireBoard();
-        finish();
-    }
-
-    TextView schoolText;
+    TextView taleboble_tekst;
 
     AlertDialog.Builder dialog;
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        // updateInfo();
-
-    }
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,9 +50,11 @@ public class Skole extends AppCompatActivity {
 
         topbar = new Topbar();
         topbar.init(this);
+        ImageView figur = (ImageView) findViewById(R.id.figur);
+        figur.setImageResource(Spiller.instans.figurdata.drawable_figur_hel_id);
 
         final MediaPlayer mp = MediaPlayer.create(this, R.raw.cash);
-        final TextView schoolText = (TextView) findViewById(R.id.taleboble_tekst);
+        taleboble_tekst = (TextView) findViewById(R.id.taleboble_tekst);
         final TextView klassetrin = (TextView) findViewById(R.id.klassetrin);
         Button bSpis = (Button) findViewById(R.id.knap_spis);
         Button bStuder = (Button) findViewById(R.id.knap_studer);
@@ -74,14 +63,14 @@ public class Skole extends AppCompatActivity {
         ImageView helpField = (ImageView) findViewById(R.id.vaerkstedHelp);
         animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.plusknowledge);
         animationfood = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.plusknowledge);
-        final TextView scroll = (TextView) findViewById(R.id.flyvoptekst_studer);
-        final TextView mad = (TextView) findViewById(R.id.flyvoptekst_spis);
-        mad.setText("");
-        scroll.setText("");
+        final TextView flyvoptekst_studer = (TextView) findViewById(R.id.flyvoptekst_studer);
+        final TextView flyvoptekst_spis = (TextView) findViewById(R.id.flyvoptekst_spis);
+        flyvoptekst_spis.setText("");
+        flyvoptekst_studer.setText("");
         ImageView menu = (ImageView) findViewById(R.id.menuknap);
         menu.setVisibility(View.INVISIBLE);
 
-        updateText();
+        topbar.opdaterGui(instans);
 
         Typeface face;
         face = Typeface.createFromAsset(getAssets(), "fonts/EraserDust.ttf");
@@ -89,23 +78,17 @@ public class Skole extends AppCompatActivity {
 
 
         dialog = new AlertDialog.Builder(Skole.this);
-        schoolText.setText("I skolen kan du spise, studere og gå til eksamen.");
         klassetrin.setText("Du går i " + instans.getKlassetrin() + ". klasse.");
         if (instans.getKlassetrin() >= 10) {
             bEksamen.setVisibility(View.INVISIBLE);
         }
-        onResume();
-        {
-
-        }
-
 
         helpField.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 v.startAnimation(AnimationUtils.loadAnimation(Skole.this, R.anim.image_click));
                 dialog.setTitle("Skolen");
-                dialog.setMessage("I skolen kan du studere og få en smule mad. \n Tryk på knapperne for at studere eller spise. Når du har fået viden nok, kan du gå til eksamen og hvis du består, kan du rykke op i næste klasse.\n Al undervisning er svær, så husk at bruge lektiehjælpen, hvis du ikke forstår det hele.");
+                dialog.setMessage(R.string.skole_hjælp);
                 dialog.show();
             }
         });
@@ -114,11 +97,10 @@ public class Skole extends AppCompatActivity {
             public void onClick(View v) {
                 v.startAnimation(AnimationUtils.loadAnimation(Skole.this, R.anim.image_click));
                 if (instans.getTid() >= TIME_PER_CLICK) {
-                    mad.setText("+" + FOOD_PER_CLICK + " mad");
-                    mad.startAnimation(animationfood);
+                    flyvoptekst_spis.setText("+" + FOOD_PER_CLICK + " mad");
+                    flyvoptekst_spis.startAnimation(animationfood);
                     spis();
-                    schoolText.setText("Mmm! Du har spist skolemad.");
-                    updateText();
+                    taleboble_tekst.setText("Mmm! Du har spist skolemad.");
                     if (mp.isPlaying()) {
                         mp.stop();
                     }
@@ -140,6 +122,7 @@ public class Skole extends AppCompatActivity {
                     dialog.setMessage("Du har ikke nok tid til at spise");
                     dialog.show();
                 }
+                topbar.opdaterGui(instans);
             }
         });
 
@@ -149,11 +132,11 @@ public class Skole extends AppCompatActivity {
                 v.startAnimation(AnimationUtils.loadAnimation(Skole.this, R.anim.image_click));
                 int thisStudy = studer();
                 if (instans.getTid() >= TIME_PER_CLICK) {
+                    taleboble_tekst.setText("");
                     if (instans.getTid() >= TIME_PER_CLICK && thisStudy == 1) {
-                        scroll.setText("+" + VIDEN_PER_CLICK + " viden");
-                        scroll.startAnimation(animation);
+                        flyvoptekst_studer.setText("+" + VIDEN_PER_CLICK + " viden");
+                        flyvoptekst_studer.startAnimation(animation);
                         instans.study(TIME_PER_CLICK, VIDEN_PER_CLICK);
-                        updateText();
                         if (mp.isPlaying()) {
                             mp.stop();
                         }
@@ -171,16 +154,14 @@ public class Skole extends AppCompatActivity {
                         }
                         System.out.println(instans.getViden());
                     } else if (thisStudy == 2) {
-                        scroll.setText("+1 lektiehjælp");
-                        scroll.startAnimation(animation);
+                        flyvoptekst_studer.setText("+1 lektiehjælp");
+                        flyvoptekst_studer.startAnimation(animation);
                         instans.study(TIME_PER_CLICK, 0);
                         instans.setGlemtViden(instans.getGlemtViden() + 1);
-                        updateText();
                     } else if (thisStudy == 3) {
-                        scroll.setText("+0 viden");
-                        scroll.startAnimation(animation);
+                        flyvoptekst_studer.setText("+0 viden");
+                        flyvoptekst_studer.startAnimation(animation);
                         instans.study(TIME_PER_CLICK, 0);
-                        updateText();
                     }
                 } else {
 
@@ -188,6 +169,7 @@ public class Skole extends AppCompatActivity {
                     dialog.setMessage("Du har ikke nok tid til at studere.");
                     dialog.show();
                 }
+                topbar.opdaterGui(instans);
             }
         });
 
@@ -196,7 +178,7 @@ public class Skole extends AppCompatActivity {
             public void onClick(View v) {
                 v.startAnimation(AnimationUtils.loadAnimation(Skole.this, R.anim.image_click));
                 if (kanStartEksamen()) {
-                    schoolText.setText("Held og Lykke!");
+                    taleboble_tekst.setText("Held og Lykke!");
                     finish();
                     Intent myIntent = new Intent(Skole.this, Eksamen.class);
                     startActivity(myIntent);
@@ -215,7 +197,6 @@ public class Skole extends AppCompatActivity {
         hjemBack.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
-                SpillePlade.updateEntireBoard();
                 v.startAnimation(AnimationUtils.loadAnimation(Skole.this, R.anim.image_click));
                 finish();
 
@@ -257,9 +238,9 @@ public class Skole extends AppCompatActivity {
     public void spis() {
         if (instans.getTid() > 0) {
             instans.eat(TIME_COST_EATING, COST_PER_FOOD_CLICK, FOOD_PER_CLICK);
-            updateText();
+            topbar.opdaterGui(instans);
         } else {
-            schoolText.setText("");
+            taleboble_tekst.setText("");
         }
 
     }
@@ -269,11 +250,6 @@ public class Skole extends AppCompatActivity {
             return true;
         } else
             return false;
-    }
-
-    public static String updateInfo() {
-        return "Tid: " + instans.getTid();
-
     }
 
 
@@ -315,11 +291,5 @@ public class Skole extends AppCompatActivity {
         else if (rand < homework && rand >= fail) return 3;
         else return 0;
     }
-
-    public void updateText() {
-        topbar.opdaterGui(instans);
-        SpillePlade.updateEntireBoard();
-    }
-
 
 }

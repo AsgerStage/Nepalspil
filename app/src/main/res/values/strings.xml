@@ -28,4 +28,7 @@
     <string name="marked_hjælp">På markedet kan du købe masser af sund mad. Det giver overskud til at få viden, men det er dyrt. Du kan også arbejde på markedet, men det tager tid.</string>
     <string name="marken_taleboble">I marken kan du tjene lidt penge til mad, skolesager eller en cykel ved at arbejde.</string>
     <string name="marken_hjælp">Dine forældre har ikke råd til at give dig en cykel eller til at købe frugt og grønt, så du må selv tjene penge i marken fra første klasse. Men husk, det tager tid fra dine studier.</string>
+    <string name="skole_taleboble">I skolen kan du spise, studere og gå til eksamen.</string>
+    <string name="skole_hjælp">I skolen kan du studere og få en smule mad.   Tryk på knapperne for at studere eller spise. Når du har fået viden nok, kan du gå til eksamen og hvis du består, kan du rykke op i næste klasse.  Al undervisning er svær, så husk at bruge lektiehjælpen, hvis du ikke forstår det hele.</string>
+    <string name="værksted_hjælp">Du bor ikke lige ved siden af skolen, så hvis du skal gå derhen tager det lang tid. Men en cykel koster mange penge, så du må først spare op.</string>
 </resources>

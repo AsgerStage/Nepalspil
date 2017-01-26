@@ -9,7 +9,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.asger.nepalspil.R;
-import com.example.asger.nepalspil.activities.SpillePlade;
 import com.example.asger.nepalspil.models.Spiller;
 
 import static com.example.asger.nepalspil.models.Spiller.instans;
@@ -17,11 +16,6 @@ import static com.example.asger.nepalspil.models.Spiller.instans;
 
 public class Hjem extends AppCompatActivity {
 
-    @Override
-    public void onBackPressed() {
-        SpillePlade.updateEntireBoard();
-        finish();
-    }
 
     AlertDialog.Builder dialog;
     private Topbar topbar;
@@ -36,7 +30,8 @@ public class Hjem extends AppCompatActivity {
         ImageView figur = (ImageView) findViewById(R.id.figur);
         figur.setImageResource(Spiller.instans.figurdata.drawable_figur_halv_id);
         dialog = new AlertDialog.Builder(Hjem.this);
-        updateText();
+        topbar.opdaterGui(Spiller.instans);
+
         ImageView hjemBack = (ImageView) findViewById(R.id.ikon_tilbage);
         ImageView hjemhelp = (ImageView) findViewById(R.id.vaerkstedHelp);
         hjemhelp.setVisibility(View.INVISIBLE);
@@ -52,7 +47,6 @@ public class Hjem extends AppCompatActivity {
         hjemBack.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
-                SpillePlade.updateEntireBoard();
                 v.startAnimation(AnimationUtils.loadAnimation(Hjem.this, R.anim.image_click));
                 finish();
             }
@@ -62,9 +56,4 @@ public class Hjem extends AppCompatActivity {
     }
 
 
-    public void updateText() {
-        topbar.opdaterGui(instans);
-        SpillePlade.updateEntireBoard();
-
-    }
 }
