@@ -43,13 +43,13 @@ public class Butikken extends AppCompatActivity {
 
         switch (instans.getLearningAmp()) {
             case 0:
-                buy.setText("Køb Kladehæfte");
+                buy.setText("Køb kladehæfte");
                 break;
             case 1:
                 buy.setText("Køb blyanter");
                 break;
             case 2:
-                buy.setText("Køb Lommeregner");
+                buy.setText("Køb lommeregner");
                 break;
             case 3:
                 buy.setVisibility(View.INVISIBLE);
@@ -69,11 +69,11 @@ public class Butikken extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (instans.getLearningAmp() == 2) {
-                    if (instans.getPenge() >= 700) {
+                    if (instans.getPenge() >= 200) {
                         buy();
                         new SweetAlertDialog(Butikken.this, SweetAlertDialog.SUCCESS_TYPE)
                                 .setTitleText("Lommeregner købt!")
-                                .setContentText("Du har købt en ny lommeregner for 700kr.")
+                                .setContentText("Du har købt en ny lommeregner for 200kr.")
                                 .show();
                         buy.setVisibility(View.INVISIBLE);
                     } else {
@@ -84,11 +84,11 @@ public class Butikken extends AppCompatActivity {
                     }
                 }
                 if (instans.getLearningAmp() == 1) {
-                    if (instans.getPenge() >= 300) {
+                    if (instans.getPenge() >= 20) {
                         buy();
                         new SweetAlertDialog(Butikken.this, SweetAlertDialog.SUCCESS_TYPE)
                                 .setTitleText("Blyanter købt!")
-                                .setContentText("Du har købt nye blyanter for 300kr.")
+                                .setContentText("Du har købt nye blyanter for 20kr.")
                                 .show();
                         buy.setText("Køb Lommeregner");
                     } else {
@@ -100,11 +100,11 @@ public class Butikken extends AppCompatActivity {
                     }
                 }
                 if (instans.getLearningAmp() == 0) {
-                    if (instans.getPenge() >= 150) {
+                    if (instans.getPenge() >= 10) {
                         buy();
                         new SweetAlertDialog(Butikken.this, SweetAlertDialog.SUCCESS_TYPE)
                                 .setTitleText("Kladehæfte købt!")
-                                .setContentText("Du har købt et kladehæfte for 150kr.")
+                                .setContentText("Du har købt et kladehæfte for 10kr.")
                                 .show();
                         buy.setText("Køb blyanter");
                     } else {
@@ -131,15 +131,15 @@ public class Butikken extends AppCompatActivity {
         switch (instans.getLearningAmp()) {
             case 0:
                 instans.setLearningAmp(1);
-                instans.setPenge(instans.getPenge() - 150);
+                instans.setPenge(instans.getPenge() - 10);
                 break;
             case 1:
                 instans.setLearningAmp(2);
-                instans.setPenge(instans.getPenge() - 300);
+                instans.setPenge(instans.getPenge() - 20);
                 break;
             case 2:
                 instans.setLearningAmp(3);
-                instans.setPenge(instans.getPenge() - 700);
+                instans.setPenge(instans.getPenge() - 200);
                 break;
         }
         topbar.opdaterGui(instans);
