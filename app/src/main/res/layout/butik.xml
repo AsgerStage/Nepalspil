@@ -28,49 +28,27 @@
             />
 
 
-        <LinearLayout
-            android:orientation="horizontal"
+        <Button
+            android:text="Køb kladehæfte"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true">
-
-            <Space
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1.82"/>
-
-            <Button
-                android:text="Køb kladehæfte"
-                android:layout_width="156dp"
-                android:layout_height="wrap_content"
-                android:id="@+id/knap_koeb"/>
-
-        </LinearLayout>
-
-        <ImageView
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            app:srcCompat="@drawable/taleboble"
-            android:id="@+id/imageView26"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginEnd="100dp"/>
-
-        <TextView
-            android:text="@string/butik_taleboble"
-            android:id="@+id/taleboble_tekst"
-            android:layout_marginTop="43dp"
-            android:layout_width="150dp"
-            android:layout_height="70dp"
-            android:layout_alignParentTop="true"
-            android:layout_alignEnd="@+id/imageView26"
-            android:layout_marginEnd="24dp"/>
+            android:id="@+id/knap_koeb"
+            android:layout_alignParentBottom="true"/>
 
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:srcCompat="@drawable/felt_butik_front"
             android:layout_gravity="end|bottom"/>
+
+        <TextView
+            android:id="@+id/taleboble_tekst"
+            app:layout_widthPercent="35%"
+            android:layout_height="wrap_content"
+            android:text="@string/butik_taleboble"
+            android:background="@drawable/taleboble_straekbar"
+            app:layout_marginRightPercent="12%"
+            android:layout_alignParentEnd="true"/>
 
     </android.support.percent.PercentRelativeLayout>
 

@@ -133,8 +133,8 @@ public class Skole extends AppCompatActivity {
                 v.startAnimation(AnimationUtils.loadAnimation(Skole.this, R.anim.image_click));
                 int thisStudy = studer();
                 if (instans.getTid() >= TIME_PER_CLICK) {
-                    taleboble_tekst.setText("");
                     if (instans.getTid() >= TIME_PER_CLICK && thisStudy == 1) {
+                        taleboble_tekst.setText("Du blev lidt klogere");
                         flyvoptekst_studer.setText("+" + VIDEN_PER_CLICK + " viden");
                         flyvoptekst_studer.startAnimation(animation);
                         instans.study(TIME_PER_CLICK, VIDEN_PER_CLICK);
@@ -155,11 +155,13 @@ public class Skole extends AppCompatActivity {
                         }
                         System.out.println(instans.getViden());
                     } else if (thisStudy == 2) {
+                        taleboble_tekst.setText("Med lidt lektiehjælp kunne du nok forstå det");
                         flyvoptekst_studer.setText("+1 lektiehjælp");
                         flyvoptekst_studer.startAnimation(animation);
                         instans.study(TIME_PER_CLICK, 0);
                         instans.setGlemtViden(instans.getGlemtViden() + 1);
                     } else if (thisStudy == 3) {
+                        taleboble_tekst.setText("Du forstod det ikke rigtig");
                         flyvoptekst_studer.setText("+0 viden");
                         flyvoptekst_studer.startAnimation(animation);
                         instans.study(TIME_PER_CLICK, 0);
