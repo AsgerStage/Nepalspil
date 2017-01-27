@@ -31,12 +31,26 @@
           "tekst" : "Du må blive hjemme og passe ham. -10 viden og dagen er gået",
           "videnForskel" : -10,
           "tidFaktor" : 0.1
-        },        
+        }, 
+          { "titel" : "Du har købt slik for alle dine penge",
+          "tekst" : "Du har brugt alle dine penge på slik. Nu har du ondt i maven og har ikke penge til mad. - 10 penge og dagen er gået",
+          "pengeForskel" : -10,
+          "tidFaktor" : 0.1
+        },
+          { "titel" : "Du skal passe geden",
+          "tekst" : "Din mor er ikke hjemme i dag, så du må blive hjemme og passe jeres ged. - 10 viden og dagen er gået",
+          "videnForskel" : -10,
+          "tidFaktor" : 0.1
+        },
+         { "titel" : "Nepal bandha - Skolen er lukket",
+          "tekst" : "Der er generalstrejke, så skolen og butikkerne holder lukket. - 10 viden og dagen er gået",
+          "videnForskel" : -10,
+          "tidFaktor" : 0.1
+        },
         { "fyld" : "fyld" },
         { "fyld" : "fyld" }
       ]
     },
-
     {
       "navn": "Krishna",
       "drengekøn": "true",
@@ -50,15 +64,20 @@
           "tidFaktor" : 0.5
         },
         { "titel" : "Dine forældre har brug for penge",
-          "tekst" : "Dine forældre har brugt nogle af dine penge. -20kr",
+          "tekst" : "Dine forældre skal bruge nogle af dine penge til mad. -20kr",
           "pengeForskel" : -20
         },
         { "titel" : "Din lillebror er blevet syg",
-          "tekst" : "Du må give ham noget af din mad, så han kan blive hurtigt rask. -30 mad",
+          "tekst" : "Du må give din lillebror noget af din mad, så han kan blive hurtigt rask. -30 mad",
           "madForskel" : 0.5
         },
         { "titel" : "Undervisningen var kedelig",
           "tekst" : "Undervisningen var kedelig, så du faldt i søvn. -10 viden",
+          "videnForskel" : -10,
+          "tidFaktor" : 0.1
+        },
+        { "titel" : "Nepal bandha - Skolen er lukket",
+          "tekst" : "Der er generalstrejke, så skolen og butikkerne holder lukket. - 10 viden og dagen er gået",
           "videnForskel" : -10,
           "tidFaktor" : 0.1
         },
@@ -79,7 +98,7 @@
       "drengekøn": "false",
       "fuldtNavn": "Laxmi Kunwar",
       "beskrivelse": "Laxmi Kunwar er en klog pige, hendes forældre har ikke så mange penge, men med din hjælp skal hun nok nå 10. klasse",
-      "beskrivelse_hjemme": "Hej jeg hedder Laxmi. Jeg bor med min familie i en landsby i Nepal. \nMin mor og far har aldrig gået i skole, så de tjener ikke så mange penge, så det er svært for dem at hjælpe mig med at få en uddannelse.",
+      "beskrivelse_hjemme": "Hej jeg hedder Laxmi. Jeg bor med min familie i en landsby i Nepal. \nMin far har fast arbejde som buschauffør, så vi får mad nok de fleste dage, men mine forældre kan ikke hjælpe mig med lektierne.",
       "startpenge": 50,
       "startviden": 10,
 
@@ -87,10 +106,6 @@
         { "titel" : "Du er blevet syg!",
           "tekst" : "Du er blevet syg og har derfor halvt så meget tid i denne uge.",
           "tidFaktor" : 0.5
-        },
-        { "titel" : "Dine forældre har brug for penge",
-          "tekst" : "Dine forældre har brugt nogle af dine penge. -20kr",
-          "pengeForskel" : -20
         },
         { "titel" : "Du skulle hjælpe din mor med at vaske tøj",
           "tekst" : "Så dagen er gået og du fik ikke studeret nok. -10 viden",
@@ -102,18 +117,31 @@
           "videnForskel" : -10,
           "tidFaktor" : 0.1
         },
+         { "titel" : "Nepal bandha - Skolen er lukket",
+          "tekst" : "Der er generalstrejke, så skolen og butikkerne holder lukket. - 10 viden og dagen er gået",
+          "videnForskel" : -10,
+          "tidFaktor" : 0.1
+        },
+          { "titel" : "Det er blevet regntid!",
+          "tekst" : "Det er blevet regntid og det øser ned. Du har ingen paraply, så du bliver hjemme. - 10 viden og dagen er gået",
+          "videnForskel" : -10,
+          "tidFaktor" : 0.1
+        },
+          { "titel" : "Du har fået en solcellelygte",
+          "tekst" : "Du har fået en læselampe, som kører på solceller, så nu kan du læse lektier, når der er strømafbrydelse. + 10 viden",
+          "videnForskel" : +10,
+          "tidFaktor" : 0.1
+        },
         { "fyld" : "fyld" },
         { "fyld" : "fyld" }
       ]
     },
-
-
     {
       "navn": "Kamal",
       "drengekøn": "true",
       "fuldtNavn": "Kamal Pandey",
-      "beskrivelse": "Kamal Pandey er en klog dreng fra en familie et par køer og en lille rismark. Med din hjælp klarer han nemt 10. klasse",
-      "beskrivelse_hjemme": "Hej jeg hedder Kamal. Jeg bor med min familie i en landsby i Nepal. \nMin mor og far har aldrig gået i skole, så de tjener ikke så mange penge, så det er svært for dem at hjælpe mig med at få en uddannelse.",
+      "beskrivelse": "Kamal Pandey kommer fra en familie med et par køer og en lille rismark. Med din hjælp klarer han nemt 10. klasse",
+      "beskrivelse_hjemme": "Hej jeg hedder Kamal. Jeg bor med min familie i en landsby i Nepal. \nMin mor og far har gået i skole til 5.klasse, og deres højeste ønske er at få mig på universitetet, så jeg får aldrig lov at blive hjemme eller droppe lektierne.",
       "startpenge": 500,
       "startviden": 30,
 
@@ -122,16 +150,20 @@
           "tekst" : "Du er blevet syg og har derfor halvt så meget tid i denne uge.",
           "tidFaktor" : 0.5
         },
-        { "titel" : "Dine forældre har brug for penge",
-          "tekst" : "Dine forældre har brugt nogle af dine penge. -20kr",
-          "pengeForskel" : -20
+        { "titel" : "Ekstra penge til skolesager",
+          "tekst" : "Din mor og far giver dig penge så du kan købe skolesager og klare dig bedre i skolen. +20kr",
+          "pengeForskel" : +20
         },
-        { "titel" : "Maden du har spiste var dårlig",
-          "tekst" : "Du er nu mere sulten. -30 mad",
-          "madForskel" : 0.5
+        { "titel" : "Du skal til bryllup",
+          "tekst" : "Du er inviteret til din tantes bryllup i Kathmandu, så du kommer ikke i skole i denne uge  . -20 viden",
+          "videnForskel" : 0.5
         },
-        { "titel" : "Undervisningen var kedelig",
-          "tekst" : "Undervisningen var kedelig, så du faldt i søvn. -10 viden og dagen er gået",
+         { "titel" : "Du får en flidspræmie",
+          "tekst" : "Du er blevet kåret til klassens dygtigste elev og modtager en flidspræmie. + 10 penge",
+          "pengeForskel" : +10
+        },
+         { "titel" : "Nepal bandha - Skolen er lukket",
+          "tekst" : "Der er generalstrejke, så skolen og butikkerne holder lukket. - 10 viden og dagen er gået",
           "videnForskel" : -10,
           "tidFaktor" : 0.1
         },
