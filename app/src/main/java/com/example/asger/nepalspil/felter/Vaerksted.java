@@ -29,7 +29,7 @@ import cn.pedant.SweetAlert.SweetAlertDialog;
 public class Vaerksted extends AppCompatActivity {
 
     //Working
-    final int MONEY_PER_CLICK = 7;
+    final int MONEY_PER_CLICK = 5;
     final int TIME_PER_CLICK = 1;
     private Topbar topbar;
 
