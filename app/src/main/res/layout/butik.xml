@@ -5,33 +5,28 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:background="@drawable/felt_butik"
-              android:weightSum="1">
+             >
 
     <include layout="@layout/topbar"/>
 
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/figur_laxmi_halv"
-        android:layout_marginBottom="-20dp"
-        android:layout_marginEnd="-20dp"
-        android:id="@+id/figur"
-        android:layout_gravity="end|bottom"/>
 
-
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="34dp"
-        app:srcCompat="@drawable/felt_butik_front"
-        android:layout_gravity="end|bottom"/>
-
-
-    <RelativeLayout
+    <android.support.percent.PercentRelativeLayout
         android:layout_marginTop="34dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
+
+        <ImageView
+            app:layout_heightPercent="65%"
+            app:layout_widthPercent="25%"
+            app:srcCompat="@drawable/figur_laxmi_halv"
+            android:layout_marginEnd="-30dp"
+            android:id="@+id/figur"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            />
+
 
         <LinearLayout
             android:orientation="horizontal"
@@ -71,7 +66,13 @@
             android:layout_alignEnd="@+id/imageView26"
             android:layout_marginEnd="24dp"/>
 
-    </RelativeLayout>
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:srcCompat="@drawable/felt_butik_front"
+            android:layout_gravity="end|bottom"/>
+
+    </android.support.percent.PercentRelativeLayout>
 
 
 </FrameLayout>
