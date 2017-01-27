@@ -168,7 +168,7 @@ public class Vaerksted extends AppCompatActivity {
         private int[] mImages = new int[]{
                 R.drawable.cykel1,
                 R.drawable.cykel2,
-                R.drawable.cykel2,
+                R.drawable.cykel3,
         };
 
         @Override
