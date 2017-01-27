@@ -213,7 +213,7 @@ public class Vaerksted extends AppCompatActivity {
                         Spiller.instans.setmoveSpeed(2);
                         new SweetAlertDialog(Vaerksted.this, SweetAlertDialog.SUCCESS_TYPE)
                                 .setTitleText("Cykel købt!")
-                                .setContentText("Du har købt punkteret cykel for 200kr.")
+                                .setContentText("Du har købt en brugt cykel for 200kr.")
                                 .show();
                     } else {
                         new SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE)
@@ -248,13 +248,13 @@ public class Vaerksted extends AppCompatActivity {
                         Spiller.instans.setPenge(Spiller.instans.getPenge() - 1000);
                         Spiller.instans.setmoveSpeed(4);
                         new SweetAlertDialog(Vaerksted.this, SweetAlertDialog.SUCCESS_TYPE)
-                                .setTitleText("Racer cykel købt!")
-                                .setContentText("Du har købt en racer cykel for 1000kr.")
+                                .setTitleText("Racercykel købt!")
+                                .setContentText("Du har købt en racercykel for 1000kr.")
                                 .show();
                     } else {
                         new SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE)
                                 .setTitleText("Ikke nok penge!")
-                                .setContentText("Du har ikke råd til racer cyklen, den koster 1000kr")
+                                .setContentText("Du har ikke råd til racercyklen, den koster 1000kr")
                                 .show();
                     }
                 } else
