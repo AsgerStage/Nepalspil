@@ -20,7 +20,7 @@ import java.io.IOException;
 import cn.pedant.SweetAlert.SweetAlertDialog;
 
 public class Boghandel extends AppCompatActivity {
-    final int MONEY_PER_CLICK = 20;
+    final int MONEY_PER_CLICK = 12;
     final int TIME_PER_CLICK = 1;
 
     private Animation animation;
