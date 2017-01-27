@@ -6,7 +6,7 @@
       "fuldtNavn": "Asha Musahar",
       "beskrivelse": "Asha Musahar er en sød pige, men hun er meget fattig, så det bliver svært for hende at nå 10. klasse",
       "beskrivelse_hjemme": "Hej jeg hedder Asha. Jeg bor med min familie i en landsby i Nepal. \nMin mor og far har aldrig gået i skole, så de tjener ikke så mange penge, så det er svært for dem at hjælpe mig med at få en uddannelse.",
-      "startpenge": 10,
+      "startpenge": 0,
       "startviden": 0,
 
       "uheld": [
@@ -56,7 +56,8 @@
       "drengekøn": "true",
       "beskrivelse": "Krishna Pariyar kommer fra en fattig familie og har det svært i skolen. Det bliver ikke helt nemt at nå 10. klasse",
       "beskrivelse_hjemme": "Hej jeg hedder Krishna. Jeg bor med min familie i en landsby i Nepal. \nMin mor og far har aldrig gået i skole, så de tjener ikke så mange penge, så det er svært for dem at hjælpe mig med at få en uddannelse.",
-      "startpenge": 30,
+      "startpenge": 5,
+      "startviden": 0,
 
       "uheld": [
         { "titel" : "Du er blevet syg!",
@@ -83,12 +84,6 @@
         },
         { "fyld" : "fyld" },
         { "fyld" : "fyld" },
-        { "fyld" : "fyld" },
-        { "fyld" : "fyld" },
-        { "fyld" : "fyld" },
-        { "fyld" : "fyld" },
-        { "fyld" : "fyld" },
-        { "fyld" : "fyld" },
         { "fyld" : "fyld" }
       ]
     },
@@ -99,7 +94,7 @@
       "fuldtNavn": "Laxmi Kunwar",
       "beskrivelse": "Laxmi Kunwar er en klog pige, hendes forældre har ikke så mange penge, men med din hjælp skal hun nok nå 10. klasse",
       "beskrivelse_hjemme": "Hej jeg hedder Laxmi. Jeg bor med min familie i en landsby i Nepal. \nMin far har fast arbejde som buschauffør, så vi får mad nok de fleste dage, men mine forældre kan ikke hjælpe mig med lektierne.",
-      "startpenge": 50,
+      "startpenge": 10,
       "startviden": 10,
 
       "uheld": [
@@ -142,7 +137,7 @@
       "fuldtNavn": "Kamal Pandey",
       "beskrivelse": "Kamal Pandey kommer fra en familie med et par køer og en lille rismark. Med din hjælp klarer han nemt 10. klasse",
       "beskrivelse_hjemme": "Hej jeg hedder Kamal. Jeg bor med min familie i en landsby i Nepal. \nMin mor og far har gået i skole til 5.klasse, og deres højeste ønske er at få mig på universitetet, så jeg får aldrig lov at blive hjemme eller droppe lektierne.",
-      "startpenge": 500,
+      "startpenge": 50,
       "startviden": 30,
 
       "uheld": [
@@ -152,21 +147,23 @@
         },
         { "titel" : "Ekstra penge til skolesager",
           "tekst" : "Din mor og far giver dig penge så du kan købe skolesager og klare dig bedre i skolen. +20kr",
-          "pengeForskel" : +20
+          "pengeForskel" : 20
         },
         { "titel" : "Du skal til bryllup",
           "tekst" : "Du er inviteret til din tantes bryllup i Kathmandu, så du kommer ikke i skole i denne uge  . -20 viden",
-          "videnForskel" : 0.5
+          "videnForskel" : -20
         },
          { "titel" : "Du får en flidspræmie",
           "tekst" : "Du er blevet kåret til klassens dygtigste elev og modtager en flidspræmie. + 10 penge",
-          "pengeForskel" : +10
+          "pengeForskel" : 10
         },
          { "titel" : "Nepal bandha - Skolen er lukket",
           "tekst" : "Der er generalstrejke, så skolen og butikkerne holder lukket. - 10 viden og dagen er gået",
           "videnForskel" : -10,
-          "tidFaktor" : 0.1
+          "tidFaktor" : 0
         },
+        { "fyld" : "fyld" },
+        { "fyld" : "fyld" },
         { "fyld" : "fyld" },
         { "fyld" : "fyld" }
       ]
