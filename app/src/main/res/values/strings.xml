@@ -20,11 +20,11 @@
 \n\nSPONSERET AF
 \n
 </string>
-    <string name="boghandel_taleboble">I boghandlen kan du købe skolebøger. Skolebøger giver mere viden. Du kan også få et job i boghandlen, hvis du har gået i skole længe nok.</string>
+    <string name="boghandel_taleboble">I boghandlen kan du købe skolebøger, som giver mere viden. Du kan også få et job, hvis du har gået i skole længe nok.</string>
     <string name="boghandel_hjælp">I boghandlen kan man købe skolebøger, som hjælper en med at få viden, hvis man har penge nok. Du kan også arbejde i boghandlen fra 6. klasse.</string>
     <string name="butik_taleboble">I butikken kan du købe skoleting, som gør det lettere at få viden.</string>
-    <string name="butik_hjælp">I butikken kan du købe skoleting. Kladdehæfter koster 10 kr og øger din chance for at lære noget i skolen. Blyanter koster 20 kr, lommeregner koster 200 kr og fjerner risiko for overhovedet ikke at lære noget i skolen.</string>
-    <string name="marked_taleboble">På markedet kan du  købe mad eller arbejde   for at tjene penge.</string>
+    <string name="butik_hjælp">Kladdehæfter koster 10 kr og øger din chance for at lære noget i skolen. Blyanter koster 20 kr. En lommeregner koster 200 kr og fjerner risiko for overhovedet ikke at lære noget i skolen.</string>
+    <string name="marked_taleboble">På markedet kan du købe mad eller arbejde for at tjene penge.</string>
     <string name="marked_hjælp">På markedet kan du købe masser af sund mad. Det giver overskud til at få viden, men det er dyrt. Du kan også arbejde på markedet, men det tager tid.</string>
     <string name="marken_taleboble">I marken kan du tjene lidt penge til mad, skolesager eller en cykel ved at arbejde.</string>
     <string name="marken_hjælp">Hvis dine forældre ikke har så mange penge, kan du selv tjene lidt ved at arbejde i marken fra første klasse. Men husk, det tager tid fra dine studier.</string>
