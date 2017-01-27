@@ -124,7 +124,7 @@
         },
           { "titel" : "Du har fået en solcellelygte",
           "tekst" : "Du har fået en læselampe, som kører på solceller, så nu kan du læse lektier, når der er strømafbrydelse. + 10 viden",
-          "videnForskel" : +10,
+          "videnForskel" : 10,
           "tidFaktor" : 0.1
         },
         { "fyld" : "fyld" },
