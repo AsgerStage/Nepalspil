@@ -13,54 +13,49 @@
         android:layout_width="match_parent"
         android:layout_height="0dp">
 
-    <RelativeLayout
+    <android.support.percent.PercentRelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         >
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            app:layout_heightPercent="100%"
+            app:layout_widthPercent="25%"
             app:srcCompat="@drawable/figur_laxmi_hel"
             android:id="@+id/figur"
-            android:layout_marginTop="60dp"
-            android:layout_marginRight="0dp"
-            android:layout_marginBottom="-40dp"
+
             android:layout_alignParentBottom="true"
             android:layout_alignParentEnd="true"/>
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:srcCompat="@drawable/taleboble"
-            android:id="@+id/taleboble"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="100dp"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginEnd="60dp"/>
 
-        <TextView
+
+        <me.grantland.widget.AutofitTextView
             android:text="@string/boghandel_taleboble"
             android:id="@+id/taleboble_tekst"
-            android:layout_height="100dp"
-            android:layout_width="170dp"
-            android:layout_alignTop="@+id/taleboble"
-            android:layout_alignLeft="@+id/taleboble"
-            android:layout_marginTop="30dp"
-            android:layout_marginLeft="80dp"
+            android:background="@drawable/taleboble_tophoejre_straekbar2"
+            app:layout_widthPercent="35%"
+            app:layout_heightPercent="38%"
+            app:layout_marginLeftPercent="47%"
+            app:layout_marginTopPercent="27%"
+            android:textSize="35sp"
+            android:maxLines="5"
+
             />
-    </RelativeLayout>
 
-    <TextView
-        android:layout_width="287dp"
-        android:layout_height="wrap_content"
-        android:id="@+id/scrollmoney"
-        android:textColor="@color/money"
-        android:textAlignment="center"
-        android:textSize="20sp"/>
+        <TextView
+            android:layout_width="287dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/scrollmoney"
+            android:textColor="@color/money"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            android:layout_below="@+id/taleboble_tekst"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="19dp"
+            android:layout_marginTop="20dp" />
+    </android.support.percent.PercentRelativeLayout>
 
-    <LinearLayout
+        <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_gravity="bottom"
