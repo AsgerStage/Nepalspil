@@ -41,12 +41,12 @@
             app:srcCompat="@drawable/felt_butik_front"
             android:layout_gravity="end|bottom"/>
 
-        <TextView
+        <me.grantland.widget.AutofitTextView
             android:id="@+id/taleboble_tekst"
             app:layout_widthPercent="35%"
             android:layout_height="wrap_content"
             android:text="@string/butik_taleboble"
-            android:background="@drawable/taleboble_straekbar"
+            android:background="@drawable/taleboble_straekbar2"
             app:layout_marginRightPercent="12%"
             android:layout_alignParentEnd="true"/>
 
