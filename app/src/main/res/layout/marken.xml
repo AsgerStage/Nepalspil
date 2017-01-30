@@ -50,11 +50,12 @@
             android:maxLines="4"
             app:layout_widthPercent="35%"
             app:layout_heightPercent="35%"
+            app:layout_marginLeftPercent="22%"
+            app:layout_marginTopPercent="14%"
             android:background="@drawable/taleboble_bundvenstre_straekbar2"
             android:textAlignment="center"
             android:layout_marginStart="69dp"
-            app:layout_marginLeftPercent="22%"
-            app:layout_marginTopPercent="14%"
+
            />
 
         <TextView
