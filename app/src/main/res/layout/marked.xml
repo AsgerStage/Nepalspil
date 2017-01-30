@@ -54,7 +54,7 @@
 
         <me.grantland.widget.AutofitTextView
             android:text="@string/marked_taleboble"
-            android:background="@drawable/taleboble_straekbar2"
+            android:background="@drawable/taleboble_bundhoejre_straekbar2"
             app:layout_widthPercent="35%"
             android:layout_height="wrap_content"
             android:maxLines="3"

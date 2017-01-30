@@ -48,7 +48,7 @@
             android:maxLines="3"
             android:textSize="25sp"
             android:text="@string/butik_taleboble"
-            android:background="@drawable/taleboble_straekbar2"
+            android:background="@drawable/taleboble_bundhoejre_straekbar2"
             app:layout_marginRightPercent="16%"
             app:layout_marginTopPercent="14%"
             android:layout_alignParentEnd="true"/>
