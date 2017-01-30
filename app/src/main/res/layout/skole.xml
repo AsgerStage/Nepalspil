@@ -7,7 +7,7 @@
               android:background="@drawable/felt_skole">
     <include layout="@layout/topbar"/>
 
-    <RelativeLayout
+    <android.support.percent.PercentRelativeLayout
         android:layout_width="match_parent"
         android:layout_weight="1"
         android:layout_height="0dp">
@@ -34,34 +34,28 @@
             android:layout_alignBottom="@+id/taleboble"/>
 
         <ImageView
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
+            app:layout_heightPercent="65%"
+            app:layout_widthPercent="25%"
+            app:layout_marginLeftPercent="27%"
             app:srcCompat="@drawable/figur_laxmi_hel"
             android:adjustViewBounds="true"
             android:id="@+id/figur"
-            android:layout_toEndOf="@+id/flyvoptekst_studer"
             android:layout_alignParentBottom="true"
-            android:layout_marginBottom="-90dp"/>
+            />
 
-        <ImageView
-            app:srcCompat="@drawable/taleboble"
-            android:id="@+id/taleboble"
-            android:layout_width="200dp"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentStart="true"
-            android:layout_height="150dp"/>
 
-        <TextView
+
+        <me.grantland.widget.AutofitTextView
             android:text="@string/skole_taleboble"
-            android:layout_width="120dp"
-            android:layout_height="102dp"
+            android:background="@drawable/taleboble_bundhoejre_straekbar2"
+            android:textSize="20sp"
+            android:maxLines="2"
+            app:layout_widthPercent="35%"
+            app:layout_heightPercent="21%"
+            app:layout_marginLeftPercent="0%"
+            app:layout_marginTopPercent="27%"
             android:id="@+id/taleboble_tekst"
-            android:layout_marginEnd="30dp"
-            android:layout_marginStart="30dp"
-            android:layout_alignParentTop="true"
-            android:layout_alignStart="@+id/taleboble"
-            android:layout_alignEnd="@+id/taleboble"
-            android:layout_marginTop="20dp"/>
+            />
 
         <TextView
             android:layout_width="180dp"
@@ -121,7 +115,7 @@
         </LinearLayout>
 
 
-    </RelativeLayout>
+    </android.support.percent.PercentRelativeLayout>
 
 
 
