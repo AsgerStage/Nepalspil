@@ -45,9 +45,12 @@
             android:id="@+id/taleboble_tekst"
             app:layout_widthPercent="35%"
             android:layout_height="wrap_content"
+            android:maxLines="3"
+            android:textSize="25sp"
             android:text="@string/butik_taleboble"
             android:background="@drawable/taleboble_straekbar2"
-            app:layout_marginRightPercent="12%"
+            app:layout_marginRightPercent="16%"
+            app:layout_marginTopPercent="14%"
             android:layout_alignParentEnd="true"/>
 
     </android.support.percent.PercentRelativeLayout>

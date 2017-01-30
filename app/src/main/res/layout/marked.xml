@@ -8,17 +8,17 @@
               android:background="@drawable/felt_markedet">
     <include layout="@layout/topbar"/>
 
-    <RelativeLayout
+    <android.support.percent.PercentRelativeLayout
+        android:layout_marginTop="34dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true">
+        android:layout_height="match_parent">
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            app:layout_heightPercent="75%"
+            app:layout_widthPercent="25%"
             app:srcCompat="@drawable/figur_laxmi_halv"
             android:id="@+id/figur"
+            android:layout_marginEnd="-20dp"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"/>
 
@@ -29,7 +29,8 @@
             android:layout_height="79dp"
             android:layout_weight="0.67"
             android:layout_alignParentBottom="true"
-            android:layout_alignParentStart="true">
+            android:layout_alignParentStart="true"
+            android:id="@+id/linearLayout">
 
             <Button
                 android:background="@android:color/transparent"
@@ -49,24 +50,20 @@
 
         </LinearLayout>
 
-        <ImageView
-            app:srcCompat="@drawable/taleboble"
-            android:id="@+id/taleboble"
-            android:layout_width="250dp"
-            android:layout_height="200dp"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginRight="100dp"/>
 
-        <TextView
+
+        <me.grantland.widget.AutofitTextView
             android:text="@string/marked_taleboble"
-            android:id="@+id/taleboble_tekst"
-            android:layout_width="170dp"
-            android:layout_height="150dp"
-            android:layout_marginTop="37dp"
+            android:background="@drawable/taleboble_straekbar2"
+            app:layout_widthPercent="35%"
+            android:layout_height="wrap_content"
+            android:maxLines="3"
+            android:textSize="20sp"
+            app:layout_marginRightPercent="16%"
+            app:layout_marginTopPercent="14%"
+            android:layout_alignParentEnd="true"
             android:layout_alignParentTop="true"
-            android:layout_alignStart="@+id/taleboble"
-            android:layout_marginStart="38dp" />
+            android:id="@+id/autofitTextView" />
 
         <TextView
             android:layout_height="wrap_content"
@@ -88,10 +85,11 @@
             android:textColor="@color/money"
             android:textSize="20sp"
             android:layout_width="100dp"
-            android:layout_marginStart="77dp"
-            android:layout_below="@+id/taleboble"
-            android:layout_alignParentStart="true" />
 
-    </RelativeLayout>
+            android:layout_above="@+id/flyvoptekst_spis"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="106dp" />
+
+    </android.support.percent.PercentRelativeLayout>
 
 </LinearLayout>
