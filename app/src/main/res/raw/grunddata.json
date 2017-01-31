@@ -141,7 +141,7 @@
           "tekst" : "Dine forældre har høstet risen på den mark de har lejet, så du får mere mad. + 20 mad",
           "madForskel" : 20,
           "tidFaktor" : 0.1
-        }
+        },
         { "fyld" : "fyld" },
         { "fyld" : "fyld" }
       ]
@@ -175,7 +175,7 @@
            { "titel" : "Du læser til eksamen",
           "tekst" : "Du vil ud og spille fodbold, men dine forældre siger du skal blive hjemme og læse til eksamen. + 20 viden",
           "videnForskel" : 20
-        }
+        },
          { "titel" : "Nepal bandha - Skolen er lukket",
           "tekst" : "Der er generalstrejke, så skolen og butikkerne holder lukket. - 10 viden og dagen er gået",
           "videnForskel" : -10,
@@ -183,9 +183,9 @@
         },
            { "titel" : "Du får en paraply",
           "tekst" : "Det er blevet regntid, så din mor køber dig en ny paraply , så du kan komme i skole selvom det regner. + 10 viden",
-          "tidFaktor" : 0
+          "tidFaktor" : 0,
         "videnForskel" : 10
-        }
+        },
         { "fyld" : "fyld" },
         { "fyld" : "fyld" },
         { "fyld" : "fyld" },
