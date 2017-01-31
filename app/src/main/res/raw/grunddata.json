@@ -47,6 +47,11 @@
           "videnForskel" : -10,
           "tidFaktor" : 0.1
         },
+        { "titel" : "Det er blevet regntid!",
+          "tekst" : "Det er blevet regntid og det øser ned. Du har ingen paraply, så du bliver hjemme. - 5 viden og dagen er gået",
+          "videnForskel" : -5,
+          "tidFaktor" : 0.1
+        },
         { "fyld" : "fyld" },
         { "fyld" : "fyld" }
       ]
@@ -73,8 +78,13 @@
           "madForskel" : 0.5
         },
         { "titel" : "Undervisningen var kedelig",
-          "tekst" : "Undervisningen var kedelig, så du faldt i søvn. -10 viden",
-          "videnForskel" : -10,
+          "tekst" : "Undervisningen var kedelig, så du faldt i søvn. -5 viden",
+          "videnForskel" : -5,
+          "tidFaktor" : 0.1
+        },
+        { "titel" : "Det er blevet regntid!",
+          "tekst" : "Det er blevet regntid og det øser ned. Du har ingen paraply, så du bliver hjemme. - 5 viden og dagen er gået",
+          "videnForskel" : -5,
           "tidFaktor" : 0.1
         },
         { "titel" : "Nepal bandha - Skolen er lukket",
@@ -103,13 +113,13 @@
           "tidFaktor" : 0.5
         },
         { "titel" : "Du skulle hjælpe din mor med at vaske tøj",
-          "tekst" : "Så dagen er gået og du fik ikke studeret nok. -10 viden",
-           "videnForskel" : -10,
+          "tekst" : "Så dagen er gået og du fik ikke studeret nok. -5 viden",
+           "videnForskel" : -5,
           "tidFaktor" : 0.1
         },
         { "titel" : "Undervisningen var kedelig",
-          "tekst" : "Undervisningen var kedelig, så du faldt i søvn. -10 viden og dagen er gået",
-          "videnForskel" : -10,
+          "tekst" : "Undervisningen var kedelig, så du faldt i søvn. -5 viden og dagen er gået",
+          "videnForskel" : -5,
           "tidFaktor" : 0.1
         },
          { "titel" : "Nepal bandha - Skolen er lukket",
@@ -118,8 +128,8 @@
           "tidFaktor" : 0.1
         },
           { "titel" : "Det er blevet regntid!",
-          "tekst" : "Det er blevet regntid og det øser ned. Du har ingen paraply, så du bliver hjemme. - 10 viden og dagen er gået",
-          "videnForskel" : -10,
+          "tekst" : "Det er blevet regntid og det øser ned. Du har ingen paraply, så du bliver hjemme. - 5 viden og dagen er gået",
+          "videnForskel" : -5,
           "tidFaktor" : 0.1
         },
           { "titel" : "Du har fået en solcellelygte",
@@ -127,6 +137,11 @@
           "videnForskel" : 10,
           "tidFaktor" : 0.1
         },
+        { "titel" : "Dine forældre har høstet ris",
+          "tekst" : "Dine forældre har høstet risen på den mark de har lejet, så du får mere mad. + 20 mad",
+          "madForskel" : 20,
+          "tidFaktor" : 0.1
+        }
         { "fyld" : "fyld" },
         { "fyld" : "fyld" }
       ]
@@ -146,22 +161,31 @@
           "tidFaktor" : 0.5
         },
         { "titel" : "Ekstra penge til skolesager",
-          "tekst" : "Din mor og far giver dig penge så du kan købe skolesager og klare dig bedre i skolen. +20kr",
+          "tekst" : "Din mor og far giver dig penge så du kan købe skolesager og klare dig bedre i skolen. Du får 20kr",
           "pengeForskel" : 20
         },
         { "titel" : "Du skal til bryllup",
-          "tekst" : "Du er inviteret til din tantes bryllup i Kathmandu, så du kommer ikke i skole i denne uge  . -20 viden",
-          "videnForskel" : -20
+          "tekst" : "Du er inviteret til din tantes bryllup i Kathmandu, så du kommer ikke i skole i denne uge  . Minus 10 viden",
+          "videnForskel" : -10
         },
          { "titel" : "Du får en flidspræmie",
-          "tekst" : "Du er blevet kåret til klassens dygtigste elev og modtager en flidspræmie. + 10 penge",
-          "pengeForskel" : 10
+          "tekst" : "Du er blevet kåret til klassens dygtigste elev og modtager en flidspræmie. + 10 viden",
+          "videnForskel" : 10
         },
+           { "titel" : "Du læser til eksamen",
+          "tekst" : "Du vil ud og spille fodbold, men dine forældre siger du skal blive hjemme og læse til eksamen. + 20 viden",
+          "videnForskel" : 20
+        }
          { "titel" : "Nepal bandha - Skolen er lukket",
           "tekst" : "Der er generalstrejke, så skolen og butikkerne holder lukket. - 10 viden og dagen er gået",
           "videnForskel" : -10,
           "tidFaktor" : 0
         },
+           { "titel" : "Du får en paraply",
+          "tekst" : "Det er blevet regntid, så din mor køber dig en ny paraply , så du kan komme i skole selvom det regner. + 10 viden",
+          "tidFaktor" : 0
+        "videnForskel" : 10
+        }
         { "fyld" : "fyld" },
         { "fyld" : "fyld" },
         { "fyld" : "fyld" },
