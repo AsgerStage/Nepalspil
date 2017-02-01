@@ -37,16 +37,16 @@
 
 
         <me.grantland.widget.AutofitTextView
-            android:text="Punkteret cykel:  200kr"
+            android:text="Brugt cykel: 200kr"
             app:layout_widthPercent="35%"
-            app:layout_heightPercent="35%"
+            app:layout_heightPercent="42%"
             app:layout_marginLeftPercent="22%"
-            app:layout_marginTopPercent="14%"
+            app:layout_marginTopPercent="4%"
             android:background="@drawable/taleboble_bundhoejre_straekbar2"
             android:id="@+id/taleboble_tekst"
             android:textAlignment="center"
             android:textColor="@color/money"
-            android:textSize="28sp"
+            android:textSize="22sp"
             android:maxLines="2"
             android:textAllCaps="false"
             android:layout_alignParentTop="true"

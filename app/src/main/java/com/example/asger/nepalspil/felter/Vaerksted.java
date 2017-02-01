@@ -77,13 +77,13 @@ public class Vaerksted extends AppCompatActivity {
             public void onPageSelected(int position) {
                 switch (position) {
                     case 0:
-                        viewPagerText.setText("Brugt cykel: 200kr");
+                        viewPagerText.setText("Brugt cykel 200 kr");
                         break;
                     case 1:
-                        viewPagerText.setText("Pænt hurtig cykel: 500kr");
+                        viewPagerText.setText("Pænt hurtig cykel 500 kr");
                         break;
                     case 2:
-                        viewPagerText.setText("Racercykel: 1000kr");
+                        viewPagerText.setText("Racercykel 1000 kr");
                 }
             }
 

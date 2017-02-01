@@ -142,7 +142,7 @@ public class Hovedmenu_akt extends AppCompatActivity {
             public void onClick(View v) {
                 v.startAnimation(AnimationUtils.loadAnimation(Hovedmenu_akt.this, R.anim.image_click));
 
-                CharSequence options[] = new CharSequence[]{"Skoleliv i Nepal", "Credits", "Sluk musik"};
+                CharSequence options[] = new CharSequence[]{"Besøg skoleliv-i-nepal.dk", "Akkreditering - tak til", "Sluk musik"};
                 AlertDialog.Builder builder = new AlertDialog.Builder(Hovedmenu_akt.this);
                 builder.setTitle("Indstillinger");
                 builder.setItems(options, new DialogInterface.OnClickListener() {
