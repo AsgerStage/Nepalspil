@@ -74,7 +74,7 @@
         android:elevation="1dp"
         android:fontFamily="sans-serif"
         android:textSize="24sp"
-        android:textColor="@color/food"
+        android:textColor="@color/black"
         android:layout_marginStart="46dp"
         android:layout_centerVertical="true"
         android:layout_toEndOf="@+id/ikon_tilbage" />
@@ -117,7 +117,7 @@
         android:elevation="1dp"
         android:fontFamily="sans-serif"
         android:textSize="24sp"
-        android:textColor="@color/money"
+        android:textColor="@color/black"
         android:layout_marginStart="26dp"
         android:layout_alignTop="@+id/ikon_penge"
         android:layout_toEndOf="@+id/ikon_viden" />
