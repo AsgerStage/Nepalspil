@@ -46,7 +46,6 @@
             android:layout_width="287dp"
             android:layout_height="wrap_content"
             android:id="@+id/scrollmoney"
-            android:textColor="@color/money"
             android:textAlignment="center"
             android:textSize="20sp"
             android:layout_below="@+id/taleboble_tekst"

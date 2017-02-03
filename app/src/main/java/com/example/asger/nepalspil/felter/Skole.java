@@ -133,7 +133,7 @@ public class Skole extends AppCompatActivity {
                 v.startAnimation(AnimationUtils.loadAnimation(Skole.this, R.anim.image_click));
                 int thisStudy = studer();
                 if (instans.getTid() >= TIME_PER_CLICK) {
-                    if (instans.getTid() >= TIME_PER_CLICK && thisStudy == 1) {
+                    if (instans.getTid() >= TIME_PER_CLICK && thisStudy == STUDER_VIDEN) {
                         taleboble_tekst.setText("Du blev lidt klogere");
                         flyvoptekst_studer.setText("+" + VIDEN_PER_CLICK + " viden");
                         flyvoptekst_studer.startAnimation(animation);
@@ -154,16 +154,25 @@ public class Skole extends AppCompatActivity {
                             e.printStackTrace();
                         }
                         System.out.println(instans.getViden());
-                    } else if (thisStudy == 2) {
-                        taleboble_tekst.setText("Med lidt lektiehjælp kunne du nok forstå det");
+                    } else if (thisStudy == STUDER_LEKTIEHJÆLP) {
+                        taleboble_tekst.setText("Du forstod det ikke, lektiehjælp kunne måske hjælpe");
                         flyvoptekst_studer.setText("+1 lektiehjælp");
                         flyvoptekst_studer.startAnimation(animation);
                         instans.study(TIME_PER_CLICK, 0);
                         instans.setGlemtViden(instans.getGlemtViden() + 1);
-                    } else if (thisStudy == 3) {
-                        taleboble_tekst.setText("Du forstod det ikke rigtig");
-                        flyvoptekst_studer.setText("+0 viden");
-                        flyvoptekst_studer.startAnimation(animation);
+                    } else if (thisStudy == STUDER_FORSTOD_IKKE) {
+                        taleboble_tekst.setText("Du forstod ikke denne lektion");
+                        /*
+                        try {
+                            Vibrator vibrator = (Vibrator) getSystemService(VIBRATOR_SERVICE);
+                            vibrator.vibrate(100);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                            Toast.makeText(this, "Kunne ikke vibrere med telefonen:\n" + e, Toast.LENGTH_LONG).show();
+                            Toast.makeText(this, "Har du husket:\n<uses-permission android:name=\"android.permission.VIBRATE\"/>\n i manifestet?", Toast.LENGTH_LONG).show();
+                        }*/
+                        //flyvoptekst_studer.setText("+0 viden");
+                        //flyvoptekst_studer.startAnimation(animation);
                         instans.study(TIME_PER_CLICK, 0);
                     }
                 } else {
@@ -210,13 +219,12 @@ public class Skole extends AppCompatActivity {
 
     }
 
-
     public int studer() {
         int result = 0;
         switch (instans.getLearningAmp()) {
 
             case 0:
-                result = tryToStudy(0.5, 0.25, 0);
+                result = tryToStudy(0.5, 0.25, 0); // 50% chance for at lære noget, 25% for hvad ?????
                 Log.d("Spil", "Spiller studied with 0 learning Amp");
                 break;
             case 1:
@@ -228,7 +236,7 @@ public class Skole extends AppCompatActivity {
                 Log.d("Spil", "Spiller studied with 2 learning Amp");
                 break;
             case 3:
-                result = tryToStudy(0.30, 0, 0);
+                result = tryToStudy(0.30, 0, 0); // 70% chance for at lære noget
                 Log.d("Spil", "Spiller studied with 3 learning Amp");
                 break;
 
@@ -286,12 +294,23 @@ public class Skole extends AppCompatActivity {
         return 10 * instans.getKlassetrin();
     }
 
+    public static int STUDER_VIDEN = 1;
+    public static int STUDER_LEKTIEHJÆLP = 2;
+    public static int STUDER_FORSTOD_IKKE = 3;
+
+    /**
+     * Denne her metode er ret uforståelig - forklar hvad der sker.
+     * @param success
+     * @param homework
+     * @param fail
+     * @return
+     */
     public int tryToStudy(double success, double homework, double fail) {
         double rand = Math.random();
         Log.d("Spil", "rand = " + rand + " Success = " + success + " homework = " + homework + "fail = " + fail);
-        if (success <= rand && rand < 1) return 1;
-        else if (rand < success && rand >= homework) return 2;
-        else if (rand < homework && rand >= fail) return 3;
+        if (rand >= success) return STUDER_VIDEN;
+        else if (rand >= homework) return STUDER_LEKTIEHJÆLP;
+        else if (rand < homework && rand >= fail) return STUDER_FORSTOD_IKKE;
         else return 0;
     }
 

@@ -29,7 +29,7 @@ public class Spiller {
         this.glemtViden = 0;
         this.position = 0;            //starter på felt 1
         this.penge = 50;
-        this.tid = 16;
+        this.tid = 19;
         this.viden = 0;
         this.klassetrin = 1;
         this.runde = 1;
@@ -76,7 +76,7 @@ public class Spiller {
     public final static int BRÆTSTØRRELSE = 8;//Kan ændres hvis spillepladen skulle udvides
 
     public Spiller(Figurdata figur) {
-        this(figur.navn, figur.startpenge, 16, 0, 100, 1, figur.drengekøn, 1, 1, 0);
+        this(figur.navn, figur.startpenge, 19, 0, 100, 1, figur.drengekøn, 1, 1, 0);
         figurdata = figur;
     }
 
@@ -150,7 +150,7 @@ public class Spiller {
 
         if (this.tid <= 0) {
             this.runde++;
-            this.tid = 16;
+            this.tid = 19;
             this.position = 0;
             return true;
         }

@@ -82,7 +82,6 @@
             android:layout_height="wrap_content"
             android:id="@+id/flyvoptekst_arbejd"
             android:textAlignment="textEnd"
-            android:textColor="@color/money"
             android:textSize="20sp"
             android:layout_width="100dp"
 

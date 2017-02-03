@@ -376,10 +376,10 @@ public class SpillePlade extends AppCompatActivity {
 
             } else if (Spiller.instans.getHp() - 30 <= 0) {
                 dialog.setTitle("Husk at spise!");
-                dialog.setMessage("Ugen er gået og du har glemt at spise, du har derfor mindre tid i denne uge");
+                dialog.setMessage("Ugen er gået og du har spist for lidt, derfor er du langsommere i denne uge");
                 dialog.show();
 
-                Spiller.instans.setTid(8);
+                Spiller.instans.setTid(10);
             }
             if (Spiller.instans.getHp() >= 30) {
                 Spiller.instans.setHp(Spiller.instans.getHp() - 30);
