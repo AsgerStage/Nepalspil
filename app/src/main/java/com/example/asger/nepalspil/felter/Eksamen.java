@@ -91,36 +91,36 @@ public class Eksamen extends AppCompatActivity {
         instans.getViden();
         switch (instans.getKlassetrin() - 1) {
             case 0:
-                setQuestion("Hvad spiser nepalesiske børn til morgenmad?", "Ris og grøntsager", "Havregryn med mælk", "Grød");
-                setFirstCorrect();
+                setQuestion("Hvad spiser nepalesiske børn til morgenmad?", "Havregryn med mælk", "Grød", "Ris og grøntsager",);
+                setThirdCorrect();
                 break;
             case 1:
-                setQuestion("Hvorfor er det godt, at børnene får skolemad?", "Så kan de bedre koncentrere sig i timerne.", "Så behøver de ikke selv tage mad med.", "Så føles dagen længere.");
+                setQuestion("Hvorfor er det godt, at børnene får skolemad?", "Så kan de bedre koncentrere sig i timerne", "Så behøver de ikke selv tage mad med.", "Så føles dagen længere.");
                 setFirstCorrect();
                 break;
             case 2:
-                setQuestion("Hvilke ingredienser bruges blandt andet i nepalesisk skolemad?", "Ris, løg, hvidløg og chili.", "Brød og kød.", "Nudler og chips.");
-                setFirstCorrect();
+                setQuestion("Hvilke ingredienser bruges blandt andet i nepalesisk skolemad?", "Brød og kød", "Ris, løg, hvidløg og chili", "Nudler og chips");
+                setSecondCorrect();
                 break;
             case 3:
                 setQuestion("Hvad tid starter den offentlige skole i Nepal?", "Kl. 10", "Kl. 9", "Kl. 8");
-                setThirdCorrect();
+                setFirstCorrect();
                 break;
             case 4:
-                setQuestion("Er der privatskoler i Nepal?", "Ja, mange.", "Nej, det har de ikke råd til.", "Nogle   få, men privatskoler er ikke almindeligt.");
-                setThirdCorrect();
+                setQuestion("Er der privatskoler i Nepal?", "Ja, mange.", "Nej, det har de ikke råd til.", "Nogle få");
+                setFirstCorrect();
                 break;
             case 5:
-                setQuestion("Hvem går i folkeskolen i Nepal?", "De allerfattigste", "cirka halvdelen", "Næsten alle, men der kommer hele tiden flere privatskole");
+                setQuestion("Hvem går i folkeskolen i Nepal?", "cirka halvdelen", "Næsten alle","De fattige");
                 setThirdCorrect();
                 break;
             case 6:
-                setQuestion("Hvorfor er det vigtigt, at børn i Nepal lærer noget?", "Fordi de skal have en uddannelse og et bedre liv.", "Fordi de kommer til at kede sig derhjemme.", "Fordi de ikke kan lide at være alene hjemme.");
+                setQuestion("Hvorfor er det vigtigt, at børn i Nepal lærer noget?", "Fordi de skal have en uddannelse og et bedre liv.", "Fordi de kommer til at kede sig derhjemme.", "Fordi de ikke kan lide at være alene hjemme");
                 setFirstCorrect();
                 break;
             case 7:
-                setQuestion("Hvorfor er der mange fattige børn i Nepal, som ikke laver lektier?", "Deres forældre sætter dem ikke i gang", "De behøver ikke lave lektier", "Hindureligionen forbyder lektier");
-                setFirstCorrect();
+                setQuestion("Hvorfor er der mange fattige børn i Nepal, som ikke laver lektier?", "De behøver ikke lave lektier", "Deres forældre sætter dem ikke i gang", "Hindureligionen forbyder lektier");
+                setSecondCorrect();
                 break;
             case 8:
                 setQuestion("Hvad skal børn i Nepal kunne til eksamen?", "De skal kunne tænke selvstændigt", "De skal kunne deres bøger udenad", "De skal kunne forstå, hvad der står i bøgerne.");
