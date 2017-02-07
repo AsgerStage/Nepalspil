@@ -91,7 +91,7 @@ public class Eksamen extends AppCompatActivity {
         instans.getViden();
         switch (instans.getKlassetrin() - 1) {
             case 0:
-                setQuestion("Hvad spiser nepalesiske børn til morgenmad?", "Havregryn med mælk", "Grød", "Ris og grøntsager",);
+                setQuestion("Hvad spiser nepalesiske børn til morgenmad?", "Havregryn med mælk", "Grød", "Ris og grøntsager");
                 setThirdCorrect();
                 break;
             case 1:
@@ -167,8 +167,7 @@ public class Eksamen extends AppCompatActivity {
 
                 final MediaPlayer mp = MediaPlayer.create(Eksamen.this, R.raw.tada);
                 mp.start();
-                CommonConfetti.rainingConfetti(container, new int[]{Color.BLACK})
-                        .infinite();
+                konfetti();
                 instans.setKlassetrin(instans.getKlassetrin() + 1);
 
                 new SweetAlertDialog(Eksamen.this, SweetAlertDialog.SUCCESS_TYPE)
@@ -198,6 +197,11 @@ public class Eksamen extends AppCompatActivity {
         });
     }
 
+    private void konfetti() {
+        CommonConfetti.rainingConfetti(container, new int[]{Color.BLUE, Color.RED, Color.GREEN, Color.YELLOW})
+                .infinite();
+    }
+
 
     public void setSecondCorrect() {
         answer1.setOnClickListener(new View.OnClickListener() {
@@ -209,8 +213,7 @@ public class Eksamen extends AppCompatActivity {
             public void onClick(View v) {
                 final MediaPlayer mp = MediaPlayer.create(Eksamen.this, R.raw.tada);
                 mp.start();
-                CommonConfetti.rainingConfetti(container, new int[]{Color.BLACK})
-                        .infinite();
+                konfetti();
                 instans.setKlassetrin(instans.getKlassetrin() + 1);
 
                 new SweetAlertDialog(Eksamen.this, SweetAlertDialog.SUCCESS_TYPE)
@@ -252,8 +255,7 @@ public class Eksamen extends AppCompatActivity {
             public void onClick(View v) {
                 final MediaPlayer mp = MediaPlayer.create(Eksamen.this, R.raw.tada);
                 mp.start();
-                CommonConfetti.rainingConfetti(container, new int[]{Color.BLACK})
-                        .infinite();
+                konfetti();
                 instans.setKlassetrin(instans.getKlassetrin() + 1);
 
                 new SweetAlertDialog(Eksamen.this, SweetAlertDialog.SUCCESS_TYPE)
@@ -282,8 +284,7 @@ public class Eksamen extends AppCompatActivity {
             public void onClick(View v) {
                 final MediaPlayer mp = MediaPlayer.create(Eksamen.this, R.raw.tada);
                 mp.start();
-                CommonConfetti.rainingConfetti(container, new int[]{Color.BLACK})
-                        .infinite();
+                konfetti();
                 instans.setKlassetrin(instans.getKlassetrin() + 1);
                 if (prefs.getInt(""+instans.getNavn(),-1)==-1){
                     prefs.edit().putInt(""+instans.getNavn(), instans.getRunde()).apply();
