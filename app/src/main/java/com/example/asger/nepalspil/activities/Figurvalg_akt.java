@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.asger.nepalspil.R;
@@ -36,10 +37,11 @@ public class Figurvalg_akt extends AppCompatActivity {
 
 
     SweetAlertDialog pDialog;
-    private TextView taleboble_tekst;
+    private TextView tekst;
     private Button spilKnap;
     private Figurdata valgtFigur;
     private View valgtFigurview;
+    private LinearLayout infoboks;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,13 +57,6 @@ public class Figurvalg_akt extends AppCompatActivity {
         LaxmiHighscore = (AutofitTextView) findViewById(R.id.LaxmiHighscore);
         AshaHighscore = (AutofitTextView) findViewById(R.id.AshaHighscore);
         KamalHighscore = (AutofitTextView) findViewById(R.id.KamalHighscore);
-
-        taleboble_tekst = (TextView) findViewById(R.id.taleboble_tekst);
-        spilKnap = (Button) findViewById(R.id.spil);
-        spilKnap.setVisibility(View.GONE);
-        spilKnap.setAlpha(0);
-        taleboble_tekst.setAlpha(0);
-
 
         if (prefs.getInt("Kamal", -1) != -1) {
             KamalHighscore.setText("Kamal highscore: " + prefs.getInt("Kamal", -1)+" uger");
@@ -104,6 +99,12 @@ public class Figurvalg_akt extends AppCompatActivity {
             }
         });
 
+        infoboks = (LinearLayout) findViewById(R.id.infoboks);
+        tekst = (TextView) findViewById(R.id.tekst);
+        spilKnap = (Button) findViewById(R.id.spil);
+        infoboks.setVisibility(View.INVISIBLE);
+
+
         spilKnap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -113,156 +114,28 @@ public class Figurvalg_akt extends AppCompatActivity {
                 finish();
             }
         });
-/*
-        AshaFigur.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                pDialog = new SweetAlertDialog(Figurvalg_akt.this);
-                pDialog
-                        .setTitleText("Vil du spille som Asha?")
-                        .setContentText(Grunddata.Asha.beskrivelse)
-                        .setConfirmText("Ja, vi klarer det!")
-                        .showCancelButton(true)
-                        .setCancelText("Nej")
-                        .setCancelClickListener(new SweetAlertDialog.OnSweetClickListener() {
-                            @Override
-                            public void onClick(SweetAlertDialog sDialog) {
-                                sDialog.cancel();
-                            }
-                        })
-                        .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
-                            @Override
-                            public void onClick(SweetAlertDialog sDialog) {
-                                sDialog.dismissWithAnimation();
-                                Intent returnIntent = new Intent();
-                                returnIntent.putExtra("result", "Asha");
-                                setResult(Activity.RESULT_OK, returnIntent);
-                                finish();
-                            }
-
-                        }).show();
-                ;
-
-            }
-        });
-        KrishnaFigur.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                pDialog = new SweetAlertDialog(Figurvalg_akt.this);
-                pDialog
-                        .setTitleText("Vil du spille som Krishna?")
-                        .setContentText(Grunddata.Krishna.beskrivelse)
-                        .setConfirmText("Ja, vi klarer det!")
-                        .showCancelButton(true)
-                        .setCancelText("Nej")
-                        .setCancelClickListener(new SweetAlertDialog.OnSweetClickListener() {
-                            @Override
-                            public void onClick(SweetAlertDialog sDialog) {
-                                sDialog.cancel();
-                            }
-                        })
-                        .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
-                            @Override
-                            public void onClick(SweetAlertDialog sDialog) {
-                                sDialog.dismissWithAnimation();
-                                Intent returnIntent = new Intent();
-                                returnIntent.putExtra("result", "Krishna");
-                                setResult(Activity.RESULT_OK, returnIntent);
-                                finish();
-                            }
-
-                        }).show();
-                ;
-
-            }
-        });
-        LaxmiFigur.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                pDialog = new SweetAlertDialog(Figurvalg_akt.this);
-                pDialog
-                        .setTitleText("Vil du spille som Laxmi?")
-                        .setContentText(Grunddata.Laxmi.beskrivelse)
-                        .setConfirmText("Ja, vi klarer det!")
-                        .showCancelButton(true)
-                        .setCancelText("Nej")
-                        .setCancelClickListener(new SweetAlertDialog.OnSweetClickListener() {
-                            @Override
-                            public void onClick(SweetAlertDialog sDialog) {
-                                sDialog.cancel();
-                            }
-                        })
-                        .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
-                            @Override
-                            public void onClick(SweetAlertDialog sDialog) {
-                                sDialog.dismissWithAnimation();
-                                Intent returnIntent = new Intent();
-                                returnIntent.putExtra("result", "Laxmi");
-                                setResult(Activity.RESULT_OK, returnIntent);
-                                finish();
-                            }
-
-                        }).show();
-                ;
-
-            }
-        });
-
-        KamalFigur.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                pDialog = new SweetAlertDialog(Figurvalg_akt.this);
-                pDialog
-                        .setTitleText("Vil du spille som Kamal?")
-                        .setContentText(Grunddata.Kamal.beskrivelse)
-                        .setConfirmText("Ja, vi klarer det!")
-                        .showCancelButton(true)
-                        .setCancelText("Nej")
-                        .setCancelClickListener(new SweetAlertDialog.OnSweetClickListener() {
-                            @Override
-                            public void onClick(SweetAlertDialog sDialog) {
-                                sDialog.cancel();
-                            }
-                        })
-                        .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
-                            @Override
-                            public void onClick(SweetAlertDialog sDialog) {
-                                sDialog.dismissWithAnimation();
-
-                                Intent returnIntent = new Intent();
-                                returnIntent.putExtra("result", "Kamal");
-                                setResult(Activity.RESULT_OK, returnIntent);
-                                finish();
-                            }
-
-                        }).show();
-                ;
-
-            }
-        });
-*/
-
     }
 
     private void visTaleboble(Figurdata kamal, View figurview) {
-        spilKnap.setVisibility(View.VISIBLE);
+        infoboks.setVisibility(View.VISIBLE);
+        infoboks.setTranslationY(infoboks.getHeight());
+        infoboks.animate().translationY(0);
         spilKnap.setText("Spil som\n"+kamal.navn);
-        taleboble_tekst.setText(kamal.beskrivelse);
-        taleboble_tekst.animate().alpha(1);
+        tekst.setText(kamal.beskrivelse);
+        /*
+        spilKnap.setVisibility(View.VISIBLE);
+        tekst.animate().alpha(1);
         spilKnap.animate().alpha(1);
+        */
         if (valgtFigurview != null) {
-            valgtFigurview.animate().scaleX(1).scaleY(1);
+            valgtFigurview.animate().scaleX(1).scaleY(1).setDuration(300);
         }
         valgtFigur = kamal;
         valgtFigurview = figurview;
         figurview.setRotationY(0);
 //        figurview.animate().rotationY(720).setInterpolator(new DecelerateInterpolator()).scaleX(1.1f).scaleY(1.1f).setDuration(1000);
         // .translationY(-figurview.getHeight()*0.3f)
-        figurview.animate().setInterpolator(new DecelerateInterpolator()).scaleX(1.2f).scaleY(1.2f).setDuration(2000);
+        figurview.animate().setInterpolator(new DecelerateInterpolator()).scaleX(1.2f).scaleY(1.2f).setDuration(300);
     }
 }
 
