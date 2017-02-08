@@ -137,7 +137,7 @@ public class Vaerksted extends AppCompatActivity {
 
                 } else if (Spiller.instans.getKlassetrin() < 3) {
                     new SweetAlertDialog(Vaerksted.this, SweetAlertDialog.ERROR_TYPE)
-                            .setTitleText("Du har ikke tid til at arbejde.")
+                            .setTitleText("Du er ikke gammel nok til at arbejde her.")
                             .setContentText("Du skal gå i mindst 3 klasse for at arbejde her.")
                             .show();
                 }
