@@ -1,4 +1,4 @@
-package com.example.asger.nepalspil.models;
+package com.example.asger.nepalspil.model;
 
 import org.json.JSONObject;
 

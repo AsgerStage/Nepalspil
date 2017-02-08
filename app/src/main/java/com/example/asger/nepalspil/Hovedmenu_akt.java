@@ -19,10 +19,10 @@ import android.widget.TextView;
 import com.crashlytics.android.Crashlytics;
 import com.example.asger.nepalspil.diverse.AppOpdatering;
 import com.example.asger.nepalspil.diverse.MusicManager;
-import com.example.asger.nepalspil.models.Figuruheld;
-import com.example.asger.nepalspil.models.Grunddata;
-import com.example.asger.nepalspil.models.Spiller;
-import com.example.asger.nepalspil.models.Figurdata;
+import com.example.asger.nepalspil.model.Figuruheld;
+import com.example.asger.nepalspil.model.Grunddata;
+import com.example.asger.nepalspil.model.Spiller;
+import com.example.asger.nepalspil.model.Figurdata;
 
 import org.json.JSONArray;
 import org.json.JSONObject;

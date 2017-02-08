@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.widget.TextView;
 
 import com.example.asger.nepalspil.R;
-import com.example.asger.nepalspil.models.Spiller;
+import com.example.asger.nepalspil.model.Spiller;
 
 /**
  * Created by j on 24-01-17.

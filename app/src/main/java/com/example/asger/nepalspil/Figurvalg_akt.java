@@ -13,9 +13,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.example.asger.nepalspil.R;
-import com.example.asger.nepalspil.models.Figurdata;
-import com.example.asger.nepalspil.models.Grunddata;
+import com.example.asger.nepalspil.model.Figurdata;
+import com.example.asger.nepalspil.model.Grunddata;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
 import me.grantland.widget.AutofitTextView;
@@ -59,16 +58,16 @@ public class Figurvalg_akt extends AppCompatActivity {
         KamalHighscore = (AutofitTextView) findViewById(R.id.KamalHighscore);
 
         if (prefs.getInt("Kamal", -1) != -1) {
-            KamalHighscore.setText("highscore: " + prefs.getInt("Kamal", -1)+" uger");
+            KamalHighscore.setText("Highscore: " + prefs.getInt("Kamal", -1)+" uger");
         }
         if (prefs.getInt("Laxmi", -1) != -1) {
-            LaxmiHighscore.setText("highscore: " + prefs.getInt("Laxmi", -1)+" uger");
+            LaxmiHighscore.setText("Highscore: " + prefs.getInt("Laxmi", -1)+" uger");
         }
         if (prefs.getInt("Krishna", -1) != -1) {
-            KrishnaHighscore.setText("highscore: " + prefs.getInt("Krishna", -1)+" uger");
+            KrishnaHighscore.setText("Highscore: " + prefs.getInt("Krishna", -1)+" uger");
         }
         if (prefs.getInt("Asha", -1) != -1) {
-            AshaHighscore.setText("highscore: " + prefs.getInt("Asha", -1)+" uger");
+            AshaHighscore.setText("Highscore: " + prefs.getInt("Asha", -1)+" uger");
         }
         AshaFigur.setOnClickListener(new View.OnClickListener() {
             @Override

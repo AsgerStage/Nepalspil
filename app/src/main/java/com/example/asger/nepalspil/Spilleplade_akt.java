@@ -29,8 +29,8 @@ import com.example.asger.nepalspil.felter.Lektiehjaelp;
 import com.example.asger.nepalspil.felter.Marked;
 import com.example.asger.nepalspil.felter.Skole;
 import com.example.asger.nepalspil.felter.Vaerksted;
-import com.example.asger.nepalspil.models.Figuruheld;
-import com.example.asger.nepalspil.models.Spiller;
+import com.example.asger.nepalspil.model.Figuruheld;
+import com.example.asger.nepalspil.model.Spiller;
 
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -38,7 +38,7 @@ import com.example.asger.nepalspil.diverse.Topbar;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
 
-import static com.example.asger.nepalspil.models.Spiller.instans;
+import static com.example.asger.nepalspil.model.Spiller.instans;
 
 /*
 rsync /home/j/android/studenterprojekter/BrInt/g10_Nepalspil/Nepalspil/app/build/outputs/apk/app-debug.apk         j:javabog.dk/privat/nepalspil.apk

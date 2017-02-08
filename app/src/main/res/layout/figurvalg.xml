@@ -58,8 +58,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="-4dp"
                     android:gravity="center_horizontal"
-                    android:background="@color/white_semi_transparent"
-                    android:text="highscore: 0 uger"
+                    android:text="Ingen highscore"
                     android:textColor="@color/rød"
                     android:textSize="@dimen/figurvalg_bedste_tid"/>
             </LinearLayout>
@@ -95,7 +94,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="-4dp"
                     android:gravity="center_horizontal"
-                    android:text="bedste tid: 67 uger"
+                    android:text="Ingen highscore"
                     android:textColor="@color/rød"
                     android:textSize="@dimen/figurvalg_bedste_tid"/>
             </LinearLayout>
@@ -133,7 +132,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="-4dp"
                     android:gravity="center_horizontal"
-                    android:text=""
+                    android:text="Ingen highscore"
                     android:textColor="@color/rød"
                     android:textSize="@dimen/figurvalg_bedste_tid"/>
             </LinearLayout>
@@ -169,7 +168,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="-4dp"
                     android:gravity="center_horizontal"
-                    android:text="Ingen Highscore"
+                    android:text="Ingen highscore"
                     android:textColor="@color/rød"
                     android:textSize="@dimen/figurvalg_bedste_tid"/>
             </LinearLayout>

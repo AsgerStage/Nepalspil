@@ -14,7 +14,7 @@ import android.widget.TextView;
 
 import com.example.asger.nepalspil.R;
 import com.example.asger.nepalspil.diverse.Topbar;
-import com.example.asger.nepalspil.models.Spiller;
+import com.example.asger.nepalspil.model.Spiller;
 
 import java.io.IOException;
 

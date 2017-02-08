@@ -20,7 +20,7 @@ import java.io.IOException;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
 
-import static com.example.asger.nepalspil.models.Spiller.instans;
+import static com.example.asger.nepalspil.model.Spiller.instans;
 
 public class Lektiehjaelp extends AppCompatActivity {
     //Studying

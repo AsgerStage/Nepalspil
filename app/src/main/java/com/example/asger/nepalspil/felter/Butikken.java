@@ -11,11 +11,11 @@ import android.widget.ImageView;
 
 import com.example.asger.nepalspil.R;
 import com.example.asger.nepalspil.diverse.Topbar;
-import com.example.asger.nepalspil.models.Spiller;
+import com.example.asger.nepalspil.model.Spiller;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
 
-import static com.example.asger.nepalspil.models.Spiller.instans;
+import static com.example.asger.nepalspil.model.Spiller.instans;
 
 public class Butikken extends AppCompatActivity {
 

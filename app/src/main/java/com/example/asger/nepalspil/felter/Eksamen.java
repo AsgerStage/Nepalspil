@@ -19,7 +19,7 @@ import com.github.jinatonic.confetti.CommonConfetti;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
 
-import static com.example.asger.nepalspil.models.Spiller.instans;
+import static com.example.asger.nepalspil.model.Spiller.instans;
 
 public class Eksamen extends AppCompatActivity {
     TextView spørgsmålTv;
