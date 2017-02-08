@@ -34,13 +34,12 @@
                 android:layout_weight="1"
                 android:layout_height="wrap_content">
                 <me.grantland.widget.AutofitTextView
-                    android:id="@+id/KamalHighscore"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
                     android:text="Kamal"
                     android:textColor="@color/black"
-                    android:textSize="20sp"
+                    android:textSize="@dimen/figurvalg_navn"
                     android:textStyle="bold"/>
 
                 <me.grantland.widget.AutofitTextView
@@ -50,8 +49,19 @@
                     android:gravity="center_horizontal"
                     android:background="@color/white_semi_transparent"
                     android:text="nem"
-                    android:textColor="@color/black"
-                    android:textSize="12sp"/>
+                    android:textSize="@dimen/figurvalg_sværhedsgrad"
+                    android:textColor="@color/black"/>
+
+                <me.grantland.widget.AutofitTextView
+                    android:id="@+id/KamalHighscore"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="-4dp"
+                    android:gravity="center_horizontal"
+                    android:background="@color/white_semi_transparent"
+                    android:text="highscore: 0 uger"
+                    android:textColor="@color/rød"
+                    android:textSize="@dimen/figurvalg_bedste_tid"/>
             </LinearLayout>
 
 
@@ -63,13 +73,12 @@
                 android:layout_weight="1"
                 android:layout_height="wrap_content">
                 <me.grantland.widget.AutofitTextView
-                    android:id="@+id/LaxmiHighscore"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
                     android:text="Laxmi"
                     android:textColor="@color/black"
-                    android:textSize="20sp"
+                    android:textSize="@dimen/figurvalg_navn"
                     android:textStyle="bold"/>
 
                 <me.grantland.widget.AutofitTextView
@@ -78,8 +87,17 @@
                     android:layout_marginTop="-4dp"
                     android:gravity="center_horizontal"
                     android:text="mellem"
-                    android:textColor="@color/black"
-                    android:textSize="12sp"/>
+                    android:textSize="@dimen/figurvalg_sværhedsgrad"
+                    android:textColor="@color/black"/>
+                <me.grantland.widget.AutofitTextView
+                    android:id="@+id/LaxmiHighscore"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="-4dp"
+                    android:gravity="center_horizontal"
+                    android:text="bedste tid: 67 uger"
+                    android:textColor="@color/rød"
+                    android:textSize="@dimen/figurvalg_bedste_tid"/>
             </LinearLayout>
 
 
@@ -92,13 +110,12 @@
                 android:layout_weight="1"
                 android:layout_height="wrap_content">
                 <me.grantland.widget.AutofitTextView
-                    android:id="@+id/KrishnaHighscore"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
                     android:text="Krishna"
                     android:textColor="@color/black"
-                    android:textSize="20sp"
+                    android:textSize="@dimen/figurvalg_navn"
                     android:textStyle="bold"/>
 
                 <me.grantland.widget.AutofitTextView
@@ -107,8 +124,18 @@
                     android:layout_marginTop="-4dp"
                     android:gravity="center_horizontal"
                     android:text="svær"
-                    android:textColor="@color/black"
-                    android:textSize="12sp"/>
+                    android:textSize="@dimen/figurvalg_sværhedsgrad"
+                    android:textColor="@color/black"/>
+
+                <me.grantland.widget.AutofitTextView
+                    android:id="@+id/KrishnaHighscore"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="-4dp"
+                    android:gravity="center_horizontal"
+                    android:text=""
+                    android:textColor="@color/rød"
+                    android:textSize="@dimen/figurvalg_bedste_tid"/>
             </LinearLayout>
 
 
@@ -119,7 +146,6 @@
                 android:layout_weight="1"
                 android:layout_height="wrap_content">
                 <me.grantland.widget.AutofitTextView
-                    android:id="@+id/AshaHighscore"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
@@ -134,8 +160,18 @@
                     android:layout_marginTop="-4dp"
                     android:gravity="center_horizontal"
                     android:text="sværest"
-                    android:textColor="@color/black"
-                    android:textSize="12sp"/>
+                    android:textSize="@dimen/figurvalg_sværhedsgrad"
+                    android:textColor="@color/black"/>
+
+                <me.grantland.widget.AutofitTextView
+                    android:id="@+id/AshaHighscore"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="-4dp"
+                    android:gravity="center_horizontal"
+                    android:text="Ingen Highscore"
+                    android:textColor="@color/rød"
+                    android:textSize="@dimen/figurvalg_bedste_tid"/>
             </LinearLayout>
 
 
