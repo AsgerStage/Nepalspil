@@ -17,6 +17,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.crashlytics.android.Crashlytics;
+import com.example.asger.nepalspil.diverse.AppOpdatering;
+import com.example.asger.nepalspil.diverse.MusicManager;
 import com.example.asger.nepalspil.models.Figuruheld;
 import com.example.asger.nepalspil.models.Grunddata;
 import com.example.asger.nepalspil.models.Spiller;
@@ -50,6 +52,7 @@ public class Hovedmenu_akt extends AppCompatActivity {
         prefs = PreferenceManager.getDefaultSharedPreferences(this);
         String checkIfPlayedBefore = prefs.getString("Navn", null);
 
+        AppOpdatering.tjekForNyAPK(this);
 
         setContentView(R.layout.hovedmenu);
 
