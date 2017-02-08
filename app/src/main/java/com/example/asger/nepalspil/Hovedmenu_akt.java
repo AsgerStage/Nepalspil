@@ -1,4 +1,4 @@
-package com.example.asger.nepalspil.activities;
+package com.example.asger.nepalspil;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -17,8 +17,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.crashlytics.android.Crashlytics;
-import com.example.asger.nepalspil.BuildConfig;
-import com.example.asger.nepalspil.R;
 import com.example.asger.nepalspil.models.Figuruheld;
 import com.example.asger.nepalspil.models.Grunddata;
 import com.example.asger.nepalspil.models.Spiller;
@@ -131,7 +129,7 @@ public class Hovedmenu_akt extends AppCompatActivity {
                     checkmarkkrishna.setVisibility(View.INVISIBLE);
                     checkmarkasha.setVisibility(View.VISIBLE);
                 }*/
-                Intent intent = new Intent(Hovedmenu_akt.this, SpillePlade.class);
+                Intent intent = new Intent(Hovedmenu_akt.this, Spilleplade_akt.class);
                 intent.putExtra("genoptag", true);
                 startActivity(intent);
             }
@@ -154,7 +152,7 @@ public class Hovedmenu_akt extends AppCompatActivity {
                                 startActivity(browserIntent);
                                 break;
                             case 1:
-                                Intent intent = new Intent(Hovedmenu_akt.this, Credit.class);
+                                Intent intent = new Intent(Hovedmenu_akt.this, Akkredtering_akt.class);
                                 startActivity(intent);
                                 break;
                             case 2:
@@ -188,7 +186,7 @@ public class Hovedmenu_akt extends AppCompatActivity {
                     figurdata = Grunddata.instans.spillere.entrySet().iterator().next().getValue(); // Tag en tilfældig!
                 }
                 Spiller.instans = new Spiller(figurdata);
-                Intent intent = new Intent(Hovedmenu_akt.this, SpillePlade.class);
+                Intent intent = new Intent(Hovedmenu_akt.this, Spilleplade_akt.class);
                 startActivity(intent);
             }
         }

@@ -1,4 +1,4 @@
-package com.example.asger.nepalspil.activities;
+package com.example.asger.nepalspil.diverse;
 
 import android.content.Context;
 import android.media.MediaPlayer;
@@ -9,7 +9,7 @@ import com.example.asger.nepalspil.R;
 public class MusicManager {
     static final int MUSIC_PREVIOUS = -1;
     private static final String TAG = "MusicManager";
-    static MediaPlayer mp;
+    public static MediaPlayer mp;
     private static int currentMusic = -1;
     private static int previousMusic = -1;
 

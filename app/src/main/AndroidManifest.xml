@@ -13,7 +13,7 @@
         >
 
         <activity
-            android:name=".activities.Hovedmenu_akt"
+            android:name=".Hovedmenu_akt"
             android:screenOrientation="landscape">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -21,12 +21,12 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activities.Figurvalg_akt"
+            android:name=".Figurvalg_akt"
             android:screenOrientation="landscape">
         </activity>
 
         <activity
-            android:name=".activities.SpillePlade"
+            android:name=".Spilleplade_akt"
             android:screenOrientation="landscape">
         </activity>
 
@@ -76,7 +76,7 @@
         </activity>
 
         <activity
-            android:name=".activities.Credit"
+            android:name=".Akkredtering_akt"
             android:screenOrientation="landscape"/>
 
 

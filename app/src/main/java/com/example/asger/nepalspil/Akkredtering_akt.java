@@ -1,4 +1,4 @@
-package com.example.asger.nepalspil.activities;
+package com.example.asger.nepalspil;
 
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -14,7 +14,7 @@ import android.widget.TextView;
 
 import com.example.asger.nepalspil.R;
 
-public class Credit extends AppCompatActivity {
+public class Akkredtering_akt extends AppCompatActivity {
     private Animation animation;
     private ScrollView scroll;
 

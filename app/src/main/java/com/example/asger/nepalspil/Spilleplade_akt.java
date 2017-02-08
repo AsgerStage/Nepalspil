@@ -1,4 +1,4 @@
-package com.example.asger.nepalspil.activities;
+package com.example.asger.nepalspil;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -13,16 +13,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.view.animation.AnimationUtils;
-import android.view.animation.BounceInterpolator;
 import android.view.animation.DecelerateInterpolator;
 import android.view.animation.LinearInterpolator;
-import android.view.animation.OvershootInterpolator;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.asger.nepalspil.R;
+import com.example.asger.nepalspil.diverse.MusicManager;
 import com.example.asger.nepalspil.felter.Boghandel;
 import com.example.asger.nepalspil.felter.Butikken;
 import com.example.asger.nepalspil.felter.Marken;
@@ -36,17 +34,16 @@ import com.example.asger.nepalspil.models.Spiller;
 
 import java.util.concurrent.ThreadLocalRandom;
 
-import com.example.asger.nepalspil.felter.Topbar;
+import com.example.asger.nepalspil.diverse.Topbar;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
 
-import static com.example.asger.nepalspil.activities.MusicManager.mp;
 import static com.example.asger.nepalspil.models.Spiller.instans;
 
 /*
 rsync /home/j/android/studenterprojekter/BrInt/g10_Nepalspil/Nepalspil/app/build/outputs/apk/app-debug.apk         j:javabog.dk/privat/nepalspil.apk
  */
-public class SpillePlade extends AppCompatActivity {
+public class Spilleplade_akt extends AppCompatActivity {
     TextView infobox;
     private Topbar topbar;
 
@@ -93,7 +90,7 @@ public class SpillePlade extends AppCompatActivity {
                     @Override
                     public void onClick(SweetAlertDialog sDialog) {
                         sDialog.dismissWithAnimation();
-                        SpillePlade.this.finish();
+                        Spilleplade_akt.this.finish();
                     }
                 })
                 .setCancelClickListener(new SweetAlertDialog.OnSweetClickListener() {
@@ -118,7 +115,7 @@ public class SpillePlade extends AppCompatActivity {
         topbar = new Topbar();
         topbar.init(this);
 
-        dialog = new AlertDialog.Builder(SpillePlade.this);
+        dialog = new AlertDialog.Builder(Spilleplade_akt.this);
         figurbrik = (ImageView) findViewById(R.id.krishna);
         figurbrik.setImageResource(Spiller.instans.figurdata.drawable_figur_halv_id);
 
@@ -249,8 +246,8 @@ public class SpillePlade extends AppCompatActivity {
         spilpladeHelp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                v.startAnimation(AnimationUtils.loadAnimation(SpillePlade.this, R.anim.image_click));
-                AlertDialog.Builder dialog = new AlertDialog.Builder(SpillePlade.this);
+                v.startAnimation(AnimationUtils.loadAnimation(Spilleplade_akt.this, R.anim.image_click));
+                AlertDialog.Builder dialog = new AlertDialog.Builder(Spilleplade_akt.this);
                 dialog.setMessage("Målet med spillet er at færdiggøre 10. klasse. Du starter i 1. klasse og skal til eksamen hvert år. \n \nFor at bestå den årlige eksamen skal du optjene viden, og for at få viden skal du studere og have noget at spise. \n\nPå pladens otte felter kan du optjene viden, mad og penge og købe vigtige hjælpemidler.\n \nUndervejs vil du møde forhindringer, som gør det sværere at nå målet.\nSpillet er på tid, så du skal skynde dig. Du kan se, hvor meget du har optjent øverst på skærmen. ");
                 dialog.show();
 
@@ -260,10 +257,10 @@ public class SpillePlade extends AppCompatActivity {
         ingameopt.setOnClickListener(new View.OnClickListener() {
                                          @Override
                                          public void onClick(View v) {
-                                             v.startAnimation(AnimationUtils.loadAnimation(SpillePlade.this, R.anim.image_click));
+                                             v.startAnimation(AnimationUtils.loadAnimation(Spilleplade_akt.this, R.anim.image_click));
 
                                              CharSequence options[] = new CharSequence[]{"Stop musik", "Afslut spil"};
-                                             AlertDialog.Builder builder = new AlertDialog.Builder(SpillePlade.this);
+                                             AlertDialog.Builder builder = new AlertDialog.Builder(Spilleplade_akt.this);
                                              builder.setTitle("Indstillinger");
                                              builder.setItems(options, new DialogInterface.OnClickListener() {
                                                          @Override
@@ -272,7 +269,7 @@ public class SpillePlade extends AppCompatActivity {
 
                                                              switch (which) {
                                                                  case 0:
-                                                                     mp.stop();
+                                                                     MusicManager.mp.stop();
                                                                      break;
                                                                  case 1:
                                                                      finish();
@@ -382,7 +379,7 @@ public class SpillePlade extends AppCompatActivity {
         if (turenErGået) {
             if (Spiller.instans.getHp() - 30 > 0) {
 
-                Toast.makeText(SpillePlade.this, "Ugen er gået", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Spilleplade_akt.this, "Ugen er gået", Toast.LENGTH_SHORT).show();
 
             } else if (Spiller.instans.getHp() - 30 <= 0) {
                 dialog.setTitle("Husk at spise!");
@@ -401,7 +398,7 @@ public class SpillePlade extends AppCompatActivity {
             brikErUnderFlytning = false;
         } else {
             Class aktivitet = feltNummerTilAktivitet[feltPos];
-            final Intent intent = new Intent(SpillePlade.this, aktivitet);
+            final Intent intent = new Intent(Spilleplade_akt.this, aktivitet);
             updateText();
 
             sætBrikposition(Spiller.instans.getPosition());

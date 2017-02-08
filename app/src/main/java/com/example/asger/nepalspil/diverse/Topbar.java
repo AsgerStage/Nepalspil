@@ -1,4 +1,4 @@
-package com.example.asger.nepalspil.felter;
+package com.example.asger.nepalspil.diverse;
 
 import android.app.Activity;
 import android.widget.TextView;
