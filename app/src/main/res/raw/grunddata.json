@@ -28,12 +28,12 @@
           "madForskel" : 0.5
         },
         { "titel" : "Undervisningen var kedelig",
-          "tekst" : "Undervisningen var kedelig, så du faldt i søvn. -10 viden og dagen er gået",
+          "tekst" : "Undervisningen var kedelig, så du faldt i søvn. -10 viden og ugen er gået",
           "videnForskel" : -10,
           "tidFaktor" : 0.1
         },
         { "titel" : "Din lillebror er blevet syg",
-          "tekst" : "Du må blive hjemme og passe ham. -10 viden og dagen er gået",
+          "tekst" : "Du må blive hjemme og passe ham. -10 viden og ugen er gået",
           "videnForskel" : -10,
           "tidFaktor" : 0.1
         }, 
@@ -41,31 +41,36 @@
           "tekst" : "Dine forældre har brugt nogle af dine penge. -20kr",
           "pengeForskel" : -20
 },
-          { "titel" : "Du har købt slik for alle dine penge",
-          "tekst" : "Du har brugt alle dine penge på slik. Nu har du ondt i maven og har ikke penge til mad. - 10 penge og dagen er gået",
-          "pengeForskel" : -10,
+          { "titel" : "Du har købt slik for dine penge",
+          "tekst" : "Du har brugt alle dine penge på slik. Nu har du ondt i maven. - 20 penge og ugen er gået",
+          "pengeForskel" : -20,
           "tidFaktor" : 0.1
         },
           { "titel" : "Du skal passe geden",
-          "tekst" : "Din mor er ikke hjemme i dag, så du må blive hjemme og passe jeres ged. - 10 viden og dagen er gået",
+          "tekst" : "Din mor er ikke hjemme i dag, så du må blive hjemme og passe jeres ged. - 10 viden og ugen er gået",
           "videnForskel" : -10,
           "tidFaktor" : 0.1
         },
          { "titel" : "Nepal bandha - Skolen er lukket",
-          "tekst" : "Der er generalstrejke, så skolen og butikkerne holder lukket. - 10 viden og dagen er gået",
+          "tekst" : "Der er generalstrejke, så skolen og butikkerne holder lukket. - 10 viden og ugen er gået",
           "videnForskel" : -10,
           "tidFaktor" : 0.1
         },
         { "titel" : "Du har købt slik for alle dine penge",
-          "tekst" : "Du har brugt alle dine penge på slik. Nu har du ondt i maven og har ikke penge til mad. - 10 penge og dagen er gået",
+          "tekst" : "Du har brugt alle dine penge på slik. Nu har du ondt i maven og har ikke penge til mad. - 10 penge og ugen er gået",
           "pengeForskel" : -10,
           "tidFaktor" : 0.1
         },
         { "titel" : "Det er blevet regntid!",
-          "tekst" : "Det er blevet regntid og det øser ned. Du har ingen paraply, så du bliver hjemme. - 5 viden og dagen er gået",
-          "videnForskel" : -5,
+          "tekst" : "Det er blevet regntid og det øser ned. Du har ingen paraply, så du bliver hjemme. - 10 viden og ugen er gået",
+          "videnForskel" : -10,
           "tidFaktor" : 0.1
         },
+         { "titel" : "Jeres høne er løbet væk",
+          "tekst" : "Hønen er borte og du må hjælpe med at lede. - 20 viden og ugen er gået",
+          "videnForskel" : -20,
+          "tidFaktor" : 0.1
+},
         { "fyld" : "fyld" },
         { "fyld" : "fyld" }
       ]
@@ -153,7 +158,7 @@
           { "titel" : "Du har fået en solcellelygte",
           "tekst" : "Du har fået en læselampe, som kører på solceller, så nu kan du læse lektier, når der er strømafbrydelse. + 10 viden",
           "videnForskel" : 10,
-          "tidFaktor" : 0.1
+       
         },
         { "titel" : "Dine forældre har høstet ris",
           "tekst" : "Dine forældre har høstet risen på den mark de har lejet, så du får mere mad. + 20 mad",
@@ -183,7 +188,7 @@
           "pengeForskel" : 20
         },
         { "titel" : "Du skal til bryllup",
-          "tekst" : "Du er inviteret til din tantes bryllup i Kathmandu, så du kommer ikke i skole i denne uge  . Minus 10 viden",
+          "tekst" : "Du er inviteret til din tantes bryllup i Kathmandu, så du kommer ikke i skole i denne uge. Minus 10 viden",
           "videnForskel" : -10
         },
           { "titel" : "Ekstra penge til skolesager",
@@ -199,7 +204,7 @@
           "videnForskel" : 20
         },
         { "titel" : "Nepal bandha - Skolen er lukket",
-          "tekst" : "Der er generalstrejke, så skolen og butikkerne holder lukket. - 10 viden og dagen er gået",
+          "tekst" : "Der er generalstrejke, så skolen og butikkerne holder lukket. - 10 viden og ugen er gået",
           "videnForskel" : -10,
           "tidFaktor" : 0
         },
