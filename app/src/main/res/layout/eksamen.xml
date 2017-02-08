@@ -21,34 +21,34 @@
             android:layout_marginBottom="26dp">
 
             <Button
-                android:text="Button"
+                android:text="Brød og kød"
                 android:layout_width="180dp"
                 android:layout_height="match_parent"
-                android:id="@+id/answer1Button"
+                android:id="@+id/svar1"
                 android:layout_weight="0.98"
                 android:textAlignment="center"/>
 
             <Button
-                android:text="Button"
+                android:text="Ris, løg, hvidløg og chili"
                 android:layout_width="180dp"
                 android:layout_height="match_parent"
-                android:id="@+id/answer2Button"
+                android:id="@+id/svar2"
                 android:layout_weight="1.00"
                 android:textAlignment="center"/>
 
             <Button
-                android:text="Button"
+                android:text="Nudler og chips"
                 android:layout_width="180dp"
                 android:layout_height="match_parent"
-                android:id="@+id/answer3Button"
+                android:id="@+id/svar3"
                 android:layout_weight="1.00"
                 android:textAlignment="center"/>
 
         </LinearLayout>
 
         <TextView
-            android:text="TextView"
-            android:id="@+id/examQuestion"
+            android:text="Hvilke ingredienser bruges blandt andet i nepalesisk skolemad?"
+            android:id="@+id/spørgsmål"
             android:layout_width="320dp"
             android:layout_centerVertical="true"
             android:layout_alignParentEnd="true"

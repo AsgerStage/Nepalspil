@@ -1,8 +1,6 @@
 package com.example.asger.nepalspil.felter;
 
-import android.app.Activity;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.Typeface;
@@ -17,7 +15,6 @@ import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import com.example.asger.nepalspil.R;
-import com.example.asger.nepalspil.models.Spiller;
 import com.github.jinatonic.confetti.CommonConfetti;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
@@ -25,31 +22,16 @@ import cn.pedant.SweetAlert.SweetAlertDialog;
 import static com.example.asger.nepalspil.models.Spiller.instans;
 
 public class Eksamen extends AppCompatActivity {
-    TextView question;
-    Button answer1;
-    Button answer2;
-    Button answer3;
+    TextView spørgsmålTv;
+    Button svarKnap1;
+    Button svarKnap2;
+    Button svarKnap3;
     FrameLayout container;
     AlertDialog.Builder dialog;
     SharedPreferences prefs;
 
     @Override
     public void onBackPressed() {
-        new AlertDialog.Builder(this)
-                .setMessage("Er du sikker på du vil forlade eksamen? Det koster dig " + Skole.vidensKrav() + " viden.")
-                .setCancelable(false)
-                .setPositiveButton("Ja", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        Eksamen.this.finish();
-                        instans.setViden(instans.getViden() - 10 * instans.getKlassetrin());
-                        if (instans.getViden() < 0) {
-                            instans.setViden(0);
-                        }
-                    }
-                })
-                .setNegativeButton("Nej", null)
-                .show();
-
         new SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE)
                 .setTitleText("Er du sikker?")
                 .setContentText("Hvis du forlader eksamen vil det koste dig " + Skole.vidensKrav() + " viden.")
@@ -77,86 +59,104 @@ public class Eksamen extends AppCompatActivity {
         setContentView(R.layout.eksamen);
         prefs = PreferenceManager.getDefaultSharedPreferences(this);
 
-        question = (TextView) findViewById(R.id.examQuestion);
-        answer1 = (Button) findViewById(R.id.answer1Button);
-        answer2 = (Button) findViewById(R.id.answer2Button);
-        answer3 = (Button) findViewById(R.id.answer3Button);
+        spørgsmålTv = (TextView) findViewById(R.id.spørgsmål);
+        svarKnap1 = (Button) findViewById(R.id.svar1);
+        svarKnap2 = (Button) findViewById(R.id.svar2);
+        svarKnap3 = (Button) findViewById(R.id.svar3);
         container = (FrameLayout) findViewById(R.id.container);
         dialog = new AlertDialog.Builder(Eksamen.this);
 
-        Typeface face;
-        face = Typeface.createFromAsset(getAssets(), "fonts/EraserDust.ttf");
-        question.setTypeface(face);
+        Typeface face = Typeface.createFromAsset(getAssets(), "fonts/EraserDust.ttf");
+        spørgsmålTv.setTypeface(face);
+        svarKnap1.setOnClickListener(forkert);
+        svarKnap2.setOnClickListener(forkert);
+        svarKnap3.setOnClickListener(forkert);
 
-        instans.getViden();
-        switch (instans.getKlassetrin() - 1) {
+        switch (instans.getKlassetrin()-1) {
             case 0:
-                setQuestion("Hvad spiser nepalesiske børn til morgenmad?", "Havregryn med mælk", "Grød", "Ris og grøntsager");
-                setThirdCorrect();
-                eller
-                setQuestion("Går nepalesiske skolebørn med skoleuniform?", "Nej, det har de ikke råd til", "Ja næsten alle har en skoleuniform", "Nogle skoler bruger uniform andre gør ikke");
-                setSecondCorrect();
+                if (Math.random() < 0.5) {
+                    sætSpørgsmål("Hvad spiser nepalesiske børn til morgenmad?", "Havregryn med mælk", "Grød", "Ris og grøntsager");
+                    svarKnap3.setOnClickListener(korrekt);
+                } else {
+                    sætSpørgsmål("Går nepalesiske skolebørn med skoleuniform?", "Nej, det har de ikke råd til", "Ja næsten alle har en skoleuniform", "Nogle skoler bruger uniform andre gør ikke");
+                    svarKnap2.setOnClickListener(korrekt);
+                }
                 break;
             case 1:
-                setQuestion("Hvorfor er det godt, at børnene får skolemad?", "Så kan de bedre koncentrere sig i timerne", "Så behøver de ikke selv tage mad med.", "Så føles dagen længere.");
-                setFirstCorrect();
-                eller
-                setQuestion("Er det gratis at gå i skole i Nepal?", "De fleste skoler opkræver skolepenge", "Det er altid gratis", "Det koster altid penge");
-                setFirstCorrect();
+                if (Math.random() < 0.5) {
+                    sætSpørgsmål("Hvorfor er det godt, at børnene får skolemad?", "Så kan de bedre koncentrere sig i timerne", "Så behøver de ikke selv tage mad med.", "Så føles dagen længere.");
+                    svarKnap1.setOnClickListener(korrekt);
+                } else {
+                    sætSpørgsmål("Er det gratis at gå i skole i Nepal?", "De fleste skoler opkræver skolepenge", "Det er altid gratis", "Det koster altid penge");
+                    svarKnap1.setOnClickListener(korrekt);
+                }
                 break;
             case 2:
-                setQuestion("Hvilke ingredienser bruges blandt andet i nepalesisk skolemad?", "Brød og kød", "Ris, løg, hvidløg og chili", "Nudler og chips");
-                setSecondCorrect();
-                eller
-                setQuestion("Hvilke kornsorter dyrker man i Nepal?", "byg og rug", "ris og hvede", "havre og quinoa");
-                setSecondCorrect();
+                if (Math.random() < 0.5) {
+                    sætSpørgsmål("Hvilke ingredienser bruges blandt andet i nepalesisk skolemad?", "Brød og kød", "Ris, løg, hvidløg og chili", "Nudler og chips");
+                    svarKnap2.setOnClickListener(korrekt);
+                } else {
+                    sætSpørgsmål("Hvilke kornsorter dyrker man i Nepal?", "byg og rug", "ris og hvede", "havre og quinoa");
+                    svarKnap2.setOnClickListener(korrekt);
+                }
                 break;
             case 3:
-                setQuestion("Hvad tid starter den offentlige skole i Nepal?", "Kl. 10", "Kl. 9", "Kl. 8");
-                setFirstCorrect();
-                eller
-                setQuestion("Hvad tid slutter skolen i Nepal", "Det er forskelligt", "Kl. 14", "kl. 16");
-                setThirdCorrect();
+                if (Math.random() < 0.5) {
+                    sætSpørgsmål("Hvad tid starter den offentlige skole i Nepal?", "Kl. 10", "Kl. 9", "Kl. 8");
+                    svarKnap1.setOnClickListener(korrekt);
+                } else {
+                    sætSpørgsmål("Hvad tid slutter skolen i Nepal?", "Det er forskelligt", "Kl. 14", "kl. 16");
+                    svarKnap3.setOnClickListener(korrekt);
+                }
                 break;
             case 4:
-                setQuestion("Er der privatskoler i Nepal?", "Ja, mange.", "Nej, det har de ikke råd til.", "Nogle få");
-                setFirstCorrect();
-                eller
-                setQuestion("Hvor tit går børnene til eksamen i Nepal?", "Efter 3. klasse", "Efter hvert skoleår", "Efter 10. klasse");
-                setSecondCorrect();
+                if (Math.random() < 0.5) {
+                    sætSpørgsmål("Er der privatskoler i Nepal?", "Ja, mange.", "Nej, det har de ikke råd til.", "Nogle få");
+                    svarKnap1.setOnClickListener(korrekt);
+                } else {
+                    sætSpørgsmål("Hvor tit går børnene til eksamen i Nepal?", "Efter 3. klasse", "Efter hvert skoleår", "Efter 10. klasse");
+                    svarKnap2.setOnClickListener(korrekt);
+                }
                 break;
             case 5:
-                setQuestion("Hvem går i folkeskolen i Nepal?", "cirka halvdelen", "Næsten alle","De fattige");
-                setThirdCorrect();
-                eller
-                setQuestion("Er undervisningen i den nepalesiske folkeskole god nok", "Nej desværre er den tit dårlig", "Ja da alle skolerne er vildt gode", "De fleste er gode");
-                setFirstCorrect();
+                if (Math.random() < 0.5) {
+                    sætSpørgsmål("Hvem går i folkeskolen i Nepal?", "cirka halvdelen", "Næsten alle", "De fattige");
+                    svarKnap3.setOnClickListener(korrekt);
+                } else {
+                    sætSpørgsmål("Er undervisningen i den nepalesiske folkeskole god nok", "Nej desværre er den tit dårlig", "Ja da alle skolerne er vildt gode", "De fleste er gode");
+                    svarKnap1.setOnClickListener(korrekt);
+                }
                 break;
             case 6:
-                setQuestion("Hvorfor er det vigtigt, at børn i Nepal lærer noget?", "Fordi de skal have en uddannelse og et bedre liv.", "Fordi de kommer til at kede sig derhjemme.", "Fordi de ikke kan lide at være alene hjemme");
-                setFirstCorrect();
+                if (Math.random() < 0.5) {
+                    sætSpørgsmål("Hvorfor er det vigtigt, at børn i Nepal lærer noget?", "Fordi de skal have en uddannelse og et bedre liv.", "Fordi de kommer til at kede sig derhjemme.", "Fordi de ikke kan lide at være alene hjemme");
+                    svarKnap1.setOnClickListener(korrekt);
+                } else {
+                    sætSpørgsmål("Kan man tage en uddannelse i Nepal, hvis man ikke har bestået 10. klasse?", "Ja, det er let nok", "Kun hvis man spørger pænt", "Nej, man skal have 10. klasse for at få en uddannelse");
+                    svarKnap2.setOnClickListener(korrekt);
+                }
                 break;
-                eller
-                setQuestion("Kan man tage en uddannelse i Nepal, hvis man ikke har bestået 10. klasse?", "Ja, det er let nok", "Kun hvis man spørger pænt", "Nej, man skal have 10. klasse for at få en uddannelse");
-                setSecondCorrect();
             case 7:
-                setQuestion("Hvorfor er der mange fattige børn i Nepal, som ikke laver lektier?", "De behøver ikke lave lektier", "Deres forældre sætter dem ikke i gang", "Hindureligionen forbyder lektier");
-                setSecondCorrect();
-                eller
-                setQuestion("Hvilken usund snack er nepalesiske børn vilde med?", "vingummi", "lakrids", "nudler");
-                setThirdCorrect();
+                if (Math.random() < 0.5) {
+                    sætSpørgsmål("Hvorfor er der mange fattige børn i Nepal, som ikke laver lektier?", "De behøver ikke lave lektier", "Deres forældre sætter dem ikke i gang", "Hindureligionen forbyder lektier");
+                    svarKnap2.setOnClickListener(korrekt);
+                } else {
+                    sætSpørgsmål("Hvilken usund snack er nepalesiske børn vilde med?", "vingummi", "lakrids", "nudler");
+                    svarKnap3.setOnClickListener(korrekt);
+                }
                 break;
             case 8:
-                setQuestion("Hvad skal børn i Nepal kunne til eksamen?", "De skal kunne tænke selvstændigt", "De skal kunne deres bøger udenad", "De skal kunne forstå, hvad der står i bøgerne.");
-                setSecondAsGameWinning();
-                eller
-                setQuestion("Bliver der snydt til eksamen i Nepal?", "Nej da! Hvordan kunne du tro det!", "Ja det er helt almindeligt", "En sjælden gang i mellem, men lærerne holder godt øje");
-                setfirstCorrect();
+                if (Math.random() < 0.5) {
+                    sætSpørgsmål("Hvad skal børn i Nepal kunne til eksamen?", "De skal kunne tænke selvstændigt", "De skal kunne deres bøger udenad", "De skal kunne forstå, hvad der står i bøgerne.");
+                    svarKnap2.setOnClickListener(spilletErVundet);
+                } else {
+                    sætSpørgsmål("Bliver der snydt til eksamen i Nepal?", "Nej da! Hvordan kunne du tro det!", "Ja det er helt almindeligt", "En sjælden gang i mellem, men lærerne holder godt øje");
+                    svarKnap1.setOnClickListener(spilletErVundet);
+                }
                 break;
 
         }
     }
-
 
     public void wrong() {
 
@@ -181,47 +181,12 @@ public class Eksamen extends AppCompatActivity {
 
     }
 
-    public void setQuestion(String titel, String answerbox1, String answerbox2, String answerbox3) {
-        question.setText(titel);
-        answer1.setText(answerbox1);
-        answer2.setText(answerbox2);
-        answer3.setText(answerbox3);
-    }
 
-    public void setFirstCorrect() {
-        answer1.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-
-                final MediaPlayer mp = MediaPlayer.create(Eksamen.this, R.raw.tada);
-                mp.start();
-                konfetti();
-                instans.setKlassetrin(instans.getKlassetrin() + 1);
-
-                new SweetAlertDialog(Eksamen.this, SweetAlertDialog.SUCCESS_TYPE)
-                        .setTitleText("TILLYKKE!!!")
-                        .setContentText("Du bestod og går nu i " + instans.getKlassetrin() + ". klasse.")
-                        .setConfirmText("Fedt!")
-                        .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
-                            @Override
-                            public void onClick(SweetAlertDialog sDialog) {
-                                sDialog.dismissWithAnimation();
-                                finish();
-                            }
-                        })
-                        .show();
-
-            }
-        });
-        answer2.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                wrong();
-            }
-        });
-        answer3.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                wrong();
-            }
-        });
+    public void sætSpørgsmål(String titel, String sv1, String sv2, String sv3) {
+        spørgsmålTv.setText(titel);
+        svarKnap1.setText(sv1);
+        svarKnap2.setText(sv2);
+        svarKnap3.setText(sv3);
     }
 
     private void konfetti() {
@@ -229,115 +194,77 @@ public class Eksamen extends AppCompatActivity {
                 .infinite();
     }
 
+    View.OnClickListener korrekt = new View.OnClickListener() {
+        public void onClick(View v) {
 
-    public void setSecondCorrect() {
-        answer1.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                wrong();
+            final MediaPlayer mp = MediaPlayer.create(Eksamen.this, R.raw.tada);
+            mp.start();
+            konfetti();
+            instans.setKlassetrin(instans.getKlassetrin() + 1);
+
+            new SweetAlertDialog(Eksamen.this, SweetAlertDialog.SUCCESS_TYPE)
+                    .setTitleText("TILLYKKE!!!")
+                    .setContentText("Du bestod og går nu i " + instans.getKlassetrin() + ". klasse.")
+                    .setConfirmText("Fedt!")
+                    .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                        @Override
+                        public void onClick(SweetAlertDialog sDialog) {
+                            sDialog.dismissWithAnimation();
+                            finish();
+                        }
+                    })
+                    .show();
+
+        }
+    };
+
+    View.OnClickListener forkert = new View.OnClickListener() {
+        public void onClick(View v) {
+
+            instans.setViden(instans.getViden() - 10 * instans.getKlassetrin());
+            if (instans.getViden() < 0) {
+                instans.setViden(0);
             }
-        });
-        answer2.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                final MediaPlayer mp = MediaPlayer.create(Eksamen.this, R.raw.tada);
-                mp.start();
-                konfetti();
-                instans.setKlassetrin(instans.getKlassetrin() + 1);
 
-                new SweetAlertDialog(Eksamen.this, SweetAlertDialog.SUCCESS_TYPE)
-                        .setTitleText("TILLYKKE!!!")
-                        .setContentText("Du bestod og går nu i " + instans.getKlassetrin() + ". klasse.")
-                        .setConfirmText("Fedt!")
-                        .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
-                            @Override
-                            public void onClick(SweetAlertDialog sDialog) {
-                                sDialog.dismissWithAnimation();
-                                finish();
-                            }
-                        })
-                        .show();
+            new SweetAlertDialog(Eksamen.this, SweetAlertDialog.ERROR_TYPE)
+                    .setTitleText("Øv...")
+                    .setContentText("Du har desværre svaret forkert på eksamen og er derfor dumpet. -" + 10 * instans.getKlassetrin() + " viden")
+                    .setConfirmText("Ok")
+                    .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                        @Override
+                        public void onClick(SweetAlertDialog sDialog) {
+                            sDialog.dismiss();
+                            finish();
+                        }
+                    })
+                    .show();
+        }
+    };
 
+    View.OnClickListener spilletErVundet = new View.OnClickListener() {
+        public void onClick(View v) {
+            final MediaPlayer mp = MediaPlayer.create(Eksamen.this, R.raw.tada);
+            mp.start();
+            konfetti();
+            instans.setKlassetrin(instans.getKlassetrin() + 1);
+            if (prefs.getInt("" + instans.getNavn(), -1) == -1) {
+                prefs.edit().putInt("" + instans.getNavn(), instans.getRunde()).apply();
+            } else if (prefs.getInt("" + instans.getNavn(), -1) > instans.getRunde()) {
+                prefs.edit().putInt("" + instans.getNavn(), instans.getRunde()).apply();
             }
-        });
-        answer3.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                wrong();
-            }
-        });
-    }
 
+            dialog.setMessage("Godt klaret, du har vundet spillet på " + instans.getRunde() + " uger! Nu kan jeg få en uddannelse.\n\nPrøv igen med en ny figur, eller <a href='http://skolemadtilnepal.wordpress.com/boernene-paa-bhawanipurskole'>klik her for at møde børnene i virkeligheden</a>")
+                    .setCancelable(false)
+                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            finish();
+                        }
+                    });
+            AlertDialog alert = dialog.create();
+            alert.show();
 
-    public void setThirdCorrect() {
-        answer1.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                wrong();
-            }
-        });
+        }
+    };
 
-        answer2.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                wrong();
-            }
-        });
-        answer3.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                final MediaPlayer mp = MediaPlayer.create(Eksamen.this, R.raw.tada);
-                mp.start();
-                konfetti();
-                instans.setKlassetrin(instans.getKlassetrin() + 1);
-
-                new SweetAlertDialog(Eksamen.this, SweetAlertDialog.SUCCESS_TYPE)
-                        .setTitleText("TILLYKKE!!!")
-                        .setContentText("Du bestod og går nu i " + instans.getKlassetrin() + ". klasse.")
-                        .setConfirmText("Fedt!")
-                        .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
-                            @Override
-                            public void onClick(SweetAlertDialog sDialog) {
-                                sDialog.dismissWithAnimation();
-                                finish();
-                            }
-                        })
-                        .show();
-            }
-        });
-    }
-
-    public void setSecondAsGameWinning() {
-        answer1.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                wrong();
-            }
-        });
-        answer2.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                final MediaPlayer mp = MediaPlayer.create(Eksamen.this, R.raw.tada);
-                mp.start();
-                konfetti();
-                instans.setKlassetrin(instans.getKlassetrin() + 1);
-                if (prefs.getInt(""+instans.getNavn(),-1)==-1){
-                    prefs.edit().putInt(""+instans.getNavn(), instans.getRunde()).apply();
-                }
-
-                else if (prefs.getInt(""+instans.getNavn(),-1)>instans.getRunde()){
-                prefs.edit().putInt(""+instans.getNavn(), instans.getRunde()).apply();
-                }
-
-                dialog.setMessage("Godt klaret, du har vundet spillet på " + instans.getRunde() + " uger! Nu kan jeg få en uddannelse. Prøv igen med en ny figur, eller <ahref"http://skolemadtilnepal.wordpress.com/boernene-paa-bhawanipurskole">klik her for at møde børnene i virkeligheden<a>")
-                        .setCancelable(false)
-                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                finish();
-                            }
-                        });
-                AlertDialog alert = dialog.create();
-                alert.show();
-
-            }
-        });
-        answer3.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                wrong();
-            }
-        });
-    }
 
 }
