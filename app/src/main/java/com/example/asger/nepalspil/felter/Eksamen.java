@@ -93,38 +93,65 @@ public class Eksamen extends AppCompatActivity {
             case 0:
                 setQuestion("Hvad spiser nepalesiske børn til morgenmad?", "Havregryn med mælk", "Grød", "Ris og grøntsager");
                 setThirdCorrect();
+                eller
+                setQuestion("Går nepalesiske skolebørn med skoleuniform?", "Nej, det har de ikke råd til", "Ja næsten alle har en skoleuniform", "Nogle skoler bruger uniform andre gør ikke");
+                setSecondCorrect();
                 break;
             case 1:
                 setQuestion("Hvorfor er det godt, at børnene får skolemad?", "Så kan de bedre koncentrere sig i timerne", "Så behøver de ikke selv tage mad med.", "Så føles dagen længere.");
+                setFirstCorrect();
+                eller
+                setQuestion("Er det gratis at gå i skole i Nepal?", "De fleste skoler opkræver skolepenge", "Det er altid gratis", "Det koster altid penge");
                 setFirstCorrect();
                 break;
             case 2:
                 setQuestion("Hvilke ingredienser bruges blandt andet i nepalesisk skolemad?", "Brød og kød", "Ris, løg, hvidløg og chili", "Nudler og chips");
                 setSecondCorrect();
+                eller
+                setQuestion("Hvilke kornsorter dyrker man i Nepal?", "byg og rug", "ris og hvede", "havre og quinoa");
+                setSecondCorrect();
                 break;
             case 3:
                 setQuestion("Hvad tid starter den offentlige skole i Nepal?", "Kl. 10", "Kl. 9", "Kl. 8");
                 setFirstCorrect();
+                eller
+                setQuestion("Hvad tid slutter skolen i Nepal", "Det er forskelligt", "Kl. 14", "kl. 16");
+                setThirdCorrect();
                 break;
             case 4:
                 setQuestion("Er der privatskoler i Nepal?", "Ja, mange.", "Nej, det har de ikke råd til.", "Nogle få");
                 setFirstCorrect();
+                eller
+                setQuestion("Hvor tit går børnene til eksamen i Nepal?", "Efter 3. klasse", "Efter hvert skoleår", "Efter 10. klasse");
+                setSecondCorrect();
                 break;
             case 5:
                 setQuestion("Hvem går i folkeskolen i Nepal?", "cirka halvdelen", "Næsten alle","De fattige");
                 setThirdCorrect();
+                eller
+                setQuestion("Er undervisningen i den nepalesiske folkeskole god nok", "Nej desværre er den tit dårlig", "Ja da alle skolerne er vildt gode", "De fleste er gode");
+                setFirstCorrect();
                 break;
             case 6:
                 setQuestion("Hvorfor er det vigtigt, at børn i Nepal lærer noget?", "Fordi de skal have en uddannelse og et bedre liv.", "Fordi de kommer til at kede sig derhjemme.", "Fordi de ikke kan lide at være alene hjemme");
                 setFirstCorrect();
                 break;
+                eller
+                setQuestion("Kan man tage en uddannelse i Nepal, hvis man ikke har bestået 10. klasse?", "Ja, det er let nok", "Kun hvis man spørger pænt", "Nej, man skal have 10. klasse for at få en uddannelse");
+                setSecondCorrect();
             case 7:
                 setQuestion("Hvorfor er der mange fattige børn i Nepal, som ikke laver lektier?", "De behøver ikke lave lektier", "Deres forældre sætter dem ikke i gang", "Hindureligionen forbyder lektier");
                 setSecondCorrect();
+                eller
+                setQuestion("Hvilken usund snack er nepalesiske børn vilde med?", "vingummi", "lakrids", "nudler");
+                setThirdCorrect();
                 break;
             case 8:
                 setQuestion("Hvad skal børn i Nepal kunne til eksamen?", "De skal kunne tænke selvstændigt", "De skal kunne deres bøger udenad", "De skal kunne forstå, hvad der står i bøgerne.");
                 setSecondAsGameWinning();
+                eller
+                setQuestion("Bliver der snydt til eksamen i Nepal?", "Nej da! Hvordan kunne du tro det!", "Ja det er helt almindeligt", "En sjælden gang i mellem, men lærerne holder godt øje");
+                setfirstCorrect();
                 break;
 
         }
