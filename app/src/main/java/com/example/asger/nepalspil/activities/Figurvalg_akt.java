@@ -260,7 +260,9 @@ public class Figurvalg_akt extends AppCompatActivity {
         valgtFigur = kamal;
         valgtFigurview = figurview;
         figurview.setRotationY(0);
-        figurview.animate().rotationY(720).setInterpolator(new DecelerateInterpolator()).scaleX(1.1f).scaleY(1.1f).setDuration(1000);
+//        figurview.animate().rotationY(720).setInterpolator(new DecelerateInterpolator()).scaleX(1.1f).scaleY(1.1f).setDuration(1000);
+        // .translationY(-figurview.getHeight()*0.3f)
+        figurview.animate().setInterpolator(new DecelerateInterpolator()).scaleX(1.2f).scaleY(1.2f).setDuration(2000);
     }
 }
 

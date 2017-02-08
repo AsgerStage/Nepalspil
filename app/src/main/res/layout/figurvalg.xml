@@ -6,212 +6,204 @@
     android:layout_height="match_parent"
     android:background="@drawable/felt_skole">
 
-    <LinearLayout android:orientation="vertical"
-                  android:clipChildren="false"
-                  android:layout_width="match_parent"
-                  android:layout_height="match_parent">
-
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent"
+        android:clipChildren="false"
+        android:orientation="vertical">
 
         <ImageView
+            android:id="@+id/imageView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:srcCompat="@drawable/vaelgfigur"
-            android:id="@+id/imageView"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:layout_margin="8dp" />
-    </RelativeLayout>
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:weightSum="4"
-        android:background="@color/white_semi_transparent">
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="8dp"
+            app:srcCompat="@drawable/vaelgfigur"/>
 
-        <me.grantland.widget.AutofitTextView
-            android:layout_width="0px"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/KamalHighscore"
-            android:layout_weight="1"
-            android:text="Kamal"
-            android:gravity="center_horizontal"
-            android:maxLines="1"
-            android:textSize="20sp"
-            android:layout_marginRight="15dp"
-            android:textColor="@color/black" />
+            android:background="@color/white_semi_transparent"
+            android:orientation="horizontal">
 
-        <me.grantland.widget.AutofitTextView
-            android:layout_width="0px"
+            <me.grantland.widget.AutofitTextView
+                android:id="@+id/KamalHighscore"
+                android:layout_width="0px"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:text="Kamal"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold"/>
+
+            <me.grantland.widget.AutofitTextView
+                android:id="@+id/LaxmiHighscore"
+                android:layout_width="0px"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:text="Laxmi"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold"/>
+
+
+            <me.grantland.widget.AutofitTextView
+                android:id="@+id/KrishnaHighscore"
+                android:layout_width="0px"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:text="Krishna"
+                android:textSize="20sp"
+                android:textStyle="bold"/>
+
+
+            <me.grantland.widget.AutofitTextView
+                android:id="@+id/AshaHighscore"
+                android:layout_width="0px"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:text="Asha"
+                android:textSize="20sp"
+                android:textStyle="bold"/>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/LaxmiHighscore"
-            android:layout_weight="1"
-            android:maxLines="1"
-            android:text="Laxmi"
-            android:gravity="center_horizontal"
-            android:textSize="20sp"
-            android:textColor="@color/black" />
+            android:background="@color/white_semi_transparent"
+            android:orientation="horizontal"
+            android:weightSum="4">
+
+            <me.grantland.widget.AutofitTextView
+                android:layout_width="0px"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="-4dp"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+
+                android:text="nem"
+                android:textColor="@color/black"
+                android:textSize="12sp"/>
+
+            <me.grantland.widget.AutofitTextView
+                android:layout_width="0px"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="-4dp"
+                android:layout_weight="1"
+
+                android:gravity="center_horizontal"
+                android:text="mellem"
+                android:textColor="@color/black"
+                android:textSize="11sp"/>
 
 
-        <me.grantland.widget.AutofitTextView
-            android:layout_width="0px"
-            android:layout_height="wrap_content"
-            android:id="@+id/KrishnaHighscore"
-            android:layout_weight="1"
-            android:maxLines="1"
-            android:text="Krishna"
-            android:gravity="center_horizontal"
-            android:textSize="20sp"
-            android:textColor="@color/black" />
+            <me.grantland.widget.AutofitTextView
+                android:layout_width="0px"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="-4dp"
+                android:layout_weight="1"
+
+                android:gravity="center_horizontal"
+                android:text="svær"
+                android:textColor="@color/black"
+                android:textSize="11sp"/>
 
 
-        <me.grantland.widget.AutofitTextView
-            android:layout_width="0px"
-            android:layout_height="wrap_content"
-            android:id="@+id/AshaHighscore"
-            android:layout_weight="1"
-            android:text="Asha"
-            android:gravity="center_horizontal"
-            android:maxLines="1"
-            android:textSize="20sp"
-            android:textColor="@color/black" />
-    </LinearLayout>
+            <me.grantland.widget.AutofitTextView
+                android:layout_width="0px"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="-4dp"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:text="sværest"
+
+                android:textColor="@color/black"
+                android:textSize="11sp"/>
+        </LinearLayout>
 
 
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:weightSum="4"
-        android:background="@color/white_semi_transparent">
-
-        <me.grantland.widget.AutofitTextView
-            android:layout_width="0px"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_marginTop="-4dp"
-            android:text="nem"
-            android:gravity="center_horizontal"
-            android:maxLines="1"
-            android:textSize="11sp"
-            android:layout_marginRight="15dp"
-            android:textColor="@color/black" />
-
-        <me.grantland.widget.AutofitTextView
-            android:layout_width="0px"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_marginTop="-4dp"
-            android:maxLines="1"
-            android:text="mellem"
-            android:gravity="center_horizontal"
-            android:textSize="11sp"
-            android:textColor="@color/black" />
-
-
-        <me.grantland.widget.AutofitTextView
-            android:layout_width="0px"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_marginTop="-4dp"
-            android:maxLines="1"
-            android:text="svær"
-            android:gravity="center_horizontal"
-            android:textSize="11sp"
-            android:textColor="@color/black" />
-
-
-        <me.grantland.widget.AutofitTextView
-            android:layout_width="0px"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_marginTop="-4dp"
-            android:text="sværest"
-            android:gravity="center_horizontal"
-            android:maxLines="1"
-            android:textSize="11sp"
-            android:textColor="@color/black" />
-    </LinearLayout>
-
-
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="0px"
-        android:layout_weight="3"
-        android:clipChildren="false"
-        android:weightSum="4"
-        android:layout_marginBottom="-4dp"
-        android:layout_marginTop="4dp" >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0px"
+            android:layout_marginBottom="-4dp"
+            android:layout_marginTop="4dp"
+            android:layout_weight="3"
+            android:clipChildren="false"
+            android:orientation="horizontal"
+            android:weightSum="4">
 
 
             <ImageButton
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                app:srcCompat="@drawable/figur_kamal_hel"
-                android:background="?android:selectableItemBackground"
                 android:id="@+id/KamalFigur"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="?android:selectableItemBackground"
                 android:scaleType="centerInside"
-                android:layout_weight="1"/>
+                app:srcCompat="@drawable/figur_kamal_hel"/>
 
 
             <ImageButton
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                app:srcCompat="@drawable/figur_laxmi_hel"
                 android:id="@+id/LaxmiFigur"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:background="?android:selectableItemBackground"
                 android:scaleType="centerInside"
-                android:layout_weight="1"/>
+                app:srcCompat="@drawable/figur_laxmi_hel"/>
 
 
             <ImageButton
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                app:srcCompat="@drawable/figur_krishna_hel"
                 android:id="@+id/KrishnaFigur"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:background="?android:selectableItemBackground"
                 android:scaleType="centerInside"
-                android:layout_weight="1"/>
+                app:srcCompat="@drawable/figur_krishna_hel"/>
 
 
             <ImageButton
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                app:srcCompat="@drawable/figur_asha_hel"
-                android:background="?android:selectableItemBackground"
                 android:id="@+id/AshaFigur"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="?android:selectableItemBackground"
                 android:scaleType="centerInside"
-                android:layout_weight="1"/>
+                app:srcCompat="@drawable/figur_asha_hel"/>
 
 
-    </LinearLayout>
+        </LinearLayout>
     </LinearLayout>
 
 
     <Button
-        android:text="Spil som\nAsha"
         android:id="@+id/spil"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:text="Spil som\nAsha"/>
 
     <TextView
-        android:text="Asha Musahar er en sød pige, men hun er meget fattig,\nså det bliver svært for hende at nå 10. klasse"
         android:id="@+id/taleboble_tekst"
-        android:textSize="14sp"
-        android:padding="8dp"
-        android:layout_height="wrap_content"
         android:layout_width="wrap_content"
-        android:layout_toStartOf="@+id/spil"
-        android:layout_gravity="bottom"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
+        android:layout_gravity="bottom"
+        android:layout_toStartOf="@+id/spil"
         android:background="@color/white_pressed"
-        android:textAlignment="center"
         android:gravity="center"
+        android:padding="8dp"
+        android:text="Asha Musahar er en sød pige, men hun er meget fattig,\nså det bliver svært for hende at nå 10. klasse"
+        android:textAlignment="center"
+        android:textSize="14sp"
         />
 
 

@@ -43,8 +43,9 @@ import cn.pedant.SweetAlert.SweetAlertDialog;
 import static com.example.asger.nepalspil.activities.MusicManager.mp;
 import static com.example.asger.nepalspil.models.Spiller.instans;
 
-//import static com.example.asger.nepalspil.R.id.player;
-
+/*
+rsync /home/j/android/studenterprojekter/BrInt/g10_Nepalspil/Nepalspil/app/build/outputs/apk/app-debug.apk         j:javabog.dk/privat/nepalspil.apk
+ */
 public class SpillePlade extends AppCompatActivity {
     TextView infobox;
     private Topbar topbar;
@@ -73,6 +74,15 @@ public class SpillePlade extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
+        /*
+        WindowManager wm = (WindowManager) getSystemService(WINDOW_SERVICE);
+        FrameLayout v = new FrameLayout(this);
+        v.addView(new Button(this));
+        wm.addView(v, new WindowManager.LayoutParams());
+
+//        CommonConfetti.rainingConfetti((ViewGroup) getWindow().getDecorView(), new int[]{Color.BLUE, Color.RED, Color.GREEN, Color.YELLOW}).infinite();
+        CommonConfetti.rainingConfetti(v, new int[]{Color.BLUE, Color.RED, Color.GREEN, Color.YELLOW}).infinite();
+        */
         new SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE)
                 .setTitleText("Afslut spil?")
                 .setContentText("Er du sikker på du vil afslutte spillet?")
