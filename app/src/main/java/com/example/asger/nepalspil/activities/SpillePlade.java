@@ -114,7 +114,7 @@ public class SpillePlade extends AppCompatActivity {
 
         if (getIntent().getBooleanExtra("genoptag", false) == false) { // nyt spil - vis dialog
             new AlertDialog.Builder(this)
-                    .setMessage("Hej! Hjælp os med at få en uddannelse. Vi skal have mad, viden og penge, så vi kan købe bøger, blyanter og en cykel og bestå de årlige eksamener. \n \n Hvis vi når 10. klasse, kan vi tage en uddannelse og få et godt job, og du har vundet spillet.")
+                    .setMessage("Hej! Hjælp mig med at få en uddannelse.\n Hvis vi når 10. klasse, kan jeg tage en uddannelse og få et godt job, og du har vundet spillet.")
                     .setCancelable(false)
                     .setPositiveButton("OK", null)
                     .show();
