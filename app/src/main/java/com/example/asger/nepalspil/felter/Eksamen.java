@@ -9,6 +9,8 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Html;
+import android.text.method.LinkMovementMethod;
 import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
@@ -151,7 +153,7 @@ public class Eksamen extends AppCompatActivity {
                     svarKnap2.setOnClickListener(spilletErVundet);
                 } else {
                     sætSpørgsmål("Bliver der snydt til eksamen i Nepal?", "Nej da! Hvordan kunne du tro det!", "Ja det er helt almindeligt", "En sjælden gang i mellem, men lærerne holder godt øje");
-                    svarKnap1.setOnClickListener(spilletErVundet);
+                    svarKnap2.setOnClickListener(spilletErVundet);
                 }
                 break;
 
@@ -253,8 +255,13 @@ public class Eksamen extends AppCompatActivity {
                 prefs.edit().putInt("" + instans.getNavn(), instans.getRunde()).apply();
             }
 
-            dialog.setMessage("Godt klaret, du har vundet spillet på " + instans.getRunde() + " uger! Nu kan jeg få en uddannelse.\n\nPrøv igen med en ny figur, eller <a href='http://skolemadtilnepal.wordpress.com/boernene-paa-bhawanipurskole'>klik her for at møde børnene i virkeligheden</a>")
+            //dialog.setMessage(Html.fromHtml("Godt klaret, du har vundet spillet på " + instans.getRunde() + " uger! Nu kan jeg få en uddannelse.\n\nPrøv igen med en ny figur, eller <a href='http://skolemadtilnepal.wordpress.com/boernene-paa-bhawanipurskole'>klik her for at møde børnene i virkeligheden</a>"))
+            dialog.setMessage(Html.fromHtml("Godt klaret, du har gennemført spillet på " + instans.getRunde() + " uger!</br/>\n" +
+                    "Nu kan "+instans.getNavn()+" få en uddannelse.<br/>\n<br/>\n" +
+                    "Prøv igen med en ny figur, eller <a href='http://skolemadtilnepal.wordpress.com/boernene-paa-bhawanipurskole'>klik her for at møde børnene i virkeligheden</a>"))
+                    .setTitle("Du har gennemført spillet med "+instans.getNavn())
                     .setCancelable(false)
+                    .setIcon(instans.figurdata.drawable_figur_halv_id)
                     .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
                             finish();
@@ -262,6 +269,8 @@ public class Eksamen extends AppCompatActivity {
                     });
             AlertDialog alert = dialog.create();
             alert.show();
+            // For at linket virker
+            ((TextView) (alert.findViewById(android.R.id.message))).setMovementMethod(LinkMovementMethod.getInstance());
 
         }
     };
