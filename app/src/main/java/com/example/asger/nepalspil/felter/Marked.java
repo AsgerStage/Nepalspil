@@ -40,6 +40,8 @@ public class Marked extends AppCompatActivity {
     final int FOOD_PER_CLICK = 10;
     final int COST_PER_FOOD_CLICK = 5;
     final int TIME_COST_EATING = 0;
+    private MediaPlayer spisLyd;
+    private MediaPlayer arbejdLyd;
 
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +53,9 @@ public class Marked extends AppCompatActivity {
         dialog = new AlertDialog.Builder(Marked.this);
         t = new Toast(Marked.this);
         playerinfo = (TextView) findViewById(R.id.texttid);
-        final MediaPlayer mp = MediaPlayer.create(this, R.raw.cash);
+        arbejdLyd = MediaPlayer.create(this, R.raw.cash);
+        spisLyd = MediaPlayer.create(this, R.raw.bitesound);
+
 
         topbar = new Topbar();
         topbar.init(this);
@@ -89,21 +93,8 @@ public class Marked extends AppCompatActivity {
                     money.startAnimation(animation);
 
 
-                    if (mp.isPlaying()) {
-                        mp.stop();
-                    }
-                    try {
-                        mp.reset();
-                        AssetFileDescriptor afd;
-                        afd = getAssets().openFd("cash.mp3");
-                        mp.setDataSource(afd.getFileDescriptor(), afd.getStartOffset(), afd.getLength());
-                        mp.prepare();
-                        mp.start();
-                    } catch (IllegalStateException e) {
-                        e.printStackTrace();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
+                    if (arbejdLyd.isPlaying()) arbejdLyd.seekTo(0);
+                    else arbejdLyd.start();
 
                     updateText();
                 } else if (Spiller.instans.tid < 2) {
@@ -126,24 +117,10 @@ public class Marked extends AppCompatActivity {
                 v.startAnimation(AnimationUtils.loadAnimation(Marked.this, R.anim.image_click));
                 if (Spiller.instans.penge >= COST_PER_FOOD_CLICK) {
                     Spiller.instans.spis(TIME_COST_EATING, COST_PER_FOOD_CLICK, FOOD_PER_CLICK);
-                    if (mp.isPlaying()) {
-                        mp.stop();
-                        food.setText("+" + FOOD_PER_CLICK + " mad");
-                        food.startAnimation(animationfood);
-                    }
-                    try {
-                        mp.reset();
-                        AssetFileDescriptor afd;
-                        afd = getAssets().openFd("bitesound.mp3");
-                        mp.setDataSource(afd.getFileDescriptor(), afd.getStartOffset(), afd.getLength());
-                        mp.prepare();
-                        mp.start();
-                    } catch (IllegalStateException e) {
-                        e.printStackTrace();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-
+                    food.setText("+" + FOOD_PER_CLICK + " mad");
+                    food.startAnimation(animationfood);
+                    if (spisLyd.isPlaying()) spisLyd.seekTo(0);
+                    else spisLyd.start();
 
                     updateText();
 

@@ -74,21 +74,8 @@ public class Marken extends AppCompatActivity {
                     money.startAnimation(animation);
                     updateText();
 
-                    if (mp.isPlaying()) {
-                        mp.stop();
-                    }
-                    try {
-                        mp.reset();
-                        AssetFileDescriptor afd;
-                        afd = getAssets().openFd("cash.mp3");
-                        mp.setDataSource(afd.getFileDescriptor(), afd.getStartOffset(), afd.getLength());
-                        mp.prepare();
-                        mp.start();
-                    } catch (IllegalStateException e) {
-                        e.printStackTrace();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
+                    if (mp.isPlaying()) mp.seekTo(0);
+                    else mp.start();
 
                 } else if (instans.tid < 2) {
 

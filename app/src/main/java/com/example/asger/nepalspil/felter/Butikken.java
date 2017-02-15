@@ -1,6 +1,5 @@
 package com.example.asger.nepalspil.felter;
 
-import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -20,6 +19,8 @@ public class Butikken extends AppCompatActivity {
 
     AlertDialog.Builder dialog;
     private Topbar topbar;
+    private Button køb;
+    private int pris;
 
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,29 +33,15 @@ public class Butikken extends AppCompatActivity {
         dialog = new AlertDialog.Builder(Butikken.this);
         ImageView figur = (ImageView) findViewById(R.id.figur);
         figur.setImageResource(Spiller.instans.figurdata.drawable_figur_halv_id);
-        final MediaPlayer mp = MediaPlayer.create(this, R.raw.cash);
         ImageView helpField = (ImageView) findViewById(R.id.vaerkstedHelp);
-        final Button buy = (Button) findViewById(R.id.knap_koeb);
+        køb = (Button) findViewById(R.id.knap_koeb);
         ImageView hjemBack = (ImageView) findViewById(R.id.ikon_tilbage);
         ImageView menu = (ImageView) findViewById(R.id.menuknap);
         menu.setVisibility(View.INVISIBLE);
         topbar.opdaterGui(Spiller.instans);
 
 
-        switch (Spiller.instans.læringsfart) {
-            case 0:
-                buy.setText("Køb kladdehæfte");
-                break;
-            case 1:
-                buy.setText("Køb blyanter");
-                break;
-            case 2:
-                buy.setText("Køb lommeregner");
-                break;
-            case 3:
-                buy.setVisibility(View.INVISIBLE);
-                break;
-        }
+        opdaterTekstOgPris();
 
         helpField.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,55 +52,10 @@ public class Butikken extends AppCompatActivity {
             }
         });
 
-        buy.setOnClickListener(new View.OnClickListener() {
+        køb.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (Spiller.instans.læringsfart == 0) {
-                    if (Spiller.instans.penge >= 10) {
-                        buy();
-                        new SweetAlertDialog(Butikken.this, SweetAlertDialog.SUCCESS_TYPE)
-                                .setTitleText("Kladdehæfte købt!")
-                                .setContentText("Du har købt et kladdehæfte for 10kr.")
-                                .show();
-                        buy.setText("Køb blyanter");
-                    } else {
-                        new SweetAlertDialog(Butikken.this, SweetAlertDialog.ERROR_TYPE)
-                                .setTitleText("Ikke nok penge!")
-                                .setContentText("Du har ikke penge nok. Tjen penge ved at arbejde.")
-                                .show();
-                    }
-                }
-                if (Spiller.instans.læringsfart == 1) {
-                    if (Spiller.instans.penge >= 20) {
-                        buy();
-                        new SweetAlertDialog(Butikken.this, SweetAlertDialog.SUCCESS_TYPE)
-                                .setTitleText("Blyanter købt!")
-                                .setContentText("Du har købt nye blyanter for 20kr.")
-                                .show();
-                        buy.setText("Køb Lommeregner");
-                    } else {
-                        new SweetAlertDialog(Butikken.this, SweetAlertDialog.ERROR_TYPE)
-                                .setTitleText("Ikke nok penge!")
-                                .setContentText("Du har ikke penge nok. Tjen penge ved at arbejde.")
-                                .show();
-
-                    }
-                }
-                if (Spiller.instans.læringsfart == 2) {
-                    if (Spiller.instans.penge >= 200) {
-                        buy();
-                        new SweetAlertDialog(Butikken.this, SweetAlertDialog.SUCCESS_TYPE)
-                                .setTitleText("Lommeregner købt!")
-                                .setContentText("Du har købt en ny lommeregner for 200kr.")
-                                .show();
-                        buy.setVisibility(View.INVISIBLE);
-                    } else {
-                        new SweetAlertDialog(Butikken.this, SweetAlertDialog.ERROR_TYPE)
-                                .setTitleText("Ikke nok penge!")
-                                .setContentText("Du har ikke penge nok. Tjen penge ved at arbejde.")
-                                .show();
-                    }
-                }
+                køb();
             }
         });
 
@@ -127,21 +69,55 @@ public class Butikken extends AppCompatActivity {
 
     }
 
-    private void buy() {
-        switch (Spiller.instans.læringsfart) {
-            case 0:
-                Spiller.instans.læringsfart = 1;
-                Spiller.instans.penge = Spiller.instans.penge - 10;
-                break;
-            case 1:
-                Spiller.instans.læringsfart = 2;
-                Spiller.instans.penge = Spiller.instans.penge - 20;
-                break;
-            case 2:
-                Spiller.instans.læringsfart = 3;
-                Spiller.instans.penge = Spiller.instans.penge - 200;
-                break;
+    private void køb() {
+        if (Spiller.instans.penge >= pris) {
+            Spiller.instans.penge = Spiller.instans.penge - pris;
+            topbar.opdaterGui(Spiller.instans);
+
+            if (!Spiller.instans.læringBlyant) {
+                Spiller.instans.læringBlyant = true;
+                new SweetAlertDialog(Butikken.this, SweetAlertDialog.SUCCESS_TYPE)
+                        .setTitleText("Blyanter købt!")
+                        .setContentText("Du har købt nye blyanter for 10kr.")
+                        .show();
+            }
+            else if (!Spiller.instans.læringKladdehæfte) {
+                Spiller.instans.læringKladdehæfte = true;
+                new SweetAlertDialog(Butikken.this, SweetAlertDialog.SUCCESS_TYPE)
+                        .setTitleText("Kladdehæfte købt!")
+                        .setContentText("Du har købt et kladdehæfte for 20kr.")
+                        .show();
+            }
+            else if (!Spiller.instans.læringLommeregner) {
+                Spiller.instans.læringLommeregner = true;
+                new SweetAlertDialog(Butikken.this, SweetAlertDialog.SUCCESS_TYPE)
+                        .setTitleText("Lommeregner købt!")
+                        .setContentText("Du har købt en ny lommeregner for 200kr.")
+                        .show();
+            }
+            opdaterTekstOgPris();
+        } else {
+            new SweetAlertDialog(Butikken.this, SweetAlertDialog.ERROR_TYPE)
+                    .setTitleText("Ikke nok penge!")
+                    .setContentText("Du har ikke "+pris+" kr. Tjen penge ved at arbejde.")
+                    .show();
         }
-        topbar.opdaterGui(Spiller.instans);
     }
+
+    private void opdaterTekstOgPris() {
+        if (!Spiller.instans.læringBlyant) {
+            køb.setText("Køb blyanter");
+            pris = 10;
+        }
+        else if (!Spiller.instans.læringKladdehæfte) {
+            køb.setText("Køb kladdehæfte");
+            pris = 20;
+        }
+        else if (!Spiller.instans.læringLommeregner) {
+            køb.setText("Køb lommeregner");
+            pris = 200;
+        }
+        else køb.setVisibility(View.INVISIBLE);
+    }
+
 }

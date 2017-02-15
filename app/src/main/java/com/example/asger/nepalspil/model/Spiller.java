@@ -16,7 +16,9 @@ public class Spiller implements Serializable {
     // private static final long serialVersionUID = 12345;
 
     public static int LÆRINGSFART_INGEN = 0;
-    public int læringsfart = 0;
+    public boolean læringBlyant = false;
+    public boolean læringKladdehæfte = false;
+    public boolean læringLommeregner = false;
     public int glemtViden;
     public int bøger;
     public int position = 0; //starter på felt 1
@@ -215,29 +217,17 @@ public class Spiller implements Serializable {
     }
 
 
-    // XXX
     public int skoleStudér() {
-        int result = 0;
-        switch (læringsfart) {
-            case 0:
-                result = tryToStudy(0.50, 0.75); // 50% chance for at lære noget, 25% for lektiehjælp, 25% for ikke af forstå noget
-                Log.d("Spil", "Spiller studied with 0 learning Amp");
-                break;
-            case 1:
-                result = tryToStudy(0.55, 0.80); // 55% chance for at lære noget, 25% for lektiehjælp, 20% for ikke af forstå noget
-                Log.d("Spil", "Spiller studied with 1 learning Amp");
-                break;
-            case 2:
-                result = tryToStudy(0.60, 0.85); // 60% chance for at lære noget, 25% for lektiehjælp, 15% for ikke af forstå noget
-                Log.d("Spil", "Spiller studied with 2 learning Amp");
-                break;
-            case 3:
-                result = tryToStudy(0.70, 1.00); // 70% chance for at lære noget, 30% for lektiehjælp
-                Log.d("Spil", "Spiller studied with 3 learning Amp");
-                break;
-
-
+        if (!læringBlyant) {
+            return tryToStudy(0.50, 0.75); // 50% chance for at lære noget, 25% for lektiehjælp, 25% for ikke af forstå noget
         }
-        return result;
+        else if (!læringKladdehæfte) {
+            return tryToStudy(0.55, 0.80); // 55% chance for at lære noget, 25% for lektiehjælp, 20% for ikke af forstå noget
+        }
+        else if (!læringLommeregner) {
+            return tryToStudy(0.60, 0.85); // 60% chance for at lære noget, 25% for lektiehjælp, 15% for ikke af forstå noget
+        } else {
+            return tryToStudy(0.70, 1.00); // 70% chance for at lære noget, 30% for lektiehjælp
+        }
     }
 }

@@ -44,6 +44,10 @@ public class Skole extends AppCompatActivity {
     TextView taleboble_tekst;
 
     AlertDialog.Builder dialog;
+    TextView flyvoptekst_studer;
+    TextView flyvoptekst_spis;
+    MediaPlayer spisLyd;
+    MediaPlayer studérLyd;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,7 +58,8 @@ public class Skole extends AppCompatActivity {
         ImageView figur = (ImageView) findViewById(R.id.figur);
         figur.setImageResource(Spiller.instans.figurdata.drawable_figur_hel_id);
 
-        final MediaPlayer mp = MediaPlayer.create(this, R.raw.cash);
+        spisLyd = MediaPlayer.create(this, R.raw.bitesound);
+        studérLyd = MediaPlayer.create(this, R.raw.study);
         taleboble_tekst = (TextView) findViewById(R.id.taleboble_tekst);
         final TextView klassetrin = (TextView) findViewById(R.id.klassetrin);
         Button bSpis = (Button) findViewById(R.id.knap_spis);
@@ -64,8 +69,8 @@ public class Skole extends AppCompatActivity {
         ImageView helpField = (ImageView) findViewById(R.id.vaerkstedHelp);
         animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.plusknowledge);
         animationfood = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.plusknowledge);
-        final TextView flyvoptekst_studer = (TextView) findViewById(R.id.flyvoptekst_studer);
-        final TextView flyvoptekst_spis = (TextView) findViewById(R.id.flyvoptekst_spis);
+        flyvoptekst_studer = (TextView) findViewById(R.id.flyvoptekst_studer);
+        flyvoptekst_spis = (TextView) findViewById(R.id.flyvoptekst_spis);
         flyvoptekst_spis.setText("");
         flyvoptekst_studer.setText("");
         ImageView menu = (ImageView) findViewById(R.id.menuknap);
@@ -97,30 +102,7 @@ public class Skole extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 v.startAnimation(AnimationUtils.loadAnimation(Skole.this, R.anim.image_click));
-                if (Spiller.instans.tid >= TIME_PER_CLICK) {
-                    flyvoptekst_spis.setText("+" + FOOD_PER_CLICK + " mad");
-                    flyvoptekst_spis.startAnimation(animationfood);
-                    spis();
-                    taleboble_tekst.setText("Mmm! Du har spist skolemad.");
-                    if (mp.isPlaying()) {
-                        mp.stop();
-                    }
-                    try {
-                        mp.reset();
-                        AssetFileDescriptor afd;
-                        afd = getAssets().openFd("bitesound.mp3");
-                        mp.setDataSource(afd.getFileDescriptor(), afd.getStartOffset(), afd.getLength());
-                        mp.prepare();
-                        mp.start();
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                } else {
-                    new SweetAlertDialog(Skole.this, SweetAlertDialog.ERROR_TYPE)
-                            .setTitleText("Du har ikke tid til at spise.")
-                            .show();
-                }
-                topbar.opdaterGui(Spiller.instans);
+                spis();
             }
         });
 
@@ -128,54 +110,7 @@ public class Skole extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 v.startAnimation(AnimationUtils.loadAnimation(Skole.this, R.anim.image_click));
-                if (Spiller.instans.tid >= TIME_PER_CLICK) {
-                    int res = Spiller.instans.skoleStudér();
-                    if (res == Spiller.STUDER_VIDEN) {
-                        taleboble_tekst.setText("Du blev lidt klogere");
-                        flyvoptekst_studer.setText("+" + VIDEN_PER_CLICK + " viden");
-                        flyvoptekst_studer.startAnimation(animation);
-                        Spiller.instans.studér(TIME_PER_CLICK, VIDEN_PER_CLICK);
-                        if (mp.isPlaying()) {
-                            mp.stop();
-                        }
-                        try {
-                            mp.reset();
-                            AssetFileDescriptor afd;
-                            afd = getAssets().openFd("study.mp3");
-                            mp.setDataSource(afd.getFileDescriptor(), afd.getStartOffset(), afd.getLength());
-                            mp.prepare();
-                            mp.start();
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
-                    } else if (res == Spiller.STUDER_LEKTIEHJÆLP) {
-                        taleboble_tekst.setText("Du forstod det ikke, lektiehjælp kunne måske hjælpe");
-                        flyvoptekst_studer.setText("+1 lektiehjælp");
-                        flyvoptekst_studer.startAnimation(animation);
-                        Spiller.instans.studér(TIME_PER_CLICK, 0);
-                        Spiller.instans.glemtViden = Spiller.instans.glemtViden + 1;
-                    } else if (res == Spiller.STUDER_FORSTOD_IKKE) {
-                        taleboble_tekst.setText("Du forstod ikke denne lektion");
-                        Spiller.instans.studér(TIME_PER_CLICK, 0);
-                    } else if (res == Spiller.STUDER_REDSKAB_BRUGT_OP) {
-                        taleboble_tekst.setText("Din XXX gik i stykker!");
-                        try {
-                            Vibrator vibrator = (Vibrator) getSystemService(VIBRATOR_SERVICE);
-                            vibrator.vibrate(100);
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                            Toast.makeText(Skole.this, "Kunne ikke vibrere med telefonen:\n" + e, Toast.LENGTH_LONG).show();
-                            Toast.makeText(Skole.this, "Har du husket:\n<uses-permission android:name=\"android.permission.VIBRATE\"/>\n i manifestet?", Toast.LENGTH_LONG).show();
-                        }
-                        Spiller.instans.studér(TIME_PER_CLICK, 0);
-                    }
-                } else {
-
-                    new SweetAlertDialog(Skole.this, SweetAlertDialog.ERROR_TYPE)
-                            .setTitleText("Du har ikke tid til at studere.")
-                            .show();
-                }
-                topbar.opdaterGui(Spiller.instans);
+                studér();
             }
         });
 
@@ -205,24 +140,73 @@ public class Skole extends AppCompatActivity {
             public void onClick(View v) {
                 v.startAnimation(AnimationUtils.loadAnimation(Skole.this, R.anim.image_click));
                 finish();
-
-
             }
         });
 
 
     }
 
+    private void spis() {
+        if (Spiller.instans.tid >= TIME_PER_CLICK) {
+            flyvoptekst_spis.setText("+" + FOOD_PER_CLICK + " mad");
+            flyvoptekst_spis.startAnimation(animationfood);
+            if (Spiller.instans.tid > 0) {
+                Spiller.instans.spis(TIME_COST_EATING, COST_PER_FOOD_CLICK, FOOD_PER_CLICK);
+                topbar.opdaterGui(Spiller.instans);
+            } else {
+                taleboble_tekst.setText("");
+            }
 
-
-    public void spis() {
-        if (Spiller.instans.tid > 0) {
-            Spiller.instans.spis(TIME_COST_EATING, COST_PER_FOOD_CLICK, FOOD_PER_CLICK);
-            topbar.opdaterGui(Spiller.instans);
+            taleboble_tekst.setText("Mmm! Du har spist skolemad.");
+            if (spisLyd.isPlaying()) spisLyd.seekTo(0);
+            else spisLyd.start();
         } else {
-            taleboble_tekst.setText("");
+            new SweetAlertDialog(Skole.this, SweetAlertDialog.ERROR_TYPE)
+                    .setTitleText("Du har ikke tid til at spise.")
+                    .show();
         }
-
+        topbar.opdaterGui(Spiller.instans);
     }
+
+    private void studér() {
+        if (Spiller.instans.tid >= TIME_PER_CLICK) {
+            int res = Spiller.instans.skoleStudér();
+            if (res == Spiller.STUDER_VIDEN) {
+                taleboble_tekst.setText("Du blev lidt klogere");
+                flyvoptekst_studer.setText("+" + VIDEN_PER_CLICK + " viden");
+                flyvoptekst_studer.startAnimation(animation);
+                Spiller.instans.studér(TIME_PER_CLICK, VIDEN_PER_CLICK);
+                if (studérLyd.isPlaying()) studérLyd.seekTo(0);
+                else studérLyd.start();
+            } else if (res == Spiller.STUDER_LEKTIEHJÆLP) {
+                taleboble_tekst.setText("Du forstod det ikke, lektiehjælp kunne måske hjælpe");
+                flyvoptekst_studer.setText("+1 lektiehjælp");
+                flyvoptekst_studer.startAnimation(animation);
+                Spiller.instans.studér(TIME_PER_CLICK, 0);
+                Spiller.instans.glemtViden = Spiller.instans.glemtViden + 1;
+            } else if (res == Spiller.STUDER_FORSTOD_IKKE) {
+                taleboble_tekst.setText("Du forstod ikke denne lektion");
+                Spiller.instans.studér(TIME_PER_CLICK, 0);
+            } else if (res == Spiller.STUDER_REDSKAB_BRUGT_OP) {
+                taleboble_tekst.setText("Din XXX gik i stykker!");
+                try {
+                    Vibrator vibrator = (Vibrator) getSystemService(VIBRATOR_SERVICE);
+                    vibrator.vibrate(100);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    Toast.makeText(Skole.this, "Kunne ikke vibrere med telefonen:\n" + e, Toast.LENGTH_LONG).show();
+                    Toast.makeText(Skole.this, "Har du husket:\n<uses-permission android:name=\"android.permission.VIBRATE\"/>\n i manifestet?", Toast.LENGTH_LONG).show();
+                }
+                Spiller.instans.studér(TIME_PER_CLICK, 0);
+            }
+        } else {
+
+            new SweetAlertDialog(Skole.this, SweetAlertDialog.ERROR_TYPE)
+                    .setTitleText("Du har ikke tid til at studere.")
+                    .show();
+        }
+        topbar.opdaterGui(Spiller.instans);
+    }
+
 
 }
