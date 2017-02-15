@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.view.animation.DecelerateInterpolator;
+import android.view.animation.OvershootInterpolator;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -129,10 +129,10 @@ public class Figurvalg_akt extends AppCompatActivity {
         }
         valgtFigur = kamal;
         valgtFigurview = figurview;
-        figurview.setRotationY(0);
+//        figurview.setRotationY(0);
 //        figurview.animate().rotationY(720).setInterpolator(new DecelerateInterpolator()).scaleX(1.1f).scaleY(1.1f).setDuration(1000);
         // .translationY(-figurview.getHeight()*0.3f)
-        figurview.animate().setInterpolator(new DecelerateInterpolator()).scaleX(1.2f).scaleY(1.2f).setDuration(300);
+        figurview.animate().setInterpolator(new OvershootInterpolator()).scaleX(1.2f).scaleY(1.2f).setDuration(300);
     }
 }
 

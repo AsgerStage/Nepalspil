@@ -44,7 +44,7 @@ public class Butikken extends AppCompatActivity {
 
         switch (instans.getLearningAmp()) {
             case 0:
-                buy.setText("Køb kladehæfte");
+                buy.setText("Køb kladdehæfte");
                 break;
             case 1:
                 buy.setText("Køb blyanter");
@@ -104,8 +104,8 @@ public class Butikken extends AppCompatActivity {
                     if (instans.getPenge() >= 10) {
                         buy();
                         new SweetAlertDialog(Butikken.this, SweetAlertDialog.SUCCESS_TYPE)
-                                .setTitleText("Kladehæfte købt!")
-                                .setContentText("Du har købt et kladehæfte for 10kr.")
+                                .setTitleText("Kladdehæfte købt!")
+                                .setContentText("Du har købt et kladdehæfte for 10kr.")
                                 .show();
                         buy.setText("Køb blyanter");
                     } else {
