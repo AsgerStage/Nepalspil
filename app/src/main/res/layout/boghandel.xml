@@ -37,7 +37,7 @@
             app:layout_heightPercent="38%"
             app:layout_marginLeftPercent="47%"
             app:layout_marginTopPercent="27%"
-            android:textSize="35sp"
+            android:textSize="15sp"
             android:maxLines="5"
 
             />

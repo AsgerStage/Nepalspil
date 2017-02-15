@@ -84,8 +84,8 @@ public class Boghandel extends AppCompatActivity {
 
                 } else {
                     new SweetAlertDialog(Boghandel.this, SweetAlertDialog.ERROR_TYPE)
-                            .setTitleText("Ikke nok viden")
-                            .setContentText("Du har ikke uddannelse nok til at arbejde her.")
+                            .setTitleText("Du kan ikke arbejde her.")
+                            .setContentText("Du skal gå i mindst 6. klasse for at arbejde i boghandlen.")
                             .show();
                 }
             }
