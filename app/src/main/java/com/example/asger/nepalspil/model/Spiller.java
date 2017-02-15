@@ -16,9 +16,9 @@ public class Spiller implements Serializable {
     // private static final long serialVersionUID = 12345;
 
     public static int LÆRINGSFART_INGEN = 0;
-    public boolean læringBlyant = false;
-    public boolean læringKladdehæfte = false;
-    public boolean læringLommeregner = false;
+    public int læringBlyant = 0;
+    public int læringKladdehæfte = 0;
+    public int læringLommeregner = 0;
     public int glemtViden;
     public int bøger;
     public int position = 0; //starter på felt 1
@@ -200,7 +200,6 @@ public class Spiller implements Serializable {
     public static int STUDER_VIDEN = 1;
     public static int STUDER_LEKTIEHJÆLP = 2;
     public static int STUDER_FORSTOD_IKKE = 3;
-    public static int STUDER_REDSKAB_BRUGT_OP = 4;
 
     /**
      * Denne her metode er ret uforståelig - forklar hvad der sker.
@@ -218,13 +217,13 @@ public class Spiller implements Serializable {
 
 
     public int skoleStudér() {
-        if (!læringBlyant) {
+        if (læringBlyant<1) {
             return tryToStudy(0.50, 0.75); // 50% chance for at lære noget, 25% for lektiehjælp, 25% for ikke af forstå noget
         }
-        else if (!læringKladdehæfte) {
+        else if (læringKladdehæfte<1) {
             return tryToStudy(0.55, 0.80); // 55% chance for at lære noget, 25% for lektiehjælp, 20% for ikke af forstå noget
         }
-        else if (!læringLommeregner) {
+        else if (læringLommeregner<1) {
             return tryToStudy(0.60, 0.85); // 60% chance for at lære noget, 25% for lektiehjælp, 15% for ikke af forstå noget
         } else {
             return tryToStudy(0.70, 1.00); // 70% chance for at lære noget, 30% for lektiehjælp

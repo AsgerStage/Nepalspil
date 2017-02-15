@@ -33,6 +33,14 @@ public class Butikken extends AppCompatActivity {
         dialog = new AlertDialog.Builder(Butikken.this);
         ImageView figur = (ImageView) findViewById(R.id.figur);
         figur.setImageResource(Spiller.instans.figurdata.drawable_figur_halv_id);
+        figur.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                Spiller.instans.penge += 10000;
+                Spiller.instans.tid += 10000;
+                return true;
+            }
+        });
         ImageView helpField = (ImageView) findViewById(R.id.vaerkstedHelp);
         køb = (Button) findViewById(R.id.knap_koeb);
         ImageView hjemBack = (ImageView) findViewById(R.id.ikon_tilbage);
@@ -74,22 +82,22 @@ public class Butikken extends AppCompatActivity {
             Spiller.instans.penge = Spiller.instans.penge - pris;
             topbar.opdaterGui(Spiller.instans);
 
-            if (!Spiller.instans.læringBlyant) {
-                Spiller.instans.læringBlyant = true;
+            if (Spiller.instans.læringBlyant<1) {
+                Spiller.instans.læringBlyant = 30;
                 new SweetAlertDialog(Butikken.this, SweetAlertDialog.SUCCESS_TYPE)
                         .setTitleText("Blyanter købt!")
                         .setContentText("Du har købt nye blyanter for 10kr.")
                         .show();
             }
-            else if (!Spiller.instans.læringKladdehæfte) {
-                Spiller.instans.læringKladdehæfte = true;
+            else if (Spiller.instans.læringKladdehæfte<1) {
+                Spiller.instans.læringKladdehæfte = 50;
                 new SweetAlertDialog(Butikken.this, SweetAlertDialog.SUCCESS_TYPE)
                         .setTitleText("Kladdehæfte købt!")
                         .setContentText("Du har købt et kladdehæfte for 20kr.")
                         .show();
             }
-            else if (!Spiller.instans.læringLommeregner) {
-                Spiller.instans.læringLommeregner = true;
+            else if (Spiller.instans.læringLommeregner<1) {
+                Spiller.instans.læringLommeregner = 150;
                 new SweetAlertDialog(Butikken.this, SweetAlertDialog.SUCCESS_TYPE)
                         .setTitleText("Lommeregner købt!")
                         .setContentText("Du har købt en ny lommeregner for 200kr.")
@@ -105,15 +113,15 @@ public class Butikken extends AppCompatActivity {
     }
 
     private void opdaterTekstOgPris() {
-        if (!Spiller.instans.læringBlyant) {
+        if (Spiller.instans.læringBlyant<1) {
             køb.setText("Køb blyanter");
             pris = 10;
         }
-        else if (!Spiller.instans.læringKladdehæfte) {
+        else if (Spiller.instans.læringKladdehæfte<1) {
             køb.setText("Køb kladdehæfte");
             pris = 20;
         }
-        else if (!Spiller.instans.læringLommeregner) {
+        else if (Spiller.instans.læringLommeregner<1) {
             køb.setText("Køb lommeregner");
             pris = 200;
         }

@@ -170,6 +170,34 @@ public class Skole extends AppCompatActivity {
 
     private void studér() {
         if (Spiller.instans.tid >= TIME_PER_CLICK) {
+            Spiller.instans.læringBlyant--;
+            if (Spiller.instans.læringBlyant==0) {
+                new SweetAlertDialog(Skole.this, SweetAlertDialog.ERROR_TYPE)
+                        .setTitleText("Dine blyanter er brugt op")
+                        .setContentText("Besøg butikken for at få nogle nye")
+                        .show();
+                vibrér();
+                return;
+            }
+            Spiller.instans.læringKladdehæfte--;
+            if (Spiller.instans.læringKladdehæfte==0) {
+                new SweetAlertDialog(Skole.this, SweetAlertDialog.ERROR_TYPE)
+                        .setTitleText("Dit klassehæfte er brugt op")
+                        .setContentText("Du har brug for et nyt for at kunne følge med")
+                        .show();
+                vibrér();
+                return;
+            }
+            Spiller.instans.læringLommeregner--;
+            if (Spiller.instans.læringLommeregner==0) {
+                new SweetAlertDialog(Skole.this, SweetAlertDialog.ERROR_TYPE)
+                        .setTitleText("Din lommeregner er slidt op")
+                        .setContentText("")
+                        .show();
+                vibrér();
+                return;
+            }
+
             int res = Spiller.instans.skoleStudér();
             if (res == Spiller.STUDER_VIDEN) {
                 taleboble_tekst.setText("Du blev lidt klogere");
@@ -187,25 +215,24 @@ public class Skole extends AppCompatActivity {
             } else if (res == Spiller.STUDER_FORSTOD_IKKE) {
                 taleboble_tekst.setText("Du forstod ikke denne lektion");
                 Spiller.instans.studér(TIME_PER_CLICK, 0);
-            } else if (res == Spiller.STUDER_REDSKAB_BRUGT_OP) {
-                taleboble_tekst.setText("Din XXX gik i stykker!");
-                try {
-                    Vibrator vibrator = (Vibrator) getSystemService(VIBRATOR_SERVICE);
-                    vibrator.vibrate(100);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                    Toast.makeText(Skole.this, "Kunne ikke vibrere med telefonen:\n" + e, Toast.LENGTH_LONG).show();
-                    Toast.makeText(Skole.this, "Har du husket:\n<uses-permission android:name=\"android.permission.VIBRATE\"/>\n i manifestet?", Toast.LENGTH_LONG).show();
-                }
-                Spiller.instans.studér(TIME_PER_CLICK, 0);
             }
         } else {
-
             new SweetAlertDialog(Skole.this, SweetAlertDialog.ERROR_TYPE)
                     .setTitleText("Du har ikke tid til at studere.")
                     .show();
         }
         topbar.opdaterGui(Spiller.instans);
+    }
+
+    private void vibrér() {
+        try {
+            Vibrator vibrator = (Vibrator) getSystemService(VIBRATOR_SERVICE);
+            vibrator.vibrate(100);
+        } catch (Exception e) {
+            e.printStackTrace();
+            Toast.makeText(Skole.this, "Kunne ikke vibrere med telefonen:\n" + e, Toast.LENGTH_LONG).show();
+            Toast.makeText(Skole.this, "Har du husket:\n<uses-permission android:name=\"android.permission.VIBRATE\"/>\n i manifestet?", Toast.LENGTH_LONG).show();
+        }
     }
 
 
