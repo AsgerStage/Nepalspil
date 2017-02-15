@@ -5,72 +5,57 @@ import android.util.Log;
 
 public class Spiller {
     public static Spiller instans;
-    public boolean sex;
 
-    public static int LÆRING_INGEN = 0;
-    private int learningAmp = 0;
-    private int glemtViden;
-    private int books;
-    private int position;
-    private String navn;
-    private int penge;
-    private int hp;
-    private int viden;
-    private int klassetrin;
-    private int tid;
+    public static int LÆRINGSFART_INGEN = 0;
+    public int læringsfart = 0;
+    public int glemtViden;
+    public int books;
+    public int position;
+    public String navn;
+    public int penge;
+    public int mad;
+    public int viden;
+    public int klassetrin;
+    public int tid;
     public int runde;
-    private int moveSpeed;
-    private int lastBookBought;
+    public int bevægelsesFart;
+    public int bogKøbtIRundeNr;
     public boolean music;
 
     public Figurdata figurdata;
 
 
-    public Spiller(String navn) {
-        this.navn = navn;
-        this.glemtViden = 0;
-        this.position = 0;            //starter på felt 1
-        this.penge = 50;
-        this.tid = 19;
-        this.viden = 0;
-        this.klassetrin = 1;
-        this.runde = 1;
-        this.moveSpeed = 1;
 
-
-        Log.d("Spiller", "Spiller oprettet");
-    }
-
-    public Spiller(String navn, int penge, int tid, int viden, int hp, int klassetrin, boolean sex, int runde, int moveSpeed, int glemtViden) {
+    // XXX
+    public Spiller(String navn, int penge, int tid, int viden, int mad, int klassetrin, boolean sex, int runde, int bevægelsesFart, int glemtViden) {
         position = 0;            //starter på felt 1
         this.navn = navn;
         this.penge = penge;
-        this.hp = hp;
+        this.mad = mad;
         this.tid = tid;
         this.viden = viden;
         this.klassetrin = klassetrin;
-        this.sex = sex;
         this.runde = runde;
-        this.moveSpeed = moveSpeed;
+        this.bevægelsesFart = bevægelsesFart;
         this.glemtViden = glemtViden;
 
         Log.d("Spiller", "Spiller oprettet med balance");
     }
 
 
-    public Spiller(Boolean sex, int books, int position, String navn, int penge, int hp, int viden, int klassetrin, int tid, int runde, int moveSpeed, int lastBookBought) {
-        this.sex = sex;
+    // XXX
+    public Spiller(Boolean sex, int books, int position, String navn, int penge, int mad, int viden, int klassetrin, int tid, int runde, int bevægelsesFart, int bogKøbtIRundeNr) {
         this.books = books;
         this.position = position;
         this.navn = navn;
         this.penge = penge;
-        this.hp = hp;
+        this.mad = mad;
         this.viden = viden;
         this.klassetrin = klassetrin;
         this.tid = tid;
         this.runde = runde;
-        this.moveSpeed = moveSpeed;
-        this.lastBookBought = lastBookBought;
+        this.bevægelsesFart = bevægelsesFart;
+        this.bogKøbtIRundeNr = bogKøbtIRundeNr;
         this.music = music;
 
     }
@@ -85,10 +70,10 @@ public class Spiller {
     /**
      * Rykker spilleren og trækker den korrekte mængde tid fra spilleren.
      *
-     * @param newPosition ønsket ny pos
+     * @param nyPosition ønsket ny pos
      * @return true hvis tiden er gået og ny runde er startet
      */
-    public boolean move(int newPosition) {
+    public boolean rykTilFelt(int nyPosition) {
         //Løsningen virker lidt bøvlet, men da Javas modulo (%) kan blive negativ gav det nogle problemer.
         //Math.floorMod metoden kunne være benyttet, men det ville samtidigt gøre at applikationen kun vil virke til android API 24 og frem.
         int count1 = 0;
@@ -96,7 +81,7 @@ public class Spiller {
         int j = this.position;
         int i = this.position;
 
-        if (newPosition == this.position) {
+        if (nyPosition == this.position) {
             Log.d("Spiller", "Spiller trykkede på felt han/hun allerede stod på");
         } else {
             // Vi går begge veje rundt om spillebrættet for at finde ud af hvilken vej der er kortest
@@ -104,8 +89,8 @@ public class Spiller {
                 count1++;
                 // Log.d("Spiller","1count1:"+count1); Til debugging
                 i++;
-                Log.d("Spiller", "i:" + i + " Newposition= " + newPosition);
-                if (((i + BRÆTSTØRRELSE) % BRÆTSTØRRELSE) == newPosition) {
+                Log.d("Spiller", "i:" + i + " Newposition= " + nyPosition);
+                if (((i + BRÆTSTØRRELSE) % BRÆTSTØRRELSE) == nyPosition) {
                     break;
                 }              //Laver en ikke-negativ modulo, som Math.floorMod ville gøre.
             }
@@ -113,16 +98,16 @@ public class Spiller {
                 count2++;
                 //  Log.d("Spiller","1count2:"+count2); //Til debugging
                 j--;
-                Log.d("Spiller", "j:" + j + " Newposition= " + newPosition);
-                if (((j + BRÆTSTØRRELSE) % BRÆTSTØRRELSE) == newPosition) {
+                Log.d("Spiller", "j:" + j + " Newposition= " + nyPosition);
+                if (((j + BRÆTSTØRRELSE) % BRÆTSTØRRELSE) == nyPosition) {
                     break;
                 }
             }
 
 
             if (count2 > count1) { // fremad er kortest
-                int timeToSubtract = (Math.round(count1 / moveSpeed));
-                if (count1 == 4 && moveSpeed == 3) {
+                int timeToSubtract = (Math.round(count1 / bevægelsesFart));
+                if (count1 == 4 && bevægelsesFart == 3) {
                     timeToSubtract = 2;
                 } else if (timeToSubtract == 0) {
                     timeToSubtract = 1;
@@ -130,11 +115,11 @@ public class Spiller {
 
                 tid = tid - timeToSubtract;
 
-                Log.d("Spiller", "Spiller rykket fra " + this.position + " til " + newPosition + " og mistet tid: " + timeToSubtract + " og har nu " + this.tid + " tid");
-                this.position = newPosition;
+                Log.d("Spiller", "Spiller rykket fra " + this.position + " til " + nyPosition + " og mistet tid: " + timeToSubtract + " og har nu " + this.tid + " tid");
+                this.position = nyPosition;
             } else if (count1 >= count2) { // baglæns er kortest
-                int timeToSubtract = (Math.round(count2 / moveSpeed));
-                if (count2 == 4 && moveSpeed == 3) {
+                int timeToSubtract = (Math.round(count2 / bevægelsesFart));
+                if (count2 == 4 && bevægelsesFart == 3) {
                     timeToSubtract = 2;
                 }
                 if (timeToSubtract == 0) {
@@ -142,9 +127,9 @@ public class Spiller {
                 }
 
                 tid = tid - timeToSubtract;
-                Log.d("Spiller", count2 + " " + moveSpeed);
-                Log.d("Spiller", "Spiller rykket fra " + this.position + " til " + newPosition + " og mistet tid: " + timeToSubtract + " og har nu " + this.tid + " tid");
-                this.position = newPosition;
+                Log.d("Spiller", count2 + " " + bevægelsesFart);
+                Log.d("Spiller", "Spiller rykket fra " + this.position + " til " + nyPosition + " og mistet tid: " + timeToSubtract + " og har nu " + this.tid + " tid");
+                this.position = nyPosition;
                 //Den korteste vej trækkes fra spillerens tid
             }
         }
@@ -159,135 +144,20 @@ public class Spiller {
         return false;
     }
 
-    public void work(int timeCost, int money) {
-        setPenge(getPenge() + money);
-        setTid(getTid() - timeCost);
+    public void arbejd(int tidsrum, int indtægt) {
+        this.penge = penge + indtægt;
+        this.tid = tid - tidsrum;
     }
 
-    public void study(int timeCost, int viden) {
-        setViden(getViden() + viden);
-        setTid(getTid() - timeCost);
+    public void studér(int tidsrum, int videnforskel) {
+        this.viden = viden + videnforskel;
+        this.tid = tid - tidsrum;
     }
 
-    public void eat(int timeCost, int moneyCost, int hp) {
-        setHp(getHp() + hp);
-        setTid(getTid() - timeCost);
-        setPenge(getPenge() - moneyCost);
+    public void spis(int tidsrum, int udgift, int madforskel) {
+        this.mad = mad + madforskel;
+        this.tid = tid - tidsrum;
+        this.penge = penge - udgift;
     }
 
-    public String getNavn() {
-        return navn;
-    }
-
-    public void setNavn(String navn) {
-        this.navn = navn;
-    }
-
-    public int getViden() {
-        return viden;
-    }
-
-    public void setViden(int viden) {
-        this.viden = viden;
-    }
-
-    public int getKlassetrin() {
-        return klassetrin;
-    }
-
-    public void setKlassetrin(int Klassetrin) {
-        this.klassetrin = Klassetrin;
-    }
-
-    public int getPenge() {
-        return penge;
-    }
-
-    public void setPenge(int penge) {
-        this.penge = penge;
-    }
-
-    public int getHp() {
-        return hp;
-    }
-
-    public void setHp(int hp) {
-        this.hp = hp;
-    }
-
-    public int getTid() {
-        return tid;
-    }
-
-    public void setTid(int tid) {
-        this.tid = tid;
-    }
-
-    public int getBooks() {
-        return books;
-    }
-
-    public void setBooks(int books) {
-        this.books = books;
-    }
-
-    public void setmoveSpeed(int moveSpeed) {
-        this.moveSpeed = moveSpeed;
-    }
-
-    public int getmoveSpeed() {
-        return moveSpeed;
-    }
-
-    public boolean getSex() {
-        return sex;
-    }
-
-    public int getGlemtViden() {
-        return glemtViden;
-    }
-
-    public int getLearningAmp() {
-        return learningAmp;
-    }
-
-    public void setLearningAmp(int learningAmp) {
-        this.learningAmp = learningAmp;
-    }
-
-    public void setGlemtViden(int glemtViden) {
-        this.glemtViden = glemtViden;
-    }
-
-    public int getPosition() {
-        return position;
-    }
-
-    public void setPosition(int position) {
-        this.position = position;
-    }
-
-    public boolean isSex() {
-        return sex;
-    }
-
-    public void setSex(boolean sex) {
-        this.sex = sex;
-    }
-
-    public int getRunde() {
-        return runde;
-    }
-
-    public void setRunde(int runde) {
-        this.runde = runde;
-    }
-
-    public int getLastBookBought() {
-        return lastBookBought;
-    }
-
-    public void setLastBookBought(int lastBookBought) {
-        this.lastBookBought = lastBookBought;
-    }
 }

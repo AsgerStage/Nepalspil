@@ -74,7 +74,7 @@ public class Eksamen extends AppCompatActivity {
         svarKnap2.setOnClickListener(forkert);
         svarKnap3.setOnClickListener(forkert);
 
-        switch (instans.getKlassetrin()-1) {
+        switch (instans.klassetrin -1) {
             case 0:
                 if (Math.random() < 0.5) {
                     sætSpørgsmål("Hvad spiser nepalesiske børn til morgenmad?", "Havregryn med mælk", "Grød", "Ris og grøntsager");
@@ -178,11 +178,11 @@ public class Eksamen extends AppCompatActivity {
             final MediaPlayer mp = MediaPlayer.create(Eksamen.this, R.raw.tada);
             mp.start();
             konfetti();
-            instans.setKlassetrin(instans.getKlassetrin() + 1);
+            instans.klassetrin = instans.klassetrin + 1;
 
             new SweetAlertDialog(Eksamen.this, SweetAlertDialog.SUCCESS_TYPE)
                     .setTitleText("TILLYKKE!!!")
-                    .setContentText("Du bestod og går nu i " + instans.getKlassetrin() + ". klasse.")
+                    .setContentText("Du bestod og går nu i " + instans.klassetrin + ". klasse.")
                     .setConfirmText("Fedt!")
                     .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
                         @Override
@@ -199,14 +199,14 @@ public class Eksamen extends AppCompatActivity {
     View.OnClickListener forkert = new View.OnClickListener() {
         public void onClick(View v) {
 
-            instans.setViden(instans.getViden() - 10 * instans.getKlassetrin());
-            if (instans.getViden() < 0) {
-                instans.setViden(0);
+            instans.viden = instans.viden - 10 * instans.klassetrin;
+            if (instans.viden < 0) {
+                instans.viden = 0;
             }
 
             new SweetAlertDialog(Eksamen.this, SweetAlertDialog.ERROR_TYPE)
                     .setTitleText("Øv...")
-                    .setContentText("Du har desværre svaret forkert på eksamen og er derfor dumpet. -" + 10 * instans.getKlassetrin() + " viden")
+                    .setContentText("Du har desværre svaret forkert på eksamen og er derfor dumpet. -" + 10 * instans.klassetrin + " viden")
                     .setConfirmText("Ok")
                     .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
                         @Override
@@ -224,18 +224,18 @@ public class Eksamen extends AppCompatActivity {
             final MediaPlayer mp = MediaPlayer.create(Eksamen.this, R.raw.tada);
             mp.start();
             konfetti();
-            instans.setKlassetrin(instans.getKlassetrin() + 1);
-            if (prefs.getInt("" + instans.getNavn(), -1) == -1) {
-                prefs.edit().putInt("" + instans.getNavn(), instans.getRunde()).apply();
-            } else if (prefs.getInt("" + instans.getNavn(), -1) > instans.getRunde()) {
-                prefs.edit().putInt("" + instans.getNavn(), instans.getRunde()).apply();
+            instans.klassetrin = instans.klassetrin + 1;
+            if (prefs.getInt("" + instans.navn, -1) == -1) {
+                prefs.edit().putInt("" + instans.navn, instans.runde).apply();
+            } else if (prefs.getInt("" + instans.navn, -1) > instans.runde) {
+                prefs.edit().putInt("" + instans.navn, instans.runde).apply();
             }
 
-            //dialog.setMessage(Html.fromHtml("Godt klaret, du har vundet spillet på " + instans.getRunde() + " uger! Nu kan jeg få en uddannelse.\n\nPrøv igen med en ny figur, eller <a href='http://skolemadtilnepal.wordpress.com/boernene-paa-bhawanipurskole'>klik her for at møde børnene i virkeligheden</a>"))
-            dialog.setMessage(Html.fromHtml("Godt klaret, du har gennemført spillet på " + instans.getRunde() + " uger!</br/>\n" +
-                    "Nu kan "+instans.getNavn()+" få en uddannelse.<br/>\n<br/>\n" +
+            //dialog.setMessage(Html.fromHtml("Godt klaret, du har vundet spillet på " + instans.runde + " uger! Nu kan jeg få en uddannelse.\n\nPrøv igen med en ny figur, eller <a href='http://skolemadtilnepal.wordpress.com/boernene-paa-bhawanipurskole'>klik her for at møde børnene i virkeligheden</a>"))
+            dialog.setMessage(Html.fromHtml("Godt klaret, du har gennemført spillet på " + instans.runde + " uger!</br/>\n" +
+                    "Nu kan "+ instans.navn +" få en uddannelse.<br/>\n<br/>\n" +
                     "Prøv igen med en ny figur, eller <a href='http://skolemadtilnepal.wordpress.com/boernene-paa-bhawanipurskole'>klik her for at møde børnene i virkeligheden</a>"))
-                    .setTitle("Du har gennemført spillet med "+instans.getNavn())
+                    .setTitle("Du har gennemført spillet med "+ instans.navn)
                     .setCancelable(false)
                     .setIcon(instans.figurdata.drawable_figur_halv_id)
                     .setPositiveButton("OK", new DialogInterface.OnClickListener() {

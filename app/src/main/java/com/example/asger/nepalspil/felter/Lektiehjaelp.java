@@ -61,7 +61,7 @@ public class Lektiehjaelp extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 v.startAnimation(AnimationUtils.loadAnimation(Lektiehjaelp.this, R.anim.image_click));
-                if (instans.getTid() >= TIME_PER_CLICK && instans.getGlemtViden() > 0) {
+                if (instans.tid >= TIME_PER_CLICK && instans.glemtViden > 0) {
                     scrollknowledge.setText("+" + VIDEN_PER_CLICK + " viden");
                     scrollknowledge.startAnimation(animation);
                     if (mp.isPlaying()) {
@@ -80,12 +80,12 @@ public class Lektiehjaelp extends AppCompatActivity {
                         e.printStackTrace();
                     }
                     learn();
-                } else if (instans.getGlemtViden() <= 0) {
+                } else if (instans.glemtViden <= 0) {
                     new SweetAlertDialog(Lektiehjaelp.this, SweetAlertDialog.SUCCESS_TYPE)
                             .setTitleText("Ingen glemt viden.")
                             .setContentText("Du har ikke behov for lektiehjælp, da du forstået al undervisning.")
                             .show();
-                } else if (instans.getTid() <= TIME_PER_CLICK) {
+                } else if (instans.tid <= TIME_PER_CLICK) {
                     new SweetAlertDialog(Lektiehjaelp.this, SweetAlertDialog.ERROR_TYPE)
                             .setTitleText("Ikke tid nok!")
                             .setContentText("Du har ikke nok tid til at få lektiehjælp. Kom igen i morgen.")
@@ -114,8 +114,8 @@ public class Lektiehjaelp extends AppCompatActivity {
     }
 
     private void learn() {
-        instans.study(TIME_PER_CLICK, VIDEN_PER_CLICK);
-        instans.setGlemtViden(instans.getGlemtViden() - 1);
+        instans.studér(TIME_PER_CLICK, VIDEN_PER_CLICK);
+        instans.glemtViden = instans.glemtViden - 1;
         topbar.opdaterGui(instans);
     }
 }

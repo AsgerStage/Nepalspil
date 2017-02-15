@@ -83,8 +83,8 @@ public class Marked extends AppCompatActivity {
 
             public void onClick(View v) {
                 v.startAnimation(AnimationUtils.loadAnimation(Marked.this, R.anim.image_click));
-                if (Spiller.instans.getTid() >= TIME_PER_CLICK && Spiller.instans.getKlassetrin() >= 3) {
-                    Spiller.instans.work(TIME_PER_CLICK, MONEY_PER_CLICK);
+                if (Spiller.instans.tid >= TIME_PER_CLICK && Spiller.instans.klassetrin >= 3) {
+                    Spiller.instans.arbejd(TIME_PER_CLICK, MONEY_PER_CLICK);
                     money.setText("+" + MONEY_PER_CLICK + " kr");
                     money.startAnimation(animation);
 
@@ -106,7 +106,7 @@ public class Marked extends AppCompatActivity {
                     }
 
                     updateText();
-                } else if (Spiller.instans.getTid() < 2) {
+                } else if (Spiller.instans.tid < 2) {
                     new SweetAlertDialog(Marked.this, SweetAlertDialog.ERROR_TYPE)
                             .setTitleText("Du har ikke tid til at arbejde.")
                             .show();
@@ -124,8 +124,8 @@ public class Marked extends AppCompatActivity {
 
             public void onClick(View v) {
                 v.startAnimation(AnimationUtils.loadAnimation(Marked.this, R.anim.image_click));
-                if (Spiller.instans.getPenge() >= COST_PER_FOOD_CLICK) {
-                    Spiller.instans.eat(TIME_COST_EATING, COST_PER_FOOD_CLICK, FOOD_PER_CLICK);
+                if (Spiller.instans.penge >= COST_PER_FOOD_CLICK) {
+                    Spiller.instans.spis(TIME_COST_EATING, COST_PER_FOOD_CLICK, FOOD_PER_CLICK);
                     if (mp.isPlaying()) {
                         mp.stop();
                         food.setText("+" + FOOD_PER_CLICK + " mad");

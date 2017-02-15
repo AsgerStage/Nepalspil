@@ -24,9 +24,9 @@ public class Topbar {
     }
 
     public void opdaterGui(Spiller spiller) {
-        textpenge.setText(String.valueOf(spiller.getPenge()));
-        textviden.setText(String.valueOf(spiller.getViden()));
-        textmad.setText(String.valueOf(spiller.getHp()));
-        texttid.setText(String.valueOf(spiller.getTid()));
+        textpenge.setText(String.valueOf(spiller.penge));
+        textviden.setText(String.valueOf(spiller.viden));
+        textmad.setText(String.valueOf(spiller.mad));
+        texttid.setText(String.valueOf(spiller.tid));
     }
 }

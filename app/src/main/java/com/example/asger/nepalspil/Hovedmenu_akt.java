@@ -122,9 +122,9 @@ public class Hovedmenu_akt extends AppCompatActivity {
                 v.startAnimation(AnimationUtils.loadAnimation(Hovedmenu_akt.this, R.anim.image_click));
 
                 Spiller.instans = new Spiller(prefs.getBoolean("Sex", true), prefs.getInt("Books", 0), prefs.getInt("Position", 0), prefs.getString("Navn", null), prefs.getInt("Penge", 0), prefs.getInt("Hp", 0), prefs.getInt("Viden", 0), prefs.getInt("Klassetrin", 0), prefs.getInt("Tid", 0), prefs.getInt("Runde", 0), prefs.getInt("Movespeed", 1), prefs.getInt("LastBookBought", 0));
-                Spiller.instans.figurdata = Grunddata.instans.spillere.get(Spiller.instans.getNavn());
+                Spiller.instans.figurdata = Grunddata.instans.spillere.get(Spiller.instans.navn);
                 if (Spiller.instans.figurdata == null)
-                    throw new IllegalStateException(Spiller.instans.getNavn() + " mangler i grunddata");
+                    throw new IllegalStateException(Spiller.instans.navn + " mangler i grunddata");
                /* if (Spiller.instans.getSex() == true) {
                     checkmarkasha.setVisibility(View.INVISIBLE);
                     checkmarkkrishna.setVisibility(View.VISIBLE);

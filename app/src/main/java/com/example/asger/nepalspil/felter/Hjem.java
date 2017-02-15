@@ -40,7 +40,7 @@ public class Hjem extends AppCompatActivity {
         ImageView menu = (ImageView) findViewById(R.id.menuknap);
         menu.setVisibility(View.INVISIBLE);
 
-        String beskrivelse_hjemme = Spiller.instans.figurdata.json.optString("beskrivelse_hjemme" , "(FEJL: 'beskrivelse_hjemme' mangler for denne figur)\nHej jeg hedder " + instans.getNavn() + ". Jeg bor med min familie i en landsby i Nepal. \nMin mor og far har aldrig gået i skole, så de tjener ikke så mange penge, så det er svært for dem at hjælpe mig med at få en uddannelse.");
+        String beskrivelse_hjemme = Spiller.instans.figurdata.json.optString("beskrivelse_hjemme" , "(FEJL: 'beskrivelse_hjemme' mangler for denne figur)\nHej jeg hedder " + instans.navn + ". Jeg bor med min familie i en landsby i Nepal. \nMin mor og far har aldrig gået i skole, så de tjener ikke så mange penge, så det er svært for dem at hjælpe mig med at få en uddannelse.");
         taleboble_tekst.setText(beskrivelse_hjemme);
         figur.setImageResource(Spiller.instans.figurdata.drawable_figur_halv_id);
 

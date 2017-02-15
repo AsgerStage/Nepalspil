@@ -54,10 +54,10 @@ public class Boghandel extends AppCompatActivity {
 
             public void onClick(View v) {
                 v.startAnimation(AnimationUtils.loadAnimation(Boghandel.this, R.anim.image_click));
-                if (Spiller.instans.getTid() >= TIME_PER_CLICK && Spiller.instans.getKlassetrin() >= 6) {
+                if (Spiller.instans.tid >= TIME_PER_CLICK && Spiller.instans.klassetrin >= 6) {
                     money.setText("+" + MONEY_PER_CLICK + " kr");
                     money.startAnimation(animation);
-                    Spiller.instans.work(TIME_PER_CLICK, MONEY_PER_CLICK);
+                    Spiller.instans.arbejd(TIME_PER_CLICK, MONEY_PER_CLICK);
 
                     if (mp.isPlaying()) {
                         mp.stop();
@@ -76,7 +76,7 @@ public class Boghandel extends AppCompatActivity {
                     }
 
                     topbar.opdaterGui(Spiller.instans);
-                } else if (Spiller.instans.getTid() < 2) {
+                } else if (Spiller.instans.tid < 2) {
 
                     new SweetAlertDialog(Boghandel.this, SweetAlertDialog.ERROR_TYPE)
                             .setTitleText("Du har ikke tid til at arbejde.")
@@ -104,25 +104,25 @@ public class Boghandel extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 v.startAnimation(AnimationUtils.loadAnimation(Boghandel.this, R.anim.image_click));
-                if (Spiller.instans.getPenge() >= 30 && Spiller.instans.getLastBookBought() + 5 <= Spiller.instans.getRunde()) {
+                if (Spiller.instans.penge >= 30 && Spiller.instans.bogKøbtIRundeNr + 5 <= Spiller.instans.runde) {
 
-                    Spiller.instans.setViden(Spiller.instans.getViden() + 10);
-                    Spiller.instans.setPenge(Spiller.instans.getPenge() - 30);
+                    Spiller.instans.viden = Spiller.instans.viden + 10;
+                    Spiller.instans.penge = Spiller.instans.penge - 30;
                     new SweetAlertDialog(Boghandel.this, SweetAlertDialog.SUCCESS_TYPE)
                             .setTitleText("Bog købt")
                             .setContentText("Du har købt en ny bog for 30kr. +10 viden")
                             .show();
 
-                    Spiller.instans.setLastBookBought(Spiller.instans.getRunde());
+                    Spiller.instans.bogKøbtIRundeNr = Spiller.instans.runde;
                     topbar.opdaterGui(Spiller.instans);
 
-                } else if (Spiller.instans.getPenge() < 30) {
+                } else if (Spiller.instans.penge < 30) {
                     new SweetAlertDialog(Boghandel.this, SweetAlertDialog.ERROR_TYPE)
                             .setTitleText("Ikke nok penge!.")
-                            .setContentText("Bogen koster 30 kroner, men du har kun " + Spiller.instans.getPenge())
+                            .setContentText("Bogen koster 30 kroner, men du har kun " + Spiller.instans.penge)
                             .show();
 
-                } else if (!(Spiller.instans.getLastBookBought() + 5 < Spiller.instans.getRunde())) {
+                } else if (!(Spiller.instans.bogKøbtIRundeNr + 5 < Spiller.instans.runde)) {
                     new SweetAlertDialog(Boghandel.this, SweetAlertDialog.ERROR_TYPE)
                             .setTitleText("Bogen er ikke på lager.")
                             .setContentText("Kig tilbage på et andet tidspunkt")

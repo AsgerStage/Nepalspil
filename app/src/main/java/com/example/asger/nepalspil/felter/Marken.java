@@ -68,8 +68,8 @@ public class Marken extends AppCompatActivity {
 
             public void onClick(View v) {
                 v.startAnimation(AnimationUtils.loadAnimation(Marken.this, R.anim.image_click));
-                if (instans.getTid() >= TIME_PER_CLICK) {
-                    instans.work(TIME_PER_CLICK, MONEY_PER_CLICK);
+                if (instans.tid >= TIME_PER_CLICK) {
+                    instans.arbejd(TIME_PER_CLICK, MONEY_PER_CLICK);
                     money.setText("+" + MONEY_PER_CLICK + " kr");
                     money.startAnimation(animation);
                     updateText();
@@ -90,7 +90,7 @@ public class Marken extends AppCompatActivity {
                         e.printStackTrace();
                     }
 
-                } else if (instans.getTid() < 2) {
+                } else if (instans.tid < 2) {
 
                     new SweetAlertDialog(Marken.this, SweetAlertDialog.ERROR_TYPE)
                             .setTitleText("Du har ikke tid til at arbejde.")

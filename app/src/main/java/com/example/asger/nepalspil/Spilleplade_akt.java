@@ -156,7 +156,7 @@ public class Spilleplade_akt extends AppCompatActivity {
         new Handler().post(new Runnable() {
             @Override
             public void run() {
-                sætBrikposition(Spiller.instans.getPosition());
+                sætBrikposition(Spiller.instans.position);
             }
         });
 
@@ -306,13 +306,13 @@ public class Spilleplade_akt extends AppCompatActivity {
         if (brikErUnderFlytning) return;
         brikErUnderFlytning = true;
 
-        final int gammelPos = Spiller.instans.getPosition();
-        final int gammelTid = Spiller.instans.getTid();
+        final int gammelPos = Spiller.instans.position;
+        final int gammelTid = Spiller.instans.tid;
 
-        final boolean turenErGået = Spiller.instans.move(feltPos);
+        final boolean turenErGået = Spiller.instans.rykTilFelt(feltPos);
 
-        final int nyPos = Spiller.instans.getPosition();
-        final int nyTid = Spiller.instans.getTid();
+        final int nyPos = Spiller.instans.position;
+        final int nyTid = Spiller.instans.tid;
         int tidÆndring = gammelTid - nyTid;
 
         if (turenErGået || tidÆndring == 0) {
@@ -379,31 +379,31 @@ public class Spilleplade_akt extends AppCompatActivity {
     private void flytBrikTilFeltAfslutning(boolean turenErGået, int feltPos) {
 
         if (turenErGået) {
-            if (Spiller.instans.getHp() - 30 > 0) {
+            if (Spiller.instans.mad - 30 > 0) {
 
                 Toast.makeText(Spilleplade_akt.this, "Ugen er gået", Toast.LENGTH_SHORT).show();
 
-            } else if (Spiller.instans.getHp() - 30 <= 0) {
+            } else if (Spiller.instans.mad - 30 <= 0) {
                 dialog.setTitle("Husk at spise!");
                 dialog.setMessage("Ugen er gået og du har spist for lidt, derfor er du langsommere i denne uge");
                 dialog.show();
 
-                Spiller.instans.setTid(10);
+                Spiller.instans.tid = 10;
             }
-            if (Spiller.instans.getHp() >= 30) {
-                Spiller.instans.setHp(Spiller.instans.getHp() - 30);
-            } else Spiller.instans.setHp(0);
+            if (Spiller.instans.mad >= 30) {
+                Spiller.instans.mad = Spiller.instans.mad - 30;
+            } else Spiller.instans.mad = 0;
             if (Spiller.instans.runde % 5 == 0) randomEvent();
             updateText();
 
-            sætBrikposition(Spiller.instans.getPosition());
+            sætBrikposition(Spiller.instans.position);
             brikErUnderFlytning = false;
         } else {
             Class aktivitet = feltNummerTilAktivitet[feltPos];
             final Intent intent = new Intent(Spilleplade_akt.this, aktivitet);
             updateText();
 
-            sætBrikposition(Spiller.instans.getPosition());
+            sætBrikposition(Spiller.instans.position);
 
 
             final Handler handler = new Handler();
@@ -501,8 +501,8 @@ public class Spilleplade_akt extends AppCompatActivity {
 
     public void updateText() {
         topbar.opdaterGui(instans);
-        updateTimer(Spiller.instans.getTid());
-        infobox.setText("Uge: " + Spiller.instans.getRunde());
+        updateTimer(Spiller.instans.tid);
+        infobox.setText("Uge: " + Spiller.instans.runde);
     }
 
     @Override
@@ -516,19 +516,19 @@ public class Spilleplade_akt extends AppCompatActivity {
     }
 
     public void saveToPrefs() {
-        prefs.edit().putBoolean("Sex", Spiller.instans.getSex()).apply();
-        prefs.edit().putInt("GlemtViden", Spiller.instans.getGlemtViden()).apply();
-        prefs.edit().putInt("Books", Spiller.instans.getBooks()).apply();
-        prefs.edit().putInt("Position", Spiller.instans.getPosition()).apply();
-        prefs.edit().putString("Navn", Spiller.instans.getNavn()).apply();
-        prefs.edit().putInt("Penge", Spiller.instans.getPenge()).apply();
-        prefs.edit().putInt("Hp", Spiller.instans.getHp()).apply();
-        prefs.edit().putInt("Viden", Spiller.instans.getViden()).apply();
-        prefs.edit().putInt("Klassetrin", Spiller.instans.getKlassetrin()).apply();
-        prefs.edit().putInt("Tid", Spiller.instans.getTid()).apply();
-        prefs.edit().putInt("moveSpeed", Spiller.instans.getmoveSpeed()).apply();
-        prefs.edit().putInt("Runde", Spiller.instans.getRunde()).apply();
-        prefs.edit().putInt("LastBookBought", Spiller.instans.getLastBookBought()).apply();
+        // XXX
+        prefs.edit().putInt("GlemtViden", Spiller.instans.glemtViden).apply();
+        prefs.edit().putInt("Books", Spiller.instans.books).apply();
+        prefs.edit().putInt("Position", Spiller.instans.position).apply();
+        prefs.edit().putString("Navn", Spiller.instans.navn).apply();
+        prefs.edit().putInt("Penge", Spiller.instans.penge).apply();
+        prefs.edit().putInt("Hp", Spiller.instans.mad).apply();
+        prefs.edit().putInt("Viden", Spiller.instans.viden).apply();
+        prefs.edit().putInt("Klassetrin", Spiller.instans.klassetrin).apply();
+        prefs.edit().putInt("Tid", Spiller.instans.tid).apply();
+        prefs.edit().putInt("bevægelsesFart", Spiller.instans.bevægelsesFart).apply();
+        prefs.edit().putInt("Runde", Spiller.instans.runde).apply();
+        prefs.edit().putInt("LastBookBought", Spiller.instans.bogKøbtIRundeNr).apply();
     }
 
     private void sætBrikposition(int feltnummer) {
@@ -565,18 +565,18 @@ public class Spilleplade_akt extends AppCompatActivity {
         Log.d("SpillePlade", "Uheld " + randomNum + " skete: " + u.json);
         if (u.titel == null) return;// ikke et rigtigt uheld, bare fyld
 
-        int nyPenge = Spiller.instans.getPenge() + u.pengeForskel;
+        int nyPenge = Spiller.instans.penge + u.pengeForskel;
         if (nyPenge < 0) return; // uheld kunne ikke ske - ikke penge nok
-        int nyViden = Spiller.instans.getViden() + u.videnForskel;
+        int nyViden = Spiller.instans.viden + u.videnForskel;
         if (nyViden < 0) return; // uheld kunne ikke ske - ikke viden nok
-        int nyMad = Spiller.instans.getHp() + u.madForskel;
+        int nyMad = Spiller.instans.mad + u.madForskel;
         if (nyMad < 0) return; // uheld kunne ikke ske - ikke mad nok
 
         // Opdater spiller med uheld
-        Spiller.instans.setPenge(nyPenge);
-        Spiller.instans.setViden(nyViden);
-        Spiller.instans.setHp(nyMad);
-        Spiller.instans.setTid((int) (Spiller.instans.getTid() * u.tidFaktor));
+        Spiller.instans.penge = nyPenge;
+        Spiller.instans.viden = nyViden;
+        Spiller.instans.mad = nyMad;
+        Spiller.instans.tid = (int) (Spiller.instans.tid * u.tidFaktor);
 
         dialog.setTitle(u.titel);
         dialog.setMessage(u.tekst);

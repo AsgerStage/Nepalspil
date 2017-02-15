@@ -41,7 +41,7 @@ public class Butikken extends AppCompatActivity {
         topbar.opdaterGui(Spiller.instans);
 
 
-        switch (Spiller.instans.getLearningAmp()) {
+        switch (Spiller.instans.læringsfart) {
             case 0:
                 buy.setText("Køb kladdehæfte");
                 break;
@@ -68,8 +68,8 @@ public class Butikken extends AppCompatActivity {
         buy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (Spiller.instans.getLearningAmp() == 0) {
-                    if (Spiller.instans.getPenge() >= 10) {
+                if (Spiller.instans.læringsfart == 0) {
+                    if (Spiller.instans.penge >= 10) {
                         buy();
                         new SweetAlertDialog(Butikken.this, SweetAlertDialog.SUCCESS_TYPE)
                                 .setTitleText("Kladdehæfte købt!")
@@ -83,8 +83,8 @@ public class Butikken extends AppCompatActivity {
                                 .show();
                     }
                 }
-                if (Spiller.instans.getLearningAmp() == 1) {
-                    if (Spiller.instans.getPenge() >= 20) {
+                if (Spiller.instans.læringsfart == 1) {
+                    if (Spiller.instans.penge >= 20) {
                         buy();
                         new SweetAlertDialog(Butikken.this, SweetAlertDialog.SUCCESS_TYPE)
                                 .setTitleText("Blyanter købt!")
@@ -99,8 +99,8 @@ public class Butikken extends AppCompatActivity {
 
                     }
                 }
-                if (Spiller.instans.getLearningAmp() == 2) {
-                    if (Spiller.instans.getPenge() >= 200) {
+                if (Spiller.instans.læringsfart == 2) {
+                    if (Spiller.instans.penge >= 200) {
                         buy();
                         new SweetAlertDialog(Butikken.this, SweetAlertDialog.SUCCESS_TYPE)
                                 .setTitleText("Lommeregner købt!")
@@ -128,18 +128,18 @@ public class Butikken extends AppCompatActivity {
     }
 
     private void buy() {
-        switch (Spiller.instans.getLearningAmp()) {
+        switch (Spiller.instans.læringsfart) {
             case 0:
-                Spiller.instans.setLearningAmp(1);
-                Spiller.instans.setPenge(Spiller.instans.getPenge() - 10);
+                Spiller.instans.læringsfart = 1;
+                Spiller.instans.penge = Spiller.instans.penge - 10;
                 break;
             case 1:
-                Spiller.instans.setLearningAmp(2);
-                Spiller.instans.setPenge(Spiller.instans.getPenge() - 20);
+                Spiller.instans.læringsfart = 2;
+                Spiller.instans.penge = Spiller.instans.penge - 20;
                 break;
             case 2:
-                Spiller.instans.setLearningAmp(3);
-                Spiller.instans.setPenge(Spiller.instans.getPenge() - 200);
+                Spiller.instans.læringsfart = 3;
+                Spiller.instans.penge = Spiller.instans.penge - 200;
                 break;
         }
         topbar.opdaterGui(Spiller.instans);

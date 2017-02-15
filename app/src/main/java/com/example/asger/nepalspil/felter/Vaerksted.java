@@ -108,8 +108,8 @@ public class Vaerksted extends AppCompatActivity {
 
             public void onClick(View v) {
                 v.startAnimation(AnimationUtils.loadAnimation(Vaerksted.this, R.anim.image_click));
-                if (Spiller.instans.getTid() >= TIME_PER_CLICK && Spiller.instans.getKlassetrin() >= 3) {
-                    Spiller.instans.work(TIME_PER_CLICK, MONEY_PER_CLICK);
+                if (Spiller.instans.tid >= TIME_PER_CLICK && Spiller.instans.klassetrin >= 3) {
+                    Spiller.instans.arbejd(TIME_PER_CLICK, MONEY_PER_CLICK);
                     money.setText("+" + MONEY_PER_CLICK + " kr");
                     money.startAnimation(animation);
 
@@ -130,13 +130,13 @@ public class Vaerksted extends AppCompatActivity {
                     }
 
                     topbar.opdaterGui(Spiller.instans);
-                } else if (Spiller.instans.getTid() < 2) {
+                } else if (Spiller.instans.tid < 2) {
 
                     new SweetAlertDialog(Vaerksted.this, SweetAlertDialog.ERROR_TYPE)
                             .setTitleText("Du har ikke tid til at arbejde.")
                             .show();
 
-                } else if (Spiller.instans.getKlassetrin() < 3) {
+                } else if (Spiller.instans.klassetrin < 3) {
                     new SweetAlertDialog(Vaerksted.this, SweetAlertDialog.ERROR_TYPE)
                             .setTitleText("Du er ikke gammel nok til at arbejde her.")
                             .setContentText("Du skal gå i mindst 3 klasse for at arbejde her.")
@@ -208,10 +208,10 @@ public class Vaerksted extends AppCompatActivity {
 
         switch (viewPager.getCurrentItem()) {
             case 0:
-                if (Spiller.instans.getmoveSpeed() < 2) {
-                    if (Spiller.instans.getPenge() >= 200) {
-                        Spiller.instans.setPenge(Spiller.instans.getPenge() - 200);
-                        Spiller.instans.setmoveSpeed(2);
+                if (Spiller.instans.bevægelsesFart < 2) {
+                    if (Spiller.instans.penge >= 200) {
+                        Spiller.instans.penge = Spiller.instans.penge - 200;
+                        Spiller.instans.bevægelsesFart = 2;
                         new SweetAlertDialog(Vaerksted.this, SweetAlertDialog.SUCCESS_TYPE)
                                 .setTitleText("Cykel købt!")
                                 .setContentText("Du har købt en brugt cykel for 200kr.")
@@ -226,10 +226,10 @@ public class Vaerksted extends AppCompatActivity {
                     Toast.makeText(Vaerksted.this, "Du har allerede en bedre cykel", Toast.LENGTH_SHORT).show();
                 break;
             case 1:
-                if (Spiller.instans.getmoveSpeed() < 3) {
-                    if (Spiller.instans.getPenge() >= 500) {
-                        Spiller.instans.setPenge(Spiller.instans.getPenge() - 500);
-                        Spiller.instans.setmoveSpeed(3);
+                if (Spiller.instans.bevægelsesFart < 3) {
+                    if (Spiller.instans.penge >= 500) {
+                        Spiller.instans.penge = Spiller.instans.penge - 500;
+                        Spiller.instans.bevægelsesFart = 3;
                         new SweetAlertDialog(Vaerksted.this, SweetAlertDialog.SUCCESS_TYPE)
                                 .setTitleText("Pænt hurtig cykel købt!")
                                 .setContentText("Du har købt en pænt hurtig cykel for 500kr.")
@@ -244,10 +244,10 @@ public class Vaerksted extends AppCompatActivity {
                     Toast.makeText(Vaerksted.this, "Du har allerede en bedre cykel", Toast.LENGTH_SHORT).show();
                 break;
             case 2:
-                if (Spiller.instans.getmoveSpeed() < 4) {
-                    if (Spiller.instans.getPenge() >= 1000) {
-                        Spiller.instans.setPenge(Spiller.instans.getPenge() - 1000);
-                        Spiller.instans.setmoveSpeed(4);
+                if (Spiller.instans.bevægelsesFart < 4) {
+                    if (Spiller.instans.penge >= 1000) {
+                        Spiller.instans.penge = Spiller.instans.penge - 1000;
+                        Spiller.instans.bevægelsesFart = 4;
                         new SweetAlertDialog(Vaerksted.this, SweetAlertDialog.SUCCESS_TYPE)
                                 .setTitleText("Racercykel købt!")
                                 .setContentText("Du har købt en racercykel for 1000kr.")
