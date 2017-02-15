@@ -160,30 +160,6 @@ public class Eksamen extends AppCompatActivity {
         }
     }
 
-    public void wrong() {
-
-        instans.setViden(instans.getViden() - 10 * instans.getKlassetrin());
-        if (instans.getViden() < 0) {
-            instans.setViden(0);
-        }
-
-
-        new SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE)
-                .setTitleText("Øv...")
-                .setContentText("Du har desværre svaret forkert på eksamen og er derfor dumpet. -" + 10 * instans.getKlassetrin() + " viden")
-                .setConfirmText("Ok")
-                .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
-                    @Override
-                    public void onClick(SweetAlertDialog sDialog) {
-                        sDialog.dismiss();
-                        finish();
-                    }
-                })
-                .show();
-
-    }
-
-
     public void sætSpørgsmål(String titel, String sv1, String sv2, String sv3) {
         spørgsmålTv.setText(titel);
         svarKnap1.setText(sv1);

@@ -5,6 +5,7 @@ import android.content.res.AssetFileDescriptor;
 import android.graphics.Typeface;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -14,6 +15,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.asger.nepalspil.R;
 import com.example.asger.nepalspil.diverse.Topbar;
@@ -23,7 +25,6 @@ import java.io.IOException;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
 
-import static com.example.asger.nepalspil.model.Spiller.instans;
 
 
 public class Skole extends AppCompatActivity {
@@ -73,7 +74,7 @@ public class Skole extends AppCompatActivity {
         ImageView menu = (ImageView) findViewById(R.id.menuknap);
         menu.setVisibility(View.INVISIBLE);
 
-        topbar.opdaterGui(instans);
+        topbar.opdaterGui(Spiller.instans);
 
         Typeface face;
         face = Typeface.createFromAsset(getAssets(), "fonts/EraserDust.ttf");
@@ -81,8 +82,8 @@ public class Skole extends AppCompatActivity {
 
 
         dialog = new AlertDialog.Builder(Skole.this);
-        klassetrin.setText("Du går i " + instans.getKlassetrin() + ". klasse.");
-        if (instans.getKlassetrin() >= 10) {
+        klassetrin.setText("Du går i " + Spiller.instans.getKlassetrin() + ". klasse.");
+        if (Spiller.instans.getKlassetrin() >= 10) {
             bEksamen.setVisibility(View.INVISIBLE);
         }
 
@@ -99,7 +100,7 @@ public class Skole extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 v.startAnimation(AnimationUtils.loadAnimation(Skole.this, R.anim.image_click));
-                if (instans.getTid() >= TIME_PER_CLICK) {
+                if (Spiller.instans.getTid() >= TIME_PER_CLICK) {
                     flyvoptekst_spis.setText("+" + FOOD_PER_CLICK + " mad");
                     flyvoptekst_spis.startAnimation(animationfood);
                     spis();
@@ -114,9 +115,7 @@ public class Skole extends AppCompatActivity {
                         mp.setDataSource(afd.getFileDescriptor(), afd.getStartOffset(), afd.getLength());
                         mp.prepare();
                         mp.start();
-                    } catch (IllegalStateException e) {
-                        e.printStackTrace();
-                    } catch (IOException e) {
+                    } catch (Exception e) {
                         e.printStackTrace();
                     }
                 } else {
@@ -124,7 +123,7 @@ public class Skole extends AppCompatActivity {
                             .setTitleText("Du har ikke tid til at spise.")
                             .show();
                 }
-                topbar.opdaterGui(instans);
+                topbar.opdaterGui(Spiller.instans);
             }
         });
 
@@ -133,12 +132,12 @@ public class Skole extends AppCompatActivity {
             public void onClick(View v) {
                 v.startAnimation(AnimationUtils.loadAnimation(Skole.this, R.anim.image_click));
                 int thisStudy = studer();
-                if (instans.getTid() >= TIME_PER_CLICK) {
-                    if (instans.getTid() >= TIME_PER_CLICK && thisStudy == STUDER_VIDEN) {
+                if (Spiller.instans.getTid() >= TIME_PER_CLICK) {
+                    if (thisStudy == STUDER_VIDEN) {
                         taleboble_tekst.setText("Du blev lidt klogere");
                         flyvoptekst_studer.setText("+" + VIDEN_PER_CLICK + " viden");
                         flyvoptekst_studer.startAnimation(animation);
-                        instans.study(TIME_PER_CLICK, VIDEN_PER_CLICK);
+                        Spiller.instans.study(TIME_PER_CLICK, VIDEN_PER_CLICK);
                         if (mp.isPlaying()) {
                             mp.stop();
                         }
@@ -149,32 +148,30 @@ public class Skole extends AppCompatActivity {
                             mp.setDataSource(afd.getFileDescriptor(), afd.getStartOffset(), afd.getLength());
                             mp.prepare();
                             mp.start();
-                        } catch (IllegalStateException e) {
-                            e.printStackTrace();
-                        } catch (IOException e) {
+                        } catch (Exception e) {
                             e.printStackTrace();
                         }
-                        System.out.println(instans.getViden());
+                        System.out.println(Spiller.instans.getViden());
                     } else if (thisStudy == STUDER_LEKTIEHJÆLP) {
                         taleboble_tekst.setText("Du forstod det ikke, lektiehjælp kunne måske hjælpe");
                         flyvoptekst_studer.setText("+1 lektiehjælp");
                         flyvoptekst_studer.startAnimation(animation);
-                        instans.study(TIME_PER_CLICK, 0);
-                        instans.setGlemtViden(instans.getGlemtViden() + 1);
+                        Spiller.instans.study(TIME_PER_CLICK, 0);
+                        Spiller.instans.setGlemtViden(Spiller.instans.getGlemtViden() + 1);
                     } else if (thisStudy == STUDER_FORSTOD_IKKE) {
                         taleboble_tekst.setText("Du forstod ikke denne lektion");
-                        /*
+                        Spiller.instans.study(TIME_PER_CLICK, 0);
+                    } else if (thisStudy == STUDER_FORSTOD_IKKE) {
+                        taleboble_tekst.setText("Din XXX gik i stykker!");
                         try {
                             Vibrator vibrator = (Vibrator) getSystemService(VIBRATOR_SERVICE);
                             vibrator.vibrate(100);
                         } catch (Exception e) {
                             e.printStackTrace();
-                            Toast.makeText(this, "Kunne ikke vibrere med telefonen:\n" + e, Toast.LENGTH_LONG).show();
-                            Toast.makeText(this, "Har du husket:\n<uses-permission android:name=\"android.permission.VIBRATE\"/>\n i manifestet?", Toast.LENGTH_LONG).show();
-                        }*/
-                        //flyvoptekst_studer.setText("+0 viden");
-                        //flyvoptekst_studer.startAnimation(animation);
-                        instans.study(TIME_PER_CLICK, 0);
+                            Toast.makeText(Skole.this, "Kunne ikke vibrere med telefonen:\n" + e, Toast.LENGTH_LONG).show();
+                            Toast.makeText(Skole.this, "Har du husket:\n<uses-permission android:name=\"android.permission.VIBRATE\"/>\n i manifestet?", Toast.LENGTH_LONG).show();
+                        }
+                        Spiller.instans.study(TIME_PER_CLICK, 0);
                     }
                 } else {
 
@@ -182,7 +179,7 @@ public class Skole extends AppCompatActivity {
                             .setTitleText("Du har ikke tid til at studere.")
                             .show();
                 }
-                topbar.opdaterGui(instans);
+                topbar.opdaterGui(Spiller.instans);
             }
         });
 
@@ -220,9 +217,31 @@ public class Skole extends AppCompatActivity {
 
     }
 
+    public static int STUDER_VIDEN = 1;
+    public static int STUDER_LEKTIEHJÆLP = 2;
+    public static int STUDER_FORSTOD_IKKE = 3;
+    public static int STUDER_REDSKAB_BRUGT_OP = 4;
+
+    /**
+     * Denne her metode er ret uforståelig - forklar hvad der sker.
+     * @param success
+     * @param homework
+     * @param fail
+     * @return
+     */
+    public int tryToStudy(double success, double homework, double fail) {
+        double rand = Math.random();
+        Log.d("Spil", "rand = " + rand + " Success = " + success + " homework = " + homework + "fail = " + fail);
+        if (rand >= success) return STUDER_VIDEN;
+        else if (rand >= homework) return STUDER_LEKTIEHJÆLP;
+        else if (rand < homework && rand >= fail) return STUDER_FORSTOD_IKKE;
+        else return 0;
+    }
+
+
     public int studer() {
         int result = 0;
-        switch (instans.getLearningAmp()) {
+        switch (Spiller.instans.getLearningAmp()) {
 
             case 0:
                 result = tryToStudy(0.5, 0.25, 0); // 50% chance for at lære noget, 25% for hvad ?????
@@ -248,9 +267,9 @@ public class Skole extends AppCompatActivity {
 
 
     public void spis() {
-        if (instans.getTid() > 0) {
-            instans.eat(TIME_COST_EATING, COST_PER_FOOD_CLICK, FOOD_PER_CLICK);
-            topbar.opdaterGui(instans);
+        if (Spiller.instans.getTid() > 0) {
+            Spiller.instans.eat(TIME_COST_EATING, COST_PER_FOOD_CLICK, FOOD_PER_CLICK);
+            topbar.opdaterGui(Spiller.instans);
         } else {
             taleboble_tekst.setText("");
         }
@@ -258,7 +277,7 @@ public class Skole extends AppCompatActivity {
     }
 
     public boolean kanStartEksamen() {
-        if ((instans.getViden() >= vidensKrav())) {
+        if ((Spiller.instans.getViden() >= vidensKrav())) {
             return true;
         } else
             return false;
@@ -266,7 +285,7 @@ public class Skole extends AppCompatActivity {
 
 
     public static int vidensKrav() {
-        switch (instans.getKlassetrin()) {
+        switch (Spiller.instans.getKlassetrin()) {
             case 1:
                 return 10;
             case 2:
@@ -292,27 +311,6 @@ public class Skole extends AppCompatActivity {
 
 
         }
-        return 10 * instans.getKlassetrin();
+        return 10 * Spiller.instans.getKlassetrin();
     }
-
-    public static int STUDER_VIDEN = 1;
-    public static int STUDER_LEKTIEHJÆLP = 2;
-    public static int STUDER_FORSTOD_IKKE = 3;
-
-    /**
-     * Denne her metode er ret uforståelig - forklar hvad der sker.
-     * @param success
-     * @param homework
-     * @param fail
-     * @return
-     */
-    public int tryToStudy(double success, double homework, double fail) {
-        double rand = Math.random();
-        Log.d("Spil", "rand = " + rand + " Success = " + success + " homework = " + homework + "fail = " + fail);
-        if (rand >= success) return STUDER_VIDEN;
-        else if (rand >= homework) return STUDER_LEKTIEHJÆLP;
-        else if (rand < homework && rand >= fail) return STUDER_FORSTOD_IKKE;
-        else return 0;
-    }
-
 }

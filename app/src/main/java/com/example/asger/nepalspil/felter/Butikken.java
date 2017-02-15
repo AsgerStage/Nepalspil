@@ -15,7 +15,6 @@ import com.example.asger.nepalspil.model.Spiller;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
 
-import static com.example.asger.nepalspil.model.Spiller.instans;
 
 public class Butikken extends AppCompatActivity {
 
@@ -39,10 +38,10 @@ public class Butikken extends AppCompatActivity {
         ImageView hjemBack = (ImageView) findViewById(R.id.ikon_tilbage);
         ImageView menu = (ImageView) findViewById(R.id.menuknap);
         menu.setVisibility(View.INVISIBLE);
-        topbar.opdaterGui(instans);
+        topbar.opdaterGui(Spiller.instans);
 
 
-        switch (instans.getLearningAmp()) {
+        switch (Spiller.instans.getLearningAmp()) {
             case 0:
                 buy.setText("Køb kladdehæfte");
                 break;
@@ -69,14 +68,14 @@ public class Butikken extends AppCompatActivity {
         buy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (instans.getLearningAmp() == 2) {
-                    if (instans.getPenge() >= 200) {
+                if (Spiller.instans.getLearningAmp() == 0) {
+                    if (Spiller.instans.getPenge() >= 10) {
                         buy();
                         new SweetAlertDialog(Butikken.this, SweetAlertDialog.SUCCESS_TYPE)
-                                .setTitleText("Lommeregner købt!")
-                                .setContentText("Du har købt en ny lommeregner for 200kr.")
+                                .setTitleText("Kladdehæfte købt!")
+                                .setContentText("Du har købt et kladdehæfte for 10kr.")
                                 .show();
-                        buy.setVisibility(View.INVISIBLE);
+                        buy.setText("Køb blyanter");
                     } else {
                         new SweetAlertDialog(Butikken.this, SweetAlertDialog.ERROR_TYPE)
                                 .setTitleText("Ikke nok penge!")
@@ -84,8 +83,8 @@ public class Butikken extends AppCompatActivity {
                                 .show();
                     }
                 }
-                if (instans.getLearningAmp() == 1) {
-                    if (instans.getPenge() >= 20) {
+                if (Spiller.instans.getLearningAmp() == 1) {
+                    if (Spiller.instans.getPenge() >= 20) {
                         buy();
                         new SweetAlertDialog(Butikken.this, SweetAlertDialog.SUCCESS_TYPE)
                                 .setTitleText("Blyanter købt!")
@@ -100,14 +99,14 @@ public class Butikken extends AppCompatActivity {
 
                     }
                 }
-                if (instans.getLearningAmp() == 0) {
-                    if (instans.getPenge() >= 10) {
+                if (Spiller.instans.getLearningAmp() == 2) {
+                    if (Spiller.instans.getPenge() >= 200) {
                         buy();
                         new SweetAlertDialog(Butikken.this, SweetAlertDialog.SUCCESS_TYPE)
-                                .setTitleText("Kladdehæfte købt!")
-                                .setContentText("Du har købt et kladdehæfte for 10kr.")
+                                .setTitleText("Lommeregner købt!")
+                                .setContentText("Du har købt en ny lommeregner for 200kr.")
                                 .show();
-                        buy.setText("Køb blyanter");
+                        buy.setVisibility(View.INVISIBLE);
                     } else {
                         new SweetAlertDialog(Butikken.this, SweetAlertDialog.ERROR_TYPE)
                                 .setTitleText("Ikke nok penge!")
@@ -129,20 +128,20 @@ public class Butikken extends AppCompatActivity {
     }
 
     private void buy() {
-        switch (instans.getLearningAmp()) {
+        switch (Spiller.instans.getLearningAmp()) {
             case 0:
-                instans.setLearningAmp(1);
-                instans.setPenge(instans.getPenge() - 10);
+                Spiller.instans.setLearningAmp(1);
+                Spiller.instans.setPenge(Spiller.instans.getPenge() - 10);
                 break;
             case 1:
-                instans.setLearningAmp(2);
-                instans.setPenge(instans.getPenge() - 20);
+                Spiller.instans.setLearningAmp(2);
+                Spiller.instans.setPenge(Spiller.instans.getPenge() - 20);
                 break;
             case 2:
-                instans.setLearningAmp(3);
-                instans.setPenge(instans.getPenge() - 200);
+                Spiller.instans.setLearningAmp(3);
+                Spiller.instans.setPenge(Spiller.instans.getPenge() - 200);
                 break;
         }
-        topbar.opdaterGui(instans);
+        topbar.opdaterGui(Spiller.instans);
     }
 }
