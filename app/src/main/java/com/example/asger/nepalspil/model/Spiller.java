@@ -216,7 +216,7 @@ public class Spiller implements Serializable {
 
 
     // XXX
-    public int studer() {
+    public int skoleStudér() {
         int result = 0;
         switch (læringsfart) {
             case 0:

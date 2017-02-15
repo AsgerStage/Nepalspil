@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.os.Vibrator;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -129,9 +128,9 @@ public class Skole extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 v.startAnimation(AnimationUtils.loadAnimation(Skole.this, R.anim.image_click));
-                int thisStudy = Spiller.instans.studer();
                 if (Spiller.instans.tid >= TIME_PER_CLICK) {
-                    if (thisStudy == Spiller.STUDER_VIDEN) {
+                    int res = Spiller.instans.skoleStudér();
+                    if (res == Spiller.STUDER_VIDEN) {
                         taleboble_tekst.setText("Du blev lidt klogere");
                         flyvoptekst_studer.setText("+" + VIDEN_PER_CLICK + " viden");
                         flyvoptekst_studer.startAnimation(animation);
@@ -149,17 +148,16 @@ public class Skole extends AppCompatActivity {
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
-                        System.out.println(Spiller.instans.viden);
-                    } else if (thisStudy == Spiller.STUDER_LEKTIEHJÆLP) {
+                    } else if (res == Spiller.STUDER_LEKTIEHJÆLP) {
                         taleboble_tekst.setText("Du forstod det ikke, lektiehjælp kunne måske hjælpe");
                         flyvoptekst_studer.setText("+1 lektiehjælp");
                         flyvoptekst_studer.startAnimation(animation);
                         Spiller.instans.studér(TIME_PER_CLICK, 0);
                         Spiller.instans.glemtViden = Spiller.instans.glemtViden + 1;
-                    } else if (thisStudy == Spiller.STUDER_FORSTOD_IKKE) {
+                    } else if (res == Spiller.STUDER_FORSTOD_IKKE) {
                         taleboble_tekst.setText("Du forstod ikke denne lektion");
                         Spiller.instans.studér(TIME_PER_CLICK, 0);
-                    } else if (thisStudy == Spiller.STUDER_REDSKAB_BRUGT_OP) {
+                    } else if (res == Spiller.STUDER_REDSKAB_BRUGT_OP) {
                         taleboble_tekst.setText("Din XXX gik i stykker!");
                         try {
                             Vibrator vibrator = (Vibrator) getSystemService(VIBRATOR_SERVICE);
