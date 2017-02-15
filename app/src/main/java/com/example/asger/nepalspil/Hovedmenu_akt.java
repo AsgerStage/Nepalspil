@@ -39,6 +39,7 @@ public class Hovedmenu_akt extends AppCompatActivity {
 
     AlertDialog.Builder dialog;
     static final int FIGURNUMMER_REQUEST = 1;
+    private ImageView genoptagKnap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +51,6 @@ public class Hovedmenu_akt extends AppCompatActivity {
             Fabric.with(this, new Crashlytics());
         }
         prefs = PreferenceManager.getDefaultSharedPreferences(this);
-        String checkIfPlayedBefore = prefs.getString("Navn", null);
 
         AppOpdatering.tjekForNyAPK(this);
 
@@ -65,51 +65,26 @@ public class Hovedmenu_akt extends AppCompatActivity {
         checkmarkkrishna = (ImageView) findViewById(R.id.checkmarkkrishna);
         ImageView startknap = (ImageView) findViewById(R.id.startknap);
         ImageView indstillingerknap = (ImageView) findViewById(R.id.indstillingerknap);
-        ImageView genoptagKnap = (ImageView) findViewById(R.id.genoptagKnap);
+        genoptagKnap = (ImageView) findViewById(R.id.genoptagKnap);
 
         indlæsGrunddata();
 
-      /*  asha.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Toast.makeText(Hovedmenu_akt.this, "Du har valgt Asha!", Toast.LENGTH_SHORT).show();
-                checkmarkkrishna.setVisibility(View.INVISIBLE);
-                checkmarkasha.setVisibility(View.VISIBLE);
-                Figurdata figurdata = Grunddata.instans.spillere.get("Asha");
-                Spiller.instans = new Spiller(figurdata);
+        if (Spiller.instans==null) Spiller.instans = Spiller.læs(this);
+        if (Spiller.instans!=null) {
+            Spiller.instans.figurdata = Grunddata.instans.spillere.get(Spiller.instans.navn);
+            if (Spiller.instans.figurdata == null) {
+                IllegalStateException fejl = new IllegalStateException(Spiller.instans.navn + " mangler i grunddata");
+                if (EMULATOR) throw fejl;
+                Crashlytics.logException(fejl);
+                Spiller.instans = null;
             }
-
-
-        });
-        krishna.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(Hovedmenu_akt.this, "Du har valgt Krishna!", Toast.LENGTH_SHORT).show();
-                checkmarkasha.setVisibility(View.INVISIBLE);
-                checkmarkkrishna.setVisibility(View.VISIBLE);
-                Figurdata figurdata = Grunddata.instans.spillere.get("Krishna");
-                Spiller.instans = new Spiller(figurdata);
-
-            }
-        });*/ //udfaset
+        }
 
         startknap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 v.startAnimation(AnimationUtils.loadAnimation(Hovedmenu_akt.this, R.anim.image_click));
 
-        /*        if (Spiller.instans == null) {
-                    Toast.makeText(Hovedmenu_akt.this, "Du mangler at vælge en figur.", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-
-                if ("Krishna".equals(Spiller.instans.getNavn()) || "Asha".equals(Spiller.instans.getNavn())) {
-
-                    Intent intent = new Intent(Hovedmenu_akt.this, SpillePlade.class);
-                    startActivity(intent);
-                }
-                */
                 Intent intent = new Intent(Hovedmenu_akt.this, Figurvalg_akt.class);
                 startActivityForResult(intent, FIGURNUMMER_REQUEST);
             }
@@ -120,18 +95,6 @@ public class Hovedmenu_akt extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 v.startAnimation(AnimationUtils.loadAnimation(Hovedmenu_akt.this, R.anim.image_click));
-
-                Spiller.instans = new Spiller(prefs.getBoolean("Sex", true), prefs.getInt("Books", 0), prefs.getInt("Position", 0), prefs.getString("Navn", null), prefs.getInt("Penge", 0), prefs.getInt("Hp", 0), prefs.getInt("Viden", 0), prefs.getInt("Klassetrin", 0), prefs.getInt("Tid", 0), prefs.getInt("Runde", 0), prefs.getInt("Movespeed", 1), prefs.getInt("LastBookBought", 0));
-                Spiller.instans.figurdata = Grunddata.instans.spillere.get(Spiller.instans.navn);
-                if (Spiller.instans.figurdata == null)
-                    throw new IllegalStateException(Spiller.instans.navn + " mangler i grunddata");
-               /* if (Spiller.instans.getSex() == true) {
-                    checkmarkasha.setVisibility(View.INVISIBLE);
-                    checkmarkkrishna.setVisibility(View.VISIBLE);
-                } else if (Spiller.instans.getSex() == false) {
-                    checkmarkkrishna.setVisibility(View.INVISIBLE);
-                    checkmarkasha.setVisibility(View.VISIBLE);
-                }*/
                 Intent intent = new Intent(Hovedmenu_akt.this, Spilleplade_akt.class);
                 intent.putExtra("genoptag", true);
                 startActivity(intent);
@@ -172,8 +135,6 @@ public class Hovedmenu_akt extends AppCompatActivity {
 
             }
         });
-
-
     }
 
     @Override
@@ -272,6 +233,7 @@ public class Hovedmenu_akt extends AppCompatActivity {
 
         continueBGMusic = false;
         MusicManager.start(this, R.raw.backgroundloop);
+        genoptagKnap.setVisibility(Spiller.instans!=null? View.VISIBLE : View.INVISIBLE);
     }
 
 

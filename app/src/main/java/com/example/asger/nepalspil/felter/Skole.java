@@ -129,9 +129,9 @@ public class Skole extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 v.startAnimation(AnimationUtils.loadAnimation(Skole.this, R.anim.image_click));
-                int thisStudy = studer();
+                int thisStudy = Spiller.instans.studer();
                 if (Spiller.instans.tid >= TIME_PER_CLICK) {
-                    if (thisStudy == STUDER_VIDEN) {
+                    if (thisStudy == Spiller.STUDER_VIDEN) {
                         taleboble_tekst.setText("Du blev lidt klogere");
                         flyvoptekst_studer.setText("+" + VIDEN_PER_CLICK + " viden");
                         flyvoptekst_studer.startAnimation(animation);
@@ -150,16 +150,16 @@ public class Skole extends AppCompatActivity {
                             e.printStackTrace();
                         }
                         System.out.println(Spiller.instans.viden);
-                    } else if (thisStudy == STUDER_LEKTIEHJÆLP) {
+                    } else if (thisStudy == Spiller.STUDER_LEKTIEHJÆLP) {
                         taleboble_tekst.setText("Du forstod det ikke, lektiehjælp kunne måske hjælpe");
                         flyvoptekst_studer.setText("+1 lektiehjælp");
                         flyvoptekst_studer.startAnimation(animation);
                         Spiller.instans.studér(TIME_PER_CLICK, 0);
                         Spiller.instans.glemtViden = Spiller.instans.glemtViden + 1;
-                    } else if (thisStudy == STUDER_FORSTOD_IKKE) {
+                    } else if (thisStudy == Spiller.STUDER_FORSTOD_IKKE) {
                         taleboble_tekst.setText("Du forstod ikke denne lektion");
                         Spiller.instans.studér(TIME_PER_CLICK, 0);
-                    } else if (thisStudy == STUDER_FORSTOD_IKKE) {
+                    } else if (thisStudy == Spiller.STUDER_REDSKAB_BRUGT_OP) {
                         taleboble_tekst.setText("Din XXX gik i stykker!");
                         try {
                             Vibrator vibrator = (Vibrator) getSystemService(VIBRATOR_SERVICE);
@@ -185,7 +185,7 @@ public class Skole extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 v.startAnimation(AnimationUtils.loadAnimation(Skole.this, R.anim.image_click));
-                if (kanStartEksamen()) {
+                if (Spiller.instans.skoleKanStarteEksamen()) {
                     taleboble_tekst.setText("Held og Lykke!");
                     finish();
                     Intent myIntent = new Intent(Skole.this, Eksamen.class);
@@ -194,7 +194,7 @@ public class Skole extends AppCompatActivity {
                 } else {
                     new SweetAlertDialog(Skole.this, SweetAlertDialog.ERROR_TYPE)
                             .setTitleText("Ikke nok viden!")
-                            .setContentText("Du har ikke nok viden til at starte eksamen! Du skal have mindst " + vidensKrav() + " viden for at starte eksamen.")
+                            .setContentText("Du har ikke nok viden til at starte eksamen! Du skal have mindst " + Spiller.instans.skoleVidensKravForNæsteKlassetrin() + " viden for at starte eksamen.")
                             .show();
 
                 }
@@ -215,52 +215,6 @@ public class Skole extends AppCompatActivity {
 
     }
 
-    public static int STUDER_VIDEN = 1;
-    public static int STUDER_LEKTIEHJÆLP = 2;
-    public static int STUDER_FORSTOD_IKKE = 3;
-    public static int STUDER_REDSKAB_BRUGT_OP = 4;
-
-    /**
-     * Denne her metode er ret uforståelig - forklar hvad der sker.
-     * @param studer_viden_sands
-     * @param studer_lektiehjælp_sands
-     * @return
-     */
-    public int tryToStudy(double studer_viden_sands, double studer_lektiehjælp_sands) {
-        double rand = Math.random();
-        Log.d("Spil", "rand = " + rand + " viden_sands = " + studer_viden_sands + " lektiehjælp_sands = " + studer_lektiehjælp_sands);
-        if (rand < studer_viden_sands) return STUDER_VIDEN;
-        else if (rand < studer_lektiehjælp_sands) return STUDER_LEKTIEHJÆLP;
-        return STUDER_FORSTOD_IKKE;
-    }
-
-
-    // XXX
-    public int studer() {
-        int result = 0;
-        switch (Spiller.instans.læringsfart) {
-
-            case 0:
-                result = tryToStudy(0.50, 0.75); // 50% chance for at lære noget, 25% for lektiehjælp, 25% for ikke af forstå noget
-                Log.d("Spil", "Spiller studied with 0 learning Amp");
-                break;
-            case 1:
-                result = tryToStudy(0.55, 0.80); // 55% chance for at lære noget, 25% for lektiehjælp, 20% for ikke af forstå noget
-                Log.d("Spil", "Spiller studied with 1 learning Amp");
-                break;
-            case 2:
-                result = tryToStudy(0.60, 0.85); // 60% chance for at lære noget, 25% for lektiehjælp, 15% for ikke af forstå noget
-                Log.d("Spil", "Spiller studied with 2 learning Amp");
-                break;
-            case 3:
-                result = tryToStudy(0.70, 1.00); // 70% chance for at lære noget, 30% for lektiehjælp
-                Log.d("Spil", "Spiller studied with 3 learning Amp");
-                break;
-
-
-        }
-        return result;
-    }
 
 
     public void spis() {
@@ -273,43 +227,4 @@ public class Skole extends AppCompatActivity {
 
     }
 
-    // XXX
-    public boolean kanStartEksamen() {
-        if ((Spiller.instans.viden >= vidensKrav())) {
-            return true;
-        } else
-            return false;
-    }
-
-
-    // XXX
-    public static int vidensKrav() {
-        switch (Spiller.instans.klassetrin) {
-            case 1:
-                return 10;
-            case 2:
-                return 40;
-            case 3:
-                return 90;
-            case 4:
-                return 110;
-            case 5:
-                return 160;
-            case 6:
-                return 220;
-            case 7:
-                return 300;
-            case 8:
-                return 400;
-            case 9:
-                return 500;
-            case 10:
-                return 700;
-            case 11:
-                return 800;
-
-
-        }
-        return 10 * Spiller.instans.klassetrin;
-    }
 }

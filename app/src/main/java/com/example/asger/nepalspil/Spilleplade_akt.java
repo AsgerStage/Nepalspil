@@ -166,7 +166,6 @@ public class Spilleplade_akt extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 flytBrikTilFelt(0);
-                saveToPrefs();
             }
         });
 
@@ -176,7 +175,6 @@ public class Spilleplade_akt extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 flytBrikTilFelt(1);
-                saveToPrefs();
 
 
 /*
@@ -194,7 +192,6 @@ public class Spilleplade_akt extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 flytBrikTilFelt(2);
-                saveToPrefs();
             }
         });
 
@@ -203,7 +200,6 @@ public class Spilleplade_akt extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 flytBrikTilFelt(3);
-                saveToPrefs();
             }
         });
 
@@ -212,7 +208,6 @@ public class Spilleplade_akt extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 flytBrikTilFelt(4);
-                saveToPrefs();
             }
         });
 
@@ -221,7 +216,6 @@ public class Spilleplade_akt extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 flytBrikTilFelt(5);
-                saveToPrefs();
             }
         });
 
@@ -230,7 +224,6 @@ public class Spilleplade_akt extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 flytBrikTilFelt(6);
-                saveToPrefs();
             }
         });
 
@@ -239,7 +232,6 @@ public class Spilleplade_akt extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 flytBrikTilFelt(7);
-                saveToPrefs();
 
 
             }
@@ -310,6 +302,7 @@ public class Spilleplade_akt extends AppCompatActivity {
         final int gammelTid = Spiller.instans.tid;
 
         final boolean turenErGået = Spiller.instans.rykTilFelt(feltPos);
+        Spiller.gem(this, Spiller.instans);
 
         final int nyPos = Spiller.instans.position;
         final int nyTid = Spiller.instans.tid;
@@ -374,7 +367,6 @@ public class Spilleplade_akt extends AppCompatActivity {
 
 
     }
-
 
     private void flytBrikTilFeltAfslutning(boolean turenErGået, int feltPos) {
 
@@ -513,22 +505,6 @@ public class Spilleplade_akt extends AppCompatActivity {
         updateText();
 
 
-    }
-
-    public void saveToPrefs() {
-        // XXX
-        prefs.edit().putInt("GlemtViden", Spiller.instans.glemtViden).apply();
-        prefs.edit().putInt("Books", Spiller.instans.books).apply();
-        prefs.edit().putInt("Position", Spiller.instans.position).apply();
-        prefs.edit().putString("Navn", Spiller.instans.navn).apply();
-        prefs.edit().putInt("Penge", Spiller.instans.penge).apply();
-        prefs.edit().putInt("Hp", Spiller.instans.mad).apply();
-        prefs.edit().putInt("Viden", Spiller.instans.viden).apply();
-        prefs.edit().putInt("Klassetrin", Spiller.instans.klassetrin).apply();
-        prefs.edit().putInt("Tid", Spiller.instans.tid).apply();
-        prefs.edit().putInt("bevægelsesFart", Spiller.instans.bevægelsesFart).apply();
-        prefs.edit().putInt("Runde", Spiller.instans.runde).apply();
-        prefs.edit().putInt("LastBookBought", Spiller.instans.bogKøbtIRundeNr).apply();
     }
 
     private void sætBrikposition(int feltnummer) {

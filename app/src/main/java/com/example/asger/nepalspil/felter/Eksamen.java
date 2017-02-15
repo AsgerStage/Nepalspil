@@ -17,6 +17,7 @@ import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import com.example.asger.nepalspil.R;
+import com.example.asger.nepalspil.model.Spiller;
 import com.github.jinatonic.confetti.CommonConfetti;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
@@ -36,7 +37,7 @@ public class Eksamen extends AppCompatActivity {
     public void onBackPressed() {
         new SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE)
                 .setTitleText("Er du sikker?")
-                .setContentText("Hvis du forlader eksamen vil det koste dig " + Skole.vidensKrav() + " viden.")
+                .setContentText("Hvis du forlader eksamen vil det koste dig " + Spiller.instans.skoleVidensKravForNæsteKlassetrin() + " viden.")
                 .setConfirmText("Ja")
                 .showCancelButton(true)
                 .setCancelText("Nej, jeg kan godt!")

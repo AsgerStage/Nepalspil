@@ -1,70 +1,44 @@
 package com.example.asger.nepalspil.model;
 
+import android.app.Activity;
 import android.util.Log;
 
+import com.example.asger.nepalspil.diverse.Serialisering;
 
-public class Spiller {
+import java.io.FileNotFoundException;
+import java.io.Serializable;
+
+
+public class Spiller implements Serializable {
     public static Spiller instans;
+
+    // Sæt IKKE versionsnummer så objekt kan læses selvom klassen er ændret.
+    // private static final long serialVersionUID = 12345;
 
     public static int LÆRINGSFART_INGEN = 0;
     public int læringsfart = 0;
     public int glemtViden;
-    public int books;
-    public int position;
-    public String navn;
+    public int bøger;
+    public int position = 0; //starter på felt 1
+    public String navn = "Kamal";
     public int penge;
-    public int mad;
-    public int viden;
-    public int klassetrin;
-    public int tid;
-    public int runde;
-    public int bevægelsesFart;
+    public int mad = 100;
+    public int viden = 0;
+    public int klassetrin = 1;
+    public int tid = 19;
+    public int runde = 1;
+    public int bevægelsesFart = 1;
     public int bogKøbtIRundeNr;
-    public boolean music;
 
-    public Figurdata figurdata;
+    public transient Figurdata figurdata;
 
-
-
-    // XXX
-    public Spiller(String navn, int penge, int tid, int viden, int mad, int klassetrin, boolean sex, int runde, int bevægelsesFart, int glemtViden) {
-        position = 0;            //starter på felt 1
-        this.navn = navn;
-        this.penge = penge;
-        this.mad = mad;
-        this.tid = tid;
-        this.viden = viden;
-        this.klassetrin = klassetrin;
-        this.runde = runde;
-        this.bevægelsesFart = bevægelsesFart;
-        this.glemtViden = glemtViden;
-
-        Log.d("Spiller", "Spiller oprettet med balance");
-    }
-
-
-    // XXX
-    public Spiller(Boolean sex, int books, int position, String navn, int penge, int mad, int viden, int klassetrin, int tid, int runde, int bevægelsesFart, int bogKøbtIRundeNr) {
-        this.books = books;
-        this.position = position;
-        this.navn = navn;
-        this.penge = penge;
-        this.mad = mad;
-        this.viden = viden;
-        this.klassetrin = klassetrin;
-        this.tid = tid;
-        this.runde = runde;
-        this.bevægelsesFart = bevægelsesFart;
-        this.bogKøbtIRundeNr = bogKøbtIRundeNr;
-        this.music = music;
-
-    }
 
     public final static int BRÆTSTØRRELSE = 8;//Kan ændres hvis spillepladen skulle udvides
 
     public Spiller(Figurdata figur) {
-        this(figur.navn, figur.startpenge, 19, 0, 100, 1, figur.drengekøn, 1, 1, 0);
         figurdata = figur;
+        this.navn = figur.navn;
+        this.penge = figur.startpenge;
     }
 
     /**
@@ -160,4 +134,110 @@ public class Spiller {
         this.penge = penge - udgift;
     }
 
+    public static Spiller læs(Activity akt) {
+        try {
+            return (Spiller) Serialisering.hent(akt.getFilesDir() + "/spiller.ser");
+        } catch (FileNotFoundException ex) {
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return null;
+    }
+
+    public static void gem(Activity akt, Spiller spiller) {
+        try {
+            Serialisering.gem(spiller, akt.getFilesDir() + "/spiller.ser");
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+
+
+
+
+    public boolean skoleKanStarteEksamen() {
+        if ((viden >= skoleVidensKravForNæsteKlassetrin())) {
+            return true;
+        } else
+            return false;
+    }
+
+
+    public int skoleVidensKravForNæsteKlassetrin() {
+        switch (klassetrin) {
+            case 1:
+                return 10;
+            case 2:
+                return 40;
+            case 3:
+                return 90;
+            case 4:
+                return 110;
+            case 5:
+                return 160;
+            case 6:
+                return 220;
+            case 7:
+                return 300;
+            case 8:
+                return 400;
+            case 9:
+                return 500;
+            case 10:
+                return 700;
+            case 11:
+                return 800;
+
+
+        }
+        return 10 * klassetrin;
+    }
+
+
+
+    public static int STUDER_VIDEN = 1;
+    public static int STUDER_LEKTIEHJÆLP = 2;
+    public static int STUDER_FORSTOD_IKKE = 3;
+    public static int STUDER_REDSKAB_BRUGT_OP = 4;
+
+    /**
+     * Denne her metode er ret uforståelig - forklar hvad der sker.
+     * @param studer_viden_sands
+     * @param studer_lektiehjælp_sands
+     * @return
+     */
+    private static int tryToStudy(double studer_viden_sands, double studer_lektiehjælp_sands) {
+        double rand = Math.random();
+        Log.d("Spil", "rand = " + rand + " viden_sands = " + studer_viden_sands + " lektiehjælp_sands = " + studer_lektiehjælp_sands);
+        if (rand < studer_viden_sands) return STUDER_VIDEN;
+        else if (rand < studer_lektiehjælp_sands) return STUDER_LEKTIEHJÆLP;
+        return STUDER_FORSTOD_IKKE;
+    }
+
+
+    // XXX
+    public int studer() {
+        int result = 0;
+        switch (læringsfart) {
+            case 0:
+                result = tryToStudy(0.50, 0.75); // 50% chance for at lære noget, 25% for lektiehjælp, 25% for ikke af forstå noget
+                Log.d("Spil", "Spiller studied with 0 learning Amp");
+                break;
+            case 1:
+                result = tryToStudy(0.55, 0.80); // 55% chance for at lære noget, 25% for lektiehjælp, 20% for ikke af forstå noget
+                Log.d("Spil", "Spiller studied with 1 learning Amp");
+                break;
+            case 2:
+                result = tryToStudy(0.60, 0.85); // 60% chance for at lære noget, 25% for lektiehjælp, 15% for ikke af forstå noget
+                Log.d("Spil", "Spiller studied with 2 learning Amp");
+                break;
+            case 3:
+                result = tryToStudy(0.70, 1.00); // 70% chance for at lære noget, 30% for lektiehjælp
+                Log.d("Spil", "Spiller studied with 3 learning Amp");
+                break;
+
+
+        }
+        return result;
+    }
 }
