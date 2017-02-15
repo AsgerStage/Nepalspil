@@ -6,6 +6,8 @@ import android.util.Log;
 public class Spiller {
     public static Spiller instans;
     public boolean sex;
+
+    public static int LÆRING_INGEN = 0;
     private int learningAmp = 0;
     private int glemtViden;
     private int books;

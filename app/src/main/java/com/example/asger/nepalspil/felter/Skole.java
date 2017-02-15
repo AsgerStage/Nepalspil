@@ -224,18 +224,16 @@ public class Skole extends AppCompatActivity {
 
     /**
      * Denne her metode er ret uforståelig - forklar hvad der sker.
-     * @param success
-     * @param homework
-     * @param fail
+     * @param studer_viden_sands
+     * @param studer_lektiehjælp_sands
      * @return
      */
-    public int tryToStudy(double success, double homework, double fail) {
+    public int tryToStudy(double studer_viden_sands, double studer_lektiehjælp_sands) {
         double rand = Math.random();
-        Log.d("Spil", "rand = " + rand + " Success = " + success + " homework = " + homework + "fail = " + fail);
-        if (rand >= success) return STUDER_VIDEN;
-        else if (rand >= homework) return STUDER_LEKTIEHJÆLP;
-        else if (rand < homework && rand >= fail) return STUDER_FORSTOD_IKKE;
-        else return 0;
+        Log.d("Spil", "rand = " + rand + " viden_sands = " + studer_viden_sands + " lektiehjælp_sands = " + studer_lektiehjælp_sands);
+        if (rand < studer_viden_sands) return STUDER_VIDEN;
+        else if (rand < studer_lektiehjælp_sands) return STUDER_LEKTIEHJÆLP;
+        return STUDER_FORSTOD_IKKE;
     }
 
 
@@ -244,19 +242,19 @@ public class Skole extends AppCompatActivity {
         switch (Spiller.instans.getLearningAmp()) {
 
             case 0:
-                result = tryToStudy(0.5, 0.25, 0); // 50% chance for at lære noget, 25% for hvad ?????
+                result = tryToStudy(0.50, 0.75); // 50% chance for at lære noget, 25% for lektiehjælp, 25% for ikke af forstå noget
                 Log.d("Spil", "Spiller studied with 0 learning Amp");
                 break;
             case 1:
-                result = tryToStudy(0.45, 0.2, 0);
+                result = tryToStudy(0.55, 0.80); // 55% chance for at lære noget, 25% for lektiehjælp, 20% for ikke af forstå noget
                 Log.d("Spil", "Spiller studied with 1 learning Amp");
                 break;
             case 2:
-                result = tryToStudy(0.40, 0.15, 0);
+                result = tryToStudy(0.60, 0.85); // 60% chance for at lære noget, 25% for lektiehjælp, 15% for ikke af forstå noget
                 Log.d("Spil", "Spiller studied with 2 learning Amp");
                 break;
             case 3:
-                result = tryToStudy(0.30, 0, 0); // 70% chance for at lære noget
+                result = tryToStudy(0.70, 1.00); // 70% chance for at lære noget, 30% for lektiehjælp
                 Log.d("Spil", "Spiller studied with 3 learning Amp");
                 break;
 
