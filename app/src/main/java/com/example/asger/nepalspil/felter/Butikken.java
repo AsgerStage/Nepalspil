@@ -38,6 +38,7 @@ public class Butikken extends AppCompatActivity {
             public boolean onLongClick(View v) {
                 Spiller.instans.penge += 10000;
                 Spiller.instans.tid += 10000;
+                Spiller.instans.viden += 10000;
                 return true;
             }
         });

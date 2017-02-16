@@ -33,8 +33,6 @@ import io.fabric.sdk.android.Fabric;
 
 public class Hovedmenu_akt extends AppCompatActivity {
     boolean continueBGMusic;
-    ImageView checkmarkasha;
-    ImageView checkmarkkrishna;
     SharedPreferences prefs;
 
     AlertDialog.Builder dialog;
@@ -52,17 +50,13 @@ public class Hovedmenu_akt extends AppCompatActivity {
         }
         prefs = PreferenceManager.getDefaultSharedPreferences(this);
 
-        AppOpdatering.tjekForNyAPK(this);
+        if (savedInstanceState==null) AppOpdatering.tjekForNyAPK(this);
 
         setContentView(R.layout.hovedmenu);
 
         TextView versionTv = (TextView) findViewById(R.id.version);
         versionTv.setText("v. " + BuildConfig.VERSION_NAME);
 
-        ImageButton asha = (ImageButton) findViewById(R.id.imageButton4);
-        final ImageButton krishna = (ImageButton) findViewById(R.id.imageButton5);
-        checkmarkasha = (ImageView) findViewById(R.id.checkmarkasha);
-        checkmarkkrishna = (ImageView) findViewById(R.id.checkmarkkrishna);
         ImageView startknap = (ImageView) findViewById(R.id.startknap);
         ImageView indstillingerknap = (ImageView) findViewById(R.id.indstillingerknap);
         genoptagKnap = (ImageView) findViewById(R.id.genoptagKnap);
@@ -230,10 +224,9 @@ public class Hovedmenu_akt extends AppCompatActivity {
 
     public void onResume() {
         super.onResume();
-
         continueBGMusic = false;
         MusicManager.start(this, R.raw.backgroundloop);
-        genoptagKnap.setVisibility(Spiller.instans!=null? View.VISIBLE : View.INVISIBLE);
+        genoptagKnap.setEnabled(Spiller.instans!=null);
     }
 
 

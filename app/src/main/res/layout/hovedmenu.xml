@@ -24,7 +24,7 @@
             android:layout_weight="0.48"
             android:scaleType="fitCenter"
             android:elevation="0dp"
-            android:background="?android:selectableItemBackground"
+            android:background="@null"
             android:visibility="visible"
             android:layout_width="199dp"
             android:layout_marginStart="24dp"
@@ -45,7 +45,7 @@
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"/>
 
-        <ImageButton
+        <ImageView
             app:srcCompat="@drawable/figur_krishna_halv"
             android:id="@+id/imageButton5"
             android:layout_weight="0.51"
@@ -69,17 +69,8 @@
 
         <ImageView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            fab:srcCompat="@drawable/checkmark"
-            android:id="@+id/checkmarkasha"
-            android:visibility="invisible"
-            android:layout_alignParentBottom="true"
-            android:layout_alignStart="@+id/imageButton4"
-            android:layout_marginStart="15dp"/>
-
-        <ImageView
-            android:layout_width="wrap_content"
             android:layout_height="50dp"
+            android:background="?android:selectableItemBackground"
             android:id="@+id/genoptagKnap"
             android:layout_marginBottom="15dp"
             android:layout_above="@+id/indstillingerknap"
@@ -89,6 +80,7 @@
         <ImageView
             android:layout_width="wrap_content"
             android:id="@+id/indstillingerknap"
+            android:background="?android:selectableItemBackground"
             android:layout_alignBottom="@+id/checkmarkkrishna"
             android:layout_centerHorizontal="true"
             android:layout_height="50dp"
@@ -108,6 +100,7 @@
             android:layout_width="wrap_content"
             android:layout_height="50dp"
             android:id="@+id/startknap"
+            android:background="?android:selectableItemBackground"
             android:layout_marginBottom="15dp"
             android:layout_above="@+id/genoptagKnap"
             android:layout_alignStart="@+id/genoptagKnap"
@@ -118,8 +111,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
-            android:layout_below="@+id/indstillingerknap"
+            android:layout_marginLeft="10dp"
+            android:layout_above="@+id/musik"
             android:text="v 1.01"/>
+        <CheckBox
+            android:id="@+id/musik"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentBottom="true"
+            android:text="Musik"/>
+
 
         <TextView
             android:layout_width="wrap_content"
