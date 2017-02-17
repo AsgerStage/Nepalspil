@@ -19,7 +19,7 @@
           "pengeForskel" : -20
         },
          { "titel" : "Det er blevet regntid!",
-          "tekst" : "Det er blevet regntid og det øser ned. Du har ingen paraply, så du bliver hjemme. - 5 viden og dagen er gået",
+          "tekst" : "Det er blevet regntid, og det øser ned. Du har ingen paraply, så du bliver hjemme. - 5 viden og ugen er gået",
           "videnForskel" : -5,
           "tidFaktor" : 0.1
         },
@@ -56,13 +56,13 @@
           "videnForskel" : -10,
           "tidFaktor" : 0.1
         },
-        { "titel" : "Du har købt slik for alle dine penge",
-          "tekst" : "Du har brugt alle dine penge på slik. Nu har du ondt i maven og har ikke penge til mad. - 10 penge og ugen er gået",
+        { "titel" : "Du har købt slik",
+          "tekst" : "Du har brugt nogle af dine penge på slik. Så nu har du ikke penge til mad. - 10 penge og ugen er gået",
           "pengeForskel" : -10,
           "tidFaktor" : 0.1
         },
         { "titel" : "Det er blevet regntid!",
-          "tekst" : "Det er blevet regntid og det øser ned. Du har ingen paraply, så du bliver hjemme. - 10 viden og ugen er gået",
+          "tekst" : "Det er blevet regntid, og det øser ned. Du har ingen paraply, så du bliver hjemme. - 10 viden og ugen er gået",
           "videnForskel" : -10,
           "tidFaktor" : 0.1
         },
@@ -102,17 +102,17 @@
           "tidFaktor" : 0.1
         },
         { "titel" : "Det er blevet regntid!",
-          "tekst" : "Det er blevet regntid og det øser ned. Du har ingen paraply, så du bliver hjemme. - 5 viden og dagen er gået",
+          "tekst" : "Det er blevet regntid, og det øser ned. Du har ingen paraply, så du bliver hjemme. - 5 viden og ugen er gået",
           "videnForskel" : -5,
           "tidFaktor" : 0.1
         },
         { "titel" : "Nepal bandha - Skolen er lukket",
-          "tekst" : "Der er generalstrejke, så skolen og butikkerne holder lukket. - 10 viden og dagen er gået",
+          "tekst" : "Der er generalstrejke, så skolen og butikkerne holder lukket. - 10 viden og ugen er gået",
           "videnForskel" : -10,
           "tidFaktor" : 0.1
         },
           { "titel" : "Du har købt nudler for alle dine penge",
-          "tekst" : "Du har brugt alle dine penge på slik. Nu har du ondt i maven og har ikke penge til mad. - 10 penge og dagen er gået",
+          "tekst" : "Du har brugt alle dine penge på slik, så nu har du færre penge til mad. - 10 penge og ugen er gået",
           "pengeForskel" : -10,
           "tidFaktor" : 0.1
         },
