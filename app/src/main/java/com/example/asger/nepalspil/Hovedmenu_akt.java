@@ -12,6 +12,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.view.animation.AnimationUtils;
+import android.widget.CheckBox;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -31,18 +32,18 @@ import java.io.InputStream;
 
 import io.fabric.sdk.android.Fabric;
 
-public class Hovedmenu_akt extends AppCompatActivity {
+public class Hovedmenu_akt extends AppCompatActivity implements View.OnClickListener {
     boolean continueBGMusic;
     SharedPreferences prefs;
 
     AlertDialog.Builder dialog;
     static final int FIGURNUMMER_REQUEST = 1;
     private ImageView genoptagKnap;
+    private CheckBox musik;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        continueBGMusic = true;
         dialog = new AlertDialog.Builder(this);
         boolean EMULATOR = Build.PRODUCT.contains("sdk") || Build.MODEL.contains("Emulator");
         if (!EMULATOR) {
@@ -60,7 +61,12 @@ public class Hovedmenu_akt extends AppCompatActivity {
         ImageView startknap = (ImageView) findViewById(R.id.startknap);
         ImageView indstillingerknap = (ImageView) findViewById(R.id.indstillingerknap);
         genoptagKnap = (ImageView) findViewById(R.id.genoptagKnap);
-
+        continueBGMusic = true;
+        musik = (CheckBox) findViewById(R.id.musik);
+        musik.setOnClickListener(this);
+        musik.setChecked(continueBGMusic);
+        musik.setVisibility(View.INVISIBLE); // Ikke klar endnu
+        musik.setHeight(0);
         indlæsGrunddata();
 
         if (Spiller.instans==null) Spiller.instans = Spiller.læs(this);
@@ -230,4 +236,8 @@ public class Hovedmenu_akt extends AppCompatActivity {
     }
 
 
+    @Override
+    public void onClick(View v) {
+        // TODO lav musik-knap
+    }
 }

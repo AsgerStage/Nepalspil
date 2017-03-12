@@ -110,10 +110,11 @@
             android:id="@+id/version"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_above="@+id/musik"
             android:layout_alignParentStart="true"
             android:layout_marginLeft="10dp"
-            android:layout_above="@+id/musik"
-            android:text="v 1.01"/>
+            android:text="v 1.01"
+            android:textSize="10sp"/>
         <CheckBox
             android:id="@+id/musik"
             android:layout_width="wrap_content"
