@@ -59,6 +59,7 @@ public class Eksamen extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (Spiller.instans==null) { finish(); return; } // genstart i frisk JVM - vis hovedmenu
         setContentView(R.layout.eksamen);
         prefs = PreferenceManager.getDefaultSharedPreferences(this);
 

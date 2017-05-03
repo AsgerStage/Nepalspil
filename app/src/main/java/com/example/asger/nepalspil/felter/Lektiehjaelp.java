@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import com.example.asger.nepalspil.R;
 import com.example.asger.nepalspil.diverse.Topbar;
+import com.example.asger.nepalspil.model.Spiller;
 
 import java.io.IOException;
 
@@ -35,6 +36,7 @@ public class Lektiehjaelp extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (Spiller.instans==null) { finish(); return; } // genstart i frisk JVM - vis hovedmenu
         setContentView(R.layout.lektiehjaelp);
 
         topbar = new Topbar();

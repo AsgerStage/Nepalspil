@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import com.example.asger.nepalspil.model.Figurdata;
 import com.example.asger.nepalspil.model.Grunddata;
+import com.example.asger.nepalspil.model.Spiller;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
 import me.grantland.widget.AutofitTextView;
@@ -45,6 +46,7 @@ public class Figurvalg_akt extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (Spiller.instans==null) { finish(); return; } // genstart i frisk JVM - vis hovedmenu
         setContentView(R.layout.figurvalg);
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         AshaFigur = (ImageView) findViewById(R.id.AshaFigur);

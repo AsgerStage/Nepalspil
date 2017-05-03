@@ -51,6 +51,7 @@ public class Skole extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (Spiller.instans==null) { finish(); return; } // genstart i frisk JVM - vis hovedmenu
         setContentView(R.layout.skole);
 
         topbar = new Topbar();

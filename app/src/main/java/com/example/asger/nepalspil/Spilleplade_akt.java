@@ -107,6 +107,7 @@ public class Spilleplade_akt extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (Spiller.instans==null) { finish(); return; } // genstart i frisk JVM - vis hovedmenu
         setContentView(R.layout.spilleplade);
 
         continueBGMusic = true;
@@ -119,7 +120,7 @@ public class Spilleplade_akt extends AppCompatActivity {
         figurbrik = (ImageView) findViewById(R.id.krishna);
         figurbrik.setImageResource(Spiller.instans.figurdata.drawable_figur_halv_id);
 
-        if (getIntent().getBooleanExtra("genoptag", false) == false) { // nyt spil - vis dialog
+        if (savedInstanceState==null && getIntent().getBooleanExtra("genoptag", false) == false) { // nyt spil - vis dialog
             new AlertDialog.Builder(this)
                     .setTitle("Hej!")
                     .setIcon(Spiller.instans.figurdata.drawable_figur_halv_id)

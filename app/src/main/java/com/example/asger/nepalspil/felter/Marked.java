@@ -46,6 +46,7 @@ public class Marked extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (Spiller.instans==null) { finish(); return; } // genstart i frisk JVM - vis hovedmenu
         setContentView(R.layout.marked);
         ImageView figur = (ImageView) findViewById(R.id.figur);
         figur.setImageResource(Spiller.instans.figurdata.drawable_figur_halv_id);
