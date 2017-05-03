@@ -136,7 +136,7 @@ public class Eksamen extends AppCompatActivity {
                     svarKnap1.setOnClickListener(korrekt);
                 } else {
                     sætSpørgsmål("Kan man tage en uddannelse i Nepal, hvis man ikke har bestået 10. klasse?", "Ja, det er let nok", "Kun hvis man spørger pænt", "Nej, man skal have 10. klasse for at få en uddannelse");
-                    svarKnap2.setOnClickListener(korrekt);
+                    svarKnap3.setOnClickListener(korrekt);
                 }
                 break;
             case 7:
@@ -162,7 +162,7 @@ public class Eksamen extends AppCompatActivity {
     }
 
     public void sætSpørgsmål(String titel, String sv1, String sv2, String sv3) {
-        spørgsmålTv.setText(titel);
+        spørgsmålTv.setText(titel.toUpperCase());
         svarKnap1.setText(sv1);
         svarKnap2.setText(sv2);
         svarKnap3.setText(sv3);

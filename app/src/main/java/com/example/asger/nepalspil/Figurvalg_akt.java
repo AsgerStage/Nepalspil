@@ -106,7 +106,8 @@ public class Figurvalg_akt extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent returnIntent = new Intent();
-                returnIntent.putExtra("result", valgtFigur.navn);
+                if (valgtFigur.navn!=null) returnIntent.putExtra("result", valgtFigur.navn);
+                else returnIntent.putExtra("result", Grunddata.Asha.navn); // Fix for http://crashes.to/s/c8f93c43cc2
                 setResult(Activity.RESULT_OK, returnIntent);
                 finish();
             }
