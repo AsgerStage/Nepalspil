@@ -40,6 +40,7 @@ public class Butikken extends AppCompatActivity {
                 Spiller.instans.penge += 10000;
                 Spiller.instans.tid += 10000;
                 Spiller.instans.viden += 10000;
+                Spiller.instans.klassetrin += 3;
                 return true;
             }
         });

@@ -1,6 +1,7 @@
 package com.example.asger.nepalspil.felter;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.Typeface;
@@ -16,6 +17,7 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
+import com.example.asger.nepalspil.Hovedmenu_akt;
 import com.example.asger.nepalspil.R;
 import com.example.asger.nepalspil.model.Spiller;
 import com.github.jinatonic.confetti.CommonConfetti;
@@ -243,6 +245,10 @@ public class Eksamen extends AppCompatActivity {
                     .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
                             finish();
+                            Intent intent = new Intent(Eksamen.this,Hovedmenu_akt.class);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                            startActivity(intent);
+
                         }
                     });
             AlertDialog alert = dialog.create();
