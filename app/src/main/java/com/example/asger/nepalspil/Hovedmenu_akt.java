@@ -84,7 +84,6 @@ public class Hovedmenu_akt extends AppCompatActivity implements View.OnClickList
             @Override
             public void onClick(View v) {
                 v.startAnimation(AnimationUtils.loadAnimation(Hovedmenu_akt.this, R.anim.image_click));
-
                 Intent intent = new Intent(Hovedmenu_akt.this, Figurvalg_akt.class);
                 startActivityForResult(intent, FIGURNUMMER_REQUEST);
             }
