@@ -42,7 +42,7 @@
           "pengeForskel" : -20
 },
           { "titel" : "Du har købt slik for dine penge",
-          "tekst" : "Du har brugt alle dine penge på slik. Nu har du ondt i maven. - 20 penge og ugen er gået",
+          "tekst" : "Du har brugt dine penge på slik. Nu har du ondt i maven. - 20 penge og ugen er gået",
           "pengeForskel" : -20,
           "tidFaktor" : 0.1
         },
@@ -56,8 +56,8 @@
           "videnForskel" : -10,
           "tidFaktor" : 0.1
         },
-        { "titel" : "Du har købt slik",
-          "tekst" : "Du har brugt nogle af dine penge på slik. Så nu har du ikke penge til mad. - 10 penge og ugen er gået",
+        { "titel" : "Du har købt nudler",
+          "tekst" : "Du har brugt dine penge på nudler. Så nu har du ikke penge til sund mad. - 10 penge og ugen er gået",
           "pengeForskel" : -10,
           "tidFaktor" : 0.1
         },
@@ -111,8 +111,8 @@
           "videnForskel" : -10,
           "tidFaktor" : 0.1
         },
-          { "titel" : "Du har købt nudler for alle dine penge",
-          "tekst" : "Du har brugt alle dine penge på slik, så nu har du færre penge til mad. - 10 penge og ugen er gået",
+          { "titel" : "Du har købt nudler for dine penge",
+          "tekst" : "Du har brugt dine penge på nudler, så nu har du færre penge til sund mad. - 10 penge og ugen er gået",
           "pengeForskel" : -10,
           "tidFaktor" : 0.1
         },
