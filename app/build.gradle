@@ -36,6 +36,8 @@ android {
 }
 
 dependencies {
+    implementation 'com.google.firebase:firebase-database:11.0.4'
+    compile 'com.google.firebase:firebase-auth:11.0.4'
     compile fileTree(dir: 'libs', include: ['*.jar'])
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
@@ -55,3 +57,5 @@ dependencies {
 //    compile 'com.github.toanvc:floatingactionmenu:0.8.9'
 //    compile 'me.relex:circleindicator:1.2.2@aar'
 }
+
+apply plugin: 'com.google.gms.google-services'

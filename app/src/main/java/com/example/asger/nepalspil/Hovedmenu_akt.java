@@ -36,7 +36,6 @@ public class Hovedmenu_akt extends AppCompatActivity implements View.OnClickList
     boolean continueBGMusic;
     SharedPreferences prefs;
 
-    AlertDialog.Builder dialog;
     static final int FIGURNUMMER_REQUEST = 1;
     private ImageView genoptagKnap;
     private CheckBox musik;
@@ -44,13 +43,13 @@ public class Hovedmenu_akt extends AppCompatActivity implements View.OnClickList
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        dialog = new AlertDialog.Builder(this);
         boolean EMULATOR = Build.PRODUCT.contains("sdk") || Build.MODEL.contains("Emulator");
         if (!EMULATOR) {
             Fabric.with(this, new Crashlytics());
         }
         prefs = PreferenceManager.getDefaultSharedPreferences(this);
 
+        Highscore.init();
         if (savedInstanceState==null) AppOpdatering.tjekForNyAPK(this);
 
         setContentView(R.layout.hovedmenu);
@@ -83,6 +82,7 @@ public class Hovedmenu_akt extends AppCompatActivity implements View.OnClickList
         startknap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Highscore.indsætHighscore("Kamal", "Troels Start", 14 );
                 v.startAnimation(AnimationUtils.loadAnimation(Hovedmenu_akt.this, R.anim.image_click));
                 Intent intent = new Intent(Hovedmenu_akt.this, Figurvalg_akt.class);
                 startActivityForResult(intent, FIGURNUMMER_REQUEST);
@@ -93,6 +93,7 @@ public class Hovedmenu_akt extends AppCompatActivity implements View.OnClickList
         genoptagKnap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Highscore.indsætHighscore("Kamal", "Troels Genopt", 13 );
                 v.startAnimation(AnimationUtils.loadAnimation(Hovedmenu_akt.this, R.anim.image_click));
                 Intent intent = new Intent(Hovedmenu_akt.this, Spilleplade_akt.class);
                 intent.putExtra("genoptag", true);
@@ -103,6 +104,7 @@ public class Hovedmenu_akt extends AppCompatActivity implements View.OnClickList
         indstillingerknap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Highscore.indsætHighscore("Kamal", "Troels Indst", 12 );
                 v.startAnimation(AnimationUtils.loadAnimation(Hovedmenu_akt.this, R.anim.image_click));
 
                 CharSequence options[] = new CharSequence[]{"Besøg skoleliv-i-nepal.dk", "Akkreditering - tak til", "Sluk musik"};
