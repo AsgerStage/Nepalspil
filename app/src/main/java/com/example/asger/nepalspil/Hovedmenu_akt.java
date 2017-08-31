@@ -49,7 +49,6 @@ public class Hovedmenu_akt extends AppCompatActivity implements View.OnClickList
         }
         prefs = PreferenceManager.getDefaultSharedPreferences(this);
 
-        Highscore.init();
         if (savedInstanceState==null) AppOpdatering.tjekForNyAPK(this);
 
         setContentView(R.layout.hovedmenu);
@@ -67,6 +66,7 @@ public class Hovedmenu_akt extends AppCompatActivity implements View.OnClickList
         musik.setVisibility(View.INVISIBLE); // Ikke klar endnu
         musik.setHeight(0);
         indlæsGrunddata();
+        Highscore.init(Grunddata.instans.spillere.keySet()); // må først kaldes efter indlæsGrunddata()
 
         if (Spiller.instans==null) Spiller.instans = Spiller.læs(this);
         if (Spiller.instans!=null) {

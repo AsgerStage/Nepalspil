@@ -17,6 +17,7 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
+import com.example.asger.nepalspil.Highscore;
 import com.example.asger.nepalspil.Hovedmenu_akt;
 import com.example.asger.nepalspil.R;
 import com.example.asger.nepalspil.model.Spiller;
@@ -235,8 +236,10 @@ public class Eksamen extends AppCompatActivity {
                 prefs.edit().putInt("" + instans.navn, instans.runde).apply();
             }
 
+            String kaldenavn = prefs.getString("kaldenavn", "");
+            Highscore.indsætHighscore(instans.navn, kaldenavn, instans.runde);
             //dialog.setMessage(Html.fromHtml("Godt klaret, du har vundet spillet på " + instans.runde + " uger! Nu kan jeg få en uddannelse.\n\nPrøv igen med en ny figur, eller <a href='http://skolemadtilnepal.wordpress.com/boernene-paa-bhawanipurskole'>klik her for at møde børnene i virkeligheden</a>"))
-            dialog.setMessage(Html.fromHtml("Godt klaret, du har gennemført spillet på " + instans.runde + " uger!</br/>\n" +
+            dialog.setMessage(Html.fromHtml("Godt klaret "+kaldenavn+", du har gennemført spillet på " + instans.runde + " uger!</br/>\n" +
                     "Nu kan "+ instans.navn +" få en uddannelse.<br/>\n<br/>\n" +
                     "Prøv igen med en ny figur, eller <a href='http://skolemadtilnepal.wordpress.com/boernene-paa-bhawanipurskole'>klik her for at møde børnene i virkeligheden</a>"))
                     .setTitle("Du har gennemført spillet med "+ instans.navn)

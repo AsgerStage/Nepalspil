@@ -1,21 +1,26 @@
 package com.example.asger.nepalspil;
 
 import android.app.Activity;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.animation.OvershootInterpolator;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.asger.nepalspil.model.Figurdata;
 import com.example.asger.nepalspil.model.Grunddata;
-import com.example.asger.nepalspil.model.Spiller;
+import com.example.asger.nepalspil.model.HighscoreElement;
+
+import java.util.ArrayList;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
 import me.grantland.widget.AutofitTextView;
@@ -47,7 +52,7 @@ public class Figurvalg_akt extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.figurvalg);
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         AshaFigur = (ImageView) findViewById(R.id.AshaFigur);
         KrishnaFigur = (ImageView) findViewById(R.id.KrishnaFigur);
         LaxmiFigur = (ImageView) findViewById(R.id.LaxmiFigur);
@@ -78,8 +83,7 @@ public class Figurvalg_akt extends AppCompatActivity {
         });
         KrishnaFigur.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                visTaleboble(Grunddata.Krishna, v);
+            public void onClick(View v) { visTaleboble(Grunddata.Krishna, v);
             }
         });
         LaxmiFigur.setOnClickListener(new View.OnClickListener() {
@@ -89,7 +93,6 @@ public class Figurvalg_akt extends AppCompatActivity {
                 visTaleboble(Grunddata.Laxmi, v);
             }
         });
-
         KamalFigur.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -102,7 +105,6 @@ public class Figurvalg_akt extends AppCompatActivity {
         spilKnap = (Button) findViewById(R.id.spil);
         infoboks.setVisibility(View.INVISIBLE);
 
-
         spilKnap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -113,6 +115,21 @@ public class Figurvalg_akt extends AppCompatActivity {
                 finish();
             }
         });
+
+        String kaldenavn = prefs.getString("kaldenavn", "");
+        if (kaldenavn.isEmpty() || true) {
+            final EditText et = new EditText(this);
+            et.setText(kaldenavn);
+            new AlertDialog.Builder(this).setTitle("Hvad hedder du?").setView(et)
+                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            prefs.edit().putString("kaldenavn", et.getText().toString()).commit();
+                        }
+                    })
+                    .show();
+        }
+
     }
 
     private void visTaleboble(Figurdata kamal, View figurview) {
@@ -120,7 +137,13 @@ public class Figurvalg_akt extends AppCompatActivity {
         infoboks.setTranslationY(infoboks.getHeight());
         infoboks.animate().translationY(0);
         spilKnap.setText("Spil som\n"+kamal.navn);
-        tekst.setText(kamal.beskrivelse);
+        String beskrivelse = kamal.beskrivelse;
+        if (Highscore.AKTIV) {
+            ArrayList<HighscoreElement> top5 = Highscore.getTop5(kamal.navn);
+            if (top5.size()>4) beskrivelse += "\nKlar det på under "+top5.get(4).antalUger+" uger og kom i månedens top 5.";
+            if (top5.size()>0) beskrivelse += "\n"+top5.get(0).kaldenavn +" har klaret "+kamal.navn+" på "+top5.get(0).antalUger+" uger.";
+        }
+        tekst.setText(beskrivelse);
         /*
         spilKnap.setVisibility(View.VISIBLE);
         tekst.animate().alpha(1);

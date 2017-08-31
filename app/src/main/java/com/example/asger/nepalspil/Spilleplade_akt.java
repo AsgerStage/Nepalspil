@@ -121,8 +121,9 @@ public class Spilleplade_akt extends AppCompatActivity {
         figurbrik.setImageResource(Spiller.instans.figurdata.drawable_figur_halv_id);
 
         if (savedInstanceState==null && getIntent().getBooleanExtra("genoptag", false) == false) { // nyt spil - vis dialog
+            String kaldenavn = prefs.getString("kaldenavn", "");
             new AlertDialog.Builder(this)
-                    .setTitle("Hej!")
+                    .setTitle("Hej "+kaldenavn+"!")
                     .setIcon(Spiller.instans.figurdata.drawable_figur_halv_id)
                     .setMessage("Hjælp mig med at nå 10. klasse.\n\nHvis vi klarer den, så jeg kan få en uddannelse, og du har vundet spillet.")
                     .setCancelable(false)

@@ -2,6 +2,7 @@ package com.example.asger.nepalspil;
 
 import android.util.Log;
 
+import com.example.asger.nepalspil.model.HighscoreElement;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -13,45 +14,29 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Set;
 
 /**
  * Created by j on 30-08-17.
  */
 
-class Highscore {
+public class Highscore {
     private static FirebaseDatabase database;
     private static DatabaseReference dbRod;
     private static DatabaseReference dbHighscoreDenneMåned;
     private static FirebaseUser fbBruger;
+    public static boolean AKTIV = true;
+    private static HashMap<String, ArrayList<HighscoreElement>> figurtop5 = new HashMap<>();
 
-    public static class HighscoreElement {
-        public String figur;
-        public String øgenavn;
-        public int antalUger;
-        public long tidsstempel;
-
-        public HighscoreElement() {}
-
-        public HighscoreElement(String figur, String øgenavn, int antalUger, long tidsstempel) {
-            this.figur = figur;
-            this.øgenavn = øgenavn;
-            this.antalUger = antalUger;
-            this.tidsstempel = tidsstempel;
-        }
-
-        @Override
-        public String toString() {
-            return "HighscoreElement{" +
-//                    "figur='" + figur + '\'' +
-                    ", øgenavn='" + øgenavn + '\'' +
-                    ", antalUger=" + antalUger +
-//                    ", tidsstempel=" + tidsstempel +
-                    '}';
-        }
+    public static ArrayList<HighscoreElement> getTop5(String figurnavn) {
+        return figurtop5.get(figurnavn);
     }
 
-    public static void init() {
+    public static void init(final Set<String> figurnavne) {
+        if (database!=null) return;
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
         mAuth.signInAnonymously().addOnSuccessListener(new OnSuccessListener<AuthResult>() {
             @Override
@@ -59,51 +44,54 @@ class Highscore {
                 fbBruger = authResult.getUser();
                 database = FirebaseDatabase.getInstance();
                 DatabaseReference myRef = database.getReference("message");
-                myRef.setValue("Hello, World!");
-                dbRod = database.getReference("v1");
+                myRef.setValue("Hello, World! v3");
+                dbRod = database.getReference("v3");
                 dbHighscoreDenneMåned = dbRod.child("highscoreMåned")
                         .child(new SimpleDateFormat("yyyy_MM").format(new Date()));
+                figurtop5.clear();
+                for (String figur : figurnavne) figurtop5.put(figur, new ArrayList<HighscoreElement>());
                 opdaterFraDb();
             }
         });
     }
 
     private static void opdaterFraDb() {
-        dbHighscoreDenneMåned.orderByChild("antalUger").limitToFirst(5)
-                .addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-                        Log.d("Highscore", "highscore: "+dataSnapshot);
-                        for (DataSnapshot c : dataSnapshot.getChildren()) {
-                            Log.d("Highscore", "highscore: "+c);
-                            HighscoreElement elem = c.getValue(HighscoreElement.class);
-                            Log.d("Highscore", "highscore: "+elem);
+        for (final String figurnavn : figurtop5.keySet()) {
+            dbHighscoreDenneMåned.child(figurnavn).orderByChild("antalUger").limitToFirst(5)
+                    .addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            Log.d("Highscore", "highscore: " + dataSnapshot);
+                            ArrayList<HighscoreElement> top5 = figurtop5.get(figurnavn);
+                            top5.clear();
+                            for (DataSnapshot c : dataSnapshot.getChildren()) {
+                                Log.d("Highscore", "highscore: " + c);
+                                HighscoreElement elem = c.getValue(HighscoreElement.class);
+                                Log.d("Highscore", "highscore: " + elem);
+                                top5.add(elem);
+                            }
+                            while (top5.size() < 5)
+                                top5.add(new HighscoreElement(figurnavn, "Noah", 60, 0));
                         }
-                    }
 
-                    @Override
-                    public void onCancelled(DatabaseError databaseError) {
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
 
-                    }
-                });
+                        }
+                    });
+        }
     }
 
-    public static void indsætHighscore(final String figur, final String øgenavn, final int antalUger) {
+    public static void indsætHighscore(final String figurnavn, final String kaldenavn, final int antalUger) {
         if (database==null) return;
-        final DatabaseReference ref = dbHighscoreDenneMåned.child(fbBruger.getUid());
+        final DatabaseReference ref = dbHighscoreDenneMåned.child(figurnavn).child(kaldenavn);
         ref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 HighscoreElement gl = dataSnapshot.getValue(HighscoreElement.class);
                 Log.d("Highscore", "ny highscore? "+gl+" >=" + antalUger);
                 if (gl==null || gl.antalUger>=antalUger) {
-                    /*
-                    ref.child("tidsstempel").setValue(System.currentTimeMillis());
-                    ref.child("antalUger").setValue(antalUger);
-                    ref.child("øgenavn").setValue(øgenavn);
-                    ref.child("figur").setValue(figur);
-                    */
-                    ref.setValue(new HighscoreElement(figur, øgenavn, antalUger, System.currentTimeMillis()));
+                    ref.setValue(new HighscoreElement(figurnavn, kaldenavn, antalUger, System.currentTimeMillis()));
                 }
                 opdaterFraDb();
             }
