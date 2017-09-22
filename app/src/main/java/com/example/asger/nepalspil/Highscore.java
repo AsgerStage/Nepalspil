@@ -30,6 +30,7 @@ public class Highscore {
     private static FirebaseUser fbBruger;
     public static boolean AKTIV = true;
     private static HashMap<String, ArrayList<HighscoreElement>> figurtop5 = new HashMap<>();
+    private static DatabaseReference dbDenneMåned;
 
     public static ArrayList<HighscoreElement> getTop5(String figurnavn) {
         return figurtop5.get(figurnavn);
@@ -46,8 +47,11 @@ public class Highscore {
                 DatabaseReference myRef = database.getReference("message");
                 myRef.setValue("Hello, World! v3");
                 dbRod = database.getReference("v3");
-                dbHighscoreDenneMåned = dbRod.child("highscoreMåned")
-                        .child(new SimpleDateFormat("yyyy_MM").format(new Date()));
+                dbDenneMåned = dbRod.child("måned")
+                        .child(new SimpleDateFormat("yyyy MM").format(new Date()));
+                dbDenneMåned.child("programstart").child(new SimpleDateFormat("dd HH:mm:ss").format(new Date())).setValue(fbBruger.getUid());
+
+                dbHighscoreDenneMåned = dbDenneMåned.child("highscore");
                 figurtop5.clear();
                 for (String figur : figurnavne) figurtop5.put(figur, new ArrayList<HighscoreElement>());
                 opdaterFraDb();
@@ -103,4 +107,9 @@ public class Highscore {
         });
     }
 
+    public static void registrerSpilstart(String figurnavn, String kaldenavn) {
+        dbDenneMåned.child("spilstart")
+                .child(new SimpleDateFormat("dd HH:mm:ss").format(new Date()))
+                .child(figurnavn).setValue(kaldenavn, fbBruger.getUid());
+    }
 }

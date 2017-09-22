@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "222478378007",
+    "firebase_url": "https://nepalspillet.firebaseio.com",
+    "project_id": "nepalspillet",
+    "storage_bucket": "nepalspillet.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:222478378007:android:e1fd18eab5414f0c",
+        "android_client_info": {
+          "package_name": "dk.skoleliv.nepalspil"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "222478378007-dqjt6k55loh9mbkhsb1dostr54dqsijk.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "dk.skoleliv.nepalspil",
+            "certificate_hash": "0a8929ba679c986bb64cef6d0fe3ac6b494414d5"
+          }
+        },
+        {
+          "client_id": "222478378007-p0h6kl4hn69pbbb71sc04nu7bl4b4esu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDzGoeIY7ZErNlZDFjTqR5C_z8QslW6hCI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "222478378007-p0h6kl4hn69pbbb71sc04nu7bl4b4esu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -129,6 +129,7 @@ public class Spilleplade_akt extends AppCompatActivity {
                     .setCancelable(false)
                     .setPositiveButton("OK", null)
                     .show();
+            Highscore.registrerSpilstart(Spiller.instans.figurdata.navn, kaldenavn);
         }
 
 
