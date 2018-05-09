@@ -4,3 +4,4 @@ Dette er kildekoden til Android-appen 'Det uretfærdige nepalspil', der er publi
 
 Grafikaktiver og tekster må kun anvendes til andre formål efter aftale med foreningen http://www.skoleliv-i-nepal.dk
 
+Skrifttypen der anvendes på knapperne er Axels Wood Types MK
