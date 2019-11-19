@@ -3,6 +3,7 @@ package com.example.asger.nepalspil;
 import android.util.Log;
 
 import com.example.asger.nepalspil.model.HighscoreElement;
+/*
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -12,7 +13,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
+*/
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -24,19 +25,21 @@ import java.util.Set;
  */
 
 public class Highscore {
+    public static boolean AKTIV = false;
+    private static HashMap<String, ArrayList<HighscoreElement>> figurtop5 = new HashMap<>();
+    /*
     private static FirebaseDatabase database;
     private static DatabaseReference dbRod;
     private static DatabaseReference dbHighscoreDenneMåned;
     private static FirebaseUser fbBruger;
-    public static boolean AKTIV = true;
-    private static HashMap<String, ArrayList<HighscoreElement>> figurtop5 = new HashMap<>();
     private static DatabaseReference dbDenneMåned;
-
+*/
     public static ArrayList<HighscoreElement> getTop5(String figurnavn) {
         return figurtop5.get(figurnavn);
     }
 
     public static void init(final Set<String> figurnavne) {
+        /*
         if (database!=null) return;
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
         mAuth.signInAnonymously().addOnSuccessListener(new OnSuccessListener<AuthResult>() {
@@ -57,8 +60,9 @@ public class Highscore {
                 opdaterFraDb();
             }
         });
+         */
     }
-
+/*
     private static void opdaterFraDb() {
         for (final String figurnavn : figurtop5.keySet()) {
             dbHighscoreDenneMåned.child(figurnavn).orderByChild("antalUger").limitToFirst(5)
@@ -85,8 +89,9 @@ public class Highscore {
                     });
         }
     }
-
+*/
     public static void indsætHighscore(final String figurnavn, final String kaldenavn, final int antalUger) {
+        /*
         if (database==null) return;
         final DatabaseReference ref = dbHighscoreDenneMåned.child(figurnavn).child(kaldenavn);
         ref.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -105,11 +110,14 @@ public class Highscore {
 
             }
         });
+         */
     }
 
     public static void registrerSpilstart(String figurnavn, String kaldenavn) {
+        /*
         dbDenneMåned.child("spilstart")
                 .child(new SimpleDateFormat("dd HH:mm:ss").format(new Date()))
                 .child(figurnavn).setValue(kaldenavn, fbBruger.getUid());
+         */
     }
 }

@@ -7,6 +7,7 @@ buildscript {
             url 'https://maven.google.com/'
             name 'Google'
         }
+        //google()
     }
     dependencies {
         // BEMÆRK. Skal være 2.3.3. Et af bibliotekerne, SweetAlertDialog crasher hvis man går op til f.eks
@@ -16,7 +17,7 @@ buildscript {
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
-        classpath 'com.google.gms:google-services:3.1.0'
+        //classpath 'com.google.gms:google-services:3.1.0'
     }
 }
 
