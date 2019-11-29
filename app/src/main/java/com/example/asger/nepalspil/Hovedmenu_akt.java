@@ -43,8 +43,10 @@ public class Hovedmenu_akt extends AppCompatActivity implements View.OnClickList
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        boolean EMULATOR = Build.PRODUCT.contains("sdk") || Build.MODEL.contains("Emulator");
+        // Crashlytics fungerer ikke mere - må IKKE kalde Fabric.with(this, new Crashlytics()) før det er løst
+        boolean EMULATOR = true || Build.PRODUCT.contains("sdk") || Build.MODEL.contains("Emulator");
         if (!EMULATOR) {
+            // Crashlytics fungerer ikke mere - må IKKE kalde Fabric.with(this, new Crashlytics()) før det er løst
             Fabric.with(this, new Crashlytics());
         }
         prefs = PreferenceManager.getDefaultSharedPreferences(this);
